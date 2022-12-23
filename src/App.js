@@ -2,6 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  // axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards`, {
+
   return (
     <div className="App">
       <header className="App-header">
