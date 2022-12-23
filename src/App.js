@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+
+import Board from "./components/Board";
+import BoardsList from "./components/BoardsList";
+import NewBoardForm from "./components/NewBoardForm";
+
+// 1. Create component files
+// 2. Set up components in App
+// 3. Display list of Boards
+// 4. Form
+
+const boardsData = [];
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Board /> */}
+      <BoardsList boardsList={boardsData}/>
+      {/* <NewBoardForm /> */}
     </div>
   );
 }
