@@ -1,13 +1,13 @@
 import React from "react";
 
 const CardForm = (props) => {
-  <div>
+  return(<div>
+     <h2>Card Form</h2>
     <form>
-      <h2>Card Form</h2>
       <input></input>
       <input></input>
     </form>
-  </div>
+  </div>)
 }
 
 export default CardForm

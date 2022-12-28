@@ -2,8 +2,11 @@ import React from 'react';
 import Card from './Card';
 
 const CardList = () => {
-  
-  <Card></Card>;
+  return (
+    <div>
+      <Card />
+    </div>
+  );
 };
 
-export default CardList
+export default CardList;

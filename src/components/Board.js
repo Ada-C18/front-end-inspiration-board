@@ -1,9 +1,9 @@
 import React from "react";
 
 const Board = (props) => {
-  <div>
+  return(<div>
     This is a Board for now
-  </div>
+  </div>)
 }
 
 export default Board
