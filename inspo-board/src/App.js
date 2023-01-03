@@ -1,6 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React, { useState } from "react";
+import boardData from "..boardData.json";
+import BoardList from "./components/boardList";
 
 function App() {
   const [boards, setBoards] = useState([]);
