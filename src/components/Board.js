@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 
 
-
 const Board = (props) => {
 	const board_id = props.board_id; // hidden, implied primary key
 	const title = props.title;
