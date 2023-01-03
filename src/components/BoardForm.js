@@ -1,5 +1,8 @@
 import React from "react";
-
+const boardObj = {
+  title: '',
+  owner: '',
+};
 const BoardForm = (props) => {
   return(<div>
     <form>
