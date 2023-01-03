@@ -1,5 +1,6 @@
 import "./App.css";
 import NewBoardForm from "./components/NewBoardForm";
+import NewCardForm from "./components/NewCardForm";
 import { useState } from "react";
 
 // const BOARDDATA = [
@@ -17,6 +18,7 @@ import { useState } from "react";
 
 function App() {
   const [boardData, setBoardData] = useState([]);
+  const [cardData, setCardData] = useState([]);
 
   const updateBoardData = (updatedBoard) => {
     const boards = boardData.map((board) => {
@@ -27,6 +29,17 @@ function App() {
       }
     });
     setBoardData(boards);
+  };
+
+  const updateCardData = (updatedCard) => {
+    const cards = cardData.map((card) => {
+      if (card.id === updatedCard.id) {
+        return updatedCard;
+      } else {
+        return card;
+      }
+    });
+    setBoardData(cards);
   };
 
   return (
@@ -41,7 +54,9 @@ function App() {
       </section>
       <section>
         <h1 className="card"> Cards for Reminders </h1>
+        {/* display a list of cards */} {cardData}
         <h1 className="card"> Create a New Card</h1>
+        <NewCardForm onUpdateCardData={updateCardData} />
       </section>
       <footer>
         <p> Click here to delete all boards and cards</p>
