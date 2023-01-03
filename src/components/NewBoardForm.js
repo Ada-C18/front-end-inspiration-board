@@ -10,16 +10,20 @@ const NewBoardForm = (props) => {
   const onTitleChange = (event) => {
     setFormFields({
       ...formFields,
-      name: event.target.value,
+      title: event.target.value,
     });
   };
 
   const onOwnerChange = (event) => {
     setFormFields({
       ...formFields,
-      email: event.target.value,
+      owner: event.target.value,
     });
   };
+
+  // const handleChange = (event) => {
+  //   setFormFields({ ...formFields, [event.target.title]: event.target.value });
+  // };
 
   const FormSubmit = (event) => {
     event.preventDefault();
