@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <header>INSPIRATION BOARD</header>
+      <section>
+        <h1 className="board"> Boards </h1>
+        <h1 className="board"> Selected Board </h1>
+        <h1 className="board"> Create A New Board </h1>
+      </section>
+      <section>
+        <h1 className="card"> Cards for Reminders </h1>
+        <h1 className="card"> Create a New Card</h1>
+      </section>
+      <footer>
+        <p> Click here to delete all boards and cards</p>
+      </footer>
     </div>
   );
 }
