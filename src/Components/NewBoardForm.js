@@ -5,14 +5,14 @@ import './NewBoardForm.css';
 const NewBoardForm = ({ addBoardCallback }) => {
   const [boardData, setBoardData] = useState({
     title: '',
-    ownersName: '',
+    owner: '',
   });
 
   const submitBoardData = (e) => {
     e.preventDefault();
 
     addBoardCallback(boardData);
-    setBoardData({ title: '', ownersName: ''});
+    setBoardData({ title: '', owner: ''});
   };
 
   const handleChange = (e) => {
@@ -34,17 +34,17 @@ const NewBoardForm = ({ addBoardCallback }) => {
           />
           <label htmlFor="name">Owner's Name</label>
           <input
-            name="ownersName"
-            id="ownersName"
-            value={boardData.ownersName}
+            name="owner"
+            id="owner"
+            value={boardData.owner}
             onChange={handleChange}
-            className={((boardData.ownersName.length === 0)) ? 'invalid-form-input' : ''}
+            className={((boardData.owner.length === 0)) ? 'invalid-form-input' : ''}
           />
-          <p>Preview: {boardData.title} - {boardData.ownersName}</p>
+          <p>Preview: {boardData.title} - {boardData.owner}</p>
 
 
           <button className="button new-board__submit" type="submit"
-            disabled={((boardData.title.length === 0) || (boardData.ownersName.length === 0))}>
+            disabled={((boardData.title.length === 0) || (boardData.owner.length === 0))}>
             Submit
           </button>
         </div>

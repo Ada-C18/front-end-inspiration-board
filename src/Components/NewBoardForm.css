@@ -21,5 +21,5 @@
 
 .invalid-form-input {
     border: red solid 1px;
-    box-shadow: 0 0 7px red;
+    box-shadow: 0 0 1px red;
 }
