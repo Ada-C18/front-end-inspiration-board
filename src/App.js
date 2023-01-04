@@ -6,10 +6,34 @@ import CardForm from './components/CardForm';
 import CardList from './components/CardList';
 
 //POST,GET,DELETE TO API:
-// const kBaseUrl = 'http://127.0.0.1:5000';
-//      OR ???
-// const REACT_APP_BACKEND_URL='';
 
+const REACT_APP_BACKEND_URL = 'http://localhost:5000';
+
+// Destructure and convert python naming convention to JSON.
+const boardApiToJson = (board) => {
+  const { board_id: boardId, title, owner } = board;
+  return { boardId, title, owner };
+};
+
+// Post Board
+// ERR if no input
+// Get ALL Boards
+// Get One Board
+// Delete All Boards
+
+//Post Card
+// ERR if left blank
+// ERR if over >40 characters
+// Delete One Card
+
+// functions
+//onSubmit board
+//onShow Board (shows cards)
+//onHide Board Form
+//onSubmit card
+//add heart
+//delete card
+//delete board if time permits
 
 function App() {
   return (
