@@ -46,10 +46,13 @@ function App() {
   return (
     <div>
       <header>INSPIRATION BOARD</header>
+
       <section>
         <h1> Boards </h1>
         <Board boards={boardData}></Board>
+
         <h1> Selected Board </h1>
+
         <h1> Create A New Board </h1>
         <NewBoardForm onUpdateBoardData={updateBoardData} />
       </section>
