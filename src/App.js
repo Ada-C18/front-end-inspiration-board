@@ -49,7 +49,7 @@ function App() {
 
   const addBoard = (boardData) => {
     axios
-      .post(URL, boardData)
+      .post(`${process.env.REACT_APP_BACKEND_URL}/board`, boardData)
       .then((response) => {
         const newBoards = [...boardData];
         newBoards.push({ title: response.data.title, owner: response.data.owner });
@@ -67,8 +67,8 @@ function App() {
       <h2>Selected Board</h2>
       <span>
         {boardTitle} - {boardOwner}
-      <h3>Create a New Board</h3>
       </span>
+      <h3>Create a New Board</h3>
       {isBoardFormVisible ? <NewBoardForm addBoardCallback={addBoard} /> : ''}
       <button onClick={toggleNewBoardForm} >
         {isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}
