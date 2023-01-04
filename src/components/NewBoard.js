@@ -1,1 +1,0 @@
-import './NewBoard.css';
