@@ -1,23 +1,23 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { useState } from "react";
+import logo from './logo.svg';
+import './App.css';
+import { useState } from 'react';
 
 const boardsList = [
   {
     board_id: 1,
-    title: "Live your best life",
-    owner: "kkg",
+    title: 'Live your best life',
+    owner: 'kkg',
   },
   {
     board_id: 2,
-    title: "Do not disturb",
-    owner: "reyna",
+    title: 'Do not disturb',
+    owner: 'reyna',
   },
 ];
 
 function App() {
   const [boardsData, setBoardsData] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState((boardId = null));
+  const [selectedBoard, setSelectedBoard] = useState(null);
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
   // function getBoardTitles(boardsList) {
   //   let boardTitles = [];
