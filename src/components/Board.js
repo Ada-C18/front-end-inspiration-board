@@ -1,8 +1,11 @@
 const Board = (props) => {
 
   return(
-    <p>Board</p>
-
+    <div>
+      <p>Board</p>
+      <p>Board</p>
+      <p>Board</p>
+    </div>
   );
 };
 
