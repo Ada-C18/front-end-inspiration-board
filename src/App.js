@@ -2,6 +2,7 @@ import './App.css';
 import { useState } from 'react';
 import axios from 'axios';
 import BoardList from './Components/BoardList';
+import NewBoardForm from './Components/NewBoardForm';
 
 const boardDataList = [
   {
@@ -41,6 +42,23 @@ function App() {
     setBoardOwner(owner);
   };
 
+  
+  // New Board Form
+  const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
+  const toggleNewBoardForm = () => {setIsBoardFormVisible(!isBoardFormVisible)}
+
+  const addBoard = (boardData) => {
+    axios
+      .post(URL, boardData)
+      .then((response) => {
+        const newBoards = [...boardData];
+        newBoards.push({ title: response.data.title, ownersName: response.data.ownersName });
+        setBoardData(newBoards);
+      })
+      .catch((error) => console.log(error));
+  };
+
+
   return (
     <div>
       <h1>Inspiration Board</h1>
@@ -50,6 +68,10 @@ function App() {
       <span>
         {boardTitle} - {boardOwner}
       </span>
+      {isBoardFormVisible ? <NewBoardForm addBoardCallback={addBoard} /> : ''}
+      <button onClick={toggleNewBoardForm} >
+        {isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}
+        </button>
     </div>
   );
 }
