@@ -18,3 +18,8 @@
 .new-board__submit {
     grid-column: span 2;
 }
+
+.invalid-form-input {
+    border: red solid 1px;
+    box-shadow: 0 0 7px red;
+}

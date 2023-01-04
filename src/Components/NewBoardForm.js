@@ -29,6 +29,8 @@ const NewBoardForm = ({ addBoardCallback }) => {
             id="title"
             value={boardData.title}
             onChange={handleChange}
+            className={((boardData.title.length === 0)) ? 'invalid-form-input' : ''}
+
           />
           <label htmlFor="name">Owner's Name</label>
           <input
@@ -36,11 +38,13 @@ const NewBoardForm = ({ addBoardCallback }) => {
             id="ownersName"
             value={boardData.ownersName}
             onChange={handleChange}
+            className={((boardData.ownersName.length === 0)) ? 'invalid-form-input' : ''}
           />
           <p>Preview: {boardData.title} - {boardData.ownersName}</p>
 
 
-          <button className="button new-board__submit" type="submit">
+          <button className="button new-board__submit" type="submit"
+            disabled={((boardData.title.length === 0) || (boardData.ownersName.length === 0))}>
             Submit
           </button>
         </div>
