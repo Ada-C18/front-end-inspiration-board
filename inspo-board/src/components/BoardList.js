@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Board from "./Board";
 
-const BoardList = ({ boards }) => {
+const BoardList = ({ boards, onSelectBoard }) => {
   return (
     <ul>
       {boards.map((board) => {
@@ -11,6 +11,7 @@ const BoardList = ({ boards }) => {
             boardId={board.board_id}
             title={board.title}
             owner={board.owner}
+            onSelectBoard={onSelectBoard}
           />
         );
       })}
@@ -26,6 +27,7 @@ BoardList.propTypes = {
       owner: PropTypes.string.isRequired,
     })
   ),
+  onSelectBoard: PropTypes.func.isRequired,
 };
 
 export default BoardList;
