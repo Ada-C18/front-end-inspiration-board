@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "/.NewCardForm.css";
+import "./NewCardForm.css";
 
 const INITIAL_FORM_DATA = {
-  message: "We got this!",
+  message: "",
 };
 
 const NewCardForm = (props) => {
@@ -11,9 +11,10 @@ const NewCardForm = (props) => {
     console.log("handleChange called");
     const newFormData = {
       ...formData,
-      [e.target.message]: e.target.value,
+      [e.target.name]: e.target.value,
     };
     setFormData(newFormData);
+    console.log(newFormData);
   };
   const newCardSubmit = (e) => {
     e.preventDefault();
@@ -29,6 +30,7 @@ const NewCardForm = (props) => {
         value={formData.message}
         onChange={handleChange}
       />
+      <input type="submit" value="Add Card" />
     </form>
   );
 };
