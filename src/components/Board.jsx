@@ -8,8 +8,8 @@ const Board = (props) => {
             <li>
                 <NewBoardForm
                     id={board.id}
-                    board={board.board}
-                    author={board.author}
+                    title={board.title}
+                    owner={board.owner}
                 ></NewBoardForm>
             </li>
         );
