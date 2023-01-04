@@ -11,25 +11,42 @@ const kDefaultFormData = {
 const BoardForm = function (props) {
   const [formState, setFormState] = useState(kDefaultFormData);
 
+  const [submitDisabledState, setSubmitDisabledState] = useState(true);
+
   /* handleNewData: update formState as user types. 
   Args: event: onChange event.
-  Sets: formState */
+  Sets: formState, submitDisabledState */
   const handleNewData = function (event) {
+    /* console.log(
+      `handleNewData: ${event.target.name}, ${event.target.value.length}  `
+    ); */
     const dataValue = event.target.value;
     const dataField = event.target.name;
 
     const newFormData = { ...formState, [dataField]: dataValue };
     setFormState(newFormData);
+
+    // enable submit button if there's valid data in formState
+    if (formState.owner !== '' && formState.title !== '') {
+      setSubmitDisabledState(() => false);
+    }
+
+    // disable submit button if the user had deleted all of the text.
+    // glitchy, but it mostly works for now.
+    if (event.target.value === '') {
+      setSubmitDisabledState(() => true);
+    }
   };
 
   /* handleSubmit: pass data back to App and reset form
   Args: event
-  Sets: formState
+  Sets: formState, submitDisabledState
   Calls: props.handleNewBoard */
   const handleSubmit = function (event) {
     event.preventDefault();
     props.handleNewBoard(formState);
     setFormState(kDefaultFormData);
+    setSubmitDisabledState(true);
   };
 
   return (
@@ -57,7 +74,11 @@ const BoardForm = function (props) {
           />
         </div>
         <div>
-          <input type="submit" value="Add New Board"></input>
+          <input
+            type="submit"
+            value="Add New Board"
+            disabled={submitDisabledState}
+          ></input>
         </div>
       </form>
       <button>Hide New Board Form</button>
