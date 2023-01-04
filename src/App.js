@@ -52,12 +52,12 @@ const getBoards = async () => {
 // Delete All Boards, async is needed
 
 //Post Card, Card Obj body {"message": "", "likesCount": 0, "deleteButton":{function}}
-const addCard = (card) => {
-  return axios
-    .post(`${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, card)
-    .then((response) => response.data.board.card)
-    .catch((err) => console.log(err));
-};
+// const addCard = (card) => {
+//   return axios
+//     .post(`${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, card)
+//     .then((response) => response.data.board.card)
+//     .catch((err) => console.log(err));
+// };
 
 // ERR if left blank
 // ERR if over >40 characters
@@ -79,7 +79,7 @@ const addCard = (card) => {
 function App() {
   //React.useState Hook
   const [boards, setBoards] = useState([]);
-  const [cards, setCards] = useState([]);
+  // const [cards, setCards] = useState([]);
 
   //onSubmit Board Form
   const onSubmitBoardForm = (board) => {
@@ -90,13 +90,13 @@ function App() {
       .catch((err) => console.log(err));
   };
   //onSubmit Card Form
-  const onSubmitCardForm = (card) => {
-    addcard(card)
-      .then((newcard) => {
-        setCards((prevCards) => [...prevCards, newCard]);
-      })
-      .catch((err) => console.log(err));
-  };
+  // const onSubmitCardForm = (card) => {
+  //   addcard(card)
+  //     .then((newcard) => {
+  //       setCards((prevCards) => [...prevCards, newCard]);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   //Refresh Boards helper func for useEffect, needs ASYNC
   const refreshBoards = async () => {
@@ -137,5 +137,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

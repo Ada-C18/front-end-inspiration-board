@@ -1,8 +1,9 @@
 import React from "react";
+import CardList from "./BoardList";
 
 const Board = (props) => {
   return(<div>
-    This is a Board for now
+    <CardList/>
   </div>)
 }
 
