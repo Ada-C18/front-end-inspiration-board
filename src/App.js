@@ -38,16 +38,6 @@ const getBoards = async () => {
     throw new Error('Can not get your boards!');
   }
 };
-// Get One Board, async is needed
-// const getOneBoard= async () => {
-//   try{
-//     const response= await axios.get(`${REACT_APP_BACKEND_URL}/boards/${boardId}`);
-//     return response
-//   }.catch (err){
-//     console.log(err);
-//     throw new Error('Can not get your board')
-//   }
-// }
 
 // Delete All Boards, async is needed
 
@@ -58,23 +48,25 @@ const getBoards = async () => {
 //     .then((response) => response.data.board.card)
 //     .catch((err) => console.log(err));
 // };
-
 // ERR if left blank
 // ERR if over >40 characters
 
-// Delete One Card, aync is needed
-
 //Get ALL Cards, async needed
+//Update One Card 
 //Delete ONE Card, async needed
 
-// functions
-//onSubmit board
-//onShow Board (shows cards)
-//onHide Board Form
-//onSubmit card
-//add heart
-//delete card
-//delete board if time permits
+// Higher order functions inside FUNCTION APP() sent at props
+//BOARD FUNCTIONS:
+//1. onSubmit board
+//2. Select Board (shows cards of that boardID)
+//3. onChange hide Board Form
+//4. delete board if time permits
+
+//CARD FUNCTIONS:
+//1. onSubmit card
+//2. onChange add like
+//3. onChange delete card
+
 
 function App() {
   //React.useState Hook
@@ -89,15 +81,16 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
-  //onSubmit Card Form
-  // const onSubmitCardForm = (card) => {
-  //   addcard(card)
-  //     .then((newcard) => {
-  //       setCards((prevCards) => [...prevCards, newCard]);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
 
+  // Get One Board, async is needed
+  const selectBoard = async (id) => {
+  const board = boards.find((board)=> board.id ===id);
+  if(!board){return;}
+  try{
+    const getBoard - await 
+  }
+}
+  
   //Refresh Boards helper func for useEffect, needs ASYNC
   const refreshBoards = async () => {
     try {
@@ -106,13 +99,23 @@ function App() {
       setBoards(boards);
     } catch (err) {
       console.log(err.message);
-      throw new Error('Can not refresh tasks!');
+      throw new Error('Can not refresh boards!');
     }
   };
+
   //React.useEffect hook for Boards
   useEffect(() => {
     refreshBoards();
   }, []);
+
+//onSubmit Card Form
+  // const onSubmitCardForm = (card) => {
+  //   addcard(card)
+  //     .then((newcard) => {
+  //       setCards((prevCards) => [...prevCards, newCard]);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   //Update Card's Heart Count by one. Do I need Async to wait, DO I NEED find() task by id, it returns undefined if not found, but don't we want an error message instead?
   //Filter Card to Delete
@@ -130,7 +133,11 @@ function App() {
       </header>
       <main>
         <BoardForm />
-        <BoardList />
+        <BoardList 
+        className="board_list"
+        boards={boards}
+        selectBoard=selectBoard
+        />
         <CardForm />
         <CardList />
       </main>
