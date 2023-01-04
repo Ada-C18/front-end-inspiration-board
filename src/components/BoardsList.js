@@ -12,8 +12,8 @@ function BoardsList({ boardsList }) {
         owner={board.owner}
       />
     );
-  }
-  return <div>{boardComponents}</div>;
+  };
+  return (<div>{boardComponents}</div>);
 }
 
 BoardsList.propTypes = {
