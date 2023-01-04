@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import BoardList from "./components/BoardList.js";
 
@@ -24,7 +25,7 @@ function App() {
 
   return (
     <div>
-      <BoardList></BoardList>
+      <BoardList boardEntries={INITIAL_BOARDS}></BoardList>
     </div>
   );
 }
