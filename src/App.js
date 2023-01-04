@@ -67,6 +67,7 @@ function App() {
       <h2>Selected Board</h2>
       <span>
         {boardTitle} - {boardOwner}
+      <h3>Create a New Board</h3>
       </span>
       {isBoardFormVisible ? <NewBoardForm addBoardCallback={addBoard} /> : ''}
       <button onClick={toggleNewBoardForm} >
