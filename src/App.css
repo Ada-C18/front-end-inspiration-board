@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+form {
+  border: 1px solid lightgray;
+  padding: 20px;
+  padding-top: 10px;
+  border-radius: 5px;
+}
+form label {
+  display: inline-block;
+  margin-top: 10px;
+  width: 100px;
+  vertical-align: top;
+}
+h1{
+  font-size: medium;
+}
+
+.input:focus {
+  outline: none !important;
+  border:1px solid red;
+  box-shadow: 0 0 10px #719ECE;
+}
