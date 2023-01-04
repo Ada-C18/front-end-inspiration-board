@@ -1,23 +1,25 @@
 import "./App.css";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
+import Board from "./components/Board";
 import { useState } from "react";
 
-// const BOARDDATA = [
-//   {
-//     id: 1,
-//     title: "hello world",
-//     owner: "123",
-//   },
-//   {
-//     id: 2,
-//     title: "hello east coast",
-//     owner: "456",
-//   },
-// ];
+
+const BOARDDATA = [
+  {
+    id: 1,
+    title: "hello world",
+    owner: "123",
+  },
+  {
+    id: 2,
+    title: "hello east coast",
+    owner: "456",
+  },
+];
 
 function App() {
-  const [boardData, setBoardData] = useState([]);
+  const [boardData, setBoardData] = useState(BOARDDATA);
   const [cardData, setCardData] = useState([]);
 
   const updateBoardData = (updatedBoard) => {
@@ -39,15 +41,27 @@ function App() {
         return card;
       }
     });
-    setBoardData(cards);
+    setCardData(cards);
   };
 
+  const displayBoards =() =>{
+    boardData.map((board) => {
+      return (<li>
+        <Board
+        board = {board}>
+        </Board>
+        </li>
+      )
+    });
+  }
   return (
     <div>
       <header>INSPIRATION BOARD</header>
       <section>
-        <h1 className="board"> Boards </h1>
-        {/* display a list of boards */} {boardData}
+        <section>
+          <h1 className="board"> Boards </h1>
+          <ol> {displayBoards}</ol> 
+        </section>
         <h1 className="board"> Selected Board </h1>
         <h1 className="board"> Create A New Board </h1>
         <NewBoardForm onUpdateBoardData={updateBoardData} />
