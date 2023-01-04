@@ -8,7 +8,7 @@ import NewBoardForm from "./components/NewBoardForm";
 // 1. Create component files
 // 2. Set up components in App
 // 3. Display list of Boards
-// 4. Form
+// 4. Form - submit done (pending: hidden id, preview, hide board)
 
 const boardsData = [
 	{
@@ -28,19 +28,25 @@ function App() {
 	const [boardsList, setBoardsData] = useState(boardsData);
 
 	// form prop function
-  // todo - add event listener
-	const addBoard = (board) => {
-    const newBoard = board;
-    // boardsList.push(newBoard);
-    const updatedBoardsList = boardsList.push(newBoard);
-    
-    setBoardsData(updatedBoardsList) ;
-  };
+	const addBoard = (newBoard) => {
+		console.log("Calling addBoard");
+
+		const updatedBoardsList = [...boardsList];
+
+		// Pending - generate new id num (backend?)
+		updatedBoardsList.push({
+			board_id: newBoard.board_id, // hidden, implied primary key
+			title: newBoard.title,
+			owner: newBoard.owner,
+		});
+
+		setBoardsData(updatedBoardsList);
+	};
 
 	return (
 		<div className="App">
 			{/* <Board /> */}
-			<BoardsList boardsList={boardsData} />
+			<BoardsList boardsList={boardsList} />
 			<NewBoardForm addBoard={addBoard} />
 		</div>
 	);
