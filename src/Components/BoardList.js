@@ -1,5 +1,6 @@
 import React from 'react';
 import Board from './Board';
+import PropTypes from 'prop-types';
 
 const BoardList = (props) => {
   return (
@@ -8,13 +9,22 @@ const BoardList = (props) => {
         <Board
           title={board.title}
           owner={board.owner}
-          id={board.board_id}
+          key={board.id}
           handleBoardClick={props.handleBoardClick}
         />
       ))}
     </ul>
   );
-  // call to backend to read all boards
-  // on click board display board name and display card list
+};
+
+BoardList.propTypes = {
+  boardData: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      owner: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+    })
+  ),
+  handleBoardClick: PropTypes.func.isRequired,
 };
 export default BoardList;

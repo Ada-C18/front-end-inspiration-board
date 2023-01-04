@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Board = (props) => {
   // const selectBoard = (id) => {
@@ -12,5 +13,11 @@ const Board = (props) => {
       {props.title}
     </li>
   );
+};
+
+Board.propTypes = {
+  title: PropTypes.string.isRequired,
+  owner: PropTypes.string.isRequired,
+  handleBoardClick: PropTypes.func.isRequired,
 };
 export default Board;

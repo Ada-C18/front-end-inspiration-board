@@ -1,63 +1,86 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import BoardList from './Components/BoardList';
 import NewBoardForm from './Components/NewBoardForm';
 
-const boardDataList = [
-  {
-    board_id: 1,
-    title: 'board1',
-    owner: 'aria',
-  },
-  {
-    board_id: 2,
-    title: 'board2',
-    owner: 'geiselle',
-  },
-  {
-    board_id: 3,
-    title: 'board3',
-    owner: 'annie',
-  },
-  {
-    board_id: 4,
-    title: 'board4',
-    owner: 'cristal',
-  },
-];
-// call to read all boards, needs endpoint
-// const getAllBoardsApi = () => {
-//   return axios.get()
-//   .then(response => {})
-// };
+// const boardDataList = [
+//   {
+//     board_id: 1,
+//     title: 'board1',
+//     owner: 'aria',
+//   },
+//   {
+//     board_id: 2,
+//     title: 'board2',
+//     owner: 'geiselle',
+//   },
+//   {
+//     board_id: 3,
+//     title: 'board3',
+//     owner: 'annie',
+//   },
+//   {
+//     board_id: 4,
+//     title: 'board4',
+//     owner: 'cristal',
+//   },
+// ];
+
+const getAllBoardsApi = () => {
+  return axios
+    .get(`${process.env.REACT_APP_BACKEND_URL}/board`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 function App() {
-  const [boardData, setBoardData] = useState(boardDataList);
-  const [boardTitle, setBoardTitle] = useState('');
-  const [boardOwner, setBoardOwner] = useState('');
-  // board click
+  const [boardData, setBoardData] = useState([]);
+  const [selectedBoard, setSelectedBoard] = useState('');
+
+  // Board click
   const handleBoardClick = (title, owner) => {
-    setBoardTitle(title);
-    setBoardOwner(owner);
+    setSelectedBoard({ title: title, owner: owner });
   };
 
-  
+  // Get all boards
+  const getAllBoards = () => {
+    return getAllBoardsApi()
+      .then((boards) => {
+        setBoardData(boards);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getAllBoards();
+  });
+
   // New Board Form
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
-  const toggleNewBoardForm = () => {setIsBoardFormVisible(!isBoardFormVisible)}
+  const toggleNewBoardForm = () => {
+    setIsBoardFormVisible(!isBoardFormVisible);
+  };
 
   const addBoard = (boardData) => {
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/board`, boardData)
       .then((response) => {
         const newBoards = [...boardData];
-        newBoards.push({ title: response.data.title, owner: response.data.owner });
+        newBoards.push({
+          title: response.data.title,
+          owner: response.data.owner,
+        });
         setBoardData(newBoards);
       })
       .catch((error) => console.log(error));
   };
-
 
   return (
     <div>
@@ -65,14 +88,18 @@ function App() {
       <h2>Boards</h2>
       <BoardList boardData={boardData} handleBoardClick={handleBoardClick} />
       <h2>Selected Board</h2>
-      <span>
-        {boardTitle} - {boardOwner}
-      </span>
+      {!selectedBoard ? (
+        <span>Select a board!</span>
+      ) : (
+        <span>
+          {selectedBoard.title} - {selectedBoard.owner}
+        </span>
+      )}
       <h3>Create a New Board</h3>
       {isBoardFormVisible ? <NewBoardForm addBoardCallback={addBoard} /> : ''}
-      <button onClick={toggleNewBoardForm} >
+      <button onClick={toggleNewBoardForm}>
         {isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}
-        </button>
+      </button>
     </div>
   );
 }
