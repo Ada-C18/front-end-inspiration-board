@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './App.css';
 // import axios from 'axios';
@@ -16,20 +17,53 @@ const boardApiToJson = (board) => {
   return { boardId, title, owner };
 };
 
-// Post Board, no async needed
+// Post Board, where shape of the Board Object {"title": "", "owner": ""}
+const addBoard = (board) => {
+  return (
+    axios
+      .post(`${REACT_APP_BACKEND_URL}/boards`, board)
+      .then((response) => response.data.board)
+      //need show the user a greyed out submit button
+      .catch((err) => console.log(err))
+  );
+};
 
-// ERR if no input
-// Get ALL Boards
-// Get One Board
-// Delete All Boards
+// Get ALL Boards, async is needed
+const getBoards = async () => {
+  try {
+    const response = await axios.get(`${REACT_APP_BACKEND_URL}/boards`);
+    return response.data.map(boardApiToJson);
+  } catch (err) {
+    console.log(err);
+    throw new Error('Can not get your boards!');
+  }
+};
+// Get One Board, async is needed
+// const getOneBoard= async () => {
+//   try{
+//     const response= await axios.get(`${REACT_APP_BACKEND_URL}/boards/${boardId}`);
+//     return response
+//   }.catch (err){
+//     console.log(err);
+//     throw new Error('Can not get your board')
+//   }
+// }
 
-//Post Card, no async needed
+// Delete All Boards, async is needed
+
+//Post Card, Card Obj body {"message": "", "likesCount": 0, "deleteButton":{function}}
+const addCard = (card) => {
+  return axios
+    .post(`${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, card)
+    .then((response) => response.data.board.card)
+    .catch((err) => console.log(err));
+};
+
 // ERR if left blank
 // ERR if over >40 characters
-// Delete One Card
 
-//Get ALL Boards, async needed
-//Delete ONE Board, async needed
+// Delete One Card, aync is needed
+
 //Get ALL Cards, async needed
 //Delete ONE Card, async needed
 
@@ -45,24 +79,49 @@ const boardApiToJson = (board) => {
 function App() {
   //React.useState Hook
   const [boards, setBoards] = useState([]);
+  const [cards, setCards] = useState([]);
 
   //onSubmit Board Form
+  const onSubmitBoardForm = (board) => {
+    addBoard(board)
+      .then((newBoard) => {
+        setBoards((prevBoards) => [...prevBoards, newBoard]);
+      })
+      .catch((err) => console.log(err));
+  };
   //onSubmit Card Form
+  const onSubmitCardForm = (card) => {
+    addcard(card)
+      .then((newcard) => {
+        setCards((prevCards) => [...prevCards, newCard]);
+      })
+      .catch((err) => console.log(err));
+  };
 
-  //Update Card's Heart Count by one. Do I need Async to wait, DO I NEED find() task by id, it returns undefined if not found, but don't we want an error message instead?
-  //Filter Card to Delete
-
-  //Refresh Boards helper func for useEffect
-  //Refresh Cards helper func for useEffect
-
+  //Refresh Boards helper func for useEffect, needs ASYNC
+  const refreshBoards = async () => {
+    try {
+      //getBoards() returns a response json body of the list of boards
+      const boards = await getBoards();
+      setBoards(boards);
+    } catch (err) {
+      console.log(err.message);
+      throw new Error('Can not refresh tasks!');
+    }
+  };
   //React.useEffect hook for Boards
   useEffect(() => {
     refreshBoards();
   }, []);
+
+  //Update Card's Heart Count by one. Do I need Async to wait, DO I NEED find() task by id, it returns undefined if not found, but don't we want an error message instead?
+  //Filter Card to Delete
+  //Refresh Cards helper func for useEffect
+
   // React.useEffect for Cards. Can I use useEffect more than once per componenet? Do I need this to get the Cards???
-  useEffect(() => {
-    //[we do want to add boards as dependancy array, I think]
-  });
+  // useEffect(() => {
+  //[we do want to add boards as dependancy array, I think]
+  // });
 
   return (
     <div className='App'>
