@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import './App.css';
 // import axios from 'axios';
 import BoardForm from './components/BoardForm';
@@ -15,16 +16,22 @@ const boardApiToJson = (board) => {
   return { boardId, title, owner };
 };
 
-// Post Board
+// Post Board, no async needed
+
 // ERR if no input
 // Get ALL Boards
 // Get One Board
 // Delete All Boards
 
-//Post Card
+//Post Card, no async needed
 // ERR if left blank
 // ERR if over >40 characters
 // Delete One Card
+
+//Get ALL Boards, async needed
+//Delete ONE Board, async needed
+//Get ALL Cards, async needed
+//Delete ONE Card, async needed
 
 // functions
 //onSubmit board
@@ -36,6 +43,27 @@ const boardApiToJson = (board) => {
 //delete board if time permits
 
 function App() {
+  //React.useState Hook
+  const [boards, setBoards] = useState([]);
+
+  //onSubmit Board Form
+  //onSubmit Card Form
+
+  //Update Card's Heart Count by one. Do I need Async to wait, DO I NEED find() task by id, it returns undefined if not found, but don't we want an error message instead?
+  //Filter Card to Delete
+
+  //Refresh Boards helper func for useEffect
+  //Refresh Cards helper func for useEffect
+
+  //React.useEffect hook for Boards
+  useEffect(() => {
+    refreshBoards();
+  }, []);
+  // React.useEffect for Cards. Can I use useEffect more than once per componenet? Do I need this to get the Cards???
+  useEffect(() => {
+    //[we do want to add boards as dependancy array, I think]
+  });
+
   return (
     <div className='App'>
       <header>
