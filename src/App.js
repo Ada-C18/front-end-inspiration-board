@@ -1,7 +1,11 @@
 import './App.css';
 import BoardForm from './components/BoardForm';
 
-function App() {
+const App = function () {
+  const handleNewBoard = function (newBoardData) {
+    console.log(JSON.stringify(newBoardData));
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -13,7 +17,7 @@ function App() {
           <div id="current-board">Put CurrentBoard component here.</div>
         </div>
         <div id="board-form-container">
-          <BoardForm />
+          <BoardForm handleNewBoard={handleNewBoard} />
         </div>
       </section>
       <section id="card-section">
@@ -22,6 +26,6 @@ function App() {
       </section>
     </div>
   );
-}
+};
 
 export default App;

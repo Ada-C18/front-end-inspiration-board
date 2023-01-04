@@ -11,7 +11,10 @@ const kDefaultFormData = {
 const BoardForm = function (props) {
   const [formState, setFormState] = useState(kDefaultFormData);
 
-  const handleNewData = (event) => {
+  /* handleNewData: update formState as user types. 
+  Args: event: onChange event.
+  Sets: formState */
+  const handleNewData = function (event) {
     const dataValue = event.target.value;
     const dataField = event.target.name;
 
@@ -19,10 +22,20 @@ const BoardForm = function (props) {
     setFormState(newFormData);
   };
 
+  /* handleSubmit: pass data back to App and reset form
+  Args: event
+  Sets: formState
+  Calls: props.handleNewBoard */
+  const handleSubmit = function (event) {
+    event.preventDefault();
+    props.handleNewBoard(formState);
+    setFormState(kDefaultFormData);
+  };
+
   return (
     <div id="board-form-component">
       <h2>Create a New Board</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Board Title</label>
           <input
