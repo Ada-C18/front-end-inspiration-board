@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
-import LoginPage from './components/LoginPage';
+import LogInView from './components/LogInView';
 import Home from './components/Home';
-import SingleBoardPage from './components/SingleBoardPage';
+import SingleBoardView from './components/SingleBoardView';
 
 function App() {
   return (
     <div className='App'>
-      <LoginPage></LoginPage>
+      <LogInView></LogInView>
       <Home></Home>
-      <SingleBoardPage></SingleBoardPage>
+      <SingleBoardView></SingleBoardView>
     </div>
   );
 }
