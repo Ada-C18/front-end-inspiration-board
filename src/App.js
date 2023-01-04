@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useState } from "react";
+
+const boardsList = [
+  {
+    board_id: 1,
+    title: "Live your best life",
+    owner: "kkg",
+  },
+  {
+    board_id: 2,
+    title: "Do not disturb",
+    owner: "reyna",
+  },
+];
 
 function App() {
+  const [boardsData, setBoardsData] = useState([]);
+  const [selectedBoard, setSelectedBoard] = useState((boardId = null));
+  const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
+  // function getBoardTitles(boardsList) {
+  //   let boardTitles = [];
+  //   for (let board in boardsList) {
+  //     boardTitles.push(board.title);
+  //   }
+  //   return boardTitles;
+  // }
+  const boardTitles = boardsList.map((board) => {
+    return <li key={board.board_id}>{board.title}</li>;
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Inspiration Board</h1>
+      <sec>{boardTitles}</sec>
     </div>
   );
 }
