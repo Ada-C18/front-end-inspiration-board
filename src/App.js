@@ -39,7 +39,7 @@ const getAllBoardsApi = () => {
 };
 
 function App() {
-  const [boardData, setBoardData] = useState([]);
+  const [allBoardData, setAllBoardData] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState('');
 
   // Board click
@@ -51,7 +51,7 @@ function App() {
   const getAllBoards = () => {
     return getAllBoardsApi()
       .then((boards) => {
-        setBoardData(boards);
+        setAllBoardData(boards);
       })
       .catch((err) => {
         console.log(err);
@@ -77,7 +77,7 @@ function App() {
           title: response.data.title,
           owner: response.data.owner,
         });
-        setBoardData(newBoards);
+        setAllBoardData(newBoards);
       })
       .catch((error) => console.log(error));
   };
@@ -86,7 +86,7 @@ function App() {
     <div>
       <h1>Inspiration Board</h1>
       <h2>Boards</h2>
-      <BoardList boardData={boardData} handleBoardClick={handleBoardClick} />
+      <BoardList boardData={allBoardData} handleBoardClick={handleBoardClick} />
       <h2>Selected Board</h2>
       {!selectedBoard ? (
         <span>Select a board!</span>
