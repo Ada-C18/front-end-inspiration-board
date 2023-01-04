@@ -7,7 +7,7 @@ function Board(props) {
   const selectBoard = props.selectBoard;
 
   function onSelectBoard() {
-    selectBoard(boardTitle, boardOwner);
+    selectBoard(boardTitle, boardOwner, boardId);
   }
 
   return <li onClick={onSelectBoard}>{boardTitle}</li>;
