@@ -52,7 +52,7 @@ function App() {
       .post(URL, boardData)
       .then((response) => {
         const newBoards = [...boardData];
-        newBoards.push({ title: response.data.title, ownersName: response.data.ownersName });
+        newBoards.push({ title: response.data.title, owner: response.data.owner });
         setBoardData(newBoards);
       })
       .catch((error) => console.log(error));
