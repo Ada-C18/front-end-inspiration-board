@@ -1,4 +1,5 @@
 import './App.css';
+import BoardForm from './components/BoardForm';
 
 function App() {
   return (
@@ -11,7 +12,9 @@ function App() {
           <div id="board-list">Put BoardList component here.</div>
           <div id="current-board">Put CurrentBoard component here.</div>
         </div>
-        <div id="board-form-container">Put the BoardForm component here.</div>
+        <div id="board-form-container">
+          <BoardForm />
+        </div>
       </section>
       <section id="card-section">
         <div id="card-list">Put CardList and Card components here.</div>
