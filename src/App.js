@@ -4,8 +4,7 @@ import NewCardForm from "./components/NewCardForm";
 import Board from "./components/Board";
 import { useState } from "react";
 
-
-const BOARDDATA = [
+const boardsData = [
   {
     id: 1,
     title: "hello world",
@@ -19,7 +18,7 @@ const BOARDDATA = [
 ];
 
 function App() {
-  const [boardData, setBoardData] = useState(BOARDDATA);
+  const [boardData, setBoardData] = useState(boardsData);
   const [cardData, setCardData] = useState([]);
 
   const updateBoardData = (updatedBoard) => {
@@ -44,26 +43,14 @@ function App() {
     setCardData(cards);
   };
 
-  const displayBoards =() =>{
-    boardData.map((board) => {
-      return (<li>
-        <Board
-        board = {board}>
-        </Board>
-        </li>
-      )
-    });
-  }
   return (
     <div>
       <header>INSPIRATION BOARD</header>
       <section>
-        <section>
-          <h1 className="board"> Boards </h1>
-          <ol> {displayBoards}</ol> 
-        </section>
-        <h1 className="board"> Selected Board </h1>
-        <h1 className="board"> Create A New Board </h1>
+        <h1> Boards </h1>
+        <Board boards={boardData}></Board>
+        <h1> Selected Board </h1>
+        <h1> Create A New Board </h1>
         <NewBoardForm onUpdateBoardData={updateBoardData} />
       </section>
       <section>

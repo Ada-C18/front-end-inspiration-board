@@ -1,3 +1,7 @@
-.check{
-  display: flex;
+.boards_list {
+  max-height: 9rem;
+  min-height: 9rem;
+  overflow: scroll;
+  margin-right: 2rem;
+  border: black solid 1px;
 }
