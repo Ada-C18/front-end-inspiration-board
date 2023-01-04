@@ -1,10 +1,12 @@
 import React from 'react';
-import Card from './Card'
-const CardList = (props) => {
- return(<div>
-    <h2>Card List</h2>
-    <Card></Card>
-  </div>)
+import Board from './Card';
+
+const BoardList = () => {
+  return (
+    <div>
+      <Board />
+    </div>
+  );
 };
 
-export default CardList;
+export default BoardList;

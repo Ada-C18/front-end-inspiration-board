@@ -1,12 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Card from './Card';
 
-const CardList = () => {
-  return (
+const CardList = (props) => {
+  const cards = props.return(
     <div>
-      <Card />
+      <h2>Card List</h2>
+      <section className='CardList'>{cards}</section>
     </div>
   );
 };
 
-export default CardList;
+{/* <Card
+  key={props.id}
+  id={props.id}
+  message={props.message}
+  // liked={card.liked}
+  addHeart={props.addHeart}
+/>;
+
+CardList.propTypes = {
+  cards: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      message: PropTypes.string.isRequired
+      // liked: PropTypes.number.isRequired
+    
+    })
+    // addLike: propTypes.func.isRequired
+    // deleteCard: PropTypes.func.isRequired
+  )
+}
+export default CardList; */}
