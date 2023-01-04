@@ -2,7 +2,8 @@ import React from 'react';
 import './Board.css';
 import PropTypes from 'prop-types';
 
-const Board = () => {};
+// props = title and owner
+const Board = (props) => {};
 
 
 Board.PropTypes = {

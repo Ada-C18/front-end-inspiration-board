@@ -3,13 +3,28 @@ import './CardContainer.css';
 import Card from './Card';
 import PropTypes from 'prop-types';
 
-const CardContainer = () => {
-
+// props = cardData
+const CardContainer = (props) => {
+    const cards = props.cards.map((card, i) => {
+        return <Card
+        key={i}
+        message={card.message}
+        />
+    })
+    
+    return (
+        <div>
+            {cards}
+        </div>
+    ) 
 };
 
-CardContainer.PropTypes = {
-    cards: PropTypes.array.isRequired
-    
+// add like count later
+CardContainer.propTypes = {
+    cards: PropTypes.arrayOf(PropTypes.shape({
+        key: PropTypes.number.isRequired,
+        message: PropTypes.string.isRequired,
+    }))
 };
 
 export default CardContainer;
