@@ -1,21 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import "./BoardList.css";
 import Board from "./Board";
 
-// const emptyBoard = [{ id: 0, title: " ", owner: " " }];
-
 const BoardList = (props) => {
-  const [selectedBoard, setSelectedBoard] = useState(props.boards);
-  const clickToSelectBoard = (id) => {
-    console.log("this function is running!");
-    for (const board of props.boards) {
-      console.log(board, id);
-      if (board.id === id) {
-        setSelectedBoard(board);
-      }
-    }
-  };
   const board = props.boards.map((board) => {
     return (
       <ul className="BoardTitles">
@@ -24,7 +12,7 @@ const BoardList = (props) => {
           id={board.id}
           title={board.title}
           owner={board.owner}
-          onClickBoard={clickToSelectBoard}
+          onClickBoard={props.onClickBoard}
         />
       </ul>
     );
@@ -35,7 +23,8 @@ const BoardList = (props) => {
       <ul>
         {board}
         <p className="BoardHeading">
-          Selected Board: {selectedBoard.title} -- {selectedBoard.owner}'s Board
+          Selected Board: {props.selectedBoard.title} --{" "}
+          {props.selectedBoard.owner}'s Board
         </p>
       </ul>
     </div>
@@ -50,5 +39,7 @@ BoardList.propTypes = {
       title: PropTypes.string.isRequired,
     })
   ),
+  onClickBoard: PropTypes.func.isRequired,
+  selectedBoard: PropTypes.object,
 };
 export default BoardList;
