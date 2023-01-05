@@ -2,7 +2,7 @@
 import Card from "./Card";
 import PropTypes from 'prop-types';
 
-const BoardInfo = ({entries}) => {
+const BoardInfo = ({entries, deleteCard}) => {
     const cardComponents = entries.map((card) => {
         return (
             <div key={card.id}>
@@ -11,6 +11,7 @@ const BoardInfo = ({entries}) => {
                         title={card.title}
                         owner={card.owner}
                         message={card.message} 
+                        deleteCard={deleteCard}
                         />  
             </div>
         )
@@ -30,8 +31,8 @@ BoardInfo.propTypes ={
             title: PropTypes.string.isRequired,
             owner: PropTypes.string.isRequired,
             message: PropTypes.string.isRequired,
-        })
-    )
+        })),
+    deleteCard: PropTypes.func.isRequired,
 }
 
 export default BoardInfo;

@@ -41,6 +41,18 @@ function App() {
 
   const [entries, setEntries] = useState(firstCopy);
 
+  const deleteCard = id => {
+    console.log("delete Card");
+    const newCardList = [];
+    for (const card of entries) {
+      if (card.id !== id) {
+        newCardList.push(card);
+      }
+    }
+    setEntries(newCardList)
+  };
+  
+
   
   return (
     <div className="App">
@@ -49,7 +61,10 @@ function App() {
       <h2> Create a New Board</h2>
 
 
-      <BoardInfo entries={entries}  />
+      <BoardInfo 
+            entries={entries} 
+            deleteCard={deleteCard} 
+            />
 
     </div>
   );
