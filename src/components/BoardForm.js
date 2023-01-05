@@ -62,10 +62,25 @@ const BoardForm = function (props) {
     setSubmitDisabledState(true);
   };
 
+  // hide show form
+  const [stateClass, setStateClass] = useState('visible');
+
+  /* handleSubmit: hide or show form when button is pressed.
+  Args: event
+  Sets: stateClass */
+  const toggleStateClass = function (e) {
+    setStateClass((sc) => (sc === 'visible' ? 'hidden' : 'visible'));
+    console.log('toggleStateClass ' + stateClass);
+  };
+
+  /* hideButtonText: generate text depending on if stateClass is 'hidden' or 'visible'.
+  Returns: string "Hide" or "Show" */
+  const hideButtonText = () => (stateClass === 'visible' ? 'Hide' : 'Show');
+
   return (
     <div id="board-form-component">
       <h2>Create a New Board</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={stateClass}>
         <div>
           <label htmlFor="title">Board Title</label>
           <input
@@ -94,7 +109,9 @@ const BoardForm = function (props) {
           ></input>
         </div>
       </form>
-      <button>Hide New Board Form</button>
+      <button onClick={toggleStateClass}>
+        {hideButtonText()} New Board Form
+      </button>
     </div>
   );
 };
