@@ -2,6 +2,7 @@ import "./App.css";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import Board from "./components/Board";
+import BoardList from "./components/BoardList";
 import { useState } from "react";
 
 const boardsData = [
@@ -43,15 +44,38 @@ function App() {
     setCardData(cards);
   };
 
+  const [selectedBoard, setSelectedBoard] = useState({title:'',owner:'',id:''});
+
+  const clickedBoard = (board)=> {setSelectedBoard(board)};
+
+  const boardItems = boardsData.map((board)=> {
+    return (<li>
+      <Board board = {board} onBoardClicked={clickedBoard}/> 
+    </li>)
+  });
+
+  const selectBoard =() => {
+    if (selectedBoard.id){
+      return `${selectedBoard.title} ${selectedBoard.owner}`
+    } else {
+      return 'Slecet board from the board'
+    }
+  }
+
   return (
     <div>
       <header>INSPIRATION BOARD</header>
       <section>
         <h1> Boards </h1>
-        <Board boards={boardData}></Board>
+          {/* <BoardList boards={boardData}></BoardList> */}
+          <ol>{boardItems}</ol>
         <h1> Selected Board </h1>
+          {/* <Board onBaordClicked={clickedBoard} onBoardItems={boardItems}/> */}
+          <p>{selectedBoard.id ? `${selectedBoard.title} ${selectedBoard.owner}`: 'Slecet board from the board list!'}</p>
+            {/* {selectBoard} */}
+          {/* <Board onSelectBoard= {selectBoard}/> */}
         <h1> Create A New Board </h1>
-        <NewBoardForm onUpdateBoardData={updateBoardData} />
+          <NewBoardForm onUpdateBoardData={updateBoardData} />
       </section>
       <section>
         <h1 className="card"> Cards for Reminders </h1>
