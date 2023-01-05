@@ -13,6 +13,9 @@ function BoardList(props) {
         id={board.id}
         title={board.title}
         name={board.name}
+        selected={board.selected}
+        selectBoard={props.selectBoard}
+        unselectBoard={props.unselectBoard}
       />
     );
   }
@@ -28,6 +31,8 @@ BoardList.propTypes = {
       name: PropTypes.string.isRequired,
     })
   ),
+  selectBoard: PropTypes.func.isRequired,
+  unselectBoard: PropTypes.func.isRequired,
 };
 
 export default BoardList;
