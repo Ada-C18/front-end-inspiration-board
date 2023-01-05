@@ -42,53 +42,26 @@ function App() {
   const [selectedBoard, setSelectedBoard] = useState({
     title: "",
     owner: "",
-    id: "",
+    id: null,
   });
 
-  // const returnedBoards = boardData.map((board) => {
-  //   return <li> {board.title}</li>;
-  // });
-
-  // const boardItems = boardsData.map((board) => {
-  //   return (
-  //     <li>
-  //       <Board board={board} onBoardClicked={clickedBoard} />
-  //     </li>
-  //   );
-  // });
-
-  const selectBoard = (board) => {
-    setSelectedBoard(board);
-    return (
-      <div>
-        <p>
-          {selectedBoard.id
-            ? `${selectedBoard.title} - ${selectedBoard.owner}`
-            : "Select a Board from the Board List!"}
-        </p>
-      </div>
-    );
+  const handleBoardClicked = (id) => {
+    const findId = boardData.map((board) => {
+      if (id === board.id) {
+        setSelectedBoard(board);
+      }
+    });
   };
 
   return (
     <div>
       <header>INSPIRATION BOARD</header>
       <section>
-        <BoardList boards={boardData} />
+        <Board boards={boardData} onBoardClicked={handleBoardClicked} />
         <h1> Select Board</h1>
-        {selectBoard}
-        <div>
-          <Board onBoardClicked={selectBoard} />
-        </div>
+        <p>{selectedBoard.title}</p>
+        <p>{selectedBoard.owner}</p>
 
-        {/* <h1> Boards </h1> */}
-        {/* <BoardList boards={boardData}></BoardList> */}
-        {/* <ol>{boardItems}</ol> */}
-        {/* <h1> Selected Board </h1> */}
-        {/* <Board onBaordClicked={clickedBoard} onBoardItems={boardItems}/> */}
-
-        {/* {selectBoard} */}
-        {/* <Board onSelectBoard= {selectBoard}/> */}
         <h1> Create A New Board </h1>
         <NewBoardForm onUpdateBoardData={updateBoardData} />
       </section>

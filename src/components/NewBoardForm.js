@@ -40,7 +40,7 @@ const NewBoardForm = (props) => {
   };
 
   return (
-    <form onFormSubmit={FormSubmit}>
+    <form onSubmit={FormSubmit}>
       <div>
         <label htmlFor="Title">Title:</label>
         <input name="Title" value={formFields.title} onChange={onTitleChange} />
