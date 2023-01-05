@@ -72,5 +72,3 @@ NewBoardForm.propTypes = {
   createNewBoard: PropTypes.func.isRequired,
 };
 export default NewBoardForm;
-
-// export default NewBoardForm;

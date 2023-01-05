@@ -1,6 +1,7 @@
 import Board from "./components/Board";
 import "./App.css";
 import NewBoardForm from "./components/NewBoardForm";
+import NewCardForm from "./components/NewCardForm";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -9,21 +10,21 @@ import { useState, useEffect } from "react";
 function App() {
   // const boardData = [
   //   {
-  //     title: 'Board 1',
-  //     author: 'Author 1'
+  //     title: "Board 1",
+  //     author: "Author 1",
   //   },
   //   {
-  //     title: 'Board 2',
-  //     author: 'Author 2'
+  //     title: "Board 2",
+  //     author: "Author 2",
   //   },
   //   {
-  //     title: 'Board 3',
-  //     author: 'Author 3'
-  //   }
+  //     title: "Board 3",
+  //     author: "Author 3",
+  //   },
   // ];
 
   const [boardsData, setBoardsData] = useState([]);
-  
+  const [cardsData, setCardsData] = useState([]);
   const createNewBoard = (newBoardData) => {
     axios
       .post("http://localhost:5000/boards", newBoardData)
@@ -44,18 +45,36 @@ function App() {
       });
   };
 
-
+  const addCardCallBack = (newCardsData) => {
+    axios
+      .post("http://localhost:5000//boards/<board_id>/cards", newCardsData)
+      .then((response) => {
+        const newCards = [...cardsData];
+        // const newId = Math.max(...newBoards.map(board => board.id))+1
+        newCards.push({
+          // id: newId,
+          board_id: response.data.board_id,
+          message: response.data.message,
+          card_id: response.data.card_id,
+          ...cardsData,
+        });
+        setCardsData(newCards);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="App">
       <header className="App-header">
         <NewBoardForm createNewBoard={createNewBoard} />
-        <Board>Board</Board>
+        <NewCardForm addCardCallBack={addCardCallBack} />
+
+        {/* <Board>Board</Board> */}
       </header>
       <main>
-        <Board
-          entries={boardData}
-        ></Board>
+        <Board entries={boardsData}></Board>
       </main>
     </div>
   );
@@ -72,7 +91,6 @@ function App() {
   //   </main>
   // </div>
   // );
-
 }
 
 export default App;
