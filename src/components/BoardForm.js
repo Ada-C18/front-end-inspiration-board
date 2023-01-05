@@ -116,4 +116,8 @@ const BoardForm = function (props) {
   );
 };
 
+BoardForm.propTypes = {
+  handleNewBoard: PropTypes.func.isRequired,
+};
+
 export default BoardForm;
