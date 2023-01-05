@@ -43,32 +43,15 @@ function App() {
   const [selectedBoard, setSelectedBoard] = useState({
     title: "",
     owner: "",
-    id: "",
+    id: null,
   });
 
-  // const returnedBoards = boardData.map((board) => {
-  //   return <li> {board.title}</li>;
-  // });
-
-  // const boardItems = boardsData.map((board) => {
-  //   return (
-  //     <li>
-  //       <Board board={board} onBoardClicked={clickedBoard} />
-  //     </li>
-  //   );
-  // });
-
-  const selectBoard = (board) => {
-    setSelectedBoard(board);
-    return (
-      <div>
-        <p>
-          {selectedBoard.id
-            ? `${selectedBoard.title} - ${selectedBoard.owner}`
-            : "Select a Board from the Board List!"}
-        </p>
-      </div>
-    );
+  const handleBoardClicked = (id) => {
+    const findId = boardData.map((board) => {
+      if (id === board.id) {
+        setSelectedBoard(board);
+      }
+    });
   };
 
   const [selectedBoard, setSelectedBoard] = useState({title:'',owner:'',id:''});
@@ -93,9 +76,11 @@ function App() {
     <div>
       <header>INSPIRATION BOARD</header>
       <section>
-        <h1> Boards </h1>
-        <Board boards={boardData}></Board>
-        <h1> Selected Board </h1>
+        <Board boards={boardData} onBoardClicked={handleBoardClicked} />
+        <h1> Select Board</h1>
+        <p>{selectedBoard.title}</p>
+        <p>{selectedBoard.owner}</p>
+
         <h1> Create A New Board </h1>
           <NewBoardForm onUpdateBoardData={updateBoardData} />
       </section>
