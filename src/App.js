@@ -43,9 +43,10 @@ const getBoardsAPI = async () => {
 const getBoardAPI = async (boardId) => {
   try {
     const response = await axios.get(
-      `${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`,boardId
+      `${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`,
+      boardId
     );
-    return boardApiToJson(response.data.board);
+    return response.data.boardId(boardApiToJson);
   } catch (err) {
     console.log(err);
     throw new Error(`Could not get board ${boardId}`);
@@ -55,23 +56,40 @@ const getBoardAPI = async (boardId) => {
 // Delete All Boards, async is needed
 
 // Destructure Card and parse to JSON:
-// const cardApiToJson= {card_id: cardId, board_id: boardId, likes_count: likesCount, message, board}
+const cardApiToJson = (card) => {
+  const {
+    card_id: cardId,
+    board_id: boardId,
+    likes_count: likesCount,
+    message,
+    board,
+  } = card;
+  return { cardId, boardId, likesCount, message, board };
+};
 
 //Post Card, Card Obj body {"message": "", "likesCount": 0, "deleteButton":{function}}
-// const addCardAPI = (card) => {
-//   return axios
-//     .post(`${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, card)
-//     .then((response) => response.data.board.card)
-//     .catch((err) => console.log(err));
-// };
+const addCardAPI = (card) => {
+  return axios
+    .post(`${REACT_APP_BACKEND_URL}/boards/${card.boardId}/cards`, card)
+    .then((response) => response.data.board.card)
+    .catch((err) => console.log(err));
+};
 // ERR if left blank
 // ERR if over >40 characters
 
 //Get ALL Cards, async needed
-// const getCardAPI = (cards) => {
-//   return axios 
-//   .get(`${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, cards)
-// }
+const getCardsAPI = async (cards) => {
+  try {
+    const response = await axios.get(
+      `${REACT_APP_BACKEND_URL}/boards/${cards.boardId}/cards`
+    );
+    return response.data.map(cardApiToJson);
+  } catch (err) {
+    console.log(err);
+    throw new Error('Nope, get your cards');
+  }
+};
+
 //Update One Card
 //Delete ONE Card, async needed
 
@@ -109,7 +127,6 @@ function App() {
     }
     try {
       const response = await getBoardAPI(id);
-
     } catch (err) {
       console.log(err);
       throw new Error(`Could not get board ${board.boardId}`);
@@ -134,22 +151,26 @@ function App() {
   }, []);
 
   //onSubmit Card Form
-  // const onSubmitCardForm = (card) => {
-  //   addcard(card)
-  //     .then((newcard) => {
-  //       setCards((prevCards) => [...prevCards, newCard]);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
+  const onSubmitCardForm = (card) => {
+    addcard(card)
+      .then((newcard) => {
+        setCards((prevCards) => [...prevCards, newCard]);
+      })
+      .catch((err) => console.log(err));
+  };
 
   //Update Card's Heart Count by one. Do I need Async to wait, DO I NEED find() task by id, it returns undefined if not found, but don't we want an error message instead?
   //Filter Card to Delete
   //Refresh Cards helper func for useEffect
 
-  // React.useEffect for Cards. Can I use useEffect more than once per componenet? Do I need this to get the Cards???
+// const refreshCards = () =>{
+  
+
+  // React.useEffect for Cards. Can I use useEffect more than once per componenet? Do I need this to get the Cards??? I have a feeling the dependancy array is not going to be an empty list...
+  
   // useEffect(() => {
-  //[we do want to add boards as dependancy array, I think]
-  // });
+  //   refreshCards();
+  // }, []);
 
   return (
     <div className='App'>
@@ -164,7 +185,7 @@ function App() {
           selectBoard={selectBoard}
         />
         <CardForm />
-        <CardList/>
+        <CardList />
       </main>
     </div>
   );
