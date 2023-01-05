@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "owner": "lilian",
+    "title": "title test"
+  },
+  {
+    "id": 2,
+    "owner": "neida",
+    "title": "welcome"
+  },
+  {
+    "id": 3,
+    "owner": "tanil",
+    "title": "test title"
+  },
+  {
+    "id": 4,
+    "owner": "lain",
+    "title": "all the boards"
+  }
+]

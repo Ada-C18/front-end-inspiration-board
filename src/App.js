@@ -5,71 +5,11 @@ import CardList from "./components/CardList.js";
 //import CreateBoard from "./components/CreateBoard.js";
 import axios from "axios";
 
+import MOCK_BOARD from "./data/mockBoard.json";
+import MOCK_BOARD_LIST from "./data/mockBoardList.json";
+
 //const apiUrl = process.env.REACT_APP_BACKEND_URL;
 const apiUrl = false;
-
-const MOCK_BOARD_LIST = [
-  {
-    id: 1,
-    owner: "lilian",
-    title: "title test",
-  },
-  {
-    id: 2,
-    owner: "neida",
-    title: "welcome",
-  },
-  {
-    id: 3,
-    owner: "tanil",
-    title: "test title",
-  },
-  {
-    id: 4,
-    owner: "lain",
-    title: "all the boards",
-  },
-];
-
-const MOCK_BOARD = {
-  board: {
-    cards: [
-      {
-        board_id: 1,
-        id: 1,
-        likes_count: 54,
-        message: "does this return an int",
-      },
-      {
-        board_id: 1,
-        id: 2,
-        likes_count: 0,
-        message: "we're testing more",
-      },
-      {
-        board_id: 1,
-        id: 3,
-        likes_count: 17,
-        message: "lots of cards",
-      },
-      {
-        board_id: 1,
-        id: 4,
-        likes_count: 20,
-        message: "no sql databases",
-      },
-      {
-        board_id: 1,
-        id: 5,
-        likes_count: 6,
-        message: "no concept of migrations",
-      },
-    ],
-    id: 1,
-    owner: "yet",
-    title: "title test",
-  },
-};
 
 const getAllBoards = () => {
   if (!apiUrl)
