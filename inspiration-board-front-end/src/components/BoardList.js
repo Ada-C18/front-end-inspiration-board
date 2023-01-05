@@ -13,7 +13,6 @@ const BoardList = (props) => {
           title={board.title}
           owner={board.owner}
           onClickBoard={props.onClickBoard}
-          selectedBoard={props.selectedBoard}
         />
       </ul>
     );
@@ -35,6 +34,5 @@ BoardList.propTypes = {
     })
   ),
   onClickBoard: PropTypes.func.isRequired,
-  selectedBoard: PropTypes.object,
 };
 export default BoardList;

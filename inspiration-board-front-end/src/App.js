@@ -1,11 +1,12 @@
 import "./App.css";
 import BoardList from "./components/BoardList";
 import CardList from "./components/CardList";
+import NewBoardForm from "./components/NewBoardForm";
 import { useState } from "react";
 
 const testBoards = [
   { title: "Test Board One ", id: 1, owner: "Pavi" },
-  { title: "Test Board Two", id: 2, owner: "Soliel" },
+  { title: "Test Board Two", id: 2, owner: "Soleil" },
   { title: "Test Board Three", id: 3, owner: "Misha" },
 ];
 const emptyBoard = { id: 0, title: " ", owner: " " };
@@ -22,20 +23,27 @@ function App() {
       }
     }
   };
+  const addBoard = (newBoard) => {
+    const newBoardList = [...boardData];
+    const newBoardId = Math.max(...newBoardList.map((board) => board.id)) + 1;
+    newBoardList.push({
+      id: newBoardId,
+      title: newBoard.title,
+      owner: newBoard.owner,
+    });
+    setBoardData(newBoardList);
+  };
   return (
     <div className="App">
       <header className="App-header">
         <h1>Inspiration Boards</h1>
       </header>
       <main>
-        <BoardList
-          boards={testBoards}
-          onClickBoard={clickToSelectBoard}
-          selectedBoard={selectedBoard}
-        />
+        <BoardList boards={testBoards} onClickBoard={clickToSelectBoard} />
         <p className="BoardHeading">
           Selected Board: {selectedBoard.title} -- {selectedBoard.owner}'s Board
         </p>
+        <NewBoardForm addBoardCallBack={addBoard} />
         <div>
           <CardList board={selectedBoard} />
         </div>
