@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import "./App.css";
 import Board from "./components/Board.js";
+import BoardList from "./components/BoardList";
 import NewCardForm from "./components/NewCardForm";
 import NewBoardForm from "./components/NewBoardForm";
 
@@ -20,6 +21,11 @@ import NewBoardForm from "./components/NewBoardForm";
 //     message: "Everyone loves you.",
 //   },
 // ];
+
+const boards = [
+  { title: "Nina's Board", owner: "Nina" },
+  { title: "Lynn's Board", owner: "Lynn" },
+];
 
 const REACT_APP_BACKEND_URL = "http://localhost:5000/cards";
 
@@ -56,6 +62,7 @@ function App() {
   return (
     <div>
       <h1>Hello Peeps!</h1>
+      <BoardList boards={boards} />
       <Board cards={board} />
       <NewCardForm addCardCallbackFunc={addCard} />
       <NewBoardForm />

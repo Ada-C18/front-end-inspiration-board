@@ -6,6 +6,11 @@ import PropTypes from "prop-types";
 const Board = ({ title, owner, cards }) => {
   title = "Nina's Board";
   owner = "Nina";
+  cards = [
+    { id: 1, message: "lynn" },
+    { id: 2, message: "tami" },
+    { id: 3, message: "nina" },
+  ];
   const cardComponents = [];
   for (const card of cards) {
     cardComponents.push(<Card id={card.id} message={card.message} />);
