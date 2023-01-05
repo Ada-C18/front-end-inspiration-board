@@ -13,19 +13,19 @@ const CardList = (props) => {
 
 
 
-CardList.propTypes = {
-  cards: PropTypes.arrayOf(
-    PropTypes.shape({
-      cardId: PropTypes.number.isRequired,
-      message: PropTypes.string.isRequired,
-      likesCount: PropTypes.number.isRequired
+// CardList.propTypes = {
+//   cards: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       cardId: PropTypes.number.isRequired,
+//       message: PropTypes.string.isRequired,
+//       likesCount: PropTypes.number.isRequired
     
-    }),
-    onAddLike: propTypes.func.isRequired,
-    onDeleteCard: PropTypes.func.isRequired,
-  )
-}
-export default CardList; 
+//     }),
+//     onAddLike: propTypes.func.isRequired,
+//     onDeleteCard: PropTypes.func.isRequired,
+//   )
+// }
+// export default CardList; 
 
 // card_id = db.Column(db.Integer, primary_key=True)
 // message = db.Column(db.String)

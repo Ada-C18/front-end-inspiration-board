@@ -43,7 +43,7 @@ const getBoardsAPI = async () => {
 const getBoardAPI = async (boardId) => {
   try {
     const response = await axios.get(
-      `${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`
+      `${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`,boardId
     );
     return boardApiToJson(response.data.board);
   } catch (err) {
@@ -54,8 +54,11 @@ const getBoardAPI = async (boardId) => {
 
 // Delete All Boards, async is needed
 
+// Destructure Card and parse to JSON:
+// const cardApiToJson= {card_id: cardId, board_id: boardId, likes_count: likesCount, message, board}
+
 //Post Card, Card Obj body {"message": "", "likesCount": 0, "deleteButton":{function}}
-// const addCard = (card) => {
+// const addCardAPI = (card) => {
 //   return axios
 //     .post(`${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, card)
 //     .then((response) => response.data.board.card)
@@ -65,6 +68,10 @@ const getBoardAPI = async (boardId) => {
 // ERR if over >40 characters
 
 //Get ALL Cards, async needed
+// const getCardAPI = (cards) => {
+//   return axios 
+//   .get(`${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, cards)
+// }
 //Update One Card
 //Delete ONE Card, async needed
 
@@ -157,7 +164,7 @@ function App() {
           selectBoard={selectBoard}
         />
         <CardForm />
-        <CardList />
+        <CardList/>
       </main>
     </div>
   );
