@@ -8,21 +8,21 @@ const BoardList = (props) => {
   console.log(props);
 
   const boardComponents = props.boardEntries.map((boardEntry) => {
-    return (
-      <li key={boardEntry.id}>
-        <Board
-          id={boardEntry.id}
-          title={boardEntry.title}
-          owner={boardEntry.owner}
-        />
-      </li>
-    );
+	return (
+	  <li key={boardEntry.id}>
+		<Board
+		  id={boardEntry.id}
+		  title={boardEntry.title}
+		  owner={boardEntry.owner}
+		/>
+	  </li>
+	);
   });
 
   return (
-    <section>
-      <ul>{boardComponents}</ul>
-    </section>
+	<section>
+	  <ul>{boardComponents}</ul>
+	</section>
   );
 };
 
