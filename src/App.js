@@ -7,42 +7,42 @@ import { useState, useEffect } from "react";
 // const BaseUrl = "http://localhost:5000";
 
 function App() {
-  // const boardData = [
-  //   {
-  //     title: 'Board 1',
-  //     author: 'Author 1'
-  //   },
-  //   {
-  //     title: 'Board 2',
-  //     author: 'Author 2'
-  //   },
-  //   {
-  //     title: 'Board 3',
-  //     author: 'Author 3'
-  //   }
-  // ];
+  const boardData = [
+    {
+      title: 'Board 1',
+      author: 'Author 1'
+    },
+    {
+      title: 'Board 2',
+      author: 'Author 2'
+    },
+    {
+      title: 'Board 3',
+      author: 'Author 3'
+    }
+  ];
 
-  const [boardsData, setBoardsData] = useState([]);
+  // const [boardsData, setBoardsData] = useState([]);
   
-  const createNewBoard = (newBoardData) => {
-    axios
-      .post("http://localhost:5000/boards", newBoardData)
-      .then((response) => {
-        const newBoards = [...boardsData];
-        // const newId = Math.max(...newBoards.map(board => board.id))+1
-        newBoards.push({
-          // id: newId,
-          board_id: response.data.id,
-          title: response.data.title,
-          owner: response.data.owner,
-          ...boardsData,
-        });
-        setBoardsData(newBoards);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  // const createNewBoard = (newBoardData) => {
+  //   axios
+  //     .post("http://localhost:5000/boards", newBoardData)
+  //     .then((response) => {
+  //       const newBoards = [...boardsData];
+  //       // const newId = Math.max(...newBoards.map(board => board.id))+1
+  //       newBoards.push({
+  //         // id: newId,
+  //         board_id: response.data.id,
+  //         title: response.data.title,
+  //         owner: response.data.owner,
+  //         ...boardsData,
+  //       });
+  //       setBoardsData(newBoards);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
 
 
