@@ -7,9 +7,9 @@ const Card = (props) => {
     return (
       <li>
         <NewCardForm
-          id={card.id}
+          // id={card.id}
           message={card.message}
-          likes={card.likes}
+          // likes={card.likes}
         ></NewCardForm>
       </li>
     )
