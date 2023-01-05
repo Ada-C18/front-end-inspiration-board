@@ -7,12 +7,7 @@ import { useState } from "react";
 // };
 
 // TODOs
-// -- "Hide New Board Form" event listeners, function - where? => here
 // -- Error - stretch goal: add read outline around the input field
-// -- Preview
-// -- Read Boards:
-// View a list of all boards.
-// Select a board.
 
 const NewBoardForm = ({ addBoard }) => {
 	const [formData, setFormData] = useState({
@@ -84,6 +79,9 @@ const NewBoardForm = ({ addBoard }) => {
 						></input>
 					</div>
 
+					<p>
+						Preview: {formData.title} - {formData.owner}
+					</p>
 					{/* <input type="submit" value="Submit"></input> */}
 					<button type="submit" disabled={isSubmitDisable}>
 						Submit
