@@ -13,4 +13,11 @@ function Board(props) {
   return <li onClick={onSelectBoard}>{boardTitle}</li>;
 }
 
+Board.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  owner: PropTypes.string.isRequired,
+  selectBoard: PropTypes.func.isRequired,
+};
+
 export default Board;

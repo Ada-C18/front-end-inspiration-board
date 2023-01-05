@@ -32,6 +32,7 @@ BoardList.propTypes = {
       owner: PropTypes.string.isRequired,
     })
   ),
+  selectBoard: PropTypes.func.isRequired,
 };
 
 export default BoardList;

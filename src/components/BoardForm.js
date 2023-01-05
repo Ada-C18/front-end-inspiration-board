@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 /* 
 title
@@ -15,6 +16,9 @@ const INITIAL_FORM_DATA = {
 
 const NewBoardForm = ({ addBoardCallbackFunc }) => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
+  const [formDisplay, setFormDisplay] = useState(true);
+
+  const handleClick = (e) => setFormDisplay((current) => !current);
 
   const handleChange = (e) => {
     console.log("handle change called");
@@ -35,31 +39,38 @@ const NewBoardForm = ({ addBoardCallbackFunc }) => {
   return (
     <div>
       <h2>Create A New Board</h2>
-      <form>
-        <label htmlFor="title">Title</label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-        ></input>
-        <label htmlFor="owner">Owner's Name</label>
-        <input
-          type="text"
-          id="owner"
-          name="owner"
-          value={formData.owner}
-          onChange={handleChange}
-        ></input>
-        <p>
-          Preview: {formData.title} - {formData.owner}
-        </p>
-        <input type="submit" value="Submit" onClick={handleNewBoardSubmit} />
-        <button>Hide New Board Form</button>
-      </form>
+      {formDisplay && (
+        <form>
+          <label htmlFor="title">Title</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+          ></input>
+          <label htmlFor="owner">Owner's Name</label>
+          <input
+            type="text"
+            id="owner"
+            name="owner"
+            value={formData.owner}
+            onChange={handleChange}
+          ></input>
+          <p>
+            Preview: {formData.title} - {formData.owner}
+          </p>
+          <input type="submit" value="Submit" onClick={handleNewBoardSubmit} />
+        </form>
+      )}
+      <button onClick={handleClick}>
+        {formDisplay ? "Hide New Board Form" : "Show New Board Form"}
+      </button>
     </div>
   );
 };
 
+NewBoardForm.propTypes = {
+  addBoardCallbackFunc: PropTypes.func.isRequired,
+};
 export default NewBoardForm;

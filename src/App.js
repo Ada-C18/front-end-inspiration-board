@@ -2,6 +2,8 @@ import { useState } from "react";
 import BoardList from "./components/BoardList";
 import BoardForm from "./components/BoardForm";
 import CardList from "./components/CardList";
+import CardForm from "./components/CardForm";
+import "./App.css";
 /* 
 Title - Inspiration Board 
 Different sections for - 
@@ -55,7 +57,9 @@ const DEFAULT_BOARDS = [
 function App() {
   const [boardList, setBoardList] = useState(DEFAULT_BOARDS);
   const [cardList, setCardList] = useState(DEFAULT_CARDS);
-  const [selectedBoard, setSelectedBoard] = useState("Please Select a Board");
+  const [selectedBoard, setSelectedBoard] = useState({
+    board: "Please Select a Board!",
+  });
 
   const selectBoard = (title, owner, boardId) => {
     console.log("selectBoard is called");
@@ -76,6 +80,29 @@ function App() {
     setBoardList(newBoards);
   };
 
+  const addCard = (newCardInfo) => {
+    console.log("addCard called");
+    const newCards = [...cardList];
+    const newCard = {
+      ...newCardInfo,
+      id: cardList[cardList.length - 1].id + 1,
+      boardId: selectedBoard.id,
+    };
+    newCards.push(newCard);
+    setCardList(newCards);
+  };
+
+  const deleteCard = (cardId) => {
+    console.log("deleteCard called");
+    const newCards = [];
+    for (let card of cardList) {
+      if (card.id !== cardId) {
+        newCards.push(card);
+      }
+    }
+    setCardList(newCards);
+  };
+
   return (
     <div className="InspoBoard">
       <header>
@@ -87,8 +114,15 @@ function App() {
       <BoardForm addBoardCallbackFunc={addBoard}></BoardForm>
       <CardList
         selectedBoardId={selectedBoard.id}
+        deleteCard={deleteCard}
         cardList={cardList}
       ></CardList>
+      <div>
+        <CardForm
+          addCardCallbackFunc={addCard}
+          selectedBoard={selectedBoard}
+        ></CardForm>
+      </div>
     </div>
   );
 }
