@@ -2,15 +2,19 @@
 import './App.css';
 import { useState } from 'react';
 import BoardInfo from './components/BoardInfo';
+// import NewCard from './components/NewCard';
 
 
 function App() {
+  // boardlist
   const cardList = [
     { 
-    id:1,
+    // board_id
+    card_id:1,
     title: 'Great day',
     message: 'Have an awesome today',
     owner: 'Jhon Smith'
+    // board: ''
     },
 
     { 
@@ -52,19 +56,19 @@ function App() {
     setEntries(newCardList)
   };
   
-
-  
   return (
     <div className="App">
       <h1> Inspiration Board </h1>
 
       <h2> Create a New Board</h2>
 
-
       <BoardInfo 
             entries={entries} 
             deleteCard={deleteCard} 
             />
+
+      {/* <NewCard /> */}
+      
 
     </div>
   );
