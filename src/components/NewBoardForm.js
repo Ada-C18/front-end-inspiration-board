@@ -54,36 +54,57 @@ const NewBoardForm = ({ addBoard }) => {
 	// Error - Disable submit button if inputs empty
 	const isSubmitDisable = formData.title === "" || formData.owner === "";
 
-	return (
-		<form onSubmit={onFormSubmit}>
-			<div>
-				<label htmlFor="title"> Title</label>
-				<input
-					type="string"
-					name="title"
-					id="title"
-					value={formData.title}
-					onChange={onTitleChange}
-				></input>
-			</div>
+	// Hide Form
+	const [hideForm, setHideForm] = useState(false);
 
-			<div>
-				<label htmlFor="owner"> Owner's Name</label>
-				<input
-					type="string"
-					name="owner"
-					id="owner"
-					value={formData.owner}
-					onChange={onOwnerChange}
-				></input>
-			</div>
+	if (!hideForm) {
+		return (
+			<>
+				<form onSubmit={onFormSubmit}>
+					<h1>Create New Board</h1>
+					<div>
+						<label htmlFor="title"> Title</label>
+						<input
+							type="string"
+							name="title"
+							id="title"
+							value={formData.title}
+							onChange={onTitleChange}
+						></input>
+					</div>
 
-			{/* <input type="submit" value="Submit"></input> */}
-			<button type="submit" disabled={isSubmitDisable}>
-				Submit
-			</button>
-		</form>
-	);
+					<div>
+						<label htmlFor="owner"> Owner's Name</label>
+						<input
+							type="string"
+							name="owner"
+							id="owner"
+							value={formData.owner}
+							onChange={onOwnerChange}
+						></input>
+					</div>
+
+					{/* <input type="submit" value="Submit"></input> */}
+					<button type="submit" disabled={isSubmitDisable}>
+						Submit
+					</button>
+				</form>
+
+				<button onClick={() => setHideForm(true)}>
+					Hide New Board
+				</button>
+			</>
+		);
+	} else {
+		return (
+			<>
+				<h1>Create New Board</h1>
+				<button onClick={() => setHideForm(false)}>
+					Show New Board Form
+				</button>
+			</>
+		);
+	}
 };
 
 NewBoardForm.propTypes = {
