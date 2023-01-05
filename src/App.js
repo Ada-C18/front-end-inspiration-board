@@ -30,7 +30,7 @@ function App() {
   }, []);
 
   const onBoardSelect = (()=>{
-    console.log("huu")
+    console.log("huu") 
 
   }) 
 
