@@ -3,7 +3,7 @@ import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import Board from "./components/Board";
 import BoardList from "./components/BoardList";
-import BoardList from "./components/BoardList";
+// import BoardList from "./components/BoardList";
 import { useState } from "react";
 const boardsData = [
   {
@@ -20,6 +20,7 @@ const boardsData = [
 function App() {
   const [boardData, setBoardData] = useState(boardsData);
   const [cardData, setCardData] = useState([]);
+
   const updateBoardData = (updatedBoard) => {
     const boards = boardData.map((board) => {
       if (board.id === updatedBoard.id) {
@@ -51,26 +52,11 @@ function App() {
       if (id === board.id) {
         setSelectedBoard(board);
       }
+      
     });
   };
 
-  const [selectedBoard, setSelectedBoard] = useState({title:'',owner:'',id:''});
-
-  const clickedBoard = (board)=> {setSelectedBoard(board)};
-
-  const boardItems = boardsData.map((board)=> {
-    return (<li>
-      <Board board = {board} onBoardClicked={clickedBoard}/> 
-    </li>)
-  });
-
-  const selectBoard =() => {
-    if (selectedBoard.id){
-      return `${selectedBoard.title} ${selectedBoard.owner}`
-    } else {
-      return 'Slecet board from the board'
-    }
-  }
+  const [showForm, setShowForm] = useState(true);
 
   return (
     <div>
@@ -78,11 +64,11 @@ function App() {
       <section>
         <Board boards={boardData} onBoardClicked={handleBoardClicked} />
         <h1> Select Board</h1>
-        <p>{selectedBoard.title}</p>
-        <p>{selectedBoard.owner}</p>
-
+        {/* <p>{selectedBoard.title} {selectedBoard.owner}</p> */}
+        <p>{selectedBoard.id ? `${selectedBoard.title}  ${selectedBoard.owner}` : 'Please select a Board from the Board List!'}</p>
         <h1> Create A New Board </h1>
-          <NewBoardForm onUpdateBoardData={updateBoardData} />
+          {showForm && <NewBoardForm onUpdateBoardData={updateBoardData} />}
+          <button type="button" onClick={() => setShowForm (!showForm)}> {showForm === true? 'Hide New Board Form' : 'Show New Board Form'}</button>
       </section>
       <section>
         <h1 className="card"> Cards for Reminders </h1>
