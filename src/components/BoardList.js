@@ -1,13 +1,9 @@
 import React from "react";
 import Board from "./Board.js";
 
-const boardList = ({ boards }) => {
-  boards = [
-    { title: "Nina's Board", owner: "Nina" },
-    { title: "Lynn's Board", owner: "Lynn" },
-  ];
+const boardList = ({ boardList }) => {
   const boardComponents = [];
-  for (const board of boards) {
+  for (const board of boardList) {
     boardComponents.push(
       <Board
         key={board.id}
