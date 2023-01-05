@@ -8,9 +8,12 @@ import NewCard from './components/NewCard';
 // import { useState } from 'react';
 
 
-function App() {
+function App() { 
+
   const handleCardSubmit=(data)=>{
-    //call api, updating the new cards on the board
+    console.log("data",data)
+    //add submit in the newcard submit
+    //handle card submit to do whatever is needed to be done to add a new card
   }
   return (
     <div className="App">
@@ -18,9 +21,9 @@ function App() {
         <h1>Inspiration Board</h1>
       </header>
         <div>
-          <h2>Create New Board</h2>
-          <h2>Create New Card</h2>
-          <NewCard handleCardSubmit={handleCardSubmit}/>
+          <h2> New Board</h2>
+          <h2> New Card</h2>
+          <NewCard onCardSubmit={handleCardSubmit}/>
           <h2>Boards</h2>
         </div>
         
