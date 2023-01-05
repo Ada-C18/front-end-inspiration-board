@@ -3,7 +3,7 @@ import React from "react";
 
 
 const Card = (props) => {
-  return (<div className='card-item'>
+  return (<div>
     
     <p>{props.card.message}</p>
     <ul>

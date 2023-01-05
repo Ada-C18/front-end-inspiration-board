@@ -63,7 +63,7 @@ const CardList = (props) => {
     return (<Card
         card={card}
         handleLikes={handleLikes}
-        deleteCardItem={deleteCard}></Card>)
+        deleteCard={deleteCard}></Card>)
   });
 
   // const newCard = (message) => {
