@@ -19,6 +19,7 @@
 .boardList {
   grid-column: 1 / span 2;
   grid-row-start: 2;
+  background-color: white;
 }
 
 .CreateNewBoard {
