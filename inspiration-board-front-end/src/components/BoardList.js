@@ -13,6 +13,7 @@ const BoardList = (props) => {
           title={board.title}
           owner={board.owner}
           onClickBoard={props.onClickBoard}
+          selectedBoard={props.selectedBoard}
         />
       </ul>
     );
@@ -20,13 +21,7 @@ const BoardList = (props) => {
   return (
     <div className="App">
       <h3 className="BoardHeading">Boards:</h3>
-      <ul>
-        {board}
-        <p className="BoardHeading">
-          Selected Board: {props.selectedBoard.title} --{" "}
-          {props.selectedBoard.owner}'s Board
-        </p>
-      </ul>
+      <ul>{board}</ul>
     </div>
   );
 };

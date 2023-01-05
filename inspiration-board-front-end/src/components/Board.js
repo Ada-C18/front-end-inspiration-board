@@ -11,6 +11,7 @@ Board.propTypes = {
   owner: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   onClickBoard: PropTypes.func,
+  selectedBoard: PropTypes.object,
 };
 
 export default Board;

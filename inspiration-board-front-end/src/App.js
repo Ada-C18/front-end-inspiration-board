@@ -1,5 +1,6 @@
 import "./App.css";
 import BoardList from "./components/BoardList";
+import CardList from "./components/CardList";
 import { useState } from "react";
 
 const testBoards = [
@@ -32,6 +33,12 @@ function App() {
           onClickBoard={clickToSelectBoard}
           selectedBoard={selectedBoard}
         />
+        <p className="BoardHeading">
+          Selected Board: {selectedBoard.title} -- {selectedBoard.owner}'s Board
+        </p>
+        <div>
+          <CardList board={selectedBoard} />
+        </div>
       </main>
     </div>
   );
