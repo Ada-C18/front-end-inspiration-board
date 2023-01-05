@@ -7,18 +7,13 @@ import { useState } from "react";
 // };
 
 // TODOs
-// -- Get Submit working, add new board to list - DONE
-// -- "Hide New Board Form" event listeners, function - where?
-// -- Error
+// -- "Hide New Board Form" event listeners, function - where? => here
+// -- Error - stretch goal: add read outline around the input field
 // -- Preview
+// -- Read Boards:
+// View a list of all boards.
+// Select a board.
 
-// REQS - Create
-// Create a new board, by filling out a form. The form includes "title" and "owner" name of the board.
-// See an error message if I try to make a new board with an empty/blank/invalid/missing "title" or "owner" input.
-// All error messages can look like a new section on the screen, a red outline around the input field, and/or disabling the input, as long as it's visible
-// Hide the "New Board" form, so I don't have to see the "New Board" form all the time when I'm looking at cards.
-
-// props from App: addBoard
 const NewBoardForm = ({ addBoard }) => {
 	const [formData, setFormData] = useState({
 		title: "",
@@ -56,6 +51,9 @@ const NewBoardForm = ({ addBoard }) => {
 		});
 	};
 
+	// Error - Disable submit button if inputs empty
+	const isSubmitDisable = formData.title === "" || formData.owner === "";
+
 	return (
 		<form onSubmit={onFormSubmit}>
 			<div>
@@ -80,7 +78,10 @@ const NewBoardForm = ({ addBoard }) => {
 				></input>
 			</div>
 
-			<input type="submit" value="Submit"></input>
+			{/* <input type="submit" value="Submit"></input> */}
+			<button type="submit" disabled={isSubmitDisable}>
+				Submit
+			</button>
 		</form>
 	);
 };

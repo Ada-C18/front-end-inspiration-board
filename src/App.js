@@ -5,11 +5,6 @@ import { useState } from "react";
 import BoardsList from "./components/BoardsList";
 import NewBoardForm from "./components/NewBoardForm";
 
-// 1. Create component files
-// 2. Set up components in App
-// 3. Display list of Boards
-// 4. Form - submit done (pending: hidden id, preview, hide board)
-
 const boardsData = [
 	{
 		board_id: 1,
