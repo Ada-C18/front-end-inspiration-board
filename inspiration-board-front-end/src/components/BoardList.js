@@ -18,21 +18,25 @@ const BoardList = (props) => {
   };
   const board = props.boards.map((board) => {
     return (
-      <Board
-        key={board.id}
-        id={board.id}
-        title={board.title}
-        owner={board.owner}
-        onClickBoard={clickToSelectBoard}
-      />
+      <ul className="BoardTitles">
+        <Board
+          key={board.id}
+          id={board.id}
+          title={board.title}
+          owner={board.owner}
+          onClickBoard={clickToSelectBoard}
+        />
+      </ul>
     );
   });
   return (
     <div className="App">
-      <h2>Boards</h2>
+      <h3 className="BoardHeading">Boards:</h3>
       <ul>
         {board}
-        <p>selectedBoard={selectedBoard.title}</p>
+        <p className="BoardHeading">
+          Selected Board: {selectedBoard.title} -- {selectedBoard.owner}'s Board
+        </p>
       </ul>
     </div>
   );

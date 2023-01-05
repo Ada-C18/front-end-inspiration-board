@@ -1,11 +1,22 @@
 * {
-  background-color: rgb(250, 180, 49);
+  background-color: rgb(255, 193, 79);
 }
 
 .App-header {
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: aliceblue;
   text-align: center;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.BoardHeading {
+  color:aliceblue
+}
+
+.BoardTitles {
+  color:rgb(103, 45, 82)
+} 
+
+.BoardTitles:hover {
+  color: aliceblue;
 }

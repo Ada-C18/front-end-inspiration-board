@@ -3,9 +3,7 @@ import PropTypes from "prop-types";
 import "./Board.css";
 
 const Board = (props) => {
-  return (
-    <button onClick={() => props.onClickBoard(props.id)}>{props.title}</button>
-  );
+  return <div onClick={() => props.onClickBoard(props.id)}>{props.title}</div>;
 };
 
 Board.propTypes = {
