@@ -1,33 +1,46 @@
-import 
+import { useEffect, useState } from 'react';
+import './App.css';
 import Board from './components/Board.js';
 import CardList from './components/CardList.js';
 import NewBoardForm from './components/NewBoardForm';
 import NewCardForm from './components/NewCardForm';
-import './App.css';
+import axios from 'axios';
 
 
-const BOARDS = [
-  {
-    id: 1,
-    title: 'pick me',
-    owner: 'Wanjun'
-  },
-  {
-    id: 2,
-    title: 'testing',
-    owner: 'Sarah'
-  }
-];
+
 
 
 function App() {
-  const boardsCopy = BOARDS.map((board) => {
-    return {
-      ...board
-    };
-  });
 
-  const [boardsList, setBoardsList] = useState(boardsCopy)
+  const [boardsList, setBoardsList] = useState([])
+
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
+    .then((response) => {
+      const boardsListCopy = response.data.map((board) => {
+        return {
+          ...board
+        }
+      })
+      setBoardsList(boardsListCopy);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }, []);
+
+  const onBoardSelect = (()=>{
+    console.log("huu")
+
+  }) 
+
+  const boardsComponent = boardsList.map((board) => {
+    return (
+      <ul>
+        <Board board={board} onBoardSelect={onBoardSelect}></Board>
+      </ul>
+    )
+  })
 
 
   return (
@@ -50,7 +63,7 @@ function App() {
           </section>
           <section>
             <h1>Boards</h1>
-            <Board></Board>
+            {boardsComponent}
           </section>
         </aside>
         <main>
