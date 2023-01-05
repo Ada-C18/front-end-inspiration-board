@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import './BoardForm.css';
@@ -12,6 +12,19 @@ const BoardForm = function (props) {
   const [formState, setFormState] = useState(kDefaultFormData);
 
   const [submitDisabledState, setSubmitDisabledState] = useState(true);
+
+  useEffect(() => {
+    // enable submit button if there's valid data in formState
+    if (formState.owner !== '' && formState.title !== '') {
+      setSubmitDisabledState(() => false);
+    }
+
+    // disable submit button if the user had deleted all of the text.
+    // glitchy, but it mostly works for now.
+    if (formState.owner === '' || formState.title === '') {
+      setSubmitDisabledState(() => true);
+    }
+  }, [formState]);
 
   /* handleNewData: update formState as user types. 
   Args: event: onChange event.
