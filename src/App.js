@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import BoardList from './Components/BoardList';
 import NewBoardForm from './Components/NewBoardForm';
+import CardList from './Components/CardList'
+
 
 // const boardDataList = [
 //   {
@@ -60,7 +62,7 @@ function App() {
 
   useEffect(() => {
     getAllBoards();
-  });
+  }, []);
 
   // New Board Form
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
@@ -72,11 +74,8 @@ function App() {
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}/board`, boardData)
       .then((response) => {
-        const newBoards = [...boardData];
-        newBoards.push({
-          title: response.data.title,
-          owner: response.data.owner,
-        });
+        const newBoards = [...allBoardData];
+        newBoards.push({ ...response.data.board });
         setAllBoardData(newBoards);
       })
       .catch((error) => console.log(error));
@@ -100,6 +99,9 @@ function App() {
       <button onClick={toggleNewBoardForm}>
         {isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}
       </button>
+      <section>
+      {selectedBoard.board_id ? <CardList board={selectedBoard}/> : ''}
+      </section>
     </div>
   );
 }
