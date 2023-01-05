@@ -5,6 +5,8 @@ const Board = (props) => {
   //   {props.board.title}
   // </div>
 
+  hello Selam!
+
   const onBoardClick = () => {
     const updatedBoard = {
       //board: props.board,
