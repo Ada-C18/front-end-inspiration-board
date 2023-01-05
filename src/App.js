@@ -18,7 +18,7 @@ const boardApiToJson = (board) => {
 };
 
 // Post Board Object {"title": "", "owner": ""}
-const addBoard = (board) => {
+const addBoardAPI = (board) => {
   return (
     axios
       .post(`${REACT_APP_BACKEND_URL}/boards`, board)
@@ -29,7 +29,7 @@ const addBoard = (board) => {
 };
 
 // Get ALL Boards, async and map is needed
-const getBoards = async () => {
+const getBoardsAPI = async () => {
   try {
     const response = await axios.get(`${REACT_APP_BACKEND_URL}/boards`);
     return response.data.map(boardApiToJson);
@@ -39,8 +39,8 @@ const getBoards = async () => {
   }
 };
 
-//Select ONE board to show it's CardList
-const getBoard = async (boardId) => {
+//Update One board to add or delete from it's CardList componenet? Or do we just add CardList to the boards useEffect dependancy array???
+const getBoardAPI = async (boardId) => {
   try {
     const response = await axios.get(
       `${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`
@@ -51,8 +51,6 @@ const getBoard = async (boardId) => {
     throw new Error(`Could not get board ${boardId}`);
   }
 };
-
-//Update One board to add or delete from it's CardList componenet? Or do we just add CardList to the boards useEffect dependancy array???
 
 // Delete All Boards, async is needed
 
@@ -89,7 +87,7 @@ function App() {
 
   //onSubmit Board Form
   const onSubmitBoardForm = (board) => {
-    addBoard(board)
+    addBoardAPI(board)
       .then((newBoard) => {
         setBoards((prevBoards) => [...prevBoards, newBoard]);
       })
@@ -103,7 +101,8 @@ function App() {
       return;
     }
     try {
-      const getBoard = await getBoard(id);
+      const response = await getBoardAPI(id);
+
     } catch (err) {
       console.log(err);
       throw new Error(`Could not get board ${board.boardId}`);
@@ -114,7 +113,7 @@ function App() {
   const refreshBoards = async () => {
     try {
       //getBoards() returns a response json body of the list of boards
-      const boards = await getBoards();
+      const boards = await getBoardsAPI();
       setBoards(boards);
     } catch (err) {
       console.log(err.message);

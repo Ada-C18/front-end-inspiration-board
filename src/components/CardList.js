@@ -11,24 +11,25 @@ const CardList = (props) => {
   );
 };
 
-{/* <Card
-  key={props.id}
-  id={props.id}
-  message={props.message}
-  // liked={card.liked}
-  addHeart={props.addHeart}
-/>;
+
 
 CardList.propTypes = {
   cards: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      message: PropTypes.string.isRequired
-      // liked: PropTypes.number.isRequired
+      cardId: PropTypes.number.isRequired,
+      message: PropTypes.string.isRequired,
+      likesCount: PropTypes.number.isRequired
     
-    })
-    // addLike: propTypes.func.isRequired
-    // deleteCard: PropTypes.func.isRequired
+    }),
+    onAddLike: propTypes.func.isRequired,
+    onDeleteCard: PropTypes.func.isRequired,
   )
 }
-export default CardList; */}
+export default CardList; 
+
+// card_id = db.Column(db.Integer, primary_key=True)
+// message = db.Column(db.String)
+// board = db.relationship("Board", back_populates="cards", lazy=True)
+
+// board_id = db.Column(db.Integer, db.ForeignKey('board.board_id'), nullable=True)
+// likes_count = db.Column(db.Integer, default=0)
