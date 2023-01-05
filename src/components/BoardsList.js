@@ -6,15 +6,23 @@ function BoardsList({ boardsList }) {
 
 	for (const board of boardsList) {
 		boardComponents.push(
-			<Board
-				key={board.board_id}
-				board_id={board.board_id}
-				title={board.title}
-				owner={board.owner}
-			/>
+			<li>
+				<Board
+					key={board.board_id}
+					board_id={board.board_id}
+					title={board.title}
+					owner={board.owner}
+					selected={board.selected}
+				/>
+			</li>
 		);
 	}
-	return <div>{boardComponents}</div>;
+	return (
+		<>
+			<h1>Boards</h1>
+			<ol>{boardComponents}</ol>
+		</>
+	);
 }
 
 BoardsList.propTypes = {

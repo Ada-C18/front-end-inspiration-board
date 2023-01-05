@@ -18,6 +18,10 @@ const boardsData = [
 	},
 ];
 
+// -- Read Boards:
+// View a list of all boards.
+// Select a board.
+
 function App() {
 	// state for boardsList
 	const [boardsList, setBoardsData] = useState(boardsData);
@@ -38,10 +42,17 @@ function App() {
 		setBoardsData(updatedBoardsList);
 	};
 
+	// Make boards clickable
+	//
+
 	return (
 		<div className="App">
 			{/* <Board /> */}
 			<BoardsList boardsList={boardsList} />
+			<h1>Selected Board</h1>
+			<p>
+				{/* Selected: {title} - {owner} */}
+			</p>
 			<NewBoardForm addBoard={addBoard} />
 		</div>
 	);

@@ -5,15 +5,16 @@ const Board = (props) => {
 	const board_id = props.board_id; // hidden, implied primary key
 	const title = props.title;
 	const owner = props.owner;
+	const selected = props.selected;
 
-	return (
+	return (<Board></Board>
 		// elements
-		<div>
-			<ul>
-				<li>Title: {title}</li>
-				<li>Owner: {owner}</li>
-			</ul>
-		</div>
+		// <>
+		// 	<ol> 
+		// 		<li>Title: {title}</li>
+		// 		{/* <li>Owner: {owner}</li> */}
+		// 	</ol>
+		// </>
 	);
 };
 
