@@ -4,6 +4,7 @@ import { useState } from "react";
 import "./App.css";
 import Board from "./components/Board.js";
 import NewCardForm from "./components/NewCardForm";
+import NewBoardForm from "./components/NewBoardForm";
 
 // const TEMP_DATA = [
 //   {
@@ -57,6 +58,7 @@ function App() {
       <h1>Hello Peeps!</h1>
       <Board cards={board} />
       <NewCardForm addCardCallbackFunc={addCard} />
+      <NewBoardForm />
     </div>
   );
 }
