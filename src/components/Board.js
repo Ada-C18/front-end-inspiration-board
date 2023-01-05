@@ -1,17 +1,23 @@
 import { useState } from "react";
 const Board = (props) => {
+  // return (
+  // <div onClick={() => props.onBoardClicked(props.board)}>
+  //   {props.board.title}
+  // </div>
+
+  const onBoardClick = () => {
+    const updatedBoard = {
+      //board: props.board,
+      title: props.board.title,
+      owner: props.board.owner,
+    };
+    props.onBoardClicked(updatedBoard);
+  };
   return (
-    <div onClick={() => props.onBoardClicked(props.board)}>
-      {props.board.title}
+    <div>
+      <h1> Selected Boards </h1>
+      <p>{onBoardClick}</p>
     </div>
   );
-  // const onBoardClick = () => {
-  //     const updatedBoard = {
-  //         board: props.board,
-  //         title: props.board.title
-  //     }
-  //     props.onBoardClicked(updatedBoard);
-  // };
-  // return<div> {onBoardClick}</div>
 };
 export default Board;

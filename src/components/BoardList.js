@@ -8,8 +8,13 @@ const BoardList = (props) => {
   // props.onDisplayBoard;
   // }
   const returnedBoards = props.boards.map((board) => {
-    return <li> {board.title} </li>;
+    return <li> {board.title}</li>;
   });
-  return <ol> {returnedBoards} </ol>;
+  return (
+    <div>
+      <h1> Boards</h1>
+      <ol> {returnedBoards} </ol>
+    </div>
+  );
 };
 export default BoardList;

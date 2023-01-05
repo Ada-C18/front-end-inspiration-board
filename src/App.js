@@ -44,37 +44,49 @@ function App() {
     owner: "",
     id: "",
   });
-  const clickedBoard = (board) => {
+
+  // const returnedBoards = boardData.map((board) => {
+  //   return <li> {board.title}</li>;
+  // });
+
+  // const boardItems = boardsData.map((board) => {
+  //   return (
+  //     <li>
+  //       <Board board={board} onBoardClicked={clickedBoard} />
+  //     </li>
+  //   );
+  // });
+
+  const selectBoard = (board) => {
     setSelectedBoard(board);
-  };
-  const boardItems = boardsData.map((board) => {
     return (
-      <li>
-        <Board board={board} onBoardClicked={clickedBoard} />
-      </li>
+      <div>
+        <p>
+          {selectedBoard.id
+            ? `${selectedBoard.title} - ${selectedBoard.owner}`
+            : "Select a Board from the Board List!"}
+        </p>
+      </div>
     );
-  });
-  const selectBoard = () => {
-    if (selectedBoard.id) {
-      return `${selectedBoard.title} ${selectedBoard.owner}`;
-    } else {
-      return "Slecet board from the board";
-    }
   };
+
   return (
     <div>
       <header>INSPIRATION BOARD</header>
       <section>
-        <h1> Boards </h1>
+        <BoardList boards={boardData} />
+        <h1> Select Board</h1>
+        {selectBoard}
+        <div>
+          <Board onBoardClicked={selectBoard} />
+        </div>
+
+        {/* <h1> Boards </h1> */}
         {/* <BoardList boards={boardData}></BoardList> */}
-        <ol>{boardItems}</ol>
-        <h1> Selected Board </h1>
+        {/* <ol>{boardItems}</ol> */}
+        {/* <h1> Selected Board </h1> */}
         {/* <Board onBaordClicked={clickedBoard} onBoardItems={boardItems}/> */}
-        <p>
-          {selectedBoard.id
-            ? `${selectedBoard.title} ${selectedBoard.owner}`
-            : "Slecet board from the board list!"}
-        </p>
+
         {/* {selectBoard} */}
         {/* <Board onSelectBoard= {selectBoard}/> */}
         <h1> Create A New Board </h1>
