@@ -7,12 +7,10 @@ import NewCardForm from './components/NewCardForm';
 import axios from 'axios';
 
 
-
-
-
 function App() {
 
   const [boardsList, setBoardsList] = useState([])
+  const [selectedBoard, setSelectedBoard] = useState("Select A Board")
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
@@ -29,10 +27,22 @@ function App() {
     });
   }, []);
 
-  const onBoardSelect = (()=>{
-    console.log("huu")
+  const onBoardSelect = ((boardList)=>{
+    for (const board of boardList) {
+      if (board.id === )
+
+    }
 
   }) 
+
+  // const likeCounter = (newChatList) => {
+  //   for (const chat of newChatList) {
+  //     if (chat.liked === true) {
+  //       likeSum += 1;
+  //     };
+  //   };
+  //   setNumLikes(likeSum);
+  // };
 
   const boardsComponent = boardsList.map((board) => {
     return (
@@ -49,7 +59,7 @@ function App() {
         <header>
           <section>
             <h1>SELECTED BOARD</h1>
-            <p>Owner Name</p>
+            <p>{selectedBoard}</p>
           </section>
           <section>
             <h2>Create A New Card</h2>
