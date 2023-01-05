@@ -1,22 +1,17 @@
-import PropTypes from "prop-types";
-import "./Board.css";
-
+import { useState } from "react";
 const Board = (props) => {
-  const displayBoards = props.boards.map((board) => {
-    return (
-      <ol>
-        <li> {board.title} </li>
-      </ol>
-    );
-  });
-
-  return <div> {displayBoards} </div>;
+  return (
+    <div onClick={() => props.onBoardClicked(props.board)}>
+      {props.board.title}
+    </div>
+  );
+  // const onBoardClick = () => {
+  //     const updatedBoard = {
+  //         board: props.board,
+  //         title: props.board.title
+  //     }
+  //     props.onBoardClicked(updatedBoard);
+  // };
+  // return<div> {onBoardClick}</div>
 };
-
-Board.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  owner: PropTypes.string.isRequired,
-};
-
 export default Board;
