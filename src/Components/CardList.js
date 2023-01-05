@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from './Card';
-// import NewCardForm from './NewCardForm';
-// import PropTypes from 'prop-types';
+import NewCardForm from './NewCardForm';
+import PropTypes from 'prop-types';
 
 
 const convertFromApi = (apiCard) => {
@@ -66,17 +66,17 @@ const CardList = (props) => {
         deleteCard={deleteCard}></Card>)
   });
 
-  // const newCard = (message) => {
-  //   axios.post(
-  //       `${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.board_id}/cards`,
-  //       {message}
-  //   ).then((response) => {
-  //     const cards = [...cardsData];
-  //     cards.push(response.data.card);
-  //     setCardsData(cards);
-  //   }).catch((error) => {console.log(error);
-  //   });
-  // };
+  const newCard = (message) => {
+    axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.board_id}/cards`,
+        {message}
+    ).then((response) => {
+      const cards = [...cardsData];
+      cards.push(response.data.card);
+      setCardsData(cards);
+    }).catch((error) => {console.log(error);
+    });
+  };
 
   return (<section className='cards__container'>
       <section>
@@ -85,15 +85,15 @@ const CardList = (props) => {
           {cards}
         </div>
       </section>
-      {/* <NewCardForm newCard={newCard}/> */}
+      <NewCardForm newCard={newCard}/>
     </section>
     )
 };
 
 
-// CardList.propTypes = {
+CardList.propTypes = {
 
-// };
+};
 
 
 export default CardList;
