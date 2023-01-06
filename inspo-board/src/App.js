@@ -4,11 +4,14 @@ import React, { useEffect, useState } from "react";
 import BoardList from "./components/BoardList";
 import axios from "axios";
 import NewBoardForm from "./components/NewBoardForm";
+import CardList from "./components/CardList";
 
 function App() {
   const [boards, setBoards] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState("");
   const [showForm, setShowForm] = useState(true);
+  const [showCard, setShowCard] = useState(true);
+  const [cards, setCards] = useState([]);
 
   const URL = "http://127.0.0.1:5000/boards";
 
@@ -30,6 +33,15 @@ function App() {
   const selectBoard = (board_id, title, owner) => {
     const board = { board_id, title, owner };
     setSelectedBoard(board);
+    axios
+      .get(`${URL}/${board_id}`)
+      .then((result) => {
+        console.log(result.data);
+        setCards(result.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const addNewBoard = (newBoard) => {
@@ -70,6 +82,10 @@ function App() {
         <button onClick={() => setShowForm(!showForm)}>
           {showForm ? "Hide new board form" : "Show new board form"}
         </button>
+        <div>
+          <h2>Cards</h2>
+          <CardList cards={cards} />
+        </div>
       </main>
     </div>
   );

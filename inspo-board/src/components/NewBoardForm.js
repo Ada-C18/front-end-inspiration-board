@@ -33,6 +33,9 @@ const NewBoardForm = (props) => {
         value={formData.owner}
         onChange={handleChange}
       />
+      <p>
+        Preview: {formData.title} - {formData.owner}
+      </p>
       <input type="submit" value="Add board" />
     </form>
   );
