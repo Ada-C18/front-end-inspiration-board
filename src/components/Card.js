@@ -2,6 +2,8 @@ import { useState } from "react";
 const Card = (props) => {
   const [likesCount, setLikesCount] = useState(0);
 
+  Liat;
+
   const updateLikes = () => {
     setLikesCount(likesCount + 1);
   };
