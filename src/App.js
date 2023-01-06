@@ -2,32 +2,36 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import BoardList from "./components/BoardList.js";
 import CardList from "./components/CardList.js";
-//import CreateBoard from "./components/CreateBoard.js";
+import CreateBoardForm from "./components/CreateBoardForm.js";
 import axios from "axios";
 
-import MOCK_BOARD from "./data/mockBoard.json";
-import MOCK_BOARD_LIST from "./data/mockBoardList.json";
+const api = {
+  baseUrl: process.env.REACT_APP_BACKEND_URL,
 
-//const apiUrl = process.env.REACT_APP_BACKEND_URL;
-const apiUrl = false;
+  logErr: (err) => {
+    console.log("Request error", err.config.url, err.config.data);
+    console.log(err);
+  },
 
-const getAllBoards = () => {
-  if (!apiUrl)
-    return new Promise((resolve, reject) => resolve(MOCK_BOARD_LIST));
-  else
-    return axios
-      .get(`${apiUrl}/boards`)
+  getAllBoards: () =>
+    axios
+      .get(`${api.baseUrl}/boards`)
       .then((response) => response.data)
-      .catch((err) => console.log(err));
-};
+      .catch(api.logErr),
 
-const getBoard = (board_id) => {
-  if (!apiUrl) return new Promise((resolve, reject) => resolve(MOCK_BOARD));
-  else
-    return axios
-      .get(`${apiUrl}/board/${board_id}`)
+  getBoard: (board_id) =>
+    axios
+      .get(`${api.baseUrl}/boards/${board_id}`)
       .then((response) => response.data)
-      .catch((err) => console.log(err));
+      .catch(api.logErr),
+
+  postBoard: (boardData) => {
+    console.log("Posting board", boardData);
+    return axios
+      .post(`${api.baseUrl}/boards`, boardData)
+      .then((response) => response.data)
+      .catch(api.logErr);
+  },
 };
 
 function App() {
@@ -35,24 +39,35 @@ function App() {
   const [selectedBoard, setSelectedBoard] = useState();
   const [cardList, setCardList] = useState([]);
 
-  useEffect(() => {
-    getAllBoards().then((allBoards) => {
+  const refreshBoardList = () => {
+    api.getAllBoards().then((allBoards) => {
       setBoardList(allBoards);
-      setSelectedBoard(0);
+      selectBoard(allBoards[0].board_id);
     });
-  }, []);
+  };
+
+  useEffect(refreshBoardList, []);
 
   useEffect(() => {
-    console.log(selectedBoard);
     if (selectedBoard !== undefined) {
-      getBoard(selectedBoard.id).then((boardData) =>
-        setCardList(boardData.board.cards)
-      );
+      api
+        .getBoard(selectedBoard)
+        .then((boardData) => setCardList(boardData.board.cards));
     }
-    //setCardList(MOCK_BOARD.board.cards);
   }, [selectedBoard]);
 
-  const selectBoard = (event) => {};
+  const selectBoard = (id) => {
+    if (id !== undefined) setSelectedBoard(id);
+  };
+
+  const createBoard = (newBoard) => {
+    console.log("createBoard newBoard", newBoard);
+    api.postBoard(newBoard).then((createdBoard) => {
+      console.log("then createdBoard", createdBoard);
+      refreshBoardList();
+      selectBoard(createdBoard.board_id);
+    });
+  };
 
   return (
     <div className="App">
@@ -61,6 +76,7 @@ function App() {
       </header>
       <main>
         <BoardList boards={boardList} selectBoard={selectBoard}></BoardList>
+        <CreateBoardForm createBoard={createBoard}></CreateBoardForm>
         <h2>
           Board:{" "}
           {boardList[selectedBoard] ? boardList[selectedBoard].title : "None"}

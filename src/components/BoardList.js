@@ -4,6 +4,7 @@ import "./BoardList.css";
 
 const BoardList = ({ boards, selectBoard }) => {
   const clickBoard = (event) => {
+    console.log("Click event", event);
     selectBoard(event.target.id);
   };
   return (
@@ -12,8 +13,8 @@ const BoardList = ({ boards, selectBoard }) => {
       {[...boards].map((board) => (
         <div
           className="boardListItem"
-          key={board.id}
-          id={board.id}
+          key={board.board_id}
+          id={board.board_id}
           onClick={clickBoard}
         >
           <div className="boardTitle">{board.title}</div>
@@ -27,7 +28,7 @@ const BoardList = ({ boards, selectBoard }) => {
 BoardList.propTypes = {
   boards: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      board_id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
     })
   ).isRequired,
