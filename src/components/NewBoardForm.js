@@ -23,8 +23,9 @@ const NewBoardForm = ({ addBoardCallback , afterSubmitMessage }) => {
   
   return (
     <form onSubmit={submitBoardData} className="new-board__form">
-      <section>
+      
         <h2>Add a New Board</h2>
+        <div id="line" />
         <div className="new-board__fields">
           <label htmlFor="title">Title</label>
           <input
@@ -47,7 +48,6 @@ const NewBoardForm = ({ addBoardCallback , afterSubmitMessage }) => {
             {afterSubmitMessage}
           </p>
         </div>
-      </section>
     </form>
   );
 };

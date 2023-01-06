@@ -1,10 +1,9 @@
-import './App.css';
-
 import { useState } from 'react';
 import axios from 'axios';
 
 // import BoardContainer from './components/BoardContainer';
 // import CardContainer from './components/CardContainer';
+import Header from './components/Header';
 import NewBoardForm from './components/NewBoardForm';
 
 function App() {
@@ -36,6 +35,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <NewBoardForm addBoardCallback={addBoard} afterSubmitMessage={message} />
       {/* <BoardContainer boards={boardData} />
       <CardContainer cards={cardData} /> */}
