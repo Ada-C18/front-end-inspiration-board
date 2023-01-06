@@ -12,9 +12,9 @@ function App() {
       title: '',
       owner: ''
     }
-)
+);
   const [selectedBoardLabel, setSelectedBoardLabel] = useState("Select A Board");
-  const [selectedBoardTitle, setSelectedBoardTitle] = useState("Affirmation")
+  const [selectedBoardTitle, setSelectedBoardTitle] = useState("Affirmation");
 
   useEffect(() => {
     axios
@@ -33,7 +33,7 @@ function App() {
   }, []);
 
   const onBoardSelect = (boardId) => {
-    console.log("joguioiuoiuoih");
+    // console.log("joguioiuoiuoih");
     for (const board of boardsList) {
       if (board.id === boardId) {
         const boardTitle = board.title;
@@ -45,8 +45,8 @@ function App() {
           title: `${boardTitle}`,
           owner: `${boardOwner}`
         })
-      }
-    }
+      };
+    };
   };
 
   // const likeCounter = (newChatList) => {
@@ -61,7 +61,7 @@ function App() {
   const boardsComponent = boardsList.map((board) => {
     
     return (
-      <ul key={board.id}>
+      <ul key={board.id}> 
         <Board board={board} onBoardSelect={onBoardSelect}></Board>
       </ul>
     );
@@ -97,6 +97,6 @@ function App() {
       </main>
     </div>
   );
-}
+};
 
 export default App;
