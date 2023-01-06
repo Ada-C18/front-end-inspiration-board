@@ -1,19 +1,30 @@
 import { useState } from "react";
 const Card = (props) => {
-  return (
-    <div>
-      <p>
-        {props.message}
-        {props.likesCount} 💕
-      </p>
-      <button type="button" onClick={props.updateLikes}>
-        +1
-      </button>
-      <button type="button" onClick={() => props.onDeleteCard(props.id)}>
-        Delete
-      </button>
-    </div>
-  );
+    const [likesCount, setLikesCount] = useState(0);
+    const updateLikes = () => {
+        setLikesCount(likesCount + 1);
+
+    };
+    
+    return (
+        <div>
+        <p>
+            {props.message}
+        </p>
+        {likesCount} 💕
+        {/* {props.onLikesCount} 💕 */}
+        
+        <button type="button" onClick={updateLikes}>
+            +1
+        </button>
+        {/* <button type="button" onClick={props.onUpdateLikes}>
+            +1
+        </button> */}
+        <button type="button" onClick={() => props.onDeleteCard(props.id)}>
+            Delete
+        </button>
+        </div>
+    );
 };
 // const [isClicked, setisClicked] = useState(false);
 
