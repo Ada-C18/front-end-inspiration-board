@@ -1,18 +1,23 @@
-import './Home.css';
-import BoardMenu from './BoardMenu';
+import { useLoaderData } from "react-router-dom";
+
+import "./Home.css";
+import BoardMenu from "./BoardMenu";
 
 const Home = (props) => {
-  return (
-    <div id='home'>
+  const dummyData = useLoaderData();
 
-      <header id='home-header'>
+  return (
+    <div id="home">
+      <header id="home-header">
         <h1> Boards </h1>
         <h2> Select an existing board, or create a board of your own!</h2>
       </header>
 
-      <BoardMenu data={props.data} id='home-menu'/>
+      <div id="home-menu">
+        <BoardMenu data={dummyData} />
+      </div>
 
-      <nav id='home-nav'>
+      <nav id="home-nav">
         <div>
           <button>Create new board</button>
         </div>
@@ -28,12 +33,9 @@ const Home = (props) => {
         <div>
           <button>Click here to generate an invite link</button>
         </div>
-        
       </nav>
-
     </div>
-  )
+  );
 };
 
 export default Home;
-
