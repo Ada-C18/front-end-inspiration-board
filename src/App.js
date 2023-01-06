@@ -1,5 +1,7 @@
+import React, { useState } from 'react';
 import './App.css';
 import BoardForm from './components/BoardForm';
+import BoardList from './components/BoardList';
 import testData from './data/test.json';
 
 const App = function () {
@@ -7,7 +9,12 @@ const App = function () {
     console.log(JSON.stringify(newBoardData));
   };
 
-  console.log(testData[0]);
+  const handleBoardSelect = function (boardID) {
+    console.log(boardID);
+  };
+
+  const testBoardListData = testData[0];
+  const [boardListState, setBoardListState] = useState(testBoardListData);
 
   return (
     <div className="App">
@@ -16,7 +23,12 @@ const App = function () {
       </header>
       <section id="board-section">
         <div id="board-container">
-          <div id="board-list">Put BoardList component here.</div>
+          <div id="board-list">
+            <BoardList
+              boardListData={boardListState}
+              handleBoardSelect={handleBoardSelect}
+            />
+          </div>
           <div id="current-board">Put CurrentBoard component here.</div>
         </div>
         <div id="board-form-container">
