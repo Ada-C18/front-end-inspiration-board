@@ -1,5 +1,6 @@
 //fix submit button (want to disable it when no text)
 //fix input border colors (should turn white when text is in it but it stays red)
+//fix message input(text doesn't show up in text box when typing)
 import "./NewBoard.css";
 import PropTypes from "prop-types";
 
