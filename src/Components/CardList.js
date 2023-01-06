@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from './Card';
-import NewCardForm from './NewCardForm';
+// import NewCardForm from './NewCardForm';
 import PropTypes from 'prop-types';
 
 
@@ -11,13 +11,20 @@ const convertFromApi = (apiCard) => {
   return newCard;
 };
 
-const getAllCardsApi = () => {
-  return axios.get(`${process.env.REACT_APP_BACKEND_URL}/cards`)
-  .then(response => {
-    return response.data.map(convertFromApi);
-  })
-  .catch((error) => {console.log(error);
-  })
+// const getAllCardsApi = () => {
+//   return axios
+//   .get(`${process.env.REACT_APP_BACKEND_URL}/cards`)
+//   .then(response => {
+//     return response.data.map(convertFromApi);
+//   })
+//   .catch((error) => {console.log(error);
+//   })
+// };
+
+const getAllCardsApi = async () => {
+  const response = await  axios.get(`${process.env.REACT_APP_BACKEND_URL}/cards`
+  )
+  response.data.map(convertFromApi);
 };
 
 const CardList = (props) => {
@@ -63,20 +70,20 @@ const CardList = (props) => {
     return (<Card
         card={card}
         handleLikes={handleLikes}
-        deleteCard={deleteCard}></Card>)
+        deleteCard={deleteCard}/>)
   });
 
-  const newCard = (message) => {
-    axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.board_id}/cards`,
-        {message}
-    ).then((response) => {
-      const cards = [...cardsData];
-      cards.push(response.data.card);
-      setCardsData(cards);
-    }).catch((error) => {console.log(error);
-    });
-  };
+  // const newCard = (message) => {
+  //   axios.post(
+  //       `${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.board_id}/cards`,
+  //       {message}
+  //   ).then((response) => {
+  //     const cards = [...cardsData];
+  //     cards.push(response.data.card);
+  //     setCardsData(cards);
+  //   }).catch((error) => {console.log(error);
+  //   });
+  // };
 
   return (<section className='cards__container'>
       <section>
@@ -85,14 +92,14 @@ const CardList = (props) => {
           {cards}
         </div>
       </section>
-      <NewCardForm newCard={newCard}/>
+      {/* <NewCardForm newCard={newCard}/> */}
     </section>
     )
 };
 
 
 CardList.propTypes = {
-
+  board: PropTypes.string.isRequired,
 };
 
 

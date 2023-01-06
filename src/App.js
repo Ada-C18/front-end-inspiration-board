@@ -6,38 +6,23 @@ import NewBoardForm from './Components/NewBoardForm';
 import CardList from './Components/CardList';
 import NewCardForm from './Components/NewCardForm';
 
-// const boardDataList = [
-//   {
-//     board_id: 1,
-//     title: 'board1',
-//     owner: 'aria',
-//   },
-//   {
-//     board_id: 2,
-//     title: 'board2',
-//     owner: 'geiselle',
-//   },
-//   {
-//     board_id: 3,
-//     title: 'board3',
-//     owner: 'annie',
-//   },
-//   {
-//     board_id: 4,
-//     title: 'board4',
-//     owner: 'cristal',
-//   },
-// ];
 
-const getAllBoardsApi = () => {
-  return axios
-    .get(`${process.env.REACT_APP_BACKEND_URL}/board`)
-    .then((response) => {
-      return response.data;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+
+// const getAllBoardsApi = () => {
+//   return axios
+//     .get(`${process.env.REACT_APP_BACKEND_URL}/board`)
+//     .then((response) => {
+//       return response.data;
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
+
+const getAllBoardsApi = async () => {
+  const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/board`
+  );
+    return response.data;
 };
 
 function App() {
@@ -62,6 +47,8 @@ function App() {
       });
   };
 
+
+
   useEffect(() => {
     getAllBoards();
   }, []);
@@ -72,16 +59,24 @@ function App() {
     setIsBoardFormVisible(!isBoardFormVisible);
   };
 
-  const addBoard = (boardData) => {
-    axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}/board`, boardData)
-      .then((response) => {
+  // const addBoard = (boardData) => {
+  //   axios
+  //     .post(`${process.env.REACT_APP_BACKEND_URL}/board`, boardData)
+  //     .then((response) => {
+  //       const newBoards = [...allBoardData];
+  //       newBoards.push({ ...response.data.board });
+  //       setAllBoardData(newBoards);
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
+
+  const addBoard = async (boardData) => {
+    const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/board`, boardData)
         const newBoards = [...allBoardData];
         newBoards.push({ ...response.data.board });
         setAllBoardData(newBoards);
-      })
-      .catch((error) => console.log(error));
   };
+
 
   return (
     <div>
