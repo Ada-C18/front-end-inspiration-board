@@ -1,4 +1,18 @@
 .LogInView {
   background-color: lightpink;
   color: deeppink;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#form {
+  border: 2px dotted green;
+  min-width: fit-content;
+  max-width: 50%;
+  min-height: 50vh;
+  max-height: 80vh;
+  padding: 20px;
+  margin: 10px;
 }
