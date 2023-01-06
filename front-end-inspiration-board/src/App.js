@@ -25,11 +25,11 @@ function App() {
       </header>
       <body>
         <section className="container">
-          <h2 className="boardSelector">Select an Existing Board </h2>
+          <h3 className="boardSelector">Select an Existing Board </h3>
           <BoardList boardsList={boardsList} />
-          <h2 className="HeaderOfNewBoard">Create a New Board</h2>
+          <h3 className="HeaderOfNewBoard">Create a New Board</h3>
           <NewBoardForm addBoardCallBackFunc={addBoard} />
-          <h2 className="CardsForSectedBoard">Cards for Selected Board</h2>
+          <h3 className="CardsForSectedBoard">Cards for Selected Board</h3>
           <button className="CreateNewCard">Create a New Card</button>
         </section>
       </body>

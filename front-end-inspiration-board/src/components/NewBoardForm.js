@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./NewBoardForm.css";
 
 const INITIAL_BOARDS_FORM_DATA = {
   owner: "",
@@ -41,7 +42,7 @@ const NewBoardForm = (props) => {
         value={formData.title}
         onChange={handleChange}
       />
-      <input type="submit" value="Add Board" />
+      <input id="submitButton" type="submit" value="Add Board" />
     </form>
   );
 };
