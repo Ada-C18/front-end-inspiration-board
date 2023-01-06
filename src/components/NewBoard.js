@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
 //title and owners name are the two attributes
-const NewBoard=({onBoardSubmit})=>{
+//
+const NewBoard=(props)=>{
     const[newTitle,setNewTitle]= useState('');
     const[newOwner,setNewOwner]=useState('');
     const handleTitleChange = (event) => {
@@ -12,7 +13,7 @@ const NewBoard=({onBoardSubmit})=>{
     };
     const handleBoardSubmit=(event)=>{
         event.preventDefault();
-        onBoardsubmit(newTitle,newOwner);//
+        props.onBoardSubmit(newTitle,newOwner);//
         setNewTitle('')
         setNewOwner('')
         ;
@@ -29,9 +30,14 @@ return (
         <form onSubmit={handleBoardSubmit}>
             <label>Title</label>
             <input type="text" value={newTitle} onChange={handleTitleChange}/>
-            <div><input type="submit" value="title"/></div>
-            <label>Owner</label>
+            <label>Owner's Name</label>
             <input type="text" value={newOwner} onChange={handleOwnerChange}/>
+<<<<<<< HEAD
+=======
+            <div><input type="submit" value="submit"/></div>
+
+             
+>>>>>>> 3c0da3760af6ec5ac146baa41a485dddbb365dc0
         </form>
     //</div>
 )

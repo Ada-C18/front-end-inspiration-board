@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const NewCard = ({onCardSubmit}) => {
+const NewCard = (props) => {
     const [message, setMessage] = useState('');
     
     const handleMessageChange = (event) => {
@@ -8,12 +8,9 @@ const NewCard = ({onCardSubmit}) => {
     };
     const handleSubmit=(event)=>{
         event.preventDefault();
-        onCardSubmit(message);//
+        props.onCardSubmit(message);//
         setMessage('');
-        //call the functions don't reassign the variable 
-        //do i need the handle submit
-        //passing down handlesubmit from app as a prop
-        //props.handle card submit
+    
         //form on sumbit 
     }
     //console.log('message',message);
