@@ -12,14 +12,15 @@ function App() {
 
   const handleCardSubmit=(data)=>{
     console.log("data",data)
-    //calling the API?
-    //call api, updating the new cards on the board
-    //console log the"data" to see if 
-    //add submit in the newcard submit
-    //handle card submit to do whatever is needed to be done to add a new card
+    //call the api endpoints here
+   
     //onBoardSubmit={handleBoardSubmit}
   }
-    const 
+    const handleBoardSubmit=(data)=>{
+      //console.log("data",data)
+      //call the api endpoints here
+      
+    }
   return (
     <div className="App">
       <header className="App-header">
