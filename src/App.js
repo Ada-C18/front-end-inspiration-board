@@ -3,6 +3,7 @@ import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import Board from "./components/Board";
 import BoardList from "./components/BoardList";
+import Card from "./components/Card"
 // import BoardList from "./components/BoardList";
 import { useState } from "react";
 const boardsData = [
@@ -17,9 +18,21 @@ const boardsData = [
     owner: "456",
   },
 ];
+
+const cardsData = [
+  {
+    id: 1,
+    message: "Today's best card",
+  },
+  {
+    id: 2,
+    message: " Having a good time",
+  },
+];
+
 function App() {
   const [boardData, setBoardData] = useState(boardsData);
-  const [cardData, setCardData] = useState([]);
+  const [cardData, setCardData] = useState(cardsData);
 
   const updateBoardData = (updatedBoard) => {
     const boards = boardData.map((board) => {
@@ -41,6 +54,7 @@ function App() {
     });
     setCardData(cards);
   };
+
   const [selectedBoard, setSelectedBoard] = useState({
     title: "",
     owner: "",
@@ -71,10 +85,12 @@ function App() {
           <button type="button" onClick={() => setShowForm (!showForm)}> {showForm === true? 'Hide New Board Form' : 'Show New Board Form'}</button>
       </section>
       <section>
-        <h1 className="card"> Cards for Reminders </h1>
-        {/* display a list of cards */} {cardData}
-        <h1 className="card"> Create a New Card</h1>
-        <NewCardForm onUpdateCardData={updateCardData} />
+        {selectedBoard.id && <div>
+          <h1 className="card"> Cards for {selectedBoard.title} </h1>
+          <Card cards={cardData}/>
+          <h1 className="card"> Create a New Card</h1>
+          <NewCardForm onUpdateCardData={updateCardData} />
+        </div>}
       </section>
       <footer>
         <p> Click here to delete all boards and cards</p>
