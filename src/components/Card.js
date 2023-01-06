@@ -1,21 +1,35 @@
-
+import '../styles/Card.css';
 import React from 'react';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 // import './Card.css';
 
-const Card = ({id, title, owner, message, deleteCard}) => {
+const Card = ({id, message, likes, deleteCard, countLikesTotal}) => {
 
-        const [likeCount, setLikeCount] = useState(0);
-        const updateLikes = () => {
-            setLikeCount(likeCount+1);
-        };
+        // const [likeCount, setLikeCount] = useState(0);
+        // const updateLikes = () => {
+        //     setLikeCount(likeCount+1);
+        // };
 
     return (
-        <div>
+        <div className="card-item">
             <p> {message} </p>
-            <p onClick={updateLikes}>{likeCount} ❤️</p>
-            <button onClick={()=>deleteCard(id)}> Delete </button>
+            <button className="like"
+                onClick={() => {
+            countLikesTotal(id);
+            }}
+            >
+                <p>❤️</p>
+            </button>
+            <button className="delete"
+                onClick={() => {
+            deleteCard(id);
+            }}
+            >
+                <p>delete</p>
+            </button>
+            {/* <p onClick={updateLikes}>{likeCount} ❤️</p>
+            <button onClick={()=>deleteCard(id)}> Delete </button> */}
             
         </div>
         )  
@@ -23,10 +37,10 @@ const Card = ({id, title, owner, message, deleteCard}) => {
 
 Card.propTypes = {
     id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    owner: PropTypes.string.isRequired,
     message: PropTypes.string.isRequired,
+    likes : PropTypes.bool,
     deleteCard:PropTypes.func.isRequired,
+    countLikesTotal:PropTypes.func.isRequired
 };
 
 export default Card;
