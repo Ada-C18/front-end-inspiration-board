@@ -1,10 +1,13 @@
 import './App.css';
 import BoardForm from './components/BoardForm';
+import testData from './data/test.json';
 
 const App = function () {
   const handleNewBoard = function (newBoardData) {
     console.log(JSON.stringify(newBoardData));
   };
+
+  console.log(testData[0]);
 
   return (
     <div className="App">
