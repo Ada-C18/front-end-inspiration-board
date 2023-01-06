@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import Board from "./Board";
+import "./BoardList.css";
 
 function BoardList({ boardList, selectBoard }) {
   const boardComponents = [];

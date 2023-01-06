@@ -3,6 +3,7 @@ import BoardList from "./components/BoardList";
 import BoardForm from "./components/BoardForm";
 import CardList from "./components/CardList";
 import CardForm from "./components/CardForm";
+import axios from "axios";
 import "./App.css";
 /* 
 Title - Inspiration Board 
@@ -117,12 +118,10 @@ function App() {
         deleteCard={deleteCard}
         cardList={cardList}
       ></CardList>
-      <div>
-        <CardForm
-          addCardCallbackFunc={addCard}
-          selectedBoard={selectedBoard}
-        ></CardForm>
-      </div>
+      <CardForm
+        addCardCallbackFunc={addCard}
+        selectedBoard={selectedBoard}
+      ></CardForm>
     </div>
   );
 }

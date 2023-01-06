@@ -1,5 +1,6 @@
 import Card from "./Card";
 import PropTypes from "prop-types";
+import "./CardList.css";
 
 function CardList(props) {
   const cardComponents = [];
@@ -19,11 +20,15 @@ function CardList(props) {
       );
     }
   }
-  return (
-    <div>
-      <ul>{cardComponents}</ul>
-    </div>
-  );
+
+  if (selectedBoardId) {
+    return (
+      <div>
+        <h2>Cards</h2>
+        <ul>{cardComponents}</ul>
+      </div>
+    );
+  }
 }
 
 CardList.propTypes = {

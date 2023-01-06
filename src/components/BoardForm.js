@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import "./BoardForm.css";
 
 /* 
 title
@@ -34,8 +35,10 @@ const NewBoardForm = ({ addBoardCallbackFunc }) => {
 
   const handleNewBoardSubmit = (e) => {
     e.preventDefault();
+    console.log(e);
     addBoardCallbackFunc(formData);
   };
+
   return (
     <div>
       <h2>Create A New Board</h2>
@@ -60,7 +63,12 @@ const NewBoardForm = ({ addBoardCallbackFunc }) => {
           <p>
             Preview: {formData.title} - {formData.owner}
           </p>
-          <input type="submit" value="Submit" onClick={handleNewBoardSubmit} />
+          <input
+            type="submit"
+            value="Submit"
+            onClick={handleNewBoardSubmit}
+            disabled={!formData.title || !formData.owner}
+          />
         </form>
       )}
       <button onClick={handleClick}>

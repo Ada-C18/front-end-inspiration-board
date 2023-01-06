@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import "./CardForm.css";
 
 const INITIAL_FORM_DATA = {
   message: "",
@@ -37,7 +38,17 @@ const NewCardForm = ({ addCardCallbackFunc, selectedBoard }) => {
             onChange={handleChange}
           ></input>
           <p>Preview: {formData.message}</p>
-          <input type="submit" value="Submit" onClick={handleNewCardSubmit} />
+          <input
+            type="submit"
+            value="Submit"
+            onClick={handleNewCardSubmit}
+            disabled={formData.message.length > 40}
+          />
+          <p>
+            {formData.message.length > 40
+              ? "Message can only be 40 characters"
+              : ""}
+          </p>
         </form>
       </div>
     );
