@@ -1,8 +1,35 @@
-.App {
+/* .App {
   text-align: center;
+} */
+
+body {
+  margin: 3em;
+  font-family: 'Open Sans', sans-serif;
+  color: black;
 }
 
-.App-logo {
+h1 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  /* transform: rotate(-5deg) skew(-10deg); */
+}
+
+h2 {
+  border: 2px solid black;
+  box-shadow: -15px 7px 1px black;
+  display: inline-block;
+  padding: 0.6em 3em;
+}
+
+#boards {
+  height:120px;
+  width:120px;
+  border:1px solid #ccc;
+  font:16px/26px Georgia, Garamond, Serif;
+  overflow:auto;
+
+}
+
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +62,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
