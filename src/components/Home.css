@@ -1,5 +1,23 @@
-.Home {
-  color: blue;
-  background-color: aliceblue;
+#home {
+  display: grid;
+  grid-column: 1fr 1fr 1fr 1fr;
+  grid-row: 1fr 1fr 1fr 1fr;
+}
+
+#home-header {
+  grid-column: 1/5;
+  background-color:  #6AA6A6;
+  font-family: 'Caveat';
+}
+
+#home-menu {
+  grid-column: 2/4;
+  grid-row: 2/5;
+}
+
+#home-nav {
+  grid-column: 4/5;
+  grid-row: 2/5;
+  background-color: #C1D6D9;
 }
 
