@@ -12,6 +12,8 @@ function BoardList(props) {
         title={board.title}
         owner={board.owner}
         cards={board.cards}
+        selected={board.selected}
+        boardSelector={props.boardSelector}
       />
     );
   }
@@ -25,8 +27,10 @@ BoardList.propTypes = {
       id: PropTypes.number,
       title: PropTypes.string,
       owner: PropTypes.string,
+      selected: PropTypes.bool,
     })
   ),
+  boardSelector: PropTypes.func,
 };
 
 export default BoardList;

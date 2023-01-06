@@ -5,8 +5,21 @@ function Board(props) {
   const boardTitle = props.title;
   const boardOwner = props.owner;
   const boardCards = props.cards;
+  const selected = props.selected;
+  const boardSelector = props.boardSelector;
 
-  return <li>{boardTitle}</li>;
+  const onBoardSelect = () => {
+    const selectedBoard = {
+      id: boardId,
+      title: boardTitle,
+      owner: boardOwner,
+      cards: boardCards,
+      selected: true,
+    };
+    boardSelector(selectedBoard);
+  };
+
+  return <li onClick={onBoardSelect}>{boardTitle} </li>;
 }
 
 Board.propTypes = {
@@ -14,6 +27,8 @@ Board.propTypes = {
   title: PropTypes.string,
   owner: PropTypes.string,
   cards: PropTypes.array,
+  selected: PropTypes.bool,
+  boardSelector: PropTypes.func,
 };
 
 export default Board;

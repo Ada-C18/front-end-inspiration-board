@@ -8,6 +8,7 @@ const INITIAL_BOARDS_FORM_DATA = {
 
 const NewBoardForm = (props) => {
   const [formData, setFormData] = useState(INITIAL_BOARDS_FORM_DATA);
+  const [showForm, setShowForm] = useState(true);
 
   const handleChange = (e) => {
     const newFormData = {
@@ -23,27 +24,35 @@ const NewBoardForm = (props) => {
     setFormData(INITIAL_BOARDS_FORM_DATA);
   };
 
-  return (
-    <form onSubmit={handleNewBoardSubmit} className="CreateNewBoard">
-      <label htmlFor="owner">Owner</label>
-      <input
-        type="text"
-        id="owner"
-        name="owner"
-        value={formData.owner}
-        onChange={handleChange}
-      />
+  const updateShowForm = () => {
+    console.log(!showForm);
+    setShowForm(!showForm);
+  };
 
-      <label htmlFor="title">Title</label>
-      <input
-        type="text"
-        id="title"
-        name="title"
-        value={formData.title}
-        onChange={handleChange}
-      />
-      <input id="submitButton" type="submit" value="Add Board" />
-    </form>
+  return (
+    <div>
+      <button onClick={updateShowForm}>Show Form Text</button>
+      <form onSubmit={handleNewBoardSubmit} className="CreateNewBoard">
+        <label htmlFor="owner">Owner</label>
+        <input
+          type="text"
+          id="owner"
+          name="owner"
+          value={formData.owner}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="title">Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          value={formData.title}
+          onChange={handleChange}
+        />
+        <input id="submitButton" type="submit" value="Add Board" />
+      </form>
+    </div>
   );
 };
 
