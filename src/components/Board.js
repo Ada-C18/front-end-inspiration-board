@@ -14,4 +14,5 @@ Board.propTypes = {
   title: PropTypes.string,
   owner: PropTypes.string,
 };
+
 export default Board;

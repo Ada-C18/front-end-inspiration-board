@@ -4,6 +4,7 @@ import { useState } from "react";
 import BoardList from "./components/BoardList";
 import Board from "./components/Board";
 import NewBoardForm from "./components/NewBoardForm";
+import CardList from "./components/CardList";
 
 // const boardsData = [
 //   {
@@ -29,6 +30,21 @@ function App() {
       board_id: 2,
       title: "Do not disturb",
       owner: "reyna",
+    },
+  ]);
+
+  const [cardsData, setCardsData] = useState([
+    {
+      board_id: 1,
+      card_id: 1,
+      likes_count: 0,
+      message: "go to the beach",
+    },
+    {
+      board_id: 1,
+      card_id: 2,
+      likes_count: 0,
+      message: "drink all of the wine",
     },
   ]);
 
@@ -68,6 +84,15 @@ function App() {
     }
   };
 
+  const getSelectedCards = (cardsData) => {
+    const cards = [];
+    for (let card of cardsData) {
+      if (card.board_id === selectedBoard) {
+        cards.push(card);
+      }
+    }
+    return cards;
+  };
   return (
     <div>
       <h1>Inspiration Board</h1>
@@ -77,6 +102,10 @@ function App() {
         owner={getSelectedOwner(boardsData)}
       ></Board>
       <NewBoardForm onAddBoard={addBoardData}></NewBoardForm>
+      <CardList
+        board={getSelectedTitle(boardsData)}
+        cards={getSelectedCards(cardsData)}
+      ></CardList>
     </div>
   );
 }
