@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import BoardList from "./components/BoardList.js";
 import CardList from "./components/CardList.js";
 import CreateBoardForm from "./components/CreateBoardForm.js";
+import CreateCardForm from "./components/CreateCardForm.js";
 import axios from "axios";
 
 const api = {
@@ -25,9 +26,21 @@ const api = {
       .then((response) => response.data)
       .catch(api.logErr),
 
+  getCards: (board_id) =>
+    axios
+      .get(`${api.baseUrl}/boards/${board_id}/cards`)
+      .then((response) => response.data)
+      .catch(api.logErr),
+
   postBoard: (boardData) =>
     axios
       .post(`${api.baseUrl}/boards`, boardData)
+      .then((response) => response.data)
+      .catch(api.logErr),
+
+  postCard: (cardData) =>
+    axios
+      .post(`${api.baseUrl}/cards`, cardData)
       .then((response) => response.data)
       .catch(api.logErr),
 };
@@ -35,7 +48,7 @@ const api = {
 function App() {
   const [boardList, setBoardList] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState();
-  const [cardList, setCardList] = useState([]);
+  const [cardList, setCardList] = useState();
 
   const refreshBoardList = () => {
     api.getAllBoards().then((allBoards) => {
@@ -47,8 +60,8 @@ function App() {
   useEffect(() => {
     if (selectedBoard !== undefined) {
       api
-        .getBoard(selectedBoard.board_id)
-        .then((boardData) => setCardList(boardData.board.cards));
+        .getCards(selectedBoard.board_id)
+        .then((cardData) => setCardList(cardData.cards));
     }
   }, [selectedBoard]);
 
@@ -61,6 +74,11 @@ function App() {
       setSelectedBoard(createdBoard);
     });
 
+  const createCard = (newCard) =>
+    api
+      .postCard(newCard)
+      .then((createdCard) => selectBoard(createdCard.card.board_id));
+
   return (
     <div className="App">
       <header className="App-header">
@@ -70,11 +88,20 @@ function App() {
         <CreateBoardForm createBoard={createBoard}></CreateBoardForm>
         <BoardList boards={boardList} selectBoard={selectBoard}></BoardList>
         {selectedBoard && (
-          <CardList
-            title={selectedBoard.title}
-            owner={selectedBoard.owner}
-            cards={cardList || []}
-          ></CardList>
+          <section>
+            <h2>
+              Cards on {selectedBoard.title} for {selectedBoard.owner}
+            </h2>
+            <CardList
+              title={selectedBoard.title}
+              owner={selectedBoard.owner}
+              cards={cardList || []}
+            ></CardList>
+            <CreateCardForm
+              createCard={createCard}
+              board={selectedBoard.board_id}
+            ></CreateCardForm>
+          </section>
         )}
       </main>
     </div>
