@@ -28,16 +28,20 @@ return (
         //<h2>Create a New Card</h2>
         //form="new-card-form">
         <form onSubmit={handleBoardSubmit}>
-            <label>Title</label>
-            <input type="text" value={newTitle} onChange={handleTitleChange}/>
-            <label>Owner's Name</label>
-            <input type="text" value={newOwner} onChange={handleOwnerChange}/>
-<<<<<<< HEAD
-=======
-            <div><input type="submit" value="submit"/></div>
-
-             
->>>>>>> 3c0da3760af6ec5ac146baa41a485dddbb365dc0
+            <div className="newBoard__form">
+            <ul>
+                <li>
+                    <label>Title</label>
+                    <input type="text" value={newTitle} onChange={handleTitleChange}/></li>
+            
+                <li>
+                    <label>Owner's Name</label>
+                    <input type="text" value={newOwner} onChange={handleOwnerChange}/></li>
+            
+            
+                    <div><input type="submit" value="submit"/></div>
+            </ul>
+            </div>
         </form>
     //</div>
 )
