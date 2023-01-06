@@ -6,7 +6,7 @@ function BoardsList({ boardsList }) {
 
 	for (const board of boardsList) {
 		boardComponents.push(
-			<li>
+			<li style={{ cursor: "pointer" }}>
 				<Board
 					key={board.board_id}
 					board_id={board.board_id}

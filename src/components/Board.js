@@ -1,18 +1,18 @@
 import PropTypes from "prop-types";
 
-
 const Board = (props) => {
 	const board_id = props.board_id; // hidden, implied primary key
 	const title = props.title;
 	const owner = props.owner;
 	const selected = props.selected;
 
-	return (<Board></Board>
+	return (
+		<div>Title: {title}</div>
+
 		// elements
 		// <>
-		// 	<ol> 
-		// 		<li>Title: {title}</li>
-		// 		{/* <li>Owner: {owner}</li> */}
+		// 	<ol>
+		// {/* <li>Owner: {owner}</li> */}
 		// 	</ol>
 		// </>
 	);
