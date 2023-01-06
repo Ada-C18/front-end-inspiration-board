@@ -25,7 +25,7 @@ const CardForm = ({ onFormSubmit }) => {
 
   return (
     <section>
-      <h2>Card</h2>
+      <h2>Card Form</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor='message'></label>
         <input
