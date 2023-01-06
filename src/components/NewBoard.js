@@ -32,7 +32,6 @@ return (
             <div><input type="submit" value="title"/></div>
             <label>Owner</label>
             <input type="text" value={newOwner} onChange={handleOwnerChange}/>
-             
         </form>
     //</div>
 )

@@ -19,7 +19,7 @@ function App() {
     //handle card submit to do whatever is needed to be done to add a new card
     //onBoardSubmit={handleBoardSubmit}
   }
-    const 
+
   return (
     <div className="App">
       <header className="App-header">
