@@ -8,12 +8,12 @@ import axios from "axios";
 
 function App() {
   const [boardsList, setBoardsList] = useState([]);
-  const [selectedBoardObj, setBoardObj] = useState({
+  const [selectedBoard, setSelectedBoard] = useState({
       title: '',
       owner: ''
     }
 )
-  const [selectedBoardLabel, setSelectedBoard] = useState("Select A Board");
+  const [selectedBoardLabel, setSelectedBoardLabel] = useState("Select A Board");
   const [selectedBoardTitle, setSelectedBoardTitle] = useState("Affirmation")
 
   useEffect(() => {
@@ -39,9 +39,9 @@ function App() {
         const boardTitle = board.title;
         const boardOwner = board.owner;
         const selectedBoardInfo = `${boardTitle} - ${boardOwner}`;
-        setSelectedBoard(selectedBoardInfo);
+        setSelectedBoardLabel(selectedBoardInfo);
         setSelectedBoardTitle(boardTitle)
-        setBoardObj({
+        setSelectedBoard({
           title: `${boardTitle}`,
           owner: `${boardOwner}`
         })
