@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 const NewBoardForm = (props) => {
   const [newBoardFormFields, setNewBoardFormFields] = useState({
@@ -51,7 +51,6 @@ const NewBoardForm = (props) => {
 };
 
 NewBoardForm.propTypes = {
-  title: PropTypes.string.isRequired,
-  owner: PropTypes.string.isRequired,
-}
+  addBoard: PropTypes.func,
+};
 export default NewBoardForm;

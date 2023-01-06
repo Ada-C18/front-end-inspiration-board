@@ -10,7 +10,7 @@ const boardList = ({ boardList }) => {
         id={board.id}
         title={board.title}
         owner={board.owner}
-        cards={board.cards}
+        // cards={board.cards}
       ></Board>
     );
   }

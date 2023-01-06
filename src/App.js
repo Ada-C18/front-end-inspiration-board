@@ -71,6 +71,7 @@ const BOARD_LIST = [
 
 function App() {
   const [boardList, setBoardList] = useState(BOARD_LIST);
+  const [cards, setCards] = useState([]);
 
   const addBoard = (newBoardInfo) => {
     console.log("addBoard called");
@@ -83,6 +84,16 @@ function App() {
     });
     setBoardList(newBoardList);
   };
+
+  const displayCards = (boardId) => {
+    const boards = boardList.map((board) => {
+      if (boardId === board.id) {
+        setCards(board.id.cards);
+        return board;
+      }
+    });
+  };
+
   // const fetchAllCards = () => {
   //   axios
   //     .get(REACT_APP_BACKEND_URL)
@@ -129,7 +140,7 @@ function App() {
     <div>
       <h1>Hello Peeps!</h1>
       <BoardList boardList={boardList} />
-      {/* <Board cards={board} /> */}
+      <Board handleBoardTitleClick={displayCards} />
       {/* <NewCardForm addCardCallbackFunc={addCard} /> */}
       <NewBoardForm addBoardCallbackFunc={addBoard} />
     </div>
