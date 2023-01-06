@@ -8,7 +8,13 @@ import axios from "axios";
 
 function App() {
   const [boardsList, setBoardsList] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState("Select A Board");
+  const [selectedBoardObj, setBoardObj] = useState({
+      title: '',
+      owner: ''
+    }
+)
+  const [selectedBoardLabel, setSelectedBoard] = useState("Select A Board");
+  const [selectedBoardTitle, setSelectedBoardTitle] = useState("Affirmation")
 
   useEffect(() => {
     axios
@@ -30,10 +36,15 @@ function App() {
     console.log("joguioiuoiuoih");
     for (const board of boardsList) {
       if (board.id === boardId) {
-        const selectedBoardTitle = board.title;
-        const selectedBoardOwner = board.owner;
-        const selectedBoardInfo = `${selectedBoardTitle} - ${selectedBoardOwner}`;
+        const boardTitle = board.title;
+        const boardOwner = board.owner;
+        const selectedBoardInfo = `${boardTitle} - ${boardOwner}`;
         setSelectedBoard(selectedBoardInfo);
+        setSelectedBoardTitle(boardTitle)
+        setBoardObj({
+          title: `${boardTitle}`,
+          owner: `${boardOwner}`
+        })
       }
     }
   };
@@ -61,7 +72,7 @@ function App() {
       <header>
         <section>
           <h1>SELECTED BOARD</h1>
-          <p>{selectedBoard}</p>
+          <p>{selectedBoardLabel}</p>
         </section>
         <section>
           <h2>Create A New Card</h2>
@@ -80,7 +91,7 @@ function App() {
       </aside>
       <main>
         <div>
-          <h1>Cards for Affirmations</h1>
+          <h1>Cards for {selectedBoardTitle}</h1>
           <CardList></CardList>
         </div>
       </main>
