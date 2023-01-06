@@ -3,7 +3,7 @@ import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import Board from "./components/Board";
 import BoardList from "./components/BoardList";
-import Card from "./components/Card"
+import Card from "./components/Card";
 // import BoardList from "./components/BoardList";
 import { useState } from "react";
 const boardsData = [
@@ -11,28 +11,35 @@ const boardsData = [
     id: 1,
     title: "hello world",
     owner: "123",
+    boardClicked: false,
+    cards: [
+      { id: 1, message: "Today's best card" },
+      {
+        id: 2,
+        message: " Having a good time",
+      },
+    ],
   },
   {
     id: 2,
     title: "hello east coast",
     owner: "456",
-  },
-];
-
-const cardsData = [
-  {
-    id: 1,
-    message: "Today's best card",
-  },
-  {
-    id: 2,
-    message: " Having a good time",
+    cards: [
+      {
+        id: 3,
+        message: "Friday vibes",
+      },
+    ],
   },
 ];
 
 function App() {
   const [boardData, setBoardData] = useState(boardsData);
-  const [cardData, setCardData] = useState(cardsData);
+  const [cardData, setCardData] = useState(boardData.cards);
+
+  const displayCards = boardData.map((board) => {
+    return board.cards.message;
+  });
 
   const updateBoardData = (updatedBoard) => {
     const boards = boardData.map((board) => {
@@ -65,12 +72,21 @@ function App() {
     const findId = boardData.map((board) => {
       if (id === board.id) {
         setSelectedBoard(board);
+        setCardData(board.cards);
       }
-      
+
+      // filter the cards based on id parameter
+      //another piece of state for selected cards
     });
   };
 
   const [showForm, setShowForm] = useState(true);
+
+  const deleteCard = (id) => {
+    const newCards = cardData.filter((card) => card.id !== id);
+    setCardData(newCards);
+    console.log("i am deletCard");
+  };
 
   return (
     <div>
@@ -79,18 +95,28 @@ function App() {
         <Board boards={boardData} onBoardClicked={handleBoardClicked} />
         <h1> Select Board</h1>
         {/* <p>{selectedBoard.title} {selectedBoard.owner}</p> */}
-        <p>{selectedBoard.id ? `${selectedBoard.title}  ${selectedBoard.owner}` : 'Please select a Board from the Board List!'}</p>
+        <p>
+          {selectedBoard.id
+            ? `${selectedBoard.title}  ${selectedBoard.owner}`
+            : "Please select a Board from the Board List!"}
+        </p>
         <h1> Create A New Board </h1>
-          {showForm && <NewBoardForm onUpdateBoardData={updateBoardData} />}
-          <button type="button" onClick={() => setShowForm (!showForm)}> {showForm === true? 'Hide New Board Form' : 'Show New Board Form'}</button>
+        {showForm && <NewBoardForm onUpdateBoardData={updateBoardData} />}
+        <button type="button" onClick={() => setShowForm(!showForm)}>
+          {" "}
+          {showForm === true ? "Hide New Board Form" : "Show New Board Form"}
+        </button>
       </section>
       <section>
-        {selectedBoard.id && <div>
-          <h1 className="card"> Cards for {selectedBoard.title} </h1>
-          <Card cards={cardData}/>
-          <h1 className="card"> Create a New Card</h1>
-          <NewCardForm onUpdateCardData={updateCardData} />
-        </div>}
+        {selectedBoard.id && (
+          <div>
+            <h1 className="card"> Cards for {selectedBoard.title} </h1>
+            {displayCards}
+            <Card cards={cardData}> onDeleteCard={deleteCard}</Card>
+            <h1 className="card"> Create a New Card</h1>
+            <NewCardForm onUpdateCardData={updateCardData} />
+          </div>
+        )}
       </section>
       <footer>
         <p> Click here to delete all boards and cards</p>
