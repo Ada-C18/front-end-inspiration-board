@@ -25,6 +25,7 @@ const boardsData = [
 function App() {
 	// state for boardsList
 	const [boardsList, setBoardsData] = useState(boardsData);
+	
 
 	// form prop function
 	const addBoard = (newBoard) => {
@@ -42,17 +43,15 @@ function App() {
 		setBoardsData(updatedBoardsList);
 	};
 
+	// Select Board
 	// Make boards clickable
-	//
 
 	return (
 		<div className="App">
 			{/* <Board /> */}
 			<BoardsList boardsList={boardsList} />
-			<h1>Selected Board</h1>
-			<p>
-				{/* Selected: {title} - {owner} */}
-			</p>
+
+			<p>{/* Selected: {title} - {owner} */}</p>
 			<NewBoardForm addBoard={addBoard} />
 		</div>
 	);
