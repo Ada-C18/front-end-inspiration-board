@@ -24,6 +24,7 @@ function App() {
     }
   };
   const addBoard = (newBoard) => {
+    console.log(newBoard);
     const newBoardList = [...boardData];
     const newBoardId = Math.max(...newBoardList.map((board) => board.id)) + 1;
     newBoardList.push({
@@ -39,7 +40,7 @@ function App() {
         <h1>Inspiration Boards</h1>
       </header>
       <main>
-        <BoardList boards={testBoards} onClickBoard={clickToSelectBoard} />
+        <BoardList boards={boardData} onClickBoard={clickToSelectBoard} />
         <p className="BoardHeading">
           Selected Board: {selectedBoard.title} -- {selectedBoard.owner}'s Board
         </p>
