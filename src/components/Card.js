@@ -1,22 +1,12 @@
 import { useState } from "react";
 const Card = (props) => {
-  const [likesCount, setLikesCount] = useState(0);
-
-  Liat;
-
-  const updateLikes = () => {
-    setLikesCount(likesCount + 1);
-  };
-
-  const displayCards = props.cards.map((card) => {
-    return <p key={card.id}>{card.message} </p>;
-  });
-
   return (
     <div>
-      {displayCards}
-      {likesCount} 💕
-      <button type="button" onClick={updateLikes}>
+      <p>
+        {props.message}
+        {props.likesCount} 💕
+      </p>
+      <button type="button" onClick={props.updateLikes}>
         +1
       </button>
       <button type="button" onClick={() => props.onDeleteCard(props.id)}>
@@ -25,5 +15,11 @@ const Card = (props) => {
     </div>
   );
 };
+// const [isClicked, setisClicked] = useState(false);
+
+// moving state cardlist
+// set each card to state
+// remove map from card
+// only moving 1 card
 
 export default Card;

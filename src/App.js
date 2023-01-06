@@ -2,9 +2,8 @@ import "./App.css";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import Board from "./components/Board";
-import BoardList from "./components/BoardList";
 import Card from "./components/Card";
-// import BoardList from "./components/BoardList";
+import CardList from "./components/CardList";
 import { useState } from "react";
 const boardsData = [
   {
@@ -112,7 +111,7 @@ function App() {
           <div>
             <h1 className="card"> Cards for {selectedBoard.title} </h1>
             {displayCards}
-            <Card cards={cardData}> onDeleteCard={deleteCard}</Card>
+            <CardList cards={cardData}> onDeleteCard={deleteCard}</CardList>
             <h1 className="card"> Create a New Card</h1>
             <NewCardForm onUpdateCardData={updateCardData} />
           </div>

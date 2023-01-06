@@ -1,16 +1,22 @@
-// import Board from './Board';
-// import Card from './Card'
+import Card from "./Card";
+import { useState } from "react";
 
-// const CardList = (props) => {
-//   const returnedCards = props.cards.map((card) => {
+const CardList = (props) => {
+  const [likesCount, setLikesCount] = useState(0);
+  const updateLikes = () => {
+    setLikesCount(likesCount + 1);
+  };
 
-// return (
-//     <div>
-//     {/* <h1> {props.board}</h1> */}
-//     {returnedCards}
-//     </div>
-// );
-// };
+  const displayCards = props.cards.map((card) => {
+    return (
+      <Card card={card.message}>
+        <p> {likesCount} 💕 </p>
+        onUpdateLikes={updateLikes}
+        onDeleteCard={props.deleteCard}
+      </Card>
+    );
+  });
 
-// export default Card;
-// }
+  return <p> {displayCards}</p>;
+};
+export default CardList;
