@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Board from './Card';
 import CardForm from './CardForm';
 import axios from 'axios';
+import './BoardList.css'
 
 const REACT_APP_BACKEND_URL = 'http://localhost:5000';
 

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import './BoardForm.css';
+
 const boardObj = {
   title: '',
   owner: '',
@@ -29,6 +31,7 @@ const BoardForm = (props) => {
             name='title'
             value={formData.title}
             onChange={handleChange}
+            placeholder='Write a board title'
           ></input>
         </div>
         <div>
@@ -39,6 +42,7 @@ const BoardForm = (props) => {
             name='owner'
             value={formData.owner}
             onChange={handleChange}
+            placeholder='Write your handle'
           ></input>
         </div>
         <div>

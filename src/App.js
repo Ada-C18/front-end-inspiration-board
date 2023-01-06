@@ -90,13 +90,22 @@ const App = () => {
       return;
     }
     try {
-      const response = await getBoardAPI(id);
+      return await getBoardAPI(id);
     } catch (err) {
       console.log(err);
       throw new Error(`Could not get board ${board.boardId}`);
     }
   };
-
+  const deleteBoard = async (board) => {
+    try {
+      await deleteBoardAPI(board);
+      setBoards((prevBoards) => {
+        return prevBoards.filter((boardId) => board.boardId !== boardId);
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   //Refresh Boards helper func for useEffect, needs ASYNC
   const refreshBoards = async () => {
     try {
@@ -126,6 +135,7 @@ const App = () => {
           className='board_list'
           boards={boards}
           selectBoard={selectBoard}
+          deleteBoard={deleteBoard}
         />
       </main>
     </div>
