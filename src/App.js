@@ -4,10 +4,6 @@ import './App.css';
 // import axios from 'axios';
 import BoardForm from './components/BoardForm';
 import BoardList from './components/BoardList';
-import CardForm from './components/CardForm';
-import CardList from './components/BoardList';
-
-//POST,GET,DELETE TO API:
 
 const REACT_APP_BACKEND_URL = 'http://localhost:5000';
 
@@ -17,7 +13,9 @@ const boardApiToJson = (board) => {
   return { boardId, title, owner };
 };
 
-// Post Board Object {"title": "", "owner": ""}
+//POST,GET,DELETE Promises:
+
+// Post Board Object {"title": "", "owner": ""} This is used in OnSubmitFormBoard, to submit the Board when clicking the button
 const addBoardAPI = (board) => {
   return (
     axios
@@ -28,7 +26,7 @@ const addBoardAPI = (board) => {
   );
 };
 
-// Get ALL Boards, async and map is needed
+// Get ALL Boards, the promise returned is the servers response of the data, [ Board1, Board2, Board3 ]
 const getBoardsAPI = async () => {
   try {
     const response = await axios.get(`${REACT_APP_BACKEND_URL}/boards`);
@@ -39,7 +37,7 @@ const getBoardsAPI = async () => {
   }
 };
 
-//Update One board to add or delete from it's CardList componenet? Or do we just add CardList to the boards useEffect dependancy array???
+// Get ONE board from the BoardList and this Board componenet contains and renders a CardList componenet. This goes into a button that will trigger this promise
 const getBoardAPI = async (boardId) => {
   try {
     const response = await axios.get(
@@ -53,62 +51,27 @@ const getBoardAPI = async (boardId) => {
   }
 };
 
-// Delete All Boards, async is needed
-
-// Destructure Card and parse to JSON:
-const cardApiToJson = (card) => {
-  const {
-    card_id: cardId,
-    board_id: boardId,
-    likes_count: likesCount,
-    message,
-    board,
-  } = card;
-  return { cardId, boardId, likesCount, message, board };
-};
-
-//Post Card, Card Obj body {"message": "", "likesCount": 0, "deleteButton":{function}}
-const addCardAPI = (card) => {
-  return axios
-    .post(`${REACT_APP_BACKEND_URL}/boards/${card.boardId}/cards`, card)
-    .then((response) => response.data.board.card)
-    .catch((err) => console.log(err));
-};
-// ERR if left blank
-// ERR if over >40 characters
-
-//Get ALL Cards, async needed
-const getCardsAPI = async (cards) => {
+// Delete a Board from the API, this goes into the onClick that deletes the board
+const deleteBoardAPI = async (boardId) => {
   try {
-    const response = await axios.get(
-      `${REACT_APP_BACKEND_URL}/boards/${cards.boardId}/cards`
-    );
-    return response.data.map(cardApiToJson);
-  } catch (err) {
-    console.log(err);
-    throw new Error('Nope, get your cards');
+    await axios.delete(`${REACT_APP_BACKEND_URL}/${boardId}`);
+  } catch (error) {
+    console.log(error);
+    throw new Error(`Could not delete your ${boardId}.`);
   }
 };
 
-//Update One Card
-//Delete ONE Card, async needed
 
-// Higher order functions inside FUNCTION APP() sent at props
+// Higher order functions inside FUNCTION APP() sent as props
 //BOARD FUNCTIONS:
-//1. onSubmit board
-//2. Select Board (shows cards of that boardID)
+//1. onSubmit Board (takes in )
+//2. onSelect Board in BoardList Componenet (shows cards of that boardID)
 //3. onChange hide Board Form
 //4. delete board if time permits
 
-//CARD FUNCTIONS:
-//1. onSubmit card
-//2. onChange add like
-//3. onChange delete card
-
-function App() {
+const App = () => {
   //React.useState Hook
   const [boards, setBoards] = useState([]);
-  // const [cards, setCards] = useState([]);
 
   //onSubmit Board Form
   const onSubmitBoardForm = (board) => {
@@ -119,6 +82,7 @@ function App() {
       .catch((err) => console.log(err));
   };
 
+  
   // Get One Board, async is needed
   const selectBoard = async (id) => {
     const board = boards.find((board) => board.boardId === id);
@@ -144,33 +108,12 @@ function App() {
       throw new Error('Can not refresh boards!');
     }
   };
-
+ 
   //React.useEffect hook for Boards
   useEffect(() => {
     refreshBoards();
   }, []);
 
-  //onSubmit Card Form
-  const onSubmitCardForm = (card) => {
-    addcard(card)
-      .then((newcard) => {
-        setCards((prevCards) => [...prevCards, newCard]);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  //Update Card's Heart Count by one. Do I need Async to wait, DO I NEED find() task by id, it returns undefined if not found, but don't we want an error message instead?
-  //Filter Card to Delete
-  //Refresh Cards helper func for useEffect
-
-// const refreshCards = () =>{
-  
-
-  // React.useEffect for Cards. Can I use useEffect more than once per componenet? Do I need this to get the Cards??? I have a feeling the dependancy array is not going to be an empty list...
-  
-  // useEffect(() => {
-  //   refreshCards();
-  // }, []);
 
   return (
     <div className='App'>
@@ -184,11 +127,9 @@ function App() {
           boards={boards}
           selectBoard={selectBoard}
         />
-        <CardForm />
-        <CardList />
       </main>
     </div>
   );
-}
+};
 
 export default App;

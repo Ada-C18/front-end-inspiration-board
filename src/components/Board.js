@@ -8,7 +8,8 @@ const Board = (props) => {
       <h2>Selected Board</h2>
       <p>{props.title}</p>
       <h2>Cards for {props.title}</h2>
-      <CardList />
+      <CardList
+      cards={cards} />
     </div>
   );
 };
