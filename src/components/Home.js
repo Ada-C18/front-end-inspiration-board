@@ -31,7 +31,7 @@ const Home = (props) => {
         </div>
 
         <div>
-          <button>Click here to generate an invite link</button>
+          <button>Click here to generate an invite link!</button>
         </div>
       </nav>
     </div>

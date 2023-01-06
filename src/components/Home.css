@@ -9,17 +9,29 @@
 #home-header {
   position: sticky;
   top: 0px;
-  display: block;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   min-width: 100vw;
   height: 30vh;
   background-color:  #6AA6A6;
   font-family: 'Caveat';
 }
 
+#home-header h2 {
+  display: block;
+}
+
 #home-menu {
   width: 67vw;
+  max-width: 67vw;
   min-height: 70vh;
-  display: block;
+  background-color: #F26E50;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding:none;
+  margin:none;
 }
 
 #home-nav {
@@ -29,9 +41,14 @@
   align-items: center;
   justify-content: center;
   width: 33vw;
+  max-width: 33vw;
   height: 70vh;
+  min-height: 70vh;
   position: sticky;
   right: 0;
   background-color: #C1D6D9;
 }
 
+#home-nav button {
+  margin: 5vh;
+}

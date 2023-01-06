@@ -1,3 +1,24 @@
 .menu-item {
-  width: 500px;
+  width: 67vw;
+  padding: none;
+  margin: 0px;
+  align-self:stretch;
+  clear: left;
+  min-height: 7vh;
+}
+
+.pink {
+  border: none;
+  background-color: inherit;
+  text-align: center;
+  text-decoration: underline;
+  display: block;
+}
+
+.white {
+  background-color: whitesmoke;
+  border: none;
+  text-align: center;
+  text-decoration: underline;
+  display: block;
 }

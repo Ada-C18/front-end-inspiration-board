@@ -1,7 +1,15 @@
 ul {
+  width: 67vw;
+  min-width: 67vw;
+  min-height: 60vh;
   list-style-type: none;
+  padding:none;
+  margin:0px;
+  align-self:stretch;
+  align-items: stretch;
+  clear:left;
 }
 
-#menu-list {
-  background-color: #F26E50;
-}
+/* #menu-list {
+  
+} */
