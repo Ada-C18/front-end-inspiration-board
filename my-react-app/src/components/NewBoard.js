@@ -1,3 +1,5 @@
+//fix submit button (want to disable it when no text)
+//fix input border colors (should turn white when text is in it but it stays red)
 import "./NewBoard.css";
 import PropTypes from "prop-types";
 
@@ -8,7 +10,7 @@ const INITIAL_FORM_DATA = {
   name: "",
 };
 
-const NewBoard = () => {
+const NewBoard = (props) => {
   const [BoardData, setBoardData] = useState(INITIAL_FORM_DATA);
 
   const handleChange = (e) => {
@@ -22,12 +24,20 @@ const NewBoard = () => {
 
   const handleNewBoardSubmit = (e) => {
     e.preventDefault();
-    // props.addBoardCallbackFunc(BoardData);
+    props.addBoardCallback(BoardData);
   };
+
+  const inputClass = BoardData.name & BoardData.title ? "" : "empty";
+  //if input fields for Title or Owner's Name are empty ->
+  //red box around input boxes and submit button unavailable
+  // if (BoardData.title === '' || BoardData.name==='') {
+  //   const borderColor =
+  // }
   return (
     <form onSubmit={handleNewBoardSubmit}>
       <label htmlFor="title">Title</label>
       <input
+        className={inputClass}
         type="text"
         id="title"
         name="title"
@@ -37,6 +47,7 @@ const NewBoard = () => {
 
       <label htmlFor="name">Name</label>
       <input
+        className={inputClass}
         type="text"
         id="name"
         name="name"
@@ -44,14 +55,13 @@ const NewBoard = () => {
         onChange={handleChange}
       />
 
-      <input type="submit" value="Add Board" />
+      <input type="submit" value="Add Board" disabled={!BoardData} />
     </form>
   );
 };
 
-// {
-//   /* NewBoard.propTypes = {
-//       // addBoardCallbackFunc: PropTypes.func.isRequired
-//     }; */
-// }
+NewBoard.propTypes = {
+  addBoardCallback: PropTypes.func.isRequired,
+};
+
 export default NewBoard;

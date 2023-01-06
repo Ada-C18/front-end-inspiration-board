@@ -1,3 +1,4 @@
+//fix numbering on display of board list (keeps displaying the number 1 for every board)
 import PropTypes from "prop-types";
 
 import Board from "./Board";
