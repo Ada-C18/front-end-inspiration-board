@@ -3,13 +3,10 @@ import PropTypes from "prop-types";
 import "./BoardList.css";
 
 const BoardList = ({ boards, selectBoard }) => {
-  const clickBoard = (event) => {
-    console.log("Click event", event);
-    selectBoard(event.target.id);
-  };
+  const clickBoard = (event) => selectBoard(parseInt(event.currentTarget.id));
   return (
-    <div className="boardList">
-      <h2>Board List</h2>
+    <section className="boardList">
+      <h2>Boards</h2>
       {[...boards].map((board) => (
         <div
           className="boardListItem"
@@ -17,11 +14,11 @@ const BoardList = ({ boards, selectBoard }) => {
           id={board.board_id}
           onClick={clickBoard}
         >
-          <div className="boardTitle">{board.title}</div>
-          <div className="boardOwner">{board.owner}</div>
+          <h3 className="boardTitle">{board.title}</h3> by{" "}
+          <span className="boardOwner">{board.owner}</span>
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 

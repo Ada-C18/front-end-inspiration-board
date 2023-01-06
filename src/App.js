@@ -25,13 +25,11 @@ const api = {
       .then((response) => response.data)
       .catch(api.logErr),
 
-  postBoard: (boardData) => {
-    console.log("Posting board", boardData);
-    return axios
+  postBoard: (boardData) =>
+    axios
       .post(`${api.baseUrl}/boards`, boardData)
       .then((response) => response.data)
-      .catch(api.logErr);
-  },
+      .catch(api.logErr),
 };
 
 function App() {
@@ -42,32 +40,26 @@ function App() {
   const refreshBoardList = () => {
     api.getAllBoards().then((allBoards) => {
       setBoardList(allBoards);
-      selectBoard(allBoards[0].board_id);
     });
   };
-
   useEffect(refreshBoardList, []);
 
   useEffect(() => {
     if (selectedBoard !== undefined) {
       api
-        .getBoard(selectedBoard)
+        .getBoard(selectedBoard.board_id)
         .then((boardData) => setCardList(boardData.board.cards));
     }
   }, [selectedBoard]);
 
-  const selectBoard = (id) => {
-    if (id !== undefined) setSelectedBoard(id);
-  };
+  const selectBoard = (id) =>
+    setSelectedBoard(boardList.find((board) => id === board.board_id));
 
-  const createBoard = (newBoard) => {
-    console.log("createBoard newBoard", newBoard);
+  const createBoard = (newBoard) =>
     api.postBoard(newBoard).then((createdBoard) => {
-      console.log("then createdBoard", createdBoard);
       refreshBoardList();
-      selectBoard(createdBoard.board_id);
+      setSelectedBoard(createdBoard);
     });
-  };
 
   return (
     <div className="App">
@@ -75,13 +67,15 @@ function App() {
         <h1>Inspiration Boards</h1>
       </header>
       <main>
-        <BoardList boards={boardList} selectBoard={selectBoard}></BoardList>
         <CreateBoardForm createBoard={createBoard}></CreateBoardForm>
-        <h2>
-          Board:{" "}
-          {boardList[selectedBoard] ? boardList[selectedBoard].title : "None"}
-        </h2>
-        <CardList cards={cardList}></CardList>
+        <BoardList boards={boardList} selectBoard={selectBoard}></BoardList>
+        {selectedBoard && (
+          <CardList
+            title={selectedBoard.title}
+            owner={selectedBoard.owner}
+            cards={cardList || []}
+          ></CardList>
+        )}
       </main>
     </div>
   );
