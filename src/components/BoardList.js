@@ -16,7 +16,6 @@ const BoardList = (props) => {
     <div>
       <h1>Boards</h1>
       <section>{boardTitles}</section>
-      <button></button>
     </div>
   );
 };
