@@ -23,6 +23,13 @@ function App() {
       })
       .catch((error) => {
         console.log(error)
+        // if (error.includes("title")) {
+        //   setMessage("Please enter a title.")
+        // } else if (error.includes("owner")) {
+        //   setMessage("Please enter an owner.")
+        // } else {
+        //   setMessage("Please enter a title or owner.");
+        // }
         setMessage("Please enter a title or owner.");
       });
   };
