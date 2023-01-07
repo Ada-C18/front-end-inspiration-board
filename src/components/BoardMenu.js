@@ -9,7 +9,7 @@ const BoardMenu = (props) => {
   console.log(props);
 
   const getBoardMenuItemList = () => {
-    return props.data.map((board) => {
+    return props.data.map((board, index) => {
       return (
         <BoardMenuItem
           key={board.id}
@@ -17,7 +17,7 @@ const BoardMenu = (props) => {
           title={board.board_title}
           owner={board.board_owner}
           cards={board.card_id.length}
-          class={board.id % 2 === 0 ? "pink" : "white"}
+          class={index % 2 === 1 ? "pink" : "white"}
         />
       );
     });
