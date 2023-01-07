@@ -4,37 +4,14 @@ import Card from './Card';
 import PropTypes from 'prop-types';
 
 
-// const getAllCards = () => {
-//   return getAllCardsApi()
-//   .then(cards => {
-//     setCardsData(cards);
-//   })
-// };
-
-// useEffect(() => {
-//   getAllCards();
-// }, [props.board]);
-
-
-
-const convertFromApi = (apiCard) => {
-  const {likes_count, ...rest} = apiCard;
-  const newCard = {likesCount: likes_count, ...rest};
-  return newCard;
-};
-
-
-const getAllCardsApi = async () => {
-  const response = await  axios.get(`${process.env.REACT_APP_BACKEND_URL}/board.cards`
-  )
-  response.data.map(convertFromApi);
-};
-
-
 const CardList = (props) => {
 
   const [cardsData, setCardsData] = useState([]);
 
+  const getAllCardsApi = async () => {
+    const response = await  axios.get(`${process.env.REACT_APP_BACKEND_URL}/board/${props.board.title}`)
+    return response.data.board.cards;
+  };
 
   useEffect(() => {
     const getAllCards = async () => {
@@ -42,20 +19,8 @@ const CardList = (props) => {
       setCardsData(cards);
     };
     getAllCards();
-  }, [props.board]);
+  }, );
 
-
-  // const deleteCard = (card) => {
-  //   axios
-  //   .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}`)
-  //   .then((response) => {
-  //     const newCardsData = cardsData.filter((existingCard) => {
-  //       return existingCard.card_id !== card.card_id;
-  //     });
-  //     setCardsData(newCardsData);
-  //   }).catch((error) => {console.log(error);
-  //   });
-  // };
 
   const deleteCard = async (card) => {
     await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}`);
@@ -66,22 +31,10 @@ const CardList = (props) => {
   };
 
 
-  // const handleLikes = (card) => {
-  //   axios
-  //   .put(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/like`)
-  //   .then((response) => {
-  //     const newCardsData = cardsData.map((existingCard) => {
-  //       return existingCard.card_id !== card.card_id ? existingCard : {...card, likesCount: card.likes_count + 1}
-  //     });
-  //     setCardsData(newCardsData);
-  //   }).catch((error) => {console.log(error);
-  //   });
-  // };
-
   const handleLikes = async (card) => {
     await axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/like`)
     const newCardsData = cardsData.map((existingCard) => {
-      return existingCard.card_id !== card.card_id ? existingCard : {...card, likesCount: card.likes_count + 1}
+      return existingCard.card_id !== card.card_id ? existingCard : {...card, likes_count: card.likes_count + 1}
       });
     setCardsData(newCardsData);
   };
@@ -105,7 +58,9 @@ const CardList = (props) => {
 
 
 CardList.propTypes = {
-  board: PropTypes.string.isRequired,
+  board: PropTypes.object.isRequired,
+  handleLikes: PropTypes.func.isRequired,
+  deleteCard: PropTypes.func.isRequired,
 };
 
 
