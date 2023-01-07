@@ -1,4 +1,4 @@
-.App {
+/*.App {
   text-align: center;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #fbf7f7;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -35,4 +35,53 @@
   to {
     transform: rotate(360deg);
   }
+}*/
+
+.inspiration_style{
+  display:grid;
+  grid-template-columns: auto;
+  text-decoration: none;
+  grid: gap 15px;
+  padding-left: 275px;
+  padding-right: 275px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.inspiration_style > .inspiration_background{
+  padding: 20px;
+  border-width: 10px;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-family: 'Permanent Marker', cursive;
+  font-size: 50px;
+  background-color: rgba(0, 0, 255, .2);
+  transform:matrix3d(20)
+
+}
+
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: white;
+}
+.wrapper {
+  display: grid;
+  width: 95%;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+   grid-auto-columns: 1fr;
+  grid-auto-flow: column; 
+  gap: 10px;
+  padding: 30px; 
+}
+
+.one {
+  grid-row: 1;
+}
+
+.two {
+  grid-row: 1;
+}
+
+.three {
+  grid-row: 1;
 }
