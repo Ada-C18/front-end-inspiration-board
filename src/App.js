@@ -30,7 +30,6 @@ function App() {
         console.log(err);
       });
   };
-
     useEffect(getAllBoards,[]);
 
     // const URL_post = "http://127.0.0.1:5000/boards";
@@ -66,57 +65,59 @@ function App() {
       });
   };
 
-    useEffect(getOneBoard,[]);
+  // no necesita el useffect para card
+    // useEffect(getOneBoard,[]);
 
 
 // updates backend with new card,
 
-const addCard = (newCardInfo) => {
-  axios.post( `${URL}/cards`, newCardInfo)
-  .then((response) => {
-    const newCards = [...cardList];
-    const newCardJson = response.data
-    newCards.push(newCardJson);
-    setCardList(newCards);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-}
+// const addCard = (newCardInfo) => {
+//   axios.post( `${URL}/cards`, newCardInfo)
+//   .then((response) => {
+//     const newCards = [...cardList];
+//     const newCardJson = response.data
+//     newCards.push(newCardJson);
+//     setCardList(newCards);
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
+// }
 
 // create delete card item function from backend, and update cardsList state
-const deleteCard = (cardId) => {
-  axios
-    .delete(`${URL}/${cardId}`)
-    .then(() => {
-      const updatedCards = [];
-      for (const card of cardList) {
-        if (card.id !== cardId) {
-          updatedCards.push(card);
-        }
-      }
-      setCardList(updatedCards);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
+// const deleteCard = (cardId) => {
+//   axios
+//     .delete(`${URL}/${cardId}`)
+//     .then(() => {
+//       const updatedCards = [];
+//       for (const card of cardList) {
+//         if (card.id !== cardId) {
+//           updatedCards.push(card);
+//         }
+//       }
+//       setCardList(updatedCards);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
 
 // create plus one card function
-
-const countLikesTotal = (cardId) => {
-  axios
-    .put(`${URL}/${cardId}`)
-    .then(() => {
-      const updatedCards = [];
-      for (const card of cardList) {
-        if (card.id === cardId) {
-          card.likes_count += 1;
-        updatedCards.push(card);
-        }
-      }
-      setCardList(updatedCards);
-    });
+//
+// const countLikesTotal = (cardId) => {
+//   axios
+//     .put(`${URL}/${cardId}`)
+//     .then(() => {
+//       const updatedCards = [];
+//       for (const card of cardList) {
+//         if (card.id === cardId) {
+//           card.likes_count += 1;
+//         updatedCards.push(card);
+//         }
+//       }
+//       setCardList(updatedCards);
+//     });
+//
 //   return likeData.reduce((total, message) => {
 //     return message.liked ? total + 1 : total;
 //   }, 0);
@@ -132,21 +133,20 @@ const countLikesTotal = (cardId) => {
           <BoardList
               boardList={boardList}
               getOneBoard = {getOneBoard} 
-              addCard ={addCard}
+              // addCard ={addCard}
               />
           <br />
           <FormNewBoard 
               addBoardCallbackFunc={addBoard} />
 
-          <CardList 
+          <CardList  
                 cardList={cardList} 
-                deleteCard={deleteCard}
-                countLikesTotal={countLikesTotal} 
+                // deleteCard={deleteCard}
+                // countLikesTotal={countLikesTotal} 
                 />
           
-          {/* {getOneBoard(2)}  */}
     </div>
   );
 }
-}
+
 export default App;
