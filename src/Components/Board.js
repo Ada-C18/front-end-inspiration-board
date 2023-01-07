@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Board.css'
 
 const Board = (props) => {
-  // const selectBoard = (id) => {
 
-  // }
   return (
     // card list
     // <CardList />
     // read cards from backend
-    <li onClick={() => props.handleBoardClick(props.title, props.owner)}>
-      {props.title}
-    </li>
+      <li className='each_board' onClick={() => props.handleBoardClick(props.title, props.owner)}>
+        {props.title}
+      </li>
+
   );
 };
 

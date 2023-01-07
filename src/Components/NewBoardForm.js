@@ -20,10 +20,10 @@ const NewBoardForm = ({ addBoardCallback }) => {
   };
 
   return (
-    <form onSubmit={submitBoardData} className="new-board__form">
+    <form onSubmit={submitBoardData}>
       <section>
         <div className="new-board__fields">
-          <label htmlFor="name">Title</label>
+          <label htmlFor="name">Board Name</label>
           <input
             name="title"
             id="title"
@@ -32,7 +32,7 @@ const NewBoardForm = ({ addBoardCallback }) => {
             className={((boardData.title.length === 0)) ? 'invalid-form-input' : ''}
 
           />
-          <label htmlFor="name">Owner's Name</label>
+          <label htmlFor="name">Your Name</label>
           <input
             name="owner"
             id="owner"
@@ -40,10 +40,9 @@ const NewBoardForm = ({ addBoardCallback }) => {
             onChange={handleChange}
             className={((boardData.owner.length === 0)) ? 'invalid-form-input' : ''}
           />
+          <p className='required'>* required</p>
           <p>Preview: {boardData.title} - {boardData.owner}</p>
-
-
-          <button className="button new-board__submit" type="submit"
+          <button className="submit__button" type="submit"
             disabled={((boardData.title.length === 0) || (boardData.owner.length === 0))}>
             Submit
           </button>

@@ -1,18 +1,93 @@
-.App {
+.whole__page {
+  background-color: yellow;
+}
+
+.App__header {
+  background-color: black;
+  min-height: 10vh;
+  font-size: xx-large;
   text-align: center;
+  border-style: solid;
+  border-radius: 5pt ;
 }
 
 
+.all__board__container {
+background-color: black;
+border-style: solid;
+border-radius: 20pt ;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.board_header {
+  background-color:blueviolet;
+  font-size: x-large;
+  color: white;
+}
+
+.board__container {
+  background-color: cyan;
+  border-style: solid;
+  border-radius: 5pt ;
 
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+}
+
+.chosen__board {
+  font-size: large;
+  font-weight: bold;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.boards {
+  border-style: solid;
+}
+
+.new__board {
+  font-size: large;
+  background-color:blueviolet;
   color: white;
 }
 
+.board__form {
+  background-color:deeppink;
+  border-style: solid;
+  border-radius: 5pt ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hide__button {
+  background-color:lime;
+}
+
+.card__container {
+  background-color:black;
+  border-style: solid;
+  border-radius: 20pt ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.card__form {
+  background-color:lawngreen;
+  border-style: solid;
+  border-radius: 5pt ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

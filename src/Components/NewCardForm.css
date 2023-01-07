@@ -1,20 +1,28 @@
-.new-card__field {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 400px;
-    row-gap: 20px;
-}
 
-.new-card__field label {
-    font-weight: bolder;
-    font-size: 1.2em;
-}
 
-.new-card__submit {
-    grid-column: span 2;
-}
 
 .invalid-form-input {
     border: red solid 1px;
     box-shadow: 0 0 1px red;
+}
+
+.card__form {
+    background-color:deeppink;
+    border-style: solid;
+    border-radius: 5pt ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    row-gap: 2px;
+}
+
+.form__header {
+    background-color:blue;
+    font-size: large;
+    color: white;
+}
+
+.submit__button {
+    background-color: pink;
 }

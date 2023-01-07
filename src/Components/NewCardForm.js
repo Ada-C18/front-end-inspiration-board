@@ -12,7 +12,9 @@ const NewCardForm = () => {
   };
 
   return (
-    <form>
+
+    <form className="card__form">
+      <h1 className="form__header">⚡️ Create a Message ⚡️</h1>
       <div className="new-card__field">
         <label htmlFor="message">Message</label>
         <input
@@ -25,7 +27,7 @@ const NewCardForm = () => {
         />
         <p>Preview: {cardForm.message}</p>
         <button
-          className="new-card__submit"
+          className="submit__button"
           type="submit"
           // value="Submit"
           disabled={!cardForm.message}

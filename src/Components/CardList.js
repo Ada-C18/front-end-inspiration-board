@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from './Card';
+import './CardList.css'
 import PropTypes from 'prop-types';
 
 
@@ -19,7 +20,7 @@ const CardList = (props) => {
       setCardsData(cards);
     };
     getAllCards();
-  }, );
+  },[] );
 
 
   const deleteCard = async (card) => {
@@ -46,21 +47,49 @@ const CardList = (props) => {
         deleteCard={deleteCard}/>)
   });
 
+  // const [data, setData] = useState([]);
+  // const [sortType, setSortType] = useState('albums');
+
+  // useEffect(() => {
+  //   const sortArray = type => {
+  //     const types = {
+  //       alphabetically: 'message',
+  //       likes: 'Likes_count',
+  //       id: 'id',
+  //     };
+  //     const sortProperty = types[type];
+  //     const sorted = [...cards].sort((a, b) => b[sortProperty] - a[sortProperty]);
+  //     console.log(sorted)
+  //     setData(sorted);
+  //   };
+
+  //   sortArray(sortType);
+  // }, [sortType]);
+
 
   return (<section className='cards__container'>
-        <h2>Cards for {props.board.title}</h2>
+        <h2 className='cards__header'>☀️ Messages for {props.board.title} ☀️</h2>
         <div>
           {cards}
         </div>
+        {/* Sort by
+        <select>
+        <option value='alphabetically'>Alphabetically</option>
+        <option value='likes'>Likes</option>
+        <option value='id'>Order Created</option>
+</select>
+    <select onChange={(e) => setSortType(e.target.value)}></select> */}
     </section>
+    
     )
 };
 
 
 CardList.propTypes = {
   board: PropTypes.object.isRequired,
-  handleLikes: PropTypes.func.isRequired,
-  deleteCard: PropTypes.func.isRequired,
+  card: PropTypes.object,
+  handleLikes: PropTypes.func,
+  deleteCard: PropTypes.func,
 };
 
 

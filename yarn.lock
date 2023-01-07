@@ -1082,6 +1082,11 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@charlesstover/hsl2rgb@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@charlesstover/hsl2rgb/-/hsl2rgb-1.0.4.tgz#6bda4c13b11a3a3499794f08772b19f914ea993b"
+  integrity sha512-g0IEbSlYeTadEGzrlAui6oiZSMB1QfGX9yakVPfkjWYwlMQBfIype/d9SVg1uXHFmbe9Y+SsToZPWKFG1MxI7w==
+
 "@csstools/normalize.css@*":
   version "12.0.0"
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-12.0.0.tgz#a9583a75c3f150667771f30b60d9f059473e62c4"
@@ -6159,6 +6164,11 @@ memfs@^3.1.2, memfs@^3.4.3:
   dependencies:
     fs-monkey "^1.0.3"
 
+memoize-one@^4.0.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-4.1.0.tgz#a2387c58c03fff27ca390c31b764a79addf3f906"
+  integrity sha512-2GApq0yI/b22J2j9rhbrAlsHb0Qcz+7yWxeLG8h+95sl1XPUgeLimQSOdur4Vw7cUhrBHwaUZxWFZueojqNRzA==
+
 merge-descriptors@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/merge-descriptors/-/merge-descriptors-1.0.1.tgz#b00aaa556dd8b44568150ec9d1b953f3f90cbb61"
@@ -7370,6 +7380,13 @@ raf@^3.4.1:
   dependencies:
     performance-now "^2.1.0"
 
+rainbow-gradient@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/rainbow-gradient/-/rainbow-gradient-1.0.0.tgz#921cf9a4b2def39b9e90d9aa764a8aefc268598d"
+  integrity sha512-BfZAa+U8Fyd3UPcu09zvi73iZf7T7mGcYmHfaLYG3Q8pXhbyQ65Sbns58am6oaSWAy66bOmXl9ptGkdikdaOiQ==
+  dependencies:
+    "@charlesstover/hsl2rgb" "^1.0.4"
+
 randombytes@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
@@ -7461,6 +7478,14 @@ react-is@^18.0.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
+
+react-rainbow-text@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-rainbow-text/-/react-rainbow-text-1.0.3.tgz#00f922f72bc55c5e5f4c11548fe75c84a963706d"
+  integrity sha512-++eBSU3OG/rhTq9kCwNqqq/dDnKpOh5eAC2xGvKjt3MWKZ5NeJCWjeOxuFrwsCpnvuxuHYgBZ9LBqLm0GRF90g==
+  dependencies:
+    memoize-one "^4.0.0"
+    rainbow-gradient "^1.0.0"
 
 react-refresh@^0.11.0:
   version "0.11.0"

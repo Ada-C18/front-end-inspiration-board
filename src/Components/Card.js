@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 
 const Card = (props) => {
+
+
   return (<div>
     
     <p>{props.card.message}</p>
@@ -11,14 +13,15 @@ const Card = (props) => {
       <li><p onClick={() => props.handleLikes(props.card)}>+1</p></li>
       <li><p onClick={() => props.deleteCard(props.card)}>Delete</p></li>
     </ul>
+
   </div>);
 };
 
 
 Card.propTypes = {
   card: PropTypes.string.isRequired,
-  handleLikes: PropTypes.func.isRequired,
-  deleteCard: PropTypes.func.isRequired,
+  handleLikes: PropTypes.func,
+  deleteCard: PropTypes.func,
 };
 
 export default Card;
