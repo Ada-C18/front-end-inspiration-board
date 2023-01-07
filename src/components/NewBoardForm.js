@@ -32,6 +32,11 @@ const NewBoardForm = ({ handleBoardSubmit }) => {
           name="title"
           value={boardFormData.title}
           onChange={handleChange}
+          className={
+            boardFormData.title.length === 0 || boardFormData.title.length > 40
+              ? "invalid-form-input"
+              : ""
+          }
         ></input>
       </div>
       <div>
@@ -42,6 +47,21 @@ const NewBoardForm = ({ handleBoardSubmit }) => {
           name="owner"
           value={boardFormData.owner}
           onChange={handleChange}
+          className={
+            boardFormData.owner.length === 0 || boardFormData.owner.length > 40
+              ? "invalid-form-input"
+              : ""
+          }
+        ></input>
+        <input
+          type="Submit"
+          disabled={
+            boardFormData.owner.length === 0 ||
+            (boardFormData.owner.length > 40) |
+              (boardFormData.title.length === 0) ||
+            boardFormData.title.length > 40
+          }
+          className="new-board-form__form-submit-btn"
         ></input>
       </div>
     </form>

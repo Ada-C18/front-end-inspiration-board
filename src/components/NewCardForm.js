@@ -34,6 +34,12 @@ const NewCardForm = ({ handleCardSubmit }) => {
           name="message"
           value={cardFormData.message}
           onChange={handleCardChange}
+          className={
+            cardFormData.message.length === 0 ||
+            cardFormData.message.length > 40
+              ? "invalid-form-input"
+              : ""
+          }
         ></input>
       </div>
     </form>
