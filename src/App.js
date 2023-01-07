@@ -5,14 +5,13 @@ import CardList from "./components/CardList";
 import axios from "axios";
 import BoardList from './components/BoardList'
 import FormNewBoard from "./components/FormNewBoard";
-import Board from "./components/Board";
-
 
 function App() {
   const [boardList, setBoardList] = useState([]);
 
   const URL = "http://127.0.0.1:5000";
 
+//get boards
   const getAllBoards = () => {
     axios
       .get(`${URL}/boards`)
@@ -32,7 +31,7 @@ function App() {
   };
     useEffect(getAllBoards,[]);
 
-    // const URL_post = "http://127.0.0.1:5000/boards";
+//forms -> add one board:
     const addBoard = (newBoardInfo) => {
       axios.post( `${URL}/boards`, newBoardInfo)
       .then((response) => {
@@ -49,9 +48,8 @@ function App() {
       });
     }
 
-
+//get cards from one board:
   const [cardList, setCardList] = useState([]);
-
   const getOneBoard = (boardId) => {
     axios
       .get(`${URL}/boards/${boardId}`)
@@ -65,48 +63,48 @@ function App() {
       });
   };
 
-  // no necesita el useffect para card
-    // useEffect(getOneBoard,[]);
+// form -> updates backend with new card,
+const addCard = (newCardInfo) => {
+  axios.post( `${URL}/card`, newCardInfo)
+  .then((response) => {
+    const newCards = [...cardList];
+    // const newCardJson = response.data -> previous, erase?
+    // newCards.push(newCardJson);
+    const newCardJson = {
+      ...newCardInfo,
+      'id': response.data.id
+    }
+      newCards.push(newCardJson);
+    setCardList(newCards);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}
 
-
-// updates backend with new card,
-
-// const addCard = (newCardInfo) => {
-//   axios.post( `${URL}/cards`, newCardInfo)
-//   .then((response) => {
-//     const newCards = [...cardList];
-//     const newCardJson = response.data
-//     newCards.push(newCardJson);
-//     setCardList(newCards);
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
-// }
-
-// create delete card item function from backend, and update cardsList state
-// const deleteCard = (cardId) => {
-//   axios
-//     .delete(`${URL}/${cardId}`)
-//     .then(() => {
-//       const updatedCards = [];
-//       for (const card of cardList) {
-//         if (card.id !== cardId) {
-//           updatedCards.push(card);
-//         }
-//       }
-//       setCardList(updatedCards);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };
+// OK -- create delete card item function from backend, and update cardsList state
+const deleteCard = (cardId) => {
+  axios
+    .delete(`${URL}/card/${cardId}`)
+    .then(() => {
+      const updatedCards = [];
+      for (const card of cardList) {
+        if (card.id !== cardId) {
+          updatedCards.push(card);
+        }
+      }
+      setCardList(updatedCards);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 // create plus one card function
-//
+
 // const countLikesTotal = (cardId) => {
 //   axios
-//     .put(`${URL}/${cardId}`)
+//     .put(`${URL}/card/${cardId}`)
 //     .then(() => {
 //       const updatedCards = [];
 //       for (const card of cardList) {
@@ -117,7 +115,7 @@ function App() {
 //       }
 //       setCardList(updatedCards);
 //     });
-//
+
 //   return likeData.reduce((total, message) => {
 //     return message.liked ? total + 1 : total;
 //   }, 0);
@@ -141,9 +139,11 @@ function App() {
 
           <CardList  
                 cardList={cardList} 
-                // deleteCard={deleteCard}
+                deleteCard={deleteCard}
                 // countLikesTotal={countLikesTotal} 
                 />
+          
+          
           
     </div>
   );
