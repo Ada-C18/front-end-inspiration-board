@@ -164,37 +164,37 @@ const DUMMY_BOARD_DATA = [
   },
 ];
 
-const passData = () => DUMMY_BOARD_DATA;
-
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <>
-      <Route path="/" element={<LogInView />} errorElement={<ErrorPage />}>
-        <Route path="login" element={<LogInForm />} />
-        <Route
-          path="signup"
-          element={<SignUpForm />}
-          errorElement={<ErrorPage />}
-        />
-      </Route>
-      <Route
-        path="/boards"
-        element={<Home />}
-        loader={passData}
-        errorElement={<ErrorPage />}
-      />
-      <Route
-        path="/boards/:boardId"
-        element={<SingleBoardView />}
-        errorElement={<ErrorPage />}
-      />
-    </>
-  )
-);
-
 function App() {
   let [loggedIn, setLoggedIn] = useState({ loggedIn: false });
-  let [appData, setAppData] = useState();
+  let [appData, setAppData] = useState(DUMMY_BOARD_DATA);
+
+  const passData = () => appData;
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <>
+        <Route path="/" element={<LogInView />} errorElement={<ErrorPage />}>
+          <Route path="login" element={<LogInForm />} />
+          <Route
+            path="signup"
+            element={<SignUpForm />}
+            errorElement={<ErrorPage />}
+          />
+        </Route>
+        <Route
+          path="/boards"
+          element={<Home />}
+          loader={passData}
+          errorElement={<ErrorPage />}
+        />
+        <Route
+          path="/boards/:boardId"
+          element={<SingleBoardView />}
+          errorElement={<ErrorPage />}
+        />
+      </>
+    )
+  );
 
   return <RouterProvider router={router} />;
 }
