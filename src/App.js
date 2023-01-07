@@ -8,9 +8,13 @@ import NewCardForm from "./components/NewCardForm";
 function App() {
   return (
     <div className="App">
-      <header className="App-header"></header>
-      <NewBoardForm />
-      <NewCardForm />
+      <header className="App-header">Inspiration Board</header>
+      <p>
+        <NewBoardForm />
+      </p>
+      <p>
+        <NewCardForm />
+      </p>
     </div>
   );
 }

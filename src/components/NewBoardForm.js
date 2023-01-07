@@ -53,6 +53,9 @@ const NewBoardForm = ({ handleBoardSubmit }) => {
               : ""
           }
         ></input>
+        <p>
+          Preview: {boardFormData.title} - {boardFormData.owner}
+        </p>
         <input
           type="Submit"
           disabled={

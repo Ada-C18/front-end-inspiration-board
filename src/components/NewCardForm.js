@@ -41,6 +41,15 @@ const NewCardForm = ({ handleCardSubmit }) => {
               : ""
           }
         ></input>
+        <p>Preview: {cardFormData.message}</p>
+        <input
+          type="Submit"
+          disabled={
+            cardFormData.message.length === 0 ||
+            cardFormData.message.length > 40
+          }
+          className="new-card-form__form-submit-btn"
+        ></input>
       </div>
     </form>
   );
