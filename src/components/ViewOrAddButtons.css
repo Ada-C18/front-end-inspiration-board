@@ -22,5 +22,6 @@ button {
     padding: 5%;
     border-radius: 100%;
     color: #fce5a5;
-    opacity: 80%
+    opacity: 80%;
+    border: 8px solid #9b9966;
 }
