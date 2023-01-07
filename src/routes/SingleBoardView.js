@@ -1,14 +1,14 @@
-import './SingleBoardView.css';
-import AddCard from './AddCard';
-import SelectedBoard from './SelectedBoard';
+import "./SingleBoardView.css";
+import AddCard from "../components/AddCard";
+import SelectedBoard from "../components/SelectedBoard";
 
-const SingleBoardView= () => {
+const SingleBoardView = () => {
   return (
-    <div className='SingleBoardView'>
+    <div className="SingleBoardView">
       <SelectedBoard></SelectedBoard>
       <AddCard></AddCard>
     </div>
-  )
+  );
 };
 
 export default SingleBoardView;

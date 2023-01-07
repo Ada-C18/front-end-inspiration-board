@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
+  align-items:flex-start;
   justify-content: center;
 }
 
@@ -15,7 +15,13 @@
   min-width: 100vw;
   height: 30vh;
   background-color:  #6AA6A6;
+  overflow:hidden;
   font-family: 'Caveat';
+  color: #014040;
+}
+
+#home-header h1 {
+  position: relative;
 }
 
 #home-header h2 {
@@ -32,6 +38,8 @@
   justify-content: flex-start;
   padding:none;
   margin:none;
+  overflow:scroll;
+  overscroll-behavior: none;
 }
 
 #home-nav {
@@ -46,7 +54,10 @@
   min-height: 70vh;
   position: sticky;
   right: 0;
+  top: 30vh;
   background-color: #C1D6D9;
+  overflow: scroll;
+  overscroll-behavior-y: none;
 }
 
 #home-nav button {

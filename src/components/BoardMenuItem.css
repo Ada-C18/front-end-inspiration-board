@@ -5,20 +5,22 @@
   align-self:stretch;
   clear: left;
   min-height: 7vh;
+  color: #014040;
+  border: none;
+  text-align: center;
+  display: block;
+  /* text-decoration: underline; */
 }
 
 .pink {
-  border: none;
   background-color: inherit;
-  text-align: center;
-  text-decoration: underline;
-  display: block;
 }
 
 .white {
   background-color: whitesmoke;
-  border: none;
-  text-align: center;
-  text-decoration: underline;
-  display: block;
+}
+
+#cardCount {
+  font-size: smaller;
+  font-style: italic;
 }

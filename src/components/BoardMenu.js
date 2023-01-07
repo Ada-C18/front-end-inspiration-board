@@ -1,12 +1,12 @@
-import './BoardMenu.css';
-import BoardMenuItem from './BoardMenuItem';
+import "./BoardMenu.css";
+import BoardMenuItem from "./BoardMenuItem";
 
 const BoardMenu = (props) => {
-  // map through data to create an array of BoardMenuItems  
-  // return that as an unordered list without bullets 
-  // ** add a color prop for alternating colors on menu ? 
+  // map through data to create an array of BoardMenuItems
+  // return that as an unordered list without bullets
+  // ** add a color prop for alternating colors on menu ?
 
-  console.log(props)
+  console.log(props);
 
   const getBoardMenuItemList = () => {
     return props.data.map((board) => {
@@ -16,18 +16,20 @@ const BoardMenu = (props) => {
           id={board.id}
           title={board.board_title}
           owner={board.board_owner}
-          class={(board.id % 2 === 0) ? 'pink' : 'white'}
+          cards={board.card_id.length}
+          class={board.id % 2 === 0 ? "pink" : "white"}
         />
-      )
-    })
-  }
-  
-  return (<div id='menu-list'>
-            <ul> {getBoardMenuItemList(props)} </ul>
-          </div>)
+      );
+    });
+  };
+
+  return (
+    <div id="menu-list">
+      <ul> {getBoardMenuItemList(props)} </ul>
+    </div>
+  );
 };
 
 // BoardMenu.propTypes = {}
-
 
 export default BoardMenu;

@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 
 import "./Home.css";
-import BoardMenu from "./BoardMenu";
+import BoardMenu from "../components/BoardMenu";
 
 const Home = (props) => {
   const dummyData = useLoaderData();
