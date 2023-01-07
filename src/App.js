@@ -8,17 +8,6 @@ import NewCardForm from './Components/NewCardForm';
 
 
 
-// const getAllBoardsApi = () => {
-//   return axios
-//     .get(`${process.env.REACT_APP_BACKEND_URL}/board`)
-//     .then((response) => {
-//       return response.data;
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };
-
 const getAllBoardsApi = async () => {
   const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/board`
   );
@@ -48,7 +37,6 @@ function App() {
   };
 
 
-
   useEffect(() => {
     getAllBoards();
   }, []);
@@ -59,16 +47,6 @@ function App() {
     setIsBoardFormVisible(!isBoardFormVisible);
   };
 
-  // const addBoard = (boardData) => {
-  //   axios
-  //     .post(`${process.env.REACT_APP_BACKEND_URL}/board`, boardData)
-  //     .then((response) => {
-  //       const newBoards = [...allBoardData];
-  //       newBoards.push({ ...response.data.board });
-  //       setAllBoardData(newBoards);
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
 
   const addBoard = async (boardData) => {
     const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/board`, boardData)
@@ -96,13 +74,11 @@ function App() {
       <button onClick={toggleNewBoardForm}>
         {isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}
       </button>
-      <section>
-        {selectedBoard.board_id ? <CardList board={selectedBoard} /> : ''}
-      </section>
 
       {/* Card Form */}
       {showCardForm ? (
         <section>
+          <CardList board={selectedBoard} />
           <h3>Create a New Card</h3>
           <NewCardForm />
         </section>

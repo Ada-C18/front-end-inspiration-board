@@ -1,8 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from './Card';
-// import NewCardForm from './NewCardForm';
 import PropTypes from 'prop-types';
+
+
+// const getAllCards = () => {
+//   return getAllCardsApi()
+//   .then(cards => {
+//     setCardsData(cards);
+//   })
+// };
+
+// useEffect(() => {
+//   getAllCards();
+// }, [props.board]);
+
 
 
 const convertFromApi = (apiCard) => {
@@ -11,59 +23,67 @@ const convertFromApi = (apiCard) => {
   return newCard;
 };
 
-// const getAllCardsApi = () => {
-//   return axios
-//   .get(`${process.env.REACT_APP_BACKEND_URL}/cards`)
-//   .then(response => {
-//     return response.data.map(convertFromApi);
-//   })
-//   .catch((error) => {console.log(error);
-//   })
-// };
 
 const getAllCardsApi = async () => {
-  const response = await  axios.get(`${process.env.REACT_APP_BACKEND_URL}/cards`
+  const response = await  axios.get(`${process.env.REACT_APP_BACKEND_URL}/board.cards`
   )
   response.data.map(convertFromApi);
 };
+
 
 const CardList = (props) => {
 
   const [cardsData, setCardsData] = useState([]);
 
-  const getAllCards = () => {
-    return getAllCardsApi()
-    .then(cards => {
-      setCardsData(cards);
-    })
-  };
 
   useEffect(() => {
+    const getAllCards = async () => {
+      const cards = await getAllCardsApi();
+      setCardsData(cards);
+    };
     getAllCards();
   }, [props.board]);
 
-  const deleteCard = (card) => {
-    axios
-    .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}`)
-    .then((response) => {
-      const newCardsData = cardsData.filter((existingCard) => {
-        return existingCard.card_id !== card.card_id;
-      });
-      setCardsData(newCardsData);
-    }).catch((error) => {console.log(error);
+
+  // const deleteCard = (card) => {
+  //   axios
+  //   .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}`)
+  //   .then((response) => {
+  //     const newCardsData = cardsData.filter((existingCard) => {
+  //       return existingCard.card_id !== card.card_id;
+  //     });
+  //     setCardsData(newCardsData);
+  //   }).catch((error) => {console.log(error);
+  //   });
+  // };
+
+  const deleteCard = async (card) => {
+    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}`);
+    const newCardsData = cardsData.filter((existingCard) => {
+      return existingCard.card_id !== card.card_id;
     });
+    setCardsData(newCardsData);
   };
 
-  const handleLikes = (card) => {
-    axios
-    .put(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/like`)
-    .then((response) => {
-      const newCardsData = cardsData.map((existingCard) => {
-        return existingCard.card_id !== card.card_id ? existingCard : {...card, likes_count: card.likes_count + 1}
+
+  // const handleLikes = (card) => {
+  //   axios
+  //   .put(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/like`)
+  //   .then((response) => {
+  //     const newCardsData = cardsData.map((existingCard) => {
+  //       return existingCard.card_id !== card.card_id ? existingCard : {...card, likesCount: card.likes_count + 1}
+  //     });
+  //     setCardsData(newCardsData);
+  //   }).catch((error) => {console.log(error);
+  //   });
+  // };
+
+  const handleLikes = async (card) => {
+    await axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/like`)
+    const newCardsData = cardsData.map((existingCard) => {
+      return existingCard.card_id !== card.card_id ? existingCard : {...card, likesCount: card.likes_count + 1}
       });
-      setCardsData(newCardsData);
-    }).catch((error) => {console.log(error);
-    });
+    setCardsData(newCardsData);
   };
 
   const cards = cardsData.map((card) => {
@@ -73,26 +93,12 @@ const CardList = (props) => {
         deleteCard={deleteCard}/>)
   });
 
-  // const newCard = (message) => {
-  //   axios.post(
-  //       `${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.board_id}/cards`,
-  //       {message}
-  //   ).then((response) => {
-  //     const cards = [...cardsData];
-  //     cards.push(response.data.card);
-  //     setCardsData(cards);
-  //   }).catch((error) => {console.log(error);
-  //   });
-  // };
 
   return (<section className='cards__container'>
-      <section>
         <h2>Cards for {props.board.title}</h2>
         <div>
           {cards}
         </div>
-      </section>
-      {/* <NewCardForm newCard={newCard}/> */}
     </section>
     )
 };
