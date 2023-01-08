@@ -14,7 +14,7 @@ const NewCardForm = () => {
   return (
 
     <form className="card__form">
-      <h1 className="form__header">⚡️ Create a Message ⚡️</h1>
+      <h1 className="form__header">✨ Create a Message ✨</h1>
       <div className="new-card__field">
         <label htmlFor="message">Message</label>
         <input
@@ -25,9 +25,10 @@ const NewCardForm = () => {
           value={cardForm.message}
           onChange={onMessageChange}
         />
+        <p className='required'>* required</p>
         <p>Preview: {cardForm.message}</p>
         <button
-          className="submit__button"
+          className="card__submit__button"
           type="submit"
           // value="Submit"
           disabled={!cardForm.message}

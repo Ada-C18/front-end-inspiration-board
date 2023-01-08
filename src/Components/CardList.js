@@ -47,38 +47,40 @@ const CardList = (props) => {
         deleteCard={deleteCard}/>)
   });
 
-  // const [data, setData] = useState([]);
-  // const [sortType, setSortType] = useState('albums');
+  const [data, setData] = useState([]);
+  const [sortType, setSortType] = useState('albums');
 
-  // useEffect(() => {
-  //   const sortArray = type => {
-  //     const types = {
-  //       alphabetically: 'message',
-  //       likes: 'Likes_count',
-  //       id: 'id',
-  //     };
-  //     const sortProperty = types[type];
-  //     const sorted = [...cards].sort((a, b) => b[sortProperty] - a[sortProperty]);
-  //     console.log(sorted)
-  //     setData(sorted);
-  //   };
+  useEffect(() => {
+    const sortArray = type => {
+      const types = {
+        alphabetically: 'message',
+        likes: 'Likes_count',
+        id: 'id',
+      };
+      const sortProperty = types[type];
+      const sorted = [...cards].sort((a, b) => b[sortProperty] - a[sortProperty]);
+      console.log(sorted)
+      setData(sorted);
+    };
 
-  //   sortArray(sortType);
-  // }, [sortType]);
+    sortArray(sortType);
+  }, [sortType]);
 
 
   return (<section className='cards__container'>
-        <h2 className='cards__header'>☀️ Messages for {props.board.title} ☀️</h2>
-        <div>
+        <h2 className='cards__header'>🌟 Messages for {props.board.title} 🌟</h2>
+        <div className='cards'>
           {cards}
         </div>
-        {/* Sort by
-        <select>
-        <option value='alphabetically'>Alphabetically</option>
-        <option value='likes'>Likes</option>
-        <option value='id'>Order Created</option>
-</select>
-    <select onChange={(e) => setSortType(e.target.value)}></select> */}
+        <section className='sort_by'>
+          Sort messages by
+          <select>
+            <option value='alphabetically'>Alphabetically</option>
+            <option value='likes'>Likes</option>
+            <option value='id'>Order Created</option>
+          </select>
+        </section>
+
     </section>
     
     )

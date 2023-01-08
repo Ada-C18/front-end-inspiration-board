@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 300px;
     row-gap: 2px;
 }
@@ -19,11 +20,11 @@
 }
 
 .submit__button {
-    background-color: pink;
+    background-color: lime;
+    font-size: x-small;
 }
 
 .required {
     font-size: x-small;
     color: red;
-
 }
