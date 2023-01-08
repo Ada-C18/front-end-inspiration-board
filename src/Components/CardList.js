@@ -68,7 +68,7 @@ const CardList = (props) => {
 
 
   return (<section className='cards__container'>
-        <h2 className='cards__header'>🌟 Messages for {props.board.title} 🌟</h2>
+        <h2 className='cards__header'>🌟 {props.board.title} Messages 🌟</h2>
         <div className='cards'>
           {cards}
         </div>

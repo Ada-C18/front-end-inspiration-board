@@ -12,6 +12,7 @@
     align-items: center;
     width: 300px;
     row-gap: 2px;
+    opacity: 0.9;
 }
 
 .form__header {

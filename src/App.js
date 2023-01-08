@@ -59,13 +59,15 @@ function App() {
 
 
   return (
-    <div className='whole__page'>
+    <div>
       <h1 className='App__header'>
         <RainbowText lightness={.5} saturation={1}>
           💫  No thoughts Just vibes Inspiration Board  💫
         </RainbowText>
       </h1>
-      <section className='all__board__container'>
+      <section style={{ 
+      backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgYknV4AaaHSWrEZmZFZsCZrcFsfKQeFqNeQ&usqp=CAU")` 
+    }} className='all__board__container'>
         <section className='board__container'>
           <h2 className='board_header'>🌟  Choose a Board to see their inspirational messages  🌟</h2>
           <section className='boards'>
@@ -84,7 +86,9 @@ function App() {
           </button>
         </section>
       </section>
-      <section className='card__container'>
+      <section  style={{ 
+      backgroundImage: `url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/734ced07-9d10-475f-b63a-cd31b48584e5/d2xhif2-df14212c-955e-44f1-8183-a7271d277cf0.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzczNGNlZDA3LTlkMTAtNDc1Zi1iNjNhLWNkMzFiNDg1ODRlNVwvZDJ4aGlmMi1kZjE0MjEyYy05NTVlLTQ0ZjEtODE4My1hNzI3MWQyNzdjZjAucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.c9PQZA9uwHQaNYlTpEUrKqP93NinlJ6ktXhmOxVhuU4")` 
+    }} className='card__container'>
           {/* Card Form */}
           {showCardForm ? (
             <section>
