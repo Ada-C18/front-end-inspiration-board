@@ -1,32 +1,40 @@
 // import "../styles/FormNewCard.css";
-// import { useState } from "react";
+import { useState } from "react";
 
-// const INITIAL_FORM ={
-//         message:"message",
-//     };
+const INITIAL_FORM ={
+        message:"message",
+    };
 
-// const NewCard = () => {
-//     const [formCard, setFormCard] = useState(INITIAL_FORM);
+const FormNewCard = (props) => {
+    const [formCard, setFormCard] = useState(INITIAL_FORM);
 
-//     const handleChange = (e) => {
-//         const newCardData = {
-//         ...formCard,
-//         [e.target.name]: e.target.value
-//         }
-//     }
+    const handleChange = (e) => {
+        const newCardData = {
+        ...formCard, board_id:props.boardId,
+        [e.target.name]: e.target.value
+        };
+        setFormCard(newCardData)
+    };
 
-//     return (
-//         <form>
-//         <label htmlFor="message"> Title</label>
-//             <input 
-//                 type="text" 
-//                 id="message" 
-//                 name="message"
-//                 value={formCard.message}  /> 
-//         </form>
-//     )
+    const handleNewCardSubmit =(e) =>{
+        e.preventDefault();
+        props.addCardCallbackFunc(formCard, props.boardId);
+    }
 
-// }
+    return (
+        <form onSubmit={handleNewCardSubmit}>
+        <label htmlFor="message"> Message </label>
+            <input 
+                type="text" 
+                id="message" 
+                name="message"
+                value={formCard.message}
+                onChange={handleChange}  />
+        <input type='submit' value='Add Card' />    
+        </form>
+    );
 
-// export default NewCard;
+}
+
+export default FormNewCard;
 

@@ -4,7 +4,8 @@ import { useState,  useEffect  } from "react";
 import CardList from "./components/CardList";
 import axios from "axios";
 import BoardList from './components/BoardList'
-import FormNewBoard from "./components/FormNewBoard";
+import FormNewBoard from './components/FormNewBoard';
+import FormNewCard from './components/FormNewCard'
 
 function App() {
   const [boardList, setBoardList] = useState([]);
@@ -50,6 +51,7 @@ function App() {
 
 //get cards from one board:
   const [cardList, setCardList] = useState([]);
+  const [boardId, setBoardId] = useState([]);
   const getOneBoard = (boardId) => {
     axios
       .get(`${URL}/boards/${boardId}`)
@@ -57,6 +59,7 @@ function App() {
           console.log(response)
           const newCardList = response.data
           setCardList(newCardList)
+          setBoardId(boardId)
           })
       .catch((err) => {
         console.log(err);
@@ -64,17 +67,15 @@ function App() {
   };
 
 // form -> updates backend with new card,
-const addCard = (newCardInfo) => {
+const addCard = (newCardInfo, boardId) => {
   axios.post( `${URL}/card`, newCardInfo)
   .then((response) => {
     const newCards = [...cardList];
-    // const newCardJson = response.data -> previous, erase?
-    // newCards.push(newCardJson);
     const newCardJson = {
       ...newCardInfo,
       'id': response.data.id
     }
-      newCards.push(newCardJson);
+    newCards.push(newCardJson);
     setCardList(newCards);
   })
   .catch((error) => {
@@ -131,7 +132,6 @@ const deleteCard = (cardId) => {
           <BoardList
               boardList={boardList}
               getOneBoard = {getOneBoard} 
-              // addCard ={addCard}
               />
           <br />
           <FormNewBoard 
@@ -143,6 +143,9 @@ const deleteCard = (cardId) => {
                 // countLikesTotal={countLikesTotal} 
                 />
           
+          <FormNewCard 
+            addCardCallbackFunc={addCard} 
+            boardId={boardId}  />
           
           
     </div>
