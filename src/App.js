@@ -8,8 +8,6 @@ import NewCardForm from './Components/NewCardForm';
 import RainbowText from 'react-rainbow-text';
 
 
-
-
 const getAllBoardsApi = async () => {
   const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/board`
   );
@@ -69,20 +67,20 @@ function App() {
       backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgYknV4AaaHSWrEZmZFZsCZrcFsfKQeFqNeQ&usqp=CAU")` 
     }} className='all__board__container'>
         <section className='board__container'>
-          <h2 className='board_header'>🌟  Choose a Board to see their inspirational messages  🌟</h2>
+          <h2 className='board_header'>🌟  Select a Board to see their inspirational messages  🌟</h2>
           <section className='boards'>
             <BoardList boardData={allBoardData} handleBoardClick={handleBoardClick} />
           </section>
-          <section className='chosen__board'>
+          <section className='select__board'>
             {!selectedBoard ? (<span>👆 Select a board 👆</span>) : 
-            (<span>🤩 You chose {selectedBoard.title} made by {selectedBoard.owner} 🤩</span>)}
+            (<span>🤩 You selected {selectedBoard.title} made by {selectedBoard.owner} 🤩</span>)}
           </section>
         </section>
         <section className='board__form'>
           <h3 className='new__board' >✨ Create a Board ✨</h3>
           {isBoardFormVisible ? <NewBoardForm addBoardCallback={addBoard} /> : ''}
           <button className="hide__button" onClick={toggleNewBoardForm}>
-          {isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}
+          {isBoardFormVisible ? 'Hide Form' : 'Show Form'}
           </button>
         </section>
       </section>

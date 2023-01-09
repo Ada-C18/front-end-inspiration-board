@@ -4,6 +4,7 @@
 
 .App__header {
   background-color: black;
+  font-family:monospace;
   min-height: 10vh;
   font-size:35pt;
   text-align: center;
@@ -27,6 +28,7 @@ padding: 20pt;
   background-color:darkviolet;
   font-size: x-large;
   color: white;
+  text-align: center;
 }
 
 .board__container {
@@ -37,18 +39,19 @@ padding: 20pt;
   opacity: 0.9;
 }
 
-.chosen__board {
+.select__board {
   font-size: large;
   font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
 }
 
-/* .boards {
+.boards {
   border-style: solid;
-} */
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-gap: 2rem;
+  margin: 2rem;
+}
 
 .new__board {
   font-size: large;
@@ -71,6 +74,7 @@ padding: 20pt;
 
 .hide__button {
   background-color:blue;
+  color: white;
 }
 
 .card__container {
