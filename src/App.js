@@ -3,6 +3,7 @@ import axios from "axios";
 import "./App.css";
 import BoardList from "./components/BoardList.js";
 import CardList from "./components/CardList.js";
+import NewBoardForm from "./components/NewBoardForm.js";
 
 // const INITIAL_CARDS = [
 //   {
@@ -23,7 +24,7 @@ import CardList from "./components/CardList.js";
 // ];
 
 function App() {
-  // boardsList axios call 
+  // boardsList axios call
   const [boardsList, setBoardsList] = useState([]);
 
   const URL = "http://localhost:5000/boards";
@@ -48,7 +49,7 @@ function App() {
 
   useEffect(fetchAllBoards, []);
 
-  // cardsList axios call 
+  // cardsList axios call
   const [cardsList, setCardsList] = useState([]);
 
   const cardsURL = "http://localhost:5000/cards";
@@ -73,10 +74,25 @@ function App() {
 
   useEffect(fetchAllCards, []);
 
+  const addBoard = (newBoardInfo) => {
+    //use axios.post request here
+    //handling .then to update frontend, update state variable with setBikesList()
+    axios
+      .post(URL, newBoardInfo)
+      .then((response) => {
+        // console.log(response);
+        fetchAllBoards();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
-      <BoardList boardEntries={boardsList}></BoardList>
-      <CardList cardEntries={cardsList}></CardList>
+      <BoardList boardEntries={boardsList} />
+      <CardList cardEntries={cardsList} />
+      <NewBoardForm addBoardCallbackFunc={addBoard} />
     </div>
   );
 }
