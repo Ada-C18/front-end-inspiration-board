@@ -20,6 +20,7 @@ const Card = (props) => {
         {/* <button type="button" onClick={props.onUpdateLikes}>
             +1
         </button> */}
+        {/* <button type="button" onClick={() => props.onDeleteCard(props.id)}> */}
         <button type="button" onClick={() => props.onDeleteCard(props.id)}>
             Delete
         </button>

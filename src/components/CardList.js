@@ -19,7 +19,7 @@ const CardList = (props) => {
                 key={id}
                 // onUpdateLikes={updateLikes}
                 // onLikesCount ={likesCount}
-                // onDeleteCard ={props.onDeleteCard}
+                onDeleteCard={props.onDeleteCard}
                 />
             ))}
         </div>

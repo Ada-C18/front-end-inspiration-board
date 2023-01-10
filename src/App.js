@@ -112,7 +112,7 @@ function App() {
             <h1 className="card"> Cards for {selectedBoard.title} </h1>
             {displayCards}
           
-            <CardList cards={cardData}> onDeleteCard={deleteCard}</CardList>
+            <CardList cards={cardData} onDeleteCard={deleteCard}></CardList>
             <h1 className="card"> Create a New Card</h1>
             <NewCardForm onUpdateCardData={updateCardData} />
           </div>
