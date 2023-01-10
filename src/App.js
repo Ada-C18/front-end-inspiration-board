@@ -9,12 +9,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">Inspiration Board</header>
-      <p>
+      <div>
         <NewBoardForm />
-      </p>
-      <p>
+      </div>
+      <div>
         <NewCardForm />
-      </p>
+      </div>
     </div>
   );
 }
