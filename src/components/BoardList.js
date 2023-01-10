@@ -27,4 +27,9 @@ const BoardList = function (props) {
   );
 };
 
+BoardList.propTypes = {
+  handleBoardSelect: PropTypes.func.isRequired,
+  boardListData: PropTypes.array.isRequired,
+};
+
 export default BoardList;
