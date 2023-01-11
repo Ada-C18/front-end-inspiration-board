@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
+import CardsList from "./components/CardsList";
 import Board from "./components/Board";
 
 function App() {
@@ -48,8 +49,9 @@ function App() {
         <NewBoardForm createNewBoard={createNewBoard} />
         <span onClick={NewBoardForm}></span>
       </div>
+
       <div>
-        <NewCardForm />
+        <CardsList />
       </div>
     </div>
   );

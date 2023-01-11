@@ -1,10 +1,11 @@
 import { useState } from "react";
+import createNewCard from "./CardsList";
 
 const OriginalCardFormState = {
   message: "",
 };
 
-const NewCardForm = ({ handleCardSubmit }) => {
+const NewCardForm = ({ createNewCard }) => {
   const [cardFormData, setCardFormData] = useState(OriginalCardFormState);
 
   const handleCardChange = (event) => {
@@ -20,7 +21,7 @@ const NewCardForm = ({ handleCardSubmit }) => {
 
   const handleCSubmit = (event) => {
     event.preventDefault();
-    handleCardSubmit(cardFormData);
+    createNewCard(cardFormData);
     setCardFormData(OriginalCardFormState);
   };
 
