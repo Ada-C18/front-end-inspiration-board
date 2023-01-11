@@ -1,11 +1,12 @@
 import { useState } from "react";
+import createNewBoard from "../App.js";
 
 const OriginalFormState = {
   title: "",
   owner: "",
 };
 
-const NewBoardForm = ({ handleBoardSubmit }) => {
+const NewBoardForm = ({ createNewBoard }) => {
   const [boardFormData, setBoardFormData] = useState(OriginalFormState);
 
   const handleChange = (event) => {
@@ -18,7 +19,7 @@ const NewBoardForm = ({ handleBoardSubmit }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    handleBoardSubmit(boardFormData);
+    createNewBoard(boardFormData);
     setBoardFormData(OriginalFormState);
   };
 

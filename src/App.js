@@ -37,9 +37,9 @@ function App() {
       });
   };
 
-  const handleBoardSubmit = (data) => {
-    createNewBoard(data).then(newBoard);
-  };
+  // const handleBoardSubmit = (data) => {
+  //   createNewBoard(data).then(newBoard);
+  // };
 
   return (
     <div className="App">
