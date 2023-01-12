@@ -5,17 +5,21 @@ import PropTypes from 'prop-types';
 
 // props = cardData
 const CardContainer = (props) => {
-    const cards = props.cards.map((card, i) => {
-        return <Card
-        key={i}
-        message={card.message}
-        />
-    })
+    // const cards = props.cards.map((card, i) => {
+    //     return <Card
+    //     key={i}
+    //     message={card.message}
+    //     />
+    // })
     
     return (
-        <div>
-            {cards}
-        </div>
+        <section className='all-cards__section'>
+            <h2 id='current-board-name'>Current Board Name</h2>
+            <div id="card-container-line" />
+            <div className='all-cards__container'>
+            {/* {cards} */}
+            </div>
+        </section>
     ) 
 };
 

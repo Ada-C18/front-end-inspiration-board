@@ -1,5 +1,5 @@
-.all-boards__section {
-    grid-row: 2 / 3;
+.new-card__section {
+    grid-row: 4 / 5;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -9,9 +9,10 @@
     font-size: 1rem;
     padding-top: 0;
     padding-bottom: 0;
+    
 }
 
-#all-boards {
+#add-card {
     font-size: 1.5rem;
     font-weight: 100;
     margin: 0;
@@ -26,11 +27,22 @@
     display:inline-block;
 }
 
-.all-boards__container {
+.new-card__fields {
     width: 20rem;
-    height: 6rem;
-    overflow: auto;
     background-color: rgb(249,247,241, .3);
     border-radius: .4rem;
     padding: .25rem;
+}
+
+input {
+    display: block;
+
+}
+
+label, input {
+    line-height: 1rem;
+}
+
+button {
+    margin-top: .45rem;
 }

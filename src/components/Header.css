@@ -11,12 +11,12 @@ h1 {
 #inspo {
     grid-column-start: 1;
     text-align: left;
-    padding-left: 1rem;
+    padding-left: 1.5rem;
 }
 
 #board {
     grid-column-start: 4;
     text-align: right;
-    padding-right: 1rem;
+    padding-right: 1.5rem;
 }
 

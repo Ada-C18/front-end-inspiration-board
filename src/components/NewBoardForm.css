@@ -1,15 +1,17 @@
-.new-board__form {
+.new-board__section {
     grid-row: 3 / 4;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
     flex-wrap: nowrap;
-    padding: 1rem;
+    padding: 1.5rem;
     font-size: 1rem;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
-h2 {
+#add-board {
     font-size: 1.5rem;
     font-weight: 100;
     margin: 0;
@@ -24,6 +26,13 @@ h2 {
     display:inline-block;
 }
 
+.new-board__fields {
+    width: 20rem;
+    background-color: rgb(249,247,241, .3);
+    border-radius: .4rem;
+    padding: .25rem;
+}
+
 input {
     display: block;
 
@@ -35,4 +44,5 @@ label, input {
 
 button {
     margin-top: .45rem;
+    display: block;
 }

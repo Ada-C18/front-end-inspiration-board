@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-// import BoardContainer from './components/BoardContainer';
-// import CardContainer from './components/CardContainer';
+import BoardContainer from './components/BoardContainer';
+import CardContainer from './components/CardContainer';
 import Header from './components/Header';
 import NewBoardForm from './components/NewBoardForm';
+import NewCardForm from './components/NewCardForm';
 
 function App() {
   const [boards, setBoards] = useState([]);
@@ -37,8 +38,9 @@ function App() {
     <div className="App">
       <Header />
       <NewBoardForm addBoardCallback={addBoard} afterSubmitMessage={message} />
-      {/* <BoardContainer boards={boardData} />
-      <CardContainer cards={cardData} /> */}
+      <BoardContainer />
+      <NewCardForm addBoardCallback={addBoard} afterSubmitMessage={message} />
+      <CardContainer />
     </div>
   );
 }
