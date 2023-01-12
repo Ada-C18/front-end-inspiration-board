@@ -25,6 +25,7 @@ p {
   display: flex;
   border: black;
   size: 50px;
+  font-size: 18px;
 }
 
 .button {
@@ -34,5 +35,12 @@ p {
 
 .cards_container {
   display: grid;
-  grid-template: 1fr 1fr 1fr;
+  grid-template: 1fr 1fr/1fr 1fr;
+}
+
+.card {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

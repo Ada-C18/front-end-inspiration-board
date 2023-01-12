@@ -1,4 +1,5 @@
 .each_board_name {
+    display: flex;
     font-weight: bold;
     color: black;
     height: 50px;
