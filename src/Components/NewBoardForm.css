@@ -10,21 +10,22 @@
 }
 
 .new-board__fields label {
-    font-size: small;
+    font-size: medium;
 }
 
 
 .invalid-form-input {
-    border: red solid 10px;
-    box-shadow: 0 0 10px red;
+    border: red solid;
+    box-shadow: red;
 }
 
 .submit__button {
     background-color: lime;
     font-size: x-small;
+    font-weight: bold;
 }
 
 .required {
-    font-size: x-small;
+    font-size: small;
     color: red;
 }
