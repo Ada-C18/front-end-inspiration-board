@@ -10,7 +10,7 @@ const Board = (props) => {
   });
 
   return (
-    <div>
+    <div className="each_board_name">
       <h1> Boards</h1>
       <ol> {returnedBoards} </ol>
     </div>

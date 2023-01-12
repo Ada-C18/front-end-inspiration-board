@@ -88,39 +88,47 @@ function App() {
   };
 
   return (
-    <div>
-      <header>INSPIRATION BOARD</header>
+    <div className="main">
+      <header className="header">INSPIRATION BOARD</header>
       <section>
-        <Board boards={boardData} onBoardClicked={handleBoardClicked} />
-        <h1> Select Board</h1>
-        {/* <p>{selectedBoard.title} {selectedBoard.owner}</p> */}
-        <p>
-          {selectedBoard.id
-            ? `${selectedBoard.title}  ${selectedBoard.owner}`
-            : "Please select a Board from the Board List!"}
-        </p>
-        <h1> Create A New Board </h1>
-        {showForm && <NewBoardForm onUpdateBoardData={updateBoardData} />}
-        <button type="button" onClick={() => setShowForm(!showForm)}>
-          {" "}
-          {showForm === true ? "Hide New Board Form" : "Show New Board Form"}
-        </button>
+        <div className="boards_container">
+          <Board boards={boardData} onBoardClicked={handleBoardClicked} />
+          <div>
+            <h1> Select Board</h1>
+            {/* <p>{selectedBoard.title} {selectedBoard.owner}</p> */}
+            <p>
+              {selectedBoard.id
+                ? `${selectedBoard.title}  ${selectedBoard.owner}`
+                : "Please select a Board from the Board List!"}
+            </p>
+          </div>
+          <div>
+            <h1> Create A New Board </h1>
+            {showForm && <NewBoardForm onUpdateBoardData={updateBoardData} />}
+            <button type="button" onClick={() => setShowForm(!showForm)}>
+              {" "}
+              {showForm === true
+                ? "Hide New Board Form"
+                : "Show New Board Form"}
+            </button>
+          </div>
+        </div>
       </section>
-      <section>
+      <section className="cards_container">
         {selectedBoard.id && (
           <div>
             <h1 className="card"> Cards for {selectedBoard.title} </h1>
             {displayCards}
-          
+
             <CardList cards={cardData} onDeleteCard={deleteCard}></CardList>
             <h1 className="card"> Create a New Card</h1>
             <NewCardForm onUpdateCardData={updateCardData} />
           </div>
         )}
       </section>
-      <footer>
+      {/* <footer>
         <p> Click here to delete all boards and cards</p>
-      </footer>
+      </footer> */}
     </div>
   );
 }

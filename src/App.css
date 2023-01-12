@@ -1,7 +1,38 @@
-.boards_list {
-  max-height: 9rem;
-  min-height: 9rem;
-  overflow: scroll;
-  margin-right: 2rem;
-  border: black solid 1px;
+* {
+  background-image: url(../public/corkboard.jpg)
+}
+
+h1 {
+  color: blue;
+}
+
+p {
+  color:black;
+  font-weight: bold;
+}
+
+.header{
+  font-size: 50px;
+  color: darkcyan;
+  align-items: center;
+}
+.boards_container {
+  display: grid;
+  background-color: antiquewhite;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.board_display {
+  display: flex;
+  border: black;
+  size: 50px;
+}
+
+.button {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+.cards_container {
+  display: grid;
+  grid-template: 1fr 1fr 1fr;
 }
