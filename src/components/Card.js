@@ -1,4 +1,4 @@
-const Card = (props) => {
+const Card = ({message, likesCount}) => {
 
   return (
     <p>Card</p>

@@ -1,17 +1,60 @@
-import PropTypes from 'prop-types';
-import Card from './Card';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Card from "./Card";
+import NewCardForm from "./NewCardForm";
 
+// {
+//   "cards": [
+//     {
+//         "id": 1,
+//         "likes_count": 0,
+//         "message": "This is a new card!"
+//     },
+//     {
+//         "id": 2,
+//         "likes_count": 0,
+//         "message": "We've got this!"
+//     }
+// ],
+// "id": 1,
+// "owner": "Sarah",
+// "title": "testing"
+// }
 
+const CardList = ({board}) => {
+  const [cardsData, setCardsData] = useState([]);
 
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${board.id}/cards`)
+    .then((response) => {
+      console.log(response.data);
+      setCardsData(response.data)
+    })
+    .catch( (error) => {
+      console.log(error);
+    });
+  }, [board]);
 
-const CardList = ({ cardList }) => {
+  const cardComponent = cardsData.map((card) => {
+    return (
+      <ul>
+        <Card card={card}/>
+      </ul>
+    );
+  });
 
-  // for (const card of cardList) {
-
-  // }
   return (
-    <p>CardList</p>
+    <div>
+      <section>
+        <h2>Create A New Card</h2>
+        <NewCardForm></NewCardForm>
+      </section>
+      <section>
+        <h1>Cards for {board.title}</h1>
+        {cardComponent}
+      </section>
+    </div>
   );
-};
+  };
 
-export default CardList
+export default CardList;

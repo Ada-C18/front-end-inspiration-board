@@ -10,7 +10,8 @@ function App() {
   const [boardsList, setBoardsList] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState({
       title: '',
-      owner: ''
+      owner: '',
+      id: null
     }
 );
   const [selectedBoardLabel, setSelectedBoardLabel] = useState("Select A Board");
@@ -41,7 +42,11 @@ function App() {
         const selectedBoardInfo = `${boardTitle} - ${boardOwner}`;
         setSelectedBoardLabel(selectedBoardInfo);
         setSelectedBoardTitle(boardTitle)
-        setSelectedBoard(board)
+        setSelectedBoard({
+          title: `${boardTitle}`,
+          owner: `${boardOwner}`,
+          id: `${boardId}`
+        })
       };
     };
   };
@@ -74,9 +79,11 @@ function App() {
           <p>{selectedBoardLabel}</p>
         </section>
         <section>
-          <h2>Create A New Card</h2>
-          <NewCardForm></NewCardForm>
+        {selectedBoard.board_id ? <NewCardForm></NewCardForm> : ''}
+          {/* <h2>Create A New Card</h2>
+          <NewCardForm></NewCardForm> */}
         </section>
+        
       </header>
       <aside>
         <section>
@@ -89,10 +96,9 @@ function App() {
         </section>
       </aside>
       <main>
-        <div>
-          <h1>Cards for {selectedBoardTitle}</h1>
-          <CardList></CardList>
-        </div>
+        {selectedBoard.board_id ? <CardList board={selectedBoard}></CardList> : ''}
+        {/* <h1>Cards for {selectedBoardTitle}</h1>
+        <CardList board={selectedBoard}></CardList> */}
       </main>
     </div>
   );
