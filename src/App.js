@@ -41,10 +41,7 @@ function App() {
         const selectedBoardInfo = `${boardTitle} - ${boardOwner}`;
         setSelectedBoardLabel(selectedBoardInfo);
         setSelectedBoardTitle(boardTitle)
-        setSelectedBoard({
-          title: `${boardTitle}`,
-          owner: `${boardOwner}`
-        })
+        setSelectedBoard(board)
       };
     };
   };
@@ -66,6 +63,8 @@ function App() {
       </ul>
     );
   });
+
+  const [cardList, setCardList] = useState([]);
 
   return (
     <div className="container">

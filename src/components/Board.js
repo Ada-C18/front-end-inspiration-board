@@ -5,7 +5,7 @@ const Board = ({ board, onBoardSelect }) => {
   //   onBoardSelect(board.id);
   // };
 
-  return <li onClick={() => onBoardSelect(board.id)}>{board.title}</li>;
+  return <li onClick={()=> onBoardSelect(board.id)}>{board.title}</li>;
 };
 
 Board.propTypes = {
