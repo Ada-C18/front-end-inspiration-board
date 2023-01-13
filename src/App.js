@@ -17,7 +17,8 @@ const App = function () {
   };
 
   const testBoardListData = testData[0];
-  const [boardListState, setBoardListState] = useState(testBoardListData);
+  const kDefaultBoardList = [{ board_id: 0, name: '', owner: '' }];
+  const [boardListState, setBoardListState] = useState(kDefaultBoardList);
   const [currentBoardState, setCurrentBoardState] = useState(
     boardListState[0].board_id
   );
