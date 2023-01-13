@@ -5,7 +5,7 @@ import './CurrentBoard.css';
 
 const CurrentBoard = function (props) {
   const currentBoardObj = props.boardListData.find(
-    (boardObj) => boardObj.id === props.currentBoardState
+    (boardObj) => boardObj.board_id === props.currentBoardState
   );
 
   return (

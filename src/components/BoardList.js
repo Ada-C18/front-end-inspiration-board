@@ -6,7 +6,7 @@ import './BoardForm.css';
 const BoardList = function (props) {
   const renderOption = function (boardObj) {
     return (
-      <option key={boardObj.id.toString()} value={boardObj.id}>
+      <option key={boardObj.board_id.toString()} value={boardObj.board_id}>
         {boardObj.name}
       </option>
     );

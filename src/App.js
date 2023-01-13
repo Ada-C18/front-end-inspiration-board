@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import BoardForm from './components/BoardForm';
 import BoardList from './components/BoardList';
 import CurrentBoard from './components/CurrentBoard';
 import testData from './data/test.json';
+import { getAllBoards } from './API/InspirationAPI';
 
 const App = function () {
+  // load data from API after component load
+  useEffect(() => {
+    getAllBoards(setBoardListState);
+  }, []);
+
   const handleNewBoard = function (newBoardData) {
     console.log(JSON.stringify(newBoardData));
   };
@@ -13,7 +19,7 @@ const App = function () {
   const testBoardListData = testData[0];
   const [boardListState, setBoardListState] = useState(testBoardListData);
   const [currentBoardState, setCurrentBoardState] = useState(
-    boardListState[0].id
+    boardListState[0].board_id
   );
 
   const handleBoardSelect = function (boardID) {
