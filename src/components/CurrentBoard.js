@@ -4,9 +4,13 @@ import PropTypes from 'prop-types';
 import './CurrentBoard.css';
 
 const CurrentBoard = function (props) {
-  const currentBoardObj = props.boardListData.find(
-    (boardObj) => boardObj.board_id === props.currentBoardState
-  );
+  console.log(props.currentBoardState);
+  // find the board object matching state OR
+  // use the first board in list
+  const currentBoardObj =
+    props.boardListData.find(
+      (boardObj) => boardObj.board_id === props.currentBoardState
+    ) || props.boardListData[0];
 
   return (
     <div>

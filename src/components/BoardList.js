@@ -20,7 +20,13 @@ const BoardList = function (props) {
   return (
     <div id="boardList">
       <h2>Boards</h2>
-      <select name="Country" multiple size="5" onChange={handleSelect}>
+      <select
+        id="boardSelect"
+        name="Country"
+        multiple
+        size="5"
+        onChange={handleSelect}
+      >
         {props.boardListData.map(renderOption)}
       </select>
     </div>

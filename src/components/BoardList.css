@@ -1,3 +1,7 @@
 div#boardList {
     width:20vw;
 }
+
+#boardSelect {
+    width:100%
+}

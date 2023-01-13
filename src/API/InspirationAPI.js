@@ -8,11 +8,11 @@ const getAllBoards = async function (callback) {
   let response;
   try {
     response = await axios.get(BOARDS_ENDPOINT);
+    callback(response.data);
+    console.log(response.data);
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
-
-  callback(response.data);
 };
 
 export { getAllBoards };

@@ -8,9 +8,6 @@ import { getAllBoards } from './API/InspirationAPI';
 
 const App = function () {
   // load data from API after component load
-  useEffect(() => {
-    getAllBoards(setBoardListState);
-  }, []);
 
   const handleNewBoard = function (newBoardData) {
     console.log(JSON.stringify(newBoardData));
@@ -19,9 +16,7 @@ const App = function () {
   const testBoardListData = testData[0];
   const kDefaultBoardList = [{ board_id: 0, name: '', owner: '' }];
   const [boardListState, setBoardListState] = useState(kDefaultBoardList);
-  const [currentBoardState, setCurrentBoardState] = useState(
-    boardListState[0].board_id
-  );
+  const [currentBoardState, setCurrentBoardState] = useState(0);
 
   const handleBoardSelect = function (boardID) {
     setCurrentBoardState(parseInt(boardID));
@@ -29,6 +24,10 @@ const App = function () {
     console.log(currentBoardState);
   };
 
+  useEffect(() => {
+    getAllBoards(setBoardListState);
+    //console.log(boardListState);
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
