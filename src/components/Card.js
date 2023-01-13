@@ -1,8 +1,12 @@
-const Card = ({message, likesCount}) => {
+const Card = ({ card, updateLikedCard, deleteCard }) => {
 
   return (
-    <p>Card</p>
-
+    <ul>
+      <p>{card.message}</p>
+      <p>{card.likes_count}</p>
+      <p onClick = {()=>{updateLikedCard(card.id)}}>+1</p>
+      <p onClick = {()=>{deleteCard(card.id)}}>delete</p>
+    </ul>
   );
 };
 

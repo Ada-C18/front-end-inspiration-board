@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "./Card";
-import NewCardForm from "./NewCardForm";
+
 
 // {
 //   "cards": [
@@ -21,24 +21,26 @@ import NewCardForm from "./NewCardForm";
 // "title": "testing"
 // }
 
-const CardList = ({board}) => {
-  const [cardsData, setCardsData] = useState([]);
+const CardList = ({ board }) => {
+  console.log("This is CardList Component")
+  const [cardsList, setCardsList] = useState([]);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${board.id}/cards`)
+    axios
+    .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${board.id}/cards`)
     .then((response) => {
       console.log(response.data);
-      setCardsData(response.data)
+      setCardsList(response.data.cards)
     })
     .catch( (error) => {
       console.log(error);
     });
-  }, [board]);
+  }, [board.id]);
 
-  const cardComponent = cardsData.map((card) => {
+  const cardsComponent = cardsList.map((card) => {
     return (
       <ul>
-        <Card card={card}/>
+        <Card card={card} />
       </ul>
     );
   });
@@ -46,15 +48,11 @@ const CardList = ({board}) => {
   return (
     <div>
       <section>
-        <h2>Create A New Card</h2>
-        <NewCardForm></NewCardForm>
-      </section>
-      <section>
         <h1>Cards for {board.title}</h1>
-        {cardComponent}
+        {cardsComponent}
       </section>
     </div>
   );
-  };
+};
 
 export default CardList;

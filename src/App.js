@@ -12,10 +12,12 @@ function App() {
       title: '',
       owner: '',
       id: null
-    }
-);
+    });
+
   const [selectedBoardLabel, setSelectedBoardLabel] = useState("Select A Board");
-  const [selectedBoardTitle, setSelectedBoardTitle] = useState("Affirmation");
+  // const [selectedBoardTitle, setSelectedBoardTitle] = useState("Affirmation");
+  const cardsListVisible = selectedBoard.id ? <CardList board={selectedBoard}></CardList> : ''
+  const newCardFormVisible = selectedBoard.id ? <NewCardForm></NewCardForm> : ''
 
   useEffect(() => {
     axios
@@ -41,24 +43,12 @@ function App() {
         const boardOwner = board.owner;
         const selectedBoardInfo = `${boardTitle} - ${boardOwner}`;
         setSelectedBoardLabel(selectedBoardInfo);
-        setSelectedBoardTitle(boardTitle)
-        setSelectedBoard({
-          title: `${boardTitle}`,
-          owner: `${boardOwner}`,
-          id: `${boardId}`
-        })
+        // setSelectedBoardTitle(boardTitle)
+        setSelectedBoard(board)
       };
     };
   };
 
-  // const likeCounter = (newChatList) => {
-  //   for (const chat of newChatList) {
-  //     if (chat.liked === true) {
-  //       likeSum += 1;
-  //     };
-  //   };
-  //   setNumLikes(likeSum);
-  // };
 
   const boardsComponent = boardsList.map((board) => {
     
@@ -69,7 +59,6 @@ function App() {
     );
   });
 
-  const [cardList, setCardList] = useState([]);
 
   return (
     <div className="container">
@@ -79,11 +68,8 @@ function App() {
           <p>{selectedBoardLabel}</p>
         </section>
         <section>
-        {selectedBoard.board_id ? <NewCardForm></NewCardForm> : ''}
-          {/* <h2>Create A New Card</h2>
-          <NewCardForm></NewCardForm> */}
-        </section>
-        
+          {newCardFormVisible}
+        </section>    
       </header>
       <aside>
         <section>
@@ -96,9 +82,7 @@ function App() {
         </section>
       </aside>
       <main>
-        {selectedBoard.board_id ? <CardList board={selectedBoard}></CardList> : ''}
-        {/* <h1>Cards for {selectedBoardTitle}</h1>
-        <CardList board={selectedBoard}></CardList> */}
+          {cardsListVisible}
       </main>
     </div>
   );
