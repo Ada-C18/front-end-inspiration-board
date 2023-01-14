@@ -4,6 +4,7 @@ import { useState } from "react";
 // import Board from "./components/Board";
 import BoardsList from "./components/BoardsList";
 import NewBoardForm from "./components/NewBoardForm";
+import CardsList from "./components/CardsList";
 
 const boardsData = [
 	{
@@ -18,6 +19,11 @@ const boardsData = [
 	},
 ];
 
+const cardsData = [
+	{ cardId: 1, message: "great job" },
+	{ cardId: 2, message: "you're doing great" },
+];
+
 // -- Read Boards:
 // View a list of all boards.
 // Select a board.
@@ -25,7 +31,6 @@ const boardsData = [
 function App() {
 	// state for boardsList
 	const [boardsList, setBoardsData] = useState(boardsData);
-	
 
 	// form prop function
 	const addBoard = (newBoard) => {
@@ -46,6 +51,9 @@ function App() {
 	// Select Board
 	// Make boards clickable
 
+	// Add Card
+	const [cards, setCardsList] = useState(cardsData);
+
 	return (
 		<div className="App">
 			{/* <Board /> */}
@@ -53,6 +61,9 @@ function App() {
 
 			<p>{/* Selected: {title} - {owner} */}</p>
 			<NewBoardForm addBoard={addBoard} />
+
+			{/* Todo: might needto move CardsList component somewhere else, like Board component */}
+			<CardsList cardsList={cards} />
 		</div>
 	);
 }
