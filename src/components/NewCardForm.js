@@ -45,6 +45,8 @@ const NewCardForm = ({ addCardCallback }) => {
 					value={cardData.message}
 					onChange={onMessageChange}
 				/>
+				<p>Preview: {cardData.message}</p>
+
 				<button type="submit" disabled={isSubmitDisabled}>
 					Submit
 				</button>
