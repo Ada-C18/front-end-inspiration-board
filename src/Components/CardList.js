@@ -14,7 +14,7 @@ const CardList = (props) => {
           likes_count={card.likes_count}
           key={card.id}
           handleLikes={props.handleLikes}
-          deleteCard={props.deleteCard}
+          handleDeleteCard={props.handleDeleteCard}
         />
       ))}
     </ul>
@@ -31,7 +31,7 @@ CardList.propTypes = {
     })
   ),
   handleLikes: PropTypes.func.isRequired,
-  deleteCard: PropTypes.func.isRequired,  
+  handleDeleteCard: PropTypes.func.isRequired,  
 };
 
 export default CardList;

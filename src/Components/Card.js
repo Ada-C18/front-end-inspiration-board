@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import './Card.css'
+
 
 
 const Card = (props) => {
@@ -7,11 +9,13 @@ const Card = (props) => {
 
   return (
   <div className='each_card'> 
-    <p>{props.message}</p>
+    <p className='message'>
+      {props.message}
+    </p>
     <ul className='card_info'>
-      <li><p>{props.likes_count} 👍</p></li>
-      <li><p onClick={() => props.handleLikes(props.card)}>+1</p></li>
-      <li><p onClick={() => props.deleteCard(props.card)}>Delete</p></li>
+      <li className='like'><p onClick={() => props.handleLikes(props.id, props.board_id, props.message, props.likes_count)}>+1❤️</p></li>
+      <li><p>This message has {props.likes_count} ❤️s</p></li>
+      <li className='delete'><p onClick={() => props.handleDeleteCard(props.id)}>Delete Message</p></li>
     </ul>
   </div>);
 };
@@ -23,7 +27,7 @@ Card.propTypes = {
   message: PropTypes.string.isRequired,
   likes_count: PropTypes.number.isRequired,
   handleLikes: PropTypes.func.isRequired,
-  deleteCard: PropTypes.func.isRequired,
+  handleDeleteCard: PropTypes.func.isRequired,
 };
 
 export default Card;

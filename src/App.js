@@ -67,23 +67,36 @@ function App() {
     getAllCards();
   }, [getAllCardsApi] );
 
-  // Delete a card
-  const deleteCard = async (card) => {
-    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}`);
-    const newCardsData = cardsData.filter((existingCard) => {
-      return existingCard.card_id !== card.card_id;
-    });
-    setCardsData(newCardsData);
+  const getAllCards = async () => {
+    const cards = await getAllCardsApi();
+    setCardsData(cards);
   };
 
+  // Delete a card
+  const deleteCardApi = async (card_id) => {
+    const response = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/card/${card_id}`)
+    return response.data;
+
+  };
+
+  const handleDeleteCard = async (id) => {
+    await deleteCardApi(id);
+    return getAllCards()
+  }
+
   // Likes
-  const handleLikes = async (card) => {
-    await axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/like`)
+  const handleLikesApi = async (card_id, board_id, message, likes_count) => {
+    await axios.put(`${process.env.REACT_APP_BACKEND_URL}/card/${card_id}/like`)
     const newCardsData = cardsData.map((existingCard) => {
-      return existingCard.card_id !== card.card_id ? existingCard : {...card, likes_count: card.likes_count + 1}
+      return existingCard.card_id !== card_id ? existingCard : {card_id: card_id, board_id: board_id, message: message, likes_count: likes_count + 1}
       });
     setCardsData(newCardsData);
   };
+
+  const handleLikes = async () => {
+    await handleLikesApi();
+    return getAllCards()
+  }
 
   // Sort attempt **NOT WORKING**
   // const [data, setData] = useState([]);
@@ -122,7 +135,7 @@ function App() {
           </section>
           <section className='select__board'>
             {!selectedBoard ? (<span>👆 Select a board 👆</span>) : 
-            (<span>🤩 You selected {selectedBoard.title} made by {selectedBoard.owner} 🤩</span>)}
+            (<span>🤩 You selected 🌟 {selectedBoard.title} 🌟 made by {selectedBoard.owner} 🤩</span>)}
           </section>
         </section>
         <section className='create__board__form'>
@@ -145,17 +158,17 @@ function App() {
                 <CardList
                   cardsData={cardsData}
                   handleLikes={handleLikes}
-                  deleteCard={deleteCard}
+                  handleDeleteCard={handleDeleteCard}
                 />
+              </div>
               <section className='sort_by'>
-                Sort messages by
+                Sort messages
                 <select>
                   <option value='alphabetically'>Alphabetically</option>
-                  <option value='likes'>Likes</option>
-                  <option value='id'>Order Created</option>
+                  <option value='likes'>by Likes</option>
+                  <option value='id'>by Order Created</option>
                 </select>
               </section>
-              </div>
             </section>
             <section className='card__form'>
               <NewCardForm />

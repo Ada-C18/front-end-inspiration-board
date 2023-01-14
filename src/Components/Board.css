@@ -5,8 +5,5 @@
 }
 
 .each_board:hover {
-    font-weight: bolder;
-    font-size: x-large;
-    list-style-type: none;
     color: orangered;
 }

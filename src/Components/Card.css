@@ -1,15 +1,23 @@
 .each_card {
-    background-color: coral;
-    font-family: cursive;
-    font-size: large;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 300px;
-    row-gap: 2px;
+    background-color: black;
+    font-size: medium;
+    text-align: center;
+    color: white;
+    padding: 2pt;
+    margin: 10pt;
 }
 
 .card_info {
-    font-weight: bold;
+    list-style-type: none;
+    padding-right: 25pt;
+}
+
+.message {
+    font-family:fantasy;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+.like:hover, .delete:hover {
+color: orangered;
 }
