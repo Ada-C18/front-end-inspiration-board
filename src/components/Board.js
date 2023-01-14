@@ -6,6 +6,7 @@ const Board = (props) => {
 	const title = props.title;
 	const owner = props.owner;
 	// const selected = props.selected; // might not need attribute
+	const cardsList = props.cardsList;
 
 	// const [selected, setSelected] = useState(false); // move useState somewhere else
 
@@ -24,6 +25,7 @@ const Board = (props) => {
 		<li style={{ cursor: "pointer" }} onClick={updateBoard}>
 			Title: {title}
 		</li>
+		
 	);
 };
 
