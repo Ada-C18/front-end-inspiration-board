@@ -4,13 +4,21 @@ import BoardForm from './components/BoardForm';
 import BoardList from './components/BoardList';
 import CurrentBoard from './components/CurrentBoard';
 import testData from './data/test.json';
-import { getAllBoards } from './API/InspirationAPI';
+import { getAllBoards, addNewBoard } from './API/InspirationAPI';
 
 const App = function () {
-  // load data from API after component load
+  /* Refresh boardListState and currentBoardState if 
+  we add or edit a board. 
+  */
+  const changeStateOnBoardEdit = function (response) {
+    setCurrentBoardState(response.board_id);
+    getAllBoards(setBoardListState);
+  };
 
+  /* Handle submit from BoardForm. */
   const handleNewBoard = function (newBoardData) {
-    console.log(JSON.stringify(newBoardData));
+    addNewBoard(newBoardData, changeStateOnBoardEdit);
+    // console.log(JSON.stringify(newBoardData));
   };
 
   const testBoardListData = testData[0];
