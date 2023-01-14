@@ -18,6 +18,25 @@ import CreateBoard from "./routes/CreateBoard";
 import SingleBoardView from "./routes/SingleBoardView";
 import ErrorPage from "./error-page";
 
+const DUMMY_USER_DATA = [
+  {
+    id: 1,
+    name: "emily",
+  },
+  {
+    id: 2,
+    name: "bukunmi",
+  },
+  {
+    id: 3,
+    name: "katherine",
+  },
+  {
+    id: 4,
+    name: "anna",
+  },
+];
+
 const DUMMY_BOARD_DATA = [
   {
     id: 1,

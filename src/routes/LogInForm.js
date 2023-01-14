@@ -7,7 +7,10 @@ const LogInForm = () => {
     <>
       <p>I am the login form</p>
       <p>
-        Don't have an account? <Link to={`/signup`}>Sign up now!</Link>
+        Don't have an account?{" "}
+        <Link id="slink" to={`/signup`}>
+          Sign up now!
+        </Link>
       </p>
     </>
   );
