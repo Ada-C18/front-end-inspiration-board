@@ -1,14 +1,14 @@
 import "../styles/Card.css";
 import React from "react";
-// import { useState } from 'react';
+import { useState } from "react";
 import PropTypes from "prop-types";
 // import './Card.css';
 
 const Card = ({ id, message, likes, deleteCard, countLikesTotal }) => {
-  // const [likeCount, setLikeCount] = useState(0);
-  // const updateLikes = () => {
-  //     setLikeCount(likeCount+1);
-  // };
+  const [likeCount, setLikeCount] = useState(likes);
+  const updateLikes = () => {
+    setLikeCount(likeCount + 1);
+  };
 
   return (
     <div className="card-item">
@@ -17,9 +17,10 @@ const Card = ({ id, message, likes, deleteCard, countLikesTotal }) => {
         className="like"
         onClick={() => {
           countLikesTotal(id);
+          updateLikes();
         }}
       >
-        <p>❤️{likes}</p>
+        <p>❤️{likeCount}</p>
       </button>
       <button
         className="delete"
