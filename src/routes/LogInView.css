@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Open+Sans&display=swap');
 
 body {
-  background-color: #bfd9d9; /* tint of    */
+  background-color: #bfd9d9; /* tint of #6AA6A6 */
 }
 
 .LogInView {
@@ -14,13 +14,13 @@ body {
 }
 
 h1 {
-  text-shadow: 1px 1px 4px #80b3b3;
+  text-shadow: 1px 1px 4px #80b3b3; /* tint of #6AA6A6 */
   font-size: calc(15px + 5vmin);
   font-weight:700;
 }
 
 h2 {
-  text-shadow: 1px 1px 4px #afcfcf;
+  text-shadow: 1px 1px 4px #afcfcf; /* tint of #6AA6A6 */
   font-size: calc(10px + 2.5vmin);
   font-weight:600;
 }
