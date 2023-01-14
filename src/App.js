@@ -14,6 +14,7 @@ import LogInForm from "./routes/LogInForm";
 import SignUpForm from "./routes/SignUpForm";
 // import SignUp from "./components/SignUp";
 import Home from "./routes/Home";
+import CreateBoard from "./routes/CreateBoard";
 import SingleBoardView from "./routes/SingleBoardView";
 import ErrorPage from "./error-page";
 
@@ -81,87 +82,87 @@ const DUMMY_BOARD_DATA = [
     board_owner: "Kumi",
     visible: true,
   },
-  {
-    id: 8,
-    card_id: [1, 2, 3, 4, 5],
-    user_id: 15,
-    date_created: "27",
-    board_title: "React excitement",
-    board_owner: "Katherine",
-    visible: true,
-  },
-  {
-    id: 9,
-    card_id: [16, 2, 53],
-    user_id: 1,
-    date_created: "24",
-    board_title: "Capstone Inspo",
-    board_owner: "Anna",
-    visible: true,
-  },
-  {
-    id: 10,
-    card_id: [1, 2],
-    user_id: 8,
-    date_created: "25",
-    board_title: "Interview Inspo",
-    board_owner: "Emily",
-    visible: true,
-  },
-  {
-    id: 11,
-    card_id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 100],
-    user_id: 6,
-    date_created: "26",
-    board_title: "Ada Fun",
-    board_owner: "Kumi",
-    visible: true,
-  },
-  {
-    id: 12,
-    card_id: [1, 2, 3, 4, 5, 6, 7],
-    user_id: 15,
-    date_created: "27",
-    board_title: "React excitement",
-    board_owner: "Katherine",
-    visible: true,
-  },
-  {
-    id: 13,
-    card_id: [],
-    user_id: 1,
-    date_created: "24",
-    board_title: "Capstone Inspo",
-    board_owner: "Anna",
-    visible: true,
-  },
-  {
-    id: 14,
-    card_id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    user_id: 8,
-    date_created: "25",
-    board_title: "Interview Inspo",
-    board_owner: "Emily",
-    visible: true,
-  },
-  {
-    id: 15,
-    card_id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    user_id: 6,
-    date_created: "26",
-    board_title: "Ada Fun",
-    board_owner: "Kumi",
-    visible: true,
-  },
-  {
-    id: 16,
-    card_id: [10, 9, 8, 7, 6, 5],
-    user_id: 15,
-    date_created: "27",
-    board_title: "React excitement",
-    board_owner: "Katherine",
-    visible: true,
-  },
+  // {
+  //   id: 8,
+  //   card_id: [1, 2, 3, 4, 5],
+  //   user_id: 15,
+  //   date_created: "27",
+  //   board_title: "React excitement",
+  //   board_owner: "Katherine",
+  //   visible: true,
+  // },
+  // {
+  //   id: 9,
+  //   card_id: [16, 2, 53],
+  //   user_id: 1,
+  //   date_created: "24",
+  //   board_title: "Capstone Inspo",
+  //   board_owner: "Anna",
+  //   visible: true,
+  // },
+  // {
+  //   id: 10,
+  //   card_id: [1, 2],
+  //   user_id: 8,
+  //   date_created: "25",
+  //   board_title: "Interview Inspo",
+  //   board_owner: "Emily",
+  //   visible: true,
+  // },
+  // {
+  //   id: 11,
+  //   card_id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 100],
+  //   user_id: 6,
+  //   date_created: "26",
+  //   board_title: "Ada Fun",
+  //   board_owner: "Kumi",
+  //   visible: true,
+  // },
+  // {
+  //   id: 12,
+  //   card_id: [1, 2, 3, 4, 5, 6, 7],
+  //   user_id: 15,
+  //   date_created: "27",
+  //   board_title: "React excitement",
+  //   board_owner: "Katherine",
+  //   visible: true,
+  // },
+  // {
+  //   id: 13,
+  //   card_id: [],
+  //   user_id: 1,
+  //   date_created: "24",
+  //   board_title: "Capstone Inspo",
+  //   board_owner: "Anna",
+  //   visible: true,
+  // },
+  // {
+  //   id: 14,
+  //   card_id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  //   user_id: 8,
+  //   date_created: "25",
+  //   board_title: "Interview Inspo",
+  //   board_owner: "Emily",
+  //   visible: true,
+  // },
+  // {
+  //   id: 15,
+  //   card_id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  //   user_id: 6,
+  //   date_created: "26",
+  //   board_title: "Ada Fun",
+  //   board_owner: "Kumi",
+  //   visible: true,
+  // },
+  // {
+  //   id: 16,
+  //   card_id: [10, 9, 8, 7, 6, 5],
+  //   user_id: 15,
+  //   date_created: "27",
+  //   board_title: "React excitement",
+  //   board_owner: "Katherine",
+  //   visible: true,
+  // },
 ];
 
 function App() {
@@ -185,6 +186,11 @@ function App() {
           path="/boards"
           element={<Home />}
           loader={passData}
+          errorElement={<ErrorPage />}
+        />
+        <Route
+          path="/create-board"
+          element={<CreateBoard />}
           errorElement={<ErrorPage />}
         />
         <Route
