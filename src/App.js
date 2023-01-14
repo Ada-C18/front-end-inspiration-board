@@ -4,7 +4,10 @@ import { useState } from "react";
 // import Board from "./components/Board";
 import BoardsList from "./components/BoardsList";
 import NewBoardForm from "./components/NewBoardForm";
+
+// Cards Components
 import CardsList from "./components/CardsList";
+import NewCardForm from "./components/NewCardForm";
 
 const boardsData = [
 	{
@@ -54,6 +57,19 @@ function App() {
 	// Add Card
 	const [cards, setCardsList] = useState(cardsData);
 
+	const addCard = (newCard) => {
+		console.log("Calling addCard");
+
+		const newCardsList = [...cards];
+
+		newCardsList.push({
+			board_id: newCard.board_id, // hidden, implied primary key
+			message: newCard.message,
+		});
+
+		setCardsList(newCardsList);
+	};
+
 	return (
 		<div className="App">
 			{/* <Board /> */}
@@ -62,8 +78,10 @@ function App() {
 			<p>{/* Selected: {title} - {owner} */}</p>
 			<NewBoardForm addBoard={addBoard} />
 
-			{/* Todo: might needto move CardsList component somewhere else, like Board component */}
+			{/* Todo: might need to move CardsList component somewhere else, like Board component */}
+			<h2>Cards for "insert Board title here" Quotes</h2>
 			<CardsList cardsList={cards} />
+			<NewCardForm addCardCallback={addCard} />
 		</div>
 	);
 }
