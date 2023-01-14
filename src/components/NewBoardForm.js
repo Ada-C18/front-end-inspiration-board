@@ -7,7 +7,7 @@ const NewBoardForm = ({createNewBoardForm}) => {
     owner: ''
   });
 
-  const [preview, setPreview] = useState(' - ');
+  const [preview, setPreview] = useState('_____ by _____');
 
   const handleChange = (event) => {
     const newFormData = {
@@ -15,13 +15,13 @@ const NewBoardForm = ({createNewBoardForm}) => {
       [event.target.name]: event.target.value,
     };
     setFormData(newFormData);
-    setPreview(`${newFormData.title} - ${newFormData.owner}`)
+    setPreview(`${newFormData.title} by ${newFormData.owner}`)
   };
 
   return(
     <form>
       <div>
-        <label htmlFor='title'>Title</label>
+        <label htmlFor='title'>Title: </label><br></br>
         <input
           type='text'
           id='title'
@@ -30,8 +30,9 @@ const NewBoardForm = ({createNewBoardForm}) => {
           onChange={handleChange}
         />
       </div>
+      <br></br>
       <div>
-        <label htmlFor='owner'>Owner's Name</label>
+        <label htmlFor='owner'>Owner's Name: </label><br></br>
         <input
           type='text'
           id='owner'

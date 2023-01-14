@@ -72,13 +72,15 @@ function App() {
         </section>    
       </header>
       <aside>
-        <section>
+        <section className = "newBoard">
           <h1>Create A New Board</h1>
           <NewBoardForm></NewBoardForm>
         </section>
-        <section>
+        <section className = "boards">
           <h1>Boards</h1>
-          {boardsComponent}
+          <ul>
+            {boardsComponent}
+          </ul>
         </section>
       </aside>
       <main>

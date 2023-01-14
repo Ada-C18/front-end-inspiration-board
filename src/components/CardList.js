@@ -39,19 +39,17 @@ const CardList = ({ board }) => {
 
   const cardsComponent = cardsList.map((card) => {
     return (
-      <ul>
-        <Card card={card} />
-      </ul>
+      <Card card={card} />
     );
   });
 
   return (
-    <div>
-      <section>
-        <h1>Cards for {board.title}</h1>
+    <section className="cardList-container">
+      <h1>Cards for {board.title}</h1>
+      <div className="cardListInner">
         {cardsComponent}
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 

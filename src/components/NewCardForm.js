@@ -20,7 +20,10 @@ const NewCardForm = ({createNewCardForm}) => {
   return(
     <form>
       <div>
-        <label htmlFor='message'>Message</label>
+        <h1>
+          Create A New Card
+        </h1>
+        <label htmlFor='message'>Message: </label>
         <input
           type='text'
           id='message'

@@ -1,9 +1,10 @@
 /* * {
-  border: red solid;
+  border: red solid 1px;
 } */
 
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -13,8 +14,8 @@ body {
   margin: 0 auto;
   /* grid-template-columns: repeat(auto-fit, minmix(300px, 1fr)); */
   grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  /* grid-column-gap: 1%; */
+  /* grid-row-gap: 1rem; */
 }
 
 header {
@@ -25,18 +26,58 @@ header {
   align-items: center;
   grid-column: 2 / 4;
   grid-row: 1 / 2;
+  /* margin-left: 1rem; */
 }
 
 aside {
-  height: auto;
+  /* width: 5rem; */
+  height: 100vh;
+  /* position: fixed; */
   background-color: #c5cae9;
   display: block;
   grid-column: 1 / 2;
   grid-row: 1 / 4;
+  padding: 5% 5%;
+}
+
+.newBoard {
+  background-color: #FFF;
+  padding: 3% 5%;
+}
+
+.boards {
+  background-color: #FFF;
+  padding: 3% 5%;
+  margin: 3% 0 0 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 
 main {
   grid-column: 2 / 4;
   grid-row: 2 / 4;
   background-color: rgb(245, 245, 245);
+  /* margin-left: 5rem; */
+}
+
+.cardList-container {
+  margin: 1rem;
+}
+
+.cardListInner {
+  max-width: 1200px;
+  margin: 0 auto; /* This left-right auto will center things automatically*/
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* This makes it responsive! */
+  grid-column-gap: 45px;
+  grid-row-gap: 45px;
+}
+
+.card {
+  background-color: #c5cae9;
+  color: #283593;
+  padding: 1rem;
 }
