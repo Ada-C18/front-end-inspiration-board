@@ -1,31 +1,29 @@
 import { useState } from "react";
 const Card = (props) => {
-    const [likesCount, setLikesCount] = useState(0);
-    const updateLikes = () => {
-        setLikesCount(likesCount + 1);
+  const [likesCount, setLikesCount] = useState(0);
+  const updateLikes = () => {
+    setLikesCount(likesCount + 1);
+  };
 
-    };
-    
-    return (
-        <div>
-        <p>
-            {props.message}
-        </p>
+  return (
+    <div>
+      <div>
+        <p className="card">{props.message}</p>
         {likesCount} 💕
         {/* {props.onLikesCount} 💕 */}
-        
         <button type="button" onClick={updateLikes}>
-            +1
+          +1
         </button>
         {/* <button type="button" onClick={props.onUpdateLikes}>
             +1
         </button> */}
         {/* <button type="button" onClick={() => props.onDeleteCard(props.id)}> */}
         <button type="button" onClick={() => props.onDeleteCard(props.id)}>
-            Delete
+          Delete
         </button>
-        </div>
-    );
+      </div>
+    </div>
+  );
 };
 // const [isClicked, setisClicked] = useState(false);
 

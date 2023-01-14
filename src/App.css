@@ -35,12 +35,13 @@ p {
 
 .cards_container {
   display: grid;
-  grid-template: 1fr 1fr/1fr 1fr;
+  grid-template: 1fr/1fr;
+  border-bottom: blue; 
 }
 
-.card {
+.card_form__display {
   font-size: 18px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  border: blue;
+  justify-items: left;
 }

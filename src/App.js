@@ -116,11 +116,15 @@ function App() {
       </section>
       <section>
         {selectedBoard.id && (
-          <div>
-            <h1> Cards for {selectedBoard.title} </h1>
-            <div className="cards_container">
-              <div className="card">{displayCards}</div>
+          <div className="cards_container">
+            <div>
+              <h1> Cards for {selectedBoard.title} </h1>
+            </div>
+            <div>
+              <div>{displayCards}</div>
               <CardList cards={cardData} onDeleteCard={deleteCard}></CardList>
+            </div>
+            <div>
               <h1> Create a New Card</h1>
               <NewCardForm onUpdateCardData={updateCardData} />
             </div>

@@ -1,5 +1,10 @@
-.card{
-    display: grid;
-    border: black;
-    size: 200px;
-}
+
+.card {
+    height: 100px;
+    font-size: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    border: blue;
+    justify-content: center;
+  }
+
