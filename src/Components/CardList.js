@@ -22,12 +22,12 @@ const CardList = (props) => {
 };
 
 CardList.propTypes = {
-  caardData: PropTypes.arrayOf(
+  cardsData: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,      
-      board_id: PropTypes.string.isRequired,
+      board_id: PropTypes.number.isRequired,
       message: PropTypes.string.isRequired,
-      likes_count: PropTypes.string.isRequired,
+      likes_count: PropTypes.number.isRequired,
     })
   ),
   handleLikes: PropTypes.func.isRequired,

@@ -23,13 +23,6 @@ justify-content: center;
 padding: 20pt;
 }
 
-.board_header {
-  background-color:darkviolet;
-  font-size: x-large;
-  color: white;
-  text-align: center;
-}
-
 .board__container {
   background-color:cyan;
   border-style: solid;
@@ -38,9 +31,10 @@ padding: 20pt;
   opacity: 0.9;
 }
 
-.select__board {
-  font-size: large;
-  font-weight: bold;
+.board_header {
+  background-color:darkviolet;
+  font-size: x-large;
+  color: white;
   text-align: center;
 }
 
@@ -51,19 +45,25 @@ padding: 20pt;
   margin: 2rem;
 }
 
-.new__board {
+.select__board {
   font-size: large;
-  background-color:darkviolet;
-  color: white;
+  font-weight: bold;
+  text-align: center;
 }
 
-.board__form {
+.create__board__form {
   background-color:cyan;
   border-style: solid;
   border-radius: 5pt ;
   text-align: center;
   padding: 5pt;
   opacity: 0.9;
+}
+
+.create__board__header {
+  font-size: large;
+  background-color:darkviolet;
+  color: white;
 }
 
 .hide__button {
@@ -81,12 +81,6 @@ padding: 20pt;
   padding: 20pt;
 }
 
-.cards__header {
-  background-color:fuchsia;
-  font-size: x-large;
-  color: white;
-}
-
 .cards__container {
   background-color:yellow;
   border-style: solid;
@@ -99,9 +93,10 @@ padding: 20pt;
   opacity: 0.9;
 }
 
-
-.sort_by {
-  font-size: medium;
+.cards__header {
+  background-color:fuchsia;
+  font-size: x-large;
+  color: white;
 }
 
 .cards {
@@ -109,4 +104,8 @@ padding: 20pt;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.sort_by {
+  font-size: medium;
 }

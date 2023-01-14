@@ -6,9 +6,6 @@ import './Board.css'
 const Board = (props) => {
 
   return (
-    // card list
-    // <CardList />
-    // read cards from backend
       <li className='each_board' onClick={() => props.handleBoardClick(props.title, props.owner)}>
         {props.title}
       </li>

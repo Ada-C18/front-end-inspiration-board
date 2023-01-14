@@ -7,9 +7,9 @@ const Card = (props) => {
 
   return (
   <div className='each_card'> 
-    <p>{props.card.message}</p>
+    <p>{props.message}</p>
     <ul className='card_info'>
-      <li><p>{props.card.likes_count} 👍</p></li>
+      <li><p>{props.likes_count} 👍</p></li>
       <li><p onClick={() => props.handleLikes(props.card)}>+1</p></li>
       <li><p onClick={() => props.deleteCard(props.card)}>Delete</p></li>
     </ul>
@@ -18,9 +18,12 @@ const Card = (props) => {
 
 
 Card.propTypes = {
-  card: PropTypes.string,
-  handleLikes: PropTypes.func,
-  deleteCard: PropTypes.func,
+  id: PropTypes.number.isRequired,      
+  board_id: PropTypes.number.isRequired,
+  message: PropTypes.string.isRequired,
+  likes_count: PropTypes.number.isRequired,
+  handleLikes: PropTypes.func.isRequired,
+  deleteCard: PropTypes.func.isRequired,
 };
 
 export default Card;

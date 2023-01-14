@@ -50,7 +50,7 @@ function App() {
   };
 
   // CARDS
-  // Get all cards
+  // Get all cards for selected board
   const getAllCardsApi = useCallback(async () => {
     if (!selectedBoard) {
       return []
@@ -125,8 +125,8 @@ function App() {
             (<span>🤩 You selected {selectedBoard.title} made by {selectedBoard.owner} 🤩</span>)}
           </section>
         </section>
-        <section className='board__form'>
-          <h3 className='new__board' >✨ Create a Board ✨</h3>
+        <section className='create__board__form'>
+          <h3 className='create__board__header' >✨ Create a Board ✨</h3>
           {isBoardFormVisible ? <NewBoardForm addBoardCallback={addBoard} /> : ''}
           <button className="hide__button" onClick={toggleNewBoardForm}>
           {isBoardFormVisible ? 'Hide Form' : 'Show Form'}
@@ -147,6 +147,14 @@ function App() {
                   handleLikes={handleLikes}
                   deleteCard={deleteCard}
                 />
+              <section className='sort_by'>
+                Sort messages by
+                <select>
+                  <option value='alphabetically'>Alphabetically</option>
+                  <option value='likes'>Likes</option>
+                  <option value='id'>Order Created</option>
+                </select>
+              </section>
               </div>
             </section>
             <section className='card__form'>
@@ -155,14 +163,6 @@ function App() {
           </div> 
           ) : "" }     
       </section>
-      {/* <section className='sort_by'>
-          Sort messages by
-          <select>
-            <option value='alphabetically'>Alphabetically</option>
-            <option value='likes'>Likes</option>
-            <option value='id'>Order Created</option>
-          </select>
-        </section> */}
     </div>
   );
 }
