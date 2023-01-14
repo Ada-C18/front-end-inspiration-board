@@ -10,6 +10,7 @@
 .card_info {
     list-style-type: none;
     padding-right: 25pt;
+    font-size:x-small;
 }
 
 .message {
@@ -18,6 +19,10 @@
     font-weight: bolder;
 }
 
+.like {
+    font-size: large
+}
+
 .like:hover, .delete:hover {
-color: orangered;
+    color: orangered;
 }
