@@ -1,5 +1,5 @@
 .whole__page {
-  background-color: lime;
+  background-color: yellow;
 }
 
 .App__header {
@@ -114,5 +114,4 @@ padding-right: 25pt;
 
 .sort_by {
   font-size: medium;
-  font-weight: bold;
 }

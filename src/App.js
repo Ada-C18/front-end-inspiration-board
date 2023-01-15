@@ -76,7 +76,6 @@ function App() {
   const deleteCardApi = async (card_id) => {
     const response = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/card/${card_id}`)
     return response.data;
-
   };
 
   const handleDeleteCard = async (id) => {
@@ -86,15 +85,16 @@ function App() {
 
   // Likes
   const handleLikesApi = async (card_id, board_id, message, likes_count) => {
-    await axios.put(`${process.env.REACT_APP_BACKEND_URL}/card/${card_id}/like`)
+    const plusOneLike = {likes_count: likes_count + 1};
+    await axios.put(`${process.env.REACT_APP_BACKEND_URL}/card/${card_id}/like`, plusOneLike)
     const newCardsData = cardsData.map((existingCard) => {
-      return existingCard.card_id !== card_id ? existingCard : {card_id: card_id, board_id: board_id, message: message, likes_count: likes_count + 1}
+      return existingCard.card_id !== card_id ? existingCard : {card_id: card_id, board_id: board_id, message: message, likes_count: likes_count}
       });
     setCardsData(newCardsData);
   };
 
-  const handleLikes = async () => {
-    await handleLikesApi();
+  const handleLikes = async (card_id, board_id, message, likes_count) => {
+    await handleLikesApi(card_id, board_id, message, likes_count);
     return getAllCards()
   }
 
@@ -106,7 +106,7 @@ function App() {
   //   const sortArray = type => {
   //     const types = {
   //       alphabetically: 'message',
-  //       likes: 'Likes_count',
+  //       likes: 'likes_count',
   //       id: 'id',
   //     };
   //     const sortProperty = types[type];
