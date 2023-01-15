@@ -5,6 +5,7 @@ import BoardList from "./components/BoardList";
 import Board from "./components/Board";
 import NewBoardForm from "./components/NewBoardForm";
 import CardList from "./components/CardList";
+import NewCardForm from "./components/NewCardForm";
 
 function App() {
   const [boardsData, setBoardsData] = useState([
@@ -57,6 +58,19 @@ function App() {
     setCardsData(newCardData);
   };
 
+  const addCardData = (newCard) => {
+    const newCardData = [...cardsData];
+    // update when we access the data base later
+    const nextId = Math.max(...newCardData.map((card) => card.card_id)) + 1;
+    newCardData.push({
+      card_id: nextId,
+      message: newCard.message,
+      likes_count: 0,
+      board_id: selectedBoard,
+    });
+    setCardsData(newCardData);
+  };
+
   const updateSelectedBoard = (board_id) => {
     setSelectedBoard(board_id);
   };
@@ -77,7 +91,6 @@ function App() {
     for (let board of boardsData) {
       if (board.board_id === selectedBoard) {
         return board.title;
-        // const boardOwner = board.owner
       }
     }
   };
@@ -85,7 +98,6 @@ function App() {
   const getSelectedOwner = (boardsData) => {
     for (let board of boardsData) {
       if (board.board_id === selectedBoard) {
-        console.log(board.owner);
         return board.owner;
       }
     }
@@ -111,11 +123,16 @@ function App() {
       ></Board>
       <NewBoardForm onAddBoard={addBoardData}></NewBoardForm>
       <CardList
-        board={getSelectedTitle(boardsData)}
+        selectedBoard={selectedBoard}
+        boardName={getSelectedTitle(boardsData)}
         cards={getSelectedCards(cardsData)}
         updateCards={updateCardLikes}
         deleteCard={deleteCard}
       ></CardList>
+      <NewCardForm
+        selectedBoard={selectedBoard}
+        onAddCard={addCardData}
+      ></NewCardForm>
     </div>
   );
 }

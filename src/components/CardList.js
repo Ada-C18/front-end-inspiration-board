@@ -17,15 +17,21 @@ const CardList = (props) => {
       </li>
     );
   });
+
   return (
-    <div>
-      <h1>Cards for {props.boardName}</h1>
-      <section>{card}</section>
-    </div>
+    <section>
+      {props.selectedBoard && (
+        <div>
+          <h1>Cards for {props.boardName}</h1>
+          <section>{card}</section>
+        </div>
+      )}
+    </section>
   );
 };
 
 CardList.propTypes = {
+  selectedBoard: PropTypes.number,
   boardName: PropTypes.string,
   cards: PropTypes.array,
   updateCardsData: PropTypes.func,

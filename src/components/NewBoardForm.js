@@ -12,6 +12,7 @@ const NewBoardForm = (props) => {
   };
   const onFormSubmit = (event) => {
     if (!formFields.title || !formFields.owner) {
+      event.preventDefault();
       document.getElementById("submitButton").disabled = true;
     } else {
       event.preventDefault();
@@ -44,6 +45,9 @@ const NewBoardForm = (props) => {
             placeholder="enter owner..."
             onChange={onOwnerChange}
           ></input>
+          <p>
+            Preview: {formFields.title} - {formFields.owner}
+          </p>
           <input value="Submit Board" id="submitButton" type="submit"></input>
         </form>
       )}
