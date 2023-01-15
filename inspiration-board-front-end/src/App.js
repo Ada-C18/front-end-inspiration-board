@@ -57,16 +57,19 @@ function App() {
     }
   };
   const addBoard = (newBoard) => {
-    console.log(newBoard);
-    const newBoardList = [...boardData];
-    const newBoardId = Math.max(...newBoardList.map((board) => board.id)) + 1;
-    newBoardList.push({
-      id: newBoardId,
-      title: newBoard.title,
-      owner: newBoard.owner,
-    });
-    setBoardData(newBoardList);
+    axios
+      .post(URL, newBoard)
+      .then((response) => {
+        const newBoardList = [...boardData];
+        newBoardList.push(response.data.board);
+        setBoardData(newBoardList);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+        alert("Couldn't create a new board. Try again!");
+      });
   };
+
   return (
     <div className="App">
       <header className="App-header">
