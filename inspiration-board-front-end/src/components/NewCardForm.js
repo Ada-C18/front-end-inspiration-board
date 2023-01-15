@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//                 TODO: Modifiy so it is connected to boards
+// $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
 const NewCardForm = (props) => {
   const [formFields, setFormFields] = useState({
     message: "",
