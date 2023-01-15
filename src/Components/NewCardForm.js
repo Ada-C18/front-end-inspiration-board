@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './NewCardForm.css';
 
-const NewCardForm = () => {
+const NewCardForm = ({ addCardData }) => {
   const [cardForm, setCardForm] = useState({ message: '' });
 
   const onMessageChange = (e) => {
@@ -11,9 +11,15 @@ const NewCardForm = () => {
     });
   };
 
-  return (
+  const submitCardData = (e) => {
+    e.preventDefault();
 
-    <form className="card__form">
+    addCardData(cardForm);
+    setCardForm({ message: '' });
+  };
+
+  return (
+    <form className="card__form" onSubmit={submitCardData}>
       <h1 className="form__header">✨ Create a Message ✨</h1>
       <div className="new-card__field">
         <label htmlFor="message">Message</label>
@@ -25,7 +31,7 @@ const NewCardForm = () => {
           value={cardForm.message}
           onChange={onMessageChange}
         />
-        <p className='required'>* required</p>
+        <p className="required">* required</p>
         <p>Preview: {cardForm.message}</p>
         <button
           className="card__submit__button"
