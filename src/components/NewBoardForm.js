@@ -1,5 +1,4 @@
 import { useState } from "react";
-import createNewBoard from "../App.js";
 
 const OriginalFormState = {
   title: "",

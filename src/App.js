@@ -38,10 +38,6 @@ function App() {
       });
   };
 
-  // const handleBoardSubmit = (data) => {
-  //   createNewBoard(data).then(newBoard);
-  // };
-
   return (
     <div className="App">
       <header className="App-header">Inspiration Board</header>

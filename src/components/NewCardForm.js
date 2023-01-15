@@ -1,5 +1,4 @@
 import { useState } from "react";
-import createNewCard from "./CardsList";
 
 const OriginalCardFormState = {
   message: "",
