@@ -5,6 +5,79 @@ import Board from "./components/Board";
 import Card from "./components/Card";
 import CardList from "./components/CardList";
 import { useState } from "react";
+const URL = process.env[' REACT_APP_BACKEND_URL'];
+
+// const App = () => {
+//   const [boardData, setBoardData] = useState([]);
+//   const [cardData, setCardData] = useState([]);
+//   useEffect(() => {   
+//     axios
+//       .get(URL)
+//       .then((response)=>{
+//         const newBoards = response.data.map((board)=> {
+//           return{
+//             id: board.id,
+//             title: board.title,
+//             owner: board.owner
+//           };
+//         });
+//         setBoardData(newBoards);
+//     })
+//     .catch((error)=> {
+//       console.log(error);
+//     });
+//     },[]);
+
+//     const addBoard = (board) => {
+//       axios
+//         .post(URL, boardData)
+//         .then((response) => {
+//           const newBoards = [...boardData];
+//           newBoards.push({ id: response.data.id, title:'', ...board});
+//           setBoardData(newBoards);
+//         })
+//         .catch((error)=> console.log (error));
+
+//     };
+//     useEffect(() => {   
+//       axios
+//         .get(URL)
+//         .then((response)=>{
+//           const newCards = response.data.cards.map((card)=> {
+//             return{
+//               id: card.id,
+//               message: card.message
+//             };
+//           });
+//           setCardData(newCards);
+//       })
+//       .catch((error)=> {
+//         console.log(error);
+//       });
+//       },[]);
+
+//       const addCard = (card) => {
+//         axios
+//           .post(URL, cardData)
+//           .then((response) => {
+//             const newCards = [...cardData];
+//             newCards.push({ id: response.data.id, message:'', ...card});
+//             setBoardData(newCards);
+//           })
+//           .catch((error)=> console.log (error));
+//       };
+
+//       const deletCard = (id) => {
+//         axios 
+//           .delete(`${URL}/${id}`)
+//           .then(()=> {
+//             const newCards = cardData.filter((card)=> card.id !==id);
+//             setCardData(newCards);
+//           })
+//           .catch((error)=> {
+//             console.log(error);
+//           });
+//       };
 
 const boardsData = [
   {
@@ -96,7 +169,7 @@ function App() {
           <Board boards={boardData} onBoardClicked={handleBoardClicked} />
         </div>
         <div>
-          <h1> Select Board</h1>
+          <h1> Selected Board</h1>
           {/* <p>{selectedBoard.title} {selectedBoard.owner}</p> */}
           <p>
             {selectedBoard.id
