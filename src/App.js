@@ -190,14 +190,28 @@ function App() {
 
   const passData = () => appData;
 
+  const handleLogIn = (formData) => {
+    return null;
+  };
+
+  const handleSignUp = (formData) => {
+    return null;
+  };
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
         <Route path="/" element={<LogInView />} errorElement={<ErrorPage />}>
-          <Route path="login" element={<LogInForm />} />
+          <Route
+            path="login"
+            element={<LogInForm />}
+            loader={handleLogIn}
+            errorElement={<ErrorPage />}
+          />
           <Route
             path="signup"
             element={<SignUpForm />}
+            loader={handleSignUp}
             errorElement={<ErrorPage />}
           />
         </Route>

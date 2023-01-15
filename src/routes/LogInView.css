@@ -30,11 +30,15 @@ h2 {
   border-radius: 25px;
   min-width: fit-content;
   max-width: 50%;
-  min-height: 50vh;
+  min-height: fit-content;
   max-height: 80vh;
-  padding: 20px;
+  padding: 4vh 20px 2vh;
   margin: 10px;
   background-color: #014040;
   color: white;
   font-family: 'Open Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
