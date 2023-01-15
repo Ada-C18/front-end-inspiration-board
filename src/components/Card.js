@@ -1,25 +1,14 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import Card from "./Card";
 // import "./App.css";
-
 // import BoardForm from "./components/BoardForm";
 // import BoardList from "./components/BoardList";
 
-const CardList = (props) => {
-  const renderCard = function (cardObj) {
-    return <Card></Card>;
-  };
-
-  return (
-    <div>
-      <h2>"Pick me Up"</h2>
-      {props.cardListData.map(renderCard)}
-    </div>
-  );
+const Card = (props) => {
+  return <div>CARD CONTENT</div>;
 };
 
-export default CardList;
+export default Card;
 // CardList.propTypes = {
 //   message: PropTypes.arrayOf(
 //     PropTypes.shape({

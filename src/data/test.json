@@ -6,11 +6,17 @@
       "owner": "Kiwi"}, 
       { "board_id": 2, "name": "Dingo's Surprise Bday",
       "owner": "Ferret"}],
-[
-  {
-    "id": 1, 
-    "name": "Backpacking through Asia", 
-    "owner": "Kiwi"}],
+
+[ {"cardID": 1, 
+  "message":"Temp Message.",
+  "likes": 3},
+  {"cardID": 2, 
+  "message":"Temp Message 2.",
+  "likes": 1},
+  {"cardID": 3, 
+  "message":"Temp Message 3.",
+  "likes": 2}
+],
 
 [
   {
@@ -76,3 +82,4 @@
 [{"message": "Board: 2 was deleted.", 
 "boardID": 1}]
 ]
+

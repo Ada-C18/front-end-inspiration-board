@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import BoardForm from "./components/BoardForm";
 import BoardList from "./components/BoardList";
+import CurrentBoard from "./components/CurrentBoard";
+import CardForm from "./components/CardForm";
+import CardList from "./components/CardList";
 import testData from "./data/test.json";
+import { getAllBoards, addNewBoard } from "./API/InspirationAPI";
 
 const App = function () {
   /* Refresh boardListState and currentBoardState if 
@@ -20,6 +25,7 @@ const App = function () {
   };
 
   const testBoardListData = testData[0];
+  const testcardListData = testData[1];
   const kDefaultBoardList = [{ board_id: 0, name: "", owner: "" }];
   const [boardListState, setBoardListState] = useState(kDefaultBoardList);
   const [currentBoardState, setCurrentBoardState] = useState(0);
@@ -34,8 +40,8 @@ const App = function () {
     getAllBoards(setBoardListState);
     //console.log(boardListState);
   }, []);
-  const testBoardListData = testData[0];
-  const [boardListState, setBoardListState] = useState(testBoardListData);
+
+  const [cardListState, setcardListState] = useState(testcardListData);
 
   const handleNewCard = (newcard) => {
     console.log("new card" + newcard);
@@ -66,7 +72,10 @@ const App = function () {
         </div>
       </section>
       <section id="card-section">
-        <div id="card-list">Put CardList and Card components here.</div>
+        <div id="card-list">
+          {" "}
+          <CardList cardListData={testcardListData}></CardList>
+        </div>
         <div id="card-form-container">
           {" "}
           <CardForm handleNewCard={handleNewCard}></CardForm>
