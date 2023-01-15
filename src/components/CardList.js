@@ -8,7 +8,13 @@ import Card from "./Card";
 
 const CardList = (props) => {
   const renderCard = function (cardObj) {
-    return <Card></Card>;
+    return (
+      <Card
+        message={cardObj.message}
+        likes={cardObj.likes}
+        key={cardObj.id}
+      ></Card>
+    );
   };
 
   return (

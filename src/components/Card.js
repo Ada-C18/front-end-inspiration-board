@@ -5,10 +5,17 @@ import { useEffect } from "react";
 // import BoardList from "./components/BoardList";
 
 const Card = (props) => {
-  return <div>CARD CONTENT</div>;
+  return (
+    <div>
+      CARD CONTENT
+      <div> {props.message}</div>
+      <div> {props.likes}</div>
+    </div>
+  );
 };
 
 export default Card;
+
 // CardList.propTypes = {
 //   message: PropTypes.arrayOf(
 //     PropTypes.shape({
