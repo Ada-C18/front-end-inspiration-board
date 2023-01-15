@@ -1,22 +1,19 @@
 import React from "react";
 import Board from "./Board.js";
 
-const boardList = ({ boardList }) => {
+const boardList = ({ boardList, loadBoard }) => {
   const boardComponents = [];
   for (const board of boardList) {
     boardComponents.push(
-      <Board
-        key={board.id}
-        id={board.id}
-        title={board.title}
-        owner={board.owner}
-        // cards={board.cards}
-      ></Board>
+      <li key={board.id} onClick={() => loadBoard(board.id)}>
+        🌸{board.id} {board.title} - {board.owner}
+      </li>
     );
   }
 
   return (
-    <div>
+    <div style={{ outline: "1px dashed dodgerblue" }}>
+      <h3>Board List Component</h3>
       <ul>{boardComponents}</ul>
     </div>
   );
