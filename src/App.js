@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
 import BoardList from "./components/BoardList";
@@ -50,11 +49,7 @@ function App() {
   };
 
   const deleteCard = (card_id) => {
-    const newCardData = cardsData.filter((card) => {
-      if (card.card_id !== card_id) {
-        return card;
-      }
-    });
+    const newCardData = cardsData.filter((card) => !card.card_id);
     setCardsData(newCardData);
   };
 

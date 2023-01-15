@@ -5,8 +5,12 @@ const Board = (props) => {
   return (
     <section>
       <h1>SELECTED BOARD</h1>
-      {props.title}
-      {props.owner}
+      {!props.title && <div>Select a board!</div>}
+      {props.title && (
+        <div>
+          "{props.title}" By: {props.owner}
+        </div>
+      )}
     </section>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import App from "./components/app";
+
 const BoardList = (props) => {
   const boardTitles = props.boardsData.map((board) => {
     return (
@@ -13,10 +13,10 @@ const BoardList = (props) => {
     );
   });
   return (
-    <div>
-      <h1>Boards</h1>
+    <section>
+      <h1>BOARDS</h1>
       <section>{boardTitles}</section>
-    </div>
+    </section>
   );
 };
 

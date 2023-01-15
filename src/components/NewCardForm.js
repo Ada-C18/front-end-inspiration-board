@@ -22,10 +22,10 @@ const NewCardForm = (props) => {
   return (
     <section>
       {props.selectedBoard && (
-        <section>
-          <h1>Create A New Card</h1>
+        <div>
+          <h1>CREATE A NEW CARD</h1>
           <form onSubmit={onFormSubmit}>
-            <h2>Message</h2>
+            <div>Message</div>
             <input
               type="text"
               value={messageField.message}
@@ -35,7 +35,7 @@ const NewCardForm = (props) => {
             <p>Preview: {messageField.message}</p>
             <input value="Submit Card" id="submitCard" type="submit"></input>
           </form>
-        </section>
+        </div>
       )}
     </section>
   );

@@ -22,7 +22,8 @@ const CardList = (props) => {
     <section>
       {props.selectedBoard && (
         <div>
-          <h1>Cards for {props.boardName}</h1>
+          <h1>CARDS FOR "{props.boardName}"</h1>
+          {props.cards.length === 0 && <div>No cards yet. Create a card!</div>}
           <section>{card}</section>
         </div>
       )}

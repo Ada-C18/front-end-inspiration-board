@@ -22,14 +22,14 @@ const NewBoardForm = (props) => {
   };
   return (
     <section>
-      <h1>Create A New Board</h1>
+      <h1>CREATE A NEW BOARD</h1>
       <button onClick={() => setisBoardFormVisible(!isBoardFormVisible)}>
         {" "}
         Hide New Board Form
       </button>
       {isBoardFormVisible && (
         <form onSubmit={onFormSubmit}>
-          <h2>Title</h2>
+          <div>Title</div>
           <input
             title="userTitle"
             type="text"
@@ -37,7 +37,7 @@ const NewBoardForm = (props) => {
             placeholder="enter title..."
             onChange={onTitleChange}
           ></input>
-          <h2>Owner's Name</h2>
+          <div>Owner's Name</div>
           <input
             owner="userOwner"
             type="text"
