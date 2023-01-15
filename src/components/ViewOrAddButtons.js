@@ -3,9 +3,9 @@ import "./ViewOrAddButtons.css"
 
 const ViewOrAddButtons = () => {
     return (
-        <div className="button">
-            <button>View All Boards</button>
-            <button>Create New Board</button>
+        <div className="button-container">
+            <button className="top-button">View All Boards</button>
+            <button className="top-button">Create New Board</button>
         </div>
     );
 };

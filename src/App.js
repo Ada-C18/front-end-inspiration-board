@@ -6,6 +6,9 @@ import Board from "./components/Board.js";
 import BoardList from "./components/BoardList";
 // import NewCardForm from "./components/NewCardForm";
 import NewBoardForm from "./components/NewBoardForm";
+import Header from "./components/Header"
+import Title from "./components/Title"
+import ViewOrAddButtons from "./components/ViewOrAddButtons"
 
 const BOARD_LIST = [
   {
@@ -138,11 +141,13 @@ function App() {
 
   return (
     <div>
-      <h1>Hello Peeps!</h1>
+      <Header></Header>
+      <Title></Title>
+      <ViewOrAddButtons></ViewOrAddButtons>
+      <NewBoardForm addBoardCallbackFunc={addBoard} />
       <BoardList boardList={boardList} />
       <Board handleBoardTitleClick={displayCards} />
       {/* <NewCardForm addCardCallbackFunc={addCard} /> */}
-      <NewBoardForm addBoardCallbackFunc={addBoard} />
     </div>
   );
 }

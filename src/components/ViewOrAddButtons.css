@@ -2,7 +2,7 @@
 
 /* Consider putting image in seperate folder and refactoring background-image */
 
-div .button {
+div .button-container {
     background-color: #484d4a;
     background-image: url("./pexels-henry-&-co-1939485.jpg");
     background-size: cover;
@@ -13,7 +13,7 @@ div .button {
     padding-bottom: 100px;
 }
 
-button {
+.top-button{
     height: 200px;
     width: 200px;
     background-color: #252329;
