@@ -11,6 +11,7 @@ label {
 input {
     border-radius: 5px;
     min-width: 33vw;
+    min-height: fit-content;
     height: 4vh;
     margin: 5px 0px;
     

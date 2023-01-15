@@ -12,6 +12,7 @@ input {
     border-radius: 5px;
     min-width: 33vw;
     height: 4vh;
+    min-height:fit-content;
     margin: 5px 0px;
     
 }
