@@ -9,7 +9,7 @@ const LogInView = () => {
 
   return (
     <div className="LogInView">
-      <h1> Welcome to the Hackspiration Board! </h1>
+      <h1> Welcome to Hackspiration Board! </h1>
       <h2>
         View, create, and collaborate on inspiration boards with your friends!
       </h2>
