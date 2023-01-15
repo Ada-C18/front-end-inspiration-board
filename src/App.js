@@ -6,19 +6,6 @@ import Board from "./components/Board";
 import NewBoardForm from "./components/NewBoardForm";
 import CardList from "./components/CardList";
 
-// const boardsData = [
-//   {
-//     board_id: 1,
-//     title: "Live your best life",
-//     owner: "kkg",
-//   },
-//   {
-//     board_id: 2,
-//     title: "Do not disturb",
-//     owner: "reyna",
-//   },
-// ];
-
 function App() {
   const [boardsData, setBoardsData] = useState([
     {
@@ -49,10 +36,30 @@ function App() {
   ]);
 
   const [selectedBoard, setSelectedBoard] = useState(null);
+
+  const updateCardLikes = (updatedCard) => {
+    const newCardData = cardsData.map((card) => {
+      if (card.card_id === updatedCard.card_id) {
+        return updatedCard;
+      } else {
+        return card;
+      }
+    });
+    setCardsData(newCardData);
+  };
+
+  const deleteCard = (card_id) => {
+    const newCardData = cardsData.filter((card) => {
+      if (card.card_id !== card_id) {
+        return card;
+      }
+    });
+    setCardsData(newCardData);
+  };
+
   const updateSelectedBoard = (board_id) => {
     setSelectedBoard(board_id);
   };
-  const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
 
   const addBoardData = (newBoard) => {
     const newBoardData = [...boardsData];
@@ -93,6 +100,7 @@ function App() {
     }
     return cards;
   };
+
   return (
     <div>
       <h1>Inspiration Board</h1>
@@ -105,6 +113,8 @@ function App() {
       <CardList
         board={getSelectedTitle(boardsData)}
         cards={getSelectedCards(cardsData)}
+        updateCards={updateCardLikes}
+        deleteCard={deleteCard}
       ></CardList>
     </div>
   );
