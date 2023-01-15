@@ -1,0 +1,11 @@
+.card_container{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
+    padding: 20px;
+}
+
+
+/* .card_container>div {
+  
+} */

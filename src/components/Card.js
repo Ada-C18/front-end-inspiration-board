@@ -1,3 +1,5 @@
+import "./Card.css";
+
 import { useState } from "react";
 const Card = (props) => {
   const [likesCount, setLikesCount] = useState(0);
@@ -6,22 +8,20 @@ const Card = (props) => {
   };
 
   return (
-    <div>
-      <div>
-        <p className="card">{props.message}</p>
-        {likesCount} 💕
-        {/* {props.onLikesCount} 💕 */}
-        <button type="button" onClick={updateLikes}>
-          +1
-        </button>
-        {/* <button type="button" onClick={props.onUpdateLikes}>
+    <div className="card">
+      <p>{props.message}</p>
+      {likesCount} 💕
+      {/* {props.onLikesCount} 💕 */}
+      <button type="button" onClick={updateLikes}>
+        +1
+      </button>
+      {/* <button type="button" onClick={props.onUpdateLikes}>
             +1
         </button> */}
-        {/* <button type="button" onClick={() => props.onDeleteCard(props.id)}> */}
-        <button type="button" onClick={() => props.onDeleteCard(props.id)}>
-          Delete
-        </button>
-      </div>
+      {/* <button type="button" onClick={() => props.onDeleteCard(props.id)}> */}
+      <button type="button" onClick={() => props.onDeleteCard(props.id)}>
+        Delete
+      </button>
     </div>
   );
 };

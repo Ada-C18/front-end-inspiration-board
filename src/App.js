@@ -5,6 +5,7 @@ import Board from "./components/Board";
 import Card from "./components/Card";
 import CardList from "./components/CardList";
 import { useState } from "react";
+
 const boardsData = [
   {
     id: 1,
@@ -88,53 +89,54 @@ function App() {
   };
 
   return (
-    <div className="main">
+    <section>
       <header className="header">INSPIRATION BOARD</header>
-      <section>
+      <div className="control_panel">
         <div className="boards_container">
           <Board boards={boardData} onBoardClicked={handleBoardClicked} />
-          <div>
-            <h1> Select Board</h1>
-            {/* <p>{selectedBoard.title} {selectedBoard.owner}</p> */}
-            <p>
-              {selectedBoard.id
-                ? `${selectedBoard.title}  ${selectedBoard.owner}`
-                : "Please select a Board from the Board List!"}
-            </p>
-          </div>
-          <div>
-            <h1> Create A New Board </h1>
-            {showForm && <NewBoardForm onUpdateBoardData={updateBoardData} />}
-            <button type="button" onClick={() => setShowForm(!showForm)}>
-              {" "}
-              {showForm === true
-                ? "Hide New Board Form"
-                : "Show New Board Form"}
-            </button>
-          </div>
         </div>
-      </section>
-      <section>
+        <div>
+          <h1> Select Board</h1>
+          {/* <p>{selectedBoard.title} {selectedBoard.owner}</p> */}
+          <p>
+            {selectedBoard.id
+              ? `${selectedBoard.title}  ${selectedBoard.owner}`
+              : "Please select a Board from the Board List!"}
+          </p>
+        </div>
+        <div>
+          <h1> Create A New Board </h1>
+          {showForm && <NewBoardForm onUpdateBoardData={updateBoardData} />}
+          <button type="button" onClick={() => setShowForm(!showForm)}>
+            {" "}
+            {showForm === true ? "Hide New Board Form" : "Show New Board Form"}
+          </button>
+        </div>
+      </div>
+      <br></br>
+
+      <div className="corkboard">
         {selectedBoard.id && (
-          <div className="cards_container">
-            <div>
-              <h1> Cards for {selectedBoard.title} </h1>
-            </div>
-            <div>
-              <div>{displayCards}</div>
-              <CardList cards={cardData} onDeleteCard={deleteCard}></CardList>
-            </div>
-            <div>
+          <div className="boardtitle">
+            <h1> Cards for {selectedBoard.title} </h1>
+          </div>
+        )}
+        {selectedBoard.id && (
+          <div className="board_container">
+            {displayCards}
+            <CardList cards={cardData} onDeleteCard={deleteCard}></CardList>
+
+            <div className="new_card">
               <h1> Create a New Card</h1>
               <NewCardForm onUpdateCardData={updateCardData} />
             </div>
           </div>
         )}
-      </section>
+      </div>
       {/* <footer>
         <p> Click here to delete all boards and cards</p>
       </footer> */}
-    </div>
+    </section>
   );
 }
 export default App;

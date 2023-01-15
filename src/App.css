@@ -1,5 +1,44 @@
-* {
+/* body {
   background-image: url(../public/corkboard.jpg)
+} */
+
+.control_panel {
+  margin: auto;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 20px;
+  width: 90%;
+  border: 1px solid black;
+  padding: 20px;
+  box-shadow: 2px 2px gray;
+  background-color:rgb(232, 232, 232);
+}
+
+.control_panel>div {
+  background-color: rgba(243, 235, 3, 0.8);
+  text-align: center; 
+  padding: 20px 0;
+  border: 1px solid black;  
+}
+
+.corkboard {
+  box-shadow: 2px 2px gray;
+  background-image: url(../public/corkboard.jpg);
+  width: 90%;
+  margin: auto;
+}
+
+
+/* .corkboard>div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+} */
+
+.boardtitle{
+  /* grid-column: 1/4; */
+  border: 1px solid black;
 }
 
 h1 {
@@ -15,33 +54,27 @@ p {
   font-size: 50px;
   color: darkcyan;
   align-items: center;
+  text-align: center;
 }
-.boards_container {
-  display: grid;
-  background-color: antiquewhite;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-.board_display {
-  display: flex;
-  border: black;
-  size: 50px;
-  font-size: 18px;
-}
+
 
 .button {
   background-color: yellow;
   font-weight: bold;
 }
 
-.cards_container {
+.board_container {
+  margin: auto;
   display: grid;
-  grid-template: 1fr/1fr;
-  border-bottom: blue; 
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  border: 1px solid black;
+  padding: 20px;
 }
 
-.card_form__display {
-  font-size: 18px;
+.new_card {
+  /* font-size: 18px; */
   display: flex;
-  border: blue;
+  border: 1px solid black;
   justify-items: left;
 }
