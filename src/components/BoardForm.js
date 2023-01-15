@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './BoardForm.css';
 
 const kDefaultFormData = {
-  title: '',
+  name: '',
   owner: '',
 };
 
@@ -15,13 +15,13 @@ const BoardForm = function (props) {
 
   useEffect(() => {
     // enable submit button if there's valid data in formState
-    if (formState.owner !== '' && formState.title !== '') {
+    if (formState.owner !== '' && formState.name !== '') {
       setSubmitDisabledState(() => false);
     }
 
     // disable submit button if the user had deleted all of the text.
     // glitchy, but it mostly works for now.
-    if (formState.owner === '' || formState.title === '') {
+    if (formState.owner === '' || formState.name === '') {
       setSubmitDisabledState(() => true);
     }
   }, [formState]);
@@ -40,7 +40,7 @@ const BoardForm = function (props) {
     setFormState(newFormData);
 
     // enable submit button if there's valid data in formState
-    if (formState.owner !== '' && formState.title !== '') {
+    if (formState.owner !== '' && formState.name !== '') {
       setSubmitDisabledState(() => false);
     }
 
@@ -82,12 +82,12 @@ const BoardForm = function (props) {
       <h2>Create a New Board</h2>
       <form onSubmit={handleSubmit} className={stateClass}>
         <div>
-          <label htmlFor="title">Board Title</label>
+          <label htmlFor="name">Board Title</label>
           <input
             type="type"
-            id="title"
-            name="title"
-            value={formState.title}
+            id="name"
+            name="name"
+            value={formState.name}
             onChange={handleNewData}
           />
         </div>
