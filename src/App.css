@@ -11,11 +11,11 @@
   border: 1px solid black;
   padding: 20px;
   box-shadow: 2px 2px gray;
-  background-color:rgb(232, 232, 232);
+  background-color:rgb(255, 255, 255);
 }
 
 .control_panel>div {
-  background-color: rgba(243, 235, 3, 0.8);
+  background-color: rgba(201, 213, 255, 0.8);
   text-align: center; 
   padding: 20px 0;
   border: 1px solid black;  
@@ -24,7 +24,8 @@
 .corkboard {
   box-shadow: 2px 2px gray;
   background-image: url(../public/corkboard.jpg);
-  width: 90%;
+  width: 95%;
+  border: 1px solid black;
   margin: auto;
 }
 
@@ -38,11 +39,13 @@
 
 .boardtitle{
   /* grid-column: 1/4; */
-  border: 1px solid black;
+  font-size: 28px;
+  text-align: center;
+  font-weight: bolder;
 }
 
 h1 {
-  color: blue;
+  color: midnightblue;
 }
 
 p {
@@ -68,13 +71,20 @@ p {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 20px;
-  border: 1px solid black;
   padding: 20px;
 }
 
 .new_card {
   /* font-size: 18px; */
-  display: flex;
   border: 1px solid black;
-  justify-items: left;
+  justify-content: center;
+  text-align: center;
+  font-size: 30px;
+  background-color: rgba(255, 255, 168, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+  transform: rotate(1deg);
+
 }

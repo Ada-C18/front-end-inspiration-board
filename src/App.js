@@ -117,9 +117,7 @@ function App() {
 
       <div className="corkboard">
         {selectedBoard.id && (
-          <div className="boardtitle">
-            <h1> Cards for {selectedBoard.title} </h1>
-          </div>
+          <div className="boardtitle">Cards for {selectedBoard.title}</div>
         )}
         {selectedBoard.id && (
           <div className="board_container">
@@ -127,7 +125,7 @@ function App() {
             <CardList cards={cardData} onDeleteCard={deleteCard}></CardList>
 
             <div className="new_card">
-              <h1> Create a New Card</h1>
+              <h3> Create a New Card</h3>
               <NewCardForm onUpdateCardData={updateCardData} />
             </div>
           </div>
