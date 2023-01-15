@@ -1,4 +1,3 @@
-//import "./App.js";
 import { useState } from "react";
 
 const NewCardForm = (props) => {

@@ -1,14 +1,7 @@
 import "./CardList.css";
 import Card from "./Card";
-import { useState } from "react";
 
 const CardList = (props) => {
-  // const [likesCount, setLikesCount] = useState(0);
-  // const updateLikes = () => {
-  //     setLikesCount(likesCount + 1);
-  //     console.log("i am updating")
-
-  // };
   const cards = props.cards;
   return (
     <div className="card_container">
