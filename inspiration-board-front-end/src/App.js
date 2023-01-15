@@ -70,6 +70,19 @@ function App() {
       });
   };
 
+  const deleteAllBoards = () => {
+    axios
+      .delete(`${URL}`)
+      .then((response) => {
+        setBoardData(response);
+        setSelectedBoard(emptyBoard);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+        alert("Couldn't delete all boards. Try again!");
+      });
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -84,6 +97,9 @@ function App() {
         <div>
           <CardList board={selectedBoard} />
         </div>
+        <span onClick={deleteAllBoards}>
+          Click Here to delete ALL Boards and Cards Data
+        </span>
       </main>
     </div>
   );
