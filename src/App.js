@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import './App.css';
-import BoardForm from './components/BoardForm';
-import BoardList from './components/BoardList';
-import testData from './data/test.json';
+import React, { useState } from "react";
+import "./App.css";
+import BoardForm from "./components/BoardForm";
+import BoardList from "./components/BoardList";
+import CardForm from "./components/CardForm";
+import testData from "./data/test.json";
 
 const App = function () {
   const handleNewBoard = function (newBoardData) {
@@ -15,6 +16,10 @@ const App = function () {
 
   const testBoardListData = testData[0];
   const [boardListState, setBoardListState] = useState(testBoardListData);
+
+  const handleNewCard = (newcard) => {
+    console.log("new card" + newcard);
+  };
 
   return (
     <div className="App">
@@ -37,7 +42,10 @@ const App = function () {
       </section>
       <section id="card-section">
         <div id="card-list">Put CardList and Card components here.</div>
-        <div id="card-form-container">Put CardForm here.</div>
+        <div id="card-form-container">
+          {" "}
+          <CardForm handleNewCard={handleNewCard}></CardForm>
+        </div>
       </section>
     </div>
   );
