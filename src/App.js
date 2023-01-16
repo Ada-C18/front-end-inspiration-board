@@ -70,7 +70,6 @@ function App() {
       `${process.env.REACT_APP_BACKEND_URL}/card`,
       cardForm
     );
-    console.log(response.data);
     const newCard = [...cardsData];
     newCard.push({ ...response.data.card });
     setCardsData(newCard);
@@ -127,10 +126,8 @@ function App() {
     return getAllCards();
   };
 
-
-
   // Sort **NOT WORKING**
-  const [sortType, setSortType] = useState('message');
+  const [sortType, setSortType] = useState('');
 
   const handleChange = (e) => {
     setSortType(e.target.value);
@@ -144,14 +141,24 @@ function App() {
         id: 'id',
       };
       const sortProperty = types[type];
-      const sorted = [...cardsData].sort((a, b) => a[sortProperty] - b[sortProperty]);
-      setCardsData(sorted);
+      // const sorted = [...cardsData].sort(
+      //   (a, b) => a[sortProperty] - b[sortProperty]
+      // );
+      if (sortProperty === 'message') {
+        const sorted = [...cardsData].sort((a, b) =>
+          a.message > b.message ? 1 : -1
+        );
+        setCardsData(sorted);
+      }
+      if (sortProperty === 'likes_count' || sortProperty === 'id') {
+        const sorted = [...cardsData].sort(
+          (a, b) => b[sortProperty] - a[sortProperty]
+        );
+        setCardsData(sorted);
+      }
     };
     sortArray(sortType);
   }, [sortType]);
-
-
-
 
   return (
     <div className="whole__page">
@@ -182,7 +189,7 @@ function App() {
               <span>👆 Select a board 👆</span>
             ) : (
               <span>
-                🤩 You selected  {selectedBoard.title}  made by{' '}
+                🤩 You selected {selectedBoard.title} made by{' '}
                 {selectedBoard.owner} 🤩
               </span>
             )}
@@ -220,7 +227,7 @@ function App() {
                   handleDeleteCard={handleDeleteCard}
                 />
               </div>
-              <section className="sort_by" >
+              <section className="sort_by">
                 Sort messages
                 <select value={sortType} onChange={handleChange}>
                   <option value="alphabetically">Alphabetically</option>
