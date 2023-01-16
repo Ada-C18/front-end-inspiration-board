@@ -1,9 +1,3 @@
-button {
-  background-color: transparent;
-  border: none;
-  color: #014040
-}
-
 .single-card {
   display: flex;
   flex-direction: row;
@@ -32,6 +26,23 @@ button {
   font-weight: bold;
 }
 
-.likes-and-delete {
+#num-likes {
   font-family: 'Caveat';
+  font-size: 1.1rem;
 }
+
+.like-and-delete-buttons {
+  font-family: 'Caveat';
+  font-size: 1.1rem;
+  background-color: transparent;
+  border: none;
+  color: #014040
+
+}
+
+.like-and-delete-buttons:hover {
+  text-decoration: underline;
+}
+
+
+
