@@ -24,7 +24,9 @@ const Board = (props) => {
   useEffect(getCardList, [props.currentBoard]);
 
   const cards = cardList.map((card) => {
-    return <Card key={card.id} card={card}></Card>;
+    return (
+      <Card key={card.id} message={card.message} likes={card.likes}></Card>
+    );
   });
 
   return (
