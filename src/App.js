@@ -127,24 +127,31 @@ function App() {
     return getAllCards();
   };
 
-  // Sort attempt **NOT WORKING**
-  // const [data, setData] = useState([]);
-  // const [sortType, setSortType] = useState('albums');
 
-  // useEffect(() => {
-  //   const sortArray = type => {
-  //     const types = {
-  //       alphabetically: 'message',
-  //       likes: 'likes_count',
-  //       id: 'id',
-  //     };
-  //     const sortProperty = types[type];
-  //     const sorted = [...cards].sort((a, b) => b[sortProperty] - a[sortProperty]);
-  //     setData(sorted);
-  //   };
 
-  //   sortArray(sortType);
-  // }, [sortType]);
+  // Sort **NOT WORKING**
+  const [sortType, setSortType] = useState('message');
+
+  const handleChange = (e) => {
+    setSortType(e.target.value);
+  };
+
+  useEffect(() => {
+    const sortArray = (type) => {
+      const types = {
+        alphabetically: 'message',
+        likes: 'likes_count',
+        id: 'id',
+      };
+      const sortProperty = types[type];
+      const sorted = [...cardsData].sort((a, b) => a[sortProperty] - b[sortProperty]);
+      setCardsData(sorted);
+    };
+    sortArray(sortType);
+  }, [sortType]);
+
+
+
 
   return (
     <div className="whole__page">
@@ -175,7 +182,7 @@ function App() {
               <span>👆 Select a board 👆</span>
             ) : (
               <span>
-                🤩 You selected 🌟 {selectedBoard.title} 🌟 made by{' '}
+                🤩 You selected  {selectedBoard.title}  made by{' '}
                 {selectedBoard.owner} 🤩
               </span>
             )}
@@ -213,9 +220,9 @@ function App() {
                   handleDeleteCard={handleDeleteCard}
                 />
               </div>
-              <section className="sort_by">
+              <section className="sort_by" >
                 Sort messages
-                <select>
+                <select value={sortType} onChange={handleChange}>
                   <option value="alphabetically">Alphabetically</option>
                   <option value="likes">by Likes</option>
                   <option value="id">by Order Created</option>
