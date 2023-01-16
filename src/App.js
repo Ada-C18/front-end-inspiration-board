@@ -12,7 +12,7 @@ function App() {
   const [selectedBoard, setSelectedBoard] = useState({
     title: "",
     owner: "",
-    board_id: null,
+    id: null,
   });
 
   useEffect(() => {
@@ -63,7 +63,7 @@ function App() {
       <div>
         <h2> Selected Board</h2>
         <p>
-          {selectedBoard.board_id
+          {selectedBoard.id
             ? `${selectedBoard.title} - ${selectedBoard.owner}`
             : "select board from list"}
         </p>

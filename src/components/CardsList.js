@@ -7,7 +7,9 @@ const CardsList = (props) => {
   const [cardsData, setCardsData] = useState([]);
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${props.board}/cards`)
+      .get(
+        `${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.id}/cards`
+      )
       .then((response) => {
         setCardsData(response.data);
         console.log("API is working!!!!", response.data);
@@ -45,12 +47,11 @@ const CardsList = (props) => {
   //   <Card/>)
   // });
 
-
   return (
     <section>
-    <div>
-      <Card />
-    </div>
+      <div>
+        <Card />
+      </div>
       <section>
         <NewCardForm createNewCard={createNewCard}></NewCardForm>
         <span onClick={NewCardForm}></span>
