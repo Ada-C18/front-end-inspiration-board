@@ -54,4 +54,18 @@ const CardForm = (props) => {
   );
 };
 
+// CardForm.propTypes = {
+//   message: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.number.isRequired,
+//       board: PropTypes.string.isRequired,
+//       owner: PropTypes.string.isRequired,
+//       timeStamp: PropTypes.string.isRequired,
+//       liked: PropTypes.bool.isRequired,
+//       addItem: PropTypes.func.isRequired,
+//       removeItem: PropTypes.func.isRequired,
+//     })
+//   ),
+// };
+
 export default CardForm;

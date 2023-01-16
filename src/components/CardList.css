@@ -1,27 +1,38 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: Helvetica;
+  margin: 20px auto;
+  font-family: 'Lato';
+  background:#666;
+  color:#fff;
+}
+*{
+  margin:0;
+  padding:0;
+}
+h2 {
   font-weight: bold;
+  font-size: 2rem;
 }
-
-.layout {
-display: grid;
-grid-template-rows: 1fr;
-grid-template-columns: 200px 200px;
-grid-gap: ;
+p {
+  font-size: 1rem;
+  font-weight: normal;
 }
-
-.layout_list {
-background-color: lightgray;
+ul,li{
+  list-style:none;
 }
-
-list.__card {
-background-color: ghostwhite;
-  background: blue;
-  display: grid;
-  grid-gap: 1
+ul{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-
-.card__label {
+ul li a{
+  text-decoration:none;
+  color:#000;
+  background:#ffc;
+  display:block;
+  height:10em;
+  width:10em;
+  padding:1em;
+}
+ul li{
+  margin:1em;
 }
