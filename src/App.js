@@ -6,7 +6,6 @@ import Board from "./Components/Board";
 
 const BACKEND_URL = `${process.env.REACT_APP_BACKEND_URL}`;
 
-
 function App() {
   const [listOfBoards, setListOfBoards] = useState([]);
   const addNewBoard = () => {
@@ -48,7 +47,7 @@ function App() {
         currentBoard={currentBoard}
         currentBoardName={getCurrentBoardName()}
       ></Board>
-    </div>
+    </main>
   );
 }
 

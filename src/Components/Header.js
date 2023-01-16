@@ -18,7 +18,7 @@ const Header = (props) => {
         isVisibleSelector={boardSelectorVisible}
       ></BoardSelector>
       <h1>Inspiration Board</h1>
-      <button onClick={viewForm}>+</button>
+      {/* <button onClick={viewForm}>+</button> */}
       <BoardForm
         newBoard={props.newBoard}
         isVisibleForm={newBoardFormVisible}
