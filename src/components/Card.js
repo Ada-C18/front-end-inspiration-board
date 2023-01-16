@@ -6,10 +6,11 @@ const Card = ({ card, updateLikedCard, deleteCard }) => {
   return (
     // updated from ul to section
     <section className="card">
-      <h3>{card.message}</h3>
-      <p>{card.likes_count}</p>
-      <p onClick = {()=>{updateLikedCard(card.id)}}><AiFillLike /><AiOutlineLike /></p>
-      <p onClick = {()=>{deleteCard(card.id)}}><FaRegTrashAlt/></p>
+      <h1>{card.message}</h1>
+      <div className='card-elements'>
+        <p onClick = {()=>{updateLikedCard(card.id)}}><AiFillLike /><AiOutlineLike /> {card.likes_count}</p>
+        <p onClick = {()=>{deleteCard(card.id)}}><FaRegTrashAlt/></p>
+      </div>
     </section>
   );
 };

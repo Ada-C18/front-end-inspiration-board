@@ -80,4 +80,10 @@ main {
   background-color: #c5cae9;
   color: #283593;
   padding: 1rem;
+  box-shadow: 5px 5px;
+}
+
+.card-elements {
+  display: flex;
+  justify-content: space-evenly;
 }
