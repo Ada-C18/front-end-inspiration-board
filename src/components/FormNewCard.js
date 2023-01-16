@@ -2,11 +2,12 @@
 import { useState } from "react";
 
 const INITIAL_FORM ={
-        message:"message",
+        message:"",
     };
 
 const FormNewCard = (props) => {
     const [formCard, setFormCard] = useState(INITIAL_FORM);
+    const [message , setMessage] = useState('')
 
     const handleChange = (e) => {
         const newCardData = {
@@ -14,6 +15,7 @@ const FormNewCard = (props) => {
         [e.target.name]: e.target.value
         };
         setFormCard(newCardData)
+        setMessage(e.target.value)
     };
 
     const handleNewCardSubmit =(e) =>{
@@ -29,8 +31,11 @@ const FormNewCard = (props) => {
                 id="message" 
                 name="message"
                 value={formCard.message}
+                placeholder = "Inspirational message"
                 onChange={handleChange}  />
-        <input type='submit' value='Add Card' />    
+
+        <p> Preview card message: {message} </p>   
+        <input type='submit' value='Add Card' />
         </form>
     );
 

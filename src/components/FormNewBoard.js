@@ -2,8 +2,8 @@ import "../styles/FormNewBoard.css";
 import { useState } from "react";
 
 const INITIAL_FORM_DATA = {
-    title:"Title",
-    owner:"Name",
+    title:"",
+    owner:"",
 };
 
 const NewBoardForm = (props) => {
@@ -22,29 +22,44 @@ const NewBoardForm = (props) => {
         props.addBoardCallbackFunc(formData);
     }
 
-return (
-    <form onSubmit={handleNewBoardSubmit}>
-        {/* debe ser el mismo htmlFor == id */}
-        <label htmlFor="title" > Title </label>
-        <input 
-            type="text" 
-            id="title" 
-            name="title" 
-            value={formData.title} 
-            onChange={handleChange} 
-        />
-        <label htmlFor="owner" > Owner </label>
-        <input 
-            type="text" 
-            id="owner" 
-            name="owner" 
-            value={formData.owner} 
-            onChange={handleChange} 
-        />
-    
-        <input type='submit' value='Add Board' />
+    const [show, setShow] = useState(false)
 
-    </form>
+
+return (
+    <div>
+        { show?
+        <form onSubmit={handleNewBoardSubmit}>
+            <label htmlFor="title" > Title </label>
+            <input 
+                type="text" 
+                id="title" 
+                name="title" 
+                value={formData.title} 
+                placeholder = "Title"
+                onChange={handleChange} 
+            />
+            <label htmlFor="owner" > Owner </label>
+            <input 
+                type="text" 
+                id="owner" 
+                name="owner" 
+                value={formData.owner} 
+                placeholder = "Name"
+                onChange={handleChange} 
+            />
+        
+            <input type='submit' value='Add Board' />
+            
+            <button onClick={()=>setShow(false)} > Hide New Board Form </button>
+        </form> 
+        :
+        <button onClick={()=>setShow(true)} > Create New Board </button>
+        }
+
+        
+
+        <br />
+    </div>
     );
 }
 
