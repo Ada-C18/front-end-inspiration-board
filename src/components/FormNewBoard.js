@@ -9,6 +9,7 @@ const INITIAL_FORM_DATA = {
 const NewBoardForm = (props) => {
     const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
+
     const handleChange = (e) => {
         const newFormData ={
             ...formData,
@@ -49,6 +50,8 @@ return (
             />
         
             <input type='submit' value='Add Board' />
+
+            <p> Preview info: {formData.title} - {formData.owner} </p>
             
             <button onClick={()=>setShow(false)} > Hide New Board Form </button>
         </form> 
