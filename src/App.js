@@ -1,5 +1,6 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import Header from "./Components/Header";
 import Board from "./Components/Board";
 
@@ -7,25 +8,34 @@ const BACKEND_URL = `${process.env.REACT_APP_BACKEND_URL}`;
 
 
 function App() {
-  const [listOfBoards, setListOfBoards] = useState(/* GET ALL BOARDS */);
+  const [listOfBoards, setListOfBoards] = useState([]);
   const addNewBoard = () => {
     // Get board data from POST request
     /* TODO */
   };
-
-  const [currentBoard, setCurrentBoard] = useState(/* TODO */);
-  const updateCurrentBoard = () => {
-    // PROP
-    // Get board data. Current board is the board matching
-    // the id from the GET request
-    const getBoard = (id) => {
-      // for board in listOfBoards
-      if (board.id === id) {
-        return board;
-      }
+  const getBoardList = () => {
+    axios.get(`${BACKEND_URL}/boards`).then((result) => {
+      setListOfBoards(result.data);
     });
-
   };
+
+  const [currentBoard, setCurrentBoard] = useState(null);
+  const updateCurrentBoard = (id) => {
+    setCurrentBoard(id ? parseInt(id) : null);
+  };
+
+  const getCurrentBoardName = () => {
+    if (currentBoard) {
+      const current = listOfBoards.find(
+        (element) => parseInt(element.id) === currentBoard
+      );
+      return current.name;
+    } else {
+      return null;
+    }
+  };
+
+  useEffect(() => getBoardList, []);
 
   return (
     <main className="App">
@@ -34,8 +44,11 @@ function App() {
         newBoard={addNewBoard}
         updateCurrentBoard={updateCurrentBoard}
       ></Header>
-      <Board currentBoard={currentBoard}></Board>
-    </main>
+      <Board
+        currentBoard={currentBoard}
+        currentBoardName={getCurrentBoardName()}
+      ></Board>
+    </div>
   );
 }
 

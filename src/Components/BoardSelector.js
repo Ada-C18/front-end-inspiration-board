@@ -1,9 +1,22 @@
 const BoardSelector = (props) => {
-  const boardNames = props.listOfBoards.map((board) => {
-    return <div>{board.boardName}</div>;
+  let options = props.listOfBoards.map((board) => {
+    return (
+      <option key={board.id} value={board.id}>
+        {board.name}
+      </option>
+    );
   });
 
-  return <article>{boardNames}</article>;
+  const onSelectBoard = (e) => {
+    props.updateCurrentBoard(e.target.value);
+  };
+
+  return (
+    <select name="boardSelector" onChange={onSelectBoard}>
+      <option value="">Select Board:</option>
+      {options}
+    </select>
+  );
 };
 
 export default BoardSelector;
