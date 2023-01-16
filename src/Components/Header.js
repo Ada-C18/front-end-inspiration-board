@@ -1,6 +1,7 @@
 import { useState } from "react";
 import BoardForm from "./BoardForm";
 import BoardSelector from "./BoardSelector";
+import "./Header.css";
 
 const Header = (props) => {
   const [boardSelectorVisible, setBoardSelectorVisible] = useState(false);
@@ -13,7 +14,7 @@ const Header = (props) => {
   );
 
   return (
-    <header>
+    <header className="header">
       <BoardSelector
         listOfBoards={props.listOfBoards}
         updateCurrentBoard={props.updateCurrentBoard}
