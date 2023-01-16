@@ -7,13 +7,13 @@
       { "board_id": 2, "name": "Dingo's Surprise Bday",
       "owner": "Ferret"}],
 
-[ {"cardID": 1, 
+[ {"card_id": 1, 
   "message":"Temp Message.",
   "likes": 3},
-  {"cardID": 2, 
+  {"card_id": 2, 
   "message":"Temp Message 2.",
   "likes": 1},
-  {"cardID": 3, 
+  {"card_id": 3, 
   "message":"Temp Message 3.",
   "likes": 2}
 ],
@@ -57,7 +57,7 @@
 
 [
   {"message": "Card: 1 was deleted.", 
-  "cardID": 1}],
+  "card_id": 1}],
 
 [
   {"message": "Board: 1 was deleted.",
@@ -78,7 +78,7 @@
 
 
 [{"message": "Card: 2 was deleted.", 
-"cardID": 2}],
+"card_id": 2}],
 [{"message": "Board: 2 was deleted.", 
 "boardID": 1}]
 ]
