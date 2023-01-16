@@ -19,6 +19,7 @@ h1 {
   height: 20vh;
   font-family: 'Caveat';
   padding-bottom: 2vh;
+  color: #014040;
 }
 
 #board-display {
@@ -41,13 +42,15 @@ h1 {
 #add-card {
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
   width: 25vw;
   height: 60vh;
   background-color: whitesmoke;
   border-radius: 50px;
   border: black dashed;
   position: sticky;
-  right: 0;
   margin-top: 2vh;
 }
 
@@ -62,4 +65,5 @@ img {
   background-color: #6AA6A6;
   border-radius: 10px;
   padding: 5px;
+  box-shadow:  3px 3px 5px #014040;
 }
