@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import './CardForm.css';
 import PropTypes from 'prop-types';
 
+//Does this have to change based on the route /card. THEN to link that card to a specific board,
+// we make a post request to boards/1 with the json {“card_id”: 1}
 const cardObj = {
   message: '',
   likeCount: 0,
 };
-const CardForm = ({ onFormSubmit }) => {
-  // default values for the shape of the form and it's fields. The object being passed
+const CardForm = (props) => {
+
   const [formData, setFormData] = useState(cardObj);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onFormSubmit(formData);
+    props.handleCardSubmit(formData);
     setFormData(cardObj);
   };
 
@@ -43,7 +45,7 @@ const CardForm = ({ onFormSubmit }) => {
 };
 
 CardForm.propTypes = {
-  onFormSubmit: PropTypes.func.isRequired,
+  handleCardSubmit: PropTypes.func.isRequired,
 };
 
 export default CardForm;

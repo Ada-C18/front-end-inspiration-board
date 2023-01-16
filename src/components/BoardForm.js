@@ -6,8 +6,11 @@ const boardObj = {
   title: '',
   owner: '',
 };
+
 const BoardForm = (props) => {
+
   const [formData, setFormData] = useState(boardObj);
+  
   const handleChange = (event) => {
     const fieldValue = event.target.value;
     const fieldName = event.target.name;
@@ -16,7 +19,7 @@ const BoardForm = (props) => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.onSubmitBoardForm(formData);
+    props.handleBoardSubmit(formData);
     setFormData(boardObj);
   };
   return (
@@ -54,7 +57,7 @@ const BoardForm = (props) => {
 };
 
 BoardForm.propTypes = {
-  onSubmitBoardForm: PropTypes.func.isRequired,
+  handleBoardSubmit: PropTypes.func.isRequired,
 };
 
 export default BoardForm;

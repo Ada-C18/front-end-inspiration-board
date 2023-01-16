@@ -12,9 +12,8 @@ const CardList = (props) => {
           key={card.cardId}
           cardId={card.cardId}
           message={card.message}
-          likeCount={card.likeCount}
-          likeButton={card.likeButton}
-          deleteButton={card.deleteButton}
+          handleCardDelete={card.handleCardDelete} 
+          handleLikesCount={card.handleLikesCount}
         />
       );
     });
@@ -32,8 +31,8 @@ CardList.propTypes = {
       cardId: PropTypes.number.isRequired,
       message: PropTypes.string.isRequired,
       likesCount: PropTypes.number.isRequired,
-      likesButton: PropTypes.func.isRequired,
-      deleteButton: PropTypes.func.isRequired,
+      handleLikesCount: PropTypes.func.isRequired,
+      handleCardDelete: PropTypes.func.isRequired,
     }).isRequired
   ).isRequired,
 };

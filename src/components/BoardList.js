@@ -1,72 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import Board from './Card';
-import CardForm from './CardForm';
-import axios from 'axios';
-import './BoardList.css'
+import React from 'react';
+import Board from './Board';
+import PropTypes from 'prop-types';
+import './BoardList.css';
 
-const REACT_APP_BACKEND_URL = 'http://localhost:5000';
-
-const cardApiToJson = (card) => {
-  const {
-    card_id: cardId,
-    board_id: boardId,
-    likes_count: likesCount,
-    message,
-    board,
-  } = card;
-  return { cardId, boardId, likesCount, message, board };
-};
-
-const addCardAPI = (card) => {
-  return axios
-    .post(`${REACT_APP_BACKEND_URL}/boards/${getCardsAPI}/cards`, card)
-    .then((response) => response.data.board.card)
-    .catch((err) => console.log(err));
-};
-
-const getCardsAPI = async (cards) => {
-  try {
-    const response = await axios.get(
-      `${REACT_APP_BACKEND_URL}/boards/${cards.boardId}/cards`
-    );
-    return response.data.map(cardApiToJson);
-  } catch (err) {
-    console.log(err);
-    throw new Error('Nope, get your cards');
-  }
-};
-
-const BoardList = () => {
-  const [cards, setCards] = useState([]);
-
-  const refreshCards = async () => {
-    try {
-      const cards = await getCardsAPI();
-      setCards(cards);
-    } catch (err) {
-      console.log(err.message);
-      throw new Error('Can not refresh cards!');
-    }
-  };
-
-  useEffect(() => {
-    refreshCards();
-  }, []);
-
-  const onSubmitCardForm = (card) => {
-    addCardAPI(card)
-      .then((newCard) => {
-        setCards((prevCard) => [...prevCard, newCard]);
-      })
-      .catch((err) => console.log(err));
-  };
-
+const BoardList = (props) => {
   return (
     <div>
-      <Board cards={cards} />
-      <CardForm className='card_board' onSubmitCardForm={onSubmitCardForm} />
+      <Board boardId={props.boardId} title={props.title} owner={props.owner} />
     </div>
   );
 };
 
+Board.propTypes = {
+  board: PropTypes.arrayOf(
+    PropTypes.shape({
+      boardId: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      owner: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  selectBoard: PropTypes.func.isRequired,
+  deleteBoard: PropTypes.func.isRequired,
+};
 export default BoardList;
