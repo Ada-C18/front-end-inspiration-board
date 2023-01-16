@@ -1,12 +1,15 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import './Board.css';
-import PropTypes from 'prop-types';
 
 // props = title and owner
-const Board = (props) => {};
+const Board = ({ title, owner }) => {
+    const boardName = `${title} by ${owner}`;
+    return (<li className='boardName__li'>{boardName}</li>);
+};
 
 
-Board.PropTypes = {
+Board.propTypes = {
     title: PropTypes.string.isRequired,
     owner: PropTypes.string.isRequired,
 };

@@ -38,7 +38,7 @@ const NewCardForm = ({ addCardCallback , afterSubmitMessage }) => {
               Add Card
             </button>
             <p>
-              {afterSubmitMessage}
+              {/* {afterSubmitMessage} */}
             </p>
           </div>
       </form>
