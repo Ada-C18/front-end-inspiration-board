@@ -1,24 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Board.css'
+import './Board.css';
 
 const Board = (props) => {
   return (
-    <div>
-      <h2>Selected Board</h2>
-      <p>{props.title}</p>
-      <h2>Cards for {props.title}</h2>
+    <div onClick={() => props.onSelectBoard(props.boardId)}>
+      <p>{props.title} by {props.owner}</p>
+      <button onClick={() => props.onDeleteBoard(props.boardId)}>Remove Board</button>
     </div>
   );
 };
 
 Board.propTypes = {
-  id: PropTypes.number.isRequired,
+  boardId: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   owner: PropTypes.string.isRequired,
-  selectBoard: PropTypes.func.isRequired,
-  deleteBoard: PropTypes.func.isRequired,
-  onFormSubmitBoard: PropTypes.func.isRequired,
+  onSelectBoard: PropTypes.func.isRequired,
+  onDeleteBoard: PropTypes.func.isRequired,
 };
 
 export default Board;

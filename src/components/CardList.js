@@ -30,9 +30,8 @@ CardList.propTypes = {
     PropTypes.shape({
       cardId: PropTypes.number.isRequired,
       message: PropTypes.string.isRequired,
-      likesCount: PropTypes.number.isRequired,
-      handleLikesCount: PropTypes.func.isRequired,
-      handleCardDelete: PropTypes.func.isRequired,
+      onLikesCount: PropTypes.func.isRequired,
+      onDeleteCard: PropTypes.func.isRequired,
     }).isRequired
   ).isRequired,
 };

@@ -4,22 +4,27 @@ import PropTypes from 'prop-types';
 import './BoardList.css';
 
 const BoardList = (props) => {
-  return (
-    <div>
-      <Board boardId={props.boardId} title={props.title} owner={props.owner} />
-    </div>
-  );
+  return props.boards.map((board) => (
+    <Board
+      key={board.boardId}
+      title={board.title}
+      owner={board.owner}
+      boardId={board.boardId}
+      onSelectBoard={props.ONselectBoard}
+      onDeleteBoard={props.onDeleteBoard}
+    />
+  ));
 };
 
 Board.propTypes = {
-  board: PropTypes.arrayOf(
+  boards: PropTypes.arrayOf(
     PropTypes.shape({
       boardId: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       owner: PropTypes.string.isRequired,
     })
   ).isRequired,
-  selectBoard: PropTypes.func.isRequired,
-  deleteBoard: PropTypes.func.isRequired,
+  onSelectBoard: PropTypes.func.isRequired,
+  onDeleteBoard: PropTypes.func.isRequired,
 };
 export default BoardList;

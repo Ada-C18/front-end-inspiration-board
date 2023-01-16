@@ -105,7 +105,11 @@ const App = () => {
 
   //STATE
   const [boards, setBoards] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState(null)
+ const [selectedBoard, setSelectedBoard] = useState({
+    title: '',
+    owner: '',
+    board_id: null
+  });
   const [cards, setCards] = useState([]);
 
   //HANDLE
@@ -164,7 +168,7 @@ const App = () => {
 
   const handleCardDelete = async (card) => {
     try {
-      await deleteBoardAPI(card);
+      await deleteCardAPI(card);
       setBoards((prevCards) => {
         return prevCards.filter((cardId) => card.cardId !== cardId);
       });
@@ -208,6 +212,7 @@ const App = () => {
     refreshBoards();
   }, []);
 
+  
 
  
   return (
@@ -220,10 +225,10 @@ const App = () => {
         <BoardList
           className='board_list'
           boards={boards}
-          handleBoardSelect={handleBoardSelect}
-          handleBoardDelete={handleBoardDelete}
+          onSelectBoard={handleBoardSelect}
+          onDeleteBoard={handleBoardDelete}
         />
-        <CardList cards={cards} handleCardDelete={handleCardDelete} handleLikesCount={handleLikesCount}/>
+        <CardList cards={cards} onCardDelete={handleCardDelete} onLikesCount={handleLikesCount}/>
         <CardForm handleCardSubmit={handleCardSubmit} />
       </main>
     </div>
