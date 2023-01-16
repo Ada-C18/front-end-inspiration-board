@@ -23,12 +23,12 @@ const CardsList = (props) => {
       });
   }, [props.board]);
 
-  const createNewCard = (newCard) => {
+  const createNewCard = (cardFormData) => {
     // add board.id back later
     axios
       .post(
-        `${process.env.REACT_APP_BACKEND_URL}/boards/${props.board}/cards`,
-        { newCard }
+        `${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.id}/cards`,
+        cardFormData
       )
       .then((response) => {
         console.log("New Card successfully created", response.data.card);
