@@ -1,41 +1,95 @@
-import "./App.css";
-import { useState } from "react";
-import BoardList from "./components/BoardList";
-import Board from "./components/Board";
-import NewBoardForm from "./components/NewBoardForm";
-import CardList from "./components/CardList";
-import NewCardForm from "./components/NewCardForm";
+import './App.css';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import BoardList from './components/BoardList';
+import Board from './components/Board';
+import NewBoardForm from './components/NewBoardForm';
+import CardList from './components/CardList';
+import NewCardForm from './components/NewCardForm';
+
+const kBaseUrl = 'https://goddess-inspiration-board.herokuapp.com';
+
+// const convertFromApi = (apiBoard) => {
+//   const { title, owner, board_id: boardId } = apiBoard;
+//   const newBoardApi = { boardId, title, owner };
+//   return newBoardApi;
+// };
+
+// get boards
+const getAllBoardsApi = () => {
+  return axios
+    .get(`${kBaseUrl}/boards`)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.log(error.data);
+    });
+};
+
+// post board
+const postNewBoardApi = (newBoard) => {
+  const requestBody = { title: newBoard.title, owner: newBoard.owner };
+  return axios
+    .post(`${kBaseUrl}/boards`, requestBody)
+    .then((response) => {
+      return response.data;
+      // return convertFromApi(response.board);
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+};
+
+// delete a board
 
 function App() {
-  const [boardsData, setBoardsData] = useState([
-    {
-      board_id: 1,
-      title: "Live your best life",
-      owner: "kkg",
-    },
-    {
-      board_id: 2,
-      title: "Do not disturb",
-      owner: "reyna",
-    },
-  ]);
+  const [boardsData, setBoardsData] = useState(
+    []
+    // {
+    //   board_id: 1,
+    //   title: 'Live your best life',
+    //   owner: 'kkg',
+    // },
+    // {
+    //   board_id: 2,
+    //   title: 'Do not disturb',
+    //   owner: 'reyna',
+    // },
+  );
+  console.log(boardsData);
 
   const [cardsData, setCardsData] = useState([
     {
       board_id: 1,
       card_id: 1,
       likes_count: 0,
-      message: "go to the beach",
+      message: 'go to the beach',
     },
     {
       board_id: 1,
       card_id: 2,
       likes_count: 0,
-      message: "drink all of the wine",
+      message: 'drink all of the wine',
     },
   ]);
 
   const [selectedBoard, setSelectedBoard] = useState(null);
+
+  const getAllBoards = () => {
+    return getAllBoardsApi()
+      .then((boards) => {
+        setBoardsData(boards);
+        console.log(boards);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  useEffect(() => {
+    getAllBoards();
+  }, []);
 
   const updateCardLikes = (updatedCard) => {
     const newCardData = cardsData.map((card) => {
@@ -72,14 +126,14 @@ function App() {
 
   const addBoardData = (newBoard) => {
     const newBoardData = [...boardsData];
-    // update when we access the data base later
-    const nextId = Math.max(...newBoardData.map((board) => board.board_id)) + 1;
-    newBoardData.push({
-      board_id: nextId,
-      title: newBoard.title,
-      owner: newBoard.owner,
+    postNewBoardApi(newBoard).then((boardResponse) => {
+      newBoardData.push({
+        board_id: boardResponse.board.board_id,
+        title: newBoard.title,
+        owner: newBoard.owner,
+      });
+      setBoardsData(newBoardData);
     });
-    setBoardsData(newBoardData);
   };
 
   const getSelectedTitle = (boardsData) => {
