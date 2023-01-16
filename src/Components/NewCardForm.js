@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './NewCardForm.css';
 
-const NewCardForm = ({ addCardData }) => {
+const NewCardForm = ({ addCardData, selectedBoard }) => {
   const [cardForm, setCardForm] = useState({ message: '' });
 
   const onMessageChange = (e) => {
@@ -14,7 +14,7 @@ const NewCardForm = ({ addCardData }) => {
   const submitCardData = (e) => {
     e.preventDefault();
 
-    addCardData(cardForm);
+    addCardData({ ...cardForm, likes_count: 0, board_id: selectedBoard.id });
     setCardForm({ message: '' });
   };
 

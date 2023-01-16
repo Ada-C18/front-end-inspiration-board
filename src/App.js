@@ -23,8 +23,8 @@ function App() {
 
   // BOARDS
   // Board click
-  const handleBoardClick = (title, owner) => {
-    setSelectedBoard({ title: title, owner: owner });
+  const handleBoardClick = (title, owner, id) => {
+    setSelectedBoard({ title: title, owner: owner, id: id });
     setShowCardForm(true);
   };
 
@@ -65,8 +65,15 @@ function App() {
   }, [selectedBoard]);
 
   // Adds card through card form
-  const addCardData = (cardForm) => {
-    console.log(cardForm);
+  const addCardData = async (cardForm) => {
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/card`,
+      cardForm
+    );
+    console.log(response.data);
+    const newCard = [...cardsData];
+    newCard.push({ ...response.data.card });
+    setCardsData(newCard);
   };
 
   useEffect(() => {
@@ -216,7 +223,10 @@ function App() {
               </section>
             </section>
             <section className="card__form">
-              <NewCardForm addCardData={addCardData} />
+              <NewCardForm
+                addCardData={addCardData}
+                selectedBoard={selectedBoard}
+              />
             </section>
           </div>
         ) : (

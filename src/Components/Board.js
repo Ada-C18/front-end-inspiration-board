@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Board.css'
-
+import './Board.css';
 
 const Board = (props) => {
-
   return (
-      <li className='each_board' onClick={() => props.handleBoardClick(props.title, props.owner)}>
-        {props.title}
-      </li>
-
+    <li
+      className="each_board"
+      onClick={() => props.handleBoardClick(props.title, props.owner, props.id)}
+    >
+      {props.title}
+    </li>
   );
 };
 
