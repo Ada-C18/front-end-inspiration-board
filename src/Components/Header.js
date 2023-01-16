@@ -7,10 +7,17 @@ const Header = (props) => {
   const [boardSelectorVisible, setBoardSelectorVisible] = useState(false);
   const [newBoardFormVisible, setNewBoardFormVisible] = useState(false);
 
+  const toggleBoardFormVisible = () => {
+    setBoardSelectorVisible(!boardSelectorVisible);
+  };
+
+  const boardFormButtonText = boardSelectorVisible
+    ? "Hide form"
+    : "Add new board";
   const boardFormElement = boardSelectorVisible ? (
     <BoardForm newBoard={props.newBoard}></BoardForm>
   ) : (
-    <button onClick={""}>Add new board</button>
+    ""
   );
 
   return (
@@ -20,6 +27,7 @@ const Header = (props) => {
         updateCurrentBoard={props.updateCurrentBoard}
       ></BoardSelector>
       <h1>Inspiration Board</h1>
+      <button onClick={toggleBoardFormVisible}>{boardFormButtonText}</button>
       {boardFormElement}
     </header>
   );

@@ -4,3 +4,8 @@
   align-items: center;
   margin: 0 1rem;
 }
+
+.header > select,
+.header > button {
+  width: 10rem;
+}
