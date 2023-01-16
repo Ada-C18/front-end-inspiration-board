@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import './CurrentBoard.css';
+import './CardList.css';
 
 const CurrentBoard = function (props) {
   console.log(props.currentBoardState);

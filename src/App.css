@@ -1,8 +1,9 @@
 .App {
   text-align: center;
-  background-color: #282c34;
-  color: white;
+  color: #282c34;
+  background-color: aliceblue;
   min-height: 100vh;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .App-header {
@@ -15,13 +16,13 @@
 }
 
 /* layout help */
-section div {
+/* section div {
   border: 1px;
   border-style: solid;
   border-color: red;
   padding: 1em;
 
-}
+} */
 
 section#board-section {
   display: flex;
@@ -43,9 +44,15 @@ section#board-section {
 }
 
 section#card-section {
+  margin-top: 3ex;
+  padding-top: 3ex;
   display: flex;
   flex-direction: row;
   width: 100%;
+  border-top: 3px;
+  border-top-style: solid;
+  border-top-color: violet;
+
 
 }
 
