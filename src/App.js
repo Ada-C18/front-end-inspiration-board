@@ -141,12 +141,9 @@ function App() {
         id: 'id',
       };
       const sortProperty = types[type];
-      // const sorted = [...cardsData].sort(
-      //   (a, b) => a[sortProperty] - b[sortProperty]
-      // );
       if (sortProperty === 'message') {
         const sorted = [...cardsData].sort((a, b) =>
-          a.message > b.message ? 1 : -1
+          a[sortProperty] > b[sortProperty] ? 1 : -1
         );
         setCardsData(sorted);
       }
