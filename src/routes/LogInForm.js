@@ -8,9 +8,20 @@ const kDefaultFormState = {
   password: "",
 };
 
-const LogInForm = () => {
-  const handleLogIn = useLoaderData();
+const isError = () => {
+  return (
+    <p class="error">
+      ⛔️ The username you entered does not belong to any account.
+    </p>
+  );
+};
+
+const LogInForm = (props = null) => {
+  const loaderData = useLoaderData();
   const [formData, setFormData] = useState(kDefaultFormState);
+
+  const logState = loaderData ? loaderData.logState : props.logState;
+  const handleLogIn = loaderData ? loaderData.onLogIn : props.onLogIn;
 
   const handleChange = (event) => {
     const fieldValue = event.target.value;
@@ -40,6 +51,7 @@ const LogInForm = () => {
             onChange={handleChange}
           />
         </div>
+        {logState.tryAgain && isError}
         {/* <div>
           <label htmlFor="password">Password</label>
           <input

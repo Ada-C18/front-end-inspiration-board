@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
+  redirect,
 } from "react-router-dom";
+import axios from "axios";
 
 import "./App.css";
 
 import LogInView from "./routes/LogInView";
 import LogInForm from "./routes/LogInForm";
 import SignUpForm from "./routes/SignUpForm";
-// import SignUp from "./components/SignUp";
 import Home from "./routes/Home";
 import CreateBoard from "./routes/CreateBoard";
 import SingleBoardView from "./routes/SingleBoardView";
@@ -184,15 +185,69 @@ const DUMMY_BOARD_DATA = [
   // },
 ];
 
+const WAIT = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const kBaseUrl = "http://localhost:5000";
+
 function App() {
-  let [loggedIn, setLoggedIn] = useState({ loggedIn: false });
+  let [loggedIn, setLoggedIn] = useState({
+    userId: 0,
+    tryAgain: false,
+  });
   let [appData, setAppData] = useState(DUMMY_BOARD_DATA);
 
-  const passData = () => appData;
+  const passBoardPropsDummy = () => appData; // DUMMY_BOARD_DATA
 
-  const handleLogIn = (formData) => {
-    return null;
+  // const passBoardProps = () => appData;
+
+  const passLogInPropsDummy = () => {
+    return JSON.parse(
+      JSON.stringify({
+        logState: { userId: 0, tryAgain: false },
+        onLogIn: genericDummyFunc,
+      })
+    );
   };
+
+  const genericDummyFunc = (arg1 = null) => {
+    console.log("This is the dummy function");
+  };
+
+  // logInProps;
+  // return { logState: loggedIn, onLogIn: handleLogInDummy };
+
+  // const passLogInProps = () => {
+  //   return { logState: loggedIn, onLogIn: handleLogIn };
+  // };
+
+  const handleLogInDummy = async () => {
+    return async (formData) => {
+      await WAIT(500);
+
+      const userData = DUMMY_USER_DATA.filter(
+        (user) => user.name === formData.user
+      );
+
+      if (userData === []) {
+        return setLoggedIn({ userId: 0, tryAgain: true });
+      }
+
+      setLoggedIn({ userId: userData[0].id, tryAgain: false });
+      return redirect("/boards");
+    };
+  };
+
+  // const handleLogIn = async (formData) => {
+  //   const username = formData.name;
+  //   const response = await axios.get(`${kBaseUrl}/users/${username}`);
+
+  //   if (response.status !== 200) {
+  //     return setLoggedIn({ userId: 0, tryAgain: true });
+  //   }
+
+  //   setLoggedIn({ userId: response.data.id, tryAgain: false });
+  //   return redirect("/boards");
+  // };
 
   const handleSignUp = (formData) => {
     return null;
@@ -201,11 +256,16 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route path="/" element={<LogInView />} errorElement={<ErrorPage />}>
+        <Route
+          path="/"
+          element={<LogInView />}
+          loader={passLogInPropsDummy}
+          errorElement={<ErrorPage />}
+        >
           <Route
             path="login"
             element={<LogInForm />}
-            loader={handleLogIn}
+            loader={passLogInPropsDummy}
             errorElement={<ErrorPage />}
           />
           <Route
@@ -218,7 +278,7 @@ function App() {
         <Route
           path="/boards"
           element={<Home />}
-          loader={passData}
+          loader={passBoardPropsDummy}
           errorElement={<ErrorPage />}
         />
         <Route
@@ -231,6 +291,7 @@ function App() {
           element={<SingleBoardView />}
           errorElement={<ErrorPage />}
         />
+        <Route path="*" element={<ErrorPage />} />
       </>
     )
   );
