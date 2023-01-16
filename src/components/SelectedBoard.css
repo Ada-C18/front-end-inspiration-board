@@ -1,0 +1,9 @@
+#board-flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2vw 2vh;
+}
+

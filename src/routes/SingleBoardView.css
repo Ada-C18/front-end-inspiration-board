@@ -23,7 +23,6 @@ h1 {
 }
 
 #board-display {
-  display: flex;
   width: 70vw;
   min-height: 75vh;
   background-color: whitesmoke;
