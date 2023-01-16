@@ -22,6 +22,17 @@ function App() {
     setCurrentBoard(id ? parseInt(id) : null);
   };
 
+  const getCurrentBoardName = () => {
+    if (currentBoard) {
+      const current = listOfBoards.find(
+        (element) => parseInt(element.id) === currentBoard
+      );
+      return current.name;
+    } else {
+      return null;
+    }
+  };
+
   useEffect(() => getBoardList, []);
 
   return (
@@ -31,7 +42,10 @@ function App() {
         newBoard={addNewBoard}
         updateCurrentBoard={updateCurrentBoard}
       ></Header>
-      <Board currentBoard={currentBoard}></Board>
+      <Board
+        currentBoard={currentBoard}
+        currentBoardName={getCurrentBoardName()}
+      ></Board>
     </div>
   );
 }

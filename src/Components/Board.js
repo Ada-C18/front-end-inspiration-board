@@ -31,7 +31,7 @@ const Board = (props) => {
 
   return (
     <section>
-      <h2>Board Name</h2>
+      <h2>{props.currentBoardName}</h2>
       <div>
         {cards}
         <CardForm addNewCard={addNewCard}></CardForm>
