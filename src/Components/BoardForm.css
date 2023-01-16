@@ -1,0 +1,9 @@
+#board-form {
+  position: absolute;
+  border: 3px solid black;
+  background-color: white;
+  right: 1rem;
+  top: 4rem;
+  height: 300px;
+  width: 250px;
+}
