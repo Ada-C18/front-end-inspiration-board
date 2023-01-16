@@ -2,7 +2,7 @@ import './Card.css';
 
 const Card = (props) => {
   return (
-    <div class="card">
+    <div className="card">
       <p>{props.message}</p>
       <p>{props.likes}</p>
     </div>
