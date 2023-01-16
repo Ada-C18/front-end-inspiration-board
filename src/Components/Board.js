@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "./Card";
 import CardForm from "./CardForm";
+import "./Board.css";
 
 const BACKEND_URL = `${process.env.REACT_APP_BACKEND_URL}`;
 
@@ -30,9 +31,9 @@ const Board = (props) => {
   });
 
   return (
-    <section>
+    <section id="board">
       <h2>{props.currentBoardName}</h2>
-      <div>
+      <div class="card-list">
         {cards}
         <CardForm addNewCard={addNewCard}></CardForm>
       </div>

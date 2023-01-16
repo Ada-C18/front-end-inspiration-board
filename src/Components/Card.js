@@ -1,6 +1,8 @@
+import './Card.css';
+
 const Card = (props) => {
   return (
-    <div>
+    <div class="card">
       <p>{props.message}</p>
       <p>{props.likes}</p>
     </div>

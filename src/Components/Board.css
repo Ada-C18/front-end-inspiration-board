@@ -1,0 +1,10 @@
+#board {
+  margin: 1rem;
+}
+
+.card-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: start;
+  gap: 1rem;
+}
