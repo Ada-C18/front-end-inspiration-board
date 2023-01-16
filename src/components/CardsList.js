@@ -39,8 +39,18 @@ const CardsList = (props) => {
         alert("Couldn't create a new card.");
       });
   };
+
+  // const cardElements = cardsData.map((card) => {
+  //   return (
+  //   <Card/>)
+  // });
+
+
   return (
     <section>
+    <div>
+      <Card />
+    </div>
       <section>
         <NewCardForm createNewCard={createNewCard}></NewCardForm>
         <span onClick={NewCardForm}></span>

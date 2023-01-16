@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 const Card = (props) => {
   return (
     <div className="card-item">
-      <p className="card-item__message">{props.card.message}</p>
+      <p className="card-item__message">{props.card}</p>
       <ul className="card-item__controls">
         <li>
-          <p>{props.card.likes_count} 💕</p>
+          <p>{props.card} 💕</p>
         </li>
         <li>
           <p onClick={() => props.plusOneCardItem(props.card)}>+1</p>
