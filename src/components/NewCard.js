@@ -19,9 +19,11 @@ const NewCard = (props) => {
             //<h2>Create a New Card</h2>
             //form="new-card-form">
             <form onSubmit={handleSubmit}>
+                <div className="newCard__buttons">
                 <label>New Card</label>
                 <input type="text" value={message} onChange={handleMessageChange}/>
-                <div><input type="submit" value="message"/></div>
+                <div><input type="submit" value="Message"/></div>
+                </div>
             </form>
         //</div>
     )

@@ -53,11 +53,15 @@ function App() {
         <div className="board__container">
           <section>
             <h2> New Board</h2>
+            <div className="new__board">
             {isBoardFormVisible ? <NewBoard onBoardSubmit={handleBoardSubmit}></NewBoard> : ""}
+            </div>
           </section>
           <section>
             <h2> New Card</h2>
+            <div className="new__card">
             <NewCard onCardSubmit={handleCardSubmit}/>
+            </div>
           </section>
           <section>
             <h2>Boards</h2>
