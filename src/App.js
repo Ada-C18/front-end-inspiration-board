@@ -12,21 +12,17 @@ function App() {
     /* TODO */
   };
   const getBoardList = () => {
-    axios
-      .get(`${BACKEND_URL}/boards`)
-      .then((result) => {
-        setListOfBoards(result.data);
-      });
+    axios.get(`${BACKEND_URL}/boards`).then((result) => {
+      setListOfBoards(result.data);
+    });
   };
 
   const [currentBoard, setCurrentBoard] = useState(null);
   const updateCurrentBoard = (id) => {
-    setCurrentBoard(id ? parseInt(id) : null)
+    setCurrentBoard(id ? parseInt(id) : null);
   };
 
-  useEffect(() => getBoardList, []
-    
-  )
+  useEffect(() => getBoardList, []);
 
   return (
     <div className="App">
