@@ -1,7 +1,6 @@
 import "./App.css";
 import { useState } from "react";
 
-// import Board from "./components/Board";
 import BoardsList from "./components/BoardsList";
 import NewBoardForm from "./components/NewBoardForm";
 
@@ -35,6 +34,16 @@ function App() {
 	// state for boardsList
 	const [boardsList, setBoardsData] = useState(boardsData);
 
+	// TODO: Select Board  State - top level
+	// State: Selected Board ID
+	// Make boards clickable
+	// State for selected board - manage here
+	// const [selected, setSelected] = useState(false); // move useState somewhere else
+
+	// 	const updateSelectedBoard = () => {
+	// 	console.log("updateBoard called");
+	// };
+
 	// form prop function
 	const addBoard = (newBoard) => {
 		console.log("Calling addBoard");
@@ -51,10 +60,9 @@ function App() {
 		setBoardsData(updatedBoardsList);
 	};
 
-	// Select Board
-	// Make boards clickable
-
 	// Add Card
+	// State: Selected Board Cards
+	// TODO: Move cards state logic to Board component
 	const [cards, setCardsList] = useState(cardsData);
 
 	const addCard = (newCard) => {
@@ -81,6 +89,7 @@ function App() {
 			{/* Todo: might need to move CardsList component somewhere else, like Board component */}
 			<h2>Cards for "insert Board title here" Quotes</h2>
 			<CardsList cardsList={cards} />
+			<h2>Create New Card</h2>
 			<NewCardForm addCardCallback={addCard} />
 		</div>
 	);
