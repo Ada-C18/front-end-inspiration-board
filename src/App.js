@@ -111,7 +111,11 @@ function App() {
     return axios
       .get(`${kBaseUrl}/boards/${selectedBoard}/cards`)
       .then((response) => {
-        setCardsData(response.data);
+        setCardsData(
+          response.data.sort((cardA, cardB) => {
+            return cardA.card_id - cardB.card_id;
+          })
+        );
       })
       .catch((error) => {
         console.log(error.message);
