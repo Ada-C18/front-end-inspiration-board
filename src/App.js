@@ -4,7 +4,7 @@ import { useState } from "react";
 import "./App.css";
 import Board from "./components/Board.js";
 import BoardList from "./components/BoardList";
-// import NewCardForm from "./components/NewCardForm";
+import NewCardForm from "./components/NewCardForm";
 import NewBoardForm from "./components/NewBoardForm";
 import Header from "./components/Header"
 import Title from "./components/Title"
@@ -147,7 +147,6 @@ function App() {
       <NewBoardForm addBoardCallbackFunc={addBoard} />
       <BoardList boardList={boardList} />
       <Board handleBoardTitleClick={displayCards} />
-      {/* <NewCardForm addCardCallbackFunc={addCard} /> */}
     </div>
   );
 }
