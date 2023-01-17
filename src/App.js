@@ -74,7 +74,7 @@ function App() {
         <NewBoardForm createNewBoard={createNewBoard} />
         <span onClick={NewBoardForm}></span>
       </div>
-      <div>{selectedBoard.id ? <CardsList board={selectedBoard} /> : ""}</div>
+      <div>{selectedBoard.id ? <CardsList board={selectedBoard} /> : " "}</div>
     </div>
   );
 }

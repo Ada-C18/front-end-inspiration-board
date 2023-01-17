@@ -23,6 +23,20 @@ const CardsList = (props) => {
       });
   }, [props.board]);
 
+
+  const plusOneCardItem = (card) => {
+    console.log(cardsData)
+    axios.patch(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/like`).then((response) =>{
+      const newCardsData = cardsData.map((currentCard) => {
+        return currentCard.card_id !== card.card_id ? currentCard : {...card, like_count : card.like_count + 1}
+      });
+      setCardsData(newCardsData);
+    }).catch((error) => {
+      console.log('Error:', error)
+      alert('Couldn\'t +1 the card.');
+    });
+  };
+
   const createNewCard = (cardFormData) => {
     // add board.id back later
     axios
@@ -42,15 +56,21 @@ const CardsList = (props) => {
       });
   };
 
-  // const cardElements = cardsData.map((card) => {
-  //   return (
-  //   <Card/>)
-  // });
+
+  const cardElements = cardsData.map((card) => {
+    return (
+    <Card
+      card={card}
+      plusOneCardItem={plusOneCardItem}
+      // deleteCardItem={deleteCardItem}
+    />)
+  });
 
   return (
     <section>
+    <h2>Cards for {props.board.title}</h2>
       <div>
-        <Card />
+        {cardElements}
       </div>
       <section>
         <NewCardForm createNewCard={createNewCard}></NewCardForm>
