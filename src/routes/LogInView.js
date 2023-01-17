@@ -6,7 +6,8 @@ import LogInForm from "./LogInForm.js";
 
 const LogInView = () => {
   const location = useLocation();
-  const { logState, onLogIn } = useLoaderData();
+  const loaderData = useLoaderData();
+  const { logState, onLogIn } = loaderData[0];
 
   return (
     <div className="LogInView">

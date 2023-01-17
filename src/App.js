@@ -5,7 +5,7 @@ import {
   createRoutesFromElements,
   Route,
   RouterProvider,
-  redirect,
+  Navigate,
 } from "react-router-dom";
 import axios from "axios";
 
@@ -191,7 +191,7 @@ const kBaseUrl = "http://localhost:5000";
 
 function App() {
   let [loggedIn, setLoggedIn] = useState({
-    userId: 0,
+    userId: null,
     tryAgain: false,
   });
   let [appData, setAppData] = useState(DUMMY_BOARD_DATA);
@@ -201,17 +201,23 @@ function App() {
   // const passBoardProps = () => appData;
 
   const passLogInPropsDummy = () => {
-    return JSON.parse(
-      JSON.stringify({
-        logState: { userId: 0, tryAgain: false },
-        onLogIn: genericDummyFunc,
-      })
-    );
+    // return JSON.parse(
+    //   JSON.stringify({
+    //     logState: loggedIn,
+    //     onLogIn: handleLogInDummy,
+    //   })
+    // );
+    return [
+      {
+        logState: loggedIn,
+        onLogIn: handleLogInDummy,
+      },
+    ];
   };
 
-  const genericDummyFunc = (arg1 = null) => {
-    console.log("This is the dummy function");
-  };
+  // const genericDummyFunc = (arg1 = null) => {
+  //   console.log("This is the dummy function");
+  // };
 
   // logInProps;
   // return { logState: loggedIn, onLogIn: handleLogInDummy };
@@ -220,33 +226,42 @@ function App() {
   //   return { logState: loggedIn, onLogIn: handleLogIn };
   // };
 
-  const handleLogInDummy = async () => {
-    return async (formData) => {
-      await WAIT(500);
+  const handleLogInDummy = async (formData) => {
+    // console.log("made it to handle log in dummy");
+    // console.log(formData);
+    await WAIT(500);
 
-      const userData = DUMMY_USER_DATA.filter(
-        (user) => user.name === formData.user
-      );
+    // console.log("waiting!");
+    // console.log(formData.name);
 
-      if (userData === []) {
-        return setLoggedIn({ userId: 0, tryAgain: true });
-      }
+    const userData = DUMMY_USER_DATA.filter(
+      (user) => user.name === formData.name.toLowerCase()
+    );
 
-      setLoggedIn({ userId: userData[0].id, tryAgain: false });
-      return redirect("/boards");
-    };
+    // console.log(userData);
+
+    if (userData.length === 0) {
+      // console.log("no match");
+      setLoggedIn({ userId: null, tryAgain: true });
+      // console.log(loggedIn);
+      return false; // just returning something to end the function
+    }
+
+    // console.log("there was a match");
+    // console.log(userData[0].id);
+    setLoggedIn({ userId: userData[0].id, tryAgain: false });
   };
 
   // const handleLogIn = async (formData) => {
-  //   const username = formData.name;
+  //   const username = formData.name.toLowerCase(); // avoids case-sensitivity problems; have to post to lowercase as well
   //   const response = await axios.get(`${kBaseUrl}/users/${username}`);
 
   //   if (response.status !== 200) {
-  //     return setLoggedIn({ userId: 0, tryAgain: true });
+  //     setLoggedIn({ userId: null, tryAgain: true });
+  //     return false;
   //   }
 
   //   setLoggedIn({ userId: response.data.id, tryAgain: false });
-  //   return redirect("/boards");
   // };
 
   const handleSignUp = (formData) => {
@@ -258,13 +273,21 @@ function App() {
       <>
         <Route
           path="/"
-          element={<LogInView />}
+          element={
+            loggedIn.userId ? <Navigate to="/boards" replace /> : <LogInView />
+          }
           loader={passLogInPropsDummy}
           errorElement={<ErrorPage />}
         >
           <Route
             path="login"
-            element={<LogInForm />}
+            element={
+              loggedIn.userId ? (
+                <Navigate to="/boards" replace />
+              ) : (
+                <LogInForm />
+              )
+            }
             loader={passLogInPropsDummy}
             errorElement={<ErrorPage />}
           />
@@ -277,7 +300,7 @@ function App() {
         </Route>
         <Route
           path="/boards"
-          element={<Home />}
+          element={loggedIn.userId ? <Home /> : <Navigate to="/" replace />}
           loader={passBoardPropsDummy}
           errorElement={<ErrorPage />}
         />

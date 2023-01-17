@@ -10,7 +10,7 @@ const kDefaultFormState = {
 
 const isError = () => {
   return (
-    <p class="error">
+    <p className="error">
       ⛔️ The username you entered does not belong to any account.
     </p>
   );
@@ -20,21 +20,31 @@ const LogInForm = (props = null) => {
   const loaderData = useLoaderData();
   const [formData, setFormData] = useState(kDefaultFormState);
 
-  const logState = loaderData ? loaderData.logState : props.logState;
-  const handleLogIn = loaderData ? loaderData.onLogIn : props.onLogIn;
+  const logState = loaderData ? loaderData[0].logState : props.logState;
+  const handleLogIn = loaderData ? loaderData[0].onLogIn : props.onLogIn;
+
+  // console.log(loaderData);
+  // console.log(logState);
+  // console.log(typeof handleLogIn);
 
   const handleChange = (event) => {
     const fieldValue = event.target.value;
     const fieldName = event.target.name;
     const newFormData = { ...formData, [fieldName]: fieldValue };
+    // console.log("handling change");
+    // console.log(newFormData);
 
     setFormData(newFormData);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    // console.log("handling submit");
+    // console.log(formData);
     handleLogIn(formData);
+    // console.log("handled Log In");
     setFormData(kDefaultFormState);
+    // console.log("set form data");
   };
 
   return (
@@ -51,7 +61,7 @@ const LogInForm = (props = null) => {
             onChange={handleChange}
           />
         </div>
-        {logState.tryAgain && isError}
+        {logState.tryAgain && isError()}
         {/* <div>
           <label htmlFor="password">Password</label>
           <input
