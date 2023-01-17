@@ -1,38 +1,83 @@
-.App {
+html{
+  color:#07274A;
+  background-image: url("https://direct.limitlesswalls.com/cdn-cgi/image/quality=60/http://llw-magento-images-prod.s3.amazonaws.com/catalog/product/w/m/wm118397425.jpg");
+  background-size: cover;
+
+}
+
+h1{
+  font-family: fantasy;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.boardDisplay{
+  font-weight: bold;
+  font-size: 1.5em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.highlightRed {
+  border: 2px solid red;
+  width: 300px
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.OK {
+  width: 300px
+}
+
+.aCard {
+  background-color: #CDDCF7 ;
+  width: 175px;
+  height: 175px;
+  text-align: center;
+  padding: 1em;
+  margin: 1em;
+  box-shadow: 2px 2px 2px 1px #07274A;
+  font-family: fantasy;
+  color: #07274A;
+}
+
+.boardScroll{
+  height: 100px;
+  overflow-y:scroll;
+  border: 2px solid #07274A;
+  list-style-type: none;
+  padding: 5px;
+}
+
+.boardTitle:hover{
+  background-color: #07274A;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+button{
+  margin: 1em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cardMessage{
+  font-weight: bold;
 }
+
+.cardList{
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.row1, .row2 {
+  display: flex;
+  align-items:flex-start;
+  padding-bottom: 50px;
+}
+
+.column {
+  display: block;
+  flex-basis: fit-content;
+  flex-grow: 5;
+  flex-shrink: 5;
+  padding: 20px;
+  margin-left: 2em;
+  margin-right: 2em;
+  font-family: fantasy;
+}
+

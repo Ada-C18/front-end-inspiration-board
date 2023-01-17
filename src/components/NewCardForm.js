@@ -4,6 +4,11 @@ import PropTypes from "prop-types";
 const NewCardForm = (props) => {
   const [messageField, setMessageField] = useState({ message: "" });
 
+  const messageStatus =
+    messageField.message && messageField.message.length <= 40
+      ? "OK"
+      : "highlightRed";
+
   const onMessageChange = (event) => {
     setMessageField({ message: event.target.value });
   };
@@ -16,7 +21,7 @@ const NewCardForm = (props) => {
   };
 
   return (
-    <section>
+    <section className="column">
       {props.selectedBoard && (
         <div>
           <h1>CREATE A NEW CARD</h1>
@@ -25,8 +30,9 @@ const NewCardForm = (props) => {
             <input
               type="text"
               value={messageField.message}
-              paceholder="enter a message..."
+              placeholder="enter a message..."
               onChange={onMessageChange}
+              className={messageStatus}
             ></input>
             <p>Preview: {messageField.message}</p>
             <input

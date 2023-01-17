@@ -153,23 +153,30 @@ function App() {
   return (
     <div>
       <h1>Inspiration Board</h1>
-      <BoardList boardsData={boardsData} updateSelceted={updateSelectedBoard} />
-      <Board
-        title={getSelectedTitle(boardsData)}
-        owner={getSelectedOwner(boardsData)}
-      ></Board>
-      <NewBoardForm onAddBoard={addBoardData}></NewBoardForm>
-      <CardList
-        selectedBoard={selectedBoard}
-        boardName={getSelectedTitle(boardsData)}
-        cards={cardsData}
-        updateCards={updateCardLikesApi}
-        deleteCard={deleteCardApi}
-      ></CardList>
-      <NewCardForm
-        selectedBoard={selectedBoard}
-        onAddCard={addCardData}
-      ></NewCardForm>
+      <section className="row1">
+        <BoardList
+          boardsData={boardsData}
+          updateSelceted={updateSelectedBoard}
+        />
+        <Board
+          title={getSelectedTitle(boardsData)}
+          owner={getSelectedOwner(boardsData)}
+        ></Board>
+        <NewBoardForm onAddBoard={addBoardData}></NewBoardForm>
+      </section>
+      <section className="row2">
+        <CardList
+          selectedBoard={selectedBoard}
+          boardName={getSelectedTitle(boardsData)}
+          cards={cardsData}
+          updateCards={updateCardLikesApi}
+          deleteCard={deleteCardApi}
+        ></CardList>
+        <NewCardForm
+          selectedBoard={selectedBoard}
+          onAddCard={addCardData}
+        ></NewCardForm>
+      </section>
     </div>
   );
 }

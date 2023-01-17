@@ -19,12 +19,12 @@ const CardList = (props) => {
   });
 
   return (
-    <section>
+    <section className="column">
       {props.selectedBoard && (
         <div>
           <h1>CARDS FOR "{props.boardName}"</h1>
           {props.cards.length === 0 && <div>No cards yet. Create a card!</div>}
-          <section>{card}</section>
+          <section className="cardList">{card}</section>
         </div>
       )}
     </section>

@@ -12,8 +12,8 @@ const Card = (props) => {
   };
 
   return (
-    <section>
-      <p>{props.message}</p>
+    <section className="aCard">
+      <p className="cardMessage">{props.message}</p>
       <p>{props.likes_count} ❤️‍🔥</p>
       <button onClick={updateLikes}>+1 Like</button>
       <button onClick={deleteACard}>Delete</button>

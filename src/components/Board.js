@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 
 const Board = (props) => {
   return (
-    <section>
+    <section className="column">
       <h1>SELECTED BOARD</h1>
-      {!props.title && <div>Select a board!</div>}
+      {!props.title && <div className="boardDisplay">Select a board!</div>}
       {props.title && (
-        <div>
+        <div className="boardDisplay">
           "{props.title}" By: {props.owner}
         </div>
       )}

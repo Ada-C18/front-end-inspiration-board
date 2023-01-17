@@ -7,15 +7,16 @@ const BoardList = (props) => {
       <li
         key={board.board_id}
         onClick={() => props.updateSelceted(board.board_id)}
+        className="boardTitle"
       >
-        {board.title}
+        ✨ {board.title}
       </li>
     );
   });
   return (
-    <section>
+    <section className="column">
       <h1>BOARDS</h1>
-      <section>{boardTitles}</section>
+      <section className="boardScroll">{boardTitles}</section>
     </section>
   );
 };
