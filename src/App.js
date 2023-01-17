@@ -63,6 +63,7 @@ function App() {
   const [cardList, setCardList] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState({
     board: "Please Select a Board!",
+    id: false,
   });
 
   const fetchAllBoards = () => {
@@ -83,12 +84,13 @@ function App() {
         console.log(error);
       });
   };
+
   // const fetchAllCards = () => {}
   useEffect(fetchAllBoards, []);
 
   const fetchAllCards = () => {
     axios
-      .get(cardURL)
+      .get(`${boardURL}/${selectedBoard.id}/cards`)
       .then((response) => {
         console.log(response);
         const cardAPIResCopy = response.data.map((card) => {
@@ -106,7 +108,7 @@ function App() {
       });
   };
   // const fetchAllCards = () => {}
-  useEffect(fetchAllCards, []);
+  useEffect(fetchAllCards, [selectedBoard]);
 
   const selectBoard = (title, owner, boardId) => {
     console.log("selectBoard is called");
@@ -116,43 +118,97 @@ function App() {
   };
 
   const addBoard = (newBoardInfo) => {
-    axios.post(boardURL, newBoardInfo).then((response) => {
-      fetchAllBoards();
-    });
+    axios
+      .post(boardURL, newBoardInfo)
+      .then((response) => {
+        fetchAllBoards();
 
-    console.log("addBoard called");
-    const newBoards = [...boardList];
-    console.log(boardList[boardList.length - 1].id + 1);
-    const newBoard = {
-      ...newBoardInfo,
-      id: boardList[boardList.length - 1].id + 1,
-    };
-    newBoards.push(newBoard);
-    setBoardList(newBoards);
+        const newBoards = [...boardList];
+        console.log(response.data);
+        const newBoard = { ...newBoardInfo, id: response.data.board_id };
+        newBoards.push(newBoard);
+
+        setBoardList(newBoards);
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log("Board was not able to be added.");
+      });
   };
+
+  // console.log("addBoard called");
+  // const newBoards = [...boardList];
+  // console.log(boardList[boardList.length - 1].id + 1);
+  // const newBoard = {
+  //   ...newBoardInfo,
+  //   id: boardList[boardList.length - 1].id + 1,
+  // };
+  // newBoards.push(newBoard);
+  // setBoardList(newBoards);
 
   const addCard = (newCardInfo) => {
-    console.log("addCard called");
-    const newCards = [...cardList];
-    const newCard = {
-      ...newCardInfo,
-      id: cardList[cardList.length - 1].id + 1,
-      boardId: selectedBoard.id,
-    };
-    newCards.push(newCard);
-    setCardList(newCards);
+    axios
+      .post(`${boardURL}/${selectedBoard.id}/cards`, newCardInfo) 
+      // i think youre right! ok does it work? no T_T MAYBE HERE WE DON't need the board id cool!!  Yes I see it as you saied before cool thank you! see u afternoon
+      
+
+      // it works! we needed to remove the selected board as a parameter of add card
+      .then((response) => {
+        fetchAllCards();
+
+        const newCards = [...cardList];
+        const newCard = {
+          ...newCardInfo,
+          id: response.data.card_id,
+          boardId: response.data.board_id,
+          likesCount: response.data.likes_count,
+        };
+
+        newCards.push(newCard);
+
+        setCardList(newCards);
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log("Card was not able to be added");
+      });
   };
 
+  // console.log("addCard called");
+  // const newCards = [...cardList];
+  // const newCard = {
+  //   ...newCardInfo,
+  //   id: cardList[cardList.length - 1].id + 1,
+  //   boardId: selectedBoard.id,
+  // };
+  // newCards.push(newCard);
+  // setCardList(newCards);
+
   const deleteCard = (cardId) => {
-    console.log("deleteCard called");
-    const newCards = [];
-    for (let card of cardList) {
-      if (card.id !== cardId) {
-        newCards.push(card);
-      }
-    }
-    setCardList(newCards);
+    axios
+      .delete(`${cardURL}/${cardId}`)
+      .then(() => {
+        const newCardList = [];
+        for (const card of cardList) {
+          if (card.id !== cardId) {
+            newCardList.push(card);
+          }
+        }
+        setCardList(newCardList);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+  //   console.log("deleteCard called");
+  //   const newCards = [];
+  //   for (let card of cardList) {
+  //     if (card.id !== cardId) {
+  //       newCards.push(card);
+  //     }
+  //   }
+  //   setCardList(newCards);
+  // };
 
   return (
     <div className="InspoBoard">
