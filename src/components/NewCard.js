@@ -19,7 +19,7 @@ const NewCard = (props) => {
             //<h2>Create a New Card</h2>
             //form="new-card-form">
             <form onSubmit={handleSubmit}>
-                <label>New Card</label>
+                <label>New Card </label>
                 <input type="text" value={message} onChange={handleMessageChange}/>
                 <div><input type="submit" value="message"/></div>
             </form>

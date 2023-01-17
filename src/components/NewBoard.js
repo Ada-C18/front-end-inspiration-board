@@ -31,11 +31,11 @@ return (
             <div className="newBoard__form">
             <ul>
                 <li>
-                    <label>Title</label>
+                    <label>Title </label>
                     <input type="text" value={newTitle} onChange={handleTitleChange}/></li>
             
                 <li>
-                    <label>Owner's Name</label>
+                    <label>Owner's Name </label>
                     <input type="text" value={newOwner} onChange={handleOwnerChange}/></li>
             
             
