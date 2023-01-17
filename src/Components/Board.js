@@ -12,9 +12,11 @@ const Board = (props) => {
     axios
       .post(`${BACKEND_URL}/boards/${props.currentBoard}/cards`, { message })
       .then((response) => {
-        const cards = [...cardList];
-        cards.push(response.data.card);
-        setCardList(cards);
+        // const cards = [...cardList];
+        // cards.push(response.data.card);
+        // setCardList(cards);
+        getCardList();
+        console.log("Response is:", response);
       })
       .catch((err) => {
         console.log("Error:", err);
@@ -36,7 +38,7 @@ const Board = (props) => {
 
   const cards = cardList.map((card) => {
     return (
-      <Card key={card.id} /*message={card.message}*/ likes={card.likes}></Card>
+      <Card key={card.id} message={card.message} likes={card.likes}></Card>
     );
   });
 
