@@ -3,18 +3,38 @@ import PropTypes from 'prop-types';
 import NewCardForm from './NewCardForm'
 
 const Card = (props) => {
-  const cardComponents = props.entries.map((card, index) => {
-    return (
-      <li>
-        <NewCardForm
-          // id={card.id}
-          message={card.message}
-          // likes={card.likes}
-        ></NewCardForm>
-      </li>
-    )
-  })
-}
+  const cardMessage = props.entries.map((card, index) => {
+      return (
+          <p className='card__message'>
+              <NewCardForm
+                  message={card.message}
+              ></NewCardForm>
+          </p>
+      );
+  });
+
+  const cardLikes = props.entries.map((card, index) => {
+      return (
+          <p>
+              <NewCardForm
+                  likes={card.likes}
+              ></NewCardForm>
+          </p>
+      );
+  });
+
+
+  return (
+  <div className='single-card'>
+      {cardMessage}
+      <ul className='card__controls'>
+          <li>{cardLikes}</li>
+          <li><p onClick={() => props.onLikeClick(props.card)}>+💖</p></li>
+          <li><p className='card__delete' onClick={() => props.deleteCardItem(props.card)}>Delete Card</p></li>
+      </ul>
+  </div>
+  );
+};
 
 Card.propTypes = {
   entries: PropTypes.arrayOf(PropTypes.shape({
@@ -22,7 +42,7 @@ Card.propTypes = {
       message: PropTypes.string.isRequired,
       likes: PropTypes.number.isRequired
   })),
-  onLikeSelect: PropTypes.func.isRequired,
+  onLikeClick: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired
 };
 

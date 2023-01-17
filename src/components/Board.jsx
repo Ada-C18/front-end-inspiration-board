@@ -2,35 +2,39 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import NewBoardForm from './NewBoardForm';
 
+// const Board = (props) => {
+//     const boardComponents = props.entries.map((board) => {
+//         return (
+//             <div>
+//                 <NewBoardForm
+//                     title={board.title}
+//                 ></NewBoardForm>
+//             </div>
+//         );
+//     })
+
+//     return (
+//         <div onClick={() => props.onBoardSelect(props.board)}>
+//             {boardComponents}
+//         </div>
+//     );
+// };
+
+// Board.propTypes = {
+//     entries: PropTypes.arrayOf(PropTypes.shape({
+//         id: PropTypes.number.isRequired,
+//         board: PropTypes.string.isRequired,
+//     })),
+//     onBoardSelect: PropTypes.func.isRequired
+// };
+
 const Board = (props) => {
-    const boardComponents = props.entries.map((board, index) => {
-        return (
-            <li>
-                <NewBoardForm
-                    id={board.id}
-                    title={board.title}
-                    owner={board.owner}
-                ></NewBoardForm>
-            </li>
-        );
-    })
-
+    console.log(props)
     return (
-        <section>
-            <h2>Board List</h2>
-            <ul>
-                {boardComponents}
-            </ul>
-        </section>
+        <div onClick={() => props.onBoardSelect(props.board)}>
+            {props.board.title}
+        </div>
     );
-};
-
-Board.propTypes = {
-    entries: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        board: PropTypes.string.isRequired,
-    })),
-    onBoardSelect: PropTypes.func.isRequired
 };
 
 export default Board;
