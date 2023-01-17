@@ -26,9 +26,12 @@ const NewBoard = (props) => {
   const handleNewBoardSubmit = (e) => {
     e.preventDefault();
     props.addBoardCallback(BoardData);
+    setBoardData(INITIAL_FORM_DATA);
+    //DO WE NEED TO SET CARD DATA TOO?
   };
-
-  const inputClass = BoardData.name & BoardData.title ? "" : "empty";
+  const nameBorderClass = BoardData.name ? "" : "empty";
+  const titleBorderClass = BoardData.title ? "" : "empty";
+  // const inputClass = BoardData.name & BoardData.title ? "" : "empty";
   //if input fields for Title or Owner's Name are empty ->
   //red box around input boxes and submit button unavailable
   // if (BoardData.title === '' || BoardData.name==='') {
@@ -39,7 +42,7 @@ const NewBoard = (props) => {
       <form onSubmit={handleNewBoardSubmit}>
         <label htmlFor="title">Title</label>
         <input
-          className={inputClass}
+          className={titleBorderClass}
           type="text"
           id="title"
           name="title"
@@ -49,7 +52,7 @@ const NewBoard = (props) => {
 
         <label htmlFor="name">Name</label>
         <input
-          className={inputClass}
+          className={nameBorderClass}
           type="text"
           id="name"
           name="name"
@@ -57,7 +60,11 @@ const NewBoard = (props) => {
           onChange={handleChange}
         />
 
-        <input type="submit" value="Add Board" disabled={!BoardData} />
+        <input
+          type="submit"
+          value="Add Board"
+          disabled={!BoardData.name || !BoardData.title}
+        />
       </form>
     );
   } else {

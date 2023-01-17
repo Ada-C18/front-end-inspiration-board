@@ -16,7 +16,7 @@ const INITIAL_FORM_DATA = {
 
 const NewCard = (props) => {
   const [CardData, setCardData] = useState(INITIAL_FORM_DATA);
-  const messageLength = CardData.messageLength;
+  // const messageLength = CardData.messageLength;
   let selectedBoard = props.selectedBoard;
 
   //delete the console logs later -----------------------------------------

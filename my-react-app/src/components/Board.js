@@ -5,7 +5,7 @@ import "./Board.css";
 function Board(props) {
   const boardId = props.id;
   const boardTitle = props.title;
-  const boardName = props.name;
+  // const boardName = props.name;
   const selectBoard = props.selectBoard;
   const unselectBoard = props.unselectBoard;
 
