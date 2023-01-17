@@ -17,11 +17,11 @@
 
 #new-card-close {
   position: relative;
-  left: 170px;
+  left: 82px;
   cursor: pointer;
 }
 
-add-card {
+.add-card {
   box-sizing: border-box;
   border: 1px solid black;
   height: 200px;
