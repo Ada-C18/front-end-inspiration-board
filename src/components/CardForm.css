@@ -2,6 +2,11 @@ div#CardForm {
   text-align: left;
 }
 
+div.error {
+  font-size: 130%;
+  color: red;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
+
 body {
     margin: 20px auto;
     font-family: 'Lato';
