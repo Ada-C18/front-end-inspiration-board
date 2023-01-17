@@ -1,7 +1,7 @@
 import "./App.css";
 import Board from "./components/Board";
 import CardsList from "./components/CardsList";
-import NewBoardForm from "./components/NewBoardForm";
+// import NewBoardForm from "./components/NewBoardForm";
 // import axios from "axios";
 // import { useState } from "react";
 import cardData from "./mockdata/card.json";
@@ -28,7 +28,7 @@ function App() {
           <div className="boardContainer">
             <h2 className="createBoard">
               Create New Board
-              <NewBoardForm/>
+              {/* <NewBoardForm/> */}
             </h2>
           </div>
           <div className="newCardContainer">
