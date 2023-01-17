@@ -37,11 +37,40 @@ const CardList = ({ board }) => {
     });
   }, [board.id]);
 
+
+  const updateLikedCard = (cardId, increasedLike) => {
+    const newCardsList = [];
+    axios
+    .patch(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}/${increasedLike}`)
+    .then((response)=> {
+      for (const card of cardsList) {
+        if (card.id !== cardId) {
+          newCardsList.push(card);
+        } else {
+          const newCard = {
+            ...card,
+            likes_count: increasedLike,
+          };
+          newCardsList.push(newCard);
+        }
+      }
+      setCardsList(newCardsList);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
+
+  // const deleteCard =
+
+
+
   const cardsComponent = cardsList.map((card) => {
     return (
-      <Card card={card} />
+      <Card card={card} updateLikedCard={updateLikedCard} />
     );
   });
+
 
   return (
     <section className="cardList-container">
