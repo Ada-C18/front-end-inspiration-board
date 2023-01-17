@@ -5,18 +5,19 @@ import "./Card.css";
 function Card(props) {
   const cardId = props.id;
   const cardMessage = props.message;
-  const selectCard = props.selectCard;
-  const unselectCard = props.unselectCard;
+  // const selectCard = props.selectCard;
+  // const unselectCard = props.unselectCard;
   const liked = props.liked;
   const updateLike = props.updateLike;
+  const deleteCard = props.deleteCard;
 
-  const toggleSelected = (cardId) => {
-    if (props.selected === false) {
-      selectCard(cardId);
-    } else {
-      unselectCard(cardId);
-    }
-  };
+  // const toggleSelected = (cardId) => {
+  //   if (props.selected === false) {
+  //     selectCard(cardId);
+  //   } else {
+  //     unselectCard(cardId);
+  //   }
+  // };
 
   let numOfLikes = 0;
   if (liked === true) {
@@ -31,6 +32,7 @@ function Card(props) {
       <h3>{cardMessage}</h3>
       <p>{numOfLikes}</p>
       <button onClick={() => updateLike(cardId)}>{buttonContent} </button>
+      <button onClick={() => deleteCard(cardId)}>Delete</button>
     </div>
   );
 }

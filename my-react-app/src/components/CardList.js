@@ -5,8 +5,10 @@ import Card from "./Card";
 function CardList(props) {
   const cardComponents = [];
   const cardList = props.cardList;
+  const selectedBoard = props.selectedBoard;
 
   for (const card of cardList) {
+    // if (card.board_id === selectedBoard.id) { //ADDED -- need to figure out how card.board_id would be changed using cardBoardMap
     cardComponents.push(
       <Card
         key={card.id}
@@ -17,8 +19,11 @@ function CardList(props) {
         selectCard={props.selectCard}
         unselectCard={props.unselectCard}
         updateLike={props.updateLike}
+        selectedBoard={selectedBoard}
+        deleteCard={props.deleteCard}
       />
     );
+    // }
   }
 
   return <div>{cardComponents}</div>;

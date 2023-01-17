@@ -80,9 +80,15 @@ function App() {
     const newCardJSON = {
       ...newCardInfo,
       id: Math.floor(Math.random() * 100) /*response.data.id*/,
+      // //---------------------------------ADDED----------------------------------------------
+
+      // board_id: selectedBoard.id,
+      // messageLength: newCardInfo.message.length /*response.data.id*/,
+      // //-------------------------------------------------------------------------------------
     };
     newCards.push(newCardJSON);
     setCardList(newCards); //this method does not require a .get request; we are pushing the bike data to the bikes list and using the setter to trigger a rerender.
+    // updateCardList(cardList, boardId, setCardList) ----DO WE NEED THIS HERE?
   }; /*)*/
   // .catch((error)=>{
   //   console.log(error);
@@ -147,7 +153,7 @@ function App() {
     }
     setBoardList(newBoardList);
 
-    updateCardList(cardList, boardId, setCardList);
+    updateCardList(cardList, boardId, setCardList); //MAKE SURE USING THIS IN OTHER FUNCTIONS THAT NEED IT?
   };
 
   let selectedBoard = {};
@@ -188,6 +194,7 @@ function App() {
       }
     }
     setCardList(newCardList);
+    //NOT PERSISTING DATA WHEN CLICKING OFF OFF THE BOARD
     // })
     // .catch((err) => {
     //   console.log(err);
@@ -221,6 +228,8 @@ function App() {
         unselectCard={unselectCard}
         selectBoard={selectBoard}
         updateLike={updateLike}
+        selectedBoard={selectedBoard}
+        deleteCard={deleteCard}
       />
       {/* <NewCardForm></NewCardForm> */}
       <h2>CREATE NEW CARD</h2>

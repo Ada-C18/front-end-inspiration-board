@@ -7,17 +7,34 @@ import { useState } from "react";
 
 const INITIAL_FORM_DATA = {
   message: "",
+  // //---------------------------------ADDED--------------------------------------------
+  // messageLength: 0,
+  // liked: false,
+  // //SHOULD we add numOfLikes: 0
+  // //-------------------------------------------------------------------------------------
 };
 
 const NewCard = (props) => {
   const [CardData, setCardData] = useState(INITIAL_FORM_DATA);
-  let selectBoard = props.selectBoard;
+  const messageLength = CardData.messageLength;
+  let selectedBoard = props.selectedBoard;
+
+  //delete the console logs later -----------------------------------------
+  // if (selectedBoard.length === 0) {
+  if (Object.keys(selectedBoard).length === 0) {
+    console.log("No selected board");
+    selectedBoard = false;
+  } else {
+    console.log("A board is selected");
+  }
+  //-------------------------------------------------------------------------
 
   const handleChange = (e) => {
     let datafield = e.target.value;
     const NewCardData = {
       ...CardData,
       [e.target.name]: datafield,
+      messageLength: datafield.length, //------------------ADDED------------
     };
     setCardData(NewCardData);
   };
@@ -28,7 +45,9 @@ const NewCard = (props) => {
     setCardData(INITIAL_FORM_DATA);
   };
 
-  const inputClass = CardData.message ? "" : "empty";
+  const tooLong = CardData.messageLength < 40 ? false : true; //-----------------ADDED---------------------
+
+  const inputClass = CardData.message /*|| !tooLong*/ ? "" : "empty"; //SOMETHING IS WRONG HEREEEE
   //if input fields for Title or Owner's Name are empty ->
   //red box around input boxes and submit button unavailable
   // if (CardData.title === '' || CardData.name==='') {
@@ -46,7 +65,11 @@ const NewCard = (props) => {
         onChange={handleChange}
       />
 
-      <input type="submit" value="Add Card" disabled={!CardData} />
+      <input
+        type="submit"
+        value="Add Card"
+        disabled={!CardData || !selectedBoard || tooLong}
+      />
     </form>
   );
 };
