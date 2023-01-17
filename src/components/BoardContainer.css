@@ -34,3 +34,8 @@
     border-radius: .4rem;
     padding: .25rem;
 }
+
+.all-board__list {
+    list-style: none;
+    padding-left: 0;
+}

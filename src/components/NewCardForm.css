@@ -36,13 +36,13 @@
 
 input {
     display: block;
-
 }
 
 label, input {
     line-height: 1rem;
 }
 
-button {
+.new-card__button {
     margin-top: .45rem;
+    cursor: pointer;
 }

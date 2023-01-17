@@ -4,7 +4,7 @@ import Card from './Card';
 import PropTypes from 'prop-types';
 
 // props = cardData
-const CardContainer = (props) => {
+const CardContainer = ({ currentBoard }) => {
     // const cards = props.cards.map((card, i) => {
     //     return <Card
     //     key={i}
@@ -14,7 +14,7 @@ const CardContainer = (props) => {
     
     return (
         <section className='all-cards__section'>
-            <h2 id='current-board-name'>Current Board Name</h2>
+            <h2 id='current-board-name'>{currentBoard.title}</h2>
             <div id="card-container-line" />
             <div className='all-cards__container'>
             {/* {cards} */}

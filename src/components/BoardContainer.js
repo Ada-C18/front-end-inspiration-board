@@ -3,16 +3,17 @@ import PropTypes from 'prop-types';
 import './BoardContainer.css';
 import Board from './Board';
 
-// props = boardData
-// might need to add cardData as props?
-const BoardContainer = ({ boards }) => {
+
+const BoardContainer = ({ boards, onUpdateCurrentBoard}) => {
     const getAllBoardsJSX = (boards) => {
-        return boards.map((board, i) => {
+        return boards.map((board) => {
             return (
                 <Board
-                key={board.board_id}
+                key={board.id}
+                id={board.id}
                 title={board.title}
                 owner={board.owner}
+                onUpdateCurrentBoard={onUpdateCurrentBoard}
                 />
             );
         });
@@ -22,7 +23,9 @@ const BoardContainer = ({ boards }) => {
         <section className='all-boards__section'>
             <h2 id='all-boards__title'>All Boards (pick one)</h2>
             <div id="line" />
-            <div className='all-boards__container'>{getAllBoardsJSX(boards)}</div>
+            <div className='all-boards__container'>
+            <ul className='all-board__list'>{getAllBoardsJSX(boards)}</ul>
+            </div>
         </section>
     ); 
 };
@@ -30,7 +33,7 @@ const BoardContainer = ({ boards }) => {
 //waiting for backend response
 BoardContainer.propTypes = {
     boards: PropTypes.arrayOf(PropTypes.shape({
-        key: PropTypes.number.isRequired,
+        id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
         owner: PropTypes.string.isRequired,
     })) 

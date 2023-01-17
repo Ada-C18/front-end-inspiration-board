@@ -11,6 +11,7 @@ function App() {
   const [boards, setBoards] = useState([]);
   const [cards, setCards] = useState([]);
   const [message, setMessage] = useState("");
+  const [currentBoard, setCurrentBoard] = useState({title: "No Board Selected"})
 
   // CREATE NEW BOARD
   const addBoard = (boardData) => {
@@ -41,7 +42,12 @@ function App() {
       .post("http://127.0.0.1:5000/card", cardData)
       .then((response) => {
         const newCards = [...cards];
-        newCards.push({ message: response.data.message, ...cardData });
+        newCards.push({ 
+          id: response.data.card_id, 
+          message: response.data.message, 
+          like_count: response.data.likes_count,
+          board_id: response.data.board_id,
+          ...cardData });
         setCards(newCards);
         setMessage("You made a new card!")
       })
@@ -65,7 +71,7 @@ function App() {
     .then((response) => {
       const newBoards = response.data.map((board) => {
         return {
-          key: board.board_id,
+          id: board.board_id,
           title: board.title,
           owner: board.owner,
         };
@@ -77,14 +83,23 @@ function App() {
     });
   }, []);
 
+  // update current board title to pass as callback to board container and board
+  const updateCurrentBoard = (id) => {
+    for (let board of boards) {
+      if (id === board.id) {
+        setCurrentBoard(board)
+      }
+    }
+  };
+
 
   return (
     <div className="App">
       <Header />
       <NewBoardForm addBoardCallback={addBoard} afterSubmitMessage={message} />
-      <BoardContainer boards={boards}/>
+      <BoardContainer boards={boards} onUpdateCurrentBoard={updateCurrentBoard} />
       <NewCardForm addCardCallback={addCard} afterSubmitMessage={message} />
-      <CardContainer />
+      <CardContainer currentBoard={currentBoard}/>
     </div>
   );
 }

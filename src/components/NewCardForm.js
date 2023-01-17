@@ -34,7 +34,7 @@ const NewCardForm = ({ addCardCallback , afterSubmitMessage }) => {
               value={cardData.message}
               onChange={handleChange}
             />
-            <button className="button new-card__submit" type="submit">
+            <button className="new-card__button" type="submit">
               Add Card
             </button>
             <p>

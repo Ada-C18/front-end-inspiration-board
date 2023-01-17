@@ -41,10 +41,10 @@ const NewBoardForm = ({ addBoardCallback , afterSubmitMessage }) => {
               value={boardData.owner}
               onChange={handleChange}
             />
-            <button className="button new-board" type="submit">
+            <button className="new-board__button" type="submit">
               Add Board
             </button>
-            <button className="button new-board" type="submit">
+            <button className="new-board__button" type="submit">
               Hide Form
             </button>
             <p>

@@ -42,7 +42,8 @@ label, input {
     line-height: 1rem;
 }
 
-button {
+.new-board__button {
     margin-top: .45rem;
     display: block;
+    cursor: pointer;
 }
