@@ -1,4 +1,5 @@
-
+// connection to backend so new card shows up. Only place a new card can be created. There might be more
+// Valentina
 const NewCardForm = () => {
     return(
     <form>

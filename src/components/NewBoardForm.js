@@ -1,4 +1,5 @@
-
+// connect to back-end and be able to delete board etc.
+// Lisa
 const NewBoardForm = () => {
   return(
   <form>

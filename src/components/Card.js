@@ -1,7 +1,11 @@
 import './Card.css'
- const Card = () => {
+// need to connect/be able to update like-count and delete card. There might be
+//  needs default value 
+// Ryan
+
+const Card = () => {
     return(
         <div className='card'></div>
     )
- }
- export default Card 
+}
+export default Card 
