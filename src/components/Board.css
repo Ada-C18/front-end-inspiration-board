@@ -1,0 +1,10 @@
+.board-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+.input-section {
+    border: 2px solid black;
+    width: 50%;
+}

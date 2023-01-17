@@ -11,10 +11,3 @@ const NewBoardForm = () => {
 )};
 
 export default NewBoardForm;
-
-{/* <form>
-    <label>
-      Title:
-      <input type="text" name="name" />
-    </label>
-  </form> */}
