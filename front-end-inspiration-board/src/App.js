@@ -3,6 +3,8 @@ import background from "./cork-board.jpg";
 import { useState } from "react";
 import BoardList from "./components/BoardList";
 import NewBoardForm from "./components/NewBoardForm";
+import FormDialog from "./components/NewCardForm";
+import NewCardForm from "./components/NewCardForm";
 
 const INITIAL_BOARDS = [
   {
@@ -23,7 +25,8 @@ const INITIAL_BOARDS = [
 
 function App() {
   const [boardsList, setBoardsList] = useState(INITIAL_BOARDS);
-  const [selectedTitle, setSelectedTitle] = useState("Selected Title");
+  const [selectedBoard, setSelectedBoard] = useState(null);
+  const [cardsList, setCardsList] = useState([]);
 
   const addBoard = (newBoardInfo) => {
     // Add axios post request};
@@ -31,10 +34,11 @@ function App() {
     newBoard.push(newBoardInfo);
     setBoardsList(newBoard);
   };
+
   const boardSelector = (selectedBoard) => {
     const boards = boardsList.map((board) => {
       if (board.id === selectedBoard.id) {
-        setSelectedTitle(selectedBoard.title);
+        setSelectedBoard(selectedBoard);
         return selectedBoard;
       } else {
         board = { ...board, selected: false };
@@ -42,6 +46,13 @@ function App() {
       }
     });
     setBoardsList(boards);
+  };
+
+  const addCard = (cardData) => {
+    const newCard = [...cardsList];
+    newCard.push(cardData);
+    setCardsList(newCard);
+    console.log(cardsList);
   };
 
   return (
@@ -55,8 +66,16 @@ function App() {
           <BoardList boardsList={boardsList} boardSelector={boardSelector} />
           <h3 className="HeaderOfNewBoard">Create a New Board</h3>
           <NewBoardForm addBoardCallBackFunc={addBoard} />
-          <h3 className="CardsForSectedBoard">Cards for {selectedTitle}</h3>
-          <button className="CreateNewCard">Create a New Card</button>
+          {selectedBoard && (
+            <div className="CardsForSectedBoard">
+              <h3>Cards for {selectedBoard.title}</h3>
+              <NewCardForm
+                className="CreateNewCard"
+                addCardCallBackFunc={addCard}
+              />
+            </div>
+          )}
+          {/* <FormDialog className="CreateNewCard" /> */}
         </section>
       </body>
     </div>
