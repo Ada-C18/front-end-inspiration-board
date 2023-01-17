@@ -4,17 +4,16 @@ import BoardSelector from "./BoardSelector";
 import "./Header.css";
 
 const Header = (props) => {
-  const [boardSelectorVisible, setBoardSelectorVisible] = useState(false);
-  const [newBoardFormVisible, setNewBoardFormVisible] = useState(false);
+  const [boardFormVisible, setBoardFormVisible] = useState(false);
 
   const toggleBoardFormVisible = () => {
-    setBoardSelectorVisible(!boardSelectorVisible);
+    setBoardFormVisible(!boardFormVisible);
   };
 
-  const boardFormButtonText = boardSelectorVisible
+  const boardFormButtonText = boardFormVisible
     ? "Hide form"
     : "Add new board";
-  const boardFormElement = boardSelectorVisible ? (
+  const boardFormElement = boardFormVisible ? (
     <BoardForm newBoard={props.newBoard}></BoardForm>
   ) : (
     ""
