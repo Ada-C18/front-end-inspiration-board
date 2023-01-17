@@ -27,7 +27,7 @@ function App() {
   // boardsList axios call
   const [boardsList, setBoardsList] = useState([]);
 
-  const URL = "http://localhost:5000/boards";
+  const URL = "https://inspirationboard.herokuapp.com/boards";
   const fetchAllBoards = () => {
     axios
       .get(URL)
@@ -52,7 +52,7 @@ function App() {
   // cardsList axios call
   const [cardsList, setCardsList] = useState([]);
 
-  const cardsURL = "http://localhost:5000/cards";
+  const cardsURL = "https://inspirationboard.herokuapp.com/cards";
   const fetchAllCards = () => {
     axios
       .get(cardsURL)
@@ -88,9 +88,27 @@ function App() {
       });
   };
 
+  const deleteBoard = (boardId) => {
+    console.log("delete board called!!!");
+    axios
+      .delete(`${URL}/${boardId}`)
+      .then(() => {
+        const newBoardList = [];
+        for (const board of boardsList) {
+          if (board.id !== boardId) {
+            newBoardList.push(board);
+          }
+        }
+        setBoardsList(newBoardList);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
-      <BoardList boardEntries={boardsList} />
+      <BoardList boardEntries={boardsList} deleteBoard={deleteBoard} />
       <CardList cardEntries={cardsList} />
       <NewBoardForm addBoardCallbackFunc={addBoard} />
     </div>
