@@ -1,21 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Marcellus&display=swap');
+
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  background-color: #D1C7BD
+  ;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  font-family: 'Marcellus';
+  letter-spacing: 3px;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,15 +19,59 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+h2{
+  font-family: Marmelad;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cardsContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap; 
 }
+
+.cardMessage {
+  font-family: "Raleway";
+  background: #AC9C8D;
+  width: 100px;
+  height: 148px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  flex-direction: column;
+}
+
+.createBoard, .newCardBoard {
+  font-family: "Raleway";
+  background: #EFE9E1;
+  width: 201px;
+  height: 265px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  flex-direction: column;
+}
+
+.boardContainer, .newCardContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap; 
+}
+
+.createNew{
+  display: flex;
+  justify-content: space-around;
+}
+
+.cardItemControls{
+list-style: none ;
+display: flex;
+align-items: center;
+justify-content: space-evenly;
+flex-direction: row;}
