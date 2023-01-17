@@ -9,7 +9,7 @@ import FormNewCard from "./components/FormNewCard";
 function App() {
   const [boardList, setBoardList] = useState([]);
 
-  const URL = "http://127.0.0.1:5000";
+  const URL = "https://inspo-project.herokuapp.com";
 
   //get boards
   const getAllBoards = () => {
