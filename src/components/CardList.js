@@ -9,17 +9,16 @@ function CardList(props) {
   const deleteCard = props.deleteCard;
 
   for (const card of cardList) {
-    if (card.boardId === selectedBoardId) {
-      cardComponents.push(
-        <Card
-          key={card.id}
-          id={card.id}
-          message={card.message}
-          deleteCard={deleteCard}
-        />
-      );
-    }
+    cardComponents.push(
+      <Card
+        key={card.id}
+        id={card.id}
+        message={card.message}
+        deleteCard={deleteCard}
+      />
+    );
   }
+
 
   if (selectedBoardId) {
     return (
