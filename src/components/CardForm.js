@@ -27,7 +27,6 @@ const CardForm = (props) => {
     if (event.target.name === 'message' && event.target.value.length <= 40) {
       const newCardData = { ...cardState, [dataField]: dataValue };
       setCardForm(newCardData);
-      console.log(cardState);
       setErrorState('');
     } else {
       setErrorState(ERROR_MESSAGE_TOO_LONG);
@@ -48,7 +47,7 @@ const CardForm = (props) => {
   return (
     <div id="CardForm">
       <h2>Add a Card</h2>
-      <form onClick={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div>
           <label> Message </label>
           <input

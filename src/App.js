@@ -1,13 +1,18 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import "./App.css";
-import BoardForm from "./components/BoardForm";
-import BoardList from "./components/BoardList";
-import CurrentBoard from "./components/CurrentBoard";
-import CardForm from "./components/CardForm";
-import CardList from "./components/CardList";
-import testData from "./data/test.json";
-import { getAllBoards, addNewBoard } from "./API/InspirationAPI";
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import './App.css';
+import BoardForm from './components/BoardForm';
+import BoardList from './components/BoardList';
+import CurrentBoard from './components/CurrentBoard';
+import CardForm from './components/CardForm';
+import CardList from './components/CardList';
+import testData from './data/test.json';
+import {
+  getAllBoards,
+  addNewBoard,
+  addNewCard,
+  getAllCards,
+} from './API/InspirationAPI';
 
 const App = function () {
   /* Refresh boardListState and currentBoardState if 
@@ -26,7 +31,7 @@ const App = function () {
 
   const testBoardListData = testData[0];
   const testcardListData = testData[1];
-  const kDefaultBoardList = [{ board_id: 0, name: "", owner: "" }];
+  const kDefaultBoardList = [{ board_id: 0, name: '', owner: '' }];
   const [boardListState, setBoardListState] = useState(kDefaultBoardList);
   const [currentBoardState, setCurrentBoardState] = useState(0);
 
@@ -38,13 +43,21 @@ const App = function () {
 
   useEffect(() => {
     getAllBoards(setBoardListState);
-    //console.log(boardListState);
   }, []);
 
-  const [cardListState, setcardListState] = useState(testcardListData);
+  useEffect(() => {
+    if (currentBoardState === 0) {
+      setCurrentBoardState(boardListState[0].board_id);
+    }
+  }, [boardListState, currentBoardState]);
 
+  const [cardListState, setCardListState] = useState([]);
+
+  /* handle submit from cardForm */
   const handleNewCard = (newcard) => {
-    console.log("new card" + newcard);
+    console.log('new card' + JSON.stringify(newcard));
+    addNewCard(newcard, currentBoardState, (res) => console.log(res));
+    getAllCards(currentBoardState, setCardListState);
   };
 
   return (
@@ -73,11 +86,11 @@ const App = function () {
       </section>
       <section id="card-section">
         <div id="card-list">
-          {" "}
-          <CardList cardListData={testcardListData}></CardList>
+          {' '}
+          <CardList cardListData={cardListState}></CardList>
         </div>
         <div id="card-form-container">
-          {" "}
+          {' '}
           <CardForm handleNewCard={handleNewCard}></CardForm>
         </div>
       </section>

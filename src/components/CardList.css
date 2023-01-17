@@ -3,12 +3,14 @@ div#card-list-component {
   flex-direction: row;
   width: 100%;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 div.card {
   background:#ffc;
   width: 20em;
   height: 15em;
+  margin: .5em;
 
 }
 
