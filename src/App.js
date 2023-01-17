@@ -9,6 +9,7 @@ const BACKEND_URL = `${process.env.REACT_APP_BACKEND_URL}`;
 function App() {
   const [listOfBoards, setListOfBoards] = useState([]);
   const addNewBoard = () => {
+    // Get board data from POST request
     /* TODO */
   };
   const getBoardList = () => {
@@ -36,7 +37,7 @@ function App() {
   useEffect(() => getBoardList, []);
 
   return (
-    <div className="App">
+    <main className="App">
       <Header
         listOfBoards={listOfBoards}
         newBoard={addNewBoard}
@@ -46,7 +47,7 @@ function App() {
         currentBoard={currentBoard}
         currentBoardName={getCurrentBoardName()}
       ></Board>
-    </div>
+    </main>
   );
 }
 

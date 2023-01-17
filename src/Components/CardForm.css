@@ -12,8 +12,7 @@
   font-size: 5rem;
   color: grey;
   position: relative;
-  left: 65px;
-  top: 35px;
+  top: 32px;
 }
 
 #new-card-close {
@@ -22,7 +21,7 @@
   cursor: pointer;
 }
 
-form {
+add-card {
   box-sizing: border-box;
   border: 1px solid black;
   height: 200px;

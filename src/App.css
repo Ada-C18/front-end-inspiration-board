@@ -1,0 +1,8 @@
+.App {
+  /* background-image: url('/src/corkboard.jpeg'); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  text-align: center;
+  padding-top: 2rem;
+}

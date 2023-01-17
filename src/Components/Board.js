@@ -8,8 +8,20 @@ const BACKEND_URL = `${process.env.REACT_APP_BACKEND_URL}`;
 
 const Board = (props) => {
   const [cardList, setCardList] = useState([]);
-  const addNewCard = () => {
-    /* TODO */
+  const addNewCard = (message) => {
+    axios
+      .post(`${BACKEND_URL}/boards/${props.currentBoard}/cards`, { message })
+      .then((response) => {
+        // const cards = [...cardList];
+        // cards.push(response.data.card);
+        // setCardList(cards);
+        getCardList();
+        console.log("Response is:", response);
+      })
+      .catch((err) => {
+        console.log("Error:", err);
+        alert("Unable to create new card");
+      });
   };
 
   const getCardList = () => {
