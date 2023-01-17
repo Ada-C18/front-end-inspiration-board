@@ -9,10 +9,9 @@ const Card = ({ id, message }) => {
   );
 };
 
-Card.propTypes = {
-  id: PropTypes.number.isRequired,
-  message: PropTypes.string.isRequired,
-  cards: PropTypes.func.isRequired,
-};
+// Card.propTypes = {
+//   id: PropTypes.number.isRequired,
+//   message: PropTypes.string.isRequired,
+// };
 
 export default Card;
