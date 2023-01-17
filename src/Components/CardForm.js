@@ -3,18 +3,13 @@ import "./CardForm.css";
 const CardForm = (props) => {
   return props.visible ? (
     <form>
-      <div
-        id="new-card-close"
-        onClick={() => props.setVisible(props.visible ? false : true)}
-      >
+      <div id="new-card-close" onClick={props.toggleVisible}>
         x
       </div>
     </form>
   ) : (
-    <div
-      className="card-form-invisible"
-      onClick={() => props.setVisible(props.visible ? false : true)}
-    ></div>
+    <div className="card-form-invisible" onClick={props.toggleVisible}>
+    </div>
   );
 };
 

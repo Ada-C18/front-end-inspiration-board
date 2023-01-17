@@ -25,6 +25,8 @@ const Board = (props) => {
   useEffect(getCardList, [props.currentBoard]);
 
   const [cardFormVisible, setCardFormVisible] = useState(false);
+  const toggleCardFormVisible = () =>
+    setCardFormVisible(cardFormVisible ? false : true);
 
   const cards = cardList.map((card) => {
     return (
@@ -39,7 +41,7 @@ const Board = (props) => {
         {cards}
         <CardForm
           visible={cardFormVisible}
-          setVisible={setCardFormVisible}
+          toggleVisible={toggleCardFormVisible}
           addNewCard={addNewCard}
         ></CardForm>
       </div>
