@@ -41,28 +41,31 @@ const getCardsForBoardApi = async (boardId) => {
   return response.data.map(convertCardFromApi)
 }
 
-const postNewCardApi = (cardData) => {
-  const boardId = cardData.boardId
-  return axios.post(`${kBaseUrl}/boards/${boardId}/cards`, cardData)
+const postNewCardApi = (card) => {
+  return axios.post(`${kBaseUrl}/${card.cardId}/cards`, card)
   .then(response => {
     return convertCardFromApi(response.data);
   })  
 
 }
 
-const deleteCardApi = () => {
-  // the url requires both the board id and the card id
+const deleteCardApi = (card) => {
+  axios.delete(`${kBaseUrl}/card/${card.cardId}`)
+  .then(response => {
+    return convertCardFromApi(response.data)
+  })
 
 }
 
-const updateLikesCountApi = () => {
-  // url requires both the board id and the card id
+const updateLikesCountApi = (card) => {
+  // url requires the card id
 
 }
 
 function App() {
   const [boardData, setBoardData] = useState([])
   const [selectedBoard, setSelectedBoard] = useState({})
+  const [cardData, setCardData] = useState([])
 
   const getAllBoards = async () => {
     const boards = await getAllBoardsApi();
@@ -73,10 +76,22 @@ function App() {
     getAllBoards();
   }, [boardData]);
 
+  // const [cardData, setCardData] = useState([])
+  // useEffect(() => {
+  //   if (selectedBoard) {
+  //     const boardId = selectedBoard.boardId
+  //     getCardsForBoardApi(boardId)
+  //     .then(cards => {
+  //       return setCardData(cards.data);
+  //     })  
+  //   }
+  // }, [selectedBoard])
+
   const selectBoard = async (id) => {
 
     const board = await getOneBoardAPI(id);
     setSelectedBoard(board)
+
     // console.log("u made it!")
     // for (const board in boardData) {
     //   if (board.id === id) {
@@ -93,6 +108,16 @@ function App() {
   }
 
   const handleCardSubmit = (data) => {
+    postNewCardApi(data)
+
+
+  }
+
+  const handleLikeCard = (data) => {
+
+  }
+
+  const handleDeleteCard = (data) => {
 
   }
 
