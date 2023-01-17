@@ -3,11 +3,20 @@ import PropTypes from "prop-types";
 import Card from "./Card";
 
 const CardList = ({ cards }) => {
-  <div>
-    {cards.map((card) => {
-      return <Card cardId={card.card_id} message={card.message} />;
-    })}
-  </div>;
+  console.log(cards);
+  return (
+    <div>
+      {cards.map((card) => {
+        return (
+          <Card
+            key={card.card_id}
+            cardId={card.card_id}
+            message={card.message}
+          />
+        );
+      })}
+    </div>
+  );
 };
 
 CardList.propTypes = {

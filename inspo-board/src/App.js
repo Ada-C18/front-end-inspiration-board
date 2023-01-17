@@ -30,14 +30,14 @@ function App() {
     getAllBoards();
   }, []);
 
-  const selectBoard = (board_id, title, owner) => {
-    const board = { board_id, title, owner };
+  const selectBoard = (board_id, title, owner, cards) => {
+    const board = { board_id, title, owner, cards };
     setSelectedBoard(board);
     axios
       .get(`${URL}/${board_id}`)
       .then((result) => {
         console.log(result.data);
-        setCards(result.data);
+        setCards(result.data.cards);
       })
       .catch((err) => {
         console.log(err);
@@ -84,7 +84,7 @@ function App() {
         </button>
         <div>
           <h2>Cards</h2>
-          <CardList cards={cards} />
+          {selectedBoard ? <CardList cards={selectedBoard.cards} /> : ""}
         </div>
       </main>
     </div>

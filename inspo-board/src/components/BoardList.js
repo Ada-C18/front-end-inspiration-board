@@ -8,9 +8,11 @@ const BoardList = ({ boards, onSelectBoard }) => {
       {boards.map((board) => {
         return (
           <Board
+            key={board.board_id}
             boardId={board.board_id}
             title={board.title}
             owner={board.owner}
+            cards={board.cards}
             onSelectBoard={onSelectBoard}
           />
         );
@@ -25,6 +27,7 @@ BoardList.propTypes = {
       board_id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       owner: PropTypes.string.isRequired,
+      cards: PropTypes.array,
     })
   ),
   onSelectBoard: PropTypes.func.isRequired,
