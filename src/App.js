@@ -237,8 +237,7 @@ function App() {
     );
 
     if (userData.length === 0) {
-      setLoggedIn({ userId: null, tryAgain: true });
-      return false; // just returning something to end the function
+      return setLoggedIn({ userId: null, tryAgain: true });
     }
 
     setLoggedIn({ userId: userData[0].id, tryAgain: false });
@@ -249,8 +248,7 @@ function App() {
   //   const response = await axios.get(`${kBaseUrl}/users/${username}`);
 
   //   if (response.status !== 200) {
-  //     setLoggedIn({ userId: null, tryAgain: true });
-  //     return false;
+  //     return setLoggedIn({ userId: null, tryAgain: true });
   //   }
 
   //   setLoggedIn({ userId: response.data.id, tryAgain: false });
@@ -264,8 +262,7 @@ function App() {
     const userData = DUMMY_USER_DATA.filter((user) => user.name === username);
 
     if (userData.length > 0) {
-      setLoggedIn({ userId: null, tryAgain: true });
-      return false; // just returning something to end the function
+      return setLoggedIn({ userId: null, tryAgain: true });
     }
 
     const newId = DUMMY_USER_DATA[DUMMY_USER_DATA.length - 1].id + 1;
@@ -288,8 +285,7 @@ function App() {
   //   const response = await axios.post(`${kBaseUrl}/users`, requestBody);
 
   //   if (response.status !== 200) {
-  //     setLoggedIn({ userId: null, tryAgain: true });
-  //     return false;
+  //     return setLoggedIn({ userId: null, tryAgain: true });
   //   }
 
   //   setLoggedIn({ userId: response.data.id, tryAgain: false });

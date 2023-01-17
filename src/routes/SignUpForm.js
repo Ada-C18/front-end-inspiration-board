@@ -18,7 +18,7 @@ const SignUpForm = () => {
   const loaderData = useLoaderData();
   const [formData, setFormData] = useState(kDefaultFormState);
 
-  const { loginState, handleSignUp = loaderData[0].onSignUp } = loaderData[0];
+  const { loginState, onSignUp: handleSignUp } = loaderData[0];
 
   const handleChange = (event) => {
     const fieldValue = event.target.value;
