@@ -31,15 +31,19 @@ return (
             <div className="newBoard__form">
             <ul>
                 <li>
-                    <label>Title </label>
-                    <input type="text" value={newTitle} onChange={handleTitleChange}/></li>
+                <div className="newBoard__buttons">
+                    <label>Title</label>
+                    <input type="text" value={newTitle} onChange={handleTitleChange}/>
+                </div>
+                </li>
             
                 <li>
-                    <label>Owner's Name </label>
-                    <input type="text" value={newOwner} onChange={handleOwnerChange}/></li>
-            
-            
-                    <div><input type="submit" value="submit"/></div>
+                <div className="newBoard__buttons">
+                    <label>Owner's Name</label>
+                    <input type="text" value={newOwner} onChange={handleOwnerChange}/>
+                    <div><input type="submit" value="Submit"/></div>
+                </div>
+                </li>
             </ul>
             </div>
         </form>

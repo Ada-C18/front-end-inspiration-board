@@ -1,7 +1,7 @@
 import './App.css';
 // import axios from 'axios';
 import Board from './components/Board';
-// import Card from './componenets/Card';
+import Card from './componenets/Card';
 // import CardList from './componenets/CardList';
 import NewCard from './components/NewCard';
 import NewBoard from './components/NewBoard';
@@ -35,6 +35,21 @@ function App() {
     setIsBoardFormVisible(!isBoardFormVisible)
   };
 
+  // const [cardsData, setCardsData] = useState([]);
+  // const [selectedCard, setSelectedCard] = useState({
+  //   message: '',
+  //   board_id: null
+  // },[]);
+  // const selectCard = (card) => {
+  //   setSelectedCard(card)
+  // };
+  const cardsElements = cardsData.map((card) => {
+    return (
+      <li>
+        <Card card={card} onBoardSelect={selectCard}></Card>
+      </li>
+    )
+  });
   const handleCardSubmit=(data)=>{
     console.log("data",data)
     //call the api endpoints here
@@ -53,11 +68,15 @@ function App() {
         <div className="board__container">
           <section>
             <h2> New Board</h2>
+            <div className="new__board">
             {isBoardFormVisible ? <NewBoard onBoardSubmit={handleBoardSubmit}></NewBoard> : ""}
+            </div>
           </section>
           <section>
             <h2> New Card</h2>
+            <div className="new__card">
             <NewCard onCardSubmit={handleCardSubmit}/>
+            </div>
           </section>
           <section>
             <h2>Boards</h2>
