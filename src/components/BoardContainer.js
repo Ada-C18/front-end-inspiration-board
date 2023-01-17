@@ -4,7 +4,7 @@ import './BoardContainer.css';
 import Board from './Board';
 
 
-const BoardContainer = ({ boards, onUpdateCurrentBoard}) => {
+const BoardContainer = ({ boards, onDisplayCurrentBoard}) => {
     const getAllBoardsJSX = (boards) => {
         return boards.map((board) => {
             return (
@@ -13,7 +13,7 @@ const BoardContainer = ({ boards, onUpdateCurrentBoard}) => {
                 id={board.id}
                 title={board.title}
                 owner={board.owner}
-                onUpdateCurrentBoard={onUpdateCurrentBoard}
+                onDisplayCurrentBoard={onDisplayCurrentBoard}
                 />
             );
         });

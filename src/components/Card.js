@@ -2,12 +2,17 @@ import React from 'react';
 import './Card.css';
 import PropTypes from 'prop-types';
 
-// props = message (and like count later)
-const Card = (props) => {};
+const Card = ({ id, message, likeCount }) => {
+    return (
+        <div className='card__div'>
+            <span>{message}</span>
+            <span>{likeCount}</span>
+        </div>
+    );
+};
 
 
-// add like count later
-Card.PropTypes = {
+Card.propTypes = {
     message: PropTypes.string.isRequired,
 };
 

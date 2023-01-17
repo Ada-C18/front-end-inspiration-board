@@ -9,7 +9,6 @@ import NewCardForm from './components/NewCardForm';
 
 function App() {
   const [boards, setBoards] = useState([]);
-  const [cards, setCards] = useState([]);
   const [message, setMessage] = useState("");
   const [currentBoard, setCurrentBoard] = useState({title: "No Board Selected"})
 
@@ -41,14 +40,16 @@ function App() {
     axios
       .post("http://127.0.0.1:5000/card", cardData)
       .then((response) => {
-        const newCards = [...cards];
-        newCards.push({ 
-          id: response.data.card_id, 
-          message: response.data.message, 
-          like_count: response.data.likes_count,
-          board_id: response.data.board_id,
-          ...cardData });
-        setCards(newCards);
+        // const newCards = [...cards];
+        // newCards.push(
+        //   {
+        //   id: response.data.card_id, 
+        //   message: response.data.message, 
+        //   likeCount: response.data.likes_count,
+        //   board_id: response.data.board_id,
+        //   ...cardData
+        //   });
+        // setCards(newCards);
         setMessage("You made a new card!")
       })
       .catch((error) => {
@@ -83,8 +84,21 @@ function App() {
     });
   }, []);
 
-  // update current board title to pass as callback to board container and board
-  const updateCurrentBoard = (id) => {
+  // GET ALL CARDS FOR CURRENT BOARD
+const getCards = (boardId) => {
+    axios
+    .get(`http://127.0.0.1:5000/board/${boardId}`)
+    .then((response) => {
+      const cards = response.data.cards;
+      return cards;
+  })
+  .catch((error) => {
+    console.log(error)
+  });
+};
+
+  // UPDATE WHICH BOARD IS DISPLAYED
+  const displayCurrentBoard = (id) => {
     for (let board of boards) {
       if (id === board.id) {
         setCurrentBoard(board)
@@ -97,9 +111,9 @@ function App() {
     <div className="App">
       <Header />
       <NewBoardForm addBoardCallback={addBoard} afterSubmitMessage={message} />
-      <BoardContainer boards={boards} onUpdateCurrentBoard={updateCurrentBoard} />
+      <BoardContainer boards={boards} onDisplayCurrentBoard={displayCurrentBoard} />
       <NewCardForm addCardCallback={addCard} afterSubmitMessage={message} />
-      <CardContainer currentBoard={currentBoard}/>
+      <CardContainer currentBoard={currentBoard} /* getCardsCallback={getCards} */ />
     </div>
   );
 }

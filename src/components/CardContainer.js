@@ -3,30 +3,34 @@ import './CardContainer.css';
 import Card from './Card';
 import PropTypes from 'prop-types';
 
-// props = cardData
-const CardContainer = ({ currentBoard }) => {
-    // const cards = props.cards.map((card, i) => {
-    //     return <Card
-    //     key={i}
-    //     message={card.message}
-    //     />
-    // })
+const CardContainer = ({ currentBoard, /* getCardsCallback */ }) => {
+    // const cards = getCardsCallback(currentBoard.id);
+    // const getAllCardsJSX = (cards) => {
+    //     return cards.map((card) => {
+    //         return (
+    //             <Card
+    //             key={card.id}
+    //             id={cards.id}
+    //             message={cards.message}
+    //             likeCount={cards.likes_count}
+    //             boardId={cards.board_id}
+    //             />
+    //         );
+    //     });
+    // };
     
     return (
         <section className='all-cards__section'>
             <h2 id='current-board-name'>{currentBoard.title}</h2>
             <div id="card-container-line" />
-            <div className='all-cards__container'>
-            {/* {cards} */}
-            </div>
+            <div className='all-cards__container'>{/* {getAllCardsJSX(cards)} */}</div>
         </section>
     ) 
 };
 
-// add like count later
 CardContainer.propTypes = {
     cards: PropTypes.arrayOf(PropTypes.shape({
-        key: PropTypes.number.isRequired,
+        id: PropTypes.number.isRequired,
         message: PropTypes.string.isRequired,
     }))
 };

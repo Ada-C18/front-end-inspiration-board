@@ -3,12 +3,10 @@ import React from 'react';
 import './Board.css';
 
 
-const Board = ({ id, title, owner, onUpdateCurrentBoard }) => {
+const Board = ({ id, title, owner, onDisplayCurrentBoard }) => {
     const boardName = `${title} by ${owner}`;
 
-    const handleClick = () => {
-        onUpdateCurrentBoard(id);
-    }
+    const handleClick = () => {onDisplayCurrentBoard(id)};
 
     return (<li onClick={handleClick} className='boardName__li'>{boardName}</li>);
 };
