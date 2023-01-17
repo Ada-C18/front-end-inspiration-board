@@ -5,7 +5,9 @@ import "./App.css";
 import NewBoard from "./components/NewBoard";
 import BoardList from "./components/BoardList";
 import NewCard from "./components/NewCard";
+//TODO: Add card list
 import { useState } from "react";
+import CardList from "./components/CardList";
 
 function App() {
   const InitialList = [
@@ -22,12 +24,21 @@ function App() {
       selected: false,
     },
   ];
-  const InitialCardList = [
-    { id: 1, message: "yay" },
-    { id: 2, message: "help" },
-  ];
+  const InitialCardList = [];
+
   const [boardList, setBoardList] = useState(InitialList);
   const [cardList, setCardList] = useState(InitialCardList);
+
+  const cardBoardMap = {
+    1: [
+      { id: 1, message: "yay1" },
+      { id: 2, message: "help1" },
+    ],
+    2: [
+      { id: 3, message: "yay2" },
+      { id: 4, message: "help2" },
+    ],
+  };
 
   const addBoard = (newBoardInfo) => {
     // axios.post(URL, newBoardInfo)
@@ -80,7 +91,28 @@ function App() {
       }
     }
     setBoardList(newBoardList);
+
+    updateCardList(boardId);
   };
+
+  const selectCard = (cardId) => {};
+
+  const unselectCard = (cardId) => {};
+
+  function updateCardList(boardId) {
+    const newCardList = [];
+    if (cardBoardMap[boardId] != null) {
+      for (const card in cardBoardMap[boardId]) {
+        const newCard = {
+          ...cardBoardMap[boardId][card],
+          selected: true,
+        };
+        newCardList.push(newCard);
+      }
+    }
+
+    setCardList(newCardList);
+  }
 
   const unselectBoard = (boardId) => {
     const newBoardList = [];
@@ -96,9 +128,12 @@ function App() {
       }
     }
     setBoardList(newBoardList);
+
+    updateCardList(cardList, boardId, setCardList);
   };
+
   const selectedBoard = [];
-  // const displaySelectedBoard = (boardId) => {
+  // const displaySelectedBoard = (boardId) => { when select one it sets the others to false - only 1 selected true - consider changing selecte and unselect funtions so only 1 True select shows title and name
   for (const board of boardList) {
     if (board.selected === true) {
       selectedBoard.push(board.title, board.name);
@@ -124,6 +159,11 @@ function App() {
       <h2>CREATE NEW BOARD</h2>
       <NewBoard addBoardCallback={addBoard}></NewBoard>
       <h2>CARDS FOR {selectedBoard[0]}</h2>
+      <CardList
+        cardList={cardList}
+        selectCard={selectCard}
+        unselectCard={unselectCard}
+      />
       {/* <NewCardForm></NewCardForm> */}
       <h2>CREATE NEW CARD</h2>
       <NewCard addCardCallback={addCard} />

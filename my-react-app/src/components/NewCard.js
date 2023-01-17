@@ -10,12 +10,12 @@ const INITIAL_FORM_DATA = {
 };
 
 const NewCard = (props) => {
-  const [cardData, setCardData] = useState(INITIAL_FORM_DATA);
+  const [CardData, setCardData] = useState(INITIAL_FORM_DATA);
 
   const handleChange = (e) => {
     let datafield = e.target.value;
     const NewCardData = {
-      ...cardData,
+      ...CardData,
       [e.target.message]: datafield,
     };
     setCardData(NewCardData);
@@ -23,10 +23,10 @@ const NewCard = (props) => {
 
   const handleNewCardSubmit = (e) => {
     e.preventDefault();
-    props.addCardCallback(cardData);
+    props.addCardCallback(CardData);
   };
 
-  const inputClass = cardData.message ? "" : "empty";
+  const inputClass = CardData.message ? "" : "empty";
   //if input fields for Title or Owner's Name are empty ->
   //red box around input boxes and submit button unavailable
   // if (CardData.title === '' || CardData.name==='') {
@@ -40,11 +40,11 @@ const NewCard = (props) => {
         type="text"
         id="message"
         name="message"
-        value={cardData.message}
+        value={CardData.message}
         onChange={handleChange}
       />
 
-      <input type="submit" value="Add Card" disabled={!cardData} />
+      <input type="submit" value="Add Card" disabled={!CardData} />
     </form>
   );
 };
