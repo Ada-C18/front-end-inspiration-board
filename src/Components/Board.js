@@ -46,16 +46,20 @@ const Board = (props) => {
     );
   });
 
-  return (
-    <section id="board">
-      <h2>{props.currentBoardName}</h2>
-      <div className="card-list">
-        {cards}
+  const cardForm = props.currentBoard ? (
         <CardForm
           visible={cardFormVisible}
           toggleVisible={toggleCardFormVisible}
           addNewCard={addNewCard}
         ></CardForm>
+  ) : "";
+
+  return (
+    <section id="board">
+      <h2>{props.currentBoardName}</h2>
+      <div className="card-list">
+        {cards}
+        {cardForm}
       </div>
     </section>
   );
