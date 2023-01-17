@@ -17,8 +17,8 @@
 }
 
 #new-card-close {
-  position: absolute;
-  left: 193px;
+  position: relative;
+  left: 170px;
   cursor: pointer;
 }
 
