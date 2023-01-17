@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { useState } from 'react';
 import axios from 'axios';
-import Board from './components/Board'
+import Board from './components/Board';
+import CardList from './components/CardList';
 import NewBoardForm from './components/NewBoardForm';
+import NewCardForm from './components/NewCardForm';
 
 const kBaseUrl = process.env.REACT_APP_BACKEND_URL
 
@@ -41,8 +43,9 @@ const getCardsForBoardApi = async (boardId) => {
   return response.data.map(convertCardFromApi)
 }
 
+// uses the python variable style SORRRYY!!!
 const postNewCardApi = (card) => {
-  return axios.post(`${kBaseUrl}/${card.cardId}/cards`, card)
+  return axios.post(`${kBaseUrl}/boards/${card.board_id}/cards`, card)
   .then(response => {
     return convertCardFromApi(response.data);
   })  
@@ -58,8 +61,10 @@ const deleteCardApi = (card) => {
 }
 
 const updateLikesCountApi = (card) => {
-  // url requires the card id
-
+  axios.put(`${kBaseUrl}/card/${card.cardId}`)
+  .then(response => {
+    return convertCardFromApi(response.data)
+  })
 }
 
 function App() {
@@ -72,32 +77,38 @@ function App() {
     setBoardData(boards);
   };
 
+  const getCardsForBoard = async (boardId) => {
+    const cards = await getCardsForBoardApi(boardId);
+    setCardData(cards);
+    console.log("card data", cardData)
+  }
+
+  const getOneBoard = async (id) => {
+    const board = await getOneBoardAPI(id);
+    return board; 
+  }
+
   useEffect(() => {
     getAllBoards();
-  }, [boardData]);
+  }, []);
+  // had a dependency of boardData but was doing constant requests
 
-  // const [cardData, setCardData] = useState([])
+  useEffect(() => {
+    const boardId = selectedBoard.boardId
+    getCardsForBoard(boardId)
+  }, [selectedBoard])
+
+  // WHY ARE U YELLING AT ME? ask ta later
   // useEffect(() => {
-  //   if (selectedBoard) {
-  //     const boardId = selectedBoard.boardId
-  //     getCardsForBoardApi(boardId)
-  //     .then(cards => {
-  //       return setCardData(cards.data);
-  //     })  
-  //   }
-  // }, [selectedBoard])
+  //   const boardId = selectedBoard.boardId
+  //   getCardsForBoard(boardId)
+  // }, [cardData])
 
-  const selectBoard = async (id) => {
-
-    const board = await getOneBoardAPI(id);
+  const selectBoard = (id) => {
+    const board = getOneBoard(id)
     setSelectedBoard(board)
-
-    // console.log("u made it!")
-    // for (const board in boardData) {
-    //   if (board.id === id) {
-    //     setSelectedBoard(board)
-    //   }
-    // }
+    console.log("board id", id)
+    getCardsForBoard(board.boardId)
   }
   
   const handleBoardSubmit = (data) => {
@@ -109,7 +120,9 @@ function App() {
 
   const handleCardSubmit = (data) => {
     postNewCardApi(data)
-
+    .then(newCard => {
+      setCardData([...cardData, newCard])
+    })
 
   }
 
@@ -138,11 +151,21 @@ function App() {
         </div>
       <h2>Selected Board</h2>
         <div>
-          {selectedBoard ? '' : `${selectBoard.title} - ${selectBoard.owner}`}
+          {selectedBoard ? `${selectedBoard.title} - ${selectedBoard.owner}` : ''}
         </div>
       <h2>Create a New Board</h2>
           <NewBoardForm handleBoardSubmit={handleBoardSubmit} />
-      <h2>Cards {selectedBoard ? '' : `for ${selectedBoard.title}`}</h2>
+      <h2>Cards {selectedBoard ? `for ${selectedBoard.title}` : ''}</h2>
+          <div id="cards">
+            <CardList 
+              cardData={cardData}
+            />
+          </div>
+      <h2>Create a New Card</h2>
+          <NewCardForm 
+            handleCardSubmit={handleCardSubmit}
+            boardId={selectedBoard.boardId}
+          />
     </div>
   );
 }

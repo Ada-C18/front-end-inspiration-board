@@ -1,21 +1,21 @@
 import React, {useState} from "react";
 import PropTypes from 'prop-types';
 
-const kDefaultFormState = {
-  message: "",
-  boardId: null
-}
-
 const NewCardForm = (props) => {
+  const kDefaultFormState = {
+    message: "",
+    board_id: props.boardId,
+    likes_count: 0
+  }
+  // uses the python variable style
+
   const [formData, setFormData] = useState(kDefaultFormState)
+  
 
   const handleChange = (event) => {
     const fieldValue = event.target.value;
     const fieldName = event.target.name;
     const newFormData = {...formData, [fieldName]: fieldValue}
-
-    newFormData["boardId"] = props.boardId
-    newFormData["likesCount"] = 0
 
     setFormData(newFormData)
   };
