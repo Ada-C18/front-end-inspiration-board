@@ -20,7 +20,8 @@ const CardList = (props) => {
       return axios
         .get(URL)
         .then((response) => {
-          setCardData((prev) => response.data);
+          const sortedData = [...response.data].sort((a, b) => a.id - b.id);
+          setCardData((prev) => sortedData);
         })
         .catch((error) => {
           console.log(
@@ -38,7 +39,6 @@ const CardList = (props) => {
   useEffect(() => {
     getAllCards();
   }, [board_id]);
-  const cardArray = Array.from(cardData);
 
   const addCard = (newCard) => {
     axios
@@ -68,7 +68,18 @@ const CardList = (props) => {
       });
   };
 
-  const cards = cardArray.map((card) => {
+  const likeCard = (card) => {
+    axios
+      .put(`${URL}/${card.card_id}/liked`)
+      .then((response) => {
+        getAllCards();
+      })
+      .catch((error) => {
+        alert("Couldn't like this card!");
+      });
+  };
+
+  const cards = cardData.map((card) => {
     return (
       <Card
         key={card.id}
@@ -76,6 +87,7 @@ const CardList = (props) => {
         message={card.message}
         likes={card.likes}
         onDeleteCard={deleteCard}
+        onLikeCard={likeCard}
       />
     );
   });
