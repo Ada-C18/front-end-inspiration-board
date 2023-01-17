@@ -11,8 +11,8 @@ const CardList = (props) => {
           key={card.cardId}
           cardId={card.cardId}
           message={card.message}
-          onCardDelete={card.handleCardDelete}
-          onLikesCount={card.handleLikesCount}
+          onDeleteCard={props.onDeleteCard}
+          onLikesCount={props.onLikesCount}
         />
       );
     });
@@ -34,5 +34,6 @@ CardList.propTypes = {
   ).isRequired,
   onLikesCount: PropTypes.func.isRequired,
   onDeleteCard: PropTypes.func.isRequired,
+  boardId: PropTypes.number.isRequired
 };
 export default CardList;

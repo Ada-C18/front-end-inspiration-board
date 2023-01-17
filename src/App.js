@@ -108,7 +108,7 @@ const App = () => {
   const [selectedBoard, setSelectedBoard] = useState({
     title: '',
     owner: '',
-    board_id: null,
+    boardId: null,
   });
   const [cards, setCards] = useState([]);
 
@@ -162,32 +162,34 @@ const App = () => {
   // };
   const onSelectBoard = async (boardId) => {
     try {
-      const selectedBoard = await axios.get(
+      const response = await axios.get(
         `${REACT_APP_BACKEND_URL}/boards/${boardId}`
       );
-      setSelectedBoard(boardApiToJson(selectedBoard));
+      setSelectedBoard(boardApiToJson(response.data));
       const cards = await getCardsAPI(boardId);
       setCards(cards);
     } catch (err) {
       console.log(err);
     }
   };
-  const handleBoardDelete = async (board) => {
+
+  const handleBoardDelete = async (boardId) => {
     try {
-      await deleteBoardAPI(board);
+      await deleteBoardAPI(boardId);
       setBoards((prevBoards) => {
-        return prevBoards.filter((boardId) => board.boardId !== boardId);
+        return prevBoards.filter((board) => board.boardId !== boardId);
       });
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  const handleCardDelete = async (card) => {
+  const handleCardDelete = async (cardId) => {
     try {
-      await deleteCardAPI(card);
-      setBoards((prevCards) => {
-        return prevCards.filter((cardId) => card.cardId !== cardId);
+      await deleteCardAPI(selectedBoard.boardId,cardId);
+      setCards((prevCards) => {
+        return prevCards.filter((card) => {
+          return card.cardId !== cardId})
       });
     } catch (error) {
       console.log(error.message);
@@ -237,7 +239,7 @@ const App = () => {
         />
         <h2>Selected Board</h2>
         <p>
-          {selectedBoard.board_id
+          {selectedBoard
             ? `${selectedBoard.title} - ${selectedBoard.owner}`
             : 'Select a Board from the Board List!'}
         </p>
@@ -246,8 +248,8 @@ const App = () => {
             <CardList
               cards={cards}
               boardId={selectedBoard.boardId}
-              handleLikesCount={handleLikesCount}
-              handleCardDelete={handleCardDelete}
+              onLikesCount={handleLikesCount}
+              onDeleteCard={handleCardDelete}
             />
             <CardForm boardId={selectedBoard.boardId} handleCardSubmit={handleCardSubmit}/>
           </>

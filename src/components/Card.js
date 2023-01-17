@@ -9,14 +9,14 @@ const Card = (props) => {
       <p>{props.message}</p>
       <button
         className='add_like'
-        onClick={() => props.onDeleteCard(props.cardId)}
+        onClick={() => props.onLikesCount(props.cardId)}
       >
         🌟
       </button>
       <p></p>
       <button
         className='delete_card'
-        onClick={() => props.onLikesCount(props.cardId)}
+        onClick={() => props.onDeleteCard(props.cardId)}
       >
         delete card
       </button>
