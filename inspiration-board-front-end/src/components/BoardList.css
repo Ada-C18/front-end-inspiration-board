@@ -1,0 +1,7 @@
+.BoardHeading {
+  font-size: calc(8px + 2vmin);
+  color: rgb(64, 29, 51);
+  text-align: left;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}

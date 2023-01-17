@@ -30,6 +30,8 @@
 
 .BoardTitles {
   color: rgb(103, 45, 82);
+  font-size: 1.5rem;
+  padding: 0.2em;
 }
 
 .CardsInfo {
@@ -41,8 +43,8 @@
 }
 
 .SelectedBoard {
-  font-size: calc(8px + 2vmin);
-  color: aliceblue;
+  font-size: calc(8px + 3vmin);
+  color: tomato;
   text-align: left;
   padding: 2rem;
   font-weight: bold;

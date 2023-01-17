@@ -1,0 +1,17 @@
+.board-form {
+  font-size: 1.2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-style: groove;
+  border-width: 0.5em;
+  border-color: rgba(165, 127, 164, 0.776);
+  padding: 1em;
+}
+
+.button {
+  margin-top: 2em;
+  border-radius: 1em;
+  font-size: 1em;
+  font-style: italic;
+}

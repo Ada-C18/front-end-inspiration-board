@@ -29,7 +29,7 @@ const getAllBoards = async () => {
 //   { title: "Test Board Two", id: 2, owner: "Soleil" },
 //   { title: "Test Board Three", id: 3, owner: "Misha" },
 // ];
-const emptyBoard = { id: 0, title: " ", owner: " " };
+const emptyBoard = { id: 0, title: "", owner: "" };
 
 function App() {
   const [boardData, setBoardData] = useState([]);
@@ -84,6 +84,11 @@ function App() {
       });
   };
 
+  let selectedBoardDisplay = "Please select a board to display cards";
+  if (selectedBoard.id !== 0) {
+    selectedBoardDisplay = `Selected Board: ${selectedBoard.title} (${selectedBoard.owner}'s Board)`;
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -101,9 +106,8 @@ function App() {
             addBoardCallBack={addBoard}
           />
         </section>
-        <p className="SelectedBoard ">
-          Selected Board: {selectedBoard.title} -- {selectedBoard.owner}'s Board
-        </p>
+        <p className="SelectedBoard ">{selectedBoardDisplay}</p>
+
         <CardList
           className="CardList-Area"
           selectedBoardId={selectedBoard.id}

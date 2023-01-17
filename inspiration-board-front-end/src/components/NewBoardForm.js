@@ -35,9 +35,23 @@ const NewBoardForm = (props) => {
     });
   };
 
+  let addBoardButton = (
+    <input type="submit" value="Add Board" className="button" />
+  );
+  if (
+    formFields.title.length === 0 ||
+    formFields.title.length > 12 ||
+    formFields.owner.length === 0 ||
+    formFields.owner.length > 12
+  ) {
+    addBoardButton = (
+      <input type="submit" value="Add Board" className="button" disabled />
+    );
+  }
+
   return (
     <form onSubmit={onFormSubmit} className="form-style">
-      <section>
+      <section className="board-form">
         <h4> Create New Board </h4>
         <section>
           <h5>Board Title: </h5>
@@ -55,7 +69,7 @@ const NewBoardForm = (props) => {
             onChange={onOwnerChange}
           />
         </section>
-        <input type="submit" value="Add Board" className="button" />
+        {addBoardButton}
       </section>
     </form>
   );

@@ -8,12 +8,12 @@ const Card = (props) => {
       <h2 className="Message-Info"> {props.message} </h2>
       <span className="Likes-Container">
         <p
-          className="Likes-Info"
+          className="Likes-Info-heart"
           onClick={() => {
             props.onLikeCard(props);
           }}
         >
-          ❤️
+          🧡
         </p>
         <p className="Likes-Info"> Likes: {props.likes}</p>
       </span>

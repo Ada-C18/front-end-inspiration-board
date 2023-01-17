@@ -29,7 +29,7 @@ const NewCardForm = (props) => {
   };
 
   let addCardButton = <input type="submit" value="Add Card" />;
-  if (formFields.message.length === 0 || formFields.message.length > 42) {
+  if (formFields.message.length === 0 || formFields.message.length > 41) {
     addCardButton = <input type="submit" value="Add Card" disabled />;
   }
 
@@ -46,7 +46,7 @@ const NewCardForm = (props) => {
         <input
           type="text"
           className={
-            formFields.message.length === 0 || formFields.message.length > 40
+            formFields.message.length === 0 || formFields.message.length > 42
               ? "invalid-form-input"
               : ""
           }
