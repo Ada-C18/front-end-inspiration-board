@@ -7,13 +7,14 @@ const Board = (props) => {
   const title = props.title;
   const owner = props.owner;
   const deleteBoard = props.deleteBoard;
+  const fetchCards = props.fetchCards;
 
   return (
     <div>
       <ul>
-        <li>board id: {id}</li>
-        <li>title: {title}</li>
-        <li>owner: {owner}</li>
+        {/* <li>board id: {id}</li> */}
+        <li onClick={() => fetchCards()}>title: {title}</li>
+        {/* <li>owner: {owner}</li> */}
       </ul>
       <button onClick={() => deleteBoard(id)}>Delete Board</button>
     </div>
@@ -26,6 +27,7 @@ Board.propTypes = {
   title: PropTypes.string.isRequired,
   owner: PropTypes.string.isRequired,
   deleteBoard: PropTypes.func.isRequired,
+  fetchCards: PropTypes.func.isRequired,
 };
 
 export default Board;

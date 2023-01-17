@@ -7,6 +7,7 @@ const BoardList = (props) => {
   // const boardEntries = props.boardEntries;
   console.log(props);
   const deleteBoard = props.deleteBoard;
+  const fetchCards = props.fetchCards;
 
   const boardComponents = props.boardEntries.map((boardEntry) => {
     return (
@@ -16,6 +17,7 @@ const BoardList = (props) => {
           title={boardEntry.title}
           owner={boardEntry.owner}
           deleteBoard={deleteBoard}
+          fetchCards={fetchCards}
         />
       </li>
     );
@@ -32,6 +34,7 @@ BoardList.propTypes = {
   //Fill with correct proptypes
   boardEntries: PropTypes.arrayOf(PropTypes.object).isRequired,
   deleteBoard: PropTypes.func.isRequired,
+  fetchCards: PropTypes.func.isRequired,
 };
 
 export default BoardList;

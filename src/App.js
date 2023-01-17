@@ -72,7 +72,7 @@ function App() {
       });
   };
 
-  useEffect(fetchAllCards, []);
+  // useEffect(fetchAllCards, []);
 
   const addBoard = (newBoardInfo) => {
     //use axios.post request here
@@ -89,7 +89,6 @@ function App() {
   };
 
   const deleteBoard = (boardId) => {
-    console.log("delete board called!!!");
     axios
       .delete(`${URL}/${boardId}`)
       .then(() => {
@@ -108,7 +107,11 @@ function App() {
 
   return (
     <div>
-      <BoardList boardEntries={boardsList} deleteBoard={deleteBoard} />
+      <BoardList
+        boardEntries={boardsList}
+        deleteBoard={deleteBoard}
+        fetchCards={fetchAllCards}
+      />
       <CardList cardEntries={cardsList} />
       <NewBoardForm addBoardCallbackFunc={addBoard} />
     </div>
