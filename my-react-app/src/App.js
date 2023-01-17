@@ -129,14 +129,28 @@ function App() {
           ...cardBoardMap[boardId][card],
           selected: true,
         };
-        newCardList.push(newCard);
-        console.log(newCard);
+        newCardList.push(newCard); //only putting cards of specific board id into "newCardList"
+        console.log("in updateCardList, newCard being updated:", newCard);
       }
     }
+    // for (const board in cardBoardMap) {
+    //   if (parseInt(board) !== boardId /*&& cardBoardMap[board] != null*/) {
+    //     console.log("board: ", board, "boardId: ", boardId);
+    //     for (const card in cardBoardMap[board]) {
+    //       const newCard = {
+    //         ...cardBoardMap[board][card],
+    //         selected: false,
+    //       };
+    //       newCardList.push(newCard);
+    //     }
+    //   }
+    // }
 
-    setCardList(newCardList);
-    console.log(newCardList);
+    setCardList(newCardList); //only setting the state with values in newCardList (which are onlyy cards of the specified board)
+    console.log("in updateCardList, the updated CardList:", newCardList);
+    console.log("state cardList", cardList);
   }
+  console.log("state cardList part 2", cardList);
 
   const unselectBoard = (boardId) => {
     const newBoardList = [];
