@@ -4,7 +4,6 @@ import Card from "./Card";
 
 
 const CardList = ({ board }) => {
-  console.log("This is CardList Component")
   const [cardsList, setCardsList] = useState([]);
 
   useEffect(() => {
@@ -48,7 +47,7 @@ const CardList = ({ board }) => {
     axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`)
     .then(() => {
       const newCardsList = []; 
-      for (const card of CardList) {
+      for (const card of cardsList) {
         if (card.id !== cardId) {
           newCardsList.push(card);
         }
@@ -61,7 +60,7 @@ const CardList = ({ board }) => {
   };
 
 
-
+// Need to add key here???
   const cardsComponent = cardsList.map((card) => {
     return (
       <Card card={card} updateLikedCard={updateLikedCard} deleteCard={deleteCard} />
