@@ -104,15 +104,13 @@ function App() {
   };
 
   // create plus one card function
-  const [likes, setLikes] = useState(0);
   const countLikesTotal = (cardId) => {
     axios.put(`${URL}/card/${cardId}`).then((response) => {
       const updatedCards = [];
       for (const card of cardList) {
         if (card.id === cardId) {
-          card.likes_count = response.data.likes;
+          card.likes += 1;
           updatedCards.push(card);
-          setLikes(response.data.like);
         } else {
           updatedCards.push(card);
         }
@@ -135,7 +133,6 @@ function App() {
         cardList={cardList}
         deleteCard={deleteCard}
         countLikesTotal={countLikesTotal}
-        likes={likes}
       />
 
       <FormNewCard addCardCallbackFunc={addCard} boardId={boardId} />

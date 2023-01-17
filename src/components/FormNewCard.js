@@ -14,6 +14,7 @@ const FormNewCard = (props) => {
       ...formCard,
       board_id: props.boardId,
       [e.target.name]: e.target.value,
+      likes: 0,
     };
     setFormCard(newCardData);
     setMessage(e.target.value);
