@@ -10,7 +10,9 @@ const CardForm = (props) => {
   // declare and initialize state
   const kDefaultCardData = { message: '' };
   const [cardState, setCardForm] = useState(kDefaultCardData);
-  // const [formState, setFormState] = useState(kDefaultFormData);
+  const [errorState, setErrorState] = useState('');
+  const ERROR_MESSAGE_TOO_LONG =
+    'Messages must be less than 40 characters long.';
 
   /* handleNewData: update formState as user types. 
   Args: event: onChange event.
@@ -22,11 +24,20 @@ const CardForm = (props) => {
     const dataValue = event.target.value;
     const dataField = event.target.name;
 
-    const newCardData = { ...cardState, [dataField]: dataValue };
-    setCardForm(newCardData);
-    console.log(cardState);
+    if (event.target.name === 'message' && event.target.value.length <= 40) {
+      const newCardData = { ...cardState, [dataField]: dataValue };
+      setCardForm(newCardData);
+      console.log(cardState);
+      setErrorState('');
+    } else {
+      setErrorState(ERROR_MESSAGE_TOO_LONG);
+    }
   };
 
+  /* handleSubmit: Pass cardState data to the top-level handler.
+     takes: event (unused)
+     calls: props.setCardForm
+  */
   const handleSubmit = function (event) {
     event.preventDefault();
     props.handleNewCard(cardState);
@@ -52,6 +63,7 @@ const CardForm = (props) => {
           <label> Submit </label>
           <input type="submit" value="Add New Card"></input>
         </div>
+        <div className="error">{errorState}</div>
       </form>
     </div>
   );
