@@ -284,7 +284,7 @@ function App() {
 
   //   const response = await axios.post(`${kBaseUrl}/users`, requestBody);
 
-  //   if (response.status !== 200) {
+  //   if (response.status !== 201) {
   //     return setLoggedIn({ userId: null, tryAgain: true });
   //   }
 
