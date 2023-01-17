@@ -1,5 +1,6 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 import BoardsList from "./components/BoardsList";
 import NewBoardForm from "./components/NewBoardForm";
@@ -26,6 +27,7 @@ const cardsData = [
 	{ cardId: 2, message: "you're doing great" },
 ];
 
+// REQUIREMENTS
 // -- Read Boards:
 // View a list of all boards.
 // Select a board.
@@ -34,16 +36,23 @@ function App() {
 	// state for boardsList
 	const [boardsList, setBoardsData] = useState(boardsData);
 
-	// TODO: Select Board  State - top level
-	// State: Selected Board ID
-	// Make boards clickable
+	const URL = "http://127.0.0.1:5000";
+
+	// TODO: Select Board  State - top level, Make boards clickable
 	// State for selected board - manage here
-	// const [selected, setSelected] = useState(false); // move useState somewhere else
+	// State: Selected Board ID
+	// const [selectedBoardId, setSelected] = useState(false);
+	const [selectedBoard, setSelected] = useState({
+		board_id: 1,
+		title: "Do things!",
+		owner: "Milena",
+	}); // move useState somewhere else?
 
 	// 	const updateSelectedBoard = () => {
 	// 	console.log("updateBoard called");
 	// };
 
+	// Todo: add API post / add Board code
 	// form prop function
 	const addBoard = (newBoard) => {
 		console.log("Calling addBoard");
@@ -60,16 +69,48 @@ function App() {
 		setBoardsData(updatedBoardsList);
 	};
 
-	// Add Card
+	// ------------ Cards Logic ----------- //
 	// State: Selected Board Cards
-	// TODO: Move cards state logic to Board component
-	const [cards, setCardsList] = useState(cardsData);
+	const [selectedCards, setCardsList] = useState(cardsData); // useState([]);
 
+	// TODO: ask Backend team about GET Cards route
+	const fetchCardsURL = `${URL}/${selectedBoard.board_id}/cards`; // "/<board_id>/cards"
+	// 2 different GET routes in backend repo
+	// 1. @boards_bp.route("/<board_id>/cards", methods = ["GET"])
+	// def get_board_cards(board_id):
+	// 2. @cards_bp.route("", methods = ["GET"])
+	// def get_all_cards():
+	console.log(fetchCardsURL);
+
+	// Get all cards with board ID
+	const fetchCards = () => {
+		axios
+			.get(fetchCardsURL)
+			.then((response) => {
+				console.log(response);
+				const cardsAPIResCopy = response.data.map((card) => {
+					return {
+						cardId: card.cardId,
+						message: card.message,
+						// likesCount: card.likesCount,
+					};
+				});
+				setCardsList(cardsAPIResCopy);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
+
+	// initial get cards request
+	useEffect(fetchCards, []);
+
+	// Add Card Function
+	// Todo: add API post card code
 	const addCard = (newCard) => {
 		console.log("Calling addCard");
 
-		const newCardsList = [...cards];
-
+		const newCardsList = [...selectedCards];
 		newCardsList.push({
 			board_id: newCard.board_id, // hidden, implied primary key
 			message: newCard.message,
@@ -86,9 +127,11 @@ function App() {
 			<p>{/* Selected: {title} - {owner} */}</p>
 			<NewBoardForm addBoard={addBoard} />
 
-			{/* Todo: might need to move CardsList component somewhere else, like Board component */}
-			<h2>Cards for "insert Board title here" Quotes</h2>
-			<CardsList cardsList={cards} />
+			{/* Todo: display elements below after selecting Board */}
+			<h2>Cards for {selectedBoard.title} Quotes</h2>
+			{/* <h2>Cards for "insert Board title here" Quotes</h2> */}
+			<CardsList cardsList={selectedCards} />
+
 			<h2>Create New Card</h2>
 			<NewCardForm addCardCallback={addCard} />
 		</div>
