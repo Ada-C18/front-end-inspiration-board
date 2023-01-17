@@ -1,25 +1,49 @@
-.InspoBoard {
+.inspoBoard {
     display: grid;
-    grid-template-columns: 35%,30%,35%;
+    grid-template-columns: 35% 30% 35%;
     gap: 10px;
     grid-auto-rows: minmax(100px, auto);
     width: 100%;
     margin: 30px;
-     
 }
 
-.Header {
+.header {
     grid-column: 1/4;
     grid-row: 1/2;
+    font-family: Cursive, Helvetica, sans-serif;
+    
 }
 
-.BoardList{
+.boardList{
     grid-column: 1/2;
     grid-row: 2/3;
+    
 }
 
 .selectBoard {
-    grid-column: 2/3;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    
+    /* font-style:italic; */
+}
+
+.selectBoard > h2 {
+    font-style: italic;
+   
+}
+
+.boardForm {
+    grid-column: 3/4;
     grid-row: 2/3;
-    /* font: cursive; */
+    
+}
+.cardList {
+    grid-column: 1/2;
+    grid-row: 3/4;
+    display:block;
+}
+
+.cardForm {
+    grid-column: 3/4;
+    grid-row: 3/4;
 }

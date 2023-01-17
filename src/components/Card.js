@@ -9,9 +9,13 @@ function Card(props) {
   const handleDelete = () => deleteCard(id);
   // return <div className="card">{message}</div>;
   return (
-    <div>
-      <li className="card">{message}</li>
+    <div className="card">
+      <div className = "cardContent">
+      <li >{message}</li>
+      <div className = "deleteBtn">
       <button onClick={handleDelete}>Delete</button>
+      </div>
+      </div>
     </div>
   );
 }

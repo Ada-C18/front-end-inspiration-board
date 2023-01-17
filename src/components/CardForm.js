@@ -26,7 +26,7 @@ const NewCardForm = ({ addCardCallbackFunc, selectedBoard }) => {
 
   if (selectedBoard.id) {
     return (
-      <div>
+      <div >
         <h2>Create A New Card</h2>
         <form>
           <label htmlFor="message">Message</label>

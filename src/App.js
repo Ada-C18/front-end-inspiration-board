@@ -211,25 +211,33 @@ function App() {
   // };
 
   return (
-    <div className="InspoBoard">
-      <header className="Header">
+    <div className="inspoBoard">
+      <header className = "header">
         <h1>Inspiration Board</h1>
       </header>
-      <BoardList className="BoardList" boardList={boardList} selectBoard={selectBoard}></BoardList>
+      <div className="boardList">
+      <BoardList boardList={boardList} selectBoard={selectBoard}></BoardList>
+      </div>
       <div className="selectBoard">
         <h2>Selected Board</h2>
         <p>{selectedBoard.board}</p>
       </div>
+      <div className="boardForm">
       <BoardForm addBoardCallbackFunc={addBoard}></BoardForm>
+      </div>
+      <div className = "cardList">
       <CardList
         selectedBoardId={selectedBoard.id}
         deleteCard={deleteCard}
         cardList={cardList}
       ></CardList>
-      <CardForm
+      </div>
+      <div className="cardForm">
+      <CardForm 
         addCardCallbackFunc={addCard}
         selectedBoard={selectedBoard}
       ></CardForm>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,66 @@
+.card {
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: center; */
+    list-style:none;
+    text-decoration:none;
+    color:#000;
+    background:#ffc;
+    display:block;
+    min-height:10em;
+    max-height:10em;
+    min-width:10em;
+    max-width: 10em;
+    padding:1em;
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    margin:1em;
+  }
+/* 
+.card li:nth-child(even) {
+    transform:rotate(4deg);
+    position:relative;
+    top:5px;
+  }
+  li:nth-child(3n) {
+    transform:rotate(-3deg);
+    position:relative;
+    top:-5px;
+  }
+  li:nth-child(5n) {
+    transform:rotate(5deg);
+    position:relative;
+    top:-10px;
+  } */
+
+
+/* .card > li {
+    text-align: center;
+} */
+/*button {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+} */
+
+.cardContent {
+    position: relative;
+    /* justify-content: space-between; */
+    /* flex-direction: column;
+    display: flex; */
+}
+
+.cardContent li {
+    font-family: 'Permanent Marker', cursive;
+    overflow-wrap: break-word;
+}
+
+.cardContent .deleteBtn {
+    position: absolute;
+    top: 9em;
+    /* right: 10px; */
+    left: 3em;
+    /* justify-content: flex-end;
+    display: flex; */
+    
+}
+
