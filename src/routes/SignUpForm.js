@@ -8,9 +8,17 @@ const kDefaultFormState = {
   password: "",
 };
 
+const isError = () => {
+  return (
+    <p className="error">⛔️ Username already taken. Please try another.</p>
+  );
+};
+
 const SignUpForm = () => {
-  const handleLogIn = useLoaderData();
+  const loaderData = useLoaderData();
   const [formData, setFormData] = useState(kDefaultFormState);
+
+  const { loginState, handleSignUp = loaderData[0].onSignUp } = loaderData[0];
 
   const handleChange = (event) => {
     const fieldValue = event.target.value;
@@ -22,7 +30,7 @@ const SignUpForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    handleLogIn(formData);
+    handleSignUp(formData);
     setFormData(kDefaultFormState);
   };
 
@@ -30,7 +38,7 @@ const SignUpForm = () => {
     <>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Username</label>
+          <label htmlFor="name">Username (not case-sensitive)</label>
           <input
             className="entry"
             type="text"
@@ -40,6 +48,7 @@ const SignUpForm = () => {
             onChange={handleChange}
           />
         </div>
+        {loginState.tryAgain && isError()}
         {/* <div>
           <label htmlFor="password">Password</label>
           <input

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -185,6 +184,10 @@ const DUMMY_BOARD_DATA = [
   // },
 ];
 
+// const genericDummyFunc = (arg1 = null) => {
+//   console.log("This is the dummy function");
+// };
+
 const WAIT = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const kBaseUrl = "http://localhost:5000";
@@ -201,54 +204,43 @@ function App() {
   // const passBoardProps = () => appData;
 
   const passLogInPropsDummy = () => {
-    // return JSON.parse(
-    //   JSON.stringify({
-    //     logState: loggedIn,
-    //     onLogIn: handleLogInDummy,
-    //   })
-    // );
     return [
       {
-        logState: loggedIn,
+        loginState: loggedIn,
         onLogIn: handleLogInDummy,
       },
     ];
   };
 
-  // const genericDummyFunc = (arg1 = null) => {
-  //   console.log("This is the dummy function");
+  // const passLogInProps = () => {
+  //   return [{ loginState: loggedIn, onLogIn: handleLogIn }];
   // };
 
-  // logInProps;
-  // return { logState: loggedIn, onLogIn: handleLogInDummy };
+  const passSignUpPropsDummy = () => {
+    return [
+      {
+        loginState: loggedIn,
+        onSignUp: handleSignUpDummy,
+      },
+    ];
+  };
 
-  // const passLogInProps = () => {
-  //   return { logState: loggedIn, onLogIn: handleLogIn };
+  // const passSignUpProps = () => {
+  //   return [{ loginState: loggedIn, onSignUp: handleSignUp }];
   // };
 
   const handleLogInDummy = async (formData) => {
-    // console.log("made it to handle log in dummy");
-    // console.log(formData);
     await WAIT(500);
-
-    // console.log("waiting!");
-    // console.log(formData.name);
 
     const userData = DUMMY_USER_DATA.filter(
       (user) => user.name === formData.name.toLowerCase()
     );
 
-    // console.log(userData);
-
     if (userData.length === 0) {
-      // console.log("no match");
       setLoggedIn({ userId: null, tryAgain: true });
-      // console.log(loggedIn);
       return false; // just returning something to end the function
     }
 
-    // console.log("there was a match");
-    // console.log(userData[0].id);
     setLoggedIn({ userId: userData[0].id, tryAgain: false });
   };
 
@@ -264,9 +256,44 @@ function App() {
   //   setLoggedIn({ userId: response.data.id, tryAgain: false });
   // };
 
-  const handleSignUp = (formData) => {
-    return null;
+  const handleSignUpDummy = async (formData) => {
+    await WAIT(500);
+
+    const username = formData.name.toLowerCase();
+
+    const userData = DUMMY_USER_DATA.filter((user) => user.name === username);
+
+    if (userData.length > 0) {
+      setLoggedIn({ userId: null, tryAgain: true });
+      return false; // just returning something to end the function
+    }
+
+    const newId = DUMMY_USER_DATA[DUMMY_USER_DATA.length - 1].id + 1;
+    const newUser = {
+      id: newId,
+      name: username,
+    };
+    DUMMY_USER_DATA.push(newUser);
+
+    setLoggedIn({
+      userId: DUMMY_USER_DATA[DUMMY_USER_DATA.length - 1].id,
+      tryAgain: false,
+    });
   };
+
+  // const handleSignUp = async (formData) => {
+  //   const username = formData.name.toLowerCase(); // avoids case-sensitivity problems;
+  //   const requestBody = { name: username };
+
+  //   const response = await axios.post(`${kBaseUrl}/users`, requestBody);
+
+  //   if (response.status !== 200) {
+  //     setLoggedIn({ userId: null, tryAgain: true });
+  //     return false;
+  //   }
+
+  //   setLoggedIn({ userId: response.data.id, tryAgain: false });
+  // };
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -293,8 +320,14 @@ function App() {
           />
           <Route
             path="signup"
-            element={<SignUpForm />}
-            loader={handleSignUp}
+            element={
+              loggedIn.userId ? (
+                <Navigate to="/boards" replace />
+              ) : (
+                <SignUpForm />
+              )
+            }
+            loader={passSignUpPropsDummy}
             errorElement={<ErrorPage />}
           />
         </Route>

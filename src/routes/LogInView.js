@@ -7,7 +7,7 @@ import LogInForm from "./LogInForm.js";
 const LogInView = () => {
   const location = useLocation();
   const loaderData = useLoaderData();
-  const { logState, onLogIn } = loaderData[0];
+  const { loginState, onLogIn } = loaderData[0];
 
   return (
     <div className="LogInView">
@@ -17,7 +17,7 @@ const LogInView = () => {
       </h2>
       <div id="form">
         {location.pathname === "/" ? (
-          <LogInForm logState={logState} onLogIn={onLogIn} />
+          <LogInForm loginState={loginState} onLogIn={onLogIn} />
         ) : (
           <Outlet />
         )}

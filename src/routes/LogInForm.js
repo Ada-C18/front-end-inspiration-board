@@ -20,31 +20,25 @@ const LogInForm = (props = null) => {
   const loaderData = useLoaderData();
   const [formData, setFormData] = useState(kDefaultFormState);
 
-  const logState = loaderData ? loaderData[0].logState : props.logState;
+  const loginState = loaderData ? loaderData[0].loginState : props.loginState;
   const handleLogIn = loaderData ? loaderData[0].onLogIn : props.onLogIn;
 
   // console.log(loaderData);
-  // console.log(logState);
+  // console.log(loginState);
   // console.log(typeof handleLogIn);
 
   const handleChange = (event) => {
     const fieldValue = event.target.value;
     const fieldName = event.target.name;
     const newFormData = { ...formData, [fieldName]: fieldValue };
-    // console.log("handling change");
-    // console.log(newFormData);
 
     setFormData(newFormData);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log("handling submit");
-    // console.log(formData);
     handleLogIn(formData);
-    // console.log("handled Log In");
     setFormData(kDefaultFormState);
-    // console.log("set form data");
   };
 
   return (
@@ -61,7 +55,7 @@ const LogInForm = (props = null) => {
             onChange={handleChange}
           />
         </div>
-        {logState.tryAgain && isError()}
+        {loginState.tryAgain && isError()}
         {/* <div>
           <label htmlFor="password">Password</label>
           <input
