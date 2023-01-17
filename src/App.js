@@ -28,9 +28,18 @@ const cardsData = [
 ];
 
 // REQUIREMENTS
+// BOARDS
 // -- Read Boards:
 // View a list of all boards.
 // Select a board.
+
+// CARDS
+// -- Create a new card for the selected board, by filling out a form and filling out a "message." - DONE (NewCardForm component)
+
+// -- See an error message if I try to make the card's "message" more than 40 characters. => TODO
+// All error messages can look like a new section on the screen, a red outline around the input field, and/or disabling the input, as long as it's visible
+
+// -- See an error message if I try to make a new card with an empty/blank/invalid/missing "message." - DONE (NewCardForm component)
 
 function App() {
 	// state for boardsList
