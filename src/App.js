@@ -8,13 +8,6 @@ import CardList from "./components/CardList";
 import NewCardForm from "./components/NewCardForm";
 
 const kBaseUrl = "https://goddess-inspiration-board.herokuapp.com";
-
-// const convertFromApi = (apiBoard) => {
-//   const { title, owner, board_id: boardId } = apiBoard;
-//   const newBoardApi = { boardId, title, owner };
-//   return newBoardApi;
-// };
-
 // get boards
 const getAllBoardsApi = () => {
   return axios
@@ -34,7 +27,6 @@ const postNewBoardApi = (newBoard) => {
     .post(`${kBaseUrl}/boards`, requestBody)
     .then((response) => {
       return response.data;
-      // return convertFromApi(response.board);
     })
     .catch((error) => {
       console.log(error.message);
@@ -42,43 +34,14 @@ const postNewBoardApi = (newBoard) => {
 };
 
 function App() {
-  const [boardsData, setBoardsData] = useState(
-    []
-    // {
-    //   board_id: 1,
-    //   title: 'Live your best life',
-    //   owner: 'kkg',
-    // },
-    // {
-    //   board_id: 2,
-    //   title: 'Do not disturb',
-    //   owner: 'reyna',
-    // },
-  );
-  console.log(boardsData);
-
-  const [cardsData, setCardsData] = useState([
-    //   {
-    //     board_id: 1,
-    //     card_id: 1,
-    //     likes_count: 0,
-    //     message: "go to the beach",
-    //   },
-    //   {
-    //     board_id: 1,
-    //     card_id: 2,
-    //     likes_count: 0,
-    //     message: "drink all of the wine",
-    //   },
-  ]);
-
+  const [boardsData, setBoardsData] = useState([]);
+  const [cardsData, setCardsData] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
 
   const getAllBoards = () => {
     return getAllBoardsApi()
       .then((boards) => {
         setBoardsData(boards);
-        console.log(boards);
       })
       .catch((error) => {
         console.log(error.message);
@@ -104,21 +67,30 @@ function App() {
         console.log(error.message);
       });
   };
-
-  const updateCardLikes = (updatedCard) => {
-    const newCardData = cardsData.map((card) => {
-      if (card.card_id === updatedCard.card_id) {
-        return updatedCard;
-      } else {
-        return card;
-      }
-    });
-    setCardsData(newCardData);
+  const updateCardLikesApi = (card_id) => {
+    return axios
+      .put(`${kBaseUrl}/cards/${card_id}/like`)
+      .then((response) => {
+        getCardsApi(selectedBoard);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
-  const deleteCard = (card_id) => {
-    const newCardData = cardsData.filter((card) => !card.card_id);
-    setCardsData(newCardData);
+  // delete card
+  const deleteCardApi = (card_id) => {
+    return axios
+      .delete(`${kBaseUrl}/cards/${card_id}`)
+      .then(() => {
+        const newCardData = cardsData.filter(
+          (card) => card.card_id !== card_id
+        );
+        setCardsData(newCardData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const addCardData = (newCard) => {
@@ -130,19 +102,16 @@ function App() {
         likes_count: response.likes_count,
         board_id: response.board_id,
       });
-      console.log(newCardData);
       setCardsData(newCardData);
     });
   };
 
   // get all cards
-
   const getCardsApi = (selectedBoard) => {
     return axios
       .get(`${kBaseUrl}/boards/${selectedBoard}/cards`)
       .then((response) => {
         setCardsData(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error.message);
@@ -181,16 +150,6 @@ function App() {
     }
   };
 
-  const getSelectedCards = (cardsData) => {
-    const cards = [];
-    for (let card of cardsData) {
-      if (card.board_id === selectedBoard) {
-        cards.push(card);
-      }
-    }
-    return cards;
-  };
-
   return (
     <div>
       <h1>Inspiration Board</h1>
@@ -203,9 +162,9 @@ function App() {
       <CardList
         selectedBoard={selectedBoard}
         boardName={getSelectedTitle(boardsData)}
-        cards={getSelectedCards(cardsData)}
-        updateCards={updateCardLikes}
-        deleteCard={deleteCard}
+        cards={cardsData}
+        updateCards={updateCardLikesApi}
+        deleteCard={deleteCardApi}
       ></CardList>
       <NewCardForm
         selectedBoard={selectedBoard}

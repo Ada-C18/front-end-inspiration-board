@@ -3,13 +3,7 @@ import PropTypes from "prop-types";
 
 const Card = (props) => {
   const updateLikes = () => {
-    const updatedCard = {
-      card_id: props.cardId,
-      board_id: props.boardId,
-      message: props.message,
-      likes_count: props.likes_count + 1,
-    };
-    props.updateCardsData(updatedCard);
+    props.updateCardsData(props.cardId);
   };
 
   const deleteACard = () => {

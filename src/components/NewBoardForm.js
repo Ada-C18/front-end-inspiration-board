@@ -10,16 +10,15 @@ const NewBoardForm = (props) => {
   const onOwnerChange = (event) => {
     setformFields({ ...formFields, owner: event.target.value });
   };
+
+  const submitButtonStatus =
+    !formFields.title || !formFields.owner ? true : false;
   const onFormSubmit = (event) => {
-    if (!formFields.title || !formFields.owner) {
-      event.preventDefault();
-      document.getElementById("submitButton").disabled = true;
-    } else {
-      event.preventDefault();
-      props.onAddBoard({ title: formFields.title, owner: formFields.owner });
-      setformFields({ title: "", owner: "" });
-    }
+    event.preventDefault();
+    props.onAddBoard({ title: formFields.title, owner: formFields.owner });
+    setformFields({ title: "", owner: "" });
   };
+
   return (
     <section>
       <h1>CREATE A NEW BOARD</h1>
@@ -48,7 +47,12 @@ const NewBoardForm = (props) => {
           <p>
             Preview: {formFields.title} - {formFields.owner}
           </p>
-          <input value="Submit Board" id="submitButton" type="submit"></input>
+          <input
+            value="Submit Board"
+            id="submitButton"
+            type="submit"
+            disabled={submitButtonStatus}
+          ></input>
         </form>
       )}
     </section>

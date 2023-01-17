@@ -7,16 +7,12 @@ const NewCardForm = (props) => {
   const onMessageChange = (event) => {
     setMessageField({ message: event.target.value });
   };
-
+  const submitButtonStatus =
+    !messageField.message || messageField.message.length > 40 ? true : false;
   const onFormSubmit = (event) => {
-    if (!messageField.message || messageField.message.length > 40) {
-      event.preventDefault();
-      document.getElementById("submitButton").disabled = true;
-    } else {
-      event.preventDefault();
-      props.onAddCard({ message: messageField.message });
-      setMessageField({ message: "" });
-    }
+    event.preventDefault();
+    props.onAddCard({ message: messageField.message });
+    setMessageField({ message: "" });
   };
 
   return (
@@ -33,7 +29,12 @@ const NewCardForm = (props) => {
               onChange={onMessageChange}
             ></input>
             <p>Preview: {messageField.message}</p>
-            <input value="Submit Card" id="submitCard" type="submit"></input>
+            <input
+              value="Submit Card"
+              id="submitCard"
+              type="submit"
+              disabled={submitButtonStatus}
+            ></input>
           </form>
         </div>
       )}
