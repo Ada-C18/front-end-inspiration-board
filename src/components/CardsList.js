@@ -3,24 +3,15 @@ import PropTypes from "prop-types";
 import Card from "./Card";
 
 const CardsList = ({ cardsList }) => {
-	const cardComponents = [];
-
-	for (const card of cardsList) {
-		cardComponents.push(
+	const cardComponents = cardsList.map((card) => {
+		return (
 			<Card
 				cardId={card.card_id}
 				message={card.message}
 				// likeCount = {card.likesCount}
 			/>
 		);
-	}
-	// const cardComponents = cardsList.map((card) =>
-	// 		<Card
-	// 			cardId={card.card_id}
-	// 			message={card.message}
-	// 			// likeCount = {card.likesCount}
-	// 		/>;
-	// );
+	});
 
 	return (
 		<>
@@ -29,6 +20,13 @@ const CardsList = ({ cardsList }) => {
 	);
 };
 
-// CardsList.propTypes = {}
+CardsList.propTypes = {
+	cardsList: PropTypes.arrayOf(
+		PropTypes.shape({
+			cardId: PropTypes.number.isRequired,
+			message: PropTypes.string.isRequired,
+		})
+	),
+};
 
 export default CardsList;
