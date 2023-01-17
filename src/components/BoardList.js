@@ -7,16 +7,16 @@ const BoardList = (props) => {
   return props.boards.map((board) => (
     <Board
       key={board.boardId}
+      boardId={board.boardId}
       title={board.title}
       owner={board.owner}
-      boardId={board.boardId}
-      onSelectBoard={props.ONselectBoard}
+      onSelectBoard={props.onSelectBoard}
       onDeleteBoard={props.onDeleteBoard}
     />
   ));
 };
 
-Board.propTypes = {
+BoardList.propTypes = {
   boards: PropTypes.arrayOf(
     PropTypes.shape({
       boardId: PropTypes.number.isRequired,

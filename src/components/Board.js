@@ -12,6 +12,7 @@ const Board = (props) => {
 };
 
 Board.propTypes = {
+ 
   boardId: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   owner: PropTypes.string.isRequired,

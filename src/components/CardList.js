@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
-import './CardList.css'
+import './CardList.css';
 
 const CardList = (props) => {
-  
   const cards = (props) => {
     return props.cards.map((card) => {
       return (
@@ -12,17 +11,18 @@ const CardList = (props) => {
           key={card.cardId}
           cardId={card.cardId}
           message={card.message}
-          handleCardDelete={card.handleCardDelete} 
-          handleLikesCount={card.handleLikesCount}
+          onCardDelete={card.handleCardDelete}
+          onLikesCount={card.handleLikesCount}
         />
       );
     });
   };
-return(
-  <div>
-    <h2>Card List</h2>
-    <section className='CardList'>{cards(props)}</section>
-  </div>);
+  return (
+    <div>
+      <h2>Card List</h2>
+      <section className='CardList'>{cards(props)}</section>
+    </div>
+  );
 };
 
 CardList.propTypes = {
@@ -30,9 +30,9 @@ CardList.propTypes = {
     PropTypes.shape({
       cardId: PropTypes.number.isRequired,
       message: PropTypes.string.isRequired,
-      onLikesCount: PropTypes.func.isRequired,
-      onDeleteCard: PropTypes.func.isRequired,
-    }).isRequired
+    })
   ).isRequired,
+  onLikesCount: PropTypes.func.isRequired,
+  onDeleteCard: PropTypes.func.isRequired,
 };
 export default CardList;

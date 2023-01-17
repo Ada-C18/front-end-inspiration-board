@@ -61,7 +61,6 @@ const getBoardsAPI = async () => {
   }
 };
 
-
 //Get Cards from API
 const getCardsAPI = async (boardId) => {
   try {
@@ -87,7 +86,9 @@ const deleteBoardAPI = async (boardId) => {
 
 const deleteCardAPI = async (boardId, cardId) => {
   try {
-    await axios.delete(`${REACT_APP_BACKEND_URL}/boards/${boardId}/cards/${cardId}`);
+    await axios.delete(
+      `${REACT_APP_BACKEND_URL}/boards/${boardId}/cards/${cardId}`
+    );
   } catch (error) {
     console.log(error);
     throw new Error(`Could not delete card ${cardId} from board ${boardId}.`);
@@ -102,19 +103,18 @@ const deleteCardAPI = async (boardId, cardId) => {
 //4. delete board if time permits
 
 const App = () => {
-
   //STATE
   const [boards, setBoards] = useState([]);
- const [selectedBoard, setSelectedBoard] = useState({
+  const [selectedBoard, setSelectedBoard] = useState({
     title: '',
     owner: '',
-    board_id: null
+    board_id: null,
   });
   const [cards, setCards] = useState([]);
 
   //HANDLE
 
-  //onSubmit Board Form, adds new board to list
+  //onSubmit Board and Card Forms, adds new board to boardList, new card to cardList
   const handleBoardSubmit = (board) => {
     addBoardAPI(board)
       .then((newBoard) => {
@@ -123,38 +123,55 @@ const App = () => {
       .catch((err) => console.log(err));
   };
 
-  // Get One Board Promise, get CardsList for that boardId.
-  const handleBoardSelect = useCallback(async (boardId) => {
-    const board = boards.find((boardID) => board.boardId === boardId);
-    if (!boardId) {
-      return;
-    }
+  //PUT THIS IN THE SELECT BOARD FUNCTION?????
+  const handleCardSubmit = useCallback((cardId) => {
+    addCardAPI(cardId).then((newCard) => {
+      setCards((prevCards) => [...prevCards, newCard]);
+    });
+  }, []);
+
+  // Get One Board, get CardsList for that boardId.
+  // const handleBoardSelect = useCallback(
+  //   async (boardId) => {
+  //     const board = boards.find((boardID) => board.boardId === boardId);
+
+  //     try {
+  //       //retrieves cardlist
+  //       const cardlist = await getCardsAPI(boardId);
+  //       //this uses state of selected board and marries is to cardlist
+  //       setSelectedBoard(board);
+  //       setCards(cardlist);
+  //     } catch (err) {
+  //       console.log(err);
+  //       throw new Error(`Could not get board ${board.boardId}`);
+  //     }
+  //   },
+  //   [boards]
+  // );
+  // const onSelectBoard = async (board) => {
+  //   setSelectedBoard(board);
+  //   try {
+  //     const response = await axios.get(
+  //       `${REACT_APP_BACKEND_URL}/boards/${board.board_id}/cards`
+  //     );
+  //     setCards(response.data);
+  //   } catch (err) {
+  //     console.log(err);
+  //     throw new Error('Nope, I could not get your cards');
+  //   }
+  // };
+  const onSelectBoard = async (boardId) => {
     try {
-      //retrieves cardlist
-      const cardlist=await getCardsAPI(boardId);
-      //this uses state of selected board and marries is to cardlist
-      setSelectedBoard(board)
-      setCards(cardlist)
+      const selectedBoard = await axios.get(
+        `${REACT_APP_BACKEND_URL}/boards/${boardId}`
+      );
+      setSelectedBoard(boardApiToJson(selectedBoard));
+      const cards = await getCardsAPI(boardId);
+      setCards(cards);
     } catch (err) {
       console.log(err);
-      throw new Error(`Could not get board ${board.boardId}`);
     }
-  },[boards]);
-
-    // useCallback to optimize handleBoardSelect
-
-    // const handleBoardSelect = useCallback(async (boardId) => {
-    //   try {
-    //     const selectedBoard = await getBoardAPI(boardId);
-    //     const cards = await getCardsAPI(boardId);
-    //     setSelectedBoard(selectedBoard);
-    //     setCards(cards);
-       
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // }, []);
-
+  };
   const handleBoardDelete = async (board) => {
     try {
       await deleteBoardAPI(board);
@@ -188,13 +205,6 @@ const App = () => {
     );
   }, []);
 
-  const handleCardSubmit = useCallback((cardId) => {
-    addCardAPI(cardId).then((newCard) => {
-      setCards((prevCards) => [...prevCards, newCard]);
-    });
-  }, []);
-
-
   //Refresh Boards helper func for useEffect, NEEDS PROMISE
   const refreshBoards = async () => {
     try {
@@ -212,9 +222,6 @@ const App = () => {
     refreshBoards();
   }, []);
 
-  
-
- 
   return (
     <div className='App'>
       <header>
@@ -225,11 +232,26 @@ const App = () => {
         <BoardList
           className='board_list'
           boards={boards}
-          onSelectBoard={handleBoardSelect}
+          onSelectBoard={onSelectBoard}
           onDeleteBoard={handleBoardDelete}
         />
-        <CardList cards={cards} onCardDelete={handleCardDelete} onLikesCount={handleLikesCount}/>
-        <CardForm handleCardSubmit={handleCardSubmit} />
+        <h2>Selected Board</h2>
+        <p>
+          {selectedBoard.board_id
+            ? `${selectedBoard.title} - ${selectedBoard.owner}`
+            : 'Select a Board from the Board List!'}
+        </p>
+        {selectedBoard && (
+          <>
+            <CardList
+              cards={cards}
+              boardId={selectedBoard.boardId}
+              handleLikesCount={handleLikesCount}
+              handleCardDelete={handleCardDelete}
+            />
+            <CardForm boardId={selectedBoard.boardId} handleCardSubmit={handleCardSubmit}/>
+          </>
+        )}
       </main>
     </div>
   );
