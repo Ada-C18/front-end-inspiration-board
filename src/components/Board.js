@@ -1,5 +1,7 @@
 // import CardList from './CardList'
 import Dropdown from './Dropdown'
+import NewBoardForm from './NewBoardForm'
+
 
 
 const Board = () => {
@@ -9,7 +11,7 @@ const Board = () => {
             <section>
                 <label>Choose Board</label>
                 <Dropdown></Dropdown>
-                {/* board form */}
+                <NewBoardForm></NewBoardForm>
                 {/* card form */}
                 <h2>Board Title</h2>
             </section>
