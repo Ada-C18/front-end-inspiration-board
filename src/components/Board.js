@@ -3,6 +3,7 @@ import Dropdown from './Dropdown'
 import NewBoardForm from './NewBoardForm'
 import NewCardForm from './NewCardForm'
 import './Board.css'
+import Card from './Card'
 
 
 
@@ -18,7 +19,16 @@ const Board = () => {
                 <NewCardForm></NewCardForm>
                 <h2>Board Title</h2>
             </section>
-            <CardList></CardList>
+            <div className='card1'><Card></Card></div>
+            <div className='card2'><Card></Card></div>
+            <div className='card3'><Card></Card></div>
+            <div className='card4'><Card></Card></div>
+            <div className='card5'><Card></Card></div>
+            <div className='card6'><Card></Card></div>
+            <div className='card7'><Card></Card></div>
+            <div className='card8'><Card></Card></div>
+
+            {/* <CardList></CardList> */}
         </section>
     )
 }
