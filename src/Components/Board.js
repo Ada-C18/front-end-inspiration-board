@@ -26,7 +26,7 @@ const Board = (props) => {
 
   const [cardFormVisible, setCardFormVisible] = useState(false);
   const toggleCardFormVisible = () =>
-    setCardFormVisible(cardFormVisible ? false : true);
+    setCardFormVisible(!cardFormVisible);
 
   const cards = cardList.map((card) => {
     return (
