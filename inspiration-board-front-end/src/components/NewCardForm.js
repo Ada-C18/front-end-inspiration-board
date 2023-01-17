@@ -28,23 +28,35 @@ const NewCardForm = (props) => {
     });
   };
 
+  let addCardButton = <input type="submit" value="Add Card" />;
+  if (formFields.message.length === 0 || formFields.message.length > 42) {
+    addCardButton = <input type="submit" value="Add Card" disabled />;
+  }
+
+  let charactersLeft = 42 - formFields.message.length;
+  if (charactersLeft < 0) {
+    charactersLeft = 0;
+  }
+
   return (
     <form onSubmit={onMessageFormSubmit} className="form-style">
       <section>
-        <h5>Create New Card</h5>
+        <h4>Create New Card</h4>
         <h5>Enter message:</h5>
         <input
           type="text"
           className={
-            formFields.message.length === 0 || formFields.message.length > 35
+            formFields.message.length === 0 || formFields.message.length > 40
               ? "invalid-form-input"
               : ""
           }
           value={formFields.message}
           onChange={onMessageChange}
         />
+        <h6> Characters left: {charactersLeft}</h6>
+        <h6> Preview: {formFields.message}</h6>
+        {addCardButton}
       </section>
-      <input type="submit" value="Add Card" />
     </form>
   );
 };

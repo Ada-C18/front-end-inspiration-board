@@ -6,10 +6,10 @@
 }
 .Likes-Info {
   display: flex;
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: normal;
   background: #ffc;
-  align-items: center ;
+  align-items: center;
 }
 
 .Likes-Container {
@@ -17,7 +17,7 @@
   border-color: aqua;
   border-style: ridge; */
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   justify-content: space-evenly;
   background: #ffc;
 }
