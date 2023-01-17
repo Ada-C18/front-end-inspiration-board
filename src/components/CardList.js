@@ -3,24 +3,6 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 
 
-// {
-//   "cards": [
-//     {
-//         "id": 1,
-//         "likes_count": 0,
-//         "message": "This is a new card!"
-//     },
-//     {
-//         "id": 2,
-//         "likes_count": 0,
-//         "message": "We've got this!"
-//     }
-// ],
-// "id": 1,
-// "owner": "Sarah",
-// "title": "testing"
-// }
-
 const CardList = ({ board }) => {
   console.log("This is CardList Component")
   const [cardsList, setCardsList] = useState([]);
@@ -61,13 +43,28 @@ const CardList = ({ board }) => {
     });
   };
 
-  // const deleteCard =
+  // Do we need to get all cards again with this?
+  const deleteCard = (cardId) => {
+    axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`)
+    .then(() => {
+      const newCardsList = []; 
+      for (const card of CardList) {
+        if (card.id !== cardId) {
+          newCardsList.push(card);
+        }
+      }
+      setCardsList(newCardsList);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  };
 
 
 
   const cardsComponent = cardsList.map((card) => {
     return (
-      <Card card={card} updateLikedCard={updateLikedCard} />
+      <Card card={card} updateLikedCard={updateLikedCard} deleteCard={deleteCard} />
     );
   });
 
