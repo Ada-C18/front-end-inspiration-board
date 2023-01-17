@@ -45,7 +45,7 @@ const NewCard = (props) => {
     setCardData(INITIAL_FORM_DATA);
   };
 
-  const tooLong = CardData.messageLength < 40 ? false : true; //-----------------ADDED---------------------
+  const tooLong = CardData.messageLength < 41 ? false : true; //-----------------ADDED---------------------
 
   const inputClass = CardData.message /*|| !tooLong*/ ? "" : "empty"; //SOMETHING IS WRONG HEREEEE
   //if input fields for Title or Owner's Name are empty ->
