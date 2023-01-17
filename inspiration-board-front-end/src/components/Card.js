@@ -6,14 +6,17 @@ const Card = (props) => {
   return (
     <li className="Card-Info">
       <h2 className="Message-Info"> {props.message} </h2>
-      <p className="Likes-Info"> Likes: {props.likes}</p>
-      <button
-        onClick={() => {
-          props.onLikeCard(props);
-        }}
-      >
-        ❤️
-      </button>
+      <span className="Likes-Container">
+        <p
+          className="Likes-Info"
+          onClick={() => {
+            props.onLikeCard(props);
+          }}
+        >
+          ❤️
+        </p>
+        <p className="Likes-Info"> Likes: {props.likes}</p>
+      </span>
       <button
         onClick={() => {
           props.onDeleteCard(props.card_id);

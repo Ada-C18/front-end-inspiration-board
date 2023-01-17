@@ -35,6 +35,11 @@ const NewCardForm = (props) => {
         <h5>Enter message:</h5>
         <input
           type="text"
+          className={
+            formFields.message.length === 0 || formFields.message.length > 35
+              ? "invalid-form-input"
+              : ""
+          }
           value={formFields.message}
           onChange={onMessageChange}
         />
