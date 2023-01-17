@@ -16,7 +16,7 @@ const NewCard = (props) => {
     let datafield = e.target.value;
     const NewCardData = {
       ...CardData,
-      [e.target.message]: datafield,
+      [e.target.name]: datafield,
     };
     setCardData(NewCardData);
   };
