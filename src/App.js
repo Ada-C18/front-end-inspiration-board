@@ -1,13 +1,13 @@
-import './App.css';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import BoardList from './components/BoardList';
-import Board from './components/Board';
-import NewBoardForm from './components/NewBoardForm';
-import CardList from './components/CardList';
-import NewCardForm from './components/NewCardForm';
+import "./App.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import BoardList from "./components/BoardList";
+import Board from "./components/Board";
+import NewBoardForm from "./components/NewBoardForm";
+import CardList from "./components/CardList";
+import NewCardForm from "./components/NewCardForm";
 
-const kBaseUrl = 'https://goddess-inspiration-board.herokuapp.com';
+const kBaseUrl = "https://goddess-inspiration-board.herokuapp.com";
 
 // const convertFromApi = (apiBoard) => {
 //   const { title, owner, board_id: boardId } = apiBoard;
@@ -41,8 +41,6 @@ const postNewBoardApi = (newBoard) => {
     });
 };
 
-// delete a board
-
 function App() {
   const [boardsData, setBoardsData] = useState(
     []
@@ -60,18 +58,18 @@ function App() {
   console.log(boardsData);
 
   const [cardsData, setCardsData] = useState([
-    {
-      board_id: 1,
-      card_id: 1,
-      likes_count: 0,
-      message: 'go to the beach',
-    },
-    {
-      board_id: 1,
-      card_id: 2,
-      likes_count: 0,
-      message: 'drink all of the wine',
-    },
+    //   {
+    //     board_id: 1,
+    //     card_id: 1,
+    //     likes_count: 0,
+    //     message: "go to the beach",
+    //   },
+    //   {
+    //     board_id: 1,
+    //     card_id: 2,
+    //     likes_count: 0,
+    //     message: "drink all of the wine",
+    //   },
   ]);
 
   const [selectedBoard, setSelectedBoard] = useState(null);
@@ -89,7 +87,23 @@ function App() {
 
   useEffect(() => {
     getAllBoards();
-  }, []);
+    if (selectedBoard) {
+      getCardsApi(selectedBoard);
+    }
+  }, [selectedBoard]);
+
+  // Create cards
+  const postNewCardApi = (newCard) => {
+    const requestBody = { message: newCard.message };
+    return axios
+      .post(`${kBaseUrl}/boards/${selectedBoard}/cards`, requestBody)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   const updateCardLikes = (updatedCard) => {
     const newCardData = cardsData.map((card) => {
@@ -109,15 +123,30 @@ function App() {
 
   const addCardData = (newCard) => {
     const newCardData = [...cardsData];
-    // update when we access the data base later
-    const nextId = Math.max(...newCardData.map((card) => card.card_id)) + 1;
-    newCardData.push({
-      card_id: nextId,
-      message: newCard.message,
-      likes_count: 0,
-      board_id: selectedBoard,
+    postNewCardApi(newCard).then((response) => {
+      newCardData.push({
+        card_id: response.card_id,
+        message: response.message,
+        likes_count: response.likes_count,
+        board_id: response.board_id,
+      });
+      console.log(newCardData);
+      setCardsData(newCardData);
     });
-    setCardsData(newCardData);
+  };
+
+  // get all cards
+
+  const getCardsApi = (selectedBoard) => {
+    return axios
+      .get(`${kBaseUrl}/boards/${selectedBoard}/cards`)
+      .then((response) => {
+        setCardsData(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
 
   const updateSelectedBoard = (board_id) => {
