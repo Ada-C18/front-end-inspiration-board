@@ -1,0 +1,31 @@
+.card-form-invisible {
+  box-sizing: border-box;
+  border: 3px solid grey;
+  height: 200px;
+  width: 200px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.card-form-invisible::after {
+  content: "+";
+  font-size: 5rem;
+  color: grey;
+  position: relative;
+  left: 65px;
+  top: 35px;
+}
+
+#new-card-close {
+  position: absolute;
+  left: 193px;
+  cursor: pointer;
+}
+
+form {
+  box-sizing: border-box;
+  border: 1px solid black;
+  height: 200px;
+  width: 200px;
+  padding: 0.5rem;
+}
