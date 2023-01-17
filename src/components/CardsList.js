@@ -31,7 +31,7 @@ const CardsList = (props) => {
         const newCardsData = cardsData.map((currentCard) => {
           return currentCard.card_id !== card.card_id
             ? currentCard
-            : { ...card, like_count: card.like_count + 1 };
+            : { ...card, likes_count: card.likes_count + 1 };
         });
         setCardsData(newCardsData);
       })
@@ -43,7 +43,7 @@ const CardsList = (props) => {
 
   const deleteCardItem = (card) => {
     axios
-      .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.id}`)
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}`)
       .then((response) => {
         const newCardsData = cardsData.filter((currentCard) => {
           return currentCard.card_id !== card.card_id;
@@ -77,6 +77,7 @@ const CardsList = (props) => {
   const cardElements = cardsData.map((card) => {
     return (
       <Card
+        key = {card.id}
         card={card}
         plusOneCardItem={plusOneCardItem}
         deleteCardItem={deleteCardItem}
