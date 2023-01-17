@@ -11,6 +11,7 @@ const CardList = (props) => {
   const URL = `https://powerful-mesa-70650.herokuapp.com/boards/${board_id}/cards`;
   const [cardData, setCardData] = useState([{}]);
   console.log(board_id);
+  console.log(`card data, ${cardData}`);
 
   const getAllCards = () => {
     if (props.selectedBoardId === 0) {
@@ -53,6 +54,20 @@ const CardList = (props) => {
       });
   };
 
+  const deleteCard = (id) => {
+    axios
+      .delete(`${URL}/${id}`)
+      .then((response) => {
+        const newCardData = cardData.filter((oldCards) => {
+          return oldCards.id !== id;
+        });
+        setCardData(newCardData);
+      })
+      .catch((error) => {
+        alert("Couldn't delete this card. Try again!");
+      });
+  };
+
   const cards = cardArray.map((card) => {
     return (
       <Card
@@ -60,6 +75,7 @@ const CardList = (props) => {
         card_id={card.id}
         message={card.message}
         likes={card.likes}
+        onDeleteCard={deleteCard}
       />
     );
   });

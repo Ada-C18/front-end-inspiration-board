@@ -7,6 +7,14 @@ const Card = (props) => {
     <li className="Card-Info">
       <h2 className="Message-Info"> {props.message} </h2>
       <p className="Likes-Info"> Likes: {props.likes} ❤️ </p>
+      <button
+        onClick={() => {
+          props.onDeleteCard(props.card_id);
+        }}
+        className="Delete-Card-Button"
+      >
+        Delete Card
+      </button>
     </li>
   );
 };
@@ -15,6 +23,7 @@ Card.propTypes = {
   id: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
   likes: PropTypes.number.isRequired,
+  onDeleteCard: PropTypes.func.isRequired,
 };
 
 export default Card;
