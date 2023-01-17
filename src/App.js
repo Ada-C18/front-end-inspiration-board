@@ -1,12 +1,13 @@
 import './App.css';
 // import axios from 'axios';
 import Board from './components/Board';
-import Card from './componenets/Card';
-// import CardList from './componenets/CardList';
+import CardList from './components/CardList';
 import NewCard from './components/NewCard';
 import NewBoard from './components/NewBoard';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
+const url = 'http://127.0.0.1:3000'
 
 function App() {
 
@@ -16,6 +17,12 @@ function App() {
     owner: '',
     board_id: null
   },[]);
+
+  useEffect(() => {
+    axios.get(`${url}/boards`, {}).then((response) => {
+      setBoardsData(response.data);
+    });
+  }, []);
 
   const selectBoard = (board) => {
     setSelectedBoard(board)
@@ -29,11 +36,25 @@ function App() {
     )
   });
 
+  // createNewBoard
+  const onBoardSubmit = (newBoard) => {
+    axios.post(`${url}/boards`, newBoard).then((response) => {
+      console.log('Response:', response.data.board);
+      const boards = [...boardsData];
+      boards.push(response.data.board);
+      setBoardsData(boards);
+    }).catch((error) => {
+      console.log('Error: Couldn\'t create new board', error);
+      alert('Couldn\'t create new board')
+    })
+  }
+
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
 
   const toggleNewBoardForm = () => {
     setIsBoardFormVisible(!isBoardFormVisible)
   };
+
 
   // const [cardsData, setCardsData] = useState([]);
   // const [selectedCard, setSelectedCard] = useState({
@@ -43,13 +64,13 @@ function App() {
   // const selectCard = (card) => {
   //   setSelectedCard(card)
   // };
-  const cardsElements = cardsData.map((card) => {
-    return (
-      <li>
-        <Card card={card} onBoardSelect={selectCard}></Card>
-      </li>
-    )
-  });
+  // const cardElements = cardsData.map((card) => {
+  //   return (
+  //     <li>
+  //       <Card card={card} onBoardSelect={selectCard}></Card>
+  //     </li>
+  //   )
+  // });
   const handleCardSubmit=(data)=>{
     console.log("data",data)
     //call the api endpoints here
@@ -70,6 +91,7 @@ function App() {
             <h2> New Board</h2>
             <div className="new__board">
             {isBoardFormVisible ? <NewBoard onBoardSubmit={handleBoardSubmit}></NewBoard> : ""}
+            <div onClick={toggleNewBoardForm} className="board__toggle">{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</div>
             </div>
           </section>
           <section>
@@ -86,6 +108,7 @@ function App() {
           </section>
           <section>
             <h2>Selected Board</h2>
+            {selectedBoard.board_id ? <CardList board={selectedBoard}></CardList> : ''}
           </section>
         </div>
         
