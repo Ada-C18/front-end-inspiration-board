@@ -9,6 +9,7 @@
     width: 300px;
     row-gap: 2px;
     opacity: 0.9;
+    /* padding: 5pt; */
 }
 
 .form__header {

@@ -1,7 +1,7 @@
-import React from 'react';
-import Card from './Card';
-import './CardList.css';
-import PropTypes from 'prop-types';
+import React from "react";
+import Card from "./Card";
+import "./CardList.css";
+import PropTypes from "prop-types";
 
 const CardList = (props) => {
   return (
@@ -24,14 +24,14 @@ const CardList = (props) => {
 CardList.propTypes = {
   cardsData: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,      
+      id: PropTypes.number.isRequired,
       board_id: PropTypes.number.isRequired,
       message: PropTypes.string.isRequired,
       likes_count: PropTypes.number.isRequired,
     })
   ),
   handleLikes: PropTypes.func.isRequired,
-  handleDeleteCard: PropTypes.func.isRequired,  
+  handleDeleteCard: PropTypes.func.isRequired,
 };
 
 export default CardList;

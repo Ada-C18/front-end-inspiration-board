@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './NewCardForm.css';
+import React, { useState } from "react";
+import "./NewCardForm.css";
 
 const NewCardForm = ({ addCardData, selectedBoard }) => {
-  const [cardForm, setCardForm] = useState({ message: '' });
+  const [cardForm, setCardForm] = useState({ message: "" });
 
   const onMessageChange = (e) => {
     setCardForm({
@@ -15,7 +15,7 @@ const NewCardForm = ({ addCardData, selectedBoard }) => {
     e.preventDefault();
 
     addCardData({ ...cardForm, likes_count: 0, board_id: selectedBoard.id });
-    setCardForm({ message: '' });
+    setCardForm({ message: "" });
   };
 
   return (
@@ -24,7 +24,11 @@ const NewCardForm = ({ addCardData, selectedBoard }) => {
       <div className="new-card__field">
         <label htmlFor="message">Message</label>
         <input
-          className={!cardForm.message | cardForm.message.length > 40 ? 'invalid-form-input' : ''}
+          className={
+            !cardForm.message | (cardForm.message.length > 40)
+              ? "invalid-form-input"
+              : ""
+          }
           type="text"
           id="message"
           name="message"
@@ -37,7 +41,7 @@ const NewCardForm = ({ addCardData, selectedBoard }) => {
           className="card__submit__button"
           type="submit"
           // value="Submit"
-          disabled={!cardForm.message | cardForm.message.length > 40}
+          disabled={!cardForm.message | (cardForm.message.length > 40)}
         >
           Submit
         </button>
