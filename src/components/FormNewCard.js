@@ -21,10 +21,11 @@ const FormNewCard = (props) => {
 
   const handleNewCardSubmit = (e) => {
     e.preventDefault();
-    console.log(message);
 
     if (message.length === 0) {
       alert("Card must have message");
+    } else if (message.length > 40) {
+      alert("Message must be less than 40 characters");
     } else {
       props.addCardCallbackFunc(formCard, props.boardId);
     }
