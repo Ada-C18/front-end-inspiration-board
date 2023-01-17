@@ -2,9 +2,9 @@ import { useState } from "react";
 import PropTypes from 'prop-types';
 
 const BoardForm = (props) => {
-  const [title, setTitle] = useState('');
+  const [name, setName] = useState('');
   const [owner, setOwner] = useState('');
-  const handleTitleChange = (event) => { setTitle(event.target.value) };
+  const handleTitleChange = (event) => { setName(event.target.value) };
   const handleOwnerChange = (event) => { setOwner(event.target.value) };
 
 
@@ -13,19 +13,19 @@ const BoardForm = (props) => {
     console.log(event)
     event.preventDefault();
     props.newBoard({
-      title, owner
+      name, owner
     });
-    setTitle('')
+    setName('')
     setOwner('')
   }
 
   return (
     <form onSubmit={onSubmitBoard}>
       <div>
-        <label>Title: </label>
+        <label>Board Name: </label>
         <input
         type='text'
-        defaultValue={title}
+        defaultValue={name}
         onChange={handleTitleChange}></input>
       </div>
       <div>
@@ -34,7 +34,7 @@ const BoardForm = (props) => {
         type='text'
         defaultValue={owner}
         onChange={handleOwnerChange}></input>
-        <p>{title} - {owner}</p>
+        <p>{name} - {owner}</p>
       </div>
       <input
           type="Submit"
