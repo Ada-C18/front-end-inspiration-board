@@ -28,7 +28,7 @@ function App() {
           <div className="boardContainer">
             <h2 className="createBoard">
               Create New Board
-              <NewBoardForm addNewBoardCallback={addNewBoard}/>
+              <NewBoardForm/>
             </h2>
           </div>
           <div className="newCardContainer">

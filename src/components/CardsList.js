@@ -17,4 +17,3 @@ const CardsList = ({ cardData }) => {
 
 export default CardsList;
 
-export default CardsList;
