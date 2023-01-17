@@ -5,8 +5,8 @@ import Card from "./Card";
 
 const CardList = ({ board }) => {
   const [cardsList, setCardsList] = useState([]);
-
-  useEffect(() => {
+  
+  const getAllCards = () => {
     axios
     .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${board.id}/cards`)
     .then((response) => {
@@ -16,7 +16,9 @@ const CardList = ({ board }) => {
     .catch( (error) => {
       console.log(error);
     });
-  }, [board]);
+  }
+
+  useEffect(getAllCards, [board]);
 
 
   const updateLikedCard = (cardId, increasedLike) => {
@@ -59,6 +61,23 @@ const CardList = ({ board }) => {
     });
   };
 
+  const addCard = (newCardInfo, boardId) => {
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, newCardInfo)
+    .then((response) => {
+      const newCards = [...cardsList];
+      const newCardJSON = {
+        ...newCardInfo,
+        "id": response.data.card.id
+      }
+      newCards.push(newCardJSON);
+      setCardsList(newCards);
+      getAllCards()  // do we need this ?
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
+  
 
 // Need to add key here???
   const cardsComponent = cardsList.map((card) => {
@@ -78,4 +97,4 @@ const CardList = ({ board }) => {
   );
 };
 
-export default CardList;
+export default {CardList, addCard};

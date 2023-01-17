@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Board from "./components/Board.js";
-import CardList from "./components/CardList.js";
+import {CardList, addCard} from "./components/CardList.js";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import axios from "axios";
+
 
 function App() {
   const [boardsList, setBoardsList] = useState([]);
@@ -71,30 +72,9 @@ function App() {
     });
   };
   
-  const addCard = (newCardInfo, boardId) => {
-    axios.post(`${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, newCardInfo)
-    .then((response) => {
-      const newBoardsList = [...boardsList]
-      for (const board of newBoardsList) {
-        if (board.id === boardId) {
-          const cards = board.cards;
-          const newCards = [...cards];
-          const newCardJSON = {
-            ...newCardInfo,
-            "id": response.data.card.id
-          }
-          newCards.push(newCardJSON);
-          board.cards = newCards;
-        }
-        setBoardsList(newBoardsList);
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  };
   
-  const newCardFormVisible = selectedBoard.id ? <NewCardForm boardId={selectedBoard.id} createNewCardForm={addCard}></NewCardForm> : ''
+  
+  const newCardFormVisible = selectedBoard.id ? <NewCardForm createNewCardForm={addCard}></NewCardForm> : ''
   
   return (
     <div className="container">
