@@ -1,33 +1,3 @@
-*, *:before, *:after {
-    box-sizing: border-box;
-}
-
-label {
-    font-size: calc(4px + 1vmin);
-    display: block;
-
-}
-
-input {
-    border-radius: 5px;
-    min-width: 33vw;
-    height: 4vh;
-    min-height:fit-content;
-    margin: 5px 0px;
-    
-}
-
-.entry {
-    margin: 1px 0px 8px;
-}
-
-#submit {
-    min-height:calc(10px + 2.5vmin);
-    background-color: #f26350;
-    border-color: #f29979;
-    color: white;
-}
-
 #loginLink {
     color: #f29979;
 }

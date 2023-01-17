@@ -17,12 +17,16 @@ h1 {
   text-shadow: 1px 1px 4px #80b3b3; /* tint of #6AA6A6 */
   font-size: calc(15px + 5vmin);
   font-weight:700;
+  text-align: center;
+  margin: 2vw;
 }
 
 h2 {
   text-shadow: 1px 1px 4px #afcfcf; /* tint of #6AA6A6 */
   font-size: calc(10px + 2.5vmin);
   font-weight:600;
+  text-align: center;
+  margin: 2vw;
 }
 
 #form {

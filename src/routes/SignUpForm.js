@@ -38,7 +38,7 @@ const SignUpForm = () => {
     <>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Username (not case-sensitive)</label>
+          <label htmlFor="name">username (not case-sensitive)</label>
           <input
             className="entry"
             type="text"
@@ -60,9 +60,8 @@ const SignUpForm = () => {
             onChange={handleChange}
           />
         </div> */}
-        <div>
-          <input id="submit" type="submit" value="Sign Up!" />
-        </div>
+
+        <button id="submit">Sign Up!</button>
       </form>
       <p>
         Already have an account?{" "}

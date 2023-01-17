@@ -45,7 +45,7 @@ const LogInForm = (props = null) => {
     <>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Username</label>
+          <label htmlFor="name">username</label>
           <input
             className="entry"
             type="text"
@@ -67,9 +67,8 @@ const LogInForm = (props = null) => {
             onChange={handleChange}
           />
         </div> */}
-        <div>
-          <input id="submit" type="submit" value="Log In" />
-        </div>
+
+        <button id="submit">Log In</button>
       </form>
       <p>
         Don't have an account?{" "}
