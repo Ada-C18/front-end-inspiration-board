@@ -28,6 +28,22 @@ function App() {
 
   const [boardList, setBoardList] = useState(InitialList);
   const [cardList, setCardList] = useState(InitialCardList);
+  const [boardForm, setBoardForm] = useState(true); //-----------------ADDED-------------
+
+  //---------------------------------ADDED----------------------------------------------
+
+  let displayBoardFormText = "HIDE/SHOW NEW BOARD FORM";
+  const displayBoardForm = (boardForm) => {
+    let newBoardForm = "";
+    if (boardForm === false) {
+      newBoardForm = true;
+    } else {
+      newBoardForm = false;
+      displayBoardFormText = "SHOW NEW BOARD FORM";
+    }
+    setBoardForm(newBoardForm);
+  };
+  //--------------------------------------------------------------------------------------
 
   const cardBoardMap = {
     1: [
@@ -108,10 +124,12 @@ function App() {
           selected: true,
         };
         newCardList.push(newCard);
+        console.log(newCard);
       }
     }
 
     setCardList(newCardList);
+    console.log(newCardList);
   }
 
   const unselectBoard = (boardId) => {
@@ -158,6 +176,24 @@ function App() {
     setCardList(newCardList);
   };
 
+  const deleteCard = (cardId) => {
+    // console.log("deleteBike Called");
+    // axios
+    //   .delete(`${URL}/${bikeId}`)
+    //   .then(() => {
+    const newCardList = [];
+    for (const card of cardList) {
+      if (card.id !== cardId) {
+        newCardList.push(card);
+      }
+    }
+    setCardList(newCardList);
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
+  };
+
   return (
     <div className="App">
       <h1 className="App-header"> Mindful Moments</h1>
@@ -174,7 +210,10 @@ function App() {
         {selectedBoard.title} - {selectedBoard.name}
       </p>
       <h2>CREATE NEW BOARD</h2>
-      <NewBoard addBoardCallback={addBoard}></NewBoard>
+      <NewBoard boardForm={boardForm} addBoardCallback={addBoard}></NewBoard>
+      <button onClick={() => displayBoardForm(boardForm)}>
+        {displayBoardFormText}
+      </button>
       <h2>CARDS FOR {selectedBoard.title}</h2>
       <CardList
         cardList={cardList}
@@ -185,7 +224,7 @@ function App() {
       />
       {/* <NewCardForm></NewCardForm> */}
       <h2>CREATE NEW CARD</h2>
-      <NewCard addCardCallback={addCard} />
+      <NewCard selectedBoard={selectedBoard} addCardCallback={addCard} />
       {/* <main>
         <CardsList entries={singleCard} />
       </main> */}

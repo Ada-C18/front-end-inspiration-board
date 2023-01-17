@@ -34,31 +34,35 @@ const NewBoard = (props) => {
   // if (BoardData.title === '' || BoardData.name==='') {
   //   const borderColor =
   // }
-  return (
-    <form onSubmit={handleNewBoardSubmit}>
-      <label htmlFor="title">Title</label>
-      <input
-        className={inputClass}
-        type="text"
-        id="title"
-        name="title"
-        value={BoardData.title}
-        onChange={handleChange}
-      />
+  if (props.boardForm === true) {
+    return (
+      <form onSubmit={handleNewBoardSubmit}>
+        <label htmlFor="title">Title</label>
+        <input
+          className={inputClass}
+          type="text"
+          id="title"
+          name="title"
+          value={BoardData.title}
+          onChange={handleChange}
+        />
 
-      <label htmlFor="name">Name</label>
-      <input
-        className={inputClass}
-        type="text"
-        id="name"
-        name="name"
-        value={BoardData.name}
-        onChange={handleChange}
-      />
+        <label htmlFor="name">Name</label>
+        <input
+          className={inputClass}
+          type="text"
+          id="name"
+          name="name"
+          value={BoardData.name}
+          onChange={handleChange}
+        />
 
-      <input type="submit" value="Add Board" disabled={!BoardData} />
-    </form>
-  );
+        <input type="submit" value="Add Board" disabled={!BoardData} />
+      </form>
+    );
+  } else {
+    return "";
+  }
 };
 
 NewBoard.propTypes = {

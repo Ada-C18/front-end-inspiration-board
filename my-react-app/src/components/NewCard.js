@@ -11,6 +11,7 @@ const INITIAL_FORM_DATA = {
 
 const NewCard = (props) => {
   const [CardData, setCardData] = useState(INITIAL_FORM_DATA);
+  let selectBoard = props.selectBoard;
 
   const handleChange = (e) => {
     let datafield = e.target.value;
@@ -24,6 +25,7 @@ const NewCard = (props) => {
   const handleNewCardSubmit = (e) => {
     e.preventDefault();
     props.addCardCallback(CardData);
+    setCardData(INITIAL_FORM_DATA);
   };
 
   const inputClass = CardData.message ? "" : "empty";
