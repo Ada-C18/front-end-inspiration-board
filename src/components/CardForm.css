@@ -26,7 +26,7 @@ body {
   ul{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;222222
+    justify-content: center;
   }
   ul li a{
     text-decoration:none;
@@ -64,7 +64,7 @@ box-shadow: none;
 box-shadow: 60px -16px teal;
 
 /* offset-x | offset-y | blur-radius | color */
-box-shadow: 10px 5px 5px white
+box-shadow: 10px 5px 5px white;
 
 /* offset-x | offset-y | blur-radius | spread-radius | color */
 box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
@@ -80,4 +80,4 @@ box-shadow: inherit;
 box-shadow: initial;
 box-shadow: revert;
 box-shadow: revert-layer;
-box-shadow: unset; */
+box-shadow: unset; 
