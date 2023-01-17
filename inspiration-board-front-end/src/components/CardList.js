@@ -1,48 +1,78 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Card from "./Card";
-
-const testCards = [
-  { card_id: 3, message: "test message", likes: 0, board_id: 1 },
-  { card_id: 1, message: "test message 1", likes: 0, board_id: 1 },
-  { card_id: 2, message: "test message 2 ", likes: 0, board_id: 2 },
-];
+import { useState, useEffect } from "react";
+import axios from "axios";
+import "./CardList.css";
+import NewCardForm from "./NewCardForm";
 
 const CardList = (props) => {
-  const currentBoardId = props.board.id;
-  const currentCards = [];
-  for (const card of testCards) {
-    if (card.board_id === currentBoardId) {
-      currentCards.push(card);
+  const board_id = props.selectedBoardId;
+  const URL = `https://powerful-mesa-70650.herokuapp.com/boards/${board_id}/cards`;
+  const [cardData, setCardData] = useState([{}]);
+  console.log(board_id);
+
+  const getAllCards = () => {
+    if (props.selectedBoardId === 0) {
+      setCardData([]);
+    } else {
+      return axios
+        .get(URL)
+        .then((response) => {
+          setCardData((prev) => response.data);
+        })
+        .catch((error) => {
+          console.log(
+            "Anything that isn't status code 2XX is an error:",
+            error.response.status
+          );
+          console.log(
+            "The data from response with an error:",
+            error.response.data
+          );
+        });
     }
-  }
-  const card = currentCards.map((card) => {
+  };
+
+  useEffect(() => {
+    getAllCards();
+  }, [board_id]);
+  const cardArray = Array.from(cardData);
+
+  const addCard = (newCard) => {
+    axios
+      .post(URL, newCard)
+      .then((response) => {
+        const newCardList = [...cardData];
+        newCardList.push(response.data["card created"]);
+        setCardData(newCardList);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+        alert("Couldn't create new card. Select a board and try again!");
+      });
+  };
+
+  const cards = cardArray.map((card) => {
     return (
       <Card
-        key={card.card_id}
-        card_id={card.card_id}
+        key={card.id}
+        card_id={card.id}
         message={card.message}
         likes={card.likes}
-        board_id={card.board_id}
       />
     );
   });
 
   return (
-    <div>
-      <ul>{card}</ul>
+    <div className="whole-area">
+      <ul className="cards">{cards}</ul>
+      <NewCardForm className="NewBoardForm" addCardCallBack={addCard} />
     </div>
   );
 };
 
 CardList.propTypes = {
-  cards: PropTypes.arrayOf(
-    PropTypes.shape({
-      card_id: PropTypes.number.isRequired,
-      message: PropTypes.string.isRequired,
-      likes: PropTypes.number.isRequired,
-      board_id: PropTypes.number.isRequired,
-    })
-  ),
+  selectedBoardId: PropTypes.number.isRequired,
 };
 export default CardList;

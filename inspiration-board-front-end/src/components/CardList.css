@@ -1,0 +1,29 @@
+.whole-area {
+  display: flex; /* or inline-flex */
+  align-items: center;
+
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 2rem;
+  padding: 1rem;
+  font-size: 1rem;
+  border-color: tomato;
+  border-width: 1rem;
+  border-style: solid;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: rgb(255, 153, 0);
+  margin: 2rem;
+  padding: 1rem;
+  border-radius: 2rem;
+}
+
+.NewBoardForm {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

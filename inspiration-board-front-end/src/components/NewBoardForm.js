@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import "./NewBoardForm.css";
 
 const NewBoardForm = (props) => {
   const [formFields, setFormFields] = useState({
@@ -37,12 +38,25 @@ const NewBoardForm = (props) => {
   return (
     <form onSubmit={onFormSubmit} className="form-style">
       <section>
-        <h5>New Board</h5>
-        <input type="text" value={formFields.title} onChange={onTitleChange} />
-        <h5>owner</h5>
-        <input type="text" value={formFields.owner} onChange={onOwnerChange} />
+        <h4> Create New Board </h4>
+        <section>
+          <h5>Board Title: </h5>
+          <input
+            type="text"
+            value={formFields.title}
+            onChange={onTitleChange}
+          />
+        </section>
+        <section>
+          <h5>Owner:</h5>
+          <input
+            type="text"
+            value={formFields.owner}
+            onChange={onOwnerChange}
+          />
+        </section>
+        <input type="submit" value="Add Board" className="button" />
       </section>
-      <input type="submit" value="Add Board" />
     </form>
   );
 };

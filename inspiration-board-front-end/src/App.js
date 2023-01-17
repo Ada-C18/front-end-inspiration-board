@@ -2,6 +2,7 @@ import "./App.css";
 import BoardList from "./components/BoardList";
 import CardList from "./components/CardList";
 import NewBoardForm from "./components/NewBoardForm";
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -89,17 +90,27 @@ function App() {
         <h1>Inspiration Boards</h1>
       </header>
       <main>
-        <BoardList boards={boardData} onClickBoard={clickToSelectBoard} />
-        <p className="BoardHeading">
+        <section className="Boards-Area">
+          <BoardList
+            className="BoardList-box"
+            boards={boardData}
+            onClickBoard={clickToSelectBoard}
+          />
+          <NewBoardForm
+            className="NewBoardForm-box"
+            addBoardCallBack={addBoard}
+          />
+        </section>
+        <p className="SelectedBoard ">
           Selected Board: {selectedBoard.title} -- {selectedBoard.owner}'s Board
         </p>
-        <NewBoardForm addBoardCallBack={addBoard} />
-        <div>
-          <CardList board={selectedBoard} />
-        </div>
-        <span onClick={deleteAllBoards}>
+        <CardList
+          className="CardList-Area"
+          selectedBoardId={selectedBoard.id}
+        />
+        <button onClick={deleteAllBoards} className="Delete-Button">
           Click Here to delete ALL Boards and Cards Data
-        </span>
+        </button>
       </main>
     </div>
   );

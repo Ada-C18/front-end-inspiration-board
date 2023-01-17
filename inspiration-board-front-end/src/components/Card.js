@@ -1,19 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Card.css";
 
 const Card = (props) => {
   return (
-    <div>
-      message : {props.message} likes: {props.likes}{" "}
-    </div>
+    <li className="Card-Info">
+      <h2 className="Message-Info"> {props.message} </h2>
+      <p className="Likes-Info"> Likes: {props.likes} ❤️ </p>
+    </li>
   );
 };
 
 Card.propTypes = {
-  card_id: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
   likes: PropTypes.number.isRequired,
-  board_id: PropTypes.number.isRequired,
 };
 
 export default Card;

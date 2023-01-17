@@ -9,14 +9,57 @@
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-.BoardHeading {
-  color:aliceblue
+
+.Boards-Area {
+  display: flex; /* or inline-flex */
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 2rem;
+  padding: 1rem;
+  font-size: 1rem;
+  border-color: tomato;
+  border-width: 1rem;
+  border-style: solid;
+}
+
+.BoardList-box {
+  color: aliceblue;
+  margin: 2rem;
 }
 
 .BoardTitles {
-  color:rgb(103, 45, 82)
-} 
+  color: rgb(103, 45, 82);
+}
+
+.CardsInfo {
+  background-color: aliceblue;
+}
 
 .BoardTitles:hover {
   color: aliceblue;
+}
+
+.SelectedBoard {
+  font-size: calc(8px + 2vmin);
+  color: aliceblue;
+  text-align: left;
+  padding: 2rem;
+  font-weight: bold;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.Delete-Button {
+  font-size: calc(4px + 2vmin);
+  align-items: center;
+  align-self: center;
+  color: rgb(255, 27, 27);
+  background-color: rgb(255, 189, 139);
+  text-align: center;
+  padding: 1rem;
+  margin: 2rem;
+  font-style: italic;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
