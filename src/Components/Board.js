@@ -24,6 +24,8 @@ const Board = (props) => {
 
   useEffect(getCardList, [props.currentBoard]);
 
+  const [cardFormVisible, setCardFormVisible] = useState(false);
+
   const cards = cardList.map((card) => {
     return (
       <Card key={card.id} message={card.message} likes={card.likes}></Card>
@@ -35,7 +37,11 @@ const Board = (props) => {
       <h2>{props.currentBoardName}</h2>
       <div className="card-list">
         {cards}
-        <CardForm addNewCard={addNewCard}></CardForm>
+        <CardForm
+          visible={cardFormVisible}
+          setVisible={setCardFormVisible}
+          addNewCard={addNewCard}
+        ></CardForm>
       </div>
     </section>
   );
