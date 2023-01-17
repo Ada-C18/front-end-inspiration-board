@@ -31,12 +31,12 @@ function App() {
 
   const cardBoardMap = {
     1: [
-      { id: 1, message: "yay1" },
-      { id: 2, message: "help1" },
+      { id: 1, message: "yay1", numOfLikes: 0, liked: false },
+      { id: 2, message: "help1", numOfLikes: 0, liked: false },
     ],
     2: [
-      { id: 3, message: "yay2" },
-      { id: 4, message: "help2" },
+      { id: 3, message: "yay2", numOfLikes: 0, liked: false },
+      { id: 4, message: "help2", numOfLikes: 0, liked: false },
     ],
   };
 
@@ -132,14 +132,31 @@ function App() {
     updateCardList(cardList, boardId, setCardList);
   };
 
-  const selectedBoard = [];
+  let selectedBoard = {};
   // const displaySelectedBoard = (boardId) => { when select one it sets the others to false - only 1 selected true - consider changing selecte and unselect funtions so only 1 True select shows title and name
   for (const board of boardList) {
     if (board.selected === true) {
-      selectedBoard.push(board.title, board.name);
+      selectedBoard = {
+        ...board,
+      };
     }
   }
   // };
+  const updateLike = (cardId) => {
+    const newCardList = [];
+    for (const card of cardList) {
+      if (card.id !== cardId) {
+        newCardList.push(card);
+      } else {
+        const newCard = {
+          ...card,
+          liked: !card.liked,
+        };
+        newCardList.push(newCard);
+      }
+    }
+    setCardList(newCardList);
+  };
 
   return (
     <div className="App">
@@ -154,15 +171,17 @@ function App() {
       </main>
       <h2>SELECTED BOARDS</h2>
       <p>
-        {selectedBoard[0]} - {selectedBoard[1]}
+        {selectedBoard.title} - {selectedBoard.name}
       </p>
       <h2>CREATE NEW BOARD</h2>
       <NewBoard addBoardCallback={addBoard}></NewBoard>
-      <h2>CARDS FOR {selectedBoard[0]}</h2>
+      <h2>CARDS FOR {selectedBoard.title}</h2>
       <CardList
         cardList={cardList}
         selectCard={selectCard}
         unselectCard={unselectCard}
+        selectBoard={selectBoard}
+        updateLike={updateLike}
       />
       {/* <NewCardForm></NewCardForm> */}
       <h2>CREATE NEW CARD</h2>

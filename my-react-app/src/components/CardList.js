@@ -13,8 +13,10 @@ function CardList(props) {
         id={card.id}
         message={card.message}
         selected={card.selected}
+        liked={card.liked}
         selectCard={props.selectCard}
         unselectCard={props.unselectCard}
+        updateLike={props.updateLike}
       />
     );
   }

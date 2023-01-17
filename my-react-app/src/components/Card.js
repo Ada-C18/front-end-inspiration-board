@@ -7,6 +7,8 @@ function Card(props) {
   const cardMessage = props.message;
   const selectCard = props.selectCard;
   const unselectCard = props.unselectCard;
+  const liked = props.liked;
+  const updateLike = props.updateLike;
 
   const toggleSelected = (cardId) => {
     if (props.selected === false) {
@@ -16,14 +18,19 @@ function Card(props) {
     }
   };
 
+  let numOfLikes = 0;
+  if (liked === true) {
+    numOfLikes += 1;
+  }
+
+  const buttonContent = numOfLikes > 0 ? "💗" : "🤍";
+
   return (
     <div>
       {/* <h2 className="board__name">{boardTitle}</h2> */}
-      <ol>
-        {/* <li>ID: {boardId}</li> */}
-        <li onClick={() => toggleSelected(cardId)}>{cardMessage}</li>
-        {/* <li>Name: {boardName}</li> */}
-      </ol>
+      <h3>{cardMessage}</h3>
+      <p>{numOfLikes}</p>
+      <button onClick={() => updateLike(cardId)}>{buttonContent} </button>
     </div>
   );
 }
