@@ -52,7 +52,7 @@ const CardForm = (props) => {
         <div>
           <label> Message </label>
           <input
-            type="type"
+            type="text"
             id="message"
             name="message"
             value={cardState.message}
@@ -61,7 +61,11 @@ const CardForm = (props) => {
         </div>
         <div>
           <label> Submit </label>
-          <input type="submit" value="Add New Card"></input>
+          <input
+            type="submit"
+            disabled={Boolean(errorState)}
+            value="Add New Card"
+          ></input>
         </div>
         <div className="error">{errorState}</div>
       </form>
