@@ -24,6 +24,10 @@ const NewBoardForm = (props) => {
   const handleNewBoardSubmit = (e) => {
     e.preventDefault();
     props.addBoardCallbackFunc(formData);
+    setFormData({
+      title: "",
+      owner: "",
+    });
   };
 
   return (
