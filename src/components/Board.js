@@ -7,9 +7,12 @@ const Board = () => {
         <section>
             {/* <CardList></CardList> */}
             <section>
+                <label>Choose Board</label>
                 <Dropdown></Dropdown>
+                {/* board form */}
+                {/* card form */}
+                <h2>Board Title</h2>
             </section>
-            <h2>Boards</h2>
         </section>
     )
 }
