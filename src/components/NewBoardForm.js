@@ -18,8 +18,13 @@ const NewBoardForm = ({createNewBoardForm}) => {
     setPreview(`${newFormData.title} by ${newFormData.owner}`)
   };
 
+  const handleNewBoardSubmit = (e) => {
+    e.preventDefault();
+    createNewBoardForm(formData);
+  };
+
   return(
-    <form>
+    <form onSubmit={handleNewBoardSubmit}>
       <div>
         <label htmlFor='title'>Title: </label><br></br>
         <input

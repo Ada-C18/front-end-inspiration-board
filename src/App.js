@@ -36,19 +36,16 @@ function App() {
   }, []);
 
   const onBoardSelect = (boardId) => {
-    // console.log("joguioiuoiuoih");
     for (const board of boardsList) {
       if (board.id === boardId) {
         const boardTitle = board.title;
         const boardOwner = board.owner;
         const selectedBoardInfo = `${boardTitle} - ${boardOwner}`;
         setSelectedBoardLabel(selectedBoardInfo);
-        // setSelectedBoardTitle(boardTitle)
         setSelectedBoard(board)
       };
     };
   };
-
 
   const boardsComponent = boardsList.map((board) => {
     
@@ -58,6 +55,22 @@ function App() {
       </ul>
     );
   });
+
+  const addBoard = (newBoardInfo) => {
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/boards`, newBoardInfo)
+    .then((response) => {
+      const newBoards = [...boardsList];
+      const newBoardJSON = {
+        ...newBoardInfo,
+        "id": response.data.board.id
+      }
+      newBoards.push(newBoardJSON);
+      setBoardsList(newBoards);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
 
 
   return (
@@ -74,7 +87,7 @@ function App() {
       <aside>
         <section className = "newBoard">
           <h1>Create A New Board</h1>
-          <NewBoardForm></NewBoardForm>
+          <NewBoardForm createNewBoardForm={addBoard}></NewBoardForm>
         </section>
         <section className = "boards">
           <h1>Boards</h1>
