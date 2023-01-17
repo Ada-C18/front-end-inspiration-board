@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-const NewCardForm = ({createNewCardForm}) => {
+const NewCardForm = ({boardId, createNewCardForm}) => {
   const [formData, setFormData] = useState({
     message: ''
   });
@@ -17,8 +17,13 @@ const NewCardForm = ({createNewCardForm}) => {
     setPreview(`${newFormData.message}`)
   };
 
+  const handleNewCardSubmit = (e) => {
+    e.preventDefault();
+    createNewCardForm(formData, boardId);
+  };
+
   return(
-    <form>
+    <form onSubmit={handleNewCardSubmit}>
       <div>
         <h1>
           Create A New Card

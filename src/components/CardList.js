@@ -16,7 +16,7 @@ const CardList = ({ board }) => {
     .catch( (error) => {
       console.log(error);
     });
-  }, [board.id]);
+  }, [board]);
 
 
   const updateLikedCard = (cardId, increasedLike) => {
