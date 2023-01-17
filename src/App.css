@@ -1,11 +1,25 @@
 .InspoBoard {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 35%,30%,35%;
     gap: 10px;
     grid-auto-rows: minmax(100px, auto);
-    width: 100%
+    width: 100%;
+    margin: 30px;
+     
 }
-header {
+
+.Header {
     grid-column: 1/4;
     grid-row: 1/2;
+}
+
+.BoardList{
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+
+.selectBoard {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    /* font: cursive; */
 }

@@ -156,10 +156,10 @@ function App() {
 
   return (
     <div className="InspoBoard">
-      <header>
+      <header className="Header">
         <h1>Inspiration Board</h1>
       </header>
-      <BoardList boardList={boardList} selectBoard={selectBoard}></BoardList>
+      <BoardList className="BoardList" boardList={boardList} selectBoard={selectBoard}></BoardList>
       <div className="selectBoard">
         <h2>Selected Board</h2>
         <p>{selectedBoard.board}</p>
