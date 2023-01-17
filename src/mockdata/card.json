@@ -1,0 +1,20 @@
+{
+    "boardId": 92,
+    "cards": [
+        {
+            "card_id": 188, 
+            "likes_count": 3, 
+            "message": "Effort won't betray you. 💖" 
+        },
+        {
+            "card_id": 186, 
+            "likes_count": 6, 
+            "message": "You're like a cup of tea: green! 😍"
+        },
+        { 
+            "card_id": 99,
+            "likes_count": 2,
+            "message": "You're strong and you have good taste in computers. 🐶🎉"
+        }
+    ]
+}
