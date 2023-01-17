@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import "./CardForm.css";
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import './CardForm.css';
 // import "../App.css";
 
 // import BoardForm from "./components/BoardForm";
@@ -8,7 +8,7 @@ import "./CardForm.css";
 
 const CardForm = (props) => {
   // declare and initialize state
-  const kDefaultCardData = { message: "" };
+  const kDefaultCardData = { message: '' };
   const [cardState, setCardForm] = useState(kDefaultCardData);
   // const [formState, setFormState] = useState(kDefaultFormData);
 
@@ -31,24 +31,27 @@ const CardForm = (props) => {
     event.preventDefault();
     props.handleNewCard(cardState);
     setCardForm(kDefaultCardData);
-    console.log("handleSubmit");
+    console.log('handleSubmit');
   };
 
   return (
-    <div>
+    <div id="CardForm">
       <h2>Add a Card</h2>
       <form onClick={handleSubmit}>
-        <label> Message </label>
-        <input
-          type="type"
-          id="message"
-          name="message"
-          value={cardState.message}
-          onChange={handleNewData}
-        />
-
-        <label> Submit </label>
-        <input type="submit" value="Add New CardForm"></input>
+        <div>
+          <label> Message </label>
+          <input
+            type="type"
+            id="message"
+            name="message"
+            value={cardState.message}
+            onChange={handleNewData}
+          />
+        </div>
+        <div>
+          <label> Submit </label>
+          <input type="submit" value="Add New Card"></input>
+        </div>
       </form>
     </div>
   );

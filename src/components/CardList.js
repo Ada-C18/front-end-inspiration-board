@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import Card from "./Card";
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import Card from './Card';
 // import "./App.css";
 
 // import BoardForm from "./components/BoardForm";
@@ -20,7 +20,7 @@ const CardList = (props) => {
   return (
     <div>
       <h2>"Pick me Up"</h2>
-      {props.cardListData.map(renderCard)}
+      <div id="card-list-component">{props.cardListData.map(renderCard)}</div>
     </div>
   );
 };

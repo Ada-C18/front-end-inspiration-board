@@ -1,3 +1,18 @@
+div#card-list-component {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+div.card {
+  background:#ffc;
+  width: 20em;
+  height: 15em;
+
+}
+
+
 body {
   margin: 20px auto;
   font-family: 'Lato';

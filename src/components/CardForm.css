@@ -1,3 +1,7 @@
+div#CardForm {
+  text-align: left;
+}
+
 body {
     margin: 20px auto;
     font-family: 'Lato';

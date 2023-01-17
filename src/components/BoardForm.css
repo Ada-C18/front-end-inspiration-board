@@ -1,2 +1,5 @@
 form.hidden { display: none;}
 form.visible {display: block;}
+div#board-form-component {
+    text-align: left;
+}
