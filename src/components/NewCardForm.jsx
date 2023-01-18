@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function NewCardForm({ addCardCallBack }) {
+function NewCardForm({ postNewCard }) {
   const [cardData, setCardData] = useState({
     message: "",
   });
@@ -13,7 +13,7 @@ function NewCardForm({ addCardCallBack }) {
   const submitCardData = (e) => {
     e.preventDefault();
 
-    addCardCallBack(cardData);
+    postNewCard(cardData);
 
     setCardData({
       message: "",
@@ -47,47 +47,7 @@ function NewCardForm({ addCardCallBack }) {
   );
 }
 NewCardForm.propTypes = {
-  addCardCallBack: PropTypes.func.isRequired,
+  postNewCard: PropTypes.func.isRequired,
 };
-
-// const NewCardForm = (props) => {
-//   const [cardData, setCardData] = useState('');
-//   const handleMessageChange = (e) => { setCardData(e.target.value) };
-
-//   const submitNewCard = (e) => {
-//       e.preventDefault();
-//       props.addCardCallBack(cardData);
-//       setCardData('');
-//   };
-
-//   return (
-//       <section className="new-card-form__container">
-//       <h2>Add a Card</h2>
-//       <form onSubmit={submitNewCard} className="new-card-form">
-//           <label>Your Message</label>
-//           <input
-//           type="text"
-//           className={
-//               cardData.length === 0 || cardData.length > 40
-//               ? "invalid-form-input"
-//               : ""
-//           }
-//           onChange={handleMessageChange}
-//           value={cardData}
-//           ></input>
-//           <p>Preview: {cardData}</p>
-//           <input
-//           type="Submit"
-//           disabled={cardData.length === 0 || cardData.length > 40}
-//           className="new-card-form__submit-btn"
-//           ></input>
-//       </form>
-//       </section>
-//   );
-// };
-
-// NewCardForm.propTypes = {
-//   addCardCallBack: PropTypes.func.isRequired,
-// };
 
 export default NewCardForm;

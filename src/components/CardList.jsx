@@ -1,17 +1,17 @@
+import axios from "axios";
 import React from "react";
 import Card from "./Card";
 import NewCardForm from "./NewCardForm";
 import { useState, useEffect } from "react";
-import axios from "axios";
 
 const CardList = (props) => {
     const [cardData, setCardData] = useState([]);
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.id}/cards`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.board_id}/cards`)
         .then((response) => {
-        console.log('Response', response)  
-        setCardData(response.data);
+        // console.log('Response', response)  
+        setCardData(response.data.cards);
         }).catch((error) => {
         console.log('Error:', error);
         alert('Couldn\'t get cards for this board.');
@@ -31,16 +31,16 @@ const CardList = (props) => {
         });
     };
 
-    const addCard = (card) => {
-        axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${props.card.id}/like`)
+    const onLikeClick = (card) => {
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/like`)
         .then((response) => {
-        const newCardData = cardData.map((currentCard) => {
-            return currentCard.id !== card.id ? currentCard : {... card, likes: card.likes + 1}
-        });
-        setCardData(newCardData);
+            const newCardData = cardData.map((currentCard) => {
+                return currentCard.card_id !== card.card_id ? currentCard : {...card, likes_count: card.likes_count + 1}
+            });
+            setCardData(newCardData);
         }).catch((error) => {
-        console.log('Error:', error);
-        alert('Couldn\'t +💖 the card.');
+            console.log('Error:', error);
+            alert('Couldn\'t like the card.');
         });
     };
 
@@ -48,14 +48,14 @@ const CardList = (props) => {
         return (
         <Card
             card={card}
-            addCard={addCard}
+            onLikeClick={onLikeClick}
             deleteCard={deleteCard}
         ></Card>
         )
     });
 
     const postNewCard = (message) => {
-        axios.post(`${process.env.REACT_APP_BACKEND_URL}/${props.board.id}/cards`, {message}
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/${props.board.board_id}/cards`, {message}
         ).then((response) => {
         const cards = [...cardData];
         cards.push(response.data.card);
