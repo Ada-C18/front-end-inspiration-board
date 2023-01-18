@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Board from "./components/Board.js";
-import {CardList, addCard} from "./components/CardList.js";
+import CardList from "./components/CardList.js";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import axios from "axios";
@@ -74,13 +74,13 @@ function App() {
   
   
   
-  const newCardFormVisible = selectedBoard.id ? <NewCardForm createNewCardForm={addCard}></NewCardForm> : ''
+  const newCardFormVisible = selectedBoard.id ? <NewCardForm></NewCardForm> : ''
   
   return (
     <div className="container">
       <header>
         <section>
-          <h1>SELECTED BOARD</h1>
+          <h1 id="inspo-title">Inspiration Board</h1>
           <p>{selectedBoardLabel}</p>
         </section>
         <section>

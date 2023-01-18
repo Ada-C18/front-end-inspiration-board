@@ -97,4 +97,4 @@ const CardList = ({ board }) => {
   );
 };
 
-export default {CardList, addCard};
+export default CardList;
