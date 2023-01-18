@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+// import "./App.css";
 import BoardContainer from "./components/BoardContainer";
 import CardContainer from "./components/CardContainer";
 import Header from "./components/Header";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
+import { isVisible } from "@testing-library/user-event/dist/utils";
 
 
 // helper function for boards API request
@@ -121,10 +122,18 @@ function App() {
       });
   };
 
+  const toggleHide = (className, isVisible) => {
+    if (isVisible){
+      className = "new-board__form visible"
+    }else{
+      className = "new-board__form collapse"
+    }
+  };
+
   return (
     <div className="App">
       <Header />
-      <NewBoardForm addBoardCallback={addBoard} afterSubmitMessage={message} />
+      <NewBoardForm addBoardCallback={addBoard} afterSubmitMessage={message} toggleHide={toggleHide} isVisible={isVisible}/>
       <BoardContainer
         boards={boards}
         onDisplayCurrentBoard={displayCurrentBoard}

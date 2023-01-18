@@ -9,6 +9,8 @@
     font-size: 1rem;
     padding-top: 0;
     padding-bottom: 0;
+   
+
 }
 
 #add-board {
@@ -46,4 +48,12 @@ label, input {
     margin-top: .45rem;
     display: block;
     cursor: pointer;
+}
+
+.visible{
+    visibility:visible ;
+}
+
+.collapse{
+    visibility: collapse;
 }
