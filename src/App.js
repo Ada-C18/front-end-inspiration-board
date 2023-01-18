@@ -7,7 +7,7 @@ import NewBoard from './components/NewBoard';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const url = 'http://127.0.0.1:3000'
+const url = 'http://127.0.0.1:5000'
 
 function App() {
 
@@ -38,6 +38,7 @@ function App() {
 
   // createNewBoard
   const onBoardSubmit = (newBoard) => {
+    console.log(newBoard)
     axios.post(`${url}/boards`, newBoard).then((response) => {
       console.log('Response:', response.data.board);
       const boards = [...boardsData];
@@ -90,7 +91,7 @@ function App() {
           <section>
             <h2> New Board</h2>
             <div className="new__board">
-            {isBoardFormVisible ? <NewBoard onBoardSubmit={handleBoardSubmit}></NewBoard> : ""}
+            {isBoardFormVisible ? <NewBoard onBoardSubmit={onBoardSubmit}></NewBoard> : ""}
             <div onClick={toggleNewBoardForm} className="board__toggle">{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</div>
             </div>
           </section>
