@@ -31,8 +31,10 @@ const Board = () => {
         });
     }, []);
 
+
     const addCardCallback = (newCardData) => {
-        axios.post('https://rykaliva.herokuapp.com/{board_id}/cards', newCardData)
+        
+        axios.post('https://rykaliva.herokuapp.com/boards/{board_id}/cards', newCardData)
         .then((response) => {
             console.log('response:', response);
             console.log('response data:', response.data);
@@ -46,13 +48,18 @@ const Board = () => {
     return (
         <section className="board-container">
         <section className="input-section">
-            <label>Choose Board to Display</label>
-            <Dropdown boardData={boardData}></Dropdown>
-            <label>Create a Board</label>
-            <NewBoardForm onBoardSubmit={onBoardSubmit}></NewBoardForm>
-            <label>Create a Card</label>
-            <NewCardForm addCardCallback={addCardCallback}></NewCardForm>
-            <h2>Board Title</h2>
+            <div className='user-choice'>
+                <label>Choose Board to Display</label>
+                <Dropdown boardData={boardData}></Dropdown>
+                <label>Create a Board</label>
+                <NewBoardForm onBoardSubmit={onBoardSubmit}></NewBoardForm>
+                <label>Create a Card</label>
+                <NewCardForm addCardCallback={addCardCallback}></NewCardForm>
+            </div>
+            <div className='board-title'>
+                {/* i think we need to call a function in this h2 to change the present title as its chosen */}
+                <h2>Board Title</h2>
+            </div>
         </section>
         <div className="card1">
             <Card></Card>
