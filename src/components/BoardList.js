@@ -20,7 +20,9 @@ function BoardList({ boardList, selectBoard }) {
   return (
     <div>
       <h2>Boards</h2>
-      <ol>{boardComponents}</ol>
+      <div className="scroll">
+        <ol>{boardComponents}</ol>
+      </div>
     </div>
   );
 }
