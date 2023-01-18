@@ -96,10 +96,9 @@ function App() {
     axios
       .get(`${URL}/boards/${boardId}`)
       .then((response) => {
-        console.log(response.data);
+        console.log(response);
         const boardAPIResCopy = response.data;
         setSelected(boardAPIResCopy);
-        console.log(selectedBoard.board_id);
       })
       .catch((error) => {
         console.log(error);
