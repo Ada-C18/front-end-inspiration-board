@@ -34,6 +34,7 @@ const App = function () {
   const kDefaultBoardList = [{ board_id: 0, name: '', owner: '' }];
   const [boardListState, setBoardListState] = useState(kDefaultBoardList);
   const [currentBoardState, setCurrentBoardState] = useState(0);
+  const [cardListState, setCardListState] = useState([]);
 
   const handleBoardSelect = function (boardID) {
     setCurrentBoardState(parseInt(boardID));
@@ -51,8 +52,6 @@ const App = function () {
       setCurrentBoardState(boardListState[0].board_id);
     }
   }, [boardListState, currentBoardState]);
-
-  const [cardListState, setCardListState] = useState([]);
 
   /* handle submit from cardForm */
   const handleNewCard = (newcard) => {
