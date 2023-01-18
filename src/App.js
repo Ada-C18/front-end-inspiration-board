@@ -1,11 +1,10 @@
-import "./styles/App.css"
+import "./styles/App.css";
 import { useState, useEffect } from "react";
 import CardList from "./components/CardList";
 import axios from "axios";
 import BoardList from "./components/BoardList";
 import FormNewBoard from "./components/FormNewBoard";
 import FormNewCard from "./components/FormNewCard";
-
 
 function App() {
   const [boardList, setBoardList] = useState([]);
@@ -32,6 +31,16 @@ function App() {
       });
   };
   useEffect(getAllBoards, []);
+
+  const [board, setBoard] = useState("");
+
+  const getBoard = (id) => {
+    for (const board in boardList) {
+      if (boardList[board].id === id) {
+        setBoard(boardList[board].title);
+      }
+    }
+  };
 
   //forms -> add one board:
   const addBoard = (newBoardInfo) => {
@@ -62,6 +71,7 @@ function App() {
         const newCardList = response.data;
         setCardList(newCardList);
         setBoardId(boardId);
+        getBoard(boardId);
       })
       .catch((err) => {
         console.log(err);
@@ -125,7 +135,6 @@ function App() {
     <div className="app-all">
       <header> Inspiration Board </header>
 
-
       <nav className="board">
         <h2 className="boardListTitle"> Board List</h2>
 
@@ -135,13 +144,12 @@ function App() {
       </nav>
 
       <aside className="cards">
-
         <h2> Create a New Card </h2>
         <FormNewCard addCardCallbackFunc={addCard} boardId={boardId} />
       </aside>
 
       <main>
-        <h2> Card List </h2>
+        <h2> Cards for {board} </h2>
         <CardList
           cardList={cardList}
           deleteCard={deleteCard}
