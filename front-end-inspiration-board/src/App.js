@@ -1,49 +1,83 @@
 import "./App.css";
 import background from "./cork-board.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BoardList from "./components/BoardList";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import React from "react";
 import Dialog from "@material-ui/core/Dialog";
 import CardList from "./components/CardList";
+import axios from "axios";
 
 // run in command line:  npm install @material-ui/core/Dialog --force
 
-const INITIAL_BOARDS = [
-  {
-    id: 1,
-    title: "Shower Thoughts",
-    owner: "Suzanne",
-    cards: [
-      { id: 1, message: "testing 1", likes_count: 1 },
-      { id: 2, message: "testing 2", likes_count: 0 },
-      { id: 3, message: "testing 3", likes_count: 0 },
-      { id: 4, message: "testing 4", likes_count: 5 },
-      { id: 5, message: "testing 5", likes_count: 2 },
-    ],
-    selected: false,
-  },
-  {
-    id: 2,
-    title: "Inspirational Quotations",
-    owner: "Jessica",
-    cards: [],
-    selected: false,
-  },
-];
+// const INITIAL_BOARDS = [
+//   {
+//     id: 1,
+//     title: "Shower Thoughts",
+//     owner: "Suzanne",
+//     cards: [
+//       { id: 1, message: "testing 1", likes_count: 1 },
+//       { id: 2, message: "testing 2", likes_count: 0 },
+//       { id: 3, message: "testing 3", likes_count: 0 },
+//       { id: 4, message: "testing 4", likes_count: 5 },
+//       { id: 5, message: "testing 5", likes_count: 2 },
+//     ],
+//     selected: false,
+//   },
+//   {
+//     id: 2,
+//     title: "Inspirational Quotations",
+//     owner: "Jessica",
+//     cards: [],
+//     selected: false,
+//   },
+// ];
 
 function App() {
-  const [boardsList, setBoardsList] = useState(INITIAL_BOARDS);
+  const URL = "http://127.0.0.1:5000/boards";
+  const [boardsList, setBoardsList] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [open, setOpen] = useState(false);
   const [cardsList, setCardsList] = useState([]);
 
+  const fetchAllBoards = () => {
+    axios
+      .get(URL)
+      .then((res) => {
+        console.log(res);
+        const BoardsAPIResCopy = res.data.map((board) => {
+          return {
+            id: board.id,
+            title: board.title,
+            owner: board.owner,
+            cards: board.cards,
+          };
+        });
+        setBoardsList(BoardsAPIResCopy);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(fetchAllBoards, []);
+
   const addBoard = (newBoardInfo) => {
-    // Add axios post request};
-    const newBoard = [...boardsList];
-    newBoard.push(newBoardInfo);
-    setBoardsList(newBoard);
+    axios
+      .post(URL, newBoardInfo)
+      .then((response) => {
+        const newBoards = [...boardsList];
+        const newBoardJSON = {
+          ...newBoardInfo,
+          id: response.data.id,
+        };
+        newBoards.push(newBoardJSON);
+        setBoardsList(newBoards);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const boardSelector = (selectedBoard) => {
@@ -127,7 +161,7 @@ function App() {
                 />
               </Dialog>
               <CardList
-                className="CardList"
+                id="CardList"
                 deleteCard={deleteCard}
                 increaseLikes={increaseLikes}
                 cardsList={cardsList}

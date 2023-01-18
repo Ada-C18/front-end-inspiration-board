@@ -86,7 +86,7 @@ h3 {
   margin-right: 35px;
 }
 
-.CardList {
+#CardList {
   grid-row: 4;
   grid-column: 1 / span -1;
   margin: 15px;
