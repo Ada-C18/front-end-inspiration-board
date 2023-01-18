@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import './App.css';
-import BoardForm from './components/BoardForm';
-import BoardList from './components/BoardList';
-import CurrentBoard from './components/CurrentBoard';
-import CardForm from './components/CardForm';
-import CardList from './components/CardList';
-import testData from './data/test.json';
+import React, { useState } from "react";
+import { useEffect } from "react";
+import "./App.css";
+import BoardForm from "./components/BoardForm";
+import BoardList from "./components/BoardList";
+import CurrentBoard from "./components/CurrentBoard";
+import CardForm from "./components/CardForm";
+import CardList from "./components/CardList";
+import testData from "./data/test.json";
 import {
   getAllBoards,
   addNewBoard,
@@ -31,11 +31,21 @@ const App = function () {
     getAllBoards(setBoardListState);
   };
 
+  // #TODO; setCurrentBoardState(parseInt(response.board_id))
+  // It is directly passing the response.board_id to
+  // the setCurrentBoardState function instead of parsing it as an integer? 
+
   /* Handle submit from BoardForm. */
   const handleNewBoard = function (newBoardData) {
     addNewBoard(newBoardData, changeStateOnBoardEdit);
     // console.log(JSON.stringify(newBoardData));
   };
+  // #TODO Const handleNewBoard = (newBoardData) => 
+  // { setBoardListState([...boardListState, newBoardData]); }
+  //><BoardForm handleNewBoard={handleNewBoard}/></code>
+  // should we write useEffect for form validation instead of doing
+  // it manually in the onChange event handlers? 
+
 
   const handleBoardSelect = function (boardID) {
     const _update = () => parseInt(boardID);
@@ -44,6 +54,7 @@ const App = function () {
     console.log('board_select:boardID: ' + boardID);
     console.log('board_select2:currentBoardState ' + currentBoardState);
     getAllCards(boardID, setCardListState);
+
   };
 
   // load the cards for the first board in the database
@@ -59,7 +70,7 @@ const App = function () {
 
   /* handle submit from cardForm */
   const handleNewCard = (newcard) => {
-    console.log('new card' + JSON.stringify(newcard));
+    console.log("new card" + JSON.stringify(newcard));
     addNewCard(newcard, currentBoardState, (res) => console.log(res));
     getAllCards(currentBoardState, setCardListState);
   };
@@ -90,11 +101,11 @@ const App = function () {
       </section>
       <section id="card-section">
         <div id="card-list">
-          {' '}
+          {" "}
           <CardList cardListData={cardListState}></CardList>
         </div>
         <div id="card-form-container">
-          {' '}
+          {" "}
           <CardForm handleNewCard={handleNewCard}></CardForm>
         </div>
       </section>
