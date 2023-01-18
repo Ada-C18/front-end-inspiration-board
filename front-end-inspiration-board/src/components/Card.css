@@ -1,4 +1,9 @@
 .card {
+  margin: 10px;
+  height: 150px;
+  width: 150px;
+  text-align: center;
   background-color: rgb(255, 255, 153);
-  box-shadow: 10px 10px 5px lightblue;
+  box-shadow: 5px 5px 2px rgb(155, 186, 197);
+  font-size: 14pt;
 }

@@ -1,3 +1,9 @@
+@import url("https://fonts.google.com/specimen/Source+Sans+Pro");
+
+/* * {
+  font-family: "Source Sans Pro";
+} */
+
 .App-header {
   height: 75px;
   border: 1px solid black;
@@ -11,7 +17,7 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 70px 180px 70px 1fr;
+  grid-template-rows: 70px 215px 90px 1fr;
   height: 100vw;
 }
 
@@ -23,7 +29,7 @@ h3 {
   border: 1px solid black;
   height: auto;
   text-align: center;
-  width: 300px;
+  min-width: 250px;
 }
 .boardSelector {
   grid-column: 1;
@@ -61,17 +67,28 @@ h3 {
 .CardsForSectedBoard {
   grid-column: 1;
   grid-row: 3;
-  height: auto;
+  min-height: 30px;
+  height: fit-content;
 }
 
 #createNewCard {
-  grid-column-start: 2;
-  grid-column-end: 3;
+  grid-column: 2;
   grid-row: 3;
-  height: 30px;
   font-size: 14pt;
   text-align: center;
   color: rgb(240, 236, 226);
   background-color: rgb(66, 96, 60);
   box-shadow: 1.5px 1.5px black;
+  margin-top: 20px;
+  padding: 5px;
+  min-height: 30px;
+  height: fit-content;
+  margin-right: 35px;
+}
+
+CardList {
+  grid-row: 4;
+  grid-column: 1 / span 3;
+  margin: 15px;
+  display: flex;
 }

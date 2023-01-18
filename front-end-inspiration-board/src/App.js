@@ -6,6 +6,7 @@ import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import React from "react";
 import Dialog from "@material-ui/core/Dialog";
+import CardList from "./components/CardList";
 
 // run in command line:  npm install @material-ui/core/Dialog --force
 
@@ -50,6 +51,7 @@ function App() {
       }
     });
     setBoardsList(boards);
+    setCardsList(selectedBoard.cards);
   };
 
   const handleClickToOpen = () => {
@@ -64,7 +66,7 @@ function App() {
     const newCard = [...cardsList];
     newCard.push(cardData);
     setCardsList(newCard);
-    console.log(cardData);
+    selectedBoard.cards = newCard;
   };
 
   return (
@@ -79,8 +81,10 @@ function App() {
           <h3 className="HeaderOfNewBoard">Create a New Board</h3>
           <NewBoardForm addBoardCallBackFunc={addBoard} />
           {selectedBoard && (
-            <div className="CardsForSectedBoard">
-              <h3>Cards for {selectedBoard.title}</h3>
+            <>
+              <h3 className="CardsForSectedBoard">
+                Cards for {selectedBoard.title}
+              </h3>
               <button id="createNewCard" onClick={handleClickToOpen}>
                 Create New Card
               </button>
@@ -90,7 +94,8 @@ function App() {
                   addCardCallBackFunc={addCard}
                 />
               </Dialog>
-            </div>
+              <CardList cardsList={cardsList} />
+            </>
           )}
         </section>
       </body>
