@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import BoardList from "./Components/BoardList";
 import NewBoardForm from "./Components/NewBoardForm";
@@ -19,6 +19,27 @@ const getAllBoardsApi = async () => {
     `${process.env.REACT_APP_BACKEND_URL}/boards`
   );
   return response.data;
+};
+
+const deleteCardApi = async (cardId) => {
+  const response = await axios.delete(
+    `${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`
+  );
+  return convertFromApiCard(response.data);
+};
+
+const sortCardsByikesApi = async (selectedBoardId) => {
+  const response = await axios.get(
+    `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoardId}/cards?sort=likes`
+  );
+  return response.data.map(convertFromApiCard);
+};
+
+const sortCardsByAscApi = async (selectedBoardId) => {
+  const response = await axios.get(
+    `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoardId}/cards?sort=asc`
+  );
+  return response.data.map(convertFromApiCard);
 };
 
 function App() {
@@ -59,14 +80,29 @@ function App() {
     setAllBoardData(newBoards);
   };
 
-  // CARDS
+
+   // CARDS
   // Get all cards for selected board
-  const getAllCardsApi = async (selectedBoardId) => {
-    const response = await axios.get(
-      // `${process.env.REACT_APP_BACKEND_URL}/cards`
-      `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoardId}/cards`
-    );
+  const getAllCardsApi = useCallback(async () => {
+    if (!selectedBoard) {
+      return []
+    }
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards`)
     return response.data.map(convertFromApiCard);
+  }, [selectedBoard]);
+
+  useEffect(() => {
+    const getAllCards = async () => {
+      const cards = await getAllCardsApi();
+      setCardsData(cards);
+    };
+    getAllCards();
+  }, [getAllCardsApi] );
+
+  const getAllCards = async () => {
+    const selectedBoardId = selectedBoard.id;
+    const cards = await getAllCardsApi(selectedBoardId);
+    setCardsData(cards);
   };
 
   // Adds card through card form
@@ -76,60 +112,39 @@ function App() {
       cardForm
     );
     const newCard = [...cardsData];
-    newCard.push({ ...response.data.card });
+    const convertedCard = convertFromApiCard(response.data.card)
+    newCard.push(convertedCard);
     setCardsData(newCard);
   };
 
-  useEffect(() => {
-    const getAllCards = async () => {
-      const selectedBoardId = selectedBoard.id;
-      const cards = await getAllCardsApi(selectedBoardId);
-      setCardsData(cards);
-    };
-    getAllCards();
-  }, [selectedBoard]);
-
-  const getAllCards = async () => {
-    const selectedBoardId = selectedBoard.id;
-    const cards = await getAllCardsApi(selectedBoardId);
-    setCardsData(cards);
-  };
-
   // Delete a card
-  const deleteCardApi = async (card_id) => {
-    const response = await axios.delete(
-      `${process.env.REACT_APP_BACKEND_URL}/cards/${card_id}`
-    );
-    return convertFromApiCard(response.data);
-  };
-
-  const handleDeleteCard = async (id) => {
-    await deleteCardApi(id);
+  const handleDeleteCard = async (cardId) => {
+    await deleteCardApi(cardId);
     return getAllCards();
   };
 
   // Likes
-  const handleLikesApi = async (card_id, board_id, message, likes_count) => {
-    const plusOneLike = { likes_count: likes_count + 1 };
+  const handleLikesApi = async (cardId, boardId, message, likesCount) => {
+    const plusOneLike = { likes_count: likesCount + 1 };
     await axios.put(
-      `${process.env.REACT_APP_BACKEND_URL}/cards/${card_id}/like`,
+      `${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}/like`,
       plusOneLike
     );
     const newCardsData = cardsData.map((card) => {
-      return card.card_id !== card_id
+      return card.cardId !== cardId
         ? card
         : {
-            card_id: card_id,
-            board_id: board_id,
+            cardId: cardId,
+            boardId: boardId,
             message: message,
-            likes_count: likes_count,
+            likesCount: likesCount,
           };
     });
     setCardsData(newCardsData);
   };
 
-  const handleLikes = async (card_id, board_id, message, likes_count) => {
-    await handleLikesApi(card_id, board_id, message, likes_count);
+  const handleLikes = async (cardId, boardId, message, likesCount) => {
+    await handleLikesApi(cardId, boardId, message, likesCount);
     return getAllCards();
   };
 
@@ -137,38 +152,51 @@ function App() {
   const [sortType, setSortType] = useState("");
 
   const handleChange = (e) => {
-    setSortType(e.target.value);
+    const selectedSort = e.target.value;
+    setSortType(selectedSort);
+
+
+    if (sortType === "id") {
+        return getAllCards();
+      }
+    if (sortType === "alphabetically") {
+      const selectedBoardId = selectedBoard.id;
+      const sorted = sortCardsByAscApi(selectedBoardId);
+      setCardsData(sorted);
+    }
+    if (sortType === "likesCount") {
+      const selectedBoardId = selectedBoard.id;
+      const sorted = sortCardsByikesApi(selectedBoardId);
+      setCardsData(sorted);
+    }
   };
 
-  useEffect(() => {
-    const sortArray = (type) => {
-      const types = {
-        id: "id",
-        alphabetically: "message",
-        likes: "likes_count",
-      };
-      const sortProperty = types[type];
-      if (sortProperty === "id") {
-        const sorted = [...cardsData].sort(
-          (a, b) => a[sortProperty] - b[sortProperty]
-        );
-        setCardsData(sorted);
-      }
-      if (sortProperty === "message") {
-        const sorted = [...cardsData].sort((a, b) =>
-          a[sortProperty] > b[sortProperty] ? 1 : -1
-        );
-        setCardsData(sorted);
-      }
-      if (sortProperty === "likes_count") {
-        const sorted = [...cardsData].sort(
-          (a, b) => b[sortProperty] - a[sortProperty]
-        );
-        setCardsData(sorted);
-      }
-    };
-    sortArray(sortType);
-  }, [sortType]);
+
+  // useEffect(() => {
+  //   const sortArray = (type) => {
+  //     const types = {
+  //       id: "id",
+  //       alphabetically: "message",
+  //       likes: "likesCount",
+  //     };
+  //     const sortProperty = types[type];
+  //     if (sortProperty === "id") {
+  //       return getAllCards();
+  //     }
+  //     if (sortProperty === "message") {
+  //       const selectedBoardId = selectedBoard.id;
+  //       const sorted = sortCardsByAscApi(selectedBoardId);
+  //       setCardsData(sorted);
+  //     }
+  //     if (sortProperty === "likesCount") {
+  //       const selectedBoardId = selectedBoard.id;
+  //       const sorted = sortCardsByikesApi(selectedBoardId);
+  //       setCardsData(sorted);
+  //     }
+  //   };
+  //   sortArray(sortType);
+  // }, [sortType]);
+
 
   return (
     <div className="whole__page">
@@ -242,7 +270,7 @@ function App() {
                 <select value={sortType} onChange={handleChange}>
                   <option value="id">by Oldest to Newest</option>
                   <option value="alphabetically">Alphabetically</option>
-                  <option value="likes">by Likes</option>
+                  <option value="likesCount">by Most Likes</option>
                 </select>
               </section>
             </section>
