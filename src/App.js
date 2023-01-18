@@ -8,11 +8,11 @@ import NewCardForm from "./Components/NewCardForm";
 import RainbowText from "react-rainbow-text";
 
 const convertFromApiCard = (apiCard) => {
-  const {id, board_id: boardId, message, likes_count: likesCount} = apiCard;
+  const { id, board_id: boardId, message, likes_count: likesCount } = apiCard;
 
-  const newCard = {id, boardId, message, likesCount};
+  const newCard = { id, boardId, message, likesCount };
   return newCard;
-}
+};
 
 const getAllBoardsApi = async () => {
   const response = await axios.get(
@@ -64,7 +64,7 @@ function App() {
   const getAllCardsApi = async (selectedBoardId) => {
     const response = await axios.get(
       // `${process.env.REACT_APP_BACKEND_URL}/cards`
-      `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoardId}/cards`,
+      `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoardId}/cards`
     );
     return response.data.map(convertFromApiCard);
   };
@@ -82,7 +82,7 @@ function App() {
 
   useEffect(() => {
     const getAllCards = async () => {
-      const selectedBoardId = selectedBoard.id
+      const selectedBoardId = selectedBoard.id;
       const cards = await getAllCardsApi(selectedBoardId);
       setCardsData(cards);
     };
@@ -90,7 +90,7 @@ function App() {
   }, [selectedBoard]);
 
   const getAllCards = async () => {
-    const selectedBoardId = selectedBoard.id
+    const selectedBoardId = selectedBoard.id;
     const cards = await getAllCardsApi(selectedBoardId);
     setCardsData(cards);
   };
@@ -132,7 +132,6 @@ function App() {
     await handleLikesApi(card_id, board_id, message, likes_count);
     return getAllCards();
   };
-
 
   // Sort **ALMOST WORKING**
   const [sortType, setSortType] = useState("");
