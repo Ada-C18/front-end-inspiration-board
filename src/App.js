@@ -58,36 +58,6 @@ function App() {
     return response.data.map(convertFromApiCard);
   }, [selectedBoard]);
 
-  const sortCardsByLikesApi = useCallback(async () => {
-    if (!selectedBoard) {
-      return []
-    }
-    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards?sort=likes`)
-    return response.data.map(convertFromApiCard);
-  }, [selectedBoard]);
-
-  // const sortCardsByLikesApi = async (selectedBoardId) => {
-  //   const response = await axios.get(
-  //     `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoardId}/cards?sort=likes`
-  //   );
-  //   return response.data.map(convertFromApiCard);
-  // };
-
-  const sortCardsByAscApi = useCallback(async () => {
-    if (!selectedBoard) {
-      return []
-    }
-    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards?sort=asc`)
-    return response.data.map(convertFromApiCard);
-  }, [selectedBoard]);
-  
-  // const sortCardsByAscApi = async (selectedBoardId) => {
-  //   const response = await axios.get(
-  //     `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoardId}/cards?sort=asc`
-  //   );
-  //   return response.data.map(convertFromApiCard);
-  // };
-
   useEffect(() => {
     const getAllCards = async () => {
       const cards = await getAllCardsApi();
@@ -147,13 +117,29 @@ function App() {
     return getAllCards();
   };
 
-  // Sort pull down- **ALMOST WORKING**
+  // Sort pull down- Works with error
   const [sortType, setSortType] = useState("");
 
   const handleChange = (e) => {
     const selectedSort = e.target.value;
     setSortType(selectedSort);
   };
+
+  const sortCardsByAscApi = useCallback(async () => {
+    if (!selectedBoard) {
+      return []
+    }
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards?sort=asc`)
+    return response.data.map(convertFromApiCard);
+  }, [selectedBoard]);
+
+  const sortCardsByLikesApi = useCallback(async () => {
+    if (!selectedBoard) {
+      return []
+    }
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards?sort=likes`)
+    return response.data.map(convertFromApiCard);
+  }, [selectedBoard]);
 
   const getAllCardsByAsc = async () => {
     const cards = await sortCardsByAscApi(selectedBoard.id);
