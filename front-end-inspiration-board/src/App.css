@@ -21,7 +21,7 @@ h3 {
   background-color: rgb(240, 236, 226);
   padding: 5px;
   border: 1px solid black;
-  height: 25px;
+  height: auto;
   text-align: center;
   width: 300px;
 }
@@ -61,16 +61,17 @@ h3 {
 .CardsForSectedBoard {
   grid-column: 1;
   grid-row: 3;
+  height: auto;
 }
 
-.CreateNewCard {
-  grid-column: 2;
+#createNewCard {
+  grid-column-start: 2;
+  grid-column-end: 3;
   grid-row: 3;
-  margin-top: 22.5px;
   height: 30px;
   font-size: 14pt;
-  width: 200px;
   text-align: center;
   color: rgb(240, 236, 226);
   background-color: rgb(66, 96, 60);
+  box-shadow: 1.5px 1.5px black;
 }

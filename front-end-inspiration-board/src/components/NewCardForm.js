@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import "./NewBoardForm.css"; Make new css
+import "./NewCardForm.css";
 
 const INITIAL_CARD_FORM_DATA = {
   message: "",
@@ -20,12 +20,19 @@ const NewCardForm = (props) => {
     e.preventDefault();
     props.addCardCallBackFunc(formData);
     setFormData(INITIAL_CARD_FORM_DATA);
+    props.closeDialogCallBackFunc();
   };
 
   return (
     <div className="CreateNewCard">
       <form onSubmit={handleNewCardSubmit}>
-        <label htmlFor="message">message</label>
+        <button id="close" onClick={props.closeDialogCallBackFunc}>
+          X
+        </button>
+
+        <label id="dialogLabel" htmlFor="message">
+          Enter Your Message
+        </label>
         <input
           type="text"
           id="message"

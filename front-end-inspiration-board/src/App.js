@@ -3,8 +3,11 @@ import background from "./cork-board.jpg";
 import { useState } from "react";
 import BoardList from "./components/BoardList";
 import NewBoardForm from "./components/NewBoardForm";
-import FormDialog from "./components/NewCardForm";
 import NewCardForm from "./components/NewCardForm";
+import React from "react";
+import Dialog from "@material-ui/core/Dialog";
+
+// run in command line:  npm install @material-ui/core/Dialog --force
 
 const INITIAL_BOARDS = [
   {
@@ -26,6 +29,7 @@ const INITIAL_BOARDS = [
 function App() {
   const [boardsList, setBoardsList] = useState(INITIAL_BOARDS);
   const [selectedBoard, setSelectedBoard] = useState(null);
+  const [open, setOpen] = useState(false);
   const [cardsList, setCardsList] = useState([]);
 
   const addBoard = (newBoardInfo) => {
@@ -48,11 +52,19 @@ function App() {
     setBoardsList(boards);
   };
 
+  const handleClickToOpen = () => {
+    setOpen(true);
+  };
+
+  const handleToClose = () => {
+    setOpen(false);
+  };
+
   const addCard = (cardData) => {
     const newCard = [...cardsList];
     newCard.push(cardData);
     setCardsList(newCard);
-    console.log(cardsList);
+    console.log(cardData);
   };
 
   return (
@@ -69,13 +81,17 @@ function App() {
           {selectedBoard && (
             <div className="CardsForSectedBoard">
               <h3>Cards for {selectedBoard.title}</h3>
-              <NewCardForm
-                className="CreateNewCard"
-                addCardCallBackFunc={addCard}
-              />
+              <button id="createNewCard" onClick={handleClickToOpen}>
+                Create New Card
+              </button>
+              <Dialog open={open} onClose={handleToClose}>
+                <NewCardForm
+                  closeDialogCallBackFunc={handleToClose}
+                  addCardCallBackFunc={addCard}
+                />
+              </Dialog>
             </div>
           )}
-          {/* <FormDialog className="CreateNewCard" /> */}
         </section>
       </body>
     </div>

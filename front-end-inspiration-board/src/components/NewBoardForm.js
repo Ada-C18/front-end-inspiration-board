@@ -31,10 +31,6 @@ const NewBoardForm = (props) => {
 
   return (
     <div className="CreateNewBoard">
-      <button onClick={updateShowForm}>
-        {showForm ? "Hide Add New Board Form" : "Show Add New Board Form"}
-      </button>
-      {/* why does this syntax work */}
       {showForm && (
         <form onSubmit={handleNewBoardSubmit}>
           <label htmlFor="owner">Owner</label>
@@ -57,6 +53,9 @@ const NewBoardForm = (props) => {
           <input id="submitButton" type="submit" value="Add Board" />
         </form>
       )}
+      <button id="showFormButton" onClick={updateShowForm}>
+        {showForm ? "Hide New Board Form" : "Show New Board Form"}
+      </button>
     </div>
   );
 };
