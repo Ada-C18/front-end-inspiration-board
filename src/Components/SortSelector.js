@@ -1,7 +1,9 @@
+import './SortSelector.css';
+
 const SortSelector = (props) => {
   return (
     <div id="sort-selector">
-      Sort by:
+      {"Sort by: "}
       <select>
         <option></option>
       </select>
