@@ -40,12 +40,32 @@ const Board = (props) => {
       axios
         .get(`${BACKEND_URL}/boards/${props.currentBoard}/cards`)
         .then((result) => {
+          const cards = result.data;
+          const compare = (a, b) => {
+            switch (sortCardsBy.direction) {
+              case "asc":
+                return a > b;
+              case "desc":
+                return a < b;
+              default:
+                throw "invalid sort direction";
+        }
+      }
+          cards.sort((c1, c2) => {
+            switch (sortCardsBy.method) {
+              case "message":
+                return compare(c1.message.toLowerCase(), c2.message.toLowerCase());
+              default:
+                return compare(c1[sortCardsBy.method], c2[sortCardsBy.method]);
+      }
+      })
+
           setCardList(result.data);
         });
     else setCardList([]);
   };
 
-  useEffect(getCardList, [props.currentBoard]);
+  useEffect(getCardList, [props.currentBoard, sortCardsBy]);
 
   const [cardFormVisible, setCardFormVisible] = useState(false);
   const toggleCardFormVisible = () => setCardFormVisible(!cardFormVisible);
