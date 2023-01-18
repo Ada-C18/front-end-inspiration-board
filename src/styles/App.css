@@ -1,4 +1,53 @@
-.App {
+.app-all {
+  display: grid;
+  grid-template-areas:
+      "header header"
+      "nav main"
+      "aside main";
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 10% 40% 40%;
+  grid-gap: 10px;
+  height:150vh;
+  width: 100vh;
+  margin: auto;
+}
+
+header {
+grid-area: header;
+background-color: pink;
+}
+
+main {
+grid-area: main;
+background-color: blue;
+}
+
+.board {
+grid-area: nav;
+background-color: green;
+}
+
+aside {
+  grid-area: aside;
+  background-color: gold;
+  }
+
+
+header, main, nav, aside{
+  padding: 10px; 
+}
+
+
+
+
+
+
+
+
+
+
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +84,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

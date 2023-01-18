@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/App.css"
 import { useState, useEffect } from "react";
 import CardList from "./components/CardList";
 import axios from "axios";
@@ -121,21 +121,27 @@ function App() {
 
   //
   return (
-    <div className="App">
-      <h1> Inspiration Board </h1>
-      <h2> Create a New Board</h2>
+    <div className="app-all">
+      <header> Inspiration Board </header>
 
-      <BoardList boardList={boardList} getOneBoard={getOneBoard} />
-      <br />
-      <FormNewBoard addBoardCallbackFunc={addBoard} />
+      <nav className="board">
+        <h2> Board List</h2>
+        <BoardList boardList={boardList} getOneBoard={getOneBoard} />
+      </nav>
 
-      <CardList
-        cardList={cardList}
-        deleteCard={deleteCard}
-        countLikesTotal={countLikesTotal}
-      />
+      <aside className="cards">
+        <FormNewBoard addBoardCallbackFunc={addBoard} />
+        <FormNewCard addCardCallbackFunc={addCard} boardId={boardId} />
+      </aside>
 
-      <FormNewCard addCardCallbackFunc={addCard} boardId={boardId} />
+      <main>
+        <h2> Card List </h2>
+        <CardList
+          cardList={cardList}
+          deleteCard={deleteCard}
+          countLikesTotal={countLikesTotal}
+        />
+      </main>
     </div>
   );
 }
