@@ -7,3 +7,13 @@
   padding: 2vw 2vh;
 }
 
+#sort-div {
+  text-align: center;
+  margin-top: 1vh;
+}
+
+#sort-dropdown {
+  color: #014040;
+  border: solid black 1px;
+  border-radius: 5px;
+}

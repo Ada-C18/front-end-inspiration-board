@@ -19,13 +19,14 @@
 
 #new-card-text {
   width: 20vw;
-  height: 12vh;
+  height: 4vh;
   border-color: #014040;
   border-radius: 20px;
   color: #014040;
-  font-size: 1rem;
   margin-top: 3.5vh;
   text-align: center;
+  font-family: 'Arial';
+  padding: 4vh 0;
 }
 
 #new-card-submit {
@@ -36,4 +37,5 @@
   border-radius: 5px;
   font-size: 1rem;
 }
+
 

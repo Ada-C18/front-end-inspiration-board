@@ -72,7 +72,16 @@ const SelectedBoard = () => {
 
 
   return (
-    <ul id='board-flex-container'> {getCardViewComponentList(DUMMY_CARD_DATA)} </ul>
+    <div> 
+      <div id='sort-div'>
+        <select id='sort-dropdown'>
+          <option value='sort by number of likes'>Sort by: Number of likes</option>
+          <option value='sort alphabetically'>Sort by: Alphabetically</option>
+          <option value='sort by id'>Sort by: ID</option>
+        </select>
+      </div>
+      <ul id='board-flex-container'> {getCardViewComponentList(DUMMY_CARD_DATA)} </ul>
+    </div>
   )
 };
 
