@@ -50,6 +50,10 @@ function App() {
       });
   };
 
+const [hideBoardForm, sethideBoardForm] = useState(true)
+const hideBoardButton = () => {sethideBoardForm(!hideBoardForm)}
+
+
   return (
     <div className="App">
       <div className="content__container">
@@ -71,8 +75,9 @@ function App() {
 
           <section className="new-board-form__container">
             <h2>Create a New Board</h2>
-            {/* need a invisble button */}
-            <NewBoardForm createNewBoard={createNewBoard} />
+            {hideBoardForm ? <NewBoardForm createNewBoard={createNewBoard} /> : ''}
+            <span onClick={hideBoardButton}> {hideBoardForm ? 'Hide Board Form' : 'Show Board Form'}</span>
+            {/* <NewBoardForm createNewBoard={createNewBoard} /> */}
             <span onClick={NewBoardForm}></span>
           </section>
         </section>
