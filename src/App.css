@@ -1,7 +1,3 @@
-/* .whole__page {
-  background-color: yellow;
-} */
-
 .App__header {
   background-color: black;
   font-family:monospace;
@@ -12,16 +8,11 @@
   border-radius: 5pt ;
 }
 
-
 .all__board__container {
-/* background-image: url("/images); */
 background-image: url("/src/images/489bf56a918d9ea4a331964a533cebb7.jpg");
 border-style: solid;
 border-radius: 20pt ;
 display: flex;
-
-/* flex-direction: column; */
-/* align-items: baseline; */
 justify-content: space-evenly;
 padding: 20pt;
 }
@@ -41,15 +32,9 @@ padding: 20pt;
   font-size: large;
   color: white;
   text-align: center;
-  /* border: red solid 1px; */
-  /* margin: 0 0 2px 0; */
 }
 
 .boards {
-  /* display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 2rem; */
-  /* text-align: center; */
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -86,12 +71,11 @@ padding-right: 25pt;
 }
 
 .all_card__container {
+  background-image: url("/src/images/489bf56a918d9ea4a331964a533cebb7.jpg");
   border-style: solid;
   border-radius: 20pt ;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   padding: 20pt;
 }
 
@@ -114,15 +98,12 @@ padding-right: 25pt;
 }
 
 .cards {
-  /* display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  grid-gap: 2rem;
-  margin: 2rem; */
   padding-right: 25pt;
 }
 
 .sort_by {
-  font-size: medium;
+  font-size: large;
+  font-weight: bold;
 }
 
 body {

@@ -6,40 +6,8 @@ import NewBoardForm from "./Components/NewBoardForm";
 import CardList from "./Components/CardList";
 import NewCardForm from "./Components/NewCardForm";
 import RainbowText from "react-rainbow-text";
+import { convertFromApiCard, getAllBoardsApi, deleteCardApi, sortCardsByikesApi, sortCardsByAscApi } from "./HelperFunctions/ApiCalls.js";
 
-const convertFromApiCard = (apiCard) => {
-  const { board_id: boardId, id, likes_count: likesCount, message } = apiCard;
-
-  return { boardId, id, likesCount, message };
-};
-
-const getAllBoardsApi = async () => {
-  const response = await axios.get(
-    `${process.env.REACT_APP_BACKEND_URL}/boards`
-  );
-  return response.data;
-};
-
-const deleteCardApi = async (cardId) => {
-  const response = await axios.delete(
-    `${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`
-  );
-  return convertFromApiCard(response.data);
-};
-
-const sortCardsByikesApi = async (selectedBoardId) => {
-  const response = await axios.get(
-    `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoardId}/cards?sort=likes`
-  );
-  return response.data.map(convertFromApiCard);
-};
-
-const sortCardsByAscApi = async (selectedBoardId) => {
-  const response = await axios.get(
-    `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoardId}/cards?sort=asc`
-  );
-  return response.data.map(convertFromApiCard);
-};
 
 function App() {
   const [allBoardData, setAllBoardData] = useState([]);
@@ -54,15 +22,6 @@ function App() {
     setSelectedBoard({ title: title, owner: owner, id: id });
     setShowCardForm(true);
   };
-
-  // Get all boards
-  // useEffect(() => {
-  //   const getAllBoards = async () => {
-  //     const boards = await getAllBoardsApi();
-  //     setAllBoardData(boards);
-  //   };
-  //   getAllBoards();
-  // }, []);
 
   useEffect(() => {
     getAllBoards();
@@ -179,7 +138,6 @@ function App() {
     }
   };
 
-
   // useEffect(() => {
   //   const sortArray = (type) => {
   //     const types = {
@@ -207,7 +165,7 @@ function App() {
 
 
   return (
-    <div className="whole__page">
+    <div>
       {/* BOARDS */}
       <h1 className="App__header">
         <RainbowText lightness={0.5} saturation={1}>
@@ -215,9 +173,6 @@ function App() {
         </RainbowText>
       </h1>
       <section
-        // style={{
-        //   backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgYknV4AaaHSWrEZmZFZsCZrcFsfKQeFqNeQ&usqp=CAU")`,
-        // }}
         className="all__board__container"
       >
         <section className="board__container">
@@ -257,9 +212,6 @@ function App() {
       <section>
         {showCardForm ? (
           <div
-            style={{
-              backgroundImage: `url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/734ced07-9d10-475f-b63a-cd31b48584e5/d2xhif2-df14212c-955e-44f1-8183-a7271d277cf0.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzczNGNlZDA3LTlkMTAtNDc1Zi1iNjNhLWNkMzFiNDg1ODRlNVwvZDJ4aGlmMi1kZjE0MjEyYy05NTVlLTQ0ZjEtODE4My1hNzI3MWQyNzdjZjAucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.c9PQZA9uwHQaNYlTpEUrKqP93NinlJ6ktXhmOxVhuU4")`,
-            }}
             className="all_card__container"
           >
             <section className="cards__container">
