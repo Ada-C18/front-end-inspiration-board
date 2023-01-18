@@ -21,7 +21,7 @@ const CardsList = (props) => {
         );
         console.log("Response to broken api", error.response.data);
       });
-  }, []);
+  }, [props.board]);
 
   const plusOneCardItem = (card) => {
     console.log(cardsData);
@@ -74,6 +74,13 @@ const CardsList = (props) => {
       });
   };
 
+  const sortByLikes = (arr) => {
+    const sorted = [...arr].sort((a, b) => {
+      return b.likes_count - a.likes_count;
+    });
+    setCardsData(sorted);
+  };
+
   const cardElements = cardsData.map((card) => {
     return (
       <Card
@@ -92,6 +99,7 @@ const CardsList = (props) => {
         <span onClick={NewCardForm}></span>
       </section>
       <h2>Cards for {props.board.title}</h2>
+      <button onClick={() => sortByLikes(cardsData)}>Sort by # of likes</button>
       <div>{cardElements}</div>
     </section>
   );
