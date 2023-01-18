@@ -7,14 +7,9 @@ import CardList from "./components/CardList";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// 1. add error handling
-// 2. add proptypes
-// 3. connect likes to backend
-
 //const URL = process.env['REACT_APP_BACKEND_URL'];
-const BoardURL = "http://localhost:5000/boards";
-const CardURL = "http://localhost:5000/cards";
-// const URL = "https://inspiration-board-api-t6.herokuapp.com/boards"
+const BoardURL = "https://inspiration-board-api-t6.herokuapp.com/boards";
+const CardURL = "https://inspiration-board-api-t6.herokuapp.com/cards";
 
 const App = () => {
   const [boardData, setBoardData] = useState([]);
@@ -73,7 +68,7 @@ const App = () => {
           return {
             id: card.id,
             message: card.message,
-            likes: card.likes
+            likes: card.likes,
           };
         });
         setCardData(newCards);
