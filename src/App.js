@@ -2,98 +2,12 @@ import axios from 'axios';
 import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
 // import axios from 'axios';
+import { REACT_APP_BACKEND_URL, boardApiToJson, cardApiToJson, addBoardAPI, addCardAPI, getBoardsAPI, getCardsAPI, deleteBoardAPI, deleteCardAPI } from './api';
 import BoardForm from './components/BoardForm';
 import BoardList from './components/BoardList';
 import CardForm from './components/CardForm';
 import CardList from './components/CardList';
 
-const REACT_APP_BACKEND_URL = 'http://localhost:5000';
-
-// Destructure and convert python naming convention to JSON.
-const boardApiToJson = (board) => {
-  const { board_id: boardId, title, owner } = board;
-  return { boardId, title, owner };
-};
-
-// Destructure and convert Card to Json
-const cardApiToJson = (card) => {
-  const {
-    card_id: cardId,
-    board_id: boardId,
-    likes_count: likesCount,
-    message,
-    board,
-  } = card;
-  return { cardId, boardId, likesCount, message, board };
-};
-
-//POST,GET,DELETE Promises:
-
-// Post Board Object {"title": "", "owner": ""} This is used in OnSubmitFormBoard, to submit the Board when clicking the button
-const addBoardAPI = (board) => {
-  return (
-    axios
-      .post(`${REACT_APP_BACKEND_URL}/boards`, board)
-      .then((response) => response.data.board)
-      //need show the user a greyed out submit button
-      .catch((err) => console.log(err))
-  );
-};
-
-// Post Card Obj {"message":""}
-const addCardAPI = (cardId, boardId) => {
-  return axios
-    .post(`${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, {
-      card_id: cardId,
-    })
-    .then((response) => response.data.board.card)
-    .catch((err) => console.log(err));
-};
-
-// Get ALL Boards, the promise returned is the servers response of the data, [ Board1, Board2, Board3 ]
-const getBoardsAPI = async () => {
-  try {
-    const response = await axios.get(`${REACT_APP_BACKEND_URL}/boards`);
-    return response.data.map(boardApiToJson);
-  } catch (err) {
-    console.log(err);
-    throw new Error('Can not get your boards!');
-  }
-};
-
-//Get Cards from API
-const getCardsAPI = async (boardId) => {
-  try {
-    const response = await axios.get(
-      `${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`
-    );
-    return response.data.map(cardApiToJson);
-  } catch (err) {
-    console.log(err);
-    throw new Error('Nope, get your cards');
-  }
-};
-
-// Delete a Board from the API, this goes into the onClick that deletes the board
-const deleteBoardAPI = async (boardId) => {
-  try {
-    await axios.delete(`${REACT_APP_BACKEND_URL}/boards/${boardId}`);
-  } catch (error) {
-    console.log(error);
-    throw new Error(`Could not delete your ${boardId}.`);
-  }
-};
-
-const deleteCardAPI = async (boardId, cardId) => {
-  try {
-    await axios.delete(
-      `${REACT_APP_BACKEND_URL}/boards/${boardId}/cards/${cardId}`
-    );
-  } catch (error) {
-    console.log(error);
-    throw new Error(`Could not delete card ${cardId} from board ${boardId}.`);
-  }
-};
 
 // Higher order functions inside FUNCTION APP() sent as props
 //BOARD FUNCTIONS:
@@ -124,42 +38,12 @@ const App = () => {
   };
 
   //PUT THIS IN THE SELECT BOARD FUNCTION?????
-  const handleCardSubmit = useCallback((cardId) => {
-    addCardAPI(cardId).then((newCard) => {
-      setCards((prevCards) => [...prevCards, newCard]);
+  const handleCardSubmit = (card, boardId) => {
+    addCardAPI(card, boardId).then((newCards) => {
+      setCards(newCards);
     });
-  }, []);
+  };
 
-  // Get One Board, get CardsList for that boardId.
-  // const handleBoardSelect = useCallback(
-  //   async (boardId) => {
-  //     const board = boards.find((boardID) => board.boardId === boardId);
-
-  //     try {
-  //       //retrieves cardlist
-  //       const cardlist = await getCardsAPI(boardId);
-  //       //this uses state of selected board and marries is to cardlist
-  //       setSelectedBoard(board);
-  //       setCards(cardlist);
-  //     } catch (err) {
-  //       console.log(err);
-  //       throw new Error(`Could not get board ${board.boardId}`);
-  //     }
-  //   },
-  //   [boards]
-  // );
-  // const onSelectBoard = async (board) => {
-  //   setSelectedBoard(board);
-  //   try {
-  //     const response = await axios.get(
-  //       `${REACT_APP_BACKEND_URL}/boards/${board.board_id}/cards`
-  //     );
-  //     setCards(response.data);
-  //   } catch (err) {
-  //     console.log(err);
-  //     throw new Error('Nope, I could not get your cards');
-  //   }
-  // };
   const onSelectBoard = async (boardId) => {
     try {
       const response = await axios.get(
@@ -186,10 +70,12 @@ const App = () => {
 
   const handleCardDelete = async (cardId) => {
     try {
-      await deleteCardAPI(selectedBoard.boardId,cardId);
+      // await deleteCardAPI(selectedBoard.boardId, cardId);
+      await deleteCardAPI(cardId);
       setCards((prevCards) => {
         return prevCards.filter((card) => {
-          return card.cardId !== cardId})
+          return card.cardId !== cardId;
+        });
       });
     } catch (error) {
       console.log(error.message);
@@ -224,6 +110,22 @@ const App = () => {
     refreshBoards();
   }, []);
 
+  const refreshCards = async () => {
+    try {
+      //getBoards() returns a response json body of the list of boards
+      const boards = await getCardsAPI();
+      setCards(boards);
+    } catch (err) {
+      console.log(err.message);
+      throw new Error('Can not refresh boards!');
+    }
+  };
+
+  //React.useEffect hook for Boards
+  useEffect(() => {
+    refreshCards();
+  }, []);
+
   return (
     <div className='App'>
       <header>
@@ -251,7 +153,10 @@ const App = () => {
               onLikesCount={handleLikesCount}
               onDeleteCard={handleCardDelete}
             />
-            <CardForm boardId={selectedBoard.boardId} handleCardSubmit={handleCardSubmit}/>
+            <CardForm
+              boardId={selectedBoard.boardId}
+              handleCardSubmit={handleCardSubmit}
+            />
           </>
         )}
       </main>
@@ -261,5 +166,3 @@ const App = () => {
 
 export default App;
 
-//How to post new card associated with a boardID, nested promise
-//How to read cardList assoicated with a boardID, nested promise

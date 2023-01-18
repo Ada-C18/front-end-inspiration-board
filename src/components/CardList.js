@@ -4,12 +4,14 @@ import Card from './Card';
 import './CardList.css';
 
 const CardList = (props) => {
+  console.log(props.cards)
   const cards = (props) => {
     return props.cards.map((card) => {
       return (
         <Card
           key={card.cardId}
           cardId={card.cardId}
+          boardId={card.boardId}
           message={card.message}
           onDeleteCard={props.onDeleteCard}
           onLikesCount={props.onLikesCount}
@@ -29,11 +31,11 @@ CardList.propTypes = {
   cards: PropTypes.arrayOf(
     PropTypes.shape({
       cardId: PropTypes.number.isRequired,
+      boardId: PropTypes.number.isRequired,
       message: PropTypes.string.isRequired,
     })
   ).isRequired,
   onLikesCount: PropTypes.func.isRequired,
   onDeleteCard: PropTypes.func.isRequired,
-  boardId: PropTypes.number.isRequired
 };
 export default CardList;

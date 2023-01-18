@@ -29,6 +29,7 @@ Card.propTypes = {
   message: PropTypes.string.isRequired,
   onLikesCount: PropTypes.func.isRequired,
   onDeleteCard: PropTypes.func.isRequired,
+  boardId: PropTypes.number.isRequired
 };
 
 export default Card;

@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 // we make a post request to boards/1 with the json {“card_id”: 1}
 const cardObj = {
   message: '',
-  likeCount: 0,
 };
 const CardForm = (props) => {
 
@@ -14,7 +13,7 @@ const CardForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.handleCardSubmit(formData);
+    props.handleCardSubmit(formData,props.boardId);
     setFormData(cardObj);
   };
 
@@ -46,6 +45,7 @@ const CardForm = (props) => {
 
 CardForm.propTypes = {
   handleCardSubmit: PropTypes.func.isRequired,
+  boardId: PropTypes.number.isRequired
 };
 
 export default CardForm;
