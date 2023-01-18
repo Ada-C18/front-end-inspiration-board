@@ -56,8 +56,8 @@ Create New Card (new card should only show once board is selected)
 // ];
 
 function App() {
-  const cardURL = "http://localhost:5000/cards";
-  const boardURL = "http://localhost:5000/boards";
+  const cardURL = "https://backend-inspo-board-jupuabmi.herokuapp.com/cards";
+  const boardURL = "https://backend-inspo-board-jupuabmi.herokuapp.com/boards";
 
   const [boardList, setBoardList] = useState([]);
   const [cardList, setCardList] = useState([]);
@@ -148,9 +148,8 @@ function App() {
 
   const addCard = (newCardInfo) => {
     axios
-      .post(`${boardURL}/${selectedBoard.id}/cards`, newCardInfo) 
+      .post(`${boardURL}/${selectedBoard.id}/cards`, newCardInfo)
       // i think youre right! ok does it work? no T_T MAYBE HERE WE DON't need the board id cool!!  Yes I see it as you saied before cool thank you! see u afternoon
-      
 
       // it works! we needed to remove the selected board as a parameter of add card
       .then((response) => {
@@ -212,31 +211,31 @@ function App() {
 
   return (
     <div className="inspoBoard">
-      <header className = "header">
+      <header className="header">
         <h1>Inspiration Board</h1>
       </header>
       <div className="boardList">
-      <BoardList boardList={boardList} selectBoard={selectBoard}></BoardList>
+        <BoardList boardList={boardList} selectBoard={selectBoard}></BoardList>
       </div>
       <div className="selectBoard">
         <h2>Selected Board</h2>
         <p>{selectedBoard.board}</p>
       </div>
       <div className="boardForm">
-      <BoardForm addBoardCallbackFunc={addBoard}></BoardForm>
+        <BoardForm addBoardCallbackFunc={addBoard}></BoardForm>
       </div>
-      <div className = "cardList">
-      <CardList
-        selectedBoardId={selectedBoard.id}
-        deleteCard={deleteCard}
-        cardList={cardList}
-      ></CardList>
+      <div className="cardList">
+        <CardList
+          selectedBoardId={selectedBoard.id}
+          deleteCard={deleteCard}
+          cardList={cardList}
+        ></CardList>
       </div>
       <div className="cardForm">
-      <CardForm 
-        addCardCallbackFunc={addCard}
-        selectedBoard={selectedBoard}
-      ></CardForm>
+        <CardForm
+          addCardCallbackFunc={addCard}
+          selectedBoard={selectedBoard}
+        ></CardForm>
       </div>
     </div>
   );
