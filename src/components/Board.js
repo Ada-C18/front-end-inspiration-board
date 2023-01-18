@@ -2,35 +2,28 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 
 const Board = (props) => {
-	const board_id = props.board_id; // hidden, implied primary key
-	const title = props.title;
-	const owner = props.owner;
-	// const selected = props.selected; // might not need attribute
+  const boardId = props.boardId; // hidden, implied primary key
+  const title = props.title;
+  const owner = props.owner;
+  const updateSelectedBoard = props.updateSelectedBoard;
 
-	// const [selected, setSelected] = useState(false); // move useState somewhere else
+  // updateSelectedBoard
 
-	const updateBoard = () => {
-		console.log("updateBoard called");
-		// 	const newBoard = {
-		// 		board_id: board_id,
-		// 		title: title,
-		// 		owner: owner,
-		// 		selected: !selected,
-		// 	}
-		// 	// selected = !selected;
-	};
-
-	return (
-		<li style={{ cursor: "pointer" }} onClick={updateBoard}>
-			Title: {title}
-		</li>
-	);
+  return (
+    <li
+      style={{ cursor: "pointer" }}
+      onClick={() => updateSelectedBoard(boardId)}
+    >
+      Title: {title}
+    </li>
+  );
 };
 
 Board.propTypes = {
-	board_id: PropTypes.number.isRequired,
-	title: PropTypes.string.isRequired,
-	owner: PropTypes.string.isRequired,
+  boardId: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  owner: PropTypes.string.isRequired,
+  updateSelectedBoard: PropTypes.func.isRequired,
 };
 
 export default Board;
