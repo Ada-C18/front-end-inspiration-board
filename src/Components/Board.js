@@ -41,6 +41,8 @@ const Board = (props) => {
         .get(`${BACKEND_URL}/boards/${props.currentBoard}/cards`)
         .then((result) => {
           const cards = result.data;
+
+          // Set the comparison direction
           const compare = (a, b) => {
             switch (sortCardsBy.direction) {
               case "asc":
@@ -52,8 +54,10 @@ const Board = (props) => {
         }
       }
           cards.sort((c1, c2) => {
+            // Sort by specified property.
             switch (sortCardsBy.method) {
               case "message":
+                // Case insensitive sort.
                 return compare(c1.message.toLowerCase(), c2.message.toLowerCase());
               default:
                 return compare(c1[sortCardsBy.method], c2[sortCardsBy.method]);
@@ -66,6 +70,11 @@ const Board = (props) => {
   };
 
   useEffect(getCardList, [props.currentBoard, sortCardsBy]);
+  useEffect(() => {
+    // Reset the board controls when changing the board.
+    setSortCardsBy({method: "id", direction: "asc"});
+    setCardFormVisible(false);
+  }, [props.currentBoard]);
 
   const [cardFormVisible, setCardFormVisible] = useState(false);
   const toggleCardFormVisible = () => setCardFormVisible(!cardFormVisible);
