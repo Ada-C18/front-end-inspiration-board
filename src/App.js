@@ -127,7 +127,7 @@ function App() {
 				console.log(response);
 				const cardsAPIResCopy = response.data.map((card) => {
 					return {
-						cardId: card.cardId,
+						cardId: card.card_id,
 						message: card.message,
 						// likesCount: card.likesCount,
 					};
@@ -140,7 +140,7 @@ function App() {
 	};
 
 	// initial get cards request
-	useEffect(fetchCards, []);
+	useEffect(fetchCards, []); // look into this
 
 	// Add Card Function
 	// Todo: add API post card code
@@ -149,7 +149,7 @@ function App() {
 
 		const newCardsList = [...selectedCards];
 		newCardsList.push({
-			board_id: newCard.board_id, // hidden, implied primary key
+			boardId: newCard.board_id, // hidden, implied primary key
 			message: newCard.message,
 		});
 
