@@ -41,6 +41,7 @@ const App = () => {
       })
       .catch((error) => {
         console.log(error);
+        alert("Unable to retrieve your boards");
       });
   }, []);
 
@@ -53,6 +54,7 @@ const App = () => {
         setBoardData(newBoards);
       })
       .catch((error) => console.log(error));
+    alert("Unable to create a board");
   };
 
   const handleBoardClicked = (id) => {
@@ -76,6 +78,7 @@ const App = () => {
       })
       .catch((error) => {
         console.log(error);
+        alert("Unable to load cards");
       });
   };
 
@@ -98,11 +101,13 @@ const App = () => {
         });
         setCardData(newCards);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        alert("Unable to add the card.");
+      });
   };
 
   const deleteCard = (id) => {
-    console.log("Card ID: %f", id);
     axios
       .delete(`${CardURL}/${id}`)
       .then(() => {
@@ -111,6 +116,7 @@ const App = () => {
       })
       .catch((error) => {
         console.log(error);
+        alert("Unable to delete the card.");
       });
   };
 
@@ -123,7 +129,6 @@ const App = () => {
         </div>
         <div>
           <h1> Selected Board</h1>
-          {/* <p>{selectedBoard.title} {selectedBoard.owner}</p> */}
           <p>
             {selectedBoard.id
               ? `${selectedBoard.title}  ${selectedBoard.owner}`
@@ -147,8 +152,6 @@ const App = () => {
         )}
         {selectedBoard.id && (
           <div className="board_container">
-            {/* {cardData} */}
-            {/* was this before axios call {displayCards} */}
             <CardList cards={cardData} onDeleteCard={deleteCard}></CardList>
 
             <div className="new_card">
