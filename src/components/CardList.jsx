@@ -1,8 +1,7 @@
 import axios from "axios";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import NewCardForm from "./NewCardForm";
-import { useState, useEffect } from "react";
 
 const CardList = (props) => {
     const [cardData, setCardData] = useState([]);
@@ -55,7 +54,7 @@ const CardList = (props) => {
     });
 
     const postNewCard = (message) => {
-        axios.post(`${process.env.REACT_APP_BACKEND_URL}/${props.board.board_id}/cards`, {message}
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.board_id}/cards`, {message}
         ).then((response) => {
         const cards = [...cardData];
         cards.push(response.data.card);
