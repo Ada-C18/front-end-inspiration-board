@@ -5,6 +5,11 @@
     color: white;
     padding: 2pt;
     margin: 10pt;
+    height: 200pt;
+    width: 200pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .card_info {
@@ -15,7 +20,7 @@
 
 .message {
     font-family:fantasy;
-    font-size: xx-large;
+    font-size: x-large;
     font-weight: bolder;
 }
 

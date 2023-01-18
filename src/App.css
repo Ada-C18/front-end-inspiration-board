@@ -1,6 +1,6 @@
-.whole__page {
+/* .whole__page {
   background-color: yellow;
-}
+} */
 
 .App__header {
   background-color: black;
@@ -14,12 +14,15 @@
 
 
 .all__board__container {
+/* background-image: url("/images); */
+background-image: url("/src/images/489bf56a918d9ea4a331964a533cebb7.jpg");
 border-style: solid;
 border-radius: 20pt ;
 display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
+
+/* flex-direction: column; */
+/* align-items: baseline; */
+justify-content: space-evenly;
 padding: 20pt;
 }
 
@@ -29,13 +32,17 @@ padding: 20pt;
   border-radius: 5pt ;
   padding: 20pt;
   opacity: 0.9;
+  height: 300px;
+  overflow: scroll;
 }
 
 .board_header {
   background-color:darkviolet;
-  font-size: x-large;
+  font-size: large;
   color: white;
   text-align: center;
+  /* border: red solid 1px; */
+  /* margin: 0 0 2px 0; */
 }
 
 .boards {
@@ -63,6 +70,8 @@ padding-right: 25pt;
   text-align: center;
   padding: 5pt;
   opacity: 0.9;
+  padding: 20pt;
+  height: 300px;
 }
 
 .create__board__header {
@@ -114,4 +123,8 @@ padding-right: 25pt;
 
 .sort_by {
   font-size: medium;
+}
+
+body {
+  background-color: black
 }

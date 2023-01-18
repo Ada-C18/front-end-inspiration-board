@@ -9,6 +9,9 @@
     width: 300px;
     row-gap: 2px;
     opacity: 0.9;
+    border-radius: 5pt ;
+    text-align: center;
+    padding: 5pt;
     /* padding: 5pt; */
 }
 

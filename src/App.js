@@ -183,13 +183,13 @@ function App() {
       {/* BOARDS */}
       <h1 className="App__header">
         <RainbowText lightness={0.5} saturation={1}>
-          💫 No thoughts Just vibes Inspiration Board 💫
+          💫 No Thoughts Just Vibes Inspiration Board 💫
         </RainbowText>
       </h1>
       <section
-        style={{
-          backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgYknV4AaaHSWrEZmZFZsCZrcFsfKQeFqNeQ&usqp=CAU")`,
-        }}
+        // style={{
+        //   backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgYknV4AaaHSWrEZmZFZsCZrcFsfKQeFqNeQ&usqp=CAU")`,
+        // }}
         className="all__board__container"
       >
         <section className="board__container">
@@ -254,7 +254,7 @@ function App() {
                 </select>
               </section>
             </section>
-            <section className="card__form">
+            <section>
               <NewCardForm
                 addCardData={addCardData}
                 selectedBoard={selectedBoard}
