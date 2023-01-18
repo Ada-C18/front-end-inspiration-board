@@ -1,3 +1,4 @@
+// import "../styles/FormNewCard.css";
 import "../styles/FormNewCard.css";
 import { useState } from "react";
 
@@ -8,6 +9,8 @@ const INITIAL_FORM = {
 const FormNewCard = (props) => {
   const [formCard, setFormCard] = useState(INITIAL_FORM);
   const [message, setMessage] = useState("");
+  const [formErrors, setFormErrors] = useState({});
+  const [isValidInput, setIsValidInput] = useState(true);
 
   const handleChange = (e) => {
     const newCardData = {
@@ -22,14 +25,23 @@ const FormNewCard = (props) => {
 
   const handleNewCardSubmit = (e) => {
     e.preventDefault();
+    setFormErrors(validateForm(formCard));
+  };
 
-    if (message.length === 0) {
-      alert("Card must have message");
-    } else if (message.length > 40) {
-      alert("Message must be less than 40 characters");
+  const validateForm = (values) => {
+    const errors = {};
+
+    if (!values.message) {
+      errors.message = "Card must have message";
+      setIsValidInput(false);
+    } else if (values.message.length > 40) {
+      errors.message = "Message must be less than 40 characters";
+      setIsValidInput(false);
     } else {
       props.addCardCallbackFunc(formCard, props.boardId);
+      setIsValidInput(true);
     }
+    return errors;
   };
 
   return (
@@ -42,12 +54,11 @@ const FormNewCard = (props) => {
         value={formCard.message}
         placeholder="Inspirational message"
         onChange={handleChange}
+        className={isValidInput ? "valid" : "invalid"}
       />
-      <br/>
-      <br/> 
-      <label>Card preview:</label>
-      <p className="message-preview"> {message} </p>
-      <input className = "button" type="submit" value="Add Card" />
+      <p className="cardError">{formErrors.message}</p>
+      <p> Preview card message: {message} </p>
+      <input type="submit" value="Add Card" />
     </form>
   );
 };

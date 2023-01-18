@@ -1,3 +1,6 @@
+.cardError {
+    color: red;
+}
 
 
 label {
@@ -12,6 +15,9 @@ label {
 
 }
 
+input.invalid {
+    border: 2px solid red;
+}
 .message-preview {
     font-style: italic;
 }
