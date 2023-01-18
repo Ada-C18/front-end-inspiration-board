@@ -44,7 +44,6 @@ const CardList = ({ board }) => {
     });
   };
 
-  // Do we need to get all cards again with this?
   const deleteCard = (cardId) => {
     axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`)
     .then(() => {
@@ -61,7 +60,6 @@ const CardList = ({ board }) => {
     });
   };
 
- 
 // Need to add key here???
   const cardsComponent = cardsList.map((card) => {
     return (

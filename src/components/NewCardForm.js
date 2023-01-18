@@ -50,7 +50,6 @@ const NewCardForm = ({boardId, createNewCardForm}) => {
       <input type="submit" value="Submit"></input>
     </form>
   );
-
 };
 
 NewCardForm.propTypes = {

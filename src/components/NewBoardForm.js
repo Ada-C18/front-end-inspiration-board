@@ -54,7 +54,6 @@ const NewBoardForm = ({createNewBoardForm}) => {
 
     </form>
   );
-
 };
 
 NewBoardForm.propTypes = {

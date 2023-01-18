@@ -14,8 +14,7 @@ function App() {
       id: null
     });
 
-  const [selectedBoardLabel, setSelectedBoardLabel] = useState("Select A Board");
-  // const [selectedBoardTitle, setSelectedBoardTitle] = useState("Affirmation");
+  const [selectedBoardLabel, setSelectedBoardLabel] = useState("Select a Board from the Board List!");
   const cardsListVisible = selectedBoard.id ? <CardList board={selectedBoard}></CardList> : ''
   
   useEffect(() => {
