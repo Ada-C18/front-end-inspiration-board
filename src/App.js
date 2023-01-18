@@ -43,6 +43,12 @@ const api = {
       .post(`${api.baseUrl}/cards`, cardData)
       .then((response) => response.data)
       .catch(api.logErr),
+
+  likeCard: (cardId) =>
+    axios
+      .patch(`${api.baseUrl}/cards/${cardId}`)
+      .then((response) => response.data)
+      .catch(api.logErr),
 };
 
 function App() {
@@ -67,6 +73,17 @@ function App() {
 
   const selectBoard = (id) =>
     setSelectedBoard(boardList.find((board) => id === board.board_id));
+
+  const likeCard = (id) =>
+    api
+      .likeCard(id)
+      .then((likedCard) =>
+        setCardList(
+          [...cardList].map((card) =>
+            card.card_id === likedCard.card_id ? likedCard : card
+          )
+        )
+      );
 
   const createBoard = (newBoard) =>
     api.postBoard(newBoard).then((createdBoard) => {
@@ -102,6 +119,7 @@ function App() {
                   title={selectedBoard.title}
                   owner={selectedBoard.owner}
                   cards={cardList || []}
+                  likeCard={likeCard}
                 ></CardList>
 
                 <CreateCardForm
