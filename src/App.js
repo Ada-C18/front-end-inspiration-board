@@ -4,7 +4,11 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Board from "./components/Board.js";
 import BoardList from "./components/BoardList";
+/* import NewCardForm from "./components/NewCardForm"; */
+import Header from "./components/Header";
 import NewBoardForm from "./components/NewBoardForm";
+import Title from "./components/Title";
+import VieworAddButtons from "./components/ViewOrAddButtons";
 
 // const REACT_APP_BACKEND_URL = "http://localhost:5000/cards";
 
@@ -90,7 +94,9 @@ function App() {
 
   return (
     <div>
-      <h1>Hello Peeps!</h1>
+      <Header></Header>
+      <Title></Title>
+      <VieworAddButtons></VieworAddButtons>
       <NewBoardForm addBoardCallbackFunc={addBoard} />
       <BoardList boardList={boardList} loadBoard={loadBoard} />
       <Board cards={cards} selectedBoard={selectedBoard} addCard={addCard} />
