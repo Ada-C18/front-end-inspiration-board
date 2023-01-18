@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,45 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+.App-header {
+  background-color: #647864;
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 0.6em 1em;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0 10%;
+}
+
+.board-section {
+  display: inline-block;
+  width: 50%;
+  padding: 5pt;
+}
+
+
+/* h1{
+  transform: rotate(-5deg) skew(-10deg);
+} */

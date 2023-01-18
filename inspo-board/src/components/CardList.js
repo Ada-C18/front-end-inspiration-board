@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Card from "./Card";
 
-const CardList = ({ cards }) => {
+const CardList = ({ cards, deleteCard, addLike }) => {
   console.log(cards);
   return (
     <div>
@@ -12,6 +12,9 @@ const CardList = ({ cards }) => {
             key={card.card_id}
             cardId={card.card_id}
             message={card.message}
+            deleteCard={deleteCard}
+            likesCount={card.likes_count}
+            addLike={addLike}
           />
         );
       })}
@@ -24,8 +27,11 @@ CardList.propTypes = {
     PropTypes.shape({
       card_id: PropTypes.number.isRequired,
       message: PropTypes.string.isRequired,
+      likes_count: PropTypes.number.isRequired,
     })
   ),
+  deleteCard: PropTypes.func.isRequired,
+  addLike: PropTypes.func.isRequired,
 };
 
 export default CardList;
