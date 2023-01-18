@@ -46,6 +46,7 @@ const Board = (props) => {
     );
   });
 
+
   const cardForm = props.currentBoard ? (
         <CardForm
           visible={cardFormVisible}
@@ -54,11 +55,41 @@ const Board = (props) => {
         ></CardForm>
   ) : "";
 
+  const likeOneCard = (id) => {
+    console.log(id)
+    axios.put(`${BACKEND_URL}/cards/${id}`).then((result) => {
+
+   
+      getCardList();
+   
+    }).catch((error) => {
+      console.log('Error:', error);
+      alert('Couldn\'t +1 the card.');
+    });};
+
+    const deleteCard= (id) => {
+        axios.delete(`${BACKEND_URL}/cards/${id}`).then((response) => {
+       
+          getCardList();
+       
+        }).catch((error) => {
+          console.log('Error:', error);
+          alert('Couldn\'t delete the card.');
+        });
+      };
+
+    const cardsData = cardList.map((card) => {
+        return (
+          <Card key={card.id} id={card.id} message={card.message} likes={card.likes}likeOneCard={likeOneCard} deleteCard={deleteCard}></Card>
+        );
+      });
+
   return (
     <section id="board">
       <h2>{props.currentBoardName}</h2>
       <div className="card-list">
-        {cards}
+        {/* {cards} */}
+        {cardsData}
         {cardForm}
       </div>
     </section>

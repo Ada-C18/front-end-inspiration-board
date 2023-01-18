@@ -5,3 +5,13 @@
   width: 200px;
   height: 200px;
 }
+.likes-button {
+    display: flex;
+    justify-content: left;    
+
+}
+
+.delete-button {
+    display: flex;
+    justify-content: right;
+}
