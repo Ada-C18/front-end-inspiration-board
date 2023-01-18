@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import Card from "./Card";
 
-const CardsList = ({ cardsList }) => {
+const CardsList = ({ cardsList, deleteCard }) => {
 	const cardComponents = cardsList.map((card) => {
 		return (
 			<Card
@@ -27,6 +27,7 @@ CardsList.propTypes = {
 			message: PropTypes.string.isRequired,
 		})
 	),
+	deleteCard: PropTypes.func.isRequired,
 };
 
 export default CardsList;
