@@ -8,12 +8,9 @@
 .card-item {
     align-items: center;
     background-color:  #f0a3bc;
-    /* box-shadow: -10px 7px 7px #d3d3d3; */
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
-    font-family: Arial;
     justify-content: center;
-    min-height: 200px;
+    min-height: 100px;
     padding: 1rem;
 }
