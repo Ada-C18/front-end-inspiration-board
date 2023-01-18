@@ -7,7 +7,7 @@ function NewCardForm({ addCardCallBack }) {
     message: "",
   });
 
-  const handlechange = (e) => {
+  const handleChange = (e) => {
     setCardData(e.target.value);
   };
 
@@ -31,7 +31,7 @@ function NewCardForm({ addCardCallBack }) {
             <label htmlFor="message">Your message</label>
             <input
               type="text"
-              onChange={handlechange}
+              onChange={handleChange}
               name="message"
               placeholder="Message"
               value={cardData.message}
