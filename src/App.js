@@ -13,6 +13,7 @@ import {
   addNewCard,
   getAllCards,
   getCardsFirstBoard,
+  deleteCard,
 } from './API/InspirationAPI';
 
 const App = function () {
