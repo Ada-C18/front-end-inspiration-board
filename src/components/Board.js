@@ -9,8 +9,6 @@ import './Board.css'
 import Card from './Card'
 
 
-
-
 const Board = () => {
     const [boardData, setBoardData] = useState([]);
 
