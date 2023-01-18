@@ -63,10 +63,8 @@ function App() {
           </div>
         </section>
         <section className="selected-board">
-          <h2>Selected Board</h2>
-          <p>Select a Board from the Board List!</p>
-          
-          <div>Need to insert selected Board</div>
+          {/* <h2>Selected Board</h2> */}
+          {/* <div>Need to insert selected Board</div> */}
         </section>
         <section className="add-new-board">
           <h2>Create a New Board</h2>

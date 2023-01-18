@@ -34,11 +34,14 @@ const BoardList = ({ boards }) => {
           </li>
         ))}
       </ul>
-      {selectedBoard && (
+      <h2>Selected Board</h2>
+      {/* {selectedBoard && ( */}
+
         <div>
-          {selectedBoard.title} - {selectedBoard.owner}
+        {selectedBoard ? `${selectedBoard.title} - ${selectedBoard.owner}` : "need to select board"};
         </div>
-      )}
+       {/* )} */}
+   
     </div>
   );
 };
