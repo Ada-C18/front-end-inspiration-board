@@ -21,15 +21,15 @@ const CardsList = (props) => {
         );
         console.log("Response to broken api", error.response.data);
       });
-  }, [props.board]);
+  }, []);
 
   const plusOneCardItem = (card) => {
     console.log(cardsData);
     axios
-      .patch(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/like`)
+      .patch(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.id}/like`)
       .then((response) => {
         const newCardsData = cardsData.map((currentCard) => {
-          return currentCard.card_id !== card.card_id
+          return currentCard.id !== card.id
             ? currentCard
             : { ...card, likes_count: card.likes_count + 1 };
         });
@@ -43,10 +43,10 @@ const CardsList = (props) => {
 
   const deleteCardItem = (card) => {
     axios
-      .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}`)
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.id}`)
       .then((response) => {
         const newCardsData = cardsData.filter((currentCard) => {
-          return currentCard.card_id !== card.card_id;
+          return currentCard.id !== card.id;
         });
         setCardsData(newCardsData);
       })
