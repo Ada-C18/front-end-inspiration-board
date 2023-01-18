@@ -37,8 +37,8 @@
   }
 }*/
 
-.inspiration_style{
-  display:grid;
+.inspiration_style {
+  display: grid;
   grid-template-columns: auto;
   text-decoration: none;
   grid: gap 15px;
@@ -48,30 +48,32 @@
   padding-bottom: 15px;
 }
 
-.inspiration_style > .inspiration_background{
+.inspiration_style > .inspiration_background {
   padding: 20px;
   border-width: 10px;
   text-align: center;
   color: rgb(0, 0, 0);
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Permanent Marker", cursive;
   font-size: 50px;
-  background-color: rgba(0, 0, 255, .2);
-  transform:matrix3d(20)
-
+  background-color: rgba(0, 0, 255, 0.2);
+  transform: matrix3d(20);
 }
 
-a, a:hover, a:focus, a:active {
+a,
+a:hover,
+a:focus,
+a:active {
   text-decoration: none;
   color: white;
 }
 .wrapper {
   display: grid;
   width: 95%;
-  grid-template-columns: repeat(3,minmax(0,1fr));
-   grid-auto-columns: 1fr;
-  grid-auto-flow: column; 
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
   gap: 10px;
-  padding: 30px; 
+  padding: 30px;
 }
 
 .one {

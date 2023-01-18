@@ -1,0 +1,14 @@
+.card {
+  background-color: rgb(215, 164, 240);
+  box-shadow: 10px 10px 8px rgb(204, 186, 186);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  margin: 2rem;
+  width: 200px;
+}
+.button-container {
+  align-self: flex-end;
+}

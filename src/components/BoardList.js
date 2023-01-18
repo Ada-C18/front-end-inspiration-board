@@ -6,7 +6,9 @@ const BoardList = ({ boards, selectBoard }) => {
   const clickBoard = (event) => selectBoard(parseInt(event.currentTarget.id));
   return (
     <section className="boardList">
-      <div className= "stylingboard"><h2>Boards</h2></div>
+      <div className="stylingboard">
+        <h2>Boards</h2>
+      </div>
       {[...boards].map((board) => (
         <div
           className="boardListItem"

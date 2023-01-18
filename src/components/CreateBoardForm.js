@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./CreateBoardForm.css"
+import "./CreateBoardForm.css";
 //import PropTypes from "prop-types";
 
 const CreateBoardForm = ({ createBoard }) => {
@@ -25,16 +25,20 @@ const CreateBoardForm = ({ createBoard }) => {
 
   return (
     <form onSubmit={submitCreateBoardForm}>
-      <div className= "stylingboard"><h2>New Board</h2></div>
+      <div className="stylingboard">
+        <h2>New Board</h2>
+      </div>
       <label htmlFor="newBoardTitle">New Board Title:</label>
-      <input className="jump"
+      <input
+        className="jump"
         name="newBoardTitle"
         value={newBoard.title}
         type="text"
         onChange={onBoardTitleChange}
       />
       <label htmlFor="newBoardOwner"> New Board Owner:</label>
-      <input className="jump"
+      <input
+        className="jump"
         name="newBoardOwner"
         value={newBoard.owner}
         type="text"

@@ -1,6 +1,6 @@
 import { useState } from "react";
 //import PropTypes from "prop-types";
-import "./CreateCardForm.css"
+import "./CreateCardForm.css";
 
 const CreateCardForm = ({ createCard, board }) => {
   const emptyCard = {
@@ -21,7 +21,9 @@ const CreateCardForm = ({ createCard, board }) => {
 
   return (
     <form onSubmit={submitCreateCardForm}>
-      <div className= "stylingboard"><h2>New Card</h2></div>
+      <div className="stylingboard">
+        <h2>New Card</h2>
+      </div>
       <label htmlFor="newCardMessage">New Card Message:</label>
       <input
         name="newCardMessage"

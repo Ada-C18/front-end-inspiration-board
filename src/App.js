@@ -82,32 +82,39 @@ function App() {
   return (
     <div className="App">
       <header className="inspiration_style">
-        <h1 className ="inspiration_background"> Inspiration Board </h1>   
+        <h1 className="inspiration_background"> Inspiration Board </h1>
       </header>
       <main>
-        <div className = "wrapper">
-        <div className = "one"><CreateBoardForm createBoard={createBoard}></CreateBoardForm></div>
-        <div className = "two"><BoardList boards={boardList || []} selectBoard={selectBoard}></BoardList></div>
-        <div className = "three">
-        {selectedBoard && (
-          <section>
-            
-            <CardList
-              title={selectedBoard.title}
-              owner={selectedBoard.owner}
-              cards={cardList || []}
-            ></CardList>
-            
-            <CreateCardForm
-              createCard={createCard}
-              board={selectedBoard.board_id}
-            ></CreateCardForm>
-            <h2>
-              Cards on {selectedBoard.title} for {selectedBoard.owner}
-            </h2>
-          </section>
-        )} </div>
-</div>
+        <div className="wrapper">
+          <div className="one">
+            <CreateBoardForm createBoard={createBoard}></CreateBoardForm>
+          </div>
+          <div className="two">
+            <BoardList
+              boards={boardList || []}
+              selectBoard={selectBoard}
+            ></BoardList>
+          </div>
+          <div className="three">
+            {selectedBoard && (
+              <section>
+                <CardList
+                  title={selectedBoard.title}
+                  owner={selectedBoard.owner}
+                  cards={cardList || []}
+                ></CardList>
+
+                <CreateCardForm
+                  createCard={createCard}
+                  board={selectedBoard.board_id}
+                ></CreateCardForm>
+                <h2>
+                  Cards on {selectedBoard.title} for {selectedBoard.owner}
+                </h2>
+              </section>
+            )}{" "}
+          </div>
+        </div>
       </main>
     </div>
   );

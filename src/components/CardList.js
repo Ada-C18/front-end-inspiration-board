@@ -6,7 +6,7 @@ const CardList = ({ title, owner, cards }) => {
   return (
     <section className="cardList">
       {[...cards].map((card) => (
-        <div className="cardListItem" key={card.id} id={card.id}>
+        <div className="card" key={card.id} id={card.id}>
           <div className="cardMessage">{card.message}</div>
           <div className="cardLikes">{card.likes_count}</div>
         </div>
