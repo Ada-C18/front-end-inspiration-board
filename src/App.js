@@ -20,7 +20,7 @@ function App() {
     board_id: null
   },[]);
 
-  console.log(selectedBoard)
+  // console.log(selectedBoard)
 
   useEffect(() => {
     axios.get(`${url}/boards`, {}).then((response) => {
