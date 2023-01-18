@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Board from "./components/Board.js";
+import { FaRegTrashAlt } from 'react-icons/fa';
 import CardList from "./components/CardList.js";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
@@ -47,16 +48,41 @@ function App() {
         };
       };
   };
+
+  const deleteBoard = (boardId) => {
+    axios.delete(`${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}`)
+    .then(() => {
+      const newBoardList = [];
+      for (const board of boardsList) {
+        if (board.id !== boardId) {
+          newBoardList.push(board);
+        }
+      }
+      setBoardsList(newBoardList);
+      axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
+      .then((response) => {
+        console.log(response.data);
+        setSelectedBoard(response.data)
+      })
+      .catch( (error) => {
+        console.log(error);
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
   
-  const boardsComponent = boardsList.map((board) => {
-    
+  const boardsComponent = boardsList.map((board) => { 
     return (
       <ul key={board.id}> 
         <Board board={board} onBoardSelect={onBoardSelect}></Board>
+        <span className="board-trash" onClick={()=>{deleteBoard(board.id)}}><FaRegTrashAlt/></span>
       </ul>
     );
   });
-  
+
   const addBoard = (newBoardInfo) => {
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/boards`, newBoardInfo)
     .then((response) => {

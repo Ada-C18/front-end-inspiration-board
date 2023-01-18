@@ -63,6 +63,10 @@ aside {
   transition: background-color 0.5s ease;
 }
 
+.board-trash:hover {
+  color: red;
+}
+
 .boards {
   background-color: rgb(245, 245, 245);
   padding: 3% 5%;
