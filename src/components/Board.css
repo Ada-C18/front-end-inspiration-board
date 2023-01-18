@@ -3,6 +3,10 @@
     display: inline;
     padding-left: 10px;
 }
+.board-name-text:hover {
+    background: rgba(255, 255, 255, 0.7);
+    color: #4E878C;
+}
 
 .board-item {
     border: 1px solid white;
@@ -14,9 +18,25 @@
 }
 
 /* tags */
-button {
+/* button {
     border: None;
     width: 25px;
     height: 25px;
     background-color: rgb(201, 201, 201);
+} */
+
+.button_click{
+    width: 25px;
+    height: 25px;
+    border: none;
+    /* font-family: 'Fjalla One', sans-serif;
+    font-size: 1.4em; */
+    background-color: rgb(201, 201, 201);
+    color: white;
+    border-radius: 1em;
+}
+
+.button_click:hover {
+    background: rgba(255, 255, 255, 0.7);
+    color: #4E878C;
 }

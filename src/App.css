@@ -1,3 +1,9 @@
-h1 {
+h2 {
   margin-top:0;
+}
+nav{ 
+  font-size: 2em;
+  text-align: right;
+  margin-right: 3%;
+  margin-top: 2%;
 }

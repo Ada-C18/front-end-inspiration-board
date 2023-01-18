@@ -107,15 +107,17 @@ function App() {
 
   return (
     <div>
-      <h1>Boards:</h1>
+      <h2>Boards:</h2>
       <BoardList
         boardEntries={boardsList}
         deleteBoard={deleteBoard}
         fetchCards={fetchAllCards}
       />
-      <CardList cardEntries={cardsList} />
       <h2>Add Board:</h2>
       <NewBoardForm addBoardCallbackFunc={addBoard} />
+      <h2>Cards:</h2>
+      <CardList cardEntries={cardsList} />
+  
     </div>
   );
 }

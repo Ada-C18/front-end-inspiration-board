@@ -21,7 +21,7 @@ const Board = (props) => {
   return (
     <div className={boardItemClass} onClick={() => toggleBoardItem()}>
       {/* <li>board id: {id}</li> */}
-      <button onClick={() => deleteBoard(id)}>x</button>
+      <button className="button_click" onClick={() => deleteBoard(id)}>x</button>
       <div className="board-name-text" onClick={() => fetchCards()}>
         title: {title}
       </div>

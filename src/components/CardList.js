@@ -19,7 +19,7 @@ const CardList = (props) => {
   });
 
   return (
-	<section>
+	<section className="cards_container">
 	  <ul>{cardComponents}</ul>
 	</section>
   );
