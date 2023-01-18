@@ -20,7 +20,7 @@ const BoardList = (props) => {
   return (
     <div className="App">
       <h3 className="BoardHeading">Boards:</h3>
-      <ul>{board}</ul>
+      <ul className="Boards-Box">{board}</ul>
     </div>
   );
 };

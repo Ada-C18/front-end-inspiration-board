@@ -70,12 +70,28 @@ function App() {
     axios
       .delete(`${URL}`)
       .then((response) => {
-        setBoardData(response);
+        setBoardData([]);
         setSelectedBoard(emptyBoard);
       })
       .catch((error) => {
         console.log("Error:", error);
         alert("Couldn't delete all boards. Try again!");
+      });
+  };
+
+  const deleteOneBoard = (board_id) => {
+    axios
+      .delete(`${URL}/${board_id}`)
+      .then((response) => {
+        const newBoardData = boardData.filter((oldBoards) => {
+          return oldBoards.id !== board_id;
+        });
+        setBoardData(newBoardData);
+        setSelectedBoard(emptyBoard);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+        alert("Couldn't delete board. Try again!");
       });
   };
 
@@ -106,10 +122,19 @@ function App() {
         <CardList
           className="CardList-Area"
           selectedBoardId={selectedBoard.id}
+          onDeleteBoard={deleteOneBoard}
         />
-        <button onClick={deleteAllBoards} className="Delete-Button">
+        <button
+          onClick={() => {
+            if (window.confirm("Are you sure you wish to delete this item?")) {
+              deleteAllBoards();
+            }
+          }}
+          className="Delete-Button"
+        >
           Click Here to delete ALL Boards and Cards Data
         </button>
+        <div></div>
       </main>
     </div>
   );

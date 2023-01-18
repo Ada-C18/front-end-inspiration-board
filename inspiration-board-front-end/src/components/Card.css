@@ -1,7 +1,7 @@
 .Message-Info {
   font-weight: bold;
   font-size: 1.5em;
-  background: #ffc;
+  background:#defcf9;
   text-align: center;
   flex-wrap: wrap;
 }
@@ -9,7 +9,7 @@
   display: flex;
   font-size: 1em;
   font-weight: normal;
-  background: #ffc;
+  background: #defcf9;
   align-items: center;
 }
 
@@ -17,10 +17,12 @@
   display: flex;
   font-size: 2em;
   font-weight: normal;
-  background: #ffc;
+  background: #defcf9;
   align-items: center;
 }
-
+.Likes-Info-heart :hover {
+  color: #cca8e9;
+}
 .Likes-Container {
   /* border: 1em;
   border-color: aqua;
@@ -28,13 +30,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  background: #ffc;
+  background: #defcf9;
   flex-wrap: wrap;
 }
 .Card-Info {
   text-decoration: none;
   color: #000;
-  background: #ffc;
+  background: #defcf9;
   display: flex;
   flex-direction: column;
   justify-content: center;

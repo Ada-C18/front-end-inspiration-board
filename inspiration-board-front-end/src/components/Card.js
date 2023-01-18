@@ -13,7 +13,7 @@ const Card = (props) => {
             props.onLikeCard(props);
           }}
         >
-          🧡
+          💜
         </p>
         <p className="Likes-Info"> Likes: {props.likes}</p>
       </span>

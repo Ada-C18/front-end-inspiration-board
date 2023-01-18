@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Card from "./Card";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import "./CardList.css";
 import NewCardForm from "./NewCardForm";
@@ -13,7 +13,7 @@ const CardList = (props) => {
   console.log(board_id);
   console.log(`card data, ${cardData}`);
 
-  const getAllCards = () => {
+  const getAllCards = useCallback(() => {
     if (props.selectedBoardId === 0) {
       setCardData([]);
     } else {
@@ -34,11 +34,11 @@ const CardList = (props) => {
           );
         });
     }
-  };
+  }, [URL, props.selectedBoardId]);
 
   useEffect(() => {
     getAllCards();
-  }, [board_id]);
+  }, [board_id, getAllCards]);
 
   const addCard = (newCard) => {
     axios
@@ -96,6 +96,14 @@ const CardList = (props) => {
     <div className="whole-area">
       <ul className="cards">{cards}</ul>
       <NewCardForm className="NewBoardForm" addCardCallBack={addCard} />
+      <button
+        className="Delete-Board-Button"
+        onClick={() => {
+          props.onDeleteBoard(board_id);
+        }}
+      >
+        Delete Selected Board
+      </button>
     </div>
   );
   if (board_id === 0) {
@@ -107,5 +115,6 @@ const CardList = (props) => {
 
 CardList.propTypes = {
   selectedBoardId: PropTypes.number.isRequired,
+  onDeleteBoard: PropTypes.func.isRequired,
 };
 export default CardList;

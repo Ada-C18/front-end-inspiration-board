@@ -1,5 +1,5 @@
 * {
-  background-color: rgb(255, 193, 79);
+  background-color:#cadefc;
 }
 
 .App-header {
@@ -18,33 +18,25 @@
   margin: 2rem;
   padding: 1rem;
   font-size: 1rem;
-  border-color: tomato;
+  border-color: #cca8e9 ;
   border-width: 1rem;
-  border-style: solid;
-}
-
-.BoardList-box {
-  color: aliceblue;
-  margin: 2rem;
+  border-style: dashed;
+  border-radius: 10px;
 }
 
 .BoardTitles {
-  color: rgb(103, 45, 82);
+  color:rgb(144, 92, 159);
   font-size: 1.5rem;
   padding: 0.2em;
 }
 
-.CardsInfo {
-  background-color: aliceblue;
-}
-
 .BoardTitles:hover {
-  color: aliceblue;
+  color:#cca8e9;
 }
 
 .SelectedBoard {
   font-size: calc(8px + 3vmin);
-  color: tomato;
+  color: rgb(144, 92, 159);
   text-align: left;
   padding: 2rem;
   font-weight: bold;
@@ -53,11 +45,12 @@
 }
 
 .Delete-Button {
-  font-size: calc(4px + 2vmin);
+  border-radius: 10px;
+  font-size: calc(2.5px + 1.5vmin);
   align-items: center;
   align-self: center;
-  color: rgb(255, 27, 27);
-  background-color: rgb(255, 189, 139);
+  color: #2f82fe;
+  background-color: #c3bef0;
   text-align: center;
   padding: 1rem;
   margin: 2rem;

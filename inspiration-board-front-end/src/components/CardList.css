@@ -6,16 +6,17 @@
   margin: 2rem;
   padding: 1rem;
   font-size: 1rem;
-  border-color: tomato;
+  border-color: #cca8e9;
   border-width: 1rem;
-  border-style: ridge;
+  border-style: dashed;
+  border-radius: 10px;
 }
 
 .cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: rgb(255, 153, 0);
+  background-color:#c3bef0;
   margin: 2rem;
   padding: 1rem;
   border-radius: 2rem;
