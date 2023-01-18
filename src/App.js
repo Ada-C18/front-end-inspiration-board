@@ -63,27 +63,28 @@ function App() {
   };
   useEffect(refreshBoardList, []);
 
-  useEffect(() => {
+  const refreshCardList = () => {
     if (selectedBoard !== undefined) {
-      api
-        .getCards(selectedBoard.board_id)
-        .then((cardData) => setCardList(cardData.cards));
+      api.getCards(selectedBoard.board_id).then((cardData) => {
+        setCardList(cardData);
+      });
     }
-  }, [selectedBoard]);
+  };
+  useEffect(refreshCardList, [selectedBoard]);
 
-  const selectBoard = (id) =>
-    setSelectedBoard(boardList.find((board) => id === board.board_id));
+  const selectBoard = (id) => {
+    let newSelectedBoard = boardList.find((board) => id === board.board_id);
+    setSelectedBoard(newSelectedBoard);
+  };
 
-  const likeCard = (id) =>
-    api
-      .likeCard(id)
-      .then((likedCard) =>
-        setCardList(
-          [...cardList].map((card) =>
-            card.card_id === likedCard.card_id ? likedCard : card
-          )
-        )
+  const likeCard = (id) => {
+    api.likeCard(id).then((likedCard) => {
+      let newCardList = [...cardList].map((card) =>
+        card.card_id === likedCard.card_id ? likedCard : card
       );
+      setCardList(newCardList);
+    });
+  };
 
   const createBoard = (newBoard) =>
     api.postBoard(newBoard).then((createdBoard) => {
@@ -91,10 +92,13 @@ function App() {
       setSelectedBoard(createdBoard);
     });
 
-  const createCard = (newCard) =>
-    api
-      .postCard(newCard)
-      .then((createdCard) => selectBoard(createdCard.card.board_id));
+  const createCard = (newCard) => {
+    newCard.board_id = selectedBoard.board_id;
+    api.postCard(newCard).then((createdCard) => {
+      let newCardList = [...cardList, createdCard.card];
+      setCardList(newCardList);
+    });
+  };
 
   return (
     <div className="App">
@@ -105,32 +109,26 @@ function App() {
         <div className="wrapper">
           <div className="one">
             <CreateBoardForm createBoard={createBoard}></CreateBoardForm>
-          </div>
-          <div className="two">
             <BoardList
               boards={boardList || []}
               selectBoard={selectBoard}
             ></BoardList>
           </div>
-          <div className="three">
+          <div className="two">
             {selectedBoard && (
               <section>
+                <h2>
+                  Cards on {selectedBoard.title} for {selectedBoard.owner}
+                </h2>
+                <CreateCardForm createCard={createCard}></CreateCardForm>
                 <CardList
                   title={selectedBoard.title}
                   owner={selectedBoard.owner}
                   cards={cardList || []}
                   likeCard={likeCard}
                 ></CardList>
-
-                <CreateCardForm
-                  createCard={createCard}
-                  board={selectedBoard.board_id}
-                ></CreateCardForm>
-                <h2>
-                  Cards on {selectedBoard.title} for {selectedBoard.owner}
-                </h2>
               </section>
-            )}{" "}
+            )}
           </div>
         </div>
       </main>

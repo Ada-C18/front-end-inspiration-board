@@ -2,10 +2,9 @@ import { useState } from "react";
 //import PropTypes from "prop-types";
 import "./CreateCardForm.css";
 
-const CreateCardForm = ({ createCard, board }) => {
+const CreateCardForm = ({ createCard }) => {
   const emptyCard = {
     message: "",
-    board_id: board,
   };
 
   const [newCard, setNewCard] = useState(emptyCard);
