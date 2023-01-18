@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 
 import "./Home.css";
 import BoardMenu from "../components/BoardMenu";
@@ -18,7 +18,9 @@ const Home = (props) => {
       </div>
 
       <nav id="home-nav">
-        <button>Create new board</button>
+        <Link to={`/create-board`}>
+          <button>Create new board</button>
+        </Link>
 
         <select>
           <option>Sort list by: popularity</option>

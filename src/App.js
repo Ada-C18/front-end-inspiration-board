@@ -17,172 +17,7 @@ import Home from "./routes/Home";
 import CreateBoard from "./routes/CreateBoard";
 import SingleBoardView from "./routes/SingleBoardView";
 import ErrorPage from "./error-page";
-
-const DUMMY_USER_DATA = [
-  {
-    id: 1,
-    name: "emily",
-  },
-  {
-    id: 2,
-    name: "bukunmi",
-  },
-  {
-    id: 3,
-    name: "katherine",
-  },
-  {
-    id: 4,
-    name: "anna",
-  },
-];
-
-const DUMMY_BOARD_DATA = [
-  {
-    id: 1,
-    card_id: [1, 2, 3, 4],
-    user_id: 1,
-    date_created: "24",
-    board_title: "Capstone Inspo",
-    board_owner: "Anna",
-    visible: true,
-  },
-  {
-    id: 2,
-    card_id: [1, 2, 3, 4, 5, 6],
-    user_id: 8,
-    date_created: "25",
-    board_title: "Interview Inspo",
-    board_owner: "Emily",
-    visible: true,
-  },
-  {
-    id: 3,
-    card_id: [1],
-    user_id: 6,
-    date_created: "26",
-    board_title: "Ada Fun",
-    board_owner: "Kumi",
-    visible: true,
-  },
-  {
-    id: 4,
-    card_id: [],
-    user_id: 15,
-    date_created: "27",
-    board_title: "React excitement",
-    board_owner: "Katherine",
-    visible: true,
-  },
-  {
-    id: 5,
-    card_id: [1, 2, 3, 4],
-    user_id: 1,
-    date_created: "24",
-    board_title: "Capstone Inspo",
-    board_owner: "Anna",
-    visible: true,
-  },
-  {
-    id: 6,
-    card_id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    user_id: 8,
-    date_created: "25",
-    board_title: "Interview Inspo",
-    board_owner: "Emily",
-    visible: true,
-  },
-  {
-    id: 7,
-    card_id: [1, 2, 3],
-    user_id: 6,
-    date_created: "26",
-    board_title: "Ada Fun",
-    board_owner: "Kumi",
-    visible: true,
-  },
-  // {
-  //   id: 8,
-  //   card_id: [1, 2, 3, 4, 5],
-  //   user_id: 15,
-  //   date_created: "27",
-  //   board_title: "React excitement",
-  //   board_owner: "Katherine",
-  //   visible: true,
-  // },
-  // {
-  //   id: 9,
-  //   card_id: [16, 2, 53],
-  //   user_id: 1,
-  //   date_created: "24",
-  //   board_title: "Capstone Inspo",
-  //   board_owner: "Anna",
-  //   visible: true,
-  // },
-  // {
-  //   id: 10,
-  //   card_id: [1, 2],
-  //   user_id: 8,
-  //   date_created: "25",
-  //   board_title: "Interview Inspo",
-  //   board_owner: "Emily",
-  //   visible: true,
-  // },
-  // {
-  //   id: 11,
-  //   card_id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 100],
-  //   user_id: 6,
-  //   date_created: "26",
-  //   board_title: "Ada Fun",
-  //   board_owner: "Kumi",
-  //   visible: true,
-  // },
-  // {
-  //   id: 12,
-  //   card_id: [1, 2, 3, 4, 5, 6, 7],
-  //   user_id: 15,
-  //   date_created: "27",
-  //   board_title: "React excitement",
-  //   board_owner: "Katherine",
-  //   visible: true,
-  // },
-  // {
-  //   id: 13,
-  //   card_id: [],
-  //   user_id: 1,
-  //   date_created: "24",
-  //   board_title: "Capstone Inspo",
-  //   board_owner: "Anna",
-  //   visible: true,
-  // },
-  // {
-  //   id: 14,
-  //   card_id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-  //   user_id: 8,
-  //   date_created: "25",
-  //   board_title: "Interview Inspo",
-  //   board_owner: "Emily",
-  //   visible: true,
-  // },
-  // {
-  //   id: 15,
-  //   card_id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-  //   user_id: 6,
-  //   date_created: "26",
-  //   board_title: "Ada Fun",
-  //   board_owner: "Kumi",
-  //   visible: true,
-  // },
-  // {
-  //   id: 16,
-  //   card_id: [10, 9, 8, 7, 6, 5],
-  //   user_id: 15,
-  //   date_created: "27",
-  //   board_title: "React excitement",
-  //   board_owner: "Katherine",
-  //   visible: true,
-  // },
-];
+import DUMMY_BOARD_DATA from "./components/dummyData";
 
 // const genericDummyFunc = (arg1 = null) => {
 //   console.log("This is the dummy function");
@@ -199,7 +34,11 @@ function App() {
     repeatLogin: false,
     repeatSignUp: false,
   });
-  let [appData, setAppData] = useState([]);
+  let [appData, setAppData] = useState([]); // do get call to set initial state
+
+  const passCreateBoardProps = () => {
+    return [{ onCreate: addBoard }];
+  };
 
   // const passBoardPropsDummy = () => DUMMY_BOARD_DATA;
 
@@ -252,8 +91,28 @@ function App() {
     }
   };
 
-  const addBoard = (title) => {
-    // AXIOS call to POST new board to the db
+  const addBoard = async (boardData) => {
+    console.log("In addBoard!");
+    console.log(boardData);
+
+    const requestBody = {
+      title: boardData.title,
+      card_color: boardData.cardColor,
+      user_id: loggedIn.userId,
+    };
+
+    console.log(requestBody);
+
+    try {
+      const response = await axios.post(`${kBaseUrl}/boards`, requestBody);
+      console.log(response.data);
+      setAppData(appData.push(response.data));
+    } catch (err) {
+      console.error(err);
+    } finally {
+      console.log("in finally");
+      console.log(appData);
+    }
   };
 
   const router = createBrowserRouter(
@@ -301,6 +160,7 @@ function App() {
         <Route
           path="/create-board"
           element={<CreateBoard />}
+          loader={passCreateBoardProps}
           errorElement={<ErrorPage />}
         />
         <Route
