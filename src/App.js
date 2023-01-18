@@ -114,13 +114,8 @@ function App() {
 	const [selectedCards, setCardsList] = useState(cardsData); // useState([]);
 
 	// TODO: ask Backend team about GET Cards route
-	const fetchCardsURL = `${URL}/${selectedBoard.board_id}/cards`; // "/<board_id>/cards"
-	// 2 different GET routes in backend repo
-	// 1. @boards_bp.route("/<board_id>/cards", methods = ["GET"])
-	// def get_board_cards(board_id):
-	// 2. @cards_bp.route("", methods = ["GET"])
-	// def get_all_cards():
-	console.log(fetchCardsURL);
+	const fetchCardsURL = `${URL}/${selectedBoard.board_id}/cards`; // "boardId"?
+	// console.log(fetchCardsURL);
 
 	// Get all cards with board ID
 	const fetchCards = () => {
