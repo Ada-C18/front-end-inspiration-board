@@ -63,7 +63,7 @@ function App() {
 	useEffect(fetchAllBoards, []);
 
 	const addBoard = (newBoard) => {
-		console.log("Calling addBoard");
+		// console.log("Calling addBoard");
 
 		axios
 			.post(`${URL}/boards`, newBoard)
@@ -83,19 +83,21 @@ function App() {
 	};
 
 	// Selected Board State
-	const [selectedBoard, setSelected] = useState({});
+	const [selectedBoard, setSelected] = useState([]); // {}
 	// const [selectedBoard, setSelected] = useState({
 	// 	boardId: 1,
 	// 	title: "Do things!",
 	// 	owner: "Milena",
 	// });
 
+	console.log(`selectedBoard: ${selectedBoard}`); // selectedBoard is empty list => selectedBoard.boardId is undefined
+
 	const updateSelectedBoard = (boardId) => {
 		console.log("updateBoard called");
 		axios
 			.get(`${URL}/boards/${boardId}`)
 			.then((response) => {
-				console.log(response);
+				console.log(`updateSelectedBoard response: ${response}`);
 				const boardAPIResCopy = response.data;
 				setSelected(boardAPIResCopy);
 			})
@@ -115,7 +117,8 @@ function App() {
 	const [selectedCards, setCardsList] = useState([]); // useState([]);
 
 	// TODO: ask Backend team about GET Cards route
-	const fetchCardsURL = `${URL}/${selectedBoard.boardId}/cards`; // "boardId"?
+	console.log(`selectedBoard id: ${selectedBoard.boardId}`); // selectedBoardis a list
+	const fetchCardsURL = `${URL}/boards/${selectedBoard.boardId}/cards`; // "boardId"?
 	// console.log(fetchCardsURL);
 
 	// Get all cards with board ID
@@ -123,7 +126,7 @@ function App() {
 		axios
 			.get(fetchCardsURL)
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
 				const cardsAPIResCopy = response.data.map((card) => {
 					return {
 						cardId: card.card_id,
@@ -139,17 +142,17 @@ function App() {
 	};
 
 	// initial get cards request
-	useEffect(fetchCards, []);
+	useEffect(fetchCards, []); // selectedCards
 
 	// Add Card Function
 	// Todo: add API post card code
 	const addCard = (newCard) => {
-		console.log("Calling addCard");
+		// console.log("Calling addCard");
 
 		axios
 			.post(`${URL}/boards/${selectedBoard.boardId}/cards`, newCard)
 			.then((response) => {
-				console.log(`add card response: ${response}`);
+				// console.log(`add card response: ${response}`);
 				const updatedCardsList = [...selectedCards];
 				updatedCardsList.push({
 					...newCard,
@@ -161,17 +164,17 @@ function App() {
 				console.log(error);
 			});
 
-		const newCardsList = [...selectedCards];
-		newCardsList.push({
-			board_id: newCard.board_id, // hidden, implied primary key
-			message: newCard.message,
-		});
+		// const newCardsList = [...selectedCards];
+		// newCardsList.push({
+		// 	board_id: newCard.board_id, // hidden, implied primary key
+		// 	message: newCard.message,
+		// });
 
-		setCardsList(newCardsList);
+		// setCardsList(newCardsList);
 	};
 
 	const deleteCard = (cardId) => {
-		console.log("deleteCard called");
+		// console.log("deleteCard called");
 
 		axios
 			.delete(`${URL}/${cardId}`)
