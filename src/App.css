@@ -29,6 +29,10 @@ header {
   /* margin-left: 1rem; */
 }
 
+#inspo-title {
+  font-size: 3vw;
+}
+
 aside {
   /* width: 5rem; */
   height: 100vh;
@@ -41,12 +45,26 @@ aside {
 }
 
 .newBoard {
-  background-color: #FFF;
+  background-color: rgb(245, 245, 245);
   padding: 3% 5%;
 }
 
+.board {
+  background-color: #9e9e9e;
+  color: #FAFAFA;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+.board:hover {
+  background-color: #757575;
+  transition: background-color 0.5s ease;
+}
+
 .boards {
-  background-color: #FFF;
+  background-color: rgb(245, 245, 245);
   padding: 3% 5%;
   margin: 3% 0 0 0;
 }
@@ -81,6 +99,7 @@ main {
   color: #283593;
   padding: 1rem;
   box-shadow: 5px 5px;
+  border-radius: 6px;
 }
 
 .card-elements {

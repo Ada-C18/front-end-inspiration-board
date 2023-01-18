@@ -101,7 +101,7 @@ function App() {
     <div className="container">
       <header>
         <section>
-          <h1>SELECTED BOARD</h1>
+          <h1 id="inspo-title">Inspiration Board</h1>
           <p>{selectedBoardLabel}</p>
         </section>
         <section>

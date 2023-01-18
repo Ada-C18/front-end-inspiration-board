@@ -1,5 +1,5 @@
-import { FaRegTrashAlt } from 'react-icons/fa'
-import { AiOutlineLike, AiFillLike } from 'react-icons/ai'
+import { FaRegTrashAlt } from 'react-icons/fa';
+import { AiOutlineLike, AiFillLike } from 'react-icons/ai';
 
 const Card = ({ card, updateLikedCard, deleteCard }) => {
 
