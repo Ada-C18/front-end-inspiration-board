@@ -53,7 +53,8 @@ const NewCardForm = ({boardId, createNewCardForm}) => {
 };
 
 NewCardForm.propTypes = {
-  createNewCardForm: PropTypes.func.isRequired
+  createNewCardForm: PropTypes.func.isRequired,
+  boardId: PropTypes.number.isRequired,
 };
 
 export default NewCardForm;

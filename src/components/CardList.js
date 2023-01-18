@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "./Card";
+import PropTypes from "prop-types";
 
 
 const CardList = ({ board }) => {
@@ -76,6 +77,10 @@ const CardList = ({ board }) => {
       </div>
     </section>
   );
+};
+
+CardList.propTypes = {
+  board: PropTypes.object.isRequired,
 };
 
 export default CardList;

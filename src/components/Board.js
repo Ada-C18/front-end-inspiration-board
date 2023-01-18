@@ -6,8 +6,8 @@ const Board = ({ board, onBoardSelect }) => {
 };
 
 Board.propTypes = {
-  board: PropTypes.object,
-  onBoardSelect: PropTypes.func,
+  board: PropTypes.object.isRequired,
+  onBoardSelect: PropTypes.func.isRequired,
 };
 
 export default Board;
