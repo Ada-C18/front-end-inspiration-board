@@ -25,7 +25,7 @@ const BoardList = (props) => {
 
   return (
     <section>
-      <ul>{boardComponents}</ul>
+      <ul className="board-list">{boardComponents}</ul>
     </section>
   );
 };

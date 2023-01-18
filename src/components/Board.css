@@ -1,0 +1,17 @@
+/* IDs */
+.board-name-text {
+    display: inline;
+    padding-left: 10px;
+}
+
+.board-item {
+    border: 1px solid white;
+}
+
+/* tags */
+button {
+    border: None;
+    width: 25px;
+    height: 25px;
+    background-color: rgb(201, 201, 201);
+}

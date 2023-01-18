@@ -10,13 +10,13 @@ const Board = (props) => {
   const fetchCards = props.fetchCards;
 
   return (
-    <div>
-      <ul>
-        {/* <li>board id: {id}</li> */}
-        <li onClick={() => fetchCards()}>title: {title}</li>
-        {/* <li>owner: {owner}</li> */}
-      </ul>
-      <button onClick={() => deleteBoard(id)}>Delete Board</button>
+    <div className="board-item">
+      {/* <li>board id: {id}</li> */}
+      <button onClick={() => deleteBoard(id)}>x</button>
+      <div className="board-name-text" onClick={() => fetchCards()}>
+        title: {title}
+      </div>
+      {/* <li>owner: {owner}</li> */}
     </div>
   );
 };

@@ -50,7 +50,7 @@ const NewBoardForm = (props) => {
         value={formData.owner}
         onChange={handleChange}
       ></input>
-      <input type="submit" value="Add Board" />
+      <input id="submit-btn" type="submit" value="Add Board" />
     </form>
   );
 };
