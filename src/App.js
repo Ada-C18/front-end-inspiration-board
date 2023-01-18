@@ -159,9 +159,6 @@ const App = () => {
           </div>
         )}
       </div>
-      {/* <footer>
-        <p> Click here to delete all boards and cards</p>
-      </footer> */}
     </section>
   );
 };
