@@ -1,6 +1,6 @@
-import React from "react";
 import PropTypes from "prop-types";
 import Board from "./Board";
+import React, { useState } from "react";
 import "./BoardList.css";
 
 const BoardList = ({ boards }) => {
@@ -18,7 +18,29 @@ const BoardList = ({ boards }) => {
     });
   };
 
-  return <ul className="boards-list-no-bullet">{getBoardsListJSX(boards)}</ul>;
+  const [selectedBoard, setSelectedBoard] = useState(null);
+
+  function handleBoardClick(board) {
+    setSelectedBoard(board);
+  }
+
+  return (
+    <div>
+      {/* <ul className="boards-list-no-bullet">{getBoardsListJSX(boards)}</ul>; */}
+      <ul className="boards-list-no-bullet">
+        {boards.map((board) => (
+          <li key={board.board_id} onClick={() => handleBoardClick(board)}>
+            {board.title}
+          </li>
+        ))}
+      </ul>
+      {selectedBoard && (
+        <div>
+          {selectedBoard.title} - {selectedBoard.owner}
+        </div>
+      )}
+    </div>
+  );
 };
 
 BoardList.propTypes = {
