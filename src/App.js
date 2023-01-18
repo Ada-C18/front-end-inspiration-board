@@ -7,8 +7,13 @@ import CardList from "./components/CardList";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+// 1. create card
+// 2. delete card
+// 3. add error handling
+
 //const URL = process.env['REACT_APP_BACKEND_URL'];
-const URL = "http://localhost:5000/boards";
+const BoardURL = "http://localhost:5000/boards";
+const CardURL = "http://localhost:5000/cards";
 // const URL = "https://inspiration-board-api-t6.herokuapp.com/boards"
 
 const App = () => {
@@ -21,10 +26,9 @@ const App = () => {
     id: null,
   });
 
-  //works
   useEffect(() => {
     axios
-      .get(URL)
+      .get(BoardURL)
       .then((response) => {
         const newBoards = response.data.map((board) => {
           return {
@@ -40,10 +44,9 @@ const App = () => {
       });
   }, []);
 
-  //works
   const addBoard = (board) => {
     axios
-      .post(URL, board)
+      .post(BoardURL, board)
       .then((response) => {
         const newBoards = [...boardData];
         newBoards.push({ id: response.data.board_id, title: "", ...board });
@@ -53,8 +56,6 @@ const App = () => {
   };
 
   const handleBoardClicked = (id) => {
-    console.log(id);
-    console.log(boardData);
     const board = boardData.find((board) => {
       return id === board.id;
     });
@@ -62,7 +63,7 @@ const App = () => {
       return;
     }
     axios
-      .get(`${URL}/${board.id}/cards`)
+      .get(`${BoardURL}/${board.id}/cards`)
       .then((response) => {
         const newCards = response.data.cards.map((card) => {
           return {
@@ -79,19 +80,31 @@ const App = () => {
   };
 
   const addCard = (card) => {
+    const newCard = {
+      board_id: selectedBoard.id,
+      message: card.message,
+      likes: 0,
+    };
     axios
-      .post(URL, cardData)
+      .post(`${BoardURL}/${selectedBoard.id}/cards`, newCard)
       .then((response) => {
         const newCards = [...cardData];
-        newCards.push({ id: response.data.id, message: "", ...card });
-        setBoardData(newCards);
+        newCards.push({
+          id: response.data.id,
+          board_id: response.data.board_id,
+          message: "",
+          likes: null,
+          ...card,
+        });
+        setCardData(newCards);
       })
       .catch((error) => console.log(error));
   };
 
   const deleteCard = (id) => {
+    console.log("Card ID: %f", id);
     axios
-      .delete(`${URL}/${id}`)
+      .delete(`${CardURL}/${id}`)
       .then(() => {
         const newCards = cardData.filter((card) => card.id !== id);
         setCardData(newCards);
