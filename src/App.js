@@ -6,6 +6,7 @@ import BoardList from "./components/BoardList";
 import FormNewBoard from "./components/FormNewBoard";
 import FormNewCard from "./components/FormNewCard";
 
+
 function App() {
   const [boardList, setBoardList] = useState([]);
 
@@ -124,16 +125,18 @@ function App() {
     <div className="app-all">
       <header> Inspiration Board </header>
 
+
       <nav className="board">
         <h2 className="boardListTitle"> Board List</h2>
 
         <BoardList boardList={boardList} getOneBoard={getOneBoard} />
-        <br />
+        <h2> Create a New Board</h2>
         <FormNewBoard addBoardCallbackFunc={addBoard} />
       </nav>
 
       <aside className="cards">
-      
+
+        <h2> Create a New Card </h2>
         <FormNewCard addCardCallbackFunc={addCard} boardId={boardId} />
       </aside>
 

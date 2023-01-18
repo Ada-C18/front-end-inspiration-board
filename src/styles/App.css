@@ -6,10 +6,10 @@
       "nav main"
       "aside main";
   grid-template-columns: 30% 70%;
-  grid-template-rows: 10% 35% 45%;
+  grid-template-rows: 10% 40% 20%;
   grid-gap: 10px;
-  height:150vh;
-  width: 150vh;
+  height:160vh;
+  width: 100vh;
   margin: auto;
 }
 
@@ -31,7 +31,8 @@ background-color: #f0a3bc;
 
 aside {
   grid-area: aside;
-  background-color: #f0a3bc;
+  background-color: #70be51;
+  outline: 1px solid black;
   }
 
 
@@ -48,6 +49,9 @@ header, main, nav, aside{
 
 
 
+h2 {
+  text-align: center;
+}
 
 
 

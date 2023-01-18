@@ -35,7 +35,7 @@ const NewBoardForm = (props) => {
     <div>
       {show ? (
         <form onSubmit={handleNewBoardSubmit}>
-          <label htmlFor="title"> Title </label>
+          <label htmlFor="title"></label>
           <input
             type="text"
             id="title"
@@ -44,7 +44,7 @@ const NewBoardForm = (props) => {
             placeholder="Title"
             onChange={handleChange}
           />
-          <label htmlFor="owner"> Owner </label>
+          <label htmlFor="owner"></label>
           <input
             type="text"
             id="owner"
@@ -53,18 +53,21 @@ const NewBoardForm = (props) => {
             placeholder="Name"
             onChange={handleChange}
           />
-
-          <input type="submit" value="Add Board" />
-
+          <br />
+          <br />
+          <input className="button" type="submit" value="Add Board" />
+          
           <p>
             {" "}
-            Preview info: {formData.title} - {formData.owner}{" "}
+            <label>Board Preview:</label>
+            <br/>
+            {formData.title} - {formData.owner}{" "}
           </p>
 
-          <button onClick={() => setShow(false)}> Hide New Board Form </button>
+          <button className="button"  onClick={() => setShow(false)}> Hide New Board Form </button>
         </form>
       ) : (
-        <button onClick={() => setShow(true)}> Create New Board </button>
+        <button className="button" onClick={() => setShow(true)}> Create New Board </button>
       )}
 
       <br />
