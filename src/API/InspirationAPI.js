@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const API_HOST = 'http://localhost:5000/';
 
-const BOARDS_ENDPOINT = API_HOST + 'boards';
+const BOARDS_ENDPOINT = `${API_HOST}boards`;
+const CARDS_ENDPOINT = `${API_HOST}cards`;
 
 /* getAllBoards: Fetch all board objects from remote server.
 Takes: callback function that accepts a list of boards
@@ -33,6 +34,33 @@ const getAllCards = async function (board, onSuccess) {
     response = await axios.get(`${BOARDS_ENDPOINT}/${board}/cards`);
     onSuccess(response.data.cards);
     console.log(response.data);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+/* getCardsFirstBoard: Fetch all the cards for the first board in the database. 
+Used to build starting state. 
+Takes:  setBoards: callback function for setting boards
+        setCards: callback function for setting cards
+Returns: undefined
+Calls: callback
+*/
+const getCardsFirstBoard = async function (
+  setBoards,
+  setCards,
+  setCurrentBoard
+) {
+  try {
+    const boardResponse = await axios.get(BOARDS_ENDPOINT);
+    const board_id = boardResponse.data[0].board_id;
+    const cardResponse = await axios.get(
+      `${BOARDS_ENDPOINT}/${board_id}/cards`
+    );
+    setBoards(boardResponse.data);
+    setCards(cardResponse.data.cards);
+    setCurrentBoard(board_id);
+    console.log(cardResponse.data);
   } catch (error) {
     console.log(error.message);
   }
@@ -79,4 +107,50 @@ const addNewCard = async function (newCardData, board, onSuccess) {
   }
 };
 
-export { getAllBoards, getAllCards, addNewBoard, addNewCard };
+/* deleteCard: Sends a delete card request. 
+Server should respond with JSON and a message field
+Takes: card_id: numeric card id
+       onSuccess: function to call if successful. 
+callback function should accept returned messageObject
+ */
+
+const deleteCard = async function (card_id, onSuccess) {
+  let response;
+
+  try {
+    response = await axios.delete(`${CARDS_ENDPOINT}/${card_id}`);
+    onSuccess(response.data);
+    console.log(`addNewCard: ${response.data}`);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+/* likeCard: Sends a like card request. 
+Server should respond with JSON and a message field
+Takes: card_id: numeric card id
+       onSuccess: function to call if successful. 
+callback function should accept returned messageObject
+ */
+
+const likeCard = async function (card_id, onSuccess) {
+  let response;
+
+  try {
+    response = await axios.patch(`${CARDS_ENDPOINT}/${card_id}`);
+    onSuccess(response.data);
+    console.log(`addNewCard: ${response.data}`);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export {
+  getAllBoards,
+  getAllCards,
+  getCardsFirstBoard,
+  addNewBoard,
+  addNewCard,
+  deleteCard,
+  likeCard,
+};
