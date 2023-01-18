@@ -23,7 +23,7 @@ const NewCardForm = ({boardId, createNewCardForm}) => {
 
     setFormData({
       message: ''
-    });
+    }); 
 
     setPreview('');
   };

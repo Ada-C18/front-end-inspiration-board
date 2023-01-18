@@ -15,6 +15,9 @@ function App() {
     });
 
   const [selectedBoardLabel, setSelectedBoardLabel] = useState("Select a Board from the Board List!");
+  const [isBoardFormVisible, setBoardFormVisible] = useState(true);
+  const toggleBoardForm = () => {setBoardFormVisible(!isBoardFormVisible)};
+
   const cardsListVisible = selectedBoard.id ? <CardList board={selectedBoard}></CardList> : ''
   
   useEffect(() => {
@@ -74,21 +77,6 @@ function App() {
   const addCard = (newCardInfo, boardId) => {
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, newCardInfo)
     .then((response) => {
-      // const newBoardsList = [...boardsList]
-      // for (const board of newBoardsList) {
-      //   if (board.id === boardId) {
-      //     const cards = board.cards;
-      //     const newCards = [...cards];
-      //     const newCardJSON = {
-      //       ...newCardInfo,
-      //       "id": response.data.card.id
-      //     }
-      //     newCards.push(newCardJSON);
-      //     board.cards = newCards;
-      //   }
-      //   // setBoardsList(newBoardsList);
-      //   setSelectedBoard(board);
-      // }
       axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}/cards`)
       .then((response) => {
@@ -106,7 +94,6 @@ function App() {
   
   const newCardFormVisible = selectedBoard.id ? <NewCardForm boardId={selectedBoard.id} createNewCardForm={addCard}></NewCardForm> : ''
   
-  
   return (
     <div className="container">
       <header>
@@ -121,7 +108,8 @@ function App() {
       <aside>
         <section className = "newBoard">
           <h1>Create A New Board</h1>
-          <NewBoardForm createNewBoardForm={addBoard}></NewBoardForm>
+          {isBoardFormVisible? <NewBoardForm createNewBoardForm={addBoard}></NewBoardForm> : ''}
+          <span onClick={toggleBoardForm}>{isBoardFormVisible? 'Hide New Board Form' : 'Show New Board Form'}</span>
         </section>
         <section className = "boards">
           <h1>Boards</h1>
