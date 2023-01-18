@@ -92,12 +92,17 @@ const CardList = (props) => {
     );
   });
 
-  return (
+  let boardArea = (
     <div className="whole-area">
       <ul className="cards">{cards}</ul>
       <NewCardForm className="NewBoardForm" addCardCallBack={addCard} />
     </div>
   );
+  if (board_id === 0) {
+    boardArea = <div></div>;
+  }
+
+  return boardArea;
 };
 
 CardList.propTypes = {

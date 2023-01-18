@@ -24,11 +24,6 @@ const getAllBoards = async () => {
   }
 };
 
-// const testBoards = [
-//   { title: "Test Board One ", id: 1, owner: "Pavi" },
-//   { title: "Test Board Two", id: 2, owner: "Soleil" },
-//   { title: "Test Board Three", id: 3, owner: "Misha" },
-// ];
 const emptyBoard = { id: 0, title: "", owner: "" };
 
 function App() {

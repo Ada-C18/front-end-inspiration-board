@@ -37,7 +37,6 @@ const NewCardForm = (props) => {
   if (charactersLeft < 0) {
     charactersLeft = 0;
   }
-
   return (
     <form onSubmit={onMessageFormSubmit} className="form-style">
       <section>
