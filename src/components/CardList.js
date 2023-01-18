@@ -12,7 +12,10 @@ const CardList = (props) => {
       <Card
         message={cardObj.message}
         likes={cardObj.likes}
+        id={cardObj.card_id}
         key={cardObj.card_id.toString()}
+        likeSetter={props.likeSetter}
+        deleteSetter={props.deleteSetter}
       ></Card>
     );
   };

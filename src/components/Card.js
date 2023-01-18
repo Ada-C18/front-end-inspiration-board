@@ -8,9 +8,11 @@ const Card = (props) => {
   const buttonHandler = (event) => {
     if (event.target.name === 'likeCard') {
       console.log('likeCard');
+      props.likeSetter(props.id);
     }
     if (event.target.name === 'deleteCard') {
       console.log('deleteCard');
+      props.deleteSetter(props.id);
     }
   };
 

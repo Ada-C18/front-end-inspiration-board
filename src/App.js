@@ -76,6 +76,18 @@ const App = function () {
     );
   };
 
+  /* handle likeCard from Card */
+  const handleLikeCard = (card_id) => {
+    console.log('handleLikeCard' + JSON.stringify(card_id));
+    likeCard(card_id, () => getAllCards(currentBoardState, setCardListState));
+  };
+
+  /* handle deleteCard from Card */
+  const handleDeleteCard = (card_id) => {
+    console.log('handleDeleteCard' + JSON.stringify(card_id));
+    deleteCard(card_id, () => getAllCards(currentBoardState, setCardListState));
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -103,7 +115,11 @@ const App = function () {
       <section id="card-section">
         <div id="card-list">
           {' '}
-          <CardList cardListData={cardListState}></CardList>
+          <CardList
+            cardListData={cardListState}
+            likeSetter={handleLikeCard}
+            deleteSetter={handleDeleteCard}
+          ></CardList>
         </div>
         <div id="card-form-container">
           {' '}
