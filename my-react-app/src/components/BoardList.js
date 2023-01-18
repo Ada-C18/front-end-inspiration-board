@@ -13,7 +13,7 @@ function BoardList(props) {
         key={board.id}
         id={board.id}
         title={board.title}
-        name={board.name}
+        name={board.owner}
         selected={board.selected}
         selectBoard={props.selectBoard}
         unselectBoard={props.unselectBoard}

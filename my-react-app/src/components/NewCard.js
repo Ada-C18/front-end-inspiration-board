@@ -16,7 +16,7 @@ const INITIAL_FORM_DATA = {
 
 const NewCard = (props) => {
   const [CardData, setCardData] = useState(INITIAL_FORM_DATA);
-  // const messageLength = CardData.messageLength;
+  const messageLength = CardData.message.length;
   let selectedBoard = props.selectedBoard;
 
   //delete the console logs later -----------------------------------------
@@ -34,8 +34,11 @@ const NewCard = (props) => {
     const NewCardData = {
       ...CardData,
       [e.target.name]: datafield,
-      messageLength: datafield.length, //------------------ADDED------------
+      board_id: selectedBoard.id,
+      likes_count: 0,
+      // messageLength: datafield.length, //------------------ADDED------------
     };
+    console.log("NEW CARD DATAAAA", NewCardData);
     setCardData(NewCardData);
   };
 
@@ -45,7 +48,7 @@ const NewCard = (props) => {
     setCardData(INITIAL_FORM_DATA);
   };
 
-  const tooLong = CardData.messageLength < 41 ? false : true; //-----------------ADDED---------------------
+  // const tooLong = CardData.messageLength < 41 ? false : true; //-----------------ADDED---------------------
 
   const inputClass = CardData.message /*|| !tooLong*/ ? "" : "empty"; //SOMETHING IS WRONG HEREEEE
   //if input fields for Title or Owner's Name are empty ->
@@ -68,7 +71,7 @@ const NewCard = (props) => {
       <input
         type="submit"
         value="Add Card"
-        disabled={!CardData || !selectedBoard || tooLong}
+        disabled={!CardData.message || !selectedBoard /*|| tooLong*/}
       />
     </form>
   );
