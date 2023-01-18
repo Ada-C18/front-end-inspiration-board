@@ -8,6 +8,11 @@
     border: 1px solid white;
 }
 
+.board-item--selected {
+    border: 1px solid white;
+    background-color:azure;
+}
+
 /* tags */
 button {
     border: None;
