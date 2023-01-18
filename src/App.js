@@ -39,6 +39,7 @@ const App = function () {
     setCurrentBoardState(parseInt(boardID));
     console.log(boardID);
     console.log(currentBoardState);
+    getAllCards(currentBoardState, setCardListState);
   };
 
   useEffect(() => {
