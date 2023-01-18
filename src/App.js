@@ -44,6 +44,7 @@ function App() {
 
   const boardsElements = boardsData.map((board) => {
     console.log(board)
+    console.log(onBoardSelect)
     return (
       <li>
         <Board board={board} onBoardSelect={selectBoard}></Board>
@@ -133,7 +134,7 @@ function App() {
             {/* <p>{selectBoard.board_id ? `${selectBoard.title} - ${selectBoard.author}` : 'Select a Board from the Board List!'}</p> */}
     
           </section>
-          {onBoardSelect.board_id ? <Board board={onBoardSelect}></Board> : ''}
+          <Board board={onBoardSelect}></Board>
         </div>
         
     </div>
