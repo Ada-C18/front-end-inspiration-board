@@ -157,7 +157,7 @@ function App() {
           ) : (
             ""
           )}
-          <span onClick={toggleBoardForm}>
+          <span className="board-toggle" onClick={toggleBoardForm}>
             {isBoardFormVisible ? <BsToggleOn /> : <BsToggleOff />}
           </span>
         </section>

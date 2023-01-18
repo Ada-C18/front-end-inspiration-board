@@ -67,6 +67,10 @@ aside {
   color: red;
 }
 
+.board-toggle {
+  font-size: 2rem;
+}
+
 .boards {
   background-color: rgb(245, 245, 245);
   padding: 3% 5%;
