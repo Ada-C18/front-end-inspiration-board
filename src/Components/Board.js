@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "./Card";
 import CardForm from "./CardForm";
+import SortSelector from "./SortSelector.js";
 import "./Board.css";
 
 const BACKEND_URL = `${process.env.REACT_APP_BACKEND_URL}`;
@@ -23,6 +24,15 @@ const Board = (props) => {
         alert("Unable to create new card");
       });
   };
+
+  const [sortCardsBy, setSortCardsBy] = useState(["id", "asc"]);
+  const changeSortMethod = (value, direction) => {
+    setSortCardsBy([value, direction]);
+  }
+
+  const sortSelector = props.currentBoard ? (
+      <SortSelector></SortSelector>
+    ) : "";
 
   const getCardList = () => {
     if (props.currentBoard)
@@ -87,6 +97,7 @@ const Board = (props) => {
   return (
     <section id="board">
       <h2>{props.currentBoardName}</h2>
+      {sortSelector}
       <div className="card-list">
         {/* {cards} */}
         {cardsData}
