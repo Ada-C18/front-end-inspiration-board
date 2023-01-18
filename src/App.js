@@ -28,14 +28,14 @@ function App() {
     });
   }, []);
 
-  const onBoardSelect = (board) => {
-    axios.get(`${url}/boards/${board.board_id}/cards`).then((response) => {
-      setCardsData(response.data);
+  const onBoardClick = (board) => {
+    axios.get(`${url}/boards/${board.id}`).then((response) => {
+      setCardsData(response.data.cards);
   }).catch((error) => {
       console.log('Error: Couldn\'t get all cards', error)
       alert('Couldn\'t get all cards')
   });
-  }
+  };
 
 
   const selectBoard = (board) => {
@@ -43,11 +43,11 @@ function App() {
   };
 
   const boardsElements = boardsData.map((board) => {
-    console.log(board)
-    console.log(onBoardSelect)
+    // console.log(board)
+    // console.log(onBoardSelect)
     return (
       <li>
-        <Board board={board} onBoardSelect={selectBoard}></Board>
+        <Board board={board} onBoardSelect={selectBoard} onBoardClick = {onBoardClick}></Board>
       </li>
     )
   });
@@ -134,7 +134,7 @@ function App() {
             {/* <p>{selectBoard.board_id ? `${selectBoard.title} - ${selectBoard.author}` : 'Select a Board from the Board List!'}</p> */}
     
           </section>
-          <Board board={onBoardSelect}></Board>
+          {/* <Board board={onBoardSelect}></Board> */}
         </div>
         
     </div>
