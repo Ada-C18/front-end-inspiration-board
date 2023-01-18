@@ -15,17 +15,12 @@ label {
     font-variant: small-caps;
 }
 
-input {
+.entry {
+    margin: 1px 0px 8px;
     border-radius: 5px;
     min-width: 33vw;
     min-height: fit-content;
     height: clamp(2em, 5vh, 3em);
-    margin: 5px 0px;
-    
-}
-
-.entry {
-    margin: 1px 0px 8px;
 }
 
 #submit {
