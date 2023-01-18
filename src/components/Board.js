@@ -9,17 +9,8 @@ const Board = (props) => {
   const deleteBoard = props.deleteBoard;
   const fetchCards = props.fetchCards;
 
-  var boardIsClicked = false;
-  const boardItemClass = boardIsClicked ? "board-item--selected" : "board-item";
-
-  const toggleBoardItem = () => {
-    console.log(boardItemClass);
-    boardIsClicked = !boardIsClicked;
-    console.log(boardItemClass);
-  };
-
   return (
-    <div className={boardItemClass} onClick={() => toggleBoardItem()}>
+    <div className="board-item">
       {/* <li>board id: {id}</li> */}
       <button className="button_click" onClick={() => deleteBoard(id)}>x</button>
       <div className="board-name-text" onClick={() => fetchCards(id)}>
