@@ -81,6 +81,13 @@ const CardsList = (props) => {
     setCardsData(sorted);
   };
 
+  const sortById = (arr) => {
+    const sorted = [...arr].sort((a,b) => {
+      return b.id - a.id;
+    });
+    setCardsData(sorted)
+  }
+
   const cardElements = cardsData.map((card) => {
     return (
       <Card
@@ -100,6 +107,7 @@ const CardsList = (props) => {
       </section>
       <h2>Cards for {props.board.title}</h2>
       <button onClick={() => sortByLikes(cardsData)}>Sort by # of likes</button>
+      <button onClick={() => sortById(cardsData)}>Sort by ID</button>
       <div>{cardElements}</div>
     </section>
   );
