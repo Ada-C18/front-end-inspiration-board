@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Board from "./components/Board.js";
 import { FaRegTrashAlt } from 'react-icons/fa';
+import { BsToggleOn, BsToggleOff } from 'react-icons/bs';
 import CardList from "./components/CardList.js";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
@@ -157,7 +158,7 @@ function App() {
             ""
           )}
           <span onClick={toggleBoardForm}>
-            {isBoardFormVisible ? "Hide New Board Form" : "Show New Board Form"}
+            {isBoardFormVisible ? <BsToggleOn /> : <BsToggleOff />}
           </span>
         </section>
         <section className="boards">
