@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import NewBoardForm from './NewBoardForm';
+import React from "react";
+import PropTypes from "prop-types";
+import NewBoardForm from "./NewBoardForm";
 
 // const Board = (props) => {
 //     const boardComponents = props.entries.map((board) => {
@@ -29,12 +29,14 @@ import NewBoardForm from './NewBoardForm';
 // };
 
 const Board = (props) => {
-    console.log(props)
-    return (
-        <div onClick={() => props.onBoardSelect(props.board)}>
-            {props.board.title}
-        </div>
-    );
+  console.log(props);
+  return (
+    <div onClick={() => props.onBoardSelect(props.board)}>
+      <li>
+        <span>{props.board.title}</span>
+      </li>
+    </div>
+  );
 };
 
 export default Board;
