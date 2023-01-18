@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import "./App.css";
+import "./App.css";
 import BoardContainer from "./components/BoardContainer";
 import CardContainer from "./components/CardContainer";
 import Header from "./components/Header";
@@ -82,7 +82,7 @@ function App() {
       if (id === board.id) {
         setCurrentBoard(board);
         getAllCards(id);
-        setBoardSelected(true)
+        setBoardSelected(true);
       }
     }
   };
@@ -92,6 +92,7 @@ function App() {
     axios
       .post("http://127.0.0.1:5000/board", boardData)
       .then((response) => {
+
         const newBoards = [...boards];
 
         newBoards.push({
@@ -113,8 +114,17 @@ function App() {
   // add new card callback for new card form
   const addCard = (cardData) => {
     axios
-      .post("http://127.0.0.1:5000/card", cardData)
+      .post(`http://127.0.0.1:5000/board/${currentBoard.id}/cards`, cardData)
       .then((response) => {
+
+        const newCards = [...cards];
+
+        newCards.push({
+          message: response.data.message,
+          ...cardData,
+        });
+
+        setCards(newCards);
         setMessage("You made a new card!");
       })
       .catch((error) => {

@@ -6,9 +6,7 @@ import './NewCardForm.css';
 const NewCardForm = ({ addCardCallback , afterSubmitMessage , boardSelected }) => {
   let className = boardSelected ? "new-card__section visible" : "new-card__section hidden"
 
-  const [cardData, setCardData] = useState({
-    message: '',
-  });
+  const [cardData, setCardData] = useState({message: ''});
 
   const submitCardData = (event) => {
     event.preventDefault();
@@ -34,9 +32,7 @@ const NewCardForm = ({ addCardCallback , afterSubmitMessage , boardSelected }) =
               value={cardData.message}
               onChange={handleChange}
             />
-            <button className="new-card__button" type="submit">
-              Add Card
-            </button>
+            <button className="new-card__button" type="submit">Add Card</button>
             <p>
               {/* {afterSubmitMessage} */}
             </p>

@@ -5,10 +5,10 @@ import Card from "./Card";
 
 const CardContainer = ({ currentBoard, cards }) => {
     const getAllCardsJSX = (cards) => {
-    const cardsToDisplay = cards.map((card) => {
+    const cardsToDisplay = cards.map((card, i) => {
         return (
         <Card
-            key={card.id}
+            key={i}
             id={card.id}
             message={card.message}
             likeCount={card.likeCount}
