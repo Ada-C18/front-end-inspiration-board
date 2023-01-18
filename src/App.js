@@ -16,6 +16,7 @@ function App() {
 
   const [selectedBoardLabel, setSelectedBoardLabel] = useState("Select A Board");
   // const [selectedBoardTitle, setSelectedBoardTitle] = useState("Affirmation");
+  const cardsListVisible = selectedBoard.id ? <CardList board={selectedBoard}></CardList> : ''
   
   useEffect(() => {
     axios
@@ -69,25 +70,35 @@ function App() {
       console.log(error);
     });
   };
-  
+
+ 
   const addCard = (newCardInfo, boardId) => {
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, newCardInfo)
     .then((response) => {
-      const newBoardsList = [...boardsList]
-      for (const board of newBoardsList) {
-        if (board.id === boardId) {
-          const cards = board.cards;
-          const newCards = [...cards];
-          const newCardJSON = {
-            ...newCardInfo,
-            "id": response.data.card.id
-          }
-          newCards.push(newCardJSON);
-          board.cards = newCards;
-        }
-        // setBoardsList(newBoardsList);
-        setSelectedBoard(board);
-      }
+      // const newBoardsList = [...boardsList]
+      // for (const board of newBoardsList) {
+      //   if (board.id === boardId) {
+      //     const cards = board.cards;
+      //     const newCards = [...cards];
+      //     const newCardJSON = {
+      //       ...newCardInfo,
+      //       "id": response.data.card.id
+      //     }
+      //     newCards.push(newCardJSON);
+      //     board.cards = newCards;
+      //   }
+      //   // setBoardsList(newBoardsList);
+      //   setSelectedBoard(board);
+      // }
+      axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}/cards`)
+      .then((response) => {
+        console.log(response.data);
+        setSelectedBoard(response.data)
+      })
+      .catch( (error) => {
+        console.log(error);
+      });
     })
     .catch((error) => {
       console.log(error);
@@ -95,7 +106,7 @@ function App() {
   };
   
   const newCardFormVisible = selectedBoard.id ? <NewCardForm boardId={selectedBoard.id} createNewCardForm={addCard}></NewCardForm> : ''
-  const cardsListVisible = selectedBoard.id ? <CardList board={selectedBoard}></CardList> : ''
+  
   
   return (
     <div className="container">
