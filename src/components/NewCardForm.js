@@ -20,6 +20,12 @@ const NewCardForm = ({boardId, createNewCardForm}) => {
   const handleNewCardSubmit = (e) => {
     e.preventDefault();
     createNewCardForm(formData, boardId);
+
+    setFormData({
+      message: ''
+    });
+
+    setPreview('');
   };
 
   return(

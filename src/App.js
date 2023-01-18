@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Board from "./components/Board.js";
-import {CardList, addCard} from "./components/CardList.js";
+import CardList from "./components/CardList.js";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import axios from "axios";
-
 
 function App() {
   const [boardsList, setBoardsList] = useState([]);
@@ -17,12 +16,11 @@ function App() {
 
   const [selectedBoardLabel, setSelectedBoardLabel] = useState("Select A Board");
   // const [selectedBoardTitle, setSelectedBoardTitle] = useState("Affirmation");
-  const cardsListVisible = selectedBoard.id ? <CardList board={selectedBoard}></CardList> : ''
   
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
-      .then((response) => {
+    .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
+    .then((response) => {
         const boardsListCopy = response.data.map((board) => {
           return {
             ...board,
@@ -33,18 +31,18 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
-  
-  const onBoardSelect = (boardId) => {
-    for (const board of boardsList) {
-      if (board.id === boardId) {
-        const boardTitle = board.title;
-        const boardOwner = board.owner;
-        const selectedBoardInfo = `${boardTitle} - ${boardOwner}`;
-        setSelectedBoardLabel(selectedBoardInfo);
-        setSelectedBoard(board)
+    }, []);
+    
+    const onBoardSelect = (boardId) => {
+      for (const board of boardsList) {
+        if (board.id === boardId) {
+          const boardTitle = board.title;
+          const boardOwner = board.owner;
+          const selectedBoardInfo = `${boardTitle} - ${boardOwner}`;
+          setSelectedBoardLabel(selectedBoardInfo);
+          setSelectedBoard(board)
+        };
       };
-    };
   };
   
   const boardsComponent = boardsList.map((board) => {
@@ -72,9 +70,32 @@ function App() {
     });
   };
   
+  const addCard = (newCardInfo, boardId) => {
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, newCardInfo)
+    .then((response) => {
+      const newBoardsList = [...boardsList]
+      for (const board of newBoardsList) {
+        if (board.id === boardId) {
+          const cards = board.cards;
+          const newCards = [...cards];
+          const newCardJSON = {
+            ...newCardInfo,
+            "id": response.data.card.id
+          }
+          newCards.push(newCardJSON);
+          board.cards = newCards;
+        }
+        // setBoardsList(newBoardsList);
+        setSelectedBoard(board);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
   
-  
-  const newCardFormVisible = selectedBoard.id ? <NewCardForm createNewCardForm={addCard}></NewCardForm> : ''
+  const newCardFormVisible = selectedBoard.id ? <NewCardForm boardId={selectedBoard.id} createNewCardForm={addCard}></NewCardForm> : ''
+  const cardsListVisible = selectedBoard.id ? <CardList board={selectedBoard}></CardList> : ''
   
   return (
     <div className="container">
