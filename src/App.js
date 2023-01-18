@@ -49,12 +49,12 @@ function App() {
 	// TODO: Select Board  State - top level, Make boards clickable
 	// State for selected board - manage here
 	// State: Selected Board ID
-	// const [selectedBoardId, setSelected] = useState(false);
+	// const [selectedBoardId, setSelected] = useState(false); // move useState somewhere else?
 	const [selectedBoard, setSelected] = useState({
 		board_id: 1,
 		title: "Do things!",
 		owner: "Milena",
-	}); // move useState somewhere else?
+	});
 
 	// 	const updateSelectedBoard = () => {
 	// 	console.log("updateBoard called");
