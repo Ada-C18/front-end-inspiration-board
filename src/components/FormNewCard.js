@@ -46,7 +46,7 @@ const FormNewCard = (props) => {
 
   return (
     <form onSubmit={handleNewCardSubmit}>
-      <label htmlFor="message"> Message </label>
+      <label htmlFor="message"></label>
       <input
         type="text"
         id="message"

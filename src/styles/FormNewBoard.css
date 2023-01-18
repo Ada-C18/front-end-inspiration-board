@@ -1,0 +1,20 @@
+form {
+    text-align: center;
+    align-content: center;
+}
+p {
+    text-align: center;
+    font-size: 14px;
+    font-style: italic;
+}
+
+label {
+    font-style:normal
+}
+.button {
+    margin:0 auto;
+    display:block;
+    text-align:center; 
+}
+
+

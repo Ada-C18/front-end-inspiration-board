@@ -2,6 +2,22 @@
     color: red;
 }
 
+
+label {
+    font-weight: bold;
+    text-align: justify;
+}
+
+
+
+.button {
+    position: relative;
+
+}
+
 input.invalid {
     border: 2px solid red;
+}
+.message-preview {
+    font-style: italic;
 }
