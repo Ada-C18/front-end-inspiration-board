@@ -13,6 +13,7 @@ const Board = () => {
     const [boardData, setBoardData] = useState([]);
     const [cardData, setCardData] = useState([]);
     const [selectedBoard, setSelectedBoard] = useState(0);
+    const [selectedBoardTitle, setselectedBoardTitle] = useState('');
 
     const onBoardSubmit = (newBoardData) => {
     axios
@@ -34,14 +35,16 @@ const Board = () => {
     }, []);
     
     const getBoardId = (id) => {
-        // create hook to find which board is being selected
-        // trigger board
-        setSelectedBoard(id)
-        console.log(`board id ${id}`)
+        setSelectedBoard(id);
+        // console.log(`board id ${id}`)
+    }
+
+    const getBoardTitle = (title) => {
+        setselectedBoardTitle(title);
     }
     
     const addCardCallback = (newCardData) => {
-        let board_id = getBoardId();
+        let board_id = selectedBoard;
         axios.post(`https://rykaliva.herokuapp.com/boards/${board_id}/cards`, newCardData)
         .then((response) => {
             const newCards = [...cardData];
@@ -63,15 +66,14 @@ const Board = () => {
         <section className="input-section">
             <div className='user-choice'>
                 <label>Choose Board to Display</label>
-                <Dropdown boardData={boardData} getBoardId={getBoardId}></Dropdown>
+                <Dropdown boardData={boardData} getBoardId={getBoardId} getBoardTitle={getBoardTitle}></Dropdown>
                 <label>Create a Board</label>
                 <NewBoardForm onBoardSubmit={onBoardSubmit}></NewBoardForm>
                 <label>Create a Card</label>
                 <NewCardForm addCardCallback={addCardCallback}></NewCardForm>
             </div>
             <div className='board-title'>
-                {/* i think we need to call a function in this h2 to change the present title as its chosen */}
-                <h2>Board Title</h2>
+                <h2>{selectedBoardTitle}</h2>
             </div>
         </section>
         <div className="card1">
