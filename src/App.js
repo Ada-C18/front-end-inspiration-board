@@ -12,6 +12,7 @@ import {
   addNewBoard,
   addNewCard,
   getAllCards,
+  getCardsFirstBoard,
 } from './API/InspirationAPI';
 
 const App = function () {
@@ -45,15 +46,16 @@ const App = function () {
     getAllCards(boardID, setCardListState);
   };
 
+  // load the cards for the first board in the database
+  // then load cards and set all states on first render
   useEffect(() => {
-    getAllBoards(setBoardListState);
+    // getAllBoards(setBoardListState);
+    getCardsFirstBoard(
+      setBoardListState,
+      setCardListState,
+      setCurrentBoardState
+    );
   }, []);
-
-  useEffect(() => {
-    if (currentBoardState === 0) {
-      setCurrentBoardState(boardListState[0].board_id);
-    }
-  }, [boardListState, currentBoardState]);
 
   /* handle submit from cardForm */
   const handleNewCard = (newcard) => {

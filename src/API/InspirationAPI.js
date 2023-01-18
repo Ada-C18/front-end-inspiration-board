@@ -38,6 +38,33 @@ const getAllCards = async function (board, onSuccess) {
   }
 };
 
+/* getCardsFirstBoard: Fetch all the cards for the first board in the database. 
+Used to build starting state. 
+Takes:  setBoards: callback function for setting boards
+        setCards: callback function for setting cards
+Returns: undefined
+Calls: callback
+*/
+const getCardsFirstBoard = async function (
+  setBoards,
+  setCards,
+  setCurrentBoard
+) {
+  try {
+    const boardResponse = await axios.get(BOARDS_ENDPOINT);
+    const board_id = boardResponse.data[0].board_id;
+    const cardResponse = await axios.get(
+      `${BOARDS_ENDPOINT}/${board_id}/cards`
+    );
+    setBoards(boardResponse.data);
+    setCards(cardResponse.data.cards);
+    setCurrentBoard(board_id);
+    console.log(cardResponse.data);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 /* addNewBoard: Sends a new board request to the server. 
 Server should respond with the complete boardObject. 
 Takes: newBoardData = {name: "board title", owner: "board owner"}
@@ -79,4 +106,10 @@ const addNewCard = async function (newCardData, board, onSuccess) {
   }
 };
 
-export { getAllBoards, getAllCards, addNewBoard, addNewCard };
+export {
+  getAllBoards,
+  getAllCards,
+  getCardsFirstBoard,
+  addNewBoard,
+  addNewCard,
+};
