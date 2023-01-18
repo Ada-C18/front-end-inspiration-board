@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const NewCardForm = ({addCardCallback}) => {
   const [cardMessage, setCardMessage] = useState({
     message: '',
-    like_count: 0
+    likes_count: 0
   });
 
   const handleChange = e => {
@@ -23,7 +23,7 @@ const NewCardForm = ({addCardCallback}) => {
 
     setCardMessage({
       message: '',
-      like_count: 0
+      likes_count: 0
     });
   };
 
