@@ -44,7 +44,6 @@ const getCardsForBoardApi = async (boardId) => {
 }
 
 const postNewCardApi = (card) => {
-  console.log("card in api", card)
   const snakeCard = {...card, board_id: card.boardId, likes_count: card.likesCount}
   return axios.post(`${kBaseUrl}/boards/${card.boardId}/cards`, snakeCard)
   .then(response => {
@@ -89,7 +88,6 @@ function App() {
     const cards = await getCardsForBoardApi(boardId);
     setCardData(cards);
   }
-  console.log("selected board", selectedBoard)
 
   // const getOneBoard = async (id) => {
   //   const board = await getOneBoardAPI(id);

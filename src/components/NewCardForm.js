@@ -7,26 +7,15 @@ const NewCardForm = (props) => {
     boardId: props.boardId,
     likesCount: 0
   }
-  console.log("props for card form", props.boardId)
-  console.log("default form ",kDefaultFormState)
-  // uses the python variable style
 
   const [formData, setFormData] = useState(kDefaultFormState)
-  console.log("before render form data", formData)
 
 
   const handleChange = (event) => {
     const fieldValue = event.target.value;
     const fieldName = event.target.name;
     const newFormData = {...formData, [fieldName]: fieldValue}
-    console.log(fieldName, "field name")
-    console.log(fieldValue, "field value")
-    console.log("BEFORE form data state", formData)
-    console.log("BEFORE form data setting", newFormData)
-
     setFormData(newFormData)
-    console.log("form data state", formData)
-    console.log("form data after setting", newFormData)
   };
 
   const handleSubmit = (event) => {
