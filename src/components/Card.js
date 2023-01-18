@@ -1,4 +1,5 @@
 import "./Card.css";
+import PropTypes from 'prop-types';
 
 import { useState } from "react";
 const Card = (props) => {
@@ -25,11 +26,10 @@ const Card = (props) => {
     </div>
   );
 };
-// const [isClicked, setisClicked] = useState(false);
+Card.propTypes={
+  message: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired
 
-// moving state cardlist
-// set each card to state
-// remove map from card
-// only moving 1 card
+}
 
 export default Card;

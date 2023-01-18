@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
 const NewCardForm = (props) => {
   const [formFields, setFormFields] = useState({
@@ -51,5 +52,8 @@ const NewCardForm = (props) => {
     </form>
   );
 };
+NewCardForm.propTypes ={
+  message: PropTypes.string
+}
 
 export default NewCardForm;

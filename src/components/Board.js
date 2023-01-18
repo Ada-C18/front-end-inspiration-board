@@ -1,4 +1,6 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
+
 const Board = (props) => {
   const returnedBoards = props.boards.map((board) => {
     // onclick event, the function and id to send to the function
@@ -17,4 +19,7 @@ const Board = (props) => {
   );
 };
 
+Board.propTypes ={
+  onBoardClicked: PropTypes.func.isRequired
+};
 export default Board;
