@@ -28,12 +28,12 @@ const Card = (props) => {
 
     return(
         <div className='card'>
-            <p>
+            {/* <p>
             <button
             className="like"
             onClick={onLikeButtonClick}
             >{likeColor}</button>
-            </p>
+            </p> */}
         </div>
         )
 }

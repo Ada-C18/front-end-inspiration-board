@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
 
-// import CardList from './CardList'
+import CardList from './CardList'
 import Dropdown from './Dropdown'
 import NewBoardForm from './NewBoardForm'
 import NewCardForm from './NewCardForm'
@@ -25,19 +25,23 @@ const Board = () => {
         })
         .catch((error) => {
         console.log(error);
-        });
-    };
-
+    });
+};
+        const getBoardId = (id) => {
+        setSelectedBoard(id);
+            // console.log(`board id ${id}`)
+        }
+    
     useEffect(() => {
         axios.get("https://rykaliva.herokuapp.com/boards").then((response) => {
-        setBoardData(response.data);
+            setBoardData(response.data);
+            axios.get(`https://rykaliva.herokuapp.com/boards/${selectedBoard}/cards`) 
+            .then((response) => {
+                setCardData(response.data)
+            });  
         });
     }, []);
     
-    const getBoardId = (id) => {
-        setSelectedBoard(id);
-        // console.log(`board id ${id}`)
-    }
 
     const getBoardTitle = (title) => {
         setselectedBoardTitle(title);
@@ -46,20 +50,27 @@ const Board = () => {
     const addCardCallback = (newCardData) => {
         let board_id = selectedBoard;
         axios.post(`https://rykaliva.herokuapp.com/boards/${board_id}/cards`, newCardData)
-        .then((response) => {
-            const newCards = [...cardData];
-            newCards.push({
-                card_id: response.data.card_id,
-                message: response.data.message,
-                likes_count: response.data.likes_count,
-                ...cardData
-        });
-            setCardData(newCards);
-        })
+        .then(() => {
+            axios.get (`https://rykaliva.herokuapp.com/boards/${board_id}/cards`) .then((response)=> {
+                setCardData(response.data)
+            });
+        }) 
+        // .then((response) => {
+            // const newCards = [...cardData];
+            // newCards.push({
+            //     card_id: response.data.card_id,
+            //     message: response.data.message,
+            //     likes_count: response.data.likes_count,
+            //     ...cardData
+        // });
+        // setCardData(newCards);
+        // console.log(response.data)
+
+        // });
         .catch(error => {
             console.log(error)
         });
-    }
+    };
 
     return (
         <section className="board-container">
@@ -76,7 +87,8 @@ const Board = () => {
                 <h2>{selectedBoardTitle}</h2>
             </div>
         </section>
-        <div className="card1">
+        <CardList cardData={cardData}></CardList>
+        {/* <div className="card1">
             <Card></Card>
         </div>
         <div className="card2">
@@ -99,7 +111,7 @@ const Board = () => {
         </div>
         <div className="card8">
             <Card></Card>
-        </div>
+        </div> */}
         </section>
     );
 };
