@@ -125,12 +125,15 @@ function App() {
       <header> Inspiration Board </header>
 
       <nav className="board">
-        <h2> Board List</h2>
+        <h2 className="boardListTitle"> Board List</h2>
+
         <BoardList boardList={boardList} getOneBoard={getOneBoard} />
+        <br />
+        <FormNewBoard addBoardCallbackFunc={addBoard} />
       </nav>
 
       <aside className="cards">
-        <FormNewBoard addBoardCallbackFunc={addBoard} />
+      
         <FormNewCard addCardCallbackFunc={addCard} boardId={boardId} />
       </aside>
 
