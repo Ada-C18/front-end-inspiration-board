@@ -7,9 +7,9 @@ import CardList from "./components/CardList";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// 1. create card
-// 2. delete card
-// 3. add error handling
+// 1. add error handling
+// 2. add proptypes
+// 3. connect likes to backend
 
 //const URL = process.env['REACT_APP_BACKEND_URL'];
 const BoardURL = "http://localhost:5000/boards";
