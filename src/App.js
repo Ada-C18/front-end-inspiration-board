@@ -313,6 +313,10 @@ function App() {
   //     repeatSignUp: false, });
   // };
 
+  // const addBoard = (title) => {
+  //   AXIOS call to POST new board to the db 
+  // }
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
