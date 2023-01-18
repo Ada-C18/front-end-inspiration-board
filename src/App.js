@@ -4,8 +4,11 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Board from "./components/Board.js";
 import BoardList from "./components/BoardList";
-import NewCardForm from "./components/NewCardForm";
+/* import NewCardForm from "./components/NewCardForm"; */
+import Header from "./components/Header"
 import NewBoardForm from "./components/NewBoardForm";
+import Title from "./components/Title"
+import VieworAddButtons from "./components/ViewOrAddButtons"
 
 const BOARD_LIST = [
   {
@@ -157,9 +160,11 @@ function App() {
 
   return (
     <div>
-      <h1>Hello Peeps!</h1>
-      <BoardList boardList={boardList} loadBoard={loadBoard} />
+      <Header></Header>
+      <Title></Title>
+      <VieworAddButtons></VieworAddButtons>
       <NewBoardForm addBoardCallbackFunc={addBoard} />
+      <BoardList boardList={boardList} loadBoard={loadBoard} />
       <Board cards={cards} selectedBoard={selectedBoard} />
       {/* <NewCardForm addCardCallbackFunc={addCard} /> */}
     </div>
