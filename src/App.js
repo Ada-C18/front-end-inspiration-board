@@ -41,6 +41,7 @@ const App = () => {
   const handleCardSubmit = (card, boardId) => {
     addCardAPI(card, boardId).then((newCards) => {
       setCards(newCards);
+      console.log(newCards)
     });
   };
 

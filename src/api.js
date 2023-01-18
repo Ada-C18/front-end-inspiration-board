@@ -14,20 +14,17 @@ export const cardApiToJson = (card) => {
     card_id: cardId,
     board_id: boardId,
     likes_count: likesCount,
-    message,
-    board,
+    message
+    
   } = card;
-  return { cardId, boardId, likesCount, message, board };
+  return { cardId, boardId, likesCount, message };
 };
-
-//POST,GET,DELETE Promises:
 
 // Post Board Object {"title": "", "owner": ""} This is used in OnSubmitFormBoard, to submit the Board when clicking the button
 export const addBoardAPI = (board) => {
   return (
-    axios
-      .post(`${REACT_APP_BACKEND_URL}/boards`, board)
-      .then((response) => response.data.board)
+    axios.post(`${REACT_APP_BACKEND_URL}/boards`, board)
+      .then((response) => boardApiToJson(response.data.board))
       //need show the user a greyed out submit button
       .catch((err) => console.log(err))
   );
@@ -37,9 +34,28 @@ export const addBoardAPI = (board) => {
 export const addCardAPI = (card, boardId) => {
   return axios
     .post(`${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, card)
-    .then((response) => response.data.cards)
+    .then((response) => {
+      console.log(response.data.cards)
+      return response.data.cards.map((card)=>{
+        return cardApiToJson({...card,board_id: boardId})
+      });
+    })
     .catch((err) => console.log(err));
 };
+
+//This doesn't add the boardId like above because I changed the CARD MODEL in the backend to include the board id. This commented out function is saner, if the backend is done correct. Otherwise use the above to add an key value pair to an object.
+
+// export const addCardAPI = (card, boardId) => {
+//   return axios
+//     .post(`${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, card)
+//     .then((response) => {
+//       
+//       return response.data.cards.map((card)=>{
+//         return cardApiToJson(cards)
+//       });
+//     })
+//     .catch((err) => console.log(err));
+// };
 
 // Get ALL Boards, the promise returned is the servers response of the data, [ Board1, Board2, Board3 ]
 export const getBoardsAPI = async () => {
