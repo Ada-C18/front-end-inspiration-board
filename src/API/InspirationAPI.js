@@ -126,6 +126,25 @@ const deleteCard = async function (card_id, onSuccess) {
   }
 };
 
+/* likeCard: Sends a like card request. 
+Server should respond with JSON and a message field
+Takes: card_id: numeric card id
+       onSuccess: function to call if successful. 
+callback function should accept returned messageObject
+ */
+
+const likeCard = async function (card_id, onSuccess) {
+  let response;
+
+  try {
+    response = await axios.patch(`${CARDS_ENDPOINT}/${card_id}`);
+    onSuccess(response.data);
+    console.log(`addNewCard: ${response.data}`);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 export {
   getAllBoards,
   getAllCards,
