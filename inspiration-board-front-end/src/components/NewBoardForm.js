@@ -52,17 +52,17 @@ const NewBoardForm = (props) => {
   return (
     <form onSubmit={onFormSubmit} className="form-style">
       <section className="board-form">
-        <h4> Create New Board </h4>
-        <section>
-          <h5>Board Title: </h5>
+        <h4 className="board-text"> Create New Board </h4>
+        <section className="board-text">
+          <h5 className="board-text">Board Title: </h5>
           <input
             type="text"
             value={formFields.title}
             onChange={onTitleChange}
           />
         </section>
-        <section>
-          <h5>Owner:</h5>
+        <section className="board-text">
+          <h5 className="board-text">Owner:</h5>
           <input
             type="text"
             value={formFields.owner}

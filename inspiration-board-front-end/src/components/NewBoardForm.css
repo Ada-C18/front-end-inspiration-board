@@ -15,5 +15,13 @@
   margin-top: 2em;
   border-radius: 1em;
   font-size: 1em;
-  font-style: italic;
+  font-family: "Montserrat", sans-serif;
+}
+
+.board-text {
+  background-color: #c3bef0;
+}
+
+input {
+  height: 2em;
 }

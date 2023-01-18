@@ -2,6 +2,7 @@ import "./App.css";
 import BoardList from "./components/BoardList";
 import CardList from "./components/CardList";
 import NewBoardForm from "./components/NewBoardForm";
+import "./Fonts/GlossySheenRegular-L35oy.ttf";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -102,8 +103,8 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Inspiration Boards</h1>
+      <header id="App-header">
+        <h1>✐ Inspiration Boards ✎</h1>
       </header>
       <main>
         <section className="Boards-Area">

@@ -94,16 +94,18 @@ const CardList = (props) => {
 
   let boardArea = (
     <div className="whole-area">
-      <ul className="cards">{cards}</ul>
+      <section className="Cards-And-Button">
+        <ul className="cards">{cards}</ul>
+        <button
+          className="Delete-Board-Button"
+          onClick={() => {
+            props.onDeleteBoard(board_id);
+          }}
+        >
+          Delete Selected Board
+        </button>
+      </section>
       <NewCardForm className="NewBoardForm" addCardCallBack={addCard} />
-      <button
-        className="Delete-Board-Button"
-        onClick={() => {
-          props.onDeleteBoard(board_id);
-        }}
-      >
-        Delete Selected Board
-      </button>
     </div>
   );
   if (board_id === 0) {

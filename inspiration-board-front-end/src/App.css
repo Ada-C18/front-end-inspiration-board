@@ -1,13 +1,22 @@
-* {
-  background-color:#cadefc;
+@import url("https://fonts.googleapis.com/css2?family=Gaegu&family=Montserrat&display=swap");
+
+@font-face {
+  font-family: "GlossySheenRegular";
+  src: local("GlossySheenRegular"),
+    url("./Fonts/GlossySheenRegular-L35oy.ttf") format("truetype");
+  font-weight: normal;
 }
 
-.App-header {
-  font-size: calc(10px + 2vmin);
-  color: aliceblue;
+* {
+  background-color: #cadefc;
+}
+
+#App-header {
+  font-size: calc(10px + 4vmin);
+  color: rgb(144, 92, 159);
   text-align: center;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "GlossySheenRegular";
+  letter-spacing: 0.2rem;
 }
 
 .Boards-Area {
@@ -18,20 +27,22 @@
   margin: 2rem;
   padding: 1rem;
   font-size: 1rem;
-  border-color: #cca8e9 ;
+  border-color: #cca8e9;
   border-width: 1rem;
   border-style: dashed;
   border-radius: 10px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .BoardTitles {
-  color:rgb(144, 92, 159);
+  color: rgb(144, 92, 159);
   font-size: 1.5rem;
   padding: 0.2em;
+  font-family: "Montserrat", sans-serif;
 }
 
 .BoardTitles:hover {
-  color:#cca8e9;
+  color: #cca8e9;
 }
 
 .SelectedBoard {
@@ -40,8 +51,7 @@
   text-align: left;
   padding: 2rem;
   font-weight: bold;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .Delete-Button {
@@ -55,6 +65,5 @@
   padding: 1rem;
   margin: 2rem;
   font-style: italic;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
