@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const INITIAL_FORM_DATA = {
   title: "",
-  name: "",
+  owner: "",
 };
 
 const NewBoard = (props) => {
@@ -29,7 +29,7 @@ const NewBoard = (props) => {
     setBoardData(INITIAL_FORM_DATA);
     //DO WE NEED TO SET CARD DATA TOO?
   };
-  const nameBorderClass = BoardData.name ? "" : "empty";
+  const ownerBorderClass = BoardData.owner ? "" : "empty";
   const titleBorderClass = BoardData.title ? "" : "empty";
   // const inputClass = BoardData.name & BoardData.title ? "" : "empty";
   //if input fields for Title or Owner's Name are empty ->
@@ -50,20 +50,20 @@ const NewBoard = (props) => {
           onChange={handleChange}
         />
 
-        <label htmlFor="name">Name</label>
+        <label htmlFor="owner">Name</label>
         <input
-          className={nameBorderClass}
+          className={ownerBorderClass}
           type="text"
-          id="name"
-          name="name"
-          value={BoardData.name}
+          id="owner"
+          name="owner"
+          value={BoardData.owner}
           onChange={handleChange}
         />
 
         <input
           type="submit"
           value="Add Board"
-          disabled={!BoardData.name || !BoardData.title}
+          disabled={!BoardData.owner || !BoardData.title}
         />
       </form>
     );

@@ -8,22 +8,24 @@ function CardList(props) {
   const selectedBoard = props.selectedBoard;
 
   for (const card of cardList) {
-    // if (card.board_id === selectedBoard.id) { //ADDED -- need to figure out how card.board_id would be changed using cardBoardMap
-    cardComponents.push(
-      <Card
-        key={card.id}
-        id={card.id}
-        message={card.message}
-        selected={card.selected}
-        liked={card.liked}
-        selectCard={props.selectCard}
-        unselectCard={props.unselectCard}
-        updateLike={props.updateLike}
-        selectedBoard={selectedBoard}
-        deleteCard={props.deleteCard}
-      />
-    );
-    // }
+    if (card.selected === true) {
+      //ADDED -- need to figure out how card.board_id would be changed using cardBoardMap
+      cardComponents.push(
+        <Card
+          key={card.id}
+          id={card.id}
+          message={card.message}
+          selected={card.selected}
+          liked={card.liked}
+          numOfLikes={card.likes_count}
+          selectCard={props.selectCard}
+          unselectCard={props.unselectCard}
+          updateLike={props.updateLike}
+          selectedBoard={selectedBoard}
+          deleteCard={props.deleteCard}
+        />
+      );
+    }
   }
 
   return <div>{cardComponents}</div>;

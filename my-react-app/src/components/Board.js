@@ -10,7 +10,7 @@ function Board(props) {
   const unselectBoard = props.unselectBoard;
 
   const toggleSelected = (boardId) => {
-    if (props.selected === false) {
+    if (props.selected === false || props.selected == null) {
       selectBoard(boardId);
     } else {
       unselectBoard(boardId);
@@ -20,11 +20,11 @@ function Board(props) {
   return (
     <div>
       {/* <h2 className="board__name">{boardTitle}</h2> */}
-      <ol>
+      <ul>
         {/* <li>ID: {boardId}</li> */}
         <li onClick={() => toggleSelected(boardId)}>{boardTitle}</li>
         {/* <li>Name: {boardName}</li> */}
-      </ol>
+      </ul>
     </div>
   );
 }
