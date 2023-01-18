@@ -1,0 +1,10 @@
+.boards-list {
+    border: 5px solid peru;
+    overflow: auto;
+    width: 25rem;
+    height: 11rem;
+    padding-top: 10px;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    margin-left: auto;
+    margin-right: auto;
+}
