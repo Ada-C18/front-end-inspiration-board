@@ -99,6 +99,7 @@ function App() {
         console.log(response.data);
         const boardAPIResCopy = response.data;
         setSelected(boardAPIResCopy);
+        console.log(selectedBoard.board_id);
       })
       .catch((error) => {
         console.log(error);
@@ -116,8 +117,8 @@ function App() {
   const [selectedCards, setCardsList] = useState([]); // useState([]);
 
   // TODO: ask Backend team about GET Cards route
-  const fetchCardsURL = `${URL}/${selectedBoard.boardId}/cards`; // "boardId"?
-  // console.log(fetchCardsURL);
+  const fetchCardsURL = `${URL}/boards/${selectedBoard.board_id}/cards`;
+  console.log(fetchCardsURL);
 
   // Get all cards with board ID
   const fetchCards = () => {
@@ -146,9 +147,11 @@ function App() {
   // Todo: add API post card code
   const addCard = (newCard) => {
     console.log("Calling addCard ");
-    axios.post(`${URL}/boards/board_id/cards`, newCard).then((response) => {
+    axios.post(fetchCardsURL, newCard).then((response) => {
       const newCardsList = [...selectedCards];
+      console.log({ newCardsList });
       newCardsList.push({
+        cardId: newCard.card_id,
         boardId: newCard.board_id, // hidden, implied primary key
         message: newCard.message,
       });
