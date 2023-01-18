@@ -4,23 +4,35 @@ import { useState } from 'react';
 //
 const NewBoard=(props)=>{
     const[newTitle,setNewTitle]= useState('');
-    const[newOwner,setNewOwner]=useState('');
+    const[newAuthor,setNewAuthor]=useState('');
     const handleTitleChange = (event) => {
         setNewTitle(event.target.value)
     };
     const handleOwnerChange=(event)=>{
-        setNewOwner(event.target.value)
+        setNewAuthor(event.target.value)
     };
     const handleBoardSubmit=(event)=>{
         event.preventDefault();
-        props.onBoardSubmit(newTitle,newOwner);//
+        const newBoard={"title":newTitle,
+        "author":newAuthor}
+        props.onBoardSubmit(newBoard);//
         setNewTitle('')
-        setNewOwner('')
+        setNewAuthor('')
         ;
     //using an object to represent to the fields //change handler that would update specific 
         //form on sumbit 
         //packagae title and owner with their speific keys.
     }
+    //make a dict or an object that connects the titles and the author and it holds //then it's
+    // const varaNew={};
+    // varaNew.newTitle='';
+    // varaNew.newOwner='';
+
+    // {varaNew.map((new)=>(
+    //     id={new.id}
+    //     title={new.title}
+    //     owner={new.owner}
+    // ))}
 
 
 return (
@@ -40,7 +52,7 @@ return (
                 <li>
                 <div className="newBoard__buttons">
                     <label>Owner's Name</label>
-                    <input type="text" value={newOwner} onChange={handleOwnerChange}/>
+                    <input type="text" value={newAuthor} onChange={handleOwnerChange}/>
                     <div><input type="submit" value="Submit"/></div>
                 </div>
                 </li>
