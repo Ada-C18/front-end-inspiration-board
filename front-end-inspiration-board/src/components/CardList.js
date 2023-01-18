@@ -6,7 +6,14 @@ function CardList(props) {
 
   for (const card of props.cardsList) {
     cardComponents.push(
-      <Card key={card.id} id={card.id} message={card.message} />
+      <Card
+        key={card.id}
+        id={card.id}
+        message={card.message}
+        likes_count={card.likes_count}
+        increaseLikes={props.increaseLikes}
+        deleteCard={props.deleteCard}
+      />
     );
   }
 
@@ -18,8 +25,10 @@ CardList.propTypes = {
     PropTypes.shape({
       id: PropTypes.number,
       message: PropTypes.string.isRequired,
+      likes_count: PropTypes.number,
     })
   ),
+  increaseLikes: PropTypes.func.isRequired,
 };
 
 export default CardList;

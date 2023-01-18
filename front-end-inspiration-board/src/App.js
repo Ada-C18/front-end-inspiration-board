@@ -15,7 +15,13 @@ const INITIAL_BOARDS = [
     id: 1,
     title: "Shower Thoughts",
     owner: "Suzanne",
-    cards: [],
+    cards: [
+      { id: 1, message: "testing 1", likes_count: 1 },
+      { id: 2, message: "testing 2", likes_count: 0 },
+      { id: 3, message: "testing 3", likes_count: 0 },
+      { id: 4, message: "testing 4", likes_count: 5 },
+      { id: 5, message: "testing 5", likes_count: 2 },
+    ],
     selected: false,
   },
   {
@@ -69,6 +75,32 @@ function App() {
     selectedBoard.cards = newCard;
   };
 
+  const increaseLikes = (cardId, NewLikesCount) => {
+    const newCardList = [];
+    for (const card of cardsList) {
+      if (card.id !== cardId) {
+        newCardList.push(card);
+      } else {
+        const updatedCard = {
+          ...card,
+          likes_count: NewLikesCount,
+        };
+        newCardList.push(updatedCard);
+      }
+    }
+    setCardsList(newCardList);
+  };
+
+  const deleteCard = (cardId) => {
+    const newCardList = [];
+    for (const card of cardsList) {
+      if (card.id !== cardId) {
+        newCardList.push(card);
+      }
+      setCardsList(newCardList);
+    }
+  };
+
   return (
     <div className="App" style={{ backgroundImage: `url(${background})` }}>
       <header className="App-header">
@@ -94,7 +126,12 @@ function App() {
                   addCardCallBackFunc={addCard}
                 />
               </Dialog>
-              <CardList cardsList={cardsList} />
+              <CardList
+                className="CardList"
+                deleteCard={deleteCard}
+                increaseLikes={increaseLikes}
+                cardsList={cardsList}
+              />
             </>
           )}
         </section>
