@@ -1,11 +1,11 @@
-form {
+#form form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-*, *:before, *:after {
+#form *, *:before, *:after {
     box-sizing: border-box;
 }
 
