@@ -4,6 +4,7 @@ import "./App.css";
 import BoardList from "./components/BoardList.js";
 import CardList from "./components/CardList.js";
 import NewBoardForm from "./components/NewBoardForm.js";
+import NewCardForm from "./components/NewCardForm.js";
 
 function App() {
   // boardsList axios call
@@ -89,6 +90,20 @@ function App() {
       });
   };
 
+  const addCard = (newCardInfo) => {
+    //use axios.post request here
+    //handling .then to update frontend, update state variable with setBikesList()
+    axios
+      .post(`${URL}/boards/${newCardInfo.id}`, newCardInfo)
+      .then((response) => {
+        // console.log(response);
+        fetchAllCards();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <h1>Boards:</h1>
@@ -97,9 +112,10 @@ function App() {
         deleteBoard={deleteBoard}
         fetchCards={fetchAllCards}
       />
-      <CardList cardEntries={cardsList} />
       <h2>Add Board:</h2>
       <NewBoardForm addBoardCallbackFunc={addBoard} />
+      <NewCardForm addCardCallbackFunc={addCard} />
+      <CardList cardEntries={cardsList} />
     </div>
   );
 }
