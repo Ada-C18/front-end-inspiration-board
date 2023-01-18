@@ -16,7 +16,7 @@ const Board = (props) => {
         // cards.push(response.data.card);
         // setCardList(cards);
         getCardList();
-        console.log("Response is:", response);
+        // console.log("Response is:", response);
       })
       .catch((err) => {
         console.log("Error:", err);
@@ -37,8 +37,7 @@ const Board = (props) => {
   useEffect(getCardList, [props.currentBoard]);
 
   const [cardFormVisible, setCardFormVisible] = useState(false);
-  const toggleCardFormVisible = () =>
-    setCardFormVisible(!cardFormVisible);
+  const toggleCardFormVisible = () => setCardFormVisible(!cardFormVisible);
 
   const cards = cardList.map((card) => {
     return (
@@ -47,16 +46,23 @@ const Board = (props) => {
   });
 
   const cardForm = props.currentBoard ? (
-        <CardForm
-          visible={cardFormVisible}
-          toggleVisible={toggleCardFormVisible}
-          addNewCard={addNewCard}
-        ></CardForm>
-  ) : "";
+    <CardForm
+      visible={cardFormVisible}
+      toggleVisible={toggleCardFormVisible}
+      addNewCard={addNewCard}
+    ></CardForm>
+  ) : (
+    ""
+  );
+
+  // if (props.currentBoardName != null) {
+  //   const boardName = props.currentBoardName.toUpperCase();
+  // }
 
   return (
     <section id="board">
-      <h2>{props.currentBoardName}</h2>
+      <h2 className="board-name">{props.currentBoardName}</h2>
+      {/* <h2 className="board-name">{boardName}</h2> */}
       <div className="card-list">
         {cards}
         {cardForm}
