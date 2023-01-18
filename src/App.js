@@ -127,7 +127,8 @@ function App() {
 
 
       <nav className="board">
-        <h2> Board List</h2>
+        <h2 className="boardListTitle"> Board List</h2>
+
         <BoardList boardList={boardList} getOneBoard={getOneBoard} />
         <h2> Create a New Board</h2>
         <FormNewBoard addBoardCallbackFunc={addBoard} />

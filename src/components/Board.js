@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const Board = ({id, title, owner, getOneBoard}) => { 
     
     return (
-        <div>
+        <div className="titles">
             <li onClick={() => getOneBoard(id)}> {title} </li>
         </div>
     )

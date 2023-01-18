@@ -1,3 +1,4 @@
+
 .app-all {
   display: grid;
   grid-template-areas:
@@ -14,17 +15,18 @@
 
 header {
 grid-area: header;
-background-color: pink;
+background-color: #f0a3bc;
 }
 
 main {
 grid-area: main;
-background-color: blue;
+background-color: #f0a3bc;
 }
 
 .board {
 grid-area: nav;
-background-color: green;
+background-color: #f0a3bc;
+
 }
 
 aside {
@@ -37,6 +39,15 @@ aside {
 header, main, nav, aside{
   padding: 10px; 
 }
+
+.boardListTitle {
+  font-family: Verdana, sans-serif;
+  color: #397754;
+
+}
+
+
+
 
 h2 {
   text-align: center;
