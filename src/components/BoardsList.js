@@ -5,40 +5,40 @@ import Board from "./Board";
 // function
 
 function BoardsList({ boardsList, updateSelectedBoard }) {
-  const boardComponents = [];
+	const boardComponents = [];
 
-  for (const board of boardsList) {
-    boardComponents.push(
-      <Board
-        key={board.board_id}
-        board_id={board.board_id}
-        title={board.title}
-        owner={board.owner}
-        updateSelectedBoard={updateSelectedBoard}
-      />
-    );
-  }
+	for (const board of boardsList) {
+		boardComponents.push(
+			<Board
+				key={board.boardId}
+				boardId={board.boardId}
+				title={board.title}
+				owner={board.owner}
+				updateSelectedBoard={updateSelectedBoard}
+			/>
+		);
+	}
 
-  return (
-    <>
-      <h1>Boards</h1>
-      <ol>{boardComponents}</ol>
-      {/* <h1>Selected Board</h1>
+	return (
+		<>
+			<h1>Boards</h1>
+			<ol>{boardComponents}</ol>
+			{/* <h1>Selected Board</h1>
       <p>Select a Board from the Board List!</p>
       {SelectedBoard} */}
-    </>
-  );
+		</>
+	);
 }
 
 BoardsList.propTypes = {
-  boardsList: PropTypes.arrayOf(
-    PropTypes.shape({
-      board_id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      owner: PropTypes.string.isRequired,
-    })
-  ),
-  updateSelectedBoard: PropTypes.func.isRequired,
+	boardsList: PropTypes.arrayOf(
+		PropTypes.shape({
+			boardId: PropTypes.number.isRequired,
+			title: PropTypes.string.isRequired,
+			owner: PropTypes.string.isRequired,
+		})
+	),
+	updateSelectedBoard: PropTypes.func.isRequired,
 };
 
 export default BoardsList;
