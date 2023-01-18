@@ -27,8 +27,8 @@ CardList.propTypes = {
     message: PropTypes.string.isRequired,
     likesCount: PropTypes.number.isRequired
   })),
-  // delete card
-  // like card
+  handleDeleteCard: PropTypes.func.isRequired,
+  handleLikeCard: PropTypes.func.isRequired
 }
 
 export default CardList

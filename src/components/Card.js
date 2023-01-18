@@ -25,8 +25,8 @@ Card.propTypes = {
   cardId: PropTypes.number.isRequired,
   boardId: PropTypes.number.isRequired,
   likesCount: PropTypes.number.isRequired,
-  // delete card function
-  // like card function
+  handleDeleteCard: PropTypes.func.isRequired,
+  handleLikeCard: PropTypes.func.isRequired
 }
 
 export default Card

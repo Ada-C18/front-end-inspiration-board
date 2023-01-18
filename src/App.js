@@ -53,6 +53,7 @@ const postNewCardApi = (card) => {
 }
 
 const deleteCardApi = (card) => {
+  console.log("card in the api", card)
   axios.delete(`${kBaseUrl}/card/${card.cardId}`)
   .then(response => {
     return convertCardFromApi(response.data)
@@ -89,26 +90,10 @@ function App() {
     setCardData(cards);
   }
 
-  // const getOneBoard = async (id) => {
-  //   const board = await getOneBoardAPI(id);
-  //   return board; 
-  // }
-
   useEffect(() => {
     getAllBoards();
   }, []);
-  // had a dependency of boardData but was doing constant requests
 
-  // useEffect(() => {
-  //   const boardId = selectedBoard.boardId
-  //   getCardsForBoard(boardId)
-  // }, [selectedBoard])
-
-  // WHY ARE U YELLING AT ME? ask ta later
-  // useEffect(() => {
-  //   const boardId = selectedBoard.boardId
-  //   getCardsForBoard(boardId)
-  // }, [cardData])
 
   const selectBoard = async (id) => {
     const board = await getOneBoardAPI(id);
@@ -190,12 +175,6 @@ function App() {
             />
           </div>
       {newCardForm}
-
-      {/* <h2>Create a New Card</h2>
-          <NewCardForm 
-            handleCardSubmit={handleCardSubmit}
-            boardId={selectedBoard.boardId}
-          /> */}
     </div>
   );
 }
