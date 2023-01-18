@@ -18,21 +18,17 @@ const Home = (props) => {
       </div>
 
       <nav id="home-nav">
-        <div>
-          <button>Create new board</button>
-        </div>
+        <button>Create new board</button>
 
-        <div>
-          <select>
-            <option>Sort list by: popularity</option>
-            <option>Sort list by: most recent</option>
-            <option>Sort list by: owner</option>
-          </select>
-        </div>
+        <select>
+          <option>Sort list by: popularity</option>
+          <option>Sort list by: most recent</option>
+          <option>Sort list by: owner</option>
+        </select>
 
-        <div>
-          <button>Click here to generate an invite link!</button>
-        </div>
+        <button>Generate an invite link!</button>
+
+        <button>Log out</button>
       </nav>
     </div>
   );
