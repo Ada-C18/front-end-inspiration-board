@@ -99,10 +99,6 @@ function App() {
         console.log(response.data);
         const boardAPIResCopy = response.data;
         setSelected(boardAPIResCopy);
-<<<<<<< HEAD
-=======
-        console.log(selectedBoard.board_id);
->>>>>>> b2b7927a7a95f44713467b84558391f9c52d67f7
       })
       .catch((error) => {
         console.log(error);
@@ -120,13 +116,8 @@ function App() {
   const [selectedCards, setCardsList] = useState([]); // useState([]);
 
   // TODO: ask Backend team about GET Cards route
-<<<<<<< HEAD
   const fetchCardsURL = `${URL}/${selectedBoard.boardId}/cards`; // "boardId"?
   // console.log(fetchCardsURL);
-=======
-  const fetchCardsURL = `${URL}/boards/${selectedBoard.board_id}/cards`;
-  console.log(fetchCardsURL);
->>>>>>> b2b7927a7a95f44713467b84558391f9c52d67f7
 
   // Get all cards with board ID
   const fetchCards = () => {
@@ -136,11 +127,7 @@ function App() {
         console.log(response);
         const cardsAPIResCopy = response.data.map((card) => {
           return {
-<<<<<<< HEAD
-            cardId: card.cardId,
-=======
             cardId: card.card_id,
->>>>>>> b2b7927a7a95f44713467b84558391f9c52d67f7
             message: card.message,
             // likesCount: card.likesCount,
           };
@@ -153,16 +140,11 @@ function App() {
   };
 
   // initial get cards request
-<<<<<<< HEAD
   useEffect(fetchCards, []);
-=======
-  useEffect(fetchCards, []); // look into this
->>>>>>> b2b7927a7a95f44713467b84558391f9c52d67f7
 
   // Add Card Function
   // Todo: add API post card code
   const addCard = (newCard) => {
-<<<<<<< HEAD
     console.log("Calling addCard");
 
     const newCardsList = [...selectedCards];
@@ -215,63 +197,6 @@ function App() {
       {/* <h2>Cards for "insert Board title here" Quotes</h2> */}
       <CardsList cardsList={selectedCards} deleteCard={deleteCard} />
 
-=======
-    console.log("Calling addCard ");
-    axios.post(fetchCardsURL, newCard).then((response) => {
-      const newCardsList = [...selectedCards];
-      console.log({ newCardsList });
-      newCardsList.push({
-        cardId: newCard.card_id,
-        boardId: newCard.board_id, // hidden, implied primary key
-        message: newCard.message,
-      });
-
-      setCardsList(newCardsList);
-    });
-  };
-
-  const deleteCard = (cardId) => {
-    console.log("deleteCard called");
-
-    axios
-      .delete(`${URL}/${cardId}`)
-      .then(() => {
-        const newCardsList = [];
-        for (const card of selectedCards) {
-          if (card.cardId !== cardId) {
-            newCardsList.push(card);
-          }
-        }
-        setCardsList(newCardsList);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  return (
-    <div className="App">
-      {/* <Board /> */}
-      <BoardsList
-        boardsList={boardsList}
-        updateSelectedBoard={updateSelectedBoard}
-      />
-
-      <h1>Selected Board</h1>
-      {/* TODO: Add logic show selectedBoard if selectedBoard is not empty */}
-      {/* <p>Select a Board from the Board List!</p> */}
-      <p>
-        {selectedBoard.title} - {selectedBoard.owner}
-      </p>
-
-      <NewBoardForm addBoard={addBoard} />
-
-      {/* Todo: display elements below after selecting Board */}
-      <h2>Cards for {selectedBoard.title} Quotes</h2>
-      {/* <h2>Cards for "insert Board title here" Quotes</h2> */}
-      <CardsList cardsList={selectedCards} deleteCard={deleteCard} />
-
->>>>>>> b2b7927a7a95f44713467b84558391f9c52d67f7
       <h2>Create New Card</h2>
       <NewCardForm addCardCallback={addCard} />
     </div>
