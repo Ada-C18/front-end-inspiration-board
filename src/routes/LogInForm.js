@@ -55,7 +55,7 @@ const LogInForm = (props = null) => {
             onChange={handleChange}
           />
         </div>
-        {loginState.tryAgain && isError()}
+        {loginState.repeatLogin && isError()}
         {/* <div>
           <label htmlFor="password">Password</label>
           <input

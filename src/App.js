@@ -195,7 +195,8 @@ const kBaseUrl = "http://localhost:5000";
 function App() {
   let [loggedIn, setLoggedIn] = useState({
     userId: null,
-    tryAgain: false,
+    repeatLogin: false,
+    repeatSignUp: false,
   });
   let [appData, setAppData] = useState(DUMMY_BOARD_DATA);
 
@@ -237,21 +238,34 @@ function App() {
     );
 
     if (userData.length === 0) {
-      return setLoggedIn({ userId: null, tryAgain: true });
+      return setLoggedIn({
+        userId: null,
+        repeatLogin: true,
+        repeatSignUp: false,
+      });
     }
 
-    setLoggedIn({ userId: userData[0].id, tryAgain: false });
+    setLoggedIn({
+      userId: userData[0].id,
+      repeatLogin: false,
+      repeatSignUp: false,
+    });
   };
 
   // const handleLogIn = async (formData) => {
   //   const username = formData.name.toLowerCase(); // avoids case-sensitivity problems; have to post to lowercase as well
   //   const response = await axios.get(`${kBaseUrl}/users/${username}`);
 
-  //   if (response.status !== 200) {
-  //     return setLoggedIn({ userId: null, tryAgain: true });
-  //   }
+  // if (response.status !== 200) {
+  //   return setLoggedIn({
+  //     userId: null,
+  //     repeatLogin: true,
+  //     repeatSignUp: false,
+  //   });
+  // }
 
-  //   setLoggedIn({ userId: response.data.id, tryAgain: false });
+  //   setLoggedIn({ userId: response.data.id, repeatLogin: false,
+  //     repeatSignUp: false, });
   // };
 
   const handleSignUpDummy = async (formData) => {
@@ -262,7 +276,11 @@ function App() {
     const userData = DUMMY_USER_DATA.filter((user) => user.name === username);
 
     if (userData.length > 0) {
-      return setLoggedIn({ userId: null, tryAgain: true });
+      return setLoggedIn({
+        userId: null,
+        repeatLogin: false,
+        repeatSignUp: true,
+      });
     }
 
     const newId = DUMMY_USER_DATA[DUMMY_USER_DATA.length - 1].id + 1;
@@ -274,7 +292,8 @@ function App() {
 
     setLoggedIn({
       userId: DUMMY_USER_DATA[DUMMY_USER_DATA.length - 1].id,
-      tryAgain: false,
+      repeatLogin: false,
+      repeatSignUp: false,
     });
   };
 
@@ -285,10 +304,13 @@ function App() {
   //   const response = await axios.post(`${kBaseUrl}/users`, requestBody);
 
   //   if (response.status !== 201) {
-  //     return setLoggedIn({ userId: null, tryAgain: true });
+  //     return setLoggedIn({ userId: null,
+  //       repeatLogin: false,
+  //       repeatSignUp: true, });
   //   }
 
-  //   setLoggedIn({ userId: response.data.id, tryAgain: false });
+  //   setLoggedIn({ userId: response.data.id, repeatLogin: false,
+  //     repeatSignUp: false, });
   // };
 
   const router = createBrowserRouter(

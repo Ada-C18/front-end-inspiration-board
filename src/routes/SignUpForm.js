@@ -48,7 +48,7 @@ const SignUpForm = () => {
             onChange={handleChange}
           />
         </div>
-        {loginState.tryAgain && isError()}
+        {loginState.repeatSignUp && isError()}
         {/* <div>
           <label htmlFor="password">Password</label>
           <input
