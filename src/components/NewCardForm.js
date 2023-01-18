@@ -17,6 +17,10 @@ const NewCardForm = ({ addCardCallback }) => {
 			// ...cardData,
 			message: event.target.value,
 		});
+		// error message if card message more than 40 chars
+		if (event.target.value.length > 40) {
+			window.alert("Message shouldn't exceed 40 characters");
+		}
 	};
 
 	// Add Card
@@ -31,8 +35,9 @@ const NewCardForm = ({ addCardCallback }) => {
 		setCardData({ message: "" });
 	};
 
-	const isSubmitDisabled = cardData.message === "";
-	// const isSubmitDisabled = cardData.message === "" || length(cardData.message) > 40;
+	const isSubmitDisabled =
+		cardData.message === "" || cardData.message.length > 40;
+	console.log(`message length: ${cardData.message.length}`);
 
 	return (
 		<>
