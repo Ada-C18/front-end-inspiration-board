@@ -15,6 +15,13 @@ import {
 } from './API/InspirationAPI';
 
 const App = function () {
+  const testBoardListData = testData[0];
+  const testcardListData = testData[1];
+  const kDefaultBoardList = [{ board_id: 0, name: '', owner: '' }];
+  const [boardListState, setBoardListState] = useState(kDefaultBoardList);
+  const [currentBoardState, setCurrentBoardState] = useState(0);
+  const [cardListState, setCardListState] = useState([]);
+
   /* Refresh boardListState and currentBoardState if 
   we add or edit a board. 
   */
@@ -29,18 +36,13 @@ const App = function () {
     // console.log(JSON.stringify(newBoardData));
   };
 
-  const testBoardListData = testData[0];
-  const testcardListData = testData[1];
-  const kDefaultBoardList = [{ board_id: 0, name: '', owner: '' }];
-  const [boardListState, setBoardListState] = useState(kDefaultBoardList);
-  const [currentBoardState, setCurrentBoardState] = useState(0);
-  const [cardListState, setCardListState] = useState([]);
-
   const handleBoardSelect = function (boardID) {
-    setCurrentBoardState(parseInt(boardID));
-    console.log(boardID);
-    console.log(currentBoardState);
-    getAllCards(currentBoardState, setCardListState);
+    const _update = () => parseInt(boardID);
+
+    setCurrentBoardState(_update);
+    console.log('board_select:boardID: ' + boardID);
+    console.log('board_select2:currentBoardState ' + currentBoardState);
+    getAllCards(boardID, setCardListState);
   };
 
   useEffect(() => {
