@@ -1,6 +1,13 @@
 // not necessary for now
 
 
+//   # get request for multiple cards
+//   # post request
+//   # send cards associated with the board
+//   # state of cards is the array
+
+
+
 // import './NewCardForm.css'
 
 // const CardList = () => {

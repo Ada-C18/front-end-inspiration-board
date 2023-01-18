@@ -3,9 +3,11 @@ import './Card.css'
 //  needs default value 
 // Ryan
 
+// need card id to equal to 
+
 const Card = () => {
     return(
         <div className='card'></div>
     )
 }
-export default Card 
+export default Card  

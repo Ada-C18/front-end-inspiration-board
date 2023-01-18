@@ -38,6 +38,7 @@ const Board = () => {
         setSelectedBoard(id);
         // console.log(`board id ${id}`)
     }
+    // with new board select make a get request and pulls in the cards assoc with board. Useeffect in list
 
     const getBoardTitle = (title) => {
         setselectedBoardTitle(title);
