@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import "./CardForm.css";
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import './CardForm.css';
 // import "../App.css";
 
 // import BoardForm from "./components/BoardForm";
@@ -8,11 +8,11 @@ import "./CardForm.css";
 
 const CardForm = (props) => {
   // declare and initialize state
-  const kDefaultCardData = { message: "" };
+  const kDefaultCardData = { message: '' };
   const [cardState, setCardForm] = useState(kDefaultCardData);
-  const [errorState, setErrorState] = useState("");
+  const [errorState, setErrorState] = useState('');
   const ERROR_MESSAGE_TOO_LONG =
-    "Messages must be less than 40 characters long.";
+    'Messages must be less than 40 characters long.';
 
   /* handleNewData: update formState as user types. 
   Args: event: onChange event.
@@ -24,10 +24,10 @@ const CardForm = (props) => {
     const dataValue = event.target.value;
     const dataField = event.target.name;
 
-    if (event.target.name === "message" && event.target.value.length <= 40) {
+    if (event.target.name === 'message' && event.target.value.length <= 40) {
       const newCardData = { ...cardState, [dataField]: dataValue };
       setCardForm(newCardData);
-      setErrorState("");
+      setErrorState('');
     } else {
       setErrorState(ERROR_MESSAGE_TOO_LONG);
     }
@@ -41,7 +41,7 @@ const CardForm = (props) => {
     event.preventDefault();
     props.handleNewCard(cardState);
     setCardForm(kDefaultCardData);
-    console.log("handleSubmit");
+    console.log('handleSubmit');
   };
 
   return (
@@ -57,10 +57,6 @@ const CardForm = (props) => {
             value={cardState.message}
             onChange={handleNewData}
           />
-          <div id="bottom">
-            Bottom Section#TODO🔽
-            <p>BOTTOM CONTENT</p>
-          </div>
           <label class="button"> Submit </label>
           <input
             type="submit"

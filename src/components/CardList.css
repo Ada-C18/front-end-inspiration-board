@@ -15,16 +15,16 @@ div.card {
 }
 
 /* #TODO */
-#button{
+.button{
   position: relative;
   display: block;
   width: 200px;
   height: 36px;
   border-radius: 18px;
-  background-color: #1c89ff;
+  background-color: #f7c798;
   border: solid 1px transparent;
-  color: #fff;
-  font-size: 18px;
+  color: rgb(0, 0, 0);
+  font-size: 12px;
   font-weight: 300;
   cursor: pointer;
   transition: all .1s ease-in-out;
@@ -43,8 +43,12 @@ body {
   color:#fff;
 }
 
-#bottom {
-  position: absolute;
+.card-main {
+  height: 80%;
+}
+
+.bottom {
+  /* position: absolute; */
   /* bottom: 0;
   left: 0; */
   text-align: center;
