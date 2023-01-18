@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const CardList = ({ cardList, deleteCard, countLikesTotal }) => {
   const cardComponents = cardList.map((card) => {
     return (
-      <div key={card.id}>
+      <div className="card-item" key={card.id}>
         <Card
           id={card.id}
           message={card.message}
@@ -17,7 +17,7 @@ const CardList = ({ cardList, deleteCard, countLikesTotal }) => {
     );
   });
 
-  return <div>{cardComponents}</div>;
+  return <div className="card-items__container">{cardComponents}</div>;
 };
 
 CardList.propTypes = {

@@ -11,27 +11,27 @@ const Card = ({ id, message, likes, deleteCard, countLikesTotal }) => {
   };
 
   return (
-    <div className="card-item">
-      <p> {message} </p>
-      <button
-        className="like"
-        onClick={() => {
-          countLikesTotal(id);
-          updateLikes();
-        }}
-      >
-        <p>❤️{likeCount}</p>
-      </button>
-      <button
-        className="delete"
-        onClick={() => {
-          deleteCard(id);
-        }}
-      >
-        <p>delete</p>
-      </button>
-      {/* <p onClick={updateLikes}>{likeCount} ❤️</p>
-            <button onClick={()=>deleteCard(id)}> Delete </button> */}
+    <div>
+      <p className="card-item__message"> "{message}"</p>
+      <ul className="card-item__controls">
+        <p
+          className="like-button"
+          onClick={() => {
+            countLikesTotal(id);
+            updateLikes();
+          }}
+        >
+          <p>{likeCount} 💕</p>
+        </p>
+        <p
+          className="delete"
+          onClick={() => {
+            deleteCard(id);
+          }}
+        >
+          <p>Delete</p>
+        </p>
+      </ul>
     </div>
   );
 };
