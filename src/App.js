@@ -188,9 +188,10 @@ const DUMMY_BOARD_DATA = [
 //   console.log("This is the dummy function");
 // };
 
-const WAIT = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+// const WAIT = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const kBaseUrl = "http://localhost:5000";
+// const kBaseUrl = "http://localhost:5000";
+const kBaseUrl = "https://hackspo-be.herokuapp.com";
 
 function App() {
   let [loggedIn, setLoggedIn] = useState({
@@ -198,124 +199,62 @@ function App() {
     repeatLogin: false,
     repeatSignUp: false,
   });
-  let [appData, setAppData] = useState(DUMMY_BOARD_DATA);
+  let [appData, setAppData] = useState([]);
 
-  const passBoardPropsDummy = () => appData; // DUMMY_BOARD_DATA
+  // const passBoardPropsDummy = () => DUMMY_BOARD_DATA;
 
-  // const passBoardProps = () => appData;
+  const passBoardProps = () => appData;
 
-  const passLogInPropsDummy = () => {
-    return [
-      {
-        loginState: loggedIn,
-        onLogIn: handleLogInDummy,
-      },
-    ];
+  const passLogInProps = () => {
+    return [{ loginState: loggedIn, onLogIn: handleLogIn }];
   };
 
-  // const passLogInProps = () => {
-  //   return [{ loginState: loggedIn, onLogIn: handleLogIn }];
-  // };
-
-  const passSignUpPropsDummy = () => {
-    return [
-      {
-        loginState: loggedIn,
-        onSignUp: handleSignUpDummy,
-      },
-    ];
+  const passSignUpProps = () => {
+    return [{ loginState: loggedIn, onSignUp: handleSignUp }];
   };
 
-  // const passSignUpProps = () => {
-  //   return [{ loginState: loggedIn, onSignUp: handleSignUp }];
-  // };
+  const handleLogIn = async (formData) => {
+    const username = formData.name.toLowerCase(); // avoids case-sensitivity problems; have to post to lowercase as well
 
-  const handleLogInDummy = async (formData) => {
-    await WAIT(500);
-
-    const userData = DUMMY_USER_DATA.filter(
-      (user) => user.name === formData.name.toLowerCase()
-    );
-
-    if (userData.length === 0) {
+    try {
+      const response = await axios.get(`${kBaseUrl}/users/${username}`);
+      return setLoggedIn({
+        userId: response.data.id,
+        repeatLogin: false,
+        repeatSignUp: false,
+      });
+    } catch (err) {
       return setLoggedIn({
         userId: null,
         repeatLogin: true,
         repeatSignUp: false,
       });
     }
-
-    setLoggedIn({
-      userId: userData[0].id,
-      repeatLogin: false,
-      repeatSignUp: false,
-    });
   };
 
-  // const handleLogIn = async (formData) => {
-  //   const username = formData.name.toLowerCase(); // avoids case-sensitivity problems; have to post to lowercase as well
-  //   const response = await axios.get(`${kBaseUrl}/users/${username}`);
+  const handleSignUp = async (formData) => {
+    const username = formData.name.toLowerCase(); // avoids case-sensitivity problems; have to post to lowercase as well
+    const requestBody = { name: username };
 
-  // if (response.status !== 200) {
-  //   return setLoggedIn({
-  //     userId: null,
-  //     repeatLogin: true,
-  //     repeatSignUp: false,
-  //   });
-  // }
-
-  //   setLoggedIn({ userId: response.data.id, repeatLogin: false,
-  //     repeatSignUp: false, });
-  // };
-
-  const handleSignUpDummy = async (formData) => {
-    await WAIT(500);
-
-    const username = formData.name.toLowerCase();
-
-    const userData = DUMMY_USER_DATA.filter((user) => user.name === username);
-
-    if (userData.length > 0) {
+    try {
+      const response = await axios.post(`${kBaseUrl}/users`, requestBody);
+      return setLoggedIn({
+        userId: response.data.id,
+        repeatLogin: false,
+        repeatSignUp: false,
+      });
+    } catch (err) {
       return setLoggedIn({
         userId: null,
         repeatLogin: false,
         repeatSignUp: true,
       });
     }
-
-    const newId = DUMMY_USER_DATA[DUMMY_USER_DATA.length - 1].id + 1;
-    const newUser = {
-      id: newId,
-      name: username,
-    };
-    DUMMY_USER_DATA.push(newUser);
-
-    setLoggedIn({
-      userId: DUMMY_USER_DATA[DUMMY_USER_DATA.length - 1].id,
-      repeatLogin: false,
-      repeatSignUp: false,
-    });
   };
 
-  // const handleSignUp = async (formData) => {
-  //   const username = formData.name.toLowerCase(); // avoids case-sensitivity problems;
-  //   const requestBody = { name: username };
-
-  //   const response = await axios.post(`${kBaseUrl}/users`, requestBody);
-
-  //   if (response.status !== 201) {
-  //     return setLoggedIn({ userId: null,
-  //       repeatLogin: false,
-  //       repeatSignUp: true, });
-  //   }
-
-  //   setLoggedIn({ userId: response.data.id, repeatLogin: false,
-  //     repeatSignUp: false, });
-  // };
-
-  // const addBoard = (title) => {
-  //   AXIOS call to POST new board to the db 
-  // }
+  const addBoard = (title) => {
+    // AXIOS call to POST new board to the db
+  };
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -325,7 +264,7 @@ function App() {
           element={
             loggedIn.userId ? <Navigate to="/boards" replace /> : <LogInView />
           }
-          loader={passLogInPropsDummy}
+          loader={passLogInProps}
           errorElement={<ErrorPage />}
         >
           <Route
@@ -337,7 +276,7 @@ function App() {
                 <LogInForm />
               )
             }
-            loader={passLogInPropsDummy}
+            loader={passLogInProps}
             errorElement={<ErrorPage />}
           />
           <Route
@@ -349,14 +288,14 @@ function App() {
                 <SignUpForm />
               )
             }
-            loader={passSignUpPropsDummy}
+            loader={passSignUpProps}
             errorElement={<ErrorPage />}
           />
         </Route>
         <Route
           path="/boards"
           element={loggedIn.userId ? <Home /> : <Navigate to="/" replace />}
-          loader={passBoardPropsDummy}
+          loader={passBoardProps}
           errorElement={<ErrorPage />}
         />
         <Route

@@ -1,4 +1,4 @@
-import { Outlet, Link, useLocation, useLoaderData } from "react-router-dom";
+import { Outlet, useLocation, useLoaderData } from "react-router-dom";
 
 import "./LogInView.css";
 
@@ -22,9 +22,6 @@ const LogInView = () => {
           <Outlet />
         )}
       </div>
-      <Link to={`/boards`}>
-        <button>I want to skip login and see the boards!</button>
-      </Link>
     </div>
   );
 };
