@@ -25,13 +25,14 @@ const Board = (props) => {
       });
   };
 
-  const [sortCardsBy, setSortCardsBy] = useState(["id", "asc"]);
-  const changeSortMethod = (value, direction) => {
-    setSortCardsBy([value, direction]);
+  const [sortCardsBy, setSortCardsBy] = useState({method: "id", direction: "asc"});
+  const changeSortMethod = (method, direction) => {
+    setSortCardsBy({method, direction});
   }
 
   const sortSelector = props.currentBoard ? (
-      <SortSelector></SortSelector>
+      <SortSelector sortedBy={sortCardsBy} changeSortedBy={changeSortMethod}>
+      </SortSelector>
     ) : "";
 
   const getCardList = () => {
