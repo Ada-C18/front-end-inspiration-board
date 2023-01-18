@@ -10,9 +10,8 @@ const Header = (props) => {
     setBoardFormVisible(!boardFormVisible);
   };
 
-  const boardFormButtonText = boardFormVisible
-    ? "Hide form"
-    : "Add new board";
+  // const boardFormButtonText = boardFormVisible ? "Hide form" : "Add new board";
+  const boardFormButtonText = boardFormVisible ? "x" : "+";
   const boardFormElement = boardFormVisible ? (
     <BoardForm newBoard={props.newBoard}></BoardForm>
   ) : (
@@ -25,7 +24,7 @@ const Header = (props) => {
         listOfBoards={props.listOfBoards}
         updateCurrentBoard={props.updateCurrentBoard}
       ></BoardSelector>
-      <h1>Inspiration Board</h1>
+      <h1>inspiration board</h1>
       <button onClick={toggleBoardFormVisible}>{boardFormButtonText}</button>
       {boardFormElement}
     </header>
