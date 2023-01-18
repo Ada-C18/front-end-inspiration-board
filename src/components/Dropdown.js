@@ -1,15 +1,11 @@
-// shows new boards as they come up. Be able to create a new option when a new board is created
-// ideally tackling this 1/18/2023 together
 
-
-const Dropdown = ({ boardData, getBoardId } ) => {
+const Dropdown = ({ boardData, getBoardId, getBoardTitle } ) => {
   // console.log(boardData, "boardData");
   const onChangeBoard = (event) => {
-    // const board_title = event.target.value
+    const board_title = event.target.value
     const board_id = event.target.selectedIndex
-    // console.log(board_title)
-    // console.log(board_id)    
     getBoardId(board_id);
+    getBoardTitle(board_title);
   }
   return (
     <div>
