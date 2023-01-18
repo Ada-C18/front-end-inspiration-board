@@ -1,15 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import './BoardContainer.css';
 import Board from './Board';
 
 
 const BoardContainer = ({ boards, onDisplayCurrentBoard}) => {
     const getAllBoardsJSX = (boards) => {
-        return boards.map((board) => {
+        return boards.map((board, i) => {
             return (
                 <Board
-                key={board.id}
+                key={i}
                 id={board.id}
                 title={board.title}
                 owner={board.owner}
@@ -30,13 +30,13 @@ const BoardContainer = ({ boards, onDisplayCurrentBoard}) => {
     ); 
 };
 
-//waiting for backend response
-BoardContainer.propTypes = {
-    boards: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        owner: PropTypes.string.isRequired,
-    })) 
-};
+
+// BoardContainer.propTypes = {
+//     boards: PropTypes.arrayOf(PropTypes.shape({
+//         id: PropTypes.number.isRequired,
+//         title: PropTypes.string.isRequired,
+//         owner: PropTypes.string.isRequired,
+//     })) 
+// };
 
 export default BoardContainer;

@@ -33,9 +33,7 @@ const NewCardForm = ({ addCardCallback , afterSubmitMessage , boardSelected }) =
               onChange={handleChange}
             />
             <button className="new-card__button" type="submit">Add Card</button>
-            <p>
-              {/* {afterSubmitMessage} */}
-            </p>
+            <p>{afterSubmitMessage}</p>
           </div>
       </form>
     </section>

@@ -43,12 +43,12 @@ const getAllCardsApi = (id) => {
 };
 
 function App() {
+  // state
   const [boards, setBoards] = useState([]);
   const [cards, setCards] = useState([]);
-  const [message, setMessage] = useState("");
-  const [currentBoard, setCurrentBoard] = useState({
-    title: "No board selected",
-  });
+  const [boardFormMessage, setBoardFormMessage] = useState("");
+  const [cardFormMessage, setCardFormMessage] = useState("");
+  const [currentBoard, setCurrentBoard] = useState({title: "No board selected",});
   const [boardSelected, setBoardSelected] = useState(false);
 
   // get all boards using API helper
@@ -83,13 +83,18 @@ function App() {
         setCurrentBoard(board);
         getAllCards(id);
         setBoardSelected(true);
+        setBoardFormMessage("");
+        setCardFormMessage("");
       }
     }
   };
 
   // add new board callback for new board form
   const addBoard = (boardData) => {
-    axios
+    if (!boardData.title || !boardData.owner) {
+      setBoardFormMessage("Please enter a title or owner.");
+    } else {
+      axios
       .post("http://127.0.0.1:5000/board", boardData)
       .then((response) => {
 
@@ -102,13 +107,13 @@ function App() {
         });
 
         setBoards(newBoards);
-        setMessage("You made a new board!");
+        setBoardFormMessage("You made a new board!");
       })
       .catch((error) => {
         console.log(error);
-        // add conditional to display custom message
-        setMessage("Please enter a title or owner.");
+        setBoardFormMessage("Input is invalid.");
       });
+    }
   };
 
   // add new card callback for new card form
@@ -125,12 +130,12 @@ function App() {
         });
 
         setCards(newCards);
-        setMessage("You made a new card!");
+        setCardFormMessage("You made a new card!");
       })
       .catch((error) => {
         console.log(error);
-        // add conditional to display custom message
-        setMessage("Please enter valid input.");
+        // add conditional to display custom message for empty message or exceeded character limit
+        setCardFormMessage("Input invalid");
       });
   };
 
@@ -145,12 +150,12 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <NewBoardForm addBoardCallback={addBoard} afterSubmitMessage={message} toggleHide={toggleHide} isVisible={isVisible}/>
+      <NewBoardForm addBoardCallback={addBoard} afterSubmitMessage={boardFormMessage} toggleHide={toggleHide} isVisible={isVisible}/>
       <BoardContainer
         boards={boards}
         onDisplayCurrentBoard={displayCurrentBoard}
       />
-      <NewCardForm addCardCallback={addCard} afterSubmitMessage={message} boardSelected={boardSelected}/>
+      <NewCardForm addCardCallback={addCard} afterSubmitMessage={cardFormMessage} boardSelected={boardSelected}/>
       <CardContainer currentBoard={currentBoard} cards={cards} />
     </div>
   );
