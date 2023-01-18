@@ -84,10 +84,10 @@ function App() {
   
   const boardsComponent = boardsList.map((board) => { 
     return (
-      <li key={board.id}>
+      <div key={board.id}>
         <Board board={board} onBoardSelect={onBoardSelect}></Board>
         <span className="board-trash" onClick={()=>{deleteBoard(board.id)}}><FaRegTrashAlt/></span>
-      </li>
+      </div>
     );
   });
 
