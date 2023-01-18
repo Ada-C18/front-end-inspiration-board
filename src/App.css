@@ -1,0 +1,128 @@
+html{
+  color:#07274A;
+  background-image: url("https://direct.limitlesswalls.com/cdn-cgi/image/quality=60/http://llw-magento-images-prod.s3.amazonaws.com/catalog/product/w/m/wm118397425.jpg");
+  background-size: cover;
+
+}
+
+h1{
+  font-family: fantasy;
+  text-align: center;
+  text-shadow: 6px 8px 8px  #07274A;
+}
+
+.boardDisplay{
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.highlightRed {
+  border: 2px solid red;
+  width: 300px
+}
+
+.OK {
+  width: 300px
+}
+
+.aCard {
+  background-color:  #CDDCF7;
+  width: 175px;
+  height: 175px;
+  text-align: center;
+  padding: 1em;
+  margin: 1em;
+  box-shadow: 2px 2px 2px 1px #07274A;
+  font-family: fantasy;
+  color: #07274A;
+}
+
+.boardScroll{
+  height: 100px;
+  overflow-y:scroll;
+  border: 2px solid #07274A;
+  list-style-type: none;
+  padding: 5px;
+}
+
+.boardTitle:hover{
+  background-color: #07274A;
+  color: white;
+}
+
+button{
+  margin: 1em;
+}
+
+.cardMessage{
+  font-weight: bold;
+}
+
+.cardList{
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.row1, .row2 {
+  display: flex;
+  align-items:flex-start;
+  padding-bottom: 50px;
+}
+
+.column {
+  display: block;
+  flex-basis: fit-content;
+  flex-grow: 5;
+  flex-shrink: 5;
+  padding: 20px;
+  margin-left: 2em;
+  margin-right: 2em;
+  font-family: fantasy;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 1cm;
+}
+
+button {
+  background-color: #e1ecf4;
+  border-radius: 3px;
+  border: 1px solid #7aa7c7;
+  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #39739d;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+button:hover,
+button:focus {
+  background-color: #b3d3ea;
+  color: #2c5777;
+}
+
+button:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+button:active {
+  background-color: #a0c7e4;
+  box-shadow: none;
+  color: #2c5777;
+}
+
