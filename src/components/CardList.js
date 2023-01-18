@@ -12,7 +12,7 @@ const CardList = (props) => {
       <Card
         message={cardObj.message}
         likes={cardObj.likes}
-        key={cardObj.id.toString()}
+        key={cardObj.card_id.toString()}
       ></Card>
     );
   };

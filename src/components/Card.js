@@ -6,9 +6,9 @@ import { useEffect } from 'react';
 
 const Card = (props) => {
   return (
-    <div class="card">
-      <div class="card-message"> {props.message}</div>
-      <div class="card-footer"> {props.likes} likes</div>
+    <div className="card">
+      <div className="card-message"> {props.message}</div>
+      <div className="card-footer"> {props.likes} likes</div>
     </div>
   );
 };
