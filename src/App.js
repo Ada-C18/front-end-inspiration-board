@@ -2,12 +2,21 @@ import axios from 'axios';
 import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
 // import axios from 'axios';
-import { REACT_APP_BACKEND_URL, boardApiToJson, cardApiToJson, addBoardAPI, addCardAPI, getBoardsAPI, getCardsAPI, deleteBoardAPI, deleteCardAPI } from './api';
+import {
+  REACT_APP_BACKEND_URL,
+  boardApiToJson,
+  cardApiToJson,
+  addBoardAPI,
+  addCardAPI,
+  getBoardsAPI,
+  getCardsAPI,
+  deleteBoardAPI,
+  deleteCardAPI,
+} from './api';
 import BoardForm from './components/BoardForm';
 import BoardList from './components/BoardList';
 import CardForm from './components/CardForm';
 import CardList from './components/CardList';
-
 
 // Higher order functions inside FUNCTION APP() sent as props
 //BOARD FUNCTIONS:
@@ -17,18 +26,9 @@ import CardList from './components/CardList';
 //4. delete board if time permits
 
 const App = () => {
-  //STATE
+
   const [boards, setBoards] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState({
-    title: '',
-    owner: '',
-    boardId: null,
-  });
-  const [cards, setCards] = useState([]);
-
-  //HANDLE
-
-  //onSubmit Board and Card Forms, adds new board to boardList, new card to cardList
+  
   const handleBoardSubmit = (board) => {
     addBoardAPI(board)
       .then((newBoard) => {
@@ -37,14 +37,21 @@ const App = () => {
       .catch((err) => console.log(err));
   };
 
-  //PUT THIS IN THE SELECT BOARD FUNCTION?????
+
+  const [cards, setCards] = useState([]);
+
   const handleCardSubmit = (card, boardId) => {
     addCardAPI(card, boardId).then((newCards) => {
       setCards(newCards);
-      console.log(newCards)
+      console.log(newCards);
     });
   };
 
+  const [selectedBoard, setSelectedBoard] = useState({
+    title: '',
+    owner: '',
+    boardId: null,
+  });
   const onSelectBoard = async (boardId) => {
     try {
       const response = await axios.get(
@@ -71,7 +78,6 @@ const App = () => {
 
   const handleCardDelete = async (cardId) => {
     try {
-      // await deleteCardAPI(selectedBoard.boardId, cardId);
       await deleteCardAPI(cardId);
       setCards((prevCards) => {
         return prevCards.filter((card) => {
@@ -127,13 +133,22 @@ const App = () => {
     refreshCards();
   }, []);
 
+
+  const [showForm, setShowForm] = useState(true);
+
+  const handleHideForm = () => {
+    setShowForm(!showForm)
+  }
+
   return (
     <div className='App'>
       <header>
         <h2>Inspiration Board</h2>
       </header>
       <main>
-        <BoardForm handleBoardSubmit={handleBoardSubmit} />
+        <div>
+          <button onClick={handleHideForm}>Hide Form</button>
+       {showForm && <BoardForm handleBoardSubmit={handleBoardSubmit} />}</div>
         <BoardList
           className='board_list'
           boards={boards}
@@ -154,10 +169,12 @@ const App = () => {
               onLikesCount={handleLikesCount}
               onDeleteCard={handleCardDelete}
             />
-            <CardForm
-              boardId={selectedBoard.boardId}
-              handleCardSubmit={handleCardSubmit}
-            />
+            {
+              <CardForm
+                boardId={selectedBoard.boardId}
+                handleCardSubmit={handleCardSubmit}
+              />
+            }
           </>
         )}
       </main>
@@ -166,4 +183,3 @@ const App = () => {
 };
 
 export default App;
-
