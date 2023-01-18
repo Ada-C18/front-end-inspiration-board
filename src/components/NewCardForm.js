@@ -47,7 +47,7 @@ const NewCardForm = ({boardId, createNewCardForm}) => {
         <p>Preview: {preview}</p>
       </div>
 
-      <input type="submit" value="Submit"></input>
+      <input className='submit' type="submit" value="Submit"></input>
     </form>
   );
 };

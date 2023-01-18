@@ -51,7 +51,7 @@ function App() {
       if (board.id === boardId) {
         const boardTitle = board.title;
         const boardOwner = board.owner;
-        const selectedBoardInfo = `${boardTitle} - ${boardOwner}`;
+        const selectedBoardInfo = `${boardTitle} by ${boardOwner}`;
         setSelectedBoardLabel(selectedBoardInfo);
         setSelectedBoard(board);
       }
