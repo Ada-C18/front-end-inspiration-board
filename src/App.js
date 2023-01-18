@@ -9,23 +9,23 @@ import NewBoardForm from "./components/NewBoardForm";
 import CardsList from "./components/CardsList";
 import NewCardForm from "./components/NewCardForm";
 
-const boardsData = [
-	{
-		board_id: 1,
-		title: "Do things!",
-		owner: "Milena",
-	},
-	{
-		board_id: 2,
-		title: "You can do it!",
-		owner: "Laura",
-	},
-];
+// const boardsData = [
+// 	{
+// 		board_id: 1,
+// 		title: "Do things!",
+// 		owner: "Milena",
+// 	},
+// 	{
+// 		board_id: 2,
+// 		title: "You can do it!",
+// 		owner: "Laura",
+// 	},
+// ];
 
-const cardsData = [
-	{ cardId: 1, message: "great job" },
-	{ cardId: 2, message: "you're doing great" },
-];
+// const cardsData = [
+// 	{ cardId: 1, message: "great job" },
+// 	{ cardId: 2, message: "you're doing great" },
+// ];
 
 // REQUIREMENTS
 // BOARDS
@@ -35,7 +35,7 @@ const cardsData = [
 
 function App() {
 	// state for boardsList
-	const [boardsList, setBoardsData] = useState(boardsData);
+	const [boardsList, setBoardsData] = useState([]);
 
 	const URL = "http://127.0.0.1:5000";
 
@@ -69,6 +69,7 @@ function App() {
 		axios
 			.post(`${URL}/boards`, newBoard)
 			.then((response) => {
+				console.log(`add board response: ${response}`);
 				const updatedBoardsList = [...boardsList];
 				updatedBoardsList.push({
 					...newBoard,
@@ -83,18 +84,19 @@ function App() {
 	};
 
 	// Selected Board State
-	const [selectedBoard, setSelected] = useState({
-		boardId: 1,
-		title: "Do things!",
-		owner: "Milena",
-	});
+	const [selectedBoard, setSelected] = useState({});
+	// const [selectedBoard, setSelected] = useState({
+	// 	boardId: 1,
+	// 	title: "Do things!",
+	// 	owner: "Milena",
+	// });
 
 	const updateSelectedBoard = (boardId) => {
 		console.log("updateBoard called");
 		axios
 			.get(`${URL}/boards/${boardId}`)
 			.then((response) => {
-				console.log(response);
+				console.log(response.data);
 				const boardAPIResCopy = response.data;
 				setSelected(boardAPIResCopy);
 			})
@@ -111,10 +113,10 @@ function App() {
 
 	// ------------ Cards Logic ----------- //
 	// State: Selected Board Cards
-	const [selectedCards, setCardsList] = useState(cardsData); // useState([]);
+	const [selectedCards, setCardsList] = useState([]); // useState([]);
 
 	// TODO: ask Backend team about GET Cards route
-	const fetchCardsURL = `${URL}/${selectedBoard.board_id}/cards`; // "boardId"?
+	const fetchCardsURL = `${URL}/${selectedBoard.boardId}/cards`; // "boardId"?
 	// console.log(fetchCardsURL);
 
 	// Get all cards with board ID

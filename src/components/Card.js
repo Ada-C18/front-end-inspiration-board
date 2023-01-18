@@ -5,6 +5,7 @@ const Card = ({ cardId, message, deleteCard }) => {
 		<>
 			<li>{message}</li>
 			<button>Delete</button>
+			{/* likes button here */}
 		</>
 	);
 };
