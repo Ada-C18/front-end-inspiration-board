@@ -2,17 +2,19 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 const Card = (props) => {
-  console.log(props)
   return(
     <section>
       <p>{props.message}</p>
       <p>{`${props.likesCount} <3`}</p>
-      <button>
-        {/* like card */}
+      <button
+        onClick = {() => props.handleLikeCard(props.cardId)}
+      >
+        Like Card
       </button>
-        {/* delete card */}
-      <button>
-
+      <button
+        onClick={() => props.handleDeleteCard(props.cardId)}
+      >
+        Delete Card
       </button>
     </section>
   )

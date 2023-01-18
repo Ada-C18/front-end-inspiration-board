@@ -12,9 +12,9 @@ const CardList = (props) => {
           boardId={card.boardId}
           message={card.message}
           likesCount={card.likesCount}
-          // delete card
-          // like card
-        />
+          handleLikeCard={props.handleLikeCard}
+          handleDeleteCard={props.handleDeleteCard}
+    />
       ))}
     </section>
   )

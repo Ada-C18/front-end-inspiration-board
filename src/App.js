@@ -43,9 +43,10 @@ const getCardsForBoardApi = async (boardId) => {
   return response.data.map(convertCardFromApi)
 }
 
-// uses the python variable style SORRRYY!!!
 const postNewCardApi = (card) => {
-  return axios.post(`${kBaseUrl}/boards/${card.board_id}/cards`, card)
+  console.log("card in api", card)
+  const snakeCard = {...card, board_id: card.boardId, likes_count: card.likesCount}
+  return axios.post(`${kBaseUrl}/boards/${card.boardId}/cards`, snakeCard)
   .then(response => {
     return convertCardFromApi(response.data);
   })  
@@ -67,9 +68,16 @@ const updateLikesCountApi = (card) => {
   })
 }
 
+const getOneCardApi = (cardId) => {
+  axios.get(`${kBaseUrl}/card/${cardId}`)
+  .then(response => {
+    return convertCardFromApi(response.data)
+  })
+}
+
 function App() {
   const [boardData, setBoardData] = useState([])
-  const [selectedBoard, setSelectedBoard] = useState({})
+  const [selectedBoard, setSelectedBoard] = useState(false)
   const [cardData, setCardData] = useState([])
 
   const getAllBoards = async () => {
@@ -80,9 +88,8 @@ function App() {
   const getCardsForBoard = async (boardId) => {
     const cards = await getCardsForBoardApi(boardId);
     setCardData(cards);
-    console.log("cards return", cards)
   }
-  console.log("card data", cardData)
+  console.log("selected board", selectedBoard)
 
   // const getOneBoard = async (id) => {
   //   const board = await getOneBoardAPI(id);
@@ -108,7 +115,6 @@ function App() {
   const selectBoard = async (id) => {
     const board = await getOneBoardAPI(id);
     setSelectedBoard(board);
-    console.log("board id", id);
     getCardsForBoard(board.boardId);
   }
   
@@ -127,13 +133,34 @@ function App() {
 
   }
 
-  const handleLikeCard = (data) => {
+  const handleLikeCard = async (cardId) => {
+    const card = await getOneCardApi(cardId)
+    updateLikesCountApi(card)
+    .then(newCard => {
+      setCardData([...cardData, newCard])
+    })
 
   }
 
-  const handleDeleteCard = (data) => {
-
+  const handleDeleteCard = (cardId) => {
+    deleteCardApi(cardId)
+    .then(newCard => {
+      setCardData([...cardData, newCard])
+    })
   }
+  
+  let newCardForm = "";
+  if(selectedBoard){
+    newCardForm = (
+    <div>
+      <h2>Create a New Card</h2>
+      <NewCardForm 
+        handleCardSubmit={handleCardSubmit}
+        boardId={selectedBoard.boardId}
+      />
+    </div>)
+  }
+
 
   return (
     <div className="App">
@@ -155,18 +182,22 @@ function App() {
           {selectedBoard ? `${selectedBoard.title} - ${selectedBoard.owner}` : ''}
         </div>
       <h2>Create a New Board</h2>
-          <NewBoardForm handleBoardSubmit={handleBoardSubmit} />
+          <NewBoardForm handleBoardSubmit={handleBoardSubmit}/>
       <h2>Cards {selectedBoard ? `for ${selectedBoard.title}` : ''}</h2>
           <div id="cards">
             <CardList 
               cardData={cardData}
+              handleLikeCard={handleLikeCard}
+              handleDeleteCard={handleDeleteCard}
             />
           </div>
-      <h2>Create a New Card</h2>
+      {newCardForm}
+
+      {/* <h2>Create a New Card</h2>
           <NewCardForm 
             handleCardSubmit={handleCardSubmit}
             boardId={selectedBoard.boardId}
-          />
+          /> */}
     </div>
   );
 }
