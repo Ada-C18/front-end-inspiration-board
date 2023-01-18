@@ -7,12 +7,13 @@
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: rgb(112, 145, 196, .8);
+  /* background-color: rgb(112, 145, 196, .8); */
+  background-color: rgba(235, 140, 140, 60%);
   z-index: 1;
 }
 
 .header > select {
-  width: 10rem;
+  width: 6rem;
 }
 
 .header > button {
@@ -24,7 +25,7 @@
   background: none;
   border: 3px solid #FFF;
   color: #FFF;
-  margin-left: 5rem;
+  margin-left: 8rem;
 }
 
 h1 {

@@ -1,8 +1,10 @@
+import "./BoardSelector.css";
+
 const BoardSelector = (props) => {
   let options = props.listOfBoards.map((board) => {
     return (
       <option key={board.id} value={board.id}>
-        {board.name}
+        "{board.name}"
       </option>
     );
   });
@@ -12,10 +14,12 @@ const BoardSelector = (props) => {
   };
 
   return (
-    <select name="boardSelector" onChange={onSelectBoard}>
-      <option value="">Select Board:</option>
-      {options}
-    </select>
+    <div className="select">
+      <select id="board-select" name="boardSelector" onChange={onSelectBoard}>
+        <option value="">Boards</option>
+        {options}
+      </select>
+    </div>
   );
 };
 
