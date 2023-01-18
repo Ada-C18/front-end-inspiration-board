@@ -1,5 +1,6 @@
 import React from "react";
-import Board from "./Board.js";
+/* import Board from "./Board.js"; */
+import "./BoardList.css"
 
 const boardList = ({ boardList, loadBoard }) => {
   const boardComponents = [];
@@ -12,8 +13,8 @@ const boardList = ({ boardList, loadBoard }) => {
   }
 
   return (
-    <div style={{ outline: "1px dashed dodgerblue" }}>
-      <h3>Board List Component</h3>
+    <div className= "board-list">
+      <h3>~All Boards~</h3>
       <ul>{boardComponents}</ul>
     </div>
   );

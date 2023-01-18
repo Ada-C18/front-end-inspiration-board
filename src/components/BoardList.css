@@ -1,0 +1,27 @@
+.board-list {
+    background-color: #9b9961;
+    margin-top: 0px;
+    /* border: 1px red solid; */
+    font-family: Petrona, sans-serif; 
+    color: #fce5a5;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+h3 {
+    font-size: 35px;
+    letter-spacing: 5px;
+    padding: 5%;
+    text-shadow: 1px 2px black;
+}
+
+ul {
+    list-style: none;
+    background-color: #484d4a;
+    opacity: 70%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 2%;
+}
