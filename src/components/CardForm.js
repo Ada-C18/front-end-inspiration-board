@@ -68,12 +68,6 @@ const CardForm = (props) => {
             value="Add New Card"
           ></input>
           <label class="button">Delete</label>
-          <input
-            type="delete"
-            disabled={Boolean(errorState)}
-            value="Delete New Card"
-          ></input>
-          #TODO🔼
         </div>
         <div className="error">{errorState}</div>
       </form>
