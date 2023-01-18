@@ -6,7 +6,7 @@ import NewBoardForm from "./Components/NewBoardForm";
 import CardList from "./Components/CardList";
 import NewCardForm from "./Components/NewCardForm";
 import RainbowText from "react-rainbow-text";
-import { convertFromApiCard, getAllBoardsApi, deleteCardApi, sortCardsByLikesApi, sortCardsByAscApi } from "./HelperFunctions/ApiCalls.js";
+import { convertFromApiCard, getAllBoardsApi, deleteCardApi } from "./HelperFunctions/ApiCalls.js";
 
 
 function App() {
@@ -58,6 +58,36 @@ function App() {
     return response.data.map(convertFromApiCard);
   }, [selectedBoard]);
 
+  const sortCardsByLikesApi = useCallback(async () => {
+    if (!selectedBoard) {
+      return []
+    }
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards?sort=likes`)
+    return response.data.map(convertFromApiCard);
+  }, [selectedBoard]);
+
+  // const sortCardsByLikesApi = async (selectedBoardId) => {
+  //   const response = await axios.get(
+  //     `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoardId}/cards?sort=likes`
+  //   );
+  //   return response.data.map(convertFromApiCard);
+  // };
+
+  const sortCardsByAscApi = useCallback(async () => {
+    if (!selectedBoard) {
+      return []
+    }
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards?sort=asc`)
+    return response.data.map(convertFromApiCard);
+  }, [selectedBoard]);
+  
+  // const sortCardsByAscApi = async (selectedBoardId) => {
+  //   const response = await axios.get(
+  //     `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoardId}/cards?sort=asc`
+  //   );
+  //   return response.data.map(convertFromApiCard);
+  // };
+
   useEffect(() => {
     const getAllCards = async () => {
       const cards = await getAllCardsApi();
@@ -65,6 +95,7 @@ function App() {
     };
     getAllCards();
   }, [getAllCardsApi] );
+
 
   const getAllCards = async () => {
     const selectedBoardId = selectedBoard.id;
@@ -122,47 +153,32 @@ function App() {
   const handleChange = (e) => {
     const selectedSort = e.target.value;
     setSortType(selectedSort);
-
-
-    if (sortType === "id") {
-        return getAllCards();
-      }
-    if (sortType === "alphabetically") {
-      const selectedBoardId = selectedBoard.id;
-      const sorted = sortCardsByAscApi(selectedBoardId);
-      setCardsData(sorted);
-    }
-    if (sortType === "likesCount") {
-      const selectedBoardId = selectedBoard.id;
-      const sorted = sortCardsByLikesApi(selectedBoardId);
-      setCardsData(sorted);
-    }
   };
 
-  // useEffect(() => {
-  //   const sortArray = (type) => {
-  //     const types = {
-  //       id: "id",
-  //       alphabetically: "message",
-  //       likes: "likesCount",
-  //     };
-  //     const sortProperty = types[type];
-  //     if (sortProperty === "id") {
-  //       return getAllCards();
-  //     }
-  //     if (sortProperty === "message") {
-  //       const selectedBoardId = selectedBoard.id;
-  //       const sorted = sortCardsByAscApi(selectedBoardId);
-  //       setCardsData(sorted);
-  //     }
-  //     if (sortProperty === "likesCount") {
-  //       const selectedBoardId = selectedBoard.id;
-  //       const sorted = sortCardsByLikesApi(selectedBoardId);
-  //       setCardsData(sorted);
-  //     }
-  //   };
-  //   sortArray(sortType);
-  // }, [sortType]);
+  const getAllCardsByAsc = async () => {
+    const cards = await sortCardsByAscApi(selectedBoard.id);
+    setCardsData(cards);
+  };
+
+  const getAllCardsByLikes = async () => {
+    const cards = await sortCardsByLikesApi(selectedBoard.id);
+    setCardsData(cards);
+  };
+
+  useEffect(() => {
+    const sortArray = () => {
+      if (sortType === "id") {
+        return getAllCards();
+      }
+      if (sortType === "alphabetically") {
+        return getAllCardsByAsc();
+      }
+      if (sortType === "likesCount") {
+        return getAllCardsByLikes();
+      }
+    };
+    sortArray(sortType);
+  }, [sortType]);
 
 
   return (
