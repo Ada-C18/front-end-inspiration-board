@@ -134,7 +134,7 @@ function App() {
       }
     }
     // for (const board in cardBoardMap) {
-    //   if (parseInt(board) !== boardId /*&& cardBoardMap[board] != null*/) {
+    //   if (parseInt(board) !== boardId && cardBoardMap[board] != null) {
     //     console.log("board: ", board, "boardId: ", boardId);
     //     for (const card in cardBoardMap[board]) {
     //       const newCard = {
@@ -218,39 +218,65 @@ function App() {
   return (
     <div className="App">
       <h1 className="App-header"> Mindful Moments</h1>
-      <h2>BOARDS</h2>
-      <main>
-        <BoardList
-          boardList={boardList}
-          selectBoard={selectBoard}
-          unselectBoard={unselectBoard} /* entries={Board}*/
-        />
-      </main>
-      <h2>SELECTED BOARDS</h2>
-      <p>
-        {selectedBoard.title} - {selectedBoard.name}
-      </p>
-      <h2>CREATE NEW BOARD</h2>
-      <NewBoard boardForm={boardForm} addBoardCallback={addBoard}></NewBoard>
-      <button onClick={() => displayBoardForm(boardForm)}>
-        {displayBoardFormText}
-      </button>
-      <h2>CARDS FOR {selectedBoard.title}</h2>
-      <CardList
-        cardList={cardList}
-        selectCard={selectCard}
-        unselectCard={unselectCard}
-        selectBoard={selectBoard}
-        updateLike={updateLike}
-        selectedBoard={selectedBoard}
-        deleteCard={deleteCard}
-      />
-      {/* <NewCardForm></NewCardForm> */}
-      <h2>CREATE NEW CARD</h2>
-      <NewCard selectedBoard={selectedBoard} addCardCallback={addCard} />
-      {/* <main>
+      <div class="container">
+        <div id="Board-Title">
+          <h2> BOARDS</h2>
+          <main className="Boards">
+            <BoardList
+              boardList={boardList}
+              selectBoard={selectBoard}
+              unselectBoard={unselectBoard} /* entries={Board}*/
+            />
+          </main>
+        </div>
+
+        <div id="Selected-Board-Title">
+          <h2>SELECTED BOARDS</h2>
+          <p className="Selected-Boards">
+            {selectedBoard.title} - {selectedBoard.name}
+          </p>
+        </div>
+
+        <div id="Create-New-Board-Title">
+          <h2>CREATE NEW BOARD</h2>
+          <div className="New-Boards">
+            <NewBoard
+              className="New-Boards"
+              boardForm={boardForm}
+              addBoardCallback={addBoard}
+            ></NewBoard>
+            <button onClick={() => displayBoardForm(boardForm)}>
+              {displayBoardFormText}
+            </button>
+          </div>
+        </div>
+
+        <div id="Cards-For-Title">
+          <h2>CARDS FOR {selectedBoard.title}</h2>
+          <div className="Cards-For">
+            <CardList
+              cardList={cardList}
+              selectCard={selectCard}
+              unselectCard={unselectCard}
+              selectBoard={selectBoard}
+              updateLike={updateLike}
+              selectedBoard={selectedBoard}
+              deleteCard={deleteCard}
+            />
+          </div>
+        </div>
+        {/* <NewCardForm></NewCardForm> */}
+
+        <div id="Create-New-Card-Title">
+          <h2>CREATE NEW CARD</h2>
+          <div className="Create-New-Card">
+            <NewCard selectedBoard={selectedBoard} addCardCallback={addCard} />
+            {/* <main>
         <CardsList entries={singleCard} />
       </main> */}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
