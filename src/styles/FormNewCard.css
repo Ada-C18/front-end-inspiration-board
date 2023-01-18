@@ -1,0 +1,17 @@
+
+
+label {
+    font-weight: bold;
+    text-align: justify;
+}
+
+
+
+.button {
+    position: relative;
+
+}
+
+.message-preview {
+    font-style: italic;
+}

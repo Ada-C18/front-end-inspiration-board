@@ -1,4 +1,4 @@
-// import "../styles/FormNewCard.css";
+import "../styles/FormNewCard.css";
 import { useState } from "react";
 
 const INITIAL_FORM = {
@@ -34,7 +34,7 @@ const FormNewCard = (props) => {
 
   return (
     <form onSubmit={handleNewCardSubmit}>
-      <label htmlFor="message"> Message </label>
+      <label htmlFor="message"></label>
       <input
         type="text"
         id="message"
@@ -43,9 +43,11 @@ const FormNewCard = (props) => {
         placeholder="Inspirational message"
         onChange={handleChange}
       />
-
-      <p> Preview card message: {message} </p>
-      <input type="submit" value="Add Card" />
+      <br/>
+      <br/> 
+      <label>Card preview:</label>
+      <p className="message-preview"> {message} </p>
+      <input className = "button" type="submit" value="Add Card" />
     </form>
   );
 };

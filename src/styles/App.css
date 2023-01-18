@@ -5,9 +5,9 @@
       "nav main"
       "aside main";
   grid-template-columns: 30% 70%;
-  grid-template-rows: 10% 40% 40%;
+  grid-template-rows: 10% 40% 20%;
   grid-gap: 10px;
-  height:150vh;
+  height:160vh;
   width: 100vh;
   margin: auto;
 }
@@ -29,7 +29,8 @@ background-color: green;
 
 aside {
   grid-area: aside;
-  background-color: gold;
+  background-color: #70be51;
+  outline: 1px solid black;
   }
 
 
@@ -37,11 +38,9 @@ header, main, nav, aside{
   padding: 10px; 
 }
 
-
-
-
-
-
+h2 {
+  text-align: center;
+}
 
 
 
