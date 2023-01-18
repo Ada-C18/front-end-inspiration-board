@@ -7,6 +7,13 @@ import CardList from "./Components/CardList";
 import NewCardForm from "./Components/NewCardForm";
 import RainbowText from "react-rainbow-text";
 
+const convertFromApiCard = (apiCard) => {
+  const {id, board_id: boardId, message, likes_count: likesCount} = apiCard;
+
+  const newCard = {id, boardId, message, likesCount};
+  return newCard;
+}
+
 const getAllBoardsApi = async () => {
   const response = await axios.get(
     `${process.env.REACT_APP_BACKEND_URL}/boards`
@@ -54,11 +61,12 @@ function App() {
 
   // CARDS
   // Get all cards for selected board
-  const getAllCardsApi = async () => {
+  const getAllCardsApi = async (selectedBoardId) => {
     const response = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}/cards`
+      // `${process.env.REACT_APP_BACKEND_URL}/cards`
+      `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoardId}/cards`,
     );
-    return response.data;
+    return response.data.map(convertFromApiCard);
   };
 
   // Adds card through card form
@@ -74,14 +82,16 @@ function App() {
 
   useEffect(() => {
     const getAllCards = async () => {
-      const cards = await getAllCardsApi();
+      const selectedBoardId = selectedBoard.id
+      const cards = await getAllCardsApi(selectedBoardId);
       setCardsData(cards);
     };
     getAllCards();
-  }, []);
+  }, [selectedBoard]);
 
   const getAllCards = async () => {
-    const cards = await getAllCardsApi();
+    const selectedBoardId = selectedBoard.id
+    const cards = await getAllCardsApi(selectedBoardId);
     setCardsData(cards);
   };
 
@@ -90,7 +100,7 @@ function App() {
     const response = await axios.delete(
       `${process.env.REACT_APP_BACKEND_URL}/cards/${card_id}`
     );
-    return response.data;
+    return convertFromApiCard(response.data);
   };
 
   const handleDeleteCard = async (id) => {
@@ -122,6 +132,7 @@ function App() {
     await handleLikesApi(card_id, board_id, message, likes_count);
     return getAllCards();
   };
+
 
   // Sort **ALMOST WORKING**
   const [sortType, setSortType] = useState("");
