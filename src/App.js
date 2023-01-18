@@ -12,10 +12,17 @@ import {
   addNewBoard,
   addNewCard,
   getAllCards,
-} from "./API/InspirationAPI";
-import { toBeInTheDocument } from "@testing-library/jest-dom/dist/matchers";
+  getCardsFirstBoard,
+} from './API/InspirationAPI';
 
 const App = function () {
+  const testBoardListData = testData[0];
+  const testcardListData = testData[1];
+  const kDefaultBoardList = [{ board_id: 0, name: '', owner: '' }];
+  const [boardListState, setBoardListState] = useState(kDefaultBoardList);
+  const [currentBoardState, setCurrentBoardState] = useState(0);
+  const [cardListState, setCardListState] = useState([]);
+
   /* Refresh boardListState and currentBoardState if 
   we add or edit a board. 
   */
@@ -39,39 +46,27 @@ const App = function () {
   // should we write useEffect for form validation instead of doing
   // it manually in the onChange event handlers? 
 
-  const testBoardListData = testData[0];
-  const testcardListData = testData[1];
-  const kDefaultBoardList = [{ board_id: 0, name: "", owner: "" }];
-  const [boardListState, setBoardListState] = useState(kDefaultBoardList);
-  const [currentBoardState, setCurrentBoardState] = useState(0);
-  const [cardListState, setCardListState] = useState([]);
 
   const handleBoardSelect = function (boardID) {
-    setCurrentBoardState(parseInt(boardID));
-    console.log(boardID);
-    console.log(currentBoardState);
-    getAllCards(currentBoardState, setCardListState);
+    const _update = () => parseInt(boardID);
 
-    }
-    
-    // const handleBoardSelect = function (boardID) {
-    //   setCurrentBoardState(parseInt(boardID));
-    //   console.log(boardID);
-    //   console.log(currentBoardState);
-    //   getAllCards(boardID, setCardListState);
-    // TODO; using the currentBoardState variable in the getAllCards function.
-    // Instead, it should be passing the boardID variable directly to the getAllCards function
+    setCurrentBoardState(_update);
+    console.log('board_select:boardID: ' + boardID);
+    console.log('board_select2:currentBoardState ' + currentBoardState);
+    getAllCards(boardID, setCardListState);
+
   };
 
+  // load the cards for the first board in the database
+  // then load cards and set all states on first render
   useEffect(() => {
-    getAllBoards(setBoardListState);
+    // getAllBoards(setBoardListState);
+    getCardsFirstBoard(
+      setBoardListState,
+      setCardListState,
+      setCurrentBoardState
+    );
   }, []);
-
-  useEffect(() => {
-    if (currentBoardState === 0) {
-      setCurrentBoardState(boardListState[0].board_id);
-    }
-  }, [boardListState, currentBoardState]);
 
   /* handle submit from cardForm */
   const handleNewCard = (newcard) => {
