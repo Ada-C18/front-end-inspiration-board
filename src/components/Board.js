@@ -3,10 +3,14 @@ import React from "react";
 import "./Board.css";
 
 const Board = (props) => {
-  //   const id = props.id;
+  const id = props.id;
   const title = props.title;
 
-  return <li className="boards_items">{title}</li>;
+  return (
+    <li className="boards_items">
+      {id}. {title}
+    </li>
+  );
 };
 
 Board.propTypes = {

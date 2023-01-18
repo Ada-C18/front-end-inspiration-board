@@ -18,7 +18,7 @@ const BoardList = ({ boards }) => {
     });
   };
 
-  return <ul className="boards__list no bullet">{getBoardsListJSX(boards)}</ul>;
+  return <ul className="boards-list-no-bullet">{getBoardsListJSX(boards)}</ul>;
 };
 
 BoardList.propTypes = {
