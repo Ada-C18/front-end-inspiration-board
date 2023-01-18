@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiko&family=Kanit:wght@100&family=Petrona&display=swap');
+
+/* Consider putting image in seperate folder and refactoring background-image */
+
+div .button-container {
+    background-color: #484d4a;
+    background-image: url("./pexels-henry-&-co-1939485.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.top-button{
+    height: 200px;
+    width: 200px;
+    background-color: #252329;
+    font-family: Amiko, serif;
+    font-size: 20px;
+    padding: 5%;
+    border-radius: 100%;
+    color: #fce5a5;
+    opacity: 80%;
+    border: 8px solid #9b9966;
+}

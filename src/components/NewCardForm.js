@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./NewCardForm.css";
-
 const INITIAL_FORM_DATA = {
   message: "",
 };

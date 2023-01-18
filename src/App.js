@@ -4,9 +4,68 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Board from "./components/Board.js";
 import BoardList from "./components/BoardList";
-// import NewCardForm from "./components/NewCardForm";
+import NewCardForm from "./components/NewCardForm";
 import NewBoardForm from "./components/NewBoardForm";
-import Card from "./components/Card";
+
+const BOARD_LIST = [
+  {
+    id: 1,
+    title: "Lynn's Board",
+    owner: "Lynn",
+    cards: [
+      {
+        id: 1,
+        message: "Lynn, stay cool.",
+      },
+      {
+        id: 2,
+        message: "Lynn, you are always good enough.",
+      },
+      {
+        id: 3,
+        message: "Lynn loves you.",
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "Nina's Board",
+    owner: "Nina",
+    cards: [
+      {
+        id: 1,
+        message: "Nina, stay cool.",
+      },
+      {
+        id: 2,
+        message: "Nina, you are always good enough.",
+      },
+      {
+        id: 3,
+        message: "Nina loves you.",
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "Tami's Board",
+    owner: "Tami",
+    cards: [
+      {
+        id: 1,
+        message: "Tami, stay cool.",
+      },
+      {
+        id: 2,
+        message: "Tami, you are always good enough.",
+      },
+      {
+        id: 3,
+        message: "Tami loves you.",
+      },
+    ],
+  },
+];
 
 // const REACT_APP_BACKEND_URL = "http://localhost:5000/cards";
 
@@ -141,13 +200,12 @@ export default App;
 //   }
 //   setBoardList(newBoard);
 
-//   axios.post(REACT_APP_BACKEND_URL, newCardInfo).then((response) => {
-//     const newCards = [...board];
-//     const newCardJSON = {
-//       ...newCardInfo,
-//       message: response.data.message,
-//     };
-//     newCards.push(newCardJSON);
-//     setBoard(newCards);
-//   });
+// axios.post(REACT_APP_BACKEND_URL, newCardInfo).then((response) => {
+//   const newCards = [...board];
+//   const newCardJSON = {
+//     ...newCardInfo,
+//     message: response.data.message,
+//   };
+//   newCards.push(newCardJSON);
+//   setBoard(newCards);
 // };

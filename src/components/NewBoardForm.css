@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiko&family=Kanit:wght@100&family=Petrona&display=swap');
+
+.container {
+    background-color: #252329;
+    color: #fce5a5;
+    padding: 10%;
+    display: flex;
+    justify-content: center;
+    /* border: yellow 2px solid; */
+}
+
+legend {
+    font-family: Petrona, sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    /*border: red 2px solid; */
+    margin-top: 0px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+formset {
+    background-color: #484d4a;
+    border-radius: 20px;
+    padding: 40px;
+    padding-top: 10%;
+    height: 500px;
+    width: 350px;
+    box-sizing: border-box;
+    box-shadow: 14px 14px 20px black, -14px -14px 20px black;
+}
+
+div .input-fields {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    font-family: Amika, serif;
+}
+
+label {
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+input::placeholder {
+    color: lightgray;
+    font-family: Amika, serif;
+    font-size: 16px;
+}
+
+input {
+    margin-bottom: 10px;
+    padding: 10px;
+    height: 30px;
+    border-radius: 50px;
+    background-color: #484d4a;
+    color: lightgray;
+}
+
+.submit-button-container {
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit-button {
+    width: 200px;
+    height: 50px;
+    color: #fce5a5;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 20px;
+    background-color: #252329;
+    box-shadow: 4px 4px 15px black, -4px -4px 15px black;
+    border: none;
+    transition: 0.5s;
+}
+
+input:hover {
+    box-shadow: none;
+}
