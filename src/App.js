@@ -38,7 +38,7 @@ function App() {
 
   // createNewBoard
   const onBoardSubmit = (newBoard) => {
-    axios.post(`${url}/boards`, newBoard).then((response) => {
+    axios.post(`${url}/boards`, {title: '', owner: ''}).then((response) => {
       console.log('Response:', response.data.board);
       const boards = [...boardsData];
       boards.push(response.data.board);
