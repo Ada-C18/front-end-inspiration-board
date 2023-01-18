@@ -10,170 +10,200 @@ import CardsList from "./components/CardsList";
 import NewCardForm from "./components/NewCardForm";
 
 const boardsData = [
-  {
-    board_id: 1,
-    title: "Do things!",
-    owner: "Milena",
-  },
-  {
-    board_id: 2,
-    title: "You can do it!",
-    owner: "Laura",
-  },
+	{
+		board_id: 1,
+		title: "Do things!",
+		owner: "Milena",
+	},
+	{
+		board_id: 2,
+		title: "You can do it!",
+		owner: "Laura",
+	},
 ];
 
 const cardsData = [
-  { cardId: 1, message: "great job" },
-  { cardId: 2, message: "you're doing great" },
+	{ cardId: 1, message: "great job" },
+	{ cardId: 2, message: "you're doing great" },
 ];
 
 // REQUIREMENTS
 // BOARDS
 // -- Read Boards:
-// View a list of all boards.
-// Select a board.
+// View a list of all boards. - fetchAllBoards
+// Select a board. - updateSelectedBoard
 
 function App() {
-  // state for boardsList
-  const [boardsList, setBoardsData] = useState(boardsData);
+	// state for boardsList
+	const [boardsList, setBoardsData] = useState(boardsData);
 
-  const URL = "http://127.0.0.1:5000";
+	const URL = "http://127.0.0.1:5000";
 
-  // TODO: Select Board  State - top level, Make boards clickable
-  // State for selected board - manage here
-  // State: Selected Board ID
-  // const [selectedBoardId, setSelected] = useState(false); // move useState somewhere else?
-  const [selectedBoard, setSelected] = useState({
-    boardId: 1,
-    title: "Do things!",
-    owner: "Milena",
-  });
+	// Get all cards with board ID
+	const fetchAllBoards = () => {
+		axios
+			.get(`${URL}/boards`)
+			.then((response) => {
+				console.log(`get response: ${response}`);
+				const boardsAPIResCopy = response.data.map((board) => {
+					return {
+						boardId: board.board_id, // or boardId
+						title: board.title,
+						owner: board.owner,
+					};
+				});
+				// update boardsList state
+				setBoardsData(boardsAPIResCopy);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
 
-  //   #GET endpoint to get one board
-  // @boards_bp.route("/<board_id>", methods = ["GET"])
-  // def get_one_board(board_id):
-  //     board = Board.query.get(board_id)
-  //     return make_response(jsonify(
-  //         {
-  //               "board_id": board.board_id,
-  //               "title": board.title,
-  //               "owner": board.owner
-  //             }
-  //     ), 200)
+	// initial get request
+	useEffect(fetchAllBoards, []);
 
-  const updateSelectedBoard = (boardId) => {
-    console.log("updateBoard called");
-    axios
-      .get(`${URL}/boards/${boardId}`)
-      .then((response) => {
-        console.log(response);
-        const boardAPIResCopy = response.data;
-        setSelected(boardAPIResCopy);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+	const addBoard = (newBoard) => {
+		console.log("Calling addBoard");
 
-    // setSelected({
-    //   board_id: 2,
-    //   title: "You can do it!",
-    //   owner: "Laura",
-    // });
-  };
+		axios
+			.post(`${URL}/boards`, newBoard)
+			.then((response) => {
+				const updatedBoardsList = [...boardsList];
+				updatedBoardsList.push({
+					...newBoard,
+					// check board id response var name
+					// Pending - generate new id num (backend?)
+					boardId: response.data.board_id, // hidden, implied primary key
+				});
 
-  // Todo: add API post / add Board code
-  // form prop function
-  const addBoard = (newBoard) => {
-    console.log("Calling addBoard");
+				setBoardsData(updatedBoardsList);
+			})
+			.catch((error) => console.log(error));
+	};
 
-    const updatedBoardsList = [...boardsList];
+	// Selected Board State
+	const [selectedBoard, setSelected] = useState({
+		boardId: 1,
+		title: "Do things!",
+		owner: "Milena",
+	});
 
-    // Pending - generate new id num (backend?)
-    updatedBoardsList.push({
-      boardId: newBoard.boardId, // hidden, implied primary key
-      title: newBoard.title,
-      owner: newBoard.owner,
-    });
+	const updateSelectedBoard = (boardId) => {
+		console.log("updateBoard called");
+		axios
+			.get(`${URL}/boards/${boardId}`)
+			.then((response) => {
+				console.log(response);
+				const boardAPIResCopy = response.data;
+				setSelected(boardAPIResCopy);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 
-    setBoardsData(updatedBoardsList);
-  };
+		// setSelected({
+		//   board_id: 2,
+		//   title: "You can do it!",
+		//   owner: "Laura",
+		// });
+	};
 
-  // ------------ Cards Logic ----------- //
-  // State: Selected Board Cards
-  const [selectedCards, setCardsList] = useState(cardsData); // useState([]);
+	// ------------ Cards Logic ----------- //
+	// State: Selected Board Cards
+	const [selectedCards, setCardsList] = useState(cardsData); // useState([]);
 
-  // TODO: ask Backend team about GET Cards route
-  const fetchCardsURL = `${URL}/${selectedBoard.board_id}/cards`; // "/<board_id>/cards"
-  // 2 different GET routes in backend repo
-  // 1. @boards_bp.route("/<board_id>/cards", methods = ["GET"])
-  // def get_board_cards(board_id):
-  // 2. @cards_bp.route("", methods = ["GET"])
-  // def get_all_cards():
-  console.log(fetchCardsURL);
+	// TODO: ask Backend team about GET Cards route
+	const fetchCardsURL = `${URL}/${selectedBoard.board_id}/cards`; // "/<board_id>/cards"
+	// 2 different GET routes in backend repo
+	// 1. @boards_bp.route("/<board_id>/cards", methods = ["GET"])
+	// def get_board_cards(board_id):
+	// 2. @cards_bp.route("", methods = ["GET"])
+	// def get_all_cards():
+	console.log(fetchCardsURL);
 
-  // Get all cards with board ID
-  const fetchCards = () => {
-    axios
-      .get(fetchCardsURL)
-      .then((response) => {
-        console.log(response);
-        const cardsAPIResCopy = response.data.map((card) => {
-          return {
-            cardId: card.cardId,
-            message: card.message,
-            // likesCount: card.likesCount,
-          };
-        });
-        setCardsList(cardsAPIResCopy);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+	// Get all cards with board ID
+	const fetchCards = () => {
+		axios
+			.get(fetchCardsURL)
+			.then((response) => {
+				console.log(response);
+				const cardsAPIResCopy = response.data.map((card) => {
+					return {
+						cardId: card.cardId,
+						message: card.message,
+						// likesCount: card.likesCount,
+					};
+				});
+				setCardsList(cardsAPIResCopy);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
 
-  // initial get cards request
-  useEffect(fetchCards, []);
+	// initial get cards request
+	useEffect(fetchCards, []);
 
-  // Add Card Function
-  // Todo: add API post card code
-  const addCard = (newCard) => {
-    console.log("Calling addCard");
+	// Add Card Function
+	// Todo: add API post card code
+	const addCard = (newCard) => {
+		console.log("Calling addCard");
 
-    const newCardsList = [...selectedCards];
-    newCardsList.push({
-      board_id: newCard.board_id, // hidden, implied primary key
-      message: newCard.message,
-    });
+		const newCardsList = [...selectedCards];
+		newCardsList.push({
+			board_id: newCard.board_id, // hidden, implied primary key
+			message: newCard.message,
+		});
 
-    setCardsList(newCardsList);
-  };
+		setCardsList(newCardsList);
+	};
 
-  return (
-    <div className="App">
-      {/* <Board /> */}
-      <BoardsList
-        boardsList={boardsList}
-        updateSelectedBoard={updateSelectedBoard}
-      />
+	const deleteCard = (cardId) => {
+		console.log("deleteCard called");
 
-      <h1>Selected Board</h1>
-      {/* TODO: Add logic show selectedBoard if selectedBoard is not empty */}
-      {/* <p>Select a Board from the Board List!</p> */}
-      <p>
-        {selectedBoard.title} - {selectedBoard.owner}
-      </p>
+		axios
+			.delete(`${URL}/${cardId}`)
+			.then(() => {
+				const newCardsList = [];
+				for (const card of selectedCards) {
+					if (card.cardId !== cardId) {
+						newCardsList.push(card);
+					}
+				}
+				setCardsList(newCardsList);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
 
-      <NewBoardForm addBoard={addBoard} />
+	return (
+		<div className="App">
+			{/* <Board /> */}
+			<BoardsList
+				boardsList={boardsList}
+				updateSelectedBoard={updateSelectedBoard}
+			/>
 
-      {/* Todo: display elements below after selecting Board */}
-      <h2>Cards for {selectedBoard.title} Quotes</h2>
-      {/* <h2>Cards for "insert Board title here" Quotes</h2> */}
-      <CardsList cardsList={selectedCards} />
+			<h1>Selected Board</h1>
+			{/* TODO: Add logic show selectedBoard if selectedBoard is not empty */}
+			{/* <p>Select a Board from the Board List!</p> */}
+			<p>
+				{selectedBoard.title} - {selectedBoard.owner}
+			</p>
 
-      <h2>Create New Card</h2>
-      <NewCardForm addCardCallback={addCard} />
-    </div>
-  );
+			<NewBoardForm addBoard={addBoard} />
+
+			{/* Todo: display elements below after selecting Board */}
+			<h2>Cards for {selectedBoard.title} Quotes</h2>
+			{/* <h2>Cards for "insert Board title here" Quotes</h2> */}
+			<CardsList cardsList={selectedCards} deleteCard={deleteCard} />
+
+			<h2>Create New Card</h2>
+			<NewCardForm addCardCallback={addCard} />
+		</div>
+	);
 }
 
 export default App;
