@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import CardList from './CardList'
 import Dropdown from './Dropdown'
 import NewBoardForm from './NewBoardForm'
@@ -8,6 +10,20 @@ import Card from './Card'
 
 
 const Board = () => {
+
+
+    const addCardCallback = (newCardData) => {
+        axios.post('https://rykaliva.herokuapp.com/boards/{board_id}/cards', newCardData)
+        .then((response) => {
+            console.log('response:', response);
+            console.log('response data:', response.data);
+            return response.data;
+        })
+        .catch(error => {
+            console.log(error)
+        });
+    }
+
     return (
         <section className='board-container'>
             <section className='input-section'>
@@ -16,7 +32,8 @@ const Board = () => {
                 <label>Create a Board</label>
                 <NewBoardForm></NewBoardForm>
                 <label>Create a Card</label>
-                <NewCardForm></NewCardForm>
+                <NewCardForm
+                addCardCallback={addCardCallback}></NewCardForm>
                 <h2>Board Title</h2>
             </section>
             <div className='card1'><Card></Card></div>
