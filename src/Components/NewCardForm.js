@@ -19,8 +19,7 @@ const NewCardForm = ({ addCardData, selectedBoard }) => {
   };
 
   return (
-    <form className="card__form" onSubmit={submitCardData}>
-      <h1 className="form__header">✨ Create a Message ✨</h1>
+    <form onSubmit={submitCardData}>
       <div className="new-card__field">
         <label htmlFor="message">Message</label>
         <input

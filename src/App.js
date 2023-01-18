@@ -82,6 +82,7 @@ function App() {
     const convertedCard = convertFromApiCard(response.data.card)
     newCard.push(convertedCard);
     setCardsData(newCard);
+    return getAllCards();
   };
 
   // Delete a card
@@ -168,7 +169,7 @@ function App() {
     <div>
       {/* BOARDS */}
       <h1 className="App__header">
-        <RainbowText lightness={0.5} saturation={1}>
+        <RainbowText lightness={0.8} saturation={1}>
           💫 No Thoughts Just Vibes Inspiration Board 💫
         </RainbowText>
       </h1>
@@ -234,7 +235,8 @@ function App() {
                 </select>
               </section>
             </section>
-            <section>
+            <section className="card__form">
+              <h1 className="card__form__header">✨ Create a Message ✨</h1>
               <NewCardForm
                 addCardData={addCardData}
                 selectedBoard={selectedBoard}

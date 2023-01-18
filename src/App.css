@@ -1,5 +1,5 @@
 .App__header {
-  background-color: black;
+  background-color: blue;
   font-family:monospace;
   min-height: 10vh;
   font-size:35pt;
@@ -29,7 +29,6 @@ padding: 20pt;
 
 .board_header {
   background-color:darkviolet;
-  font-size: large;
   color: white;
   text-align: center;
 }
@@ -45,6 +44,7 @@ padding-right: 25pt;
 
 .select__board {
   font-size: large;
+  font-weight: bold;
   text-align: center;
 }
 
@@ -53,14 +53,12 @@ padding-right: 25pt;
   border-style: solid;
   border-radius: 5pt ;
   text-align: center;
-  padding: 5pt;
   opacity: 0.9;
   padding: 20pt;
   height: 300px;
 }
 
 .create__board__header {
-  font-size: large;
   background-color:darkviolet;
   color: white;
 }
@@ -80,7 +78,7 @@ padding-right: 25pt;
 }
 
 .cards__container {
-  background-color:yellow;
+  background-color:aquamarine;
   border-style: solid;
   border-radius: 5pt ;
   display: flex;
@@ -93,7 +91,7 @@ padding-right: 25pt;
 
 .cards__header {
   background-color:fuchsia;
-  font-size: x-large;
+  font-size: 2rem;
   color: white;
 }
 
@@ -107,5 +105,22 @@ padding-right: 25pt;
 }
 
 body {
-  background-color: black
+  background-color: beige
+}
+
+.card__form {
+  background-color:aquamarine;
+  border-style: solid;
+  width: 300px;
+  row-gap: 2px;
+  opacity: 0.9;
+  border-radius: 5pt ;
+  text-align: center;
+  padding: 20pt;
+}
+
+.card__form__header {
+  background-color:fuchsia;
+  color: white;
+  text-align: center;
 }

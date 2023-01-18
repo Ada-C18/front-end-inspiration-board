@@ -20,11 +20,11 @@ const Card = (props) => {
               )
             }
           >
-            +1❤️
+            +1💖
           </p>
         </li>
         <li>
-          <p>This message has {props.likesCount} ❤️s</p>
+          <p>This message has {props.likesCount} 💖s</p>
         </li>
         <li className="delete">
           <p onClick={() => props.handleDeleteCard(props.id)}>Delete Message</p>
