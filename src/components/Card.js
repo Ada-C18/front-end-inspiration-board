@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 import PropTypes from "prop-types";
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { AiOutlineLike, AiFillLike } from 'react-icons/ai';
-=======
-import { FaRegTrashAlt } from "react-icons/fa";
-import { AiOutlineLike, AiFillLike } from "react-icons/ai";
-import PropTypes from "prop-types";
->>>>>>> b91a735f381bb4ef81283c24c498cc40ce9e2659
 
 const Card = ({ card, updateLikedCard, deleteCard }) => {
   const likeOrNot = card.likes_count ? <AiFillLike /> : <AiOutlineLike />;
@@ -40,9 +34,5 @@ Card.propTypes = {
   updateLikedCard: PropTypes.func.isRequired,
   deleteCard: PropTypes.func.isRequired,
 };
-<<<<<<< HEAD
 
 export default Card;
-=======
-export default Card;
->>>>>>> b91a735f381bb4ef81283c24c498cc40ce9e2659

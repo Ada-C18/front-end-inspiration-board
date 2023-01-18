@@ -57,9 +57,6 @@ function App() {
     }
   };
 
-<<<<<<< HEAD
-  const boardsComponent = boardsList.map((board) => {
-=======
   const deleteBoard = (boardId) => {
     axios.delete(`${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}`)
     .then(() => {
@@ -86,33 +83,13 @@ function App() {
   };
   
   const boardsComponent = boardsList.map((board) => { 
->>>>>>> 4003d2b6c3739f836e03916fbedd70a27c62cbf5
     return (
-      <ul key={board.id}>
+      <li key={board.id}>
         <Board board={board} onBoardSelect={onBoardSelect}></Board>
         <span className="board-trash" onClick={()=>{deleteBoard(board.id)}}><FaRegTrashAlt/></span>
-      </ul>
+      </li>
     );
   });
-<<<<<<< HEAD
-=======
-
-  const addBoard = (newBoardInfo) => {
-    axios.post(`${process.env.REACT_APP_BACKEND_URL}/boards`, newBoardInfo)
-    .then((response) => {
-      const newBoards = [...boardsList];
-      const newBoardJSON = {
-        ...newBoardInfo,
-        "id": response.data.board.id
-      }
-      newBoards.push(newBoardJSON);
-      setBoardsList(newBoards);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  };
->>>>>>> 4003d2b6c3739f836e03916fbedd70a27c62cbf5
 
   const addBoard = (newBoardInfo) => {
     axios

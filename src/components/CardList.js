@@ -82,5 +82,8 @@ const CardList = ({ board }) => {
   );
 };
 
+CardList.propTypes = {
+  board: PropTypes.object.isRequired,
 };
+
 export default CardList;
