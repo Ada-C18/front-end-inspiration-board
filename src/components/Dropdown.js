@@ -2,13 +2,14 @@
 // ideally tackling this 1/18/2023 together
 
 
-const Dropdown = ({ boardData }) => {
+const Dropdown = ({ boardData, getBoardId } ) => {
   // console.log(boardData, "boardData");
   const onChangeBoard = (event) => {
-    const board_title = event.target.value
+    // const board_title = event.target.value
     const board_id = event.target.selectedIndex
-    console.log(board_title)
-    console.log(board_id)    
+    // console.log(board_title)
+    // console.log(board_id)    
+    getBoardId(board_id);
   }
   return (
     <div>

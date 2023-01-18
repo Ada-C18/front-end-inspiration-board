@@ -11,6 +11,8 @@ import Card from './Card'
 
 const Board = () => {
     const [boardData, setBoardData] = useState([]);
+    const [cardData, setCardData] = useState([]);
+    const [selectedBoard, setSelectedBoard] = useState(0);
 
     const onBoardSubmit = (newBoardData) => {
     axios
@@ -30,15 +32,26 @@ const Board = () => {
         setBoardData(response.data);
         });
     }, []);
-
-
+    
+    const getBoardId = (id) => {
+        // create hook to find which board is being selected
+        // trigger board
+        setSelectedBoard(id)
+        console.log(`board id ${id}`)
+    }
+    
     const addCardCallback = (newCardData) => {
-        
-        axios.post('https://rykaliva.herokuapp.com/boards/{board_id}/cards', newCardData)
+        let board_id = getBoardId();
+        axios.post(`https://rykaliva.herokuapp.com/boards/${board_id}/cards`, newCardData)
         .then((response) => {
-            console.log('response:', response);
-            console.log('response data:', response.data);
-            return response.data;
+            const newCards = [...cardData];
+            newCards.push({
+                card_id: response.data.card_id,
+                message: response.data.message,
+                likes_count: response.data.likes_count,
+                ...cardData
+        });
+            setCardData(newCards);
         })
         .catch(error => {
             console.log(error)
@@ -50,7 +63,7 @@ const Board = () => {
         <section className="input-section">
             <div className='user-choice'>
                 <label>Choose Board to Display</label>
-                <Dropdown boardData={boardData}></Dropdown>
+                <Dropdown boardData={boardData} getBoardId={getBoardId}></Dropdown>
                 <label>Create a Board</label>
                 <NewBoardForm onBoardSubmit={onBoardSubmit}></NewBoardForm>
                 <label>Create a Card</label>
