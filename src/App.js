@@ -8,10 +8,9 @@ import NewCardForm from "./Components/NewCardForm";
 import RainbowText from "react-rainbow-text";
 
 const convertFromApiCard = (apiCard) => {
-  const { id, board_id: boardId, message, likes_count: likesCount } = apiCard;
+  const { board_id: boardId, id, likes_count: likesCount, message } = apiCard;
 
-  const newCard = { id, boardId, message, likesCount };
-  return newCard;
+  return { boardId, id, likesCount, message };
 };
 
 const getAllBoardsApi = async () => {
@@ -57,13 +56,22 @@ function App() {
   };
 
   // Get all boards
+  // useEffect(() => {
+  //   const getAllBoards = async () => {
+  //     const boards = await getAllBoardsApi();
+  //     setAllBoardData(boards);
+  //   };
+  //   getAllBoards();
+  // }, []);
+
   useEffect(() => {
-    const getAllBoards = async () => {
-      const boards = await getAllBoardsApi();
-      setAllBoardData(boards);
-    };
     getAllBoards();
   }, []);
+
+  const getAllBoards = async () => {
+    const boards = await getAllBoardsApi();
+    setAllBoardData(boards);
+  };
 
   // New board form
   const toggleNewBoardForm = () => {
