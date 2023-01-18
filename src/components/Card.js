@@ -1,12 +1,34 @@
 import "./Card.css";
 import PropTypes from 'prop-types';
+import axios from "axios";
 
 import { useState } from "react";
+
+const CardURL = "http://localhost:5000/cards";
 const Card = (props) => {
-  const [likesCount, setLikesCount] = useState(0);
+  console.log(props)
+  const [likesCount, setLikesCount] = useState(props.likes);
+  // const updateLikes = () => {
+  //   setLikesCount(likesCount + 1);
+  // };
   const updateLikes = () => {
-    setLikesCount(likesCount + 1);
+    updateLikesCall();
   };
+  
+  const updateLikesCall = () => {
+    axios
+      .patch(`${CardURL}/${props.id}`)
+      .then(() => {
+      
+        setLikesCount(likesCount + 1);
+      })
+      .catch((error) => {
+        console.log(error);
+        // alert(“Unable to like the card.“);
+      });
+  };
+
+
 
   return (
     <div className="card">
@@ -28,7 +50,7 @@ const Card = (props) => {
 };
 Card.propTypes={
   message: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired
+  id: PropTypes.number
 
 }
 

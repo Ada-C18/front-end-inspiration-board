@@ -1,5 +1,7 @@
 import "./CardList.css";
 import Card from "./Card";
+import PropTypes from 'prop-types';
+import axios from "axios";
 
 const CardList = (props) => {
   const cards = props.cards;
@@ -8,6 +10,7 @@ const CardList = (props) => {
       {cards.map((card, id) => (
         <Card
           id={card.id}
+          likes={card.likes}
           message={card.message}
           key={id}
           // onUpdateLikes={updateLikes}
@@ -28,5 +31,10 @@ const CardList = (props) => {
   // });
 
   // return <p> {displayCards}</p>;
+};
+CardList.propTypes ={
+  id: PropTypes.number,
+  message: PropTypes.string,
+  onDeleteCard: PropTypes.func.isRequired
 };
 export default CardList;

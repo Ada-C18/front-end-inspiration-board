@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 const Board = (props) => {
   const returnedBoards = props.boards.map((board) => {
     // onclick event, the function and id to send to the function
-    return (
-      <li key={board.id} onClick={() => props.onBoardClicked(board.id)}>
+    return (<div key={board.id}>
+      <li  onClick={() => props.onBoardClicked(board.id)}>
         {board.title}
       </li>
+      </div>
     );
   });
 

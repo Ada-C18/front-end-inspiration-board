@@ -58,7 +58,7 @@ const NewBoardForm = (props) => {
       <p>
         {formFields.title} {formFields.owner}{" "}
       </p>
-      <input type="submit" value="Submit" />
+      <input type="submit" value="Submit" disabled={formFields.title.length > 40} />
     </form>
   );
 };

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import PropTypes from 'prop-types';
+import "./NewCardForm.css";
+
 
 const NewCardForm = (props) => {
   const [formFields, setFormFields] = useState({
@@ -43,12 +45,12 @@ const NewCardForm = (props) => {
           // maxLength={40}
           value={formFields.message}
           onChange={onMessageChange}
-          // className={formFields.message.length > 40? 'max_length_input': ''}
+          className={formFields.message.length === 0 ||formFields.message.length > 40? 'max_length_input': ''}
         />
       </div>
       <p> Preview - </p>
       <p>{formFields.message}</p>
-      <input type="submit" value="Submit" disabled={formFields.message.length > 40} />
+      <input type="submit" value="Submit" disabled={formFields.message.length === 0 ||formFields.message.length > 40} />
     </form>
   );
 };

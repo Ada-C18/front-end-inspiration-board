@@ -53,8 +53,10 @@ const App = () => {
         newBoards.push({ id: response.data.board_id, title: "", ...board });
         setBoardData(newBoards);
       })
-      .catch((error) => console.log(error));
-    alert("Unable to create a board");
+      .catch((error) => {
+        console.log(error);
+        alert("Unable to create a board");
+      });
   };
 
   const handleBoardClicked = (id) => {
@@ -71,6 +73,7 @@ const App = () => {
           return {
             id: card.id,
             message: card.message,
+            likes: card.likes
           };
         });
         setCardData(newCards);
@@ -93,10 +96,10 @@ const App = () => {
       .then((response) => {
         const newCards = [...cardData];
         newCards.push({
-          id: response.data.id,
-          board_id: response.data.board_id,
+          id: response.data.card.id,
+          board_id: response.data.card.board_id,
           message: "",
-          likes: null,
+          likes: 0,
           ...card,
         });
         setCardData(newCards);
