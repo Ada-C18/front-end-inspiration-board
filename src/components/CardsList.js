@@ -77,7 +77,6 @@ const CardsList = (props) => {
   const cardElements = cardsData.map((card) => {
     return (
       <Card
-        key = {card.id}
         card={card}
         plusOneCardItem={plusOneCardItem}
         deleteCardItem={deleteCardItem}
@@ -86,13 +85,14 @@ const CardsList = (props) => {
   });
 
   return (
-    <section>
-      <h2>Cards for {props.board.title}</h2>
-      <div>{cardElements}</div>
+    <section className="cards__container">
       <section>
+        <h2>Create a New Card</h2>
         <NewCardForm createNewCard={createNewCard}></NewCardForm>
         <span onClick={NewCardForm}></span>
       </section>
+      <h2>Cards for {props.board.title}</h2>
+      <div>{cardElements}</div>
     </section>
   );
 };

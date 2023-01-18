@@ -52,29 +52,34 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">Inspiration Board</header>
-      <div className="boards__container">
+      <div className="content__container">
+        <header className="App-header">Inspiration Board</header>
+        <section className="boards__container">
+          <section>
+            <h2>Boards</h2>
+            <ol className="boards__list">{boardInformation}</ol>
+          </section>
+
+          <section>
+            <h2> Selected Board</h2>
+            <p>
+              {selectedBoard.id
+                ? `${selectedBoard.title} - owned by ${selectedBoard.owner}`
+                : "select board from list"}
+            </p>
+          </section>
+
+          <section className="new-board-form__container">
+            <h2>Create a New Board</h2>
+            {/* need a invisble button */}
+            <NewBoardForm createNewBoard={createNewBoard} />
+            <span onClick={NewBoardForm}></span>
+          </section>
+        </section>
         <div>
-          <h2>Boards</h2>
-          <ol>{boardInformation}</ol>
+          {selectedBoard.id ? <CardsList board={selectedBoard} /> : " "}
         </div>
       </div>
-
-      <div>
-        <h2> Selected Board</h2>
-        <p>
-          {selectedBoard.id
-            ? `${selectedBoard.title} - ${selectedBoard.owner}`
-            : "select board from list"}
-        </p>
-      </div>
-
-      <div className="new-board-form__container">
-        <h2>Create a New Board</h2>
-        <NewBoardForm createNewBoard={createNewBoard} />
-        <span onClick={NewBoardForm}></span>
-      </div>
-      <div>{selectedBoard.id ? <CardsList board={selectedBoard} /> : " "}</div>
     </div>
   );
 }

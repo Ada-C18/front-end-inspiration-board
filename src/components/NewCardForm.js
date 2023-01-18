@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const OriginalCardFormState = {
+  card_id: "",
   message: "",
 };
 
