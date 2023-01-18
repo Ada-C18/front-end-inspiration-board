@@ -49,6 +49,7 @@ function App() {
   const [currentBoard, setCurrentBoard] = useState({
     title: "No board selected",
   });
+  const [boardSelected, setBoardSelected] = useState(false);
 
   // get all boards using API helper
   const getAllBoards = () => {
@@ -81,6 +82,7 @@ function App() {
       if (id === board.id) {
         setCurrentBoard(board);
         getAllCards(id);
+        setBoardSelected(true)
       }
     }
   };
@@ -138,7 +140,7 @@ function App() {
         boards={boards}
         onDisplayCurrentBoard={displayCurrentBoard}
       />
-      <NewCardForm addCardCallback={addCard} afterSubmitMessage={message} />
+      <NewCardForm addCardCallback={addCard} afterSubmitMessage={message} boardSelected={boardSelected}/>
       <CardContainer currentBoard={currentBoard} cards={cards} />
     </div>
   );

@@ -3,8 +3,8 @@ import { useState } from 'react';
 import './NewCardForm.css';
 
 
-const NewCardForm = ({ addCardCallback , afterSubmitMessage }) => {
-  // hide form button - use ternary
+const NewCardForm = ({ addCardCallback , afterSubmitMessage , boardSelected }) => {
+  let className = boardSelected ? "new-card__section visible" : "new-card__section hidden"
 
   const [cardData, setCardData] = useState({
     message: '',
@@ -21,7 +21,7 @@ const NewCardForm = ({ addCardCallback , afterSubmitMessage }) => {
   };
   
   return (
-    <section className="new-card__section">
+    <section className={className}>
       <form onSubmit={submitCardData} className="new-card__form">
         
           <h2 id='add-card'>Add a Card to Current Board</h2>

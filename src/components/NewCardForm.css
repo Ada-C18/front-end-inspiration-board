@@ -12,6 +12,14 @@
     
 }
 
+.hidden {
+    visibility: collapse;
+}
+
+.visible {
+    visibility: visible;
+}
+
 #add-card {
     font-size: 1.5rem;
     font-weight: 100;
