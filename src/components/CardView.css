@@ -1,0 +1,48 @@
+.single-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 15vw;
+  height: 15vw;
+  background-color: #C1D6D9;
+  align-items: center;
+  text-align: center;
+  color: #014040;
+  margin: auto;
+  justify-content: space-evenly;
+}
+
+.pink-shadow {
+  box-shadow:  3px 3px 5px #f8b0a0;
+}
+
+.teal-shadow {
+  box-shadow:  3px 3px 5px #014040;
+}
+
+#card-message {
+  width: 15vw;
+  min-height: 15vh;
+  font-weight: bold;
+}
+
+#num-likes {
+  font-family: 'Caveat';
+  font-size: 1.1rem;
+}
+
+.like-and-delete-buttons {
+  font-family: 'Caveat';
+  font-size: 1.1rem;
+  background-color: transparent;
+  border: none;
+  color: #014040
+
+}
+
+.like-and-delete-buttons:hover {
+  text-decoration: underline;
+}
+
+
+
