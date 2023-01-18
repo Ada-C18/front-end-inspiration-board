@@ -40,7 +40,7 @@ const NewBoardForm = (props) => {
   );
   if (
     formFields.title.length === 0 ||
-    formFields.title.length > 12 ||
+    formFields.title.length > 25 ||
     formFields.owner.length === 0 ||
     formFields.owner.length > 12
   ) {

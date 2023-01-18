@@ -48,7 +48,7 @@ const NewCardForm = (props) => {
   }
   return (
     <form onSubmit={onMessageFormSubmit} className="form-style">
-      <section>
+      <section className="form-style">
         <h4 className="form-style-header">Create New Card</h4>
         <h5 className="form-style">Enter message:</h5>
         <input

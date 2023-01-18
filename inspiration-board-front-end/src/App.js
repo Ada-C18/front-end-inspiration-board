@@ -98,7 +98,7 @@ function App() {
 
   let selectedBoardDisplay = "Please select a board to display cards";
   if (selectedBoard.id !== 0) {
-    selectedBoardDisplay = `Selected Board: ${selectedBoard.title} (${selectedBoard.owner}'s Board)`;
+    selectedBoardDisplay = `${selectedBoard.title} (${selectedBoard.owner}'s Board)`;
   }
 
   return (
