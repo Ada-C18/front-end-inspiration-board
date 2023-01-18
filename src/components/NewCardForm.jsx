@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import "../index.css";
 
 function NewCardForm({ postNewCard }) {
   const [cardData, setCardData] = useState({
@@ -24,7 +25,7 @@ function NewCardForm({ postNewCard }) {
     <div>
       <h2>Add a Card</h2>
 
-      <form onSubmit={submitCardData}>
+      <form onSubmit={submitCardData} id="form" className="topBefore">
         <section>
           <div>
             <label htmlFor="message">Your message</label>
@@ -36,10 +37,10 @@ function NewCardForm({ postNewCard }) {
               value={cardData.message}
             />
           </div>
+
           <div>
-            <button type="submit" value="Add Card">
-              Add card
-            </button>
+            {/* <button type="Submit">Add card</button> */}
+            <input type="Submit"></input>
           </div>
         </section>
       </form>
