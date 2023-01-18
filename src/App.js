@@ -14,6 +14,7 @@ import {
   getAllCards,
   getCardsFirstBoard,
   deleteCard,
+  likeCard,
 } from './API/InspirationAPI';
 
 const App = function () {

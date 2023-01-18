@@ -152,4 +152,5 @@ export {
   addNewBoard,
   addNewCard,
   deleteCard,
+  likeCard,
 };
