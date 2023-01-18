@@ -16,8 +16,8 @@ const convertBoardFromApi = (apiBoard) => {
 }
 
 const convertCardFromApi = (apiCard) => {
-  const {card_id, likes_count, ...rest} = apiCard;
-  const newCard = {cardId: card_id, likesCount: likes_count, ...rest}
+  const {card_id, likes_count, board_id, ...rest} = apiCard;
+  const newCard = {cardId: card_id, likesCount: likes_count, boardId: board_id, ...rest}
   return newCard
 }
 
@@ -80,23 +80,24 @@ function App() {
   const getCardsForBoard = async (boardId) => {
     const cards = await getCardsForBoardApi(boardId);
     setCardData(cards);
-    console.log("card data", cardData)
+    console.log("cards return", cards)
   }
+  console.log("card data", cardData)
 
-  const getOneBoard = async (id) => {
-    const board = await getOneBoardAPI(id);
-    return board; 
-  }
+  // const getOneBoard = async (id) => {
+  //   const board = await getOneBoardAPI(id);
+  //   return board; 
+  // }
 
   useEffect(() => {
     getAllBoards();
   }, []);
   // had a dependency of boardData but was doing constant requests
 
-  useEffect(() => {
-    const boardId = selectedBoard.boardId
-    getCardsForBoard(boardId)
-  }, [selectedBoard])
+  // useEffect(() => {
+  //   const boardId = selectedBoard.boardId
+  //   getCardsForBoard(boardId)
+  // }, [selectedBoard])
 
   // WHY ARE U YELLING AT ME? ask ta later
   // useEffect(() => {
@@ -104,11 +105,11 @@ function App() {
   //   getCardsForBoard(boardId)
   // }, [cardData])
 
-  const selectBoard = (id) => {
-    const board = getOneBoard(id)
-    setSelectedBoard(board)
-    console.log("board id", id)
-    getCardsForBoard(board.boardId)
+  const selectBoard = async (id) => {
+    const board = await getOneBoardAPI(id);
+    setSelectedBoard(board);
+    console.log("board id", id);
+    getCardsForBoard(board.boardId);
   }
   
   const handleBoardSubmit = (data) => {

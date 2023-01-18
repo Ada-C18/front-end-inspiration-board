@@ -2,10 +2,11 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 const Card = (props) => {
+  console.log(props)
   return(
     <section>
       <p>{props.message}</p>
-      <p>{props.likes ` ❤️`} </p>
+      <p>{`${props.likesCount} <3`}</p>
       <button>
         {/* like card */}
       </button>
@@ -21,7 +22,7 @@ Card.propTypes = {
   message: PropTypes.string.isRequired,
   cardId: PropTypes.number.isRequired,
   boardId: PropTypes.number.isRequired,
-  likes: PropTypes.number.isRequired,
+  likesCount: PropTypes.number.isRequired,
   // delete card function
   // like card function
 }

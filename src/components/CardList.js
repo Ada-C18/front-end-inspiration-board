@@ -9,9 +9,9 @@ const CardList = (props) => {
         <Card 
           key={card.cardId}
           cardId={card.cardId}
-          boardID={card.boardId}
+          boardId={card.boardId}
           message={card.message}
-          likes={card.likes}
+          likesCount={card.likesCount}
           // delete card
           // like card
         />
@@ -25,7 +25,7 @@ CardList.propTypes = {
     cardId: PropTypes.number.isRequired,
     boardId: PropTypes.number.isRequired,
     message: PropTypes.string.isRequired,
-    likes: PropTypes.number.isRequired
+    likesCount: PropTypes.number.isRequired
   })),
   // delete card
   // like card
