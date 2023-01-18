@@ -1,4 +1,93 @@
-/* .card-item {
+.card-item {
+    align-items: center;
+    background-color: #fff8a5;
+    box-shadow: -10px 7px 7px #d3d3d3;
+    display: flex;
+    flex-direction: column;
+    font-family: Homemade Apple,cursive;
+    font-family: Concert One,cursive;
+    justify-content: center;
+    min-height: 200px;
+    padding: 2rem;
+}.card-item__message {
+    font-size: 1.4rem;
+    text-align: center;
+    word-break: break-word;
+
+}
+.likes_display {
+    font-size: 1rem;
+    text-align: center;
+    word-break: break-word;
+
+}
+.card-item__controls {
+    display: flex;
+    font-family: Open Sans,sans-serif;
+    list-style-type: none;
+    padding: 1em;
+    width: 100%;
+}
+
+.like-button {
+    align-items: center;
+    box-sizing: border-box;
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    font-size: 18px;
+    height: 20px;
+    justify-content: center;
+    max-width: 100%;
+    padding: 1em;
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+}
+.like-button:hover {
+    align-items: center;
+    background-color: #70be51;
+    border: 2px solid #111;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    font-size: 18px;
+    height: 20px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 100%;
+   position: relative;
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+    padding: 1em;
+  }
+
+.delete {
+    align-items: center;
+    /* background-color: #ca3b28; */
+    /* border: 2px solid #111; */
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    font-size: 18px;
+    height: 20px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 100%;
+    padding: 1em;
+   position: relative;
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+    
+}
+
+.delete:hover {
     align-items: center;
     background-color: #eb6b40;
     border: 2px solid #111;
@@ -10,6 +99,11 @@
     font-size: 18px;
     height: 20px;
     justify-content: center;
-    min-height: 200px;
-    padding: 2rem;
-} */
+    line-height: 24px;
+    max-width: 100%;
+    padding: 1em;
+   position: relative;
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+}
