@@ -9,14 +9,15 @@ const NewCardForm = ({addCardCallback}) => {
   });
 
   const handleChange = e => {
-    e.preventDefault();
-
     // console.log(e.target.value); //gives the input by letter not words
-    setCardMessage({...cardMessage, [e.target.name]: e.target.value});
-    console.log(e.target.name);
-  };
-
+    // console.log(e.target)
+    setCardMessage({
+      ...cardMessage,
+      message: e.target.value});
+    };
+    
   const submitCardData = e => {
+    e.preventDefault();
 
     addCardCallback(cardMessage)
 
