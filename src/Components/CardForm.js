@@ -16,21 +16,22 @@ const CardForm = (props) => {
   };
 
   return props.visible ? (
-    <article className="add-card">
+    <article className="add-card form">
       <div id="new-card-close" onClick={props.toggleVisible}>
         x
       </div>
-      <h3>Create New Card</h3>
+      <h3>create new card</h3>
+      <hr></hr>
       <form onSubmit={onCardSubmit} className="card-form">
-        <div>
-          <label htmlFor="cardMessage">Message</label>
-          <input /*className*/
-            type="text"
-            name="message"
-            value={message}
-            onChange={onMessageChange}
-          />
-        </div>
+        <textarea /*className*/
+          type="text"
+          placeholder="Message"
+          className="form-field card-form-field"
+          name="message"
+          value={message}
+          onChange={onMessageChange}
+          rows="3"
+        ></textarea>
         <input
           type="submit"
           className="submit-btn card-submit-btn"

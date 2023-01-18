@@ -25,26 +25,36 @@ const BoardForm = (props) => {
 
   return (
     <form id="board-form" onSubmit={onSubmitBoard}>
+      <h3>create new board</h3>
+      <hr></hr>
       <div>
-        <label>Board Name: </label>
+        {/* <label>Board Name: </label> */}
         <input
           type="text"
+          placeholder="Board Name"
+          className="form-field"
           defaultValue={name}
           onChange={handleTitleChange}
         ></input>
       </div>
       <div>
-        <label>Owner: </label>
+        {/* <label>Owner: </label> */}
         <input
           type="text"
+          placeholder="Owner"
+          className="form-field"
           defaultValue={owner}
           onChange={handleOwnerChange}
         ></input>
-        <p>
+        <p id="display-info">
           {name} - {owner}
         </p>
       </div>
-      <input type="Submit" defaultValue="Add New Board"></input>
+      <input
+        type="Submit"
+        className="submit-btn"
+        defaultValue="add board"
+      ></input>
     </form>
   );
 };
