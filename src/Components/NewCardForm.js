@@ -39,7 +39,6 @@ const NewCardForm = ({ addCardData, selectedBoard }) => {
         <button
           className="card__submit__button"
           type="submit"
-          // value="Submit"
           disabled={!cardForm.message | (cardForm.message.length > 40)}
         >
           Submit

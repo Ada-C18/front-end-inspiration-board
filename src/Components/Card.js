@@ -12,10 +12,8 @@ const Card = (props) => {
             onClick={() =>
               props.handleLikes(
                 props.id,
-                // props.board_id,
                 props.boardId,
                 props.message,
-                // props.likes_count
                 props.likesCount
               )
             }
@@ -36,10 +34,8 @@ const Card = (props) => {
 
 Card.propTypes = {
   id: PropTypes.number.isRequired,
-  // board_id: PropTypes.number.isRequired,
   boardId: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
-  // likes_count: PropTypes.number.isRequired,
   likesCount: PropTypes.number.isRequired,
   handleLikes: PropTypes.func.isRequired,
   handleDeleteCard: PropTypes.func.isRequired,

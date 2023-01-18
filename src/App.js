@@ -6,7 +6,7 @@ import NewBoardForm from "./Components/NewBoardForm";
 import CardList from "./Components/CardList";
 import NewCardForm from "./Components/NewCardForm";
 import RainbowText from "react-rainbow-text";
-import { convertFromApiCard, getAllBoardsApi, deleteCardApi, sortCardsByikesApi, sortCardsByAscApi } from "./HelperFunctions/ApiCalls.js";
+import { convertFromApiCard, getAllBoardsApi, deleteCardApi, sortCardsByLikesApi, sortCardsByAscApi } from "./HelperFunctions/ApiCalls.js";
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
   const [cardsData, setCardsData] = useState([]);
 
   // BOARDS
-  // Board click
+  // Select a board
   const handleBoardClick = (title, owner, id) => {
     setSelectedBoard({ title: title, owner: owner, id: id });
     setShowCardForm(true);
@@ -32,7 +32,7 @@ function App() {
     setAllBoardData(boards);
   };
 
-  // New board form
+  // Add a board- New board form
   const toggleNewBoardForm = () => {
     setIsBoardFormVisible(!isBoardFormVisible);
   };
@@ -72,7 +72,7 @@ function App() {
     setCardsData(cards);
   };
 
-  // Adds card through card form
+  // Add a card- New card form
   const addCardData = async (cardForm) => {
     const response = await axios.post(
       `${process.env.REACT_APP_BACKEND_URL}/cards`,
@@ -91,7 +91,7 @@ function App() {
     return getAllCards();
   };
 
-  // Likes
+  // Like a card and Likes count
   const handleLikesApi = async (cardId, boardId, message, likesCount) => {
     const plusOneLike = { likes_count: likesCount + 1 };
     await axios.put(
@@ -116,7 +116,7 @@ function App() {
     return getAllCards();
   };
 
-  // Sort **ALMOST WORKING**
+  // Sort pull down- **ALMOST WORKING**
   const [sortType, setSortType] = useState("");
 
   const handleChange = (e) => {
@@ -134,7 +134,7 @@ function App() {
     }
     if (sortType === "likesCount") {
       const selectedBoardId = selectedBoard.id;
-      const sorted = sortCardsByikesApi(selectedBoardId);
+      const sorted = sortCardsByLikesApi(selectedBoardId);
       setCardsData(sorted);
     }
   };
@@ -157,7 +157,7 @@ function App() {
   //     }
   //     if (sortProperty === "likesCount") {
   //       const selectedBoardId = selectedBoard.id;
-  //       const sorted = sortCardsByikesApi(selectedBoardId);
+  //       const sorted = sortCardsByLikesApi(selectedBoardId);
   //       setCardsData(sorted);
   //     }
   //   };
@@ -169,7 +169,7 @@ function App() {
     <div>
       {/* BOARDS */}
       <h1 className="App__header">
-        <RainbowText lightness={0.8} saturation={1}>
+        <RainbowText lightness={0.7} saturation={1}>
           💫 No Thoughts Just Vibes Inspiration Board 💫
         </RainbowText>
       </h1>
@@ -228,8 +228,8 @@ function App() {
               </div>
               <section className="sort_by">
                 Sort messages
-                <select value={sortType} onChange={handleChange}>
-                  <option value="id">by Oldest to Newest</option>
+                <select className="sort_by_pull_down" value={sortType} onChange={handleChange}>
+                  <option value="id">by Newest to Oldest</option>
                   <option value="alphabetically">Alphabetically</option>
                   <option value="likesCount">by Most Likes</option>
                 </select>

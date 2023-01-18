@@ -64,8 +64,8 @@ padding-right: 25pt;
 }
 
 .hide__button {
-  background-color:blue;
-  color: white;
+  background-color:lightsalmon;
+  font-weight: bold;
 }
 
 .all_card__container {
@@ -100,8 +100,12 @@ padding-right: 25pt;
 }
 
 .sort_by {
-  font-size: large;
+  font-size: x-large;
   font-weight: bold;
+}
+
+.sort_by_pull_down {
+  font-size: medium;
 }
 
 body {

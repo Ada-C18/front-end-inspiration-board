@@ -15,12 +15,11 @@
 
 
 .invalid-form-input {
-    border: red solid;
-    box-shadow: red;
+    background-color:pink;
 }
 
 .submit__button {
-    background-color: lime;
+    background-color:yellow;
     font-size: x-small;
     font-weight: bold;
 }

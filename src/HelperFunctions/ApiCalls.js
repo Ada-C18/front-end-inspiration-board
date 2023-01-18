@@ -21,7 +21,7 @@ export const deleteCardApi = async (cardId) => {
   return convertFromApiCard(response.data);
 };
 
-export const sortCardsByikesApi = async (selectedBoardId) => {
+export const sortCardsByLikesApi = async (selectedBoardId) => {
   const response = await axios.get(
     `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoardId}/cards?sort=likes`
   );
