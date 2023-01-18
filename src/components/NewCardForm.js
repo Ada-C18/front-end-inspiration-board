@@ -7,7 +7,6 @@ const INITIAL_FORM_DATA = {
 const NewCardForm = (props) => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const handleChange = (e) => {
-    console.log("handleChange called");
     const newFormData = {
       ...formData,
       [e.target.name]: e.target.value,
@@ -17,8 +16,9 @@ const NewCardForm = (props) => {
   };
   const newCardSubmit = (e) => {
     e.preventDefault();
-    props.addCardCallbackFunc(formData);
+    props.addCardCallbackFunc(formData, props.boardId);
   };
+
   return (
     <form onSubmit={newCardSubmit}>
       <label htmlFor="message"></label>

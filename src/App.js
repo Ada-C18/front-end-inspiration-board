@@ -4,68 +4,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Board from "./components/Board.js";
 import BoardList from "./components/BoardList";
-import NewCardForm from "./components/NewCardForm";
 import NewBoardForm from "./components/NewBoardForm";
-
-const BOARD_LIST = [
-  {
-    id: 1,
-    title: "Lynn's Board",
-    owner: "Lynn",
-    cards: [
-      {
-        id: 1,
-        message: "Lynn, stay cool.",
-      },
-      {
-        id: 2,
-        message: "Lynn, you are always good enough.",
-      },
-      {
-        id: 3,
-        message: "Lynn loves you.",
-      },
-    ],
-  },
-  {
-    id: 2,
-    title: "Nina's Board",
-    owner: "Nina",
-    cards: [
-      {
-        id: 1,
-        message: "Nina, stay cool.",
-      },
-      {
-        id: 2,
-        message: "Nina, you are always good enough.",
-      },
-      {
-        id: 3,
-        message: "Nina loves you.",
-      },
-    ],
-  },
-  {
-    id: 3,
-    title: "Tami's Board",
-    owner: "Tami",
-    cards: [
-      {
-        id: 1,
-        message: "Tami, stay cool.",
-      },
-      {
-        id: 2,
-        message: "Tami, you are always good enough.",
-      },
-      {
-        id: 3,
-        message: "Tami loves you.",
-      },
-    ],
-  },
-];
 
 // const REACT_APP_BACKEND_URL = "http://localhost:5000/cards";
 
@@ -81,13 +20,6 @@ function App() {
         const updatedBoardList = response.data.map((board) => {
           return { id: board.id, title: board.title, owner: board.owner };
         });
-        // if (cards) {
-        //   for (const card of cards) {
-        //     cardComponents.push(
-        //       <Card key={card.id} id={card.id} message={card.message} />
-        //     );
-        //   }
-        // }
         setBoardList(updatedBoardList);
       })
       .catch((error) => {
@@ -109,30 +41,16 @@ function App() {
         };
         newBoardList.push(newBoard);
         setBoardList(newBoardList);
+        loadBoardList();
       });
   };
 
   const loadCards = (boardId) => {
-    console.log(`💀${boardId}`);
     axios
       .get(`http://127.0.0.1:5000/boards/${boardId}/cards`)
       .then((response) => {
         console.log(`${JSON.stringify(response)}`);
-        // const cards = response.data.map((card) => {
-        //   return { id: card.id, message: card.message };
-        // });
         const cards = response.data["chosen board cards"];
-        console.log(`🐼${JSON.stringify(cards)}`);
-
-        // if (cards) {
-        //   for (const card of cards) {
-        //     console.log(`🐴${card.id} ${card.message}`);
-        //     cards.push(
-        //       <div>hi</div>
-        //       // <Card key={card.id} id={card.id} message={card.message} />
-        //     );
-        //   }
-        // }
         setCards(cards);
       })
       .catch((error) => {
@@ -145,9 +63,7 @@ function App() {
     axios
       .get(`http://127.0.0.1:5000/boards/${boardId}`)
       .then((response) => {
-        console.log(`🥹${JSON.stringify(response)}`);
         setSelectedBoard(response.data);
-        console.log(`🤡${boardId}`);
         loadCards(boardId);
       })
       .catch((error) => {
@@ -155,57 +71,31 @@ function App() {
       });
   };
 
+  const addCard = (newCardInfo, boardId) => {
+    console.log("addCard called");
+    axios
+      .post(`http://127.0.0.1:5000/boards/${boardId}/cards`, newCardInfo)
+      .then((response) => {
+        const newCards = [...cards];
+        const newCardJSON = {
+          ...newCardInfo,
+          id: response.data.id,
+          message: response.data.message,
+        };
+        newCards.push(newCardJSON);
+        setCards(newCards);
+        loadCards(boardId);
+      });
+  };
+
   return (
     <div>
       <h1>Hello Peeps!</h1>
-      <BoardList boardList={boardList} loadBoard={loadBoard} />
       <NewBoardForm addBoardCallbackFunc={addBoard} />
-      <Board cards={cards} selectedBoard={selectedBoard} />
-      {/* <NewCardForm addCardCallbackFunc={addCard} /> */}
+      <BoardList boardList={boardList} loadBoard={loadBoard} />
+      <Board cards={cards} selectedBoard={selectedBoard} addCard={addCard} />
     </div>
   );
 }
 
 export default App;
-
-// const fetchAllCards = () => {
-//   axios
-//     .get(REACT_APP_BACKEND_URL)
-//     .then((response) => {
-//       const cardsAPIResponseCopy = response.data.map((card) => {
-//         return { id: card.id, message: card.message };
-//       });
-//       setBoard(cardsAPIResponseCopy);
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// };
-
-// useEffect(fetchAllCards, []);
-
-// const addCard = (newCardInfo) => {
-//   console.log("addCard called");
-//   const newBoardList = [];
-//   for (const card of board) {
-//     if (board.id !== boardId) {
-//       newBoard.push(card);
-//     } else {
-//       const newCard = {
-//         id: id,
-//         message: message,
-//       };
-//       newBoard.push(newCard);
-//     }
-//   }
-//   setBoardList(newBoard);
-
-// axios.post(REACT_APP_BACKEND_URL, newCardInfo).then((response) => {
-//   const newCards = [...board];
-//   const newCardJSON = {
-//     ...newCardInfo,
-//     message: response.data.message,
-//   };
-//   newCards.push(newCardJSON);
-//   setBoard(newCards);
-// };

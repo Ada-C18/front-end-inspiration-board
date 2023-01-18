@@ -1,11 +1,9 @@
 import React from "react";
 import "./Board.css";
 import Card from "./Card";
-import PropTypes from "prop-types";
-import axios from "axios";
+import NewCardForm from "./NewCardForm";
 
-const Board = ({ selectedBoard, cards }) => {
-  console.log(`🤍${cards}`);
+const Board = ({ selectedBoard, cards, addCard }) => {
   const cardComponents = [];
   if (cards) {
     for (const card of cards) {
@@ -17,12 +15,13 @@ const Board = ({ selectedBoard, cards }) => {
     return;
   }
   return (
-    <div style={{ outline: "2px dotted pink" }}>
+    <div>
       <h3>This is the board component</h3>
       <h2>
         Cards for {selectedBoard.title} by {selectedBoard.owner}
       </h2>
       <ul>{cardComponents}</ul>
+      <NewCardForm addCardCallbackFunc={addCard} boardId={selectedBoard.id} />
     </div>
   );
 };
