@@ -1,0 +1,7 @@
+.cards_container {
+    display: flex;
+    justify-content:right;
+    text-align: right;
+    margin-right: 3%;
+    margin-top: 2%;
+}
