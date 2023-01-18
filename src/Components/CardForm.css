@@ -1,18 +1,22 @@
 .card-form-invisible {
   box-sizing: border-box;
-  border: 3px solid grey;
   height: 200px;
   width: 200px;
   padding: 0.5rem;
   cursor: pointer;
+  border-radius: 5px;
+  background-color: #BA7A51;
+  /* border: 3px solid #FFF282; */
+  /* background-color: none; */
 }
 
 .card-form-invisible::after {
   content: "+";
-  font-size: 5rem;
-  color: grey;
+  font-size: 8rem;
   position: relative;
-  top: 32px;
+  top: 7px;
+  color: #735B48;
+  /* color: #FFF282; */
 }
 
 #new-card-close {
