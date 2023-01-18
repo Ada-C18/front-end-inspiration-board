@@ -21,6 +21,13 @@ const NewBoardForm = ({createNewBoardForm}) => {
   const handleNewBoardSubmit = (e) => {
     e.preventDefault();
     createNewBoardForm(formData);
+
+    setFormData({
+      title: '',
+      owner: ''
+    })
+
+    setPreview('');
   };
 
   return(

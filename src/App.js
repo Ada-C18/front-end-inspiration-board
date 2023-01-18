@@ -77,6 +77,7 @@ function App() {
       .catch( (error) => {
         console.log(error);
       });
+      setSelectedBoardLabel('Select a Board from the Board List!')
     })
     .catch((error) => {
       console.log(error);
