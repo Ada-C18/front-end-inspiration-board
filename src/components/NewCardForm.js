@@ -55,7 +55,11 @@ const NewCardForm = (props) => {
   );
 };
 NewCardForm.propTypes = {
-  message: PropTypes.string.isRequired,
+  props: PropTypes.arrayOf(
+    PropTypes.shape({
+      message: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default NewCardForm;

@@ -45,7 +45,12 @@ const App = () => {
       .post(BoardURL, board)
       .then((response) => {
         const newBoards = [...boardData];
-        newBoards.push({ id: response.data.board_id, title: "", ...board });
+        console.log(response.data.board.id);
+        newBoards.push({
+          id: response.data.board.id,
+          title: "",
+          ...board,
+        });
         setBoardData(newBoards);
       })
       .catch((error) => {
@@ -76,7 +81,7 @@ const App = () => {
       })
       .catch((error) => {
         console.log(error);
-        alert("Unable to load cards");
+        // alert("Unable to load cards");
       });
   };
 
@@ -115,6 +120,18 @@ const App = () => {
       .catch((error) => {
         console.log(error);
         alert("Unable to delete the card.");
+      });
+  };
+
+  const deleteEverything = (id) => {
+    axios
+      .delete(`${BoardURL}`)
+      .then(() => {
+        setBoardData([]);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Unable to delete everything.");
       });
   };
 
@@ -159,6 +176,7 @@ const App = () => {
           </div>
         )}
       </div>
+      <button onClick={deleteEverything}> DESTROY ALL BOARDS </button>
     </section>
   );
 };

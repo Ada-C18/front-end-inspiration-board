@@ -20,8 +20,12 @@ const CardList = (props) => {
   );
 };
 CardList.propTypes = {
-  id: PropTypes.number.isRequired,
-  message: PropTypes.string.isRequired,
+  cards: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      message: PropTypes.string.isRequired,
+    })
+  ),
   onDeleteCard: PropTypes.func.isRequired,
 };
 export default CardList;
