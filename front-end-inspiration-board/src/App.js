@@ -11,29 +11,6 @@ import axios from "axios";
 
 // run in command line:  npm install @material-ui/core/Dialog --force
 
-// const INITIAL_BOARDS = [
-//   {
-//     id: 1,
-//     title: "Shower Thoughts",
-//     owner: "Suzanne",
-//     cards: [
-//       { id: 1, message: "testing 1", likes_count: 1 },
-//       { id: 2, message: "testing 2", likes_count: 0 },
-//       { id: 3, message: "testing 3", likes_count: 0 },
-//       { id: 4, message: "testing 4", likes_count: 5 },
-//       { id: 5, message: "testing 5", likes_count: 2 },
-//     ],
-//     selected: false,
-//   },
-//   {
-//     id: 2,
-//     title: "Inspirational Quotations",
-//     owner: "Jessica",
-//     cards: [],
-//     selected: false,
-//   },
-// ];
-
 function App() {
   const URL = "https://inspirationboard-lavender.herokuapp.com";
   const [boardsList, setBoardsList] = useState([]);
