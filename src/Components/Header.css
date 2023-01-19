@@ -8,8 +8,19 @@
   position: fixed;
   top: 0;
   /* background-color: rgb(112, 145, 196, .8); */
-  background-color: rgba(235, 140, 140, .85);
+  background-color: rgba(235, 140, 140, .65);
   z-index: 1;
+}
+
+html:not([data-scroll='0']) .header {
+  position: fixed;
+  top: 0;
+  background-color: rgba(235, 140, 140);
+  /* To see solid opaque option (not blurry) comment out the 
+  below lines (lines 21-23) */
+  background-color: rgba(235, 140, 140, .7);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 .header > select {

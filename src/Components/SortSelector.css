@@ -1,6 +1,95 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+#container {
+  border-top: 0.8px solid #FFF;
+  border-bottom: 0.8px solid #FFF;
+  margin-bottom: 4rem ;
+}
+
 #sort-selector {
+  /* font-family: "Readex Pro", sans-serif; */
+  /* text-align: right; */
+  margin: 0.8rem 3rem;
+  width: 40%;
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+#sort-text {
   color: white;
-  font-family: "Readex Pro", sans-serif;
-  text-align: right;
-  margin-bottom: 4rem;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.3rem;
+  margin: 0;
+  line-height: 2rem;
+  margin-right: 10px;
+}
+
+.sort {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  /* height: 20px; */
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+  text-transform: uppercase;
+  color: #999999;
+  /* color: #ffe8e8; */
+  /* text-align: center; */
+  letter-spacing: 0.6px;
+}
+
+.select-sort::after {
+  content: "";
+  width: 0.8em;
+  height: 0.5em;
+  background-color: #cccccc;
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  justify-self: end;
+}
+
+.sort:focus {
+  outline: none;
+}
+
+.sort:hover {
+  box-shadow: 0px 20px 60px rgb(238, 234, 234);
+}
+
+.select-sort {
+  height: 30px;
+  width: 9em;
+  min-width: 15ch;
+  max-width: 30ch;
+  /* border: 1px solid var(--select-border); */
+  border-radius: 5px;
+  /* border: 1px solid #FFF; */
+  padding: 0 0.5em;
+  margin-right: 7px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: #fff;
+  /* background-image: linear-gradient(to top, #92bdec, rgb(228, 243, 254) 40%); */
+  /* background-image: linear-gradient(to top, rgb(112, 145, 196, .8), rgb(228, 243, 254) 50%); */
+  background-image: linear-gradient(to top, rgba(235, 140, 140, 50%), rgb(228, 243, 254) 60%);
+  /* background-image: linear-gradient(to top, #ef8e8e, rgb(228, 243, 254) 50%); */
+  /* background-color: rgba(235, 140, 140, 75%); */
+  font-family: 'Roboto Condensed';
+  font-size: 1rem;
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+}
+
+.sort, .select-sort:after {
+  grid-area: select;
 }

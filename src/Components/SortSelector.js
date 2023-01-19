@@ -9,26 +9,37 @@ const SortSelector = (props) => {
   };
 
   return (
-    <div id="sort-selector">
-      {"Sort by: "}
-      <select
-        name="sortBy"
-        value={props.sortedBy.method}
-        onChange={onChangeMethod}
-      >
-        <option value="id">Time created</option>
-        <option value="likes">Likes</option>
-        <option value="message">Alphabetically</option>
-      </select>
-      <select
-        name="sortDirection"
-        value={props.sortedBy.direction}
-        onChange={onChangeDirection}
-      >
-        <option value="asc">Ascending</option>
-        <option value="desc">Descending</option>
-      </select>
-    </div>
+    <section id="container">
+      <div id="sort-selector">
+        {/* {"Sort by: "} */}
+        <p id="sort-text">SORT BY</p>
+        <div className="select-sort">
+          <select
+            id="sort-by"
+            className="sort"
+            name="sortBy"
+            value={props.sortedBy.method}
+            onChange={onChangeMethod}
+          >
+            <option value="id">Date</option>
+            <option value="likes">Likes</option>
+            <option value="message">Message</option>
+          </select>
+        </div>
+        <div className="select-sort">
+          <select
+            id="sort-how"
+            className="sort"
+            name="sortDirection"
+            value={props.sortedBy.direction}
+            onChange={onChangeDirection}
+          >
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        </div>
+      </div>
+    </section>
   );
 };
 
