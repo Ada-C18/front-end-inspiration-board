@@ -81,6 +81,64 @@ h1{
   color:fontlinear-gradient(to right, #553c9a 45%, #ee4b2b);
 } */
 
+/* card content */
+.cards__container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  
+}
+
+.card-items__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2rem;
+  margin: 5rem;
+}
+
+.card-item {
+  font-family: "Homemade Apple", cursive;
+  font-family: 'Concert One', cursive;
+  background-color: rgb(255, 248, 165);
+  box-shadow: -10px 7px 7px lightgrey;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  flex-direction: column;
+}
+
+.card-item__controls {
+  font-family: "Open Sans", sans-serif;
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.card-item__message {
+  text-align: center;
+  font-size: 1.4rem;
+  word-break: break-word;
+}
+
+.card-item__controls > li:hover, .footer__delete-btn:hover {
+  text-decoration: underline;
+}
+
+:root{
+  --background-dark: #2d3548;
+  --text-light: rgba(255,255,255,0.6);
+  --text-lighter: rgba(255,255,255,0.9);
+  --spacing-s: 8px;
+  --spacing-m: 16px;
+  --spacing-l: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 64px;
+  --width-container: 1200px;
+}
+
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
@@ -278,4 +336,180 @@ h1 {
 }
 
 
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
 
+:root{
+  --primary-color: #70C4C6;
+  --bg-color: #dfe6e9;
+  --text-color: rgb(35, 32, 32);
+}
+
+
+
+.container{
+  background: rgb(239, 199, 199);
+  cursor: pointer;
+  border-radius: 15px;
+  position: relative;
+  padding: 25px 30px;
+  color: var(--primary-color);
+}
+
+.container::after{
+  content: '';
+  background: var(--primary-color);
+  border-radius: 15px;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  clip-path: circle(10% at 0% 0%);           transition: all .3s ease-in;
+}
+
+.content{
+  position: relative;
+  z-index: 1;
+  transition: all .3s ease-in;
+}
+
+.container:hover::after{
+  clip-path: circle(100%);
+}
+
+.container:hover .content{
+  color: var(--text-color);
+}
+
+@import url('https://fonts.googleapis.com/css?family=Raleway|Sacramento');
+
+.text-effect{
+    color: #b64ca6;
+    font-family: 'Sacramento', cursive;
+    font-size: 50px;
+    font-weight: 600;
+    /* text-align: center; */
+    text-transform: capitalize;
+    margin: 20px auto 0;
+    text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    position: relative;
+    animation: animate 15s ease-in-out infinite;
+}
+@keyframes animate{
+    20%, 24%, 55%{
+        color: rgb(130, 51, 113);
+        text-shadow: none;
+    }
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100%{
+        color: #a8e2e8;
+        text-shadow: 0 0 5px #5bb4cd, 0 0 15px hsl(184, 84%, 43%), 0 0 20px #054167, 0 0 40px #0ea9eb, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    }
+}
+@media only screen and (max-width: 990px){
+    .text-effect{ font-size: 100px; }
+}
+@media only screen and (max-width: 767px){
+    .text-effect{ font-size: 80px; }
+}
+@media only screen and (max-width: 479px){
+    .text-effect{ font-size: 60px; }
+}
+@media only screen and (max-width: 359px){
+    .text-effect{ font-size: 45px; }
+}
+
+
+/* hide board btn */
+.btn {
+  line-height: 50px;
+  height: 50px;
+  text-align: center;
+  width: 250px;
+  cursor: pointer;
+}
+
+
+.btn-one {
+  color: #FFF;
+  transition: all 0.3s;
+  position: relative;
+}
+.btn-one span {
+  transition: all 0.3s;
+}
+.btn-one::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: rgba(255,255,255,0.5);
+  border-bottom-color: rgba(255,255,255,0.5);
+  transform: scale(0.1, 1);
+}
+.btn-one:hover span {
+  letter-spacing: 2px;
+}
+.btn-one:hover::before {
+  opacity: 1; 
+  transform: scale(1, 1); 
+}
+.btn-one::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.3s;
+  background-color: rgba(255,255,255,0.1);
+}
+.btn-one:hover::after {
+  opacity: 0; 
+  transform: scale(0.1, 1);
+}
+
+
+
+/* like button */
+
+/* .like__btn {
+  border: none;
+  background-color: #e74c3c;
+  color: white;
+  cursor: pointer;
+  padding: 0.8rem;
+  border-radius: 0.4rem;
+  max-width: 200px;
+  transition: all ease 0.3s;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+      background-color: rgba(#e74c3c, 0.8);
+  }
+
+  &:disabled {
+      background-color: #d4cfcf;
+      cursor: pointer;
+  }
+}
+
+.like__icon {
+  font-size: 1.2rem;
+  margin-right: 0.3rem;
+}
+
+.like__number {
+  font-size: 0.8rem;
+} */

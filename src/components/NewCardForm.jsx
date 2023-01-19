@@ -24,7 +24,6 @@ function NewCardForm({ postNewCard }) {
   return (
     <div>
       <h2>Add a Card</h2>
-
       <form onSubmit={submitCardData} id="form" className="topBefore">
         <section>
           <div>
