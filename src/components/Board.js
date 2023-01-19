@@ -1,16 +1,9 @@
-const Board = ( {boardData} ) => {
-  // console.log("boardData", boardData);
-  return (
-    <div className="selectedBoard">
-      <h2>Selected Board: {boardData[0].title}</h2>
-  </div>
-  );
+const Board = (props) => {
+  // use anonymous function for onClick because it will return
+  // props.selectBoard and set that function as the event handler.
+  // this is syntax for lifting state and passing event handler App to Board
+  return <div onClick={() => props.selectBoard(props.board)}>{props.board.title}</div>;
 };
 
-// Board.propTypes = {
-//   id: PropTypes.number.isRequired,
-//   title: PropTypes.string.isRequired,
-//   owner: PropTypes.string.isRequired
-// };
-
 export default Board;
+
