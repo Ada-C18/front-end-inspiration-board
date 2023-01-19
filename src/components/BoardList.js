@@ -22,8 +22,8 @@ const BoardList = ({ boards, loadBoardOnClick }) => {
 
   const getBoardsComponents = (boards) => {
     return boards.map((board) => (
-      <li key={board.board_id} onClick={() => loadBoardOnClick(board)}>
-        {board.boardId}. {board.title}
+      <li key={board.boardId} onClick={() => loadBoardOnClick(board)}>
+        📍{board.title}
       </li>
     ));
   };
@@ -52,7 +52,7 @@ const BoardList = ({ boards, loadBoardOnClick }) => {
 BoardList.propTypes = {
   boards: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.number,
       title: PropTypes.string.isRequired,
       owner: PropTypes.string.isRequired,
     })
