@@ -43,7 +43,7 @@ export const addCardAPI = (card, boardId) => {
     .catch((err) => console.log(err));
 };
 
-//This doesn't add the boardId like above because I changed the CARD MODEL in the backend to include the board id. This commented out function is saner, if the backend adds boardId to it's to_dict method in Card.js. Otherwise use the above to add n key value pair to an object.
+//This doesn't add the boardId like above because I changed the CARD MODEL in the backend to include the board id. This commented out function is saner, if the backend adds boardId to it's to_dict method in Card.js. Otherwise use the above to add the board_id: boardId key value pair to an object when returning destructured cardApiToJson to add it in from the front-end.
 
 // export const addCardAPI = (card, boardId) => {
 //   return axios
