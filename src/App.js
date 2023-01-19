@@ -86,7 +86,14 @@ function App() {
     const convertedCard = convertFromApiCard(response.data.card);
     newCard.push(convertedCard);
     setCardsData(newCard);
-    return getAllCards();
+    // return getAllCards();
+    if (sortType === "likesCount") {
+      return getAllCardsByLikes();
+    } else if (sortType === "alphabetically") {
+      return getAllCardsByAsc();
+    } else {
+      return getAllCards();
+    }
   };
 
   // Delete a card
@@ -130,7 +137,7 @@ function App() {
   const handleLikes = async (cardId, boardId, message, likesCount) => {
     await handleLikesApi(cardId, boardId, message, likesCount);
     // return getAllCards();
-    setSortType(sortType);
+    // setSortType(sortType);
     if (sortType === "likesCount") {
       getAllCardsByLikes();
     }
