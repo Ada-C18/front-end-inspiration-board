@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Marcellus&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins&family=Raleway:wght@500&display=swap');
 
 .App {
   text-align: center;
@@ -19,10 +18,55 @@
   color: white;
 }
 
-h2{
-  font-family: Marmelad;
+
+
+.boardContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Raleway";
+  background: #EFE9E1;
+  width: 221px;
+  height: 285px;
+  padding: 2rem;
+  flex-direction: column;
+}
+
+.topComponents{
+  display: flex;
+  align-items:center;
+  justify-content: space-around;
+  margin-bottom: 100px;
 
 }
+
+.boardElements{
+  list-style: none;
+  font-family: Raleway ; 
+}
+
+ol {
+  display: block;
+  list-style-type: decimal;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
+}
+
+.boardHeader{
+font-family: Poppins;
+color: #72383D;
+  
+}
+
+.boardFooter{
+  font-family: Poppins;
+  color: #72383D;
+  font-size: 20px;
+    
+  }
 
 .cardsContainer {
   display: flex;
@@ -30,25 +74,33 @@ h2{
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap; 
+  border-width: 10px;
 }
 
-.cardMessage {
-  font-family: "Raleway";
+.cardMessageContainer {
   background: #AC9C8D;
-  width: 100px;
-  height: 148px;
+  width: 150px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
   flex-direction: column;
+  margin-bottom: 100px;
 }
 
-.createBoard, .newCardBoard {
+.cardMessage{
   font-family: "Raleway";
+  color: white;
+  font-size: 25px;
+}
+
+.createBoard, .createCard {
+  font-family: "Raleway";
+  color: #72383D;
   background: #EFE9E1;
-  width: 201px;
-  height: 265px;
+  width: 221px;
+  height: 285px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,22 +108,16 @@ h2{
   flex-direction: column;
 }
 
-.boardContainer, .newCardContainer {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-evenly;
-  flex-wrap: wrap; 
-}
 
-.createNew{
-  display: flex;
-  justify-content: space-around;
-}
 
-.cardItemControls{
-list-style: none ;
-display: flex;
-align-items: center;
-justify-content: space-evenly;
-flex-direction: row;}
+
+.deleteButton{
+background-color: #72383D;
+color: white;
+font-family: Poppins;
+font-size: 13px;
+width: 80px;
+border: none;
+margin-bottom: 10px ;
+  
+}

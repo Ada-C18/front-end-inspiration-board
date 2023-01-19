@@ -2,6 +2,7 @@ import Board from "./components/Board";
 import CardsList from "./components/CardsList";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import './App.css';
 
 // helper function dedicated to only making API get request
 const getBoardListApi = () => {
@@ -54,16 +55,22 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Inspiration Board</h1>
+        <h1>INSPIRATION BOARD</h1>
       </header>
       <main>
-        <div>
-          <h2>Boards</h2>
-          <ol>{boardElements}</ol>
-          <div>
-            <h2>{selectedBoard.title}</h2>
-          </div>
+      <div className="topComponents">
+        <div className="boardContainer">
+          <h2 className="boardHeader">Boards</h2>
+          <ol className="boardElements">{boardElements}</ol>
+          <h2 className="boardFooter">{selectedBoard.title}</h2>
         </div>
+        <div className = "createCard">
+            <h2>Create Card</h2>
+        </div>
+        <div className = "createBoard">
+          <h2>Create Board</h2>
+        </div>
+      </div>
         <CardsList board={selectedBoard}/>
       </main>
     </div>
