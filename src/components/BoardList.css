@@ -1,0 +1,9 @@
+#BoardListContainer{
+    border: 1px solid green;
+}
+#ListOfBoards{
+    border: 1px solid black;
+    list-style: none;
+    padding-top: .75em;
+    padding-bottom: .75em;
+}
