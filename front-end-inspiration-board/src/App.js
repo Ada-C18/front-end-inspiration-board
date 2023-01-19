@@ -103,6 +103,7 @@ function App() {
   };
 
   const addCard = (cardData) => {
+    axios.post(URL + "/" + selectedBoard.id + "/cards");
     const newCard = [...cardsList];
     newCard.push(cardData);
     setCardsList(newCard);
