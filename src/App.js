@@ -132,33 +132,7 @@ const deleteCardItem = (card) => {
   }
 
 
-  // const [cardsData, setCardsData] = useState([]);
-  // const [selectedCard, setSelectedCard] = useState({
-  //   message: '',
-  //   board_id: null
-  // },[]);
-  // const selectCard = (card) => {
-  //   setSelectedCard(card)
-  // };
-  // const cardElements = cardsData.map((card) => {
-  //   return (
-  //     <li>
-  //       <Card card={card} onBoardSelect={selectCard}></Card>
-  //     </li>
-  //   )
-  // });
 
-
-  const handleCardSubmit=(data)=>{
-    //console.log("data",data)
-    //call the api endpoints here
-    //onBoardSubmit={handleBoardSubmit}
-  }
-  const handleBoardSubmit=(data)=>{
-      //console.log("data",data)
-      //call the api endpoints here
-      
-  }
   return (
     <div className="App">
       <header className="App-header">
