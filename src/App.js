@@ -134,7 +134,7 @@ function App() {
 						card
 					);
 					return {
-						cardId: card.cardId,
+						cardId: card.card_id,
 						message: card.message,
 						// likesCount: card.likesCount,
 					};
@@ -168,8 +168,8 @@ function App() {
 	};
 
 	const deleteCard = (cardId) => {
-		// console.log("deleteCard called");
-
+		console.log("deleteCard called");
+		console.log(`card id: ${cardId}`);
 		axios
 			.delete(`${URL}/cards/${cardId}`)
 			.then(() => {
