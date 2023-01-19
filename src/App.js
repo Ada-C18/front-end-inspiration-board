@@ -4,14 +4,10 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Board from "./components/Board.js";
 import BoardList from "./components/BoardList";
-/* import NewCardForm from "./components/NewCardForm"; */
 import Header from "./components/Header";
 import NewBoardForm from "./components/NewBoardForm";
 import Title from "./components/Title";
 import VieworAddButtons from "./components/ViewOrAddButtons";
-
-// const REACT_APP_BACKEND_URL =
-//   "https://inspiration-board-db.herokuapp.com/boards";
 
 function App() {
   const [boardList, setBoardList] = useState([]);
@@ -52,6 +48,9 @@ function App() {
         newBoardList.push(newBoard);
         setBoardList(newBoardList);
         loadBoardList();
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 
@@ -59,7 +58,6 @@ function App() {
     axios
       .get(`https://inspiration-board-db.herokuapp.com/boards/${boardId}/cards`)
       .then((response) => {
-        // console.log(`💩${JSON.stringify(response)}`);
         const cards = response.data["chosen board cards"];
         setCards(cards);
       })
@@ -99,6 +97,9 @@ function App() {
         newCards.push(newCardJSON);
         setCards(newCards);
         loadCards(boardId);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
 

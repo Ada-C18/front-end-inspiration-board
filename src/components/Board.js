@@ -25,9 +25,8 @@ const Board = ({ selectedBoard, cards, addCard, deleteCard }) => {
   }
   return (
     <div>
-      <h3>This is the board component</h3>
       <h2>
-        Cards for {selectedBoard.title} by {selectedBoard.owner}
+        {selectedBoard.title} by {selectedBoard.owner}
       </h2>
       <ul>{cardComponents}</ul>
       <NewCardForm addCardCallbackFunc={addCard} boardId={selectedBoard.id} />
