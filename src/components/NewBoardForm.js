@@ -58,9 +58,7 @@ const NewBoardForm = ({ addBoardCallback , afterSubmitMessage, toggleHide }) => 
             </p>
           </div>
       </form>
-      <button onClick={handleClick} className="new-board__button" type="submit">
-              Hide Form
-            </button>
+      
     </section>
   );
 };

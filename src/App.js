@@ -44,6 +44,7 @@ const getAllCardsApi = (id) => {
 
 function App() {
   // state
+  const[isBoardFormVisible,setIsBoardFormVisible] = useState(true);
   const [boards, setBoards] = useState([]);
   const [cards, setCards] = useState([]);
   const [boardFormMessage, setBoardFormMessage] = useState("");
@@ -51,6 +52,10 @@ function App() {
   const [currentBoard, setCurrentBoard] = useState({title: "No board selected",});
   const [boardSelected, setBoardSelected] = useState(false);
 
+  // toggle button
+  const toggleNewBoardForm = () =>{setIsBoardFormVisible(!isBoardFormVisible)}
+  
+ 
   // get all boards using API helper
   const getAllBoards = () => {
     return getAllBoardsApi().then((boards) => setBoards(boards));
@@ -150,7 +155,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <NewBoardForm addBoardCallback={addBoard} afterSubmitMessage={boardFormMessage} toggleHide={toggleHide} isVisible={isVisible}/>
+      {isBoardFormVisible ? <NewBoardForm addBoardCallback={addBoard} afterSubmitMessage={boardFormMessage}></NewBoardForm>: ''}
+      <span onClick={toggleNewBoardForm} className='new-board-form__toggle-btn'>{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</span>
+      {/* <NewBoardForm addBoardCallback={addBoard} afterSubmitMessage={boardFormMessage} toggleHide={toggleHide} isVisible={isVisible}/> */}
       <BoardContainer
         boards={boards}
         onDisplayCurrentBoard={displayCurrentBoard}
