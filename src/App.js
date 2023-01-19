@@ -4,37 +4,10 @@ import axios from "axios";
 
 import BoardsList from "./components/BoardsList";
 import NewBoardForm from "./components/NewBoardForm";
-
-// Cards Components
 import CardsList from "./components/CardsList";
 import NewCardForm from "./components/NewCardForm";
 
-// const boardsData = [
-// 	{
-// 		board_id: 1,
-// 		title: "Do things!",
-// 		owner: "Milena",
-// 	},
-// 	{
-// 		board_id: 2,
-// 		title: "You can do it!",
-// 		owner: "Laura",
-// 	},
-// ];
-
-// const cardsData = [
-// 	{ cardId: 1, message: "great job" },
-// 	{ cardId: 2, message: "you're doing great" },
-// ];
-
-// REQUIREMENTS
-// BOARDS
-// -- Read Boards:
-// View a list of all boards. - fetchAllBoards
-// Select a board. - updateSelectedBoard
-
 function App() {
-	// state for boardsList
 	const [boardsList, setBoardsData] = useState([]);
 
 	const URL = "https://team-9-inspo-board-backend.herokuapp.com";
@@ -43,15 +16,13 @@ function App() {
 		axios
 			.get(`${URL}/boards`)
 			.then((response) => {
-				console.log(`get response: ${response}`);
 				const boardsAPIResCopy = response.data.map((board) => {
 					return {
-						board_id: board.board_id, // or boardId
+						board_id: board.board_id,
 						title: board.title,
 						owner: board.owner,
 					};
 				});
-				// update boardsList state
 				setBoardsData(boardsAPIResCopy);
 			})
 			.catch((error) => {
@@ -59,22 +30,16 @@ function App() {
 			});
 	};
 
-	// initial get request
 	useEffect(fetchAllBoards, []);
 
 	const addBoard = (newBoard) => {
-		// console.log("Calling addBoard");
-
 		axios
 			.post(`${URL}/boards`, newBoard)
 			.then((response) => {
-				console.log(`add board response: ${response}`);
 				const updatedBoardsList = [...boardsList];
 				updatedBoardsList.push({
 					...newBoard,
-					// check board id response var name
-					// Pending - generate new id num (backend?)
-					board_id: response.data.board_id, // hidden, implied primary key
+					board_id: response.data.board_id,
 				});
 
 				setBoardsData(updatedBoardsList);
@@ -82,22 +47,12 @@ function App() {
 			.catch((error) => console.log(error));
 	};
 
-	// Selected Board State
-	const [selectedBoard, setSelected] = useState([]); // {}
-	// const [selectedBoard, setSelected] = useState({
-	// 	boardId: 1,
-	// 	title: "Do things!",
-	// 	owner: "Milena",
-	// });
-
-	console.log(`selectedBoard: ${selectedBoard}`); // selectedBoard is empty list => selectedBoard.boardId is undefined
+	const [selectedBoard, setSelected] = useState([]);
 
 	const updateSelectedBoard = (boardId) => {
-		console.log("updateBoard called");
 		axios
 			.get(`${URL}/boards/${boardId}`)
 			.then((response) => {
-				console.log(response);
 				const boardAPIResCopy = response.data;
 				setSelected(boardAPIResCopy);
 				fetchCards(boardId);
@@ -105,34 +60,16 @@ function App() {
 			.catch((error) => {
 				console.log(error);
 			});
-
-		// setSelected({
-		//   board_id: 2,
-		//   title: "You can do it!",
-		//   owner: "Laura",
-		// });
 	};
 
-	// ------------ Cards Logic ----------- //
-	// State: Selected Board Cards
-	const [selectedCards, setCardsList] = useState([]); // useState([]);
+	const [selectedCards, setCardsList] = useState([]);
 
-	// TODO: ask Backend team about GET Cards route
-	console.log(`selectedBoard id: ${selectedBoard.board_id}`); // selectedBoardis a list
-	// console.log(fetchCardsURL);
-
-	// Get all cards with board ID
 	const fetchCards = (board_id) => {
 		const fetchCardsURL = `${URL}/boards/${board_id}/cards`;
 		axios
 			.get(fetchCardsURL)
 			.then((response) => {
-				// console.log(response);
 				const cardsAPIResCopy = response.data.map((card) => {
-					console.log(
-						"Inside of app level this is what Card is",
-						card
-					);
 					return {
 						cardId: card.card_id,
 						message: card.message,
@@ -146,15 +83,10 @@ function App() {
 			});
 	};
 
-	// Add Card Function
-	// Todo: add API post card code
 	const addCard = (newCard) => {
-		// console.log("Calling addCard");
-
 		axios
 			.post(`${URL}/boards/${selectedBoard.board_id}/cards`, newCard)
 			.then((response) => {
-				// console.log(`add card response: ${response}`);
 				const updatedCardsList = [...selectedCards];
 				updatedCardsList.push({
 					...newCard,
@@ -168,8 +100,6 @@ function App() {
 	};
 
 	const deleteCard = (cardId) => {
-		console.log("deleteCard called");
-		console.log(`card id: ${cardId}`);
 		axios
 			.delete(`${URL}/cards/${cardId}`)
 			.then(() => {
@@ -188,7 +118,6 @@ function App() {
 
 	return (
 		<div className="App">
-			{/* <Board /> */}
 			<div>
 				<BoardsList
 					boardsList={boardsList}
@@ -206,7 +135,6 @@ function App() {
 			</div>
 			{/* Todo: display elements below after selecting Board */}
 			{/* <h2>Cards for {selectedBoard.title} Quotes</h2> */}
-			{/* <h2>Cards for "insert Board title here" Quotes</h2> */}
 			<CardsList
 				cardsList={selectedCards}
 				deleteCard={deleteCard}

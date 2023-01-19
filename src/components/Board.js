@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 const Board = (props) => {
-	const boardId = props.boardId; // hidden, implied primary key
+	const boardId = props.boardId; 
 	const title = props.title;
 	const owner = props.owner;
 	const updateSelectedBoard = props.updateSelectedBoard;

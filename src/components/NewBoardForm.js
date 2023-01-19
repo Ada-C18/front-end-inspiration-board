@@ -1,14 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-// const INITIAL_FORM_DATA = {
-// 	title: "",
-// 	name: "",
-// };
-
-// TODOs
-// -- Error - stretch goal: add read outline around the input field
-
 const NewBoardForm = ({ addBoard }) => {
 	const [formData, setFormData] = useState({
 		title: "",
@@ -31,7 +23,6 @@ const NewBoardForm = ({ addBoard }) => {
 
 	// addBoard
 	const onFormSubmit = (e) => {
-		console.log("Calling onFormSubmit");
 		e.preventDefault();
 
 		addBoard({
@@ -39,14 +30,12 @@ const NewBoardForm = ({ addBoard }) => {
 			owner: formData.owner,
 		});
 
-		// reset to empty fields after adding board
 		setFormData({
 			title: "",
 			owner: "",
 		});
 	};
 
-	// Error - Disable submit button if inputs empty
 	const isSubmitDisable = formData.title === "" || formData.owner === "";
 
 	// Hide Form
@@ -82,7 +71,7 @@ const NewBoardForm = ({ addBoard }) => {
 					<p>
 						Preview: {formData.title} - {formData.owner}
 					</p>
-					{/* <input type="submit" value="Submit"></input> */}
+
 					<button type="submit" disabled={isSubmitDisable}>
 						Submit
 					</button>
