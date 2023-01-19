@@ -9,7 +9,7 @@
     box-sizing: border-box;
 }
 
-label {
+#form label {
     font-size: clamp(14px, 2vh, 16px);
     display: block;
     font-variant: small-caps;

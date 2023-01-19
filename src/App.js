@@ -44,8 +44,9 @@ function App() {
     repeatLogin: false,
     repeatSignUp: false,
   });
-  let [appData, setAppData] = useState([]); // do get call to set initial state
-  let [cardDataByBoard, setCardDataByBoard] = useState([]); // do get call to set initial state???
+
+  let [appData, setAppData] = useState([]);
+  let [cardDataByBoard, setCardDataByBoard] = useState([]);
 
   const getBoardArr = async () => {
     const boardArr = await getAllBoardsAPI();
@@ -142,26 +143,18 @@ function App() {
   };
 
   const addBoard = async (boardData) => {
-    // console.log("In addBoard!");
-    // console.log(boardData);
-
     const requestBody = {
       title: boardData.title,
       card_color: boardData.cardColor,
       user_id: loggedIn.userId,
     };
 
-    // console.log(requestBody);
-
     try {
-      const response = await axios.post(`${kBaseUrl}/boards`, requestBody);
-      // console.log(response.data);
-      setAppData(appData.push(response.data));
+      await axios.post(`${kBaseUrl}/boards`, requestBody);
+      const boardArr = getAllBoardsAPI();
+      setAppData(boardArr);
     } catch (err) {
       console.error(err);
-    } finally {
-      // console.log("in finally");
-      // console.log(appData);
     }
   };
 

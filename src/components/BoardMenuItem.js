@@ -18,6 +18,7 @@ const BoardMenuItem = (props) => {
         <span id="cardCount">
           ({props.cards} {props.cards === 1 ? "card" : "cards"})
         </span>
+        <span> &mdash; {props.owner}</span>
       </button>
     </li>
   );

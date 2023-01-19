@@ -59,3 +59,24 @@
   padding: 15px;
   box-shadow:  3px 3px 5px #014040;
 }
+
+#swatch {
+  display: inline-block;
+  width: 5vw;
+  height: 5vw;
+  box-shadow:  3px 3px 5px #014040;
+  margin: auto;
+  font-size: clamp(2vw, calc(10px+2vh), 3vw);
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  color: #014040;
+}
+
+.green {
+  background-color: #C1D6D9;
+}
+
+.coral {
+  background-color: #F29979;
+}
