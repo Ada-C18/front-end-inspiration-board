@@ -37,12 +37,12 @@ const App = () => {
       console.log(newCards);
     });
   };
-
-  const [selectedBoard, setSelectedBoard] = useState({
-    title: '',
-    owner: '',
-    boardId: null,
-  });
+  // const defaultSelectedBoard = {
+  //   title: '',
+  //   owner: '',
+  //   boardId: null,
+  // } USE THIS IF I WANT AN ACTUAL OBJECT TO LOAD, NULL TO MAKE MY RENDER LOGIC WORK.
+  const [selectedBoard, setSelectedBoard] = useState(null);
   const onSelectBoard = async (boardId) => {
     try {
       const response = await axios.get(
@@ -62,6 +62,10 @@ const App = () => {
       setBoards((prevBoards) => {
         return prevBoards.filter((board) => board.boardId !== boardId);
       });
+      if (boardId === selectedBoard.boardId) {
+        setSelectedBoard(null);
+        //setSelectedBoard(defaultSelectedBoard); IF I WANT A TRUTHY OBJECT THAT IS EMPTY, NULL IF I WANT THE MESSAGE I WANT. SAME WITH USESTATE SETUP. NULL TO MAKE CONDITION WORK ON FIRST RENDER AND WHEN THE BOARD IS DELETED, OTHERWISE I'LL GET A '-' FOR AN EMPTY OBJECT.
+      }
     } catch (error) {
       console.log(error.message);
     }
