@@ -4,79 +4,79 @@ import Card from "./Card";
 import NewCardForm from "./NewCardForm";
 
 const CardList = (props) => {
-  const [cardData, setCardData] = useState([]);
+    const [cardData, setCardData] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(
-        `${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.board_id}/cards`
-      )
-      .then((response) => {
-        // console.log('Response', response)
-        setCardData(response.data.cards);
-      })
-      .catch((error) => {
-        console.log("Error:", error);
-        alert("Couldn't get cards for this board.");
-      });
-  }, [props.board]);
-
-  const deleteCard = (card) => {
-    axios
-      .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${props.card.id}`)
-      .then((response) => {
-        const newCardData = cardData.filter((currentCard) => {
-          return currentCard.id !== card.id;
+    useEffect(() => {
+        axios
+        .get(
+            `${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.board_id}/cards`
+        )
+        .then((response) => {
+            // console.log('Response', response)
+            setCardData(response.data.cards);
+        })
+        .catch((error) => {
+            console.log("Error:", error);
+            alert("Couldn't get cards for this board.");
         });
-        setCardData(newCardData);
-      })
-      .catch((error) => {
-        console.log("Error:", error);
-        alert("Couldn't delete the card.");
-      });
-  };
+    }, [props.board]);
 
-  const onLikeClick = (card) => {
-    axios
-      .put(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/likes`)
-      .then((response) => {
-        const newCardData = cardData.map((currentCard) => {
-          return currentCard.card_id !== card.card_id
-            ? currentCard
-            : { ...card, likes_count: card.likes_count + 1 };
+    const deleteCard = (card) => {
+        axios
+        .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${props.card.id}`)
+        .then((response) => {
+            const newCardData = cardData.filter((currentCard) => {
+            return currentCard.id !== card.id;
+            });
+            setCardData(newCardData);
+        })
+        .catch((error) => {
+            console.log("Error:", error);
+            alert("Couldn't delete the card.");
         });
-        setCardData(newCardData);
-      })
-      .catch((error) => {
-        console.log("Error:", error);
-        alert("Couldn't like the card.");
-      });
-  };
+    };
 
-  const cardElements = cardData.map((card) => {
-    return (
-      <Card
-        card={card}
-        onLikeClick={onLikeClick}
-        deleteCard={deleteCard}
-      ></Card>
-    );
-  });
+    const onLikeClick = (card) => {
+        axios
+        .put(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/likes`)
+        .then((response) => {
+            const newCardData = cardData.map((currentCard) => {
+            return currentCard.card_id !== card.card_id
+                ? currentCard
+                : { ...card, likes_count: card.likes_count + 1 };
+            });
+            setCardData(newCardData);
+        })
+        .catch((error) => {
+            console.log("Error:", error);
+            alert("Couldn't like the card.");
+        });
+    };
 
-  const postNewCard = (message) => {
-    axios
-      .post(
-        `${process.env.REACT_APP_BACKEND_URL}/${props.board.board_id}/cards`,
-        { message }
-      )
-      .then((response) => {
-        const cards = [...cardData];
-        cards.push(response.data.card);
-        setCardData(cards);
-        window.location.reload();
+    const cardElements = cardData.map((card) => {
+        return (
+        <Card
+            card={card}
+            onLikeClick={onLikeClick}
+            deleteCard={deleteCard}
+        ></Card>
+        );
+    });
+
+    const postNewCard = (message) => {
+        axios
+        .post(
+            `${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.board_id}/cards`,
+            { message }
+        )
+        .then((response) => {
+            const cards = [...cardData];
+            cards.push(response.data.card);
+            setCardData(cards);
+            window.location.reload();
         }).catch((error) => {
-        console.log('Error:', error);
-        alert('Couldn\'t create a new card.');
+            console.log('Error:', error);
+            alert('Couldn\'t create a new card.');
         });
     };
 
