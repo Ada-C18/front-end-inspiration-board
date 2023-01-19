@@ -43,6 +43,7 @@ const NewBoardForm = (props) => {
       setIsOwnerValid(false);
     } else {
       props.addBoardCallbackFunc(formData);
+      setFormData(INITIAL_FORM_DATA);
       setIsTitleValid(true);
       setIsOwnerValid(true);
     }

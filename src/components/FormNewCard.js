@@ -38,6 +38,7 @@ const FormNewCard = (props) => {
       setIsValidInput(false);
     } else {
       props.addCardCallbackFunc(formCard, props.boardId);
+      setFormCard(INITIAL_FORM);
       setIsValidInput(true);
     }
     return errors;
