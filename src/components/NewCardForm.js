@@ -41,7 +41,7 @@ const NewCardForm = ({ createNewCard }) => {
               : ""
           }
         ></input>
-        <p>Preview: {cardFormData.message}</p>
+        <p className="preview_message">Preview: {cardFormData.message}</p>
         <input
           type="Submit"
           disabled={

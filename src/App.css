@@ -46,6 +46,8 @@ background: linear-gradient(90deg, rgba(254,230,227,1) 21%, rgba(189,232,235,1) 
   grid-template-rows: 1fr 1fr 1fr;
   grid-column: 1;
   margin-left: 3em;
+  font-family: 'Courier New', Courier, monospace;
+
 }
 .content__container {
   display:grid;
@@ -61,11 +63,23 @@ background: linear-gradient(90deg, rgba(254,230,227,1) 21%, rgba(189,232,235,1) 
   font-family: 'Courier New', Courier, monospace;
 
 }
-.create_newboard,.create_newcardform {
+.create_newboard {
   background-color: #ecedf9;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 200px;
+  height: fit-content;
+  padding: 20px;
+  width: 360px;
+  display:block;
+  margin: auto;
+  font-family: 'Courier New', Courier, monospace;
+
+}
+.create_newcardform {
+  background-color: #ecedf9;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: fit-content;
   padding: 20px;
   width: 320px;
   display:block;
@@ -83,12 +97,13 @@ input {
   height: 100%;
   outline: 0;
   padding: 4px 20px 0;
-  width: 100%;
+  width: 100%;  
+  font-family: 'Courier New', Courier, monospace;
+
 
 }
-
-
-
+.preview_message{
+  word-wrap: break-word;}
 
 .card_elements{
   display:flex;
@@ -131,7 +146,7 @@ h2 {
   background-color: #fee6e3;
   border: 2px solid #111;
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 22px;
 
 
 }
@@ -211,6 +226,7 @@ button{
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  align-items: baseline;
 }
 .new-card-form__form-submit-btn:disabled,.new-board-form__form-submit-btn:disabled{
   cursor:not-allowed;}

@@ -53,7 +53,7 @@ const NewBoardForm = ({ createNewBoard }) => {
               : ""
           }
         ></input>
-        <p>
+        <p className="preview_message">
           Preview: {boardFormData.title} - {boardFormData.owner}
         </p>
         <input
