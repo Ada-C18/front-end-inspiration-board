@@ -1,0 +1,46 @@
+header {
+    text-align: center;
+}
+
+#mainContainer {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#upperContainerBoard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#lowerContainerCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#invisibleHeading {
+    color: white;
+}
+
+#cardItems {
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+}
+
+#cardComponents {
+    padding: 3em;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* display: grid;
+    grid-gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); */
+}
+
+/* #cardsHeading{
+    justify-content: center;
+} */

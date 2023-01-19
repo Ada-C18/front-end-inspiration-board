@@ -1,0 +1,27 @@
+/* .NewCardFormContainer{
+    border: 1px solid blue;
+} */
+#CardForm {
+    padding-left: 25px;
+}
+
+#newCardHeading {
+    padding-left: 25px;
+}
+
+.addCardButton {
+    background-color: lightgreen;
+    border-radius: 6px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+label {
+    font-size: x-large;
+    color:firebrick;
+}
+
+.createCardMessage {
+    background-color:#E8F3D6;
+    
+}
