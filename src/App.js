@@ -98,6 +98,19 @@ const App = () => {
     });
   };
 
+  const [sortCards, setSortCards] = useState('likes');
+  
+  const handleSortedCards = (sortType) => {
+    if (sortType === "likes") {
+      setCards(prevCards => prevCards.sort((a, b) => b.likesCount - a.likesCount));
+    } else if (sortType === "cardId") {
+      setCards(prevCards => prevCards.sort((a, b) => a.cardId - b.cardId));
+    } else if (sortType === "alphabetically") {
+      setCards(prevCards => prevCards.sort((a, b) => a.message.localeCompare(b.message)));
+    }
+    setSortCards(sortType);
+  };
+
   //Refresh Boards helper func for useEffect, NEEDS PROMISE
   const refreshBoards = async () => {
     try {
@@ -166,6 +179,8 @@ const App = () => {
               boardId={selectedBoard.boardId}
               onLikesCount={handleLikesCount}
               onDeleteCard={handleCardDelete}
+              sortCards={sortCards}
+              onSortedCards={handleSortedCards}
             />
             {
               <CardForm
