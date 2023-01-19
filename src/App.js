@@ -1,24 +1,26 @@
 import axios from 'axios';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 // import axios from 'axios';
-import { REACT_APP_BACKEND_URL, boardApiToJson, cardApiToJson, addBoardAPI, addCardAPI, getBoardsAPI, getCardsAPI, deleteBoardAPI, deleteCardAPI, likeCardAPI} from './api';
+import {
+  REACT_APP_BACKEND_URL,
+  boardApiToJson,
+  addBoardAPI,
+  addCardAPI,
+  getBoardsAPI,
+  getCardsAPI,
+  deleteBoardAPI,
+  deleteCardAPI,
+  likeCardAPI,
+} from './api';
 import BoardForm from './components/BoardForm';
 import BoardList from './components/BoardList';
 import CardForm from './components/CardForm';
 import CardList from './components/CardList';
 
-// Higher order functions inside FUNCTION APP() sent as props
-//BOARD FUNCTIONS:
-//1. onSubmit Board (takes in )
-//2. onSelect Board in BoardList Componenet (shows cards of that boardID)
-//3. onChange hide Board Form
-//4. delete board if time permits
-
 const App = () => {
-
   const [boards, setBoards] = useState([]);
-  
+
   const handleBoardSubmit = (board) => {
     addBoardAPI(board)
       .then((newBoard) => {
@@ -26,7 +28,6 @@ const App = () => {
       })
       .catch((err) => console.log(err));
   };
-
 
   const [cards, setCards] = useState([]);
 
@@ -80,16 +81,17 @@ const App = () => {
   };
 
   const handleLikesCount = (cardId) => {
-    return likeCardAPI(cardId)
-    .then(likedCard => {
-      setCards(cards => cards.map(card => {
-        if(card.cardId === likedCard.cardId) {
-          return likedCard;
-        } else {
-          return card;
-        }
-      }));
-    })
+    return likeCardAPI(cardId).then((likedCard) => {
+      setCards((cards) =>
+        cards.map((card) => {
+          if (card.cardId === likedCard.cardId) {
+            return likedCard;
+          } else {
+            return card;
+          }
+        })
+      );
+    });
   };
 
   //Refresh Boards helper func for useEffect, NEEDS PROMISE
@@ -125,12 +127,11 @@ const App = () => {
     refreshCards();
   }, []);
 
-
   const [showForm, setShowForm] = useState(true);
 
   const handleHideForm = () => {
-    setShowForm(!showForm)
-  }
+    setShowForm(!showForm);
+  };
 
   return (
     <div className='App'>
@@ -140,7 +141,8 @@ const App = () => {
       <main>
         <div>
           <button onClick={handleHideForm}>Hide Form</button>
-       {showForm && <BoardForm handleBoardSubmit={handleBoardSubmit} />}</div>
+          {showForm && <BoardForm handleBoardSubmit={handleBoardSubmit} />}
+        </div>
         <BoardList
           className='board_list'
           boards={boards}

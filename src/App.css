@@ -14,13 +14,11 @@ h2 {
 
 h1 {
   background-color: rgb(114, 246, 143);
-  transform: rotate(-5deg) skew(-10deg);
 }
 
 h2 {
   /* border-bottom: 10px solid lightgrey; */
   border: 2px solid black;
-  box-shadow: -15px 7px 1px black;
 }
 
 .boards__container {
