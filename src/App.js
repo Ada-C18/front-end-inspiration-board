@@ -12,10 +12,6 @@ function App() {
   const [cardList, setCardList] = useState([]);
   const URL = "https://vtv-inspo.herokuapp.com/boards";
   const URL2 = "https://vtv-inspo.herokuapp.com/cards";
-  // function loadBoardOnClick(board) {
-
-  //   setSelectedBoard(board);
-  // }
 
   const fetchAllBoards = () => {
     axios
@@ -26,11 +22,10 @@ function App() {
             boardId: board.board_id,
             title: board.title,
             owner: board.owner,
-            // cards: board.cards,
           };
         });
         setBoardList(boardsAPIResCopy);
-        console.log(boardsAPIResCopy);
+        // console.log(boardsAPIResCopy);
       })
       .catch((err) => {
         console.log(err);
@@ -42,14 +37,14 @@ function App() {
     axios
       .post(URL, newBoardInfo)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         const newBoards = [...boardList];
         const newBoardJSON = {
           ...newBoardInfo,
           boardId: response.data.board_id,
           cards: response.data.cards,
         };
-        console.log(newBoardJSON);
+        // console.log(newBoardJSON);
         newBoards.push(newBoardJSON);
         setBoardList(newBoards);
       })
@@ -66,11 +61,10 @@ function App() {
             id: card.card_id,
             message: card.message,
             likesCount: card.likes_count,
-            // selectedBoardId: board.boardId,
           };
         });
         setCardList(cardsAPIResCopy);
-        console.log(cardsAPIResCopy);
+        // console.log(cardsAPIResCopy);
         setSelectedBoard(board);
       })
       .catch((err) => {
@@ -88,7 +82,7 @@ function App() {
             newCardList.push(card);
           }
         }
-        console.log("delete func called");
+        // console.log("delete func called");
         setCardList(newCardList);
         loadBoardOnClick(selectedBoard);
       })
@@ -96,7 +90,6 @@ function App() {
         console.log(err);
       });
   };
-  // useEffect(loadBoardOnClick, [cardList]);
 
   return (
     <div className="main-page">
@@ -107,26 +100,20 @@ function App() {
         <div className="boards">
           <section className="board-list">
             <h2>Boards</h2>
-            {/* <div> */}
             <BoardList
               boards={boardList}
               loadBoardOnClick={loadBoardOnClick}
             ></BoardList>
-            {/* </div> */}
           </section>
           <section className="selected-board">
             <h2>Selected Board</h2>
-            {/* <div> */}
             {selectedBoard
               ? `${selectedBoard.title} - ${selectedBoard.owner}`
               : "Select a Board from the Board List!"}
-            {/* </div> */}
           </section>
           <section className="add-new-board">
             <h2>Create a New Board</h2>
-            {/* <div> */}
             <NewBoardForm addBoardCallbackFunc={addBoard}></NewBoardForm>
-            {/* </div> */}
           </section>
         </div>
         <div className="cards">
@@ -141,7 +128,7 @@ function App() {
         </div>
       </main>
       <footer>
-        <p> © Build by Vivian, Tatiana & Viktoriia 2023</p>
+        <p> © Built by Vivian, Tatiana & Viktoriia 2023</p>
       </footer>
     </div>
   );

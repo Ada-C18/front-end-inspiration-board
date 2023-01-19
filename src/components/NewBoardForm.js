@@ -18,7 +18,6 @@ const NewBoardForm = (props) => {
       [e.target.name]: e.target.value,
     };
     setFormData(newFormData);
-    //setFormData(e.target.value);
   };
 
   const handleNewBoardSubmit = (e) => {
