@@ -1,16 +1,16 @@
-
-.titles {
-    background: #3399ff;
-    padding: 3px;
+.titleslist {
+    background: #9b45b2;
+    padding: 1px; 
 }
 
 li {
-    background: #cce5ff;
-    color: darkblue;
-    margin: 3px;
+    background: white;
+    color: black;
+    font-style:normal;
+    margin: 0;
     list-style-position: inside;
-    list-style-type: circle; 
+    list-style-type: square; 
     font-family: Verdana, sans-serif;
     font-size: medium;
+    /* margin: 5px */
 }
-
