@@ -115,7 +115,7 @@ const CardsList = (props) => {
       </section>
       <h2>Cards for {props.board.title}</h2>
       <p>
-        <button onClick={() => sortByLikes(cardsData)}>Sort by ❤️</button>
+        <button onClick={() => sortByLikes(cardsData)}>Sort by 💕</button>
         <button onClick={() => sortById(cardsData)}>Sort by ID</button>
         <button onClick={() => sortAtoZ(cardsData)}>Sort by A-Z</button>
       </p>
