@@ -1,6 +1,6 @@
 
 
-.new-board__fields {
+.new__board__fields {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,12 +9,12 @@
     row-gap: 2px;
 }
 
-.new-board__fields label {
+.new__board__fields__label {
     font-size: medium;
 }
 
 
-.invalid-form-input {
+.invalid__form__input {
     background-color:pink;
 }
 

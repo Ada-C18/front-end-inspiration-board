@@ -197,7 +197,7 @@ function App() {
       </h1>
       <section className="all__board__container">
         <section className="board__container">
-          <h2 className="board_header">
+          <h2 className="board__header">
             🌟 Select a Board to see their inspirational messages 🌟
           </h2>
           <section className="boards">
@@ -232,7 +232,7 @@ function App() {
       {/* CARDS */}
       <section>
         {showCardForm ? (
-          <div className="all_card__container">
+          <div className="all__card__container">
             <section className="cards__container">
               <h4 className="cards__header">
                 🌟 {selectedBoard.title} Messages 🌟
@@ -244,10 +244,10 @@ function App() {
                   handleDeleteCard={handleDeleteCard}
                 />
               </div>
-              <section className="sort_by">
+              <section className="sort__by">
                 Sort messages
                 <select
-                  className="sort_by_pull_down"
+                  className="sort__by__pull__down"
                   value={sortType}
                   onChange={handleChange}
                 >

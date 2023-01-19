@@ -4,9 +4,9 @@ import "./Card.css";
 
 const Card = (props) => {
   return (
-    <div className="each_card">
+    <div className="each__card">
       <p className="message">{props.message}</p>
-      <ul className="card_info">
+      <ul className="card__info">
         <li className="like">
           <p
             onClick={() =>

@@ -22,14 +22,14 @@ const NewBoardForm = ({ addBoardCallback }) => {
   return (
     <form onSubmit={submitBoardData}>
       <section>
-        <div className="new-board__fields">
+        <div className="new__board__fields">
           <label htmlFor="name">Board Name</label>
           <input
             name="title"
             id="title"
             value={boardData.title}
             onChange={handleChange}
-            className={boardData.title.length === 0 ? "invalid-form-input" : ""}
+            className={boardData.title.length === 0 ? "invalid__form__input" : ""}
           />
           <label htmlFor="name">Your Name</label>
           <input
@@ -37,7 +37,7 @@ const NewBoardForm = ({ addBoardCallback }) => {
             id="owner"
             value={boardData.owner}
             onChange={handleChange}
-            className={boardData.owner.length === 0 ? "invalid-form-input" : ""}
+            className={boardData.owner.length === 0 ? "invalid__form__input" : ""}
           />
           <p className="required">* required</p>
           <p>

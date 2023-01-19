@@ -1,12 +1,8 @@
 .App__header {
-  /* background-color: blue; */
-  background-color: beige;
   font-family:monospace;
   min-height: 10vh;
   font-size:35pt;
   text-align: center;
-  /* border-style: solid; */
-  border-radius: 5pt ;
   -webkit-text-stroke: 1px black;
 }
 
@@ -29,7 +25,7 @@ padding: 20pt;
   overflow: scroll;
 }
 
-.board_header {
+.board__header {
   background-color:darkviolet;
   color: white;
   text-align: center;
@@ -70,7 +66,7 @@ padding-right: 25pt;
   font-weight: bold;
 }
 
-.all_card__container {
+.all__card__container {
   background-image: url("/src/images/489bf56a918d9ea4a331964a533cebb7.jpg");
   border-style: solid;
   border-radius: 20pt ;
@@ -81,9 +77,7 @@ padding-right: 25pt;
 }
 
 .cards__container {
-  /* background-color:aquamarine; */
   background-color: rgba(160, 252, 214, 0.9);
-  /* background-color: #CDD7F3; */
   border-style: solid;
   border-radius: 5pt ;
   display: flex;
@@ -91,11 +85,9 @@ padding-right: 25pt;
   align-items: center;
   justify-content: center;
   padding: 5pt;
-  /* opacity: 0.9; */
 }
 
 .cards__header {
-  /* background-color:fuchsia; */
   background-color: orange;
   font-size: 2rem;
   color: white;
@@ -106,12 +98,12 @@ padding-right: 25pt;
   padding-right: 25pt;
 }
 
-.sort_by {
+.sort__by {
   font-size: x-large;
   font-weight: bold;
 }
 
-.sort_by_pull_down {
+.sort__by__pull_down {
   font-size: medium;
   background-color: rgb(244, 244, 148);
 }
@@ -121,20 +113,16 @@ body {
 }
 
 .card__form {
-  /* background-color:aquamarine; */
   background-color: rgba(160, 252, 214, 0.9);
-  /* background-color: #CDD7F3; */
   border-style: solid;
   width: 300px;
   row-gap: 2px;
-  /* opacity: 0.9; */
   border-radius: 5pt ;
   text-align: center;
   padding: 20pt;
 }
 
 .card__form__header {
-  /* background-color:fuchsia; */
   background-color: orange;
   color: white;
   text-align: center;

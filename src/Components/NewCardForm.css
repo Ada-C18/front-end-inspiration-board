@@ -1,4 +1,4 @@
-.invalid-form-input {
+.invalid__form__input {
     border: red solid 1px;
     box-shadow: 0 0 1px red;
 }
@@ -10,7 +10,7 @@
     color: white;
 }
 
-.new-card__field {
+.new__card__field {
     display: flex;
     flex-direction: column;
     align-items: center;

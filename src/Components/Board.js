@@ -5,7 +5,7 @@ import './Board.css';
 const Board = (props) => {
   return (
     <li
-      className="each_board"
+      className="each__board"
       onClick={() => props.handleBoardClick(props.title, props.owner, props.id)}
     >
       {props.title}

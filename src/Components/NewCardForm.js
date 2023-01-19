@@ -20,12 +20,12 @@ const NewCardForm = ({ addCardData, selectedBoard }) => {
 
   return (
     <form onSubmit={submitCardData}>
-      <div className="new-card__field">
+      <div className="new__card__field">
         <label htmlFor="message">Message</label>
         <input
           className={
             !cardForm.message | (cardForm.message.length > 40)
-              ? "invalid-form-input"
+              ? "invalid__form__input"
               : ""
           }
           type="text"

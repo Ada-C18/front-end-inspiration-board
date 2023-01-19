@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const CardList = (props) => {
   return (
-    <ul className="card_list">
+    <ul className="card__list">
       {props.cardsData.map((card) => (
         <Card
           id={card.id}
