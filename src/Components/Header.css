@@ -12,6 +12,12 @@
   z-index: 1;
 }
 
+html:not([data-scroll='20']) .header {
+  position: fixed;
+  top: 0;
+  background-color: rgba(235, 140, 140);
+}
+
 .header > select {
   width: 6rem;
 }
