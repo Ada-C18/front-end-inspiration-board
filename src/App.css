@@ -120,7 +120,7 @@ main {
   padding: 1rem;
   box-shadow: 5px 5px;
   border-radius: 6px;
-  /* max-width: 370px; */
+  max-width: 370px;
 }
 
 .card-elements {
