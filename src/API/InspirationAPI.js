@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_HOST = 'http://localhost:5000/';
+const API_HOST = 'https://inspirationalboard.herokuapp.com/';
 
 const BOARDS_ENDPOINT = `${API_HOST}boards`;
 const CARDS_ENDPOINT = `${API_HOST}cards`;

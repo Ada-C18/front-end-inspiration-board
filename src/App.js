@@ -17,6 +17,8 @@ import {
   likeCard,
 } from './API/InspirationAPI';
 
+const foo = 'foo';
+
 const App = function () {
   const testBoardListData = testData[0];
   const testcardListData = testData[1];
