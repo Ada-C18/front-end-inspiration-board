@@ -33,6 +33,7 @@ const CardForm = (props) => {
         <textarea
           type="text"
           placeholder="Message"
+          id="text-area"
           className={"form-field card-form-field"}
           name="message"
           value={message}
@@ -41,8 +42,8 @@ const CardForm = (props) => {
         ></textarea>
         <p
           id="err-msg"
-          className={validInput ? "hide-err-msg" : "invalid-input"}
-          // className="hide-err-msg"
+          // className={validInput ? "hide-err-msg" : "invalid-input"}
+          className="hide-err-msg"
         >
           Message must be less than 40 characters.
         </p>
