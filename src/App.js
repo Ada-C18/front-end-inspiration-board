@@ -131,6 +131,7 @@ function App() {
       .then((response) => {
         // console.log(response);
         const cardsAPIResCopy = response.data.map((card) => {
+          console.log("Inside of app level this is what Card is", card);
           return {
             cardId: card.card_id,
             message: card.message,
@@ -169,7 +170,7 @@ function App() {
     // console.log("deleteCard called");
 
     axios
-      .delete(`${URL}/${cardId}`)
+      .delete(`${URL}/cards/${cardId}`)
       .then(() => {
         const newCardsList = [];
         for (const card of selectedCards) {

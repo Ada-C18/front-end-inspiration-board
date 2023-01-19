@@ -2,10 +2,11 @@ import PropTypes from "prop-types";
 import "./Card.css";
 
 const Card = ({ cardId, message, deleteCard }) => {
+  console.log("card component", cardId);
   return (
     <div className="card">
       <li>{message}</li>
-      <button>Delete</button>
+      <button onClick={() => deleteCard(cardId)}>Delete</button>
       {/* likes button here */}
     </div>
   );

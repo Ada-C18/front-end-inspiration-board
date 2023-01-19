@@ -5,11 +5,12 @@ import "./CardsList.css";
 
 const CardsList = ({ cardsList, boardTitle, deleteCard }) => {
   const cardComponents = cardsList.map((card) => {
+    console.log("Inside of cardList", card);
     return (
       <Card
-        cardId={card.card_id}
+        cardId={card.cardId}
         message={card.message}
-
+        deleteCard={deleteCard}
         // likeCount = {card.likesCount}
       />
     );
