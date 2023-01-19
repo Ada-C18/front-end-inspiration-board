@@ -10,6 +10,9 @@ const CardList = (props) => {
     const [cardsData, setCardsData] = useState([]);
 
     useEffect (() => {
+        if  (!props.board.id) {
+            return;
+        }
         axios.get(`${url}/boards/${props.board.id}/cards`).then((response) => {
             setCardsData(response.data.cards);
         }).catch((error) => {
