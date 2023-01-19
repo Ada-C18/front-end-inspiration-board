@@ -1,16 +1,17 @@
 .card {
-    width: 75%;
-    height: 40%;
+    width: 200px;
+    height: 200px;
     border-radius: 50px;
     background-color: beige;
     
     font-size: 1rem;
-    align-content: space-around;
+    /* align-content: space-around; */
 }
 
 p {
     margin: 3%;
-    padding-top: 10%
+    padding-top: 15%;
+    padding-bottom: 5%;
 }
 
 .button-card {
