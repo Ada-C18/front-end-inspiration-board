@@ -12,7 +12,7 @@ const Board = (props) => {
   const addNewCard = (message) => {
     axios
       .post(`${BACKEND_URL}/boards/${props.currentBoard}/cards`, { message })
-      .then((response) => {
+      .then((_) => {
         getCardList();
       })
       .catch((err) => {
@@ -90,7 +90,7 @@ const Board = (props) => {
   const likeOneCard = (id) => {
     axios
       .put(`${BACKEND_URL}/cards/${id}`)
-      .then((result) => {
+      .then((_) => {
         getCardList();
       })
       .catch((error) => {
@@ -102,7 +102,7 @@ const Board = (props) => {
   const deleteCard = (id) => {
     axios
       .delete(`${BACKEND_URL}/cards/${id}`)
-      .then((response) => {
+      .then((_) => {
         getCardList();
       })
       .catch((error) => {
