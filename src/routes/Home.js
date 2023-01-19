@@ -4,7 +4,8 @@ import "./Home.css";
 import BoardMenu from "../components/BoardMenu";
 
 const Home = () => {
-  const boardArr = useLoaderData();
+  const loaderData = useLoaderData();
+  const { boardArr, getBoardCards } = loaderData[0];
 
   return (
     <div id="home">
@@ -14,7 +15,7 @@ const Home = () => {
       </header>
 
       <div id="home-menu">
-        <BoardMenu data={boardArr} />
+        <BoardMenu data={boardArr} getBoardCards={getBoardCards}/>
       </div>
 
       <nav id="home-nav">

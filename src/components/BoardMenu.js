@@ -16,6 +16,7 @@ const BoardMenu = (props) => {
           owner={board.owner}
           cards={board.num_cards}
           class={index % 2 === 1 ? "pink" : "white"}
+          getBoardCards = {props.getBoardCards}
         />
       );
     });

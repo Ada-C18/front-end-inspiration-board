@@ -1,22 +1,25 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./BoardMenuItem.css";
 
 const BoardMenuItem = (props) => {
-  //Also need to figure out how to calculate # of likes
-  // Question from Katherine: Aren't we actually showing the number of cards here,
-  // not the number of likes?
+
+  const navigate = useNavigate();
+  const getBoardCards = props.getBoardCards;
+
+  const goToSingleBoardView = (boardId=props.id) => {
+    getBoardCards(boardId);
+    return navigate(`/boards/${props.id}`) 
+  };
 
   return (
     <li>
-      <Link to={`/boards/${props.id}`}>
-        <button className={`menu-item ${props.class}`}>
-          {props.title}&nbsp;
-          <span id="cardCount">
-            ({props.cards} {props.cards === 1 ? "card" : "cards"})
-          </span>
-          <span> &mdash; {props.owner}</span>
-        </button>
-      </Link>
+      <button className={`menu-item ${props.class}`} onClick={() => goToSingleBoardView()}>
+        {props.title}&nbsp;
+        <span id="cardCount">
+          ({props.cards} {props.cards === 1 ? "card" : "cards"})
+        </span>
+        <span> &mdash; {props.owner}</span>
+      </button>
     </li>
   );
 };
