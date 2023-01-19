@@ -6,41 +6,49 @@ const NewCardForm = (props) => {
   const [formFields, setFormFields] = useState({
     message: "",
   });
+  const [error, setError]= useState(false)
 
   const onMessageChange = (event) => {
     setFormFields({
       ...formFields,
       message: event.target.value,
     });
+    
   };
 
   const FormSubmit = (event) => {
     event.preventDefault();
-
     props.onUpdateCardData({
       message: formFields.message,
-    });
 
+    });
     setFormFields({
       message: "",
     });
+
   };
+
+  const validateInput = () =>{
+      setError(formFields.message.length === 0||formFields.message.length > 40)
+  }
 
   return (
     <form onSubmit={FormSubmit}>
       <div>
         <label htmlFor="Message">Message:</label>
+        {error ? <label className="error_text">"Maximum length should not be less than 1 character or exceed 40 characters"</label> :' '}
         <input
           name="Message"
-          // maxLength={40}
-          value={formFields.message}
-          onChange={onMessageChange}
           className={
             formFields.message.length === 0 || formFields.message.length > 40
               ? "max_length_input"
               : ""
           }
+          onChange={onMessageChange}
+          onInput={validateInput}
+          value={formFields.message}
         />
+
       </div>
       <p> Preview - </p>
       <p>{formFields.message}</p>

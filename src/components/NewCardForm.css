@@ -1,4 +1,9 @@
+.error_text{
+    font-size: small;
+    color: red;
+}
 
 .max_length_input{
-    border: red;
+    border:red solid 3px;
+    box-shadow:5px 5px 5px red;
 }

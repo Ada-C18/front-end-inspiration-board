@@ -7,6 +7,8 @@ const NewBoardForm = (props) => {
     title: "",
     owner: "",
   });
+  const [titleError, setTitleError]= useState(false)
+  const [ownerError, setOwnerError]= useState(false)
 
   const onTitleChange = (event) => {
     setFormFields({
@@ -22,10 +24,6 @@ const NewBoardForm = (props) => {
     });
   };
 
-  // const handleChange = (event) => {
-  //   setFormFields({ ...formFields, [event.target.title]: event.target.value });
-  // };
-
   const FormSubmit = (event) => {
     event.preventDefault();
 
@@ -39,26 +37,47 @@ const NewBoardForm = (props) => {
       owner: "",
     });
   };
-
+  const validateTitleInput = () =>{
+    setTitleError(formFields.title.length > 40)
+}
+  const validateOwnerInput = () =>{
+    setOwnerError(formFields.owner.length > 20)
+}
   return (
     <form onSubmit={FormSubmit}>
       <div>
         <label htmlFor="Title">Title:</label>
-        <input name="Title" value={formFields.title} onChange={onTitleChange} />
+        {titleError ? <label className="error_text">"The maximum length should not be exceed 40 characters"</label> :' '}
+        <input 
+        name="Title" value={formFields.title} 
+        onChange={onTitleChange}
+        onInput={validateTitleInput}          
+        className={
+            formFields.title.length === 0 || formFields.title.length > 40
+              ? "max_length_input"
+              : ""
+          }/>
       </div>
       <div>
         <label htmlFor="owner">Owner:</label>
+        {ownerError ? <label className="error_text">"The maximum length should not be exceed 20 characters"</label> :' '}
         <input
           owner="owner"
           value={formFields.owner}
-          onChange={onOwnerChange} //or should it be onFormSubmit?
+          onChange={onOwnerChange} 
+          onInput={validateOwnerInput } 
+          className={
+            formFields.owner.length === 0 || formFields.owner.length > 40
+              ? "max_length_input"
+              : ""
+          }
         />
       </div>
       <p> Preview - </p>
       <p>
         {formFields.title} {formFields.owner}{" "}
       </p>
-      <input type="submit" value="Submit" disabled={formFields.title.length > 40} />
+      <input type="submit" value="Submit" disabled={formFields.title.length === 0 ||formFields.title.length > 40} />
     </form>
   );
 };
