@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './App.css';
+
 // import axios from 'axios';
 import {
   REACT_APP_BACKEND_URL,
@@ -99,14 +100,18 @@ const App = () => {
   };
 
   const [sortCards, setSortCards] = useState('likes');
-  
+
   const handleSortedCards = (sortType) => {
-    if (sortType === "likes") {
-      setCards(prevCards => prevCards.sort((a, b) => b.likesCount - a.likesCount));
-    } else if (sortType === "cardId") {
-      setCards(prevCards => prevCards.sort((a, b) => a.cardId - b.cardId));
-    } else if (sortType === "alphabetically") {
-      setCards(prevCards => prevCards.sort((a, b) => a.message.localeCompare(b.message)));
+    if (sortType === 'likes') {
+      setCards((prevCards) =>
+        prevCards.sort((a, b) => b.likesCount - a.likesCount)
+      );
+    } else if (sortType === 'cardId') {
+      setCards((prevCards) => prevCards.sort((a, b) => a.cardId - b.cardId));
+    } else if (sortType === 'alphabetically') {
+      setCards((prevCards) =>
+        prevCards.sort((a, b) => a.message.localeCompare(b.message))
+      );
     }
     setSortCards(sortType);
   };
