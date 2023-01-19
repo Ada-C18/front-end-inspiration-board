@@ -104,10 +104,14 @@ function App() {
 
   const deleteCard = (cardId) => {
     console.log("delete card called");
+    console.log(`🦷${JSON.stringify(selectedBoard)}`);
     axios
       .delete(
-        `https://inspiration-board-db.herokuapp.com/boards/${selectedBoard.id}/cards/${cardId}`
+        `https://inspiration-board-db.herokuapp.com/boards/cards/${cardId}`
       )
+      // .delete(
+      //   `http://127.0.0.1:5000/boards/${selectedBoard.id}/cards/${cardId}`
+      // )
       .then(() => {
         const newCardData = [];
         for (const card of cards) {
