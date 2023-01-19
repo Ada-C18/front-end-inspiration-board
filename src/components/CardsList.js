@@ -5,7 +5,7 @@ import "./CardsList.css";
 
 const CardsList = ({ cardsList, boardTitle, deleteCard }) => {
   const cardComponents = cardsList.map((card) => {
-    // console.log("Inside of cardList", card);
+    console.log("Inside of cardList", card);
     return (
       <Card
         cardId={card.cardId}
