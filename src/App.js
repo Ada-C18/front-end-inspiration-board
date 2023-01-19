@@ -135,6 +135,59 @@ const App = () => {
       });
   };
 
+  const sortAlphabetically = () => {
+    setCardData(
+      [...cardData].sort((a, b) => {
+        // if return value is negative, a comes first
+        const aMessage = a.message.toLowerCase();
+        const bMessage = b.message.toLowerCase();
+        if (aMessage < bMessage) {
+          return -1;
+        } else if (bMessage < aMessage) {
+          return 1;
+        } else {
+          return 0;
+        }
+      })
+    );
+  };
+
+  const sortByLikes = () => {
+    setCardData(
+      [...cardData].sort((a, b) => {
+        // if return value is negative, a comes first
+        if (a.likes < b.likes) {
+          return -1;
+        } else if (b.likes < a.likes) {
+          return 1;
+        } else {
+          return 0;
+        }
+      })
+    );
+  };
+
+  const sortById = () => {
+    setCardData(
+      [...cardData].sort((a, b) => {
+        // if return value is negative, a comes first
+        if (a.id < b.id) {
+          return -1;
+        } else if (b.id < a.id) {
+          return 1;
+        } else {
+          return 0;
+        }
+      })
+    );
+  };
+
+  // const updateCardData = () => {
+  //   setCardData([...cardData])
+  // }
+  //update card data
+  // take in new card data and set card data to update the cards
+
   return (
     <section>
       <header className="header">INSPIRATION BOARD</header>
@@ -160,15 +213,19 @@ const App = () => {
         </div>
       </div>
       <br></br>
-
       <div className="corkboard">
         {selectedBoard.id && (
           <div className="boardtitle">Cards for {selectedBoard.title}</div>
         )}
         {selectedBoard.id && (
           <div className="board_container">
-            <CardList cards={cardData} onDeleteCard={deleteCard}></CardList>
-
+            <CardList
+              cards={cardData}
+              onAlphabeticalSort={sortAlphabetically}
+              onLikesSort={sortByLikes}
+              onIdSort={sortById}
+              onDeleteCard={deleteCard}
+            ></CardList>
             <div className="new_card">
               <h3> Create a New Card</h3>
               <NewCardForm onUpdateCardData={addCard} />
