@@ -74,22 +74,22 @@ const CardsList = (props) => {
       });
   };
 
-  const sortByLikes = (arr) => {
-    const sorted = [...arr].sort((a, b) => {
+  const sortByLikes = (cards) => {
+    const sorted = [...cards].sort((a, b) => {
       return b.likes_count - a.likes_count;
     });
     setCardsData(sorted);
   };
 
-  const sortById = (arr) => {
-    const sorted = [...arr].sort((a, b) => {
+  const sortById = (cards) => {
+    const sorted = [...cards].sort((a, b) => {
       return b.id - a.id;
     });
     setCardsData(sorted);
   };
 
-  const sortAtoZ = (arr) => {
-    const sorted = [...arr].sort((a, b) => {
+  const sortAtoZ = (cards) => {
+    const sorted = [...cards].sort((a, b) => {
       return a.message > b.message ? 1 : -1;
     });
     setCardsData(sorted);
@@ -113,7 +113,7 @@ const CardsList = (props) => {
         <span onClick={NewCardForm}></span>
       </section>
       <h2>Cards for {props.board.title}</h2>
-      <button onClick={() => sortByLikes(cardsData)}>Sort by # of likes</button>
+      <button onClick={() => sortByLikes(cardsData)}>Sort by ❤️</button>
       <button onClick={() => sortById(cardsData)}>Sort by ID</button>
       <button onClick={() => sortAtoZ(cardsData)}>Sort by A-Z</button>
 
