@@ -1,6 +1,7 @@
 import './App.css';
 // import axios from 'axios';
 import Board from './components/Board';
+import Card from './components/Card';
 import CardList from './components/CardList';
 import NewCard from './components/NewCard';
 import NewBoard from './components/NewBoard';
@@ -17,7 +18,8 @@ function App() {
   const [selectedBoard, setSelectedBoard] = useState({
     title: '',
     author: '',
-    board_id: null
+    cards:[],
+    board_id: 1
   },[]);
 
   // console.log(selectedBoard)
@@ -29,8 +31,11 @@ function App() {
   }, []);
 
   const onBoardClick = (board) => {
+    console.log(onBoardClick)
     axios.get(`${url}/boards/${board.id}`).then((response) => {
+      setSelectedBoard(response.data);
       setCardsData(response.data.cards);
+      
   }).catch((error) => {
       console.log('Error: Couldn\'t get all cards', error)
       alert('Couldn\'t get all cards')
@@ -44,7 +49,7 @@ function App() {
 
   const boardsElements = boardsData.map((board) => {
     // console.log(board)
-    // console.log(onBoardSelect)
+    // console.log(onBoardClick)
     return (
       <li>
         <Board board={board} onBoardSelect={selectBoard} onBoardClick = {onBoardClick}></Board>
@@ -93,7 +98,7 @@ function App() {
   //   )
   // });
   const handleCardSubmit=(data)=>{
-    console.log("data",data)
+    //console.log("data",data)
     //call the api endpoints here
     //onBoardSubmit={handleBoardSubmit}
   }
@@ -128,7 +133,11 @@ function App() {
             </ul>
           </section>
           <section>
+            <CardList board={selectedBoard} ></CardList>
+        
             <h2>Selected Board</h2> 
+
+            
 
             {/* <Board> {selectedBoard.board_id} ? `${selectedBoard.title} - ${selectedBoard.author}` </Board> */}
             {/* <p>{selectBoard.board_id ? `${selectBoard.title} - ${selectBoard.author}` : 'Select a Board from the Board List!'}</p> */}

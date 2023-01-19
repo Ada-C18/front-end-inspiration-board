@@ -11,7 +11,7 @@ const CardList = (props) => {
 
     useEffect (() => {
         axios.get(`${url}/boards/${props.board.board_id}/cards`).then((response) => {
-            setCardsData(response.data);
+            setCardsData(response.data.cards);
         }).catch((error) => {
             console.log('Error: Couldn\'t get all cards', error)
             alert('Couldn\'t get all cards')
