@@ -12,7 +12,7 @@ const Card = (props) => {
             <li>
             <p
                 className="card-item__delete"
-                onClick={() => props.deleteCardItem(props.card)}
+                onClick={() => props.deleteCard(props.card)}
             >
                 Delete Card
             </p>
