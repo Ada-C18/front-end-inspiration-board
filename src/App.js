@@ -44,7 +44,6 @@ function App() {
 
   // delete board
   const deleteBoard = (boardId) => {
-    console.log("deleteBoard Called");
     axios
       .delete(`${URL}/boards/${boardId}`)
       .then(() => {
