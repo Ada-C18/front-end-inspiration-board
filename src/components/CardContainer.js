@@ -3,7 +3,7 @@ import "./CardContainer.css";
 import Card from "./Card";
 // import PropTypes from 'prop-types';
 
-const CardContainer = ({ currentBoard, cards }) => {
+const CardContainer = ({ currentBoard, cards, onDeleteCard }) => {
     const getAllCardsJSX = (cards) => {
     const cardsToDisplay = cards.map((card, i) => {
         return (
@@ -12,6 +12,7 @@ const CardContainer = ({ currentBoard, cards }) => {
             id={card.id}
             message={card.message}
             likeCount={card.likeCount}
+            onDeleteCard={onDeleteCard}
         />
         );
     });

@@ -2,12 +2,15 @@ import React from "react";
 import "./Card.css";
 // import PropTypes from 'prop-types';
 
-const Card = ({ id, message, likeCount }) => {
+const Card = ({ id, message, likeCount, onDeleteCard }) => {
+
+    const handleClick = () => {onDeleteCard(id)};
+
     return (
         <div className="card__div">
             <h3 className="card-message">{message}</h3>
             <h4 className="card-like-count"> + {likeCount}</h4>
-            <button className="delete-card__button">Delete Card</button>
+            <button onClick={handleClick} className="delete-card__button">Delete Card</button>
         </div>
     );
     };

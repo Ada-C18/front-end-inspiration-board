@@ -34,12 +34,23 @@ const getAllCardsApi = (id) => {
   return axios
     .get(`http://127.0.0.1:5000/board/${id}/cards`)
     .then((response) => {
-
       return response.data;
     })
     .catch((error) => {
       console.log(error);
     });
+};
+
+// helper function for delete card API request
+const deleteCardApi = (boardId, cardId) => {
+  return axios.delete(`http://127.0.0.1:5000/board/${boardId}/cards/${cardId}`)
+  .then(response => {
+    console.log(response);
+    console.log(`Card ${cardId} from Board ${boardId} deleted`);
+  })
+  .catch(error => {
+    console.log(error);
+  })
 };
 
 function App() {
@@ -153,7 +164,18 @@ function App() {
   };
 
   // add function to delete card and pass into Card
-  // make delete API request in another function called outside of App
+  const deleteCard = (cardId) => {
+    deleteCardApi(currentBoard.id, cardId)
+    .then(response => {
+
+      setCards(cards => cards.filter(card => {
+        return card.id !== cardId;
+
+      }))
+    })
+  };
+
+  
 
   return (
     <div className="App">
@@ -166,7 +188,7 @@ function App() {
         onDisplayCurrentBoard={displayCurrentBoard}
       />
       <NewCardForm addCardCallback={addCard} afterSubmitMessage={cardFormMessage} boardSelected={boardSelected}/>
-      <CardContainer currentBoard={currentBoard} cards={cards} />
+      <CardContainer currentBoard={currentBoard} cards={cards} onDeleteCard={deleteCard}/>
     </div>
   );
 }
