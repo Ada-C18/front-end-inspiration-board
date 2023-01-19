@@ -82,11 +82,18 @@ const CardsList = (props) => {
   };
 
   const sortById = (arr) => {
-    const sorted = [...arr].sort((a,b) => {
+    const sorted = [...arr].sort((a, b) => {
       return b.id - a.id;
     });
-    setCardsData(sorted)
-  }
+    setCardsData(sorted);
+  };
+
+  const sortAtoZ = (arr) => {
+    const sorted = [...arr].sort((a, b) => {
+      return a.message > b.message ? 1 : -1;
+    });
+    setCardsData(sorted);
+  };
 
   const cardElements = cardsData.map((card) => {
     return (
@@ -108,6 +115,8 @@ const CardsList = (props) => {
       <h2>Cards for {props.board.title}</h2>
       <button onClick={() => sortByLikes(cardsData)}>Sort by # of likes</button>
       <button onClick={() => sortById(cardsData)}>Sort by ID</button>
+      <button onClick={() => sortAtoZ(cardsData)}>Sort by A-Z</button>
+
       <div>{cardElements}</div>
     </section>
   );
