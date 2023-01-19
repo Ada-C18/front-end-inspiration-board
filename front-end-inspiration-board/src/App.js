@@ -103,11 +103,17 @@ function App() {
   };
 
   const addCard = (cardData) => {
-    axios.post(URL + "/" + selectedBoard.id + "/cards");
-    const newCard = [...cardsList];
-    newCard.push(cardData);
-    setCardsList(newCard);
-    selectedBoard.cards = newCard;
+    axios.post(URL + "/" + selectedBoard.id + "/cards").then((response) => {
+      console.log(response);
+      const newCards = [...cardsList];
+      const newCardJSON = {
+        ...cardData,
+        id: response.data.id,
+      };
+      newCards.push(newCardJSON);
+      setCardsList(newCards);
+      selectedBoard.cards = newCards;
+    });
   };
 
   const increaseLikes = (cardId, NewLikesCount) => {
