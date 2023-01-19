@@ -37,7 +37,9 @@ const CardForm = (props) => {
           value={formData.name}
           onChange={handleChange}
         />
-        <input type='submit' value='Submit Card' />
+        <input type='submit' 
+        disabled={formData.message.length === 0 || formData.message.length > 40} 
+        value='Submit Card' />
       </form>
     </section>
   );

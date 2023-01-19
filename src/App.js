@@ -2,17 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
 // import axios from 'axios';
-import {
-  REACT_APP_BACKEND_URL,
-  boardApiToJson,
-  cardApiToJson,
-  addBoardAPI,
-  addCardAPI,
-  getBoardsAPI,
-  getCardsAPI,
-  deleteBoardAPI,
-  deleteCardAPI,
-} from './api';
+import { REACT_APP_BACKEND_URL, boardApiToJson, cardApiToJson, addBoardAPI, addCardAPI, getBoardsAPI, getCardsAPI, deleteBoardAPI, deleteCardAPI, likeCardAPI} from './api';
 import BoardForm from './components/BoardForm';
 import BoardList from './components/BoardList';
 import CardForm from './components/CardForm';
@@ -89,16 +79,18 @@ const App = () => {
     }
   };
 
-  const handleLikesCount = useCallback((cardId) => {
-    setCards((prevCards) =>
-      prevCards.map((card) => {
-        if (card.cardId === cardId) {
-          return { ...card, likesCount: card.likesCount + 1 };
+  const handleLikesCount = (cardId) => {
+    return likeCardAPI(cardId)
+    .then(likedCard => {
+      setCards(cards => cards.map(card => {
+        if(card.cardId === likedCard.cardId) {
+          return likedCard;
+        } else {
+          return card;
         }
-        return card;
-      })
-    );
-  }, []);
+      }));
+    })
+  };
 
   //Refresh Boards helper func for useEffect, NEEDS PROMISE
   const refreshBoards = async () => {

@@ -91,6 +91,16 @@ export const deleteBoardAPI = async (boardId) => {
   }
 };
 
+export const likeCardAPI = async (cardId) => {
+  try {
+    const response = await axios.patch(`${REACT_APP_BACKEND_URL}/cards/${cardId}`);
+    return cardApiToJson(response.data);
+  } catch (error) {
+    console.log(error);
+    throw new Error(`Could not update likes for card ${cardId}.`);
+  }
+};
+
 export const deleteCardAPI = async (cardId) => {
   try {
     await axios.delete(`${REACT_APP_BACKEND_URL}/cards/${cardId}`);

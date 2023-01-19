@@ -49,7 +49,9 @@ const BoardForm = (props) => {
           ></input>
         </div>
         <div>
-          <input type='submit' value='Submit'></input>
+          <input type='submit' 
+          disabled={((formData.title.length === 0) || (formData.owner.length === 0) || (formData.title.length > 40) || (formData.owner.length > 40))}
+          value='Submit'></input>
         </div>
       </form>
     </div>

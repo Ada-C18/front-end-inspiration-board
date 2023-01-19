@@ -12,6 +12,7 @@ const CardList = (props) => {
           cardId={card.cardId}
           boardId={card.boardId}
           message={card.message}
+          likesCount={card.likesCount}
           onDeleteCard={props.onDeleteCard}
           onLikesCount={props.onLikesCount}
         />
@@ -32,6 +33,7 @@ CardList.propTypes = {
       cardId: PropTypes.number.isRequired,
       boardId: PropTypes.number.isRequired,
       message: PropTypes.string.isRequired,
+      likesCount: PropTypes.number.isRequired
     })
   ).isRequired,
   onLikesCount: PropTypes.func.isRequired,
