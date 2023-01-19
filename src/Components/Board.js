@@ -52,15 +52,13 @@ const Board = (props) => {
             ];
 
             if (sortCardsBy.method === "message") {
-              return sortCardsBy.direction === "asc"
-                ? comp1.toLowerCase().localeCompare(comp2.toLowerCase())
-                : comp2.toLowerCase().localeCompare(comp1.toLowerCase());
+              return comp1.toLowerCase().localeCompare(comp2.toLowerCase());
+            } else {
+              return comp1 - comp2;
             }
-
-            return sortCardsBy.direction === "asc"
-              ? comp1 - comp2
-              : comp2 - comp1;
           });
+
+          if (sortCardsBy.direction === "desc") cards.reverse();
 
           setCardList(cards);
         });
