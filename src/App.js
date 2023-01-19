@@ -92,7 +92,7 @@ const App = () => {
             <div className="wrapper">
               <h2 className="box">Selected Boards</h2>
             </div>
-            <p>
+            <p class="text-effect">
               {selectedBoard.board_id
                 ? `${selectedBoard.title} - ${selectedBoard.owner}`
                 : "Select a Board from the Board List:"}
@@ -111,9 +111,13 @@ const App = () => {
               onClick={toggleNewBoardForm}
               className="new-board-form__toggle-btn"
             >
-              {boardFormVisibility
-                ? "Hide New Board Form"
-                : "Show New Board Form"}
+              <div className="btn btn-one">
+                <span>
+                  {boardFormVisibility
+                    ? "Hide New Board Form"
+                    : "Show New Board Form"}
+                </span>
+              </div>
             </span>
           </section>
         </section>
