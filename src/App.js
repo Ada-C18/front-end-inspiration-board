@@ -9,7 +9,8 @@ import NewCardForm from "./components/NewCardForm.js";
 function App() {
   // boardsList axios call
   const [boardsList, setBoardsList] = useState([]);
-
+  const [selectedBoardId, setSelectedBoardId] = useState(null);
+  console.log(`selectedBoard: ${selectedBoardId}`);
   const URL = "https://inspirationboard.herokuapp.com";
   const fetchAllBoards = () => {
     axios
@@ -51,6 +52,7 @@ function App() {
           };
         });
         setCardsList(cardsAPIResCopy);
+        setSelectedBoardId(boardId);
       })
       .catch((error) => {
         console.log(error);
@@ -93,8 +95,10 @@ function App() {
   const addCard = (newCardInfo) => {
     //use axios.post request here
     //handling .then to update frontend, update state variable with setBikesList()
+    console.log("newCardInfo!");
+    console.log(newCardInfo);
     axios
-      .post(`${URL}/boards/${newCardInfo.id}`, newCardInfo)
+      .post(`${URL}/boards/28/cards`, newCardInfo)
       .then((response) => {
         // console.log(response);
         fetchAllCards();
@@ -114,7 +118,10 @@ function App() {
       />
       <h2>Add Board:</h2>
       <NewBoardForm addBoardCallbackFunc={addBoard} />
-      <NewCardForm addCardCallbackFunc={addCard} />
+      <NewCardForm
+        addCardCallbackFunc={addCard}
+        selectedBoardId={selectedBoardId}
+      />
       <CardList cardEntries={cardsList} />
     </div>
   );
