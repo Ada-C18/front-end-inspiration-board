@@ -16,8 +16,8 @@ function App() {
   const [showCard, setShowCard] = useState(true);
   const [cards, setCards] = useState([]);
 
-  const BOARD_URL = "http://127.0.0.1:5000/boards";
-  const CARD_URL = "http://127.0.0.1:5000/cards";
+  const BOARD_URL = "https://sw-inspiration-board.herokuapp.com/boards";
+  const CARD_URL = "https://sw-inspiration-board.herokuapp.com/cards";
 
   const getAllBoards = () => {
     axios
