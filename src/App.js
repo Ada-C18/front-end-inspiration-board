@@ -97,9 +97,7 @@ function App() {
     axios
       .get(`${URL}/boards/${boardId}`)
       .then((response) => {
-        console.log(
-          `updateSelectedBoard response: ${JSON.stringify(response)}`
-        );
+        console.log(response);
         const boardAPIResCopy = response.data;
         setSelected(boardAPIResCopy);
         fetchCards(boardId);
@@ -133,7 +131,7 @@ function App() {
         const cardsAPIResCopy = response.data.map((card) => {
           console.log("Inside of app level this is what Card is", card);
           return {
-            cardId: card.card_id,
+            cardId: card.cardId,
             message: card.message,
             // likesCount: card.likesCount,
           };
