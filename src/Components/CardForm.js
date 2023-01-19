@@ -28,6 +28,7 @@ const CardForm = (props) => {
         <textarea
           type="text"
           placeholder="Message"
+          id="text-area"
           className={"form-field card-form-field"}
           name="message"
           value={message}

@@ -67,12 +67,15 @@ function App() {
         currentBoard={currentBoard}
         currentBoardName={getCurrentBoardName()}
       ></Board>
-      <button
-        className="delete-board-button"
-        onClick={() => deleteBoard(currentBoard)}
-      >
-        Delete Board 🗑️
-      </button>
+      <section id="del-board">
+        <button
+          className="del-board-btn"
+          onClick={() => deleteBoard(currentBoard)}
+        >
+          <hr id="del-btn-rmv"></hr>
+        </button>
+        <p id="del-board-text">REMOVE BOARD</p>
+      </section>
     </main>
   );
 }

@@ -7,8 +7,16 @@
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: rgba(235, 140, 140, 0.85);
+  background-color: rgba(235, 140, 140, 0.65);
   z-index: 1;
+}
+
+html:not([data-scroll="0"]) .header {
+  position: fixed;
+  top: 0;
+  background-color: rgba(235, 140, 140, 0.7);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 .header > select {
