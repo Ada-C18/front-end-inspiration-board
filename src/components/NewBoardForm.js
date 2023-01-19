@@ -35,6 +35,7 @@ const NewBoardForm = (props) => {
       <label htmlFor="title">Board Title</label>
       {/* htmlFor - for accessibility */}
       <input
+        className="board-input-box"
         type="text"
         // id="title"
         name="title"
@@ -44,6 +45,7 @@ const NewBoardForm = (props) => {
 
       <label htmlFor="owner">Board Owner</label>
       <input
+        className="board-input-box"
         type="text"
         // id="owner"
         name="owner"

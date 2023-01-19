@@ -48,6 +48,7 @@ const NewCardForm = (props) => {
 
       <label htmlFor="like_count">Like Count</label>
       <input
+        className="create-card-input"
         type="number"
         // id="owner"
         name="like_count"
