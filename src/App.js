@@ -143,17 +143,17 @@ function App() {
           getOneBoard={getOneBoard}
           boardId={boardId}
         />
-        <h2> Create a New Board</h2>
+        <h2 className="new-item"> Create a New Board</h2>
         <FormNewBoard addBoardCallbackFunc={addBoard} />
       </nav>
 
       <aside className="cards">
-        <h2> Create a New Card </h2>
+        <h2 className="new-item"> Create a New Card </h2>
         <FormNewCard addCardCallbackFunc={addCard} boardId={boardId} />
       </aside>
 
       <main>
-        <h2> Cards for {board} </h2>
+        <h2 className="card-title"> Cards for {board} </h2>
         <CardList
           cardList={cardList}
           deleteCard={deleteCard}

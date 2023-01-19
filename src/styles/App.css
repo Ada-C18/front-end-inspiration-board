@@ -1,4 +1,8 @@
 
+body {
+  background-color: #f0a3bc;
+}
+
 .app-all {
   display: grid;
   grid-template-areas:
@@ -11,21 +15,29 @@
   height:160vh;
   width: 100vh;
   margin: auto;
+
 }
 
 header {
 grid-area: header;
-background-color: #f0a3bc;
+outline: 3px solid black;
+text-align: center;
+font-size: 70px;
+color: #f0a3bc;
+font-weight: bold;
+background-color: #397754;
 }
 
 main {
 grid-area: main;
-background-color: #397754;
+background-image: url("../images/cork.jpeg");
+outline: 1px solid black;
 }
 
 .board {
 grid-area: nav;
-background-color: #f0a3bc;
+background-color: #70be51;
+outline: 1px solid black;
 
 }
 
@@ -42,11 +54,17 @@ header, main, nav, aside{
 
 .boardListTitle {
   font-family: Verdana, sans-serif;
-  color: #397754;
-
+	text-shadow: 4px 5px 4px #397754;
 }
 
-
+.card-title {
+  font-family: Verdana, sans-serif;
+	text-shadow: 4px 5px 4px lightgray;
+}
+.new-item {
+  font-family: Verdana, sans-serif;
+	text-shadow: 4px 5px 4px #397754;
+}
 
 
 h2 {

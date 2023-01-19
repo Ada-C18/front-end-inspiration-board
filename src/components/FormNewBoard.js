@@ -59,7 +59,7 @@ const NewBoardForm = (props) => {
           
           <p>
             {" "}
-            <label>Board Preview:</label>
+            <label>Preview Board:</label>
             <br/>
             {formData.title} - {formData.owner}{" "}
           </p>
