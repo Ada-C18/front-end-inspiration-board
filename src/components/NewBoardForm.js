@@ -51,7 +51,9 @@ const NewBoardForm = (props) => {
           Preview: {formData.title} - {formData.owner}
         </p>
 
-        <button type="submit">Submit New Board</button>
+        <button className="button-add-board" type="submit">
+          Submit New Board
+        </button>
       </form>
     </div>
   );

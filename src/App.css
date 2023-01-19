@@ -1,38 +1,56 @@
-.App {
+
+.main-page {
+  margin: 5%;
+  font-size: 1.2rem;
+  font-family: 'Merriweather', serif;
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  /* background: rgb(98,90,240);
+  background: linear-gradient(90deg, rgba(98,90,240,1) 0%, rgba(57,206,213,1) 39%, rgba(0,212,255,1) 100%); */
+  
+  
+ 
+}
+.project-title {
+  color: #636161;
+  opacity: 0.8;
+  text-shadow: 2px 2px 2px #f3f7f7;
   text-align: center;
+  
+  /* width: 200px;
+  height: auto; */
+  /* border: 2px solid ; */
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-family: 'Sacramento', cursive;
+  font-weight: bold;
+  font-size: 3rem;
+  
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h2 {
+  color: #079a9a;
+  font-family: 'Montserrat', cursive;
+  font-size: 2.3rem;
+  font-weight: bold;
+  text-align: center;
+  /* opacity: 0.8; */
+  /* text-shadow: 1px 1px 1px #8ef8f8; */
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.boards {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+.cards {
+  margin-top: 4%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+}
+footer {
+  text-align: center;
+  padding-top: 10%;
+  font-size: 1.1rem;
+  font-weight:900;
+  color: #636161;;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

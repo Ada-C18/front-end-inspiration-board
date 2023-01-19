@@ -1,7 +1,32 @@
+button {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #0f1010;
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgb(176, 173, 173) 100%);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 3px #999;
+}
+      
+.button-add-board:hover {
+    background-color: #079a9a;
+}
+      
+.button-add-board:active {
+    background-color: #079a9a;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
 form {
     display:flex;
     flex-direction: column;
-    align-items: center;
     text-align: left;
     justify-content:center;
 }
@@ -12,6 +37,6 @@ input, label {
     margin-bottom: 1rem; 
     text-align: left;
     justify-content: center;
-    max-width: 220px;
+    max-width: 300px;
     align-items: center;
 }

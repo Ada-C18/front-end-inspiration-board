@@ -25,23 +25,27 @@ const BoardList = ({ boards }) => {
   }
 
   return (
-    <div>
+    <div className="board-list">
       {/* <ul className="boards-list-no-bullet">{getBoardsListJSX(boards)}</ul>; */}
+
       <ul className="boards-list-no-bullet">
         {boards.map((board) => (
           <li key={board.board_id} onClick={() => handleBoardClick(board)}>
-            {board.title}
+            {board.boardId}. {board.title}
           </li>
         ))}
       </ul>
+
       <h2>Selected Board</h2>
       {/* {selectedBoard && ( */}
 
-        <div>
-        {selectedBoard ? `${selectedBoard.title} - ${selectedBoard.owner}` : "need to select board"};
-        </div>
-       {/* )} */}
-   
+      <div>
+        {selectedBoard
+          ? `${selectedBoard.title} - ${selectedBoard.owner}`
+          : "Select a Board from the Board List!"}
+      </div>
+
+      {/* )} */}
     </div>
   );
 };
