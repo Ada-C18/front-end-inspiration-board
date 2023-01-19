@@ -1,8 +1,6 @@
 import { useState } from "react";
 
 const NewCardForm = ({ addCardCallback }) => {
-  // console.log("callling new card form");
-
   const [cardData, setCardData] = useState({ message: "" });
 
   const onMessageChange = (event) => {
@@ -10,7 +8,6 @@ const NewCardForm = ({ addCardCallback }) => {
       // ...cardData,
       message: event.target.value,
     });
-    // error message if card message more than 40 chars
     if (event.target.value.length > 40) {
       window.alert("Message shouldn't exceed 40 characters");
     }
@@ -18,7 +15,6 @@ const NewCardForm = ({ addCardCallback }) => {
 
   // Add Card
   const onCardFormSubmit = (event) => {
-    console.log("Calling onCardFormSubmit");
     event.preventDefault();
 
     addCardCallback({

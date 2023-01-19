@@ -24,9 +24,6 @@ function BoardsList({ boardsList, updateSelectedBoard }) {
     <div className="boards__list">
       <h1>Boards</h1>
       <ol>{boardComponents}</ol>
-      {/* <h1>Selected Board</h1>
-      <p>Select a Board from the Board List!</p>
-      {SelectedBoard} */}
     </div>
   );
 }
