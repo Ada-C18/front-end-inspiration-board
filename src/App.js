@@ -3,7 +3,7 @@ import "./App.css";
 import NewBoardForm from "./components/NewBoardForm";
 import CardList from "./components/CardList";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const App = () => {
   const [boardData, setBoardData] = useState([]);
