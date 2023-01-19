@@ -35,7 +35,7 @@ import axios from "axios";
 // ];
 
 function App() {
-  const URL = "http://127.0.0.1:5000/boards";
+  const URL = "https://inspirationboard-lavender.herokuapp.com/boards";
   const [boardsList, setBoardsList] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [open, setOpen] = useState(false);
@@ -45,7 +45,7 @@ function App() {
     axios
       .get(URL)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         const BoardsAPIResCopy = res.data.map((board) => {
           return {
             id: board.id,
@@ -103,17 +103,19 @@ function App() {
   };
 
   const addCard = (cardData) => {
-    axios.post(URL + "/" + selectedBoard.id + "/cards").then((response) => {
-      console.log(response);
-      const newCards = [...cardsList];
-      const newCardJSON = {
-        ...cardData,
-        id: response.data.id,
-      };
-      newCards.push(newCardJSON);
-      setCardsList(newCards);
-      selectedBoard.cards = newCards;
-    });
+    axios
+      .post(URL + "/" + selectedBoard.id + "/cards", cardData)
+      .then((response) => {
+        const newCards = [...cardsList];
+        const newCardJSON = {
+          ...cardData,
+          id: response.data.id,
+        };
+        newCards.push(newCardJSON);
+        setCardsList(newCards);
+        console.log(newCards);
+        selectedBoard.cards = newCards;
+      });
   };
 
   const increaseLikes = (cardId, NewLikesCount) => {
@@ -174,11 +176,6 @@ function App() {
                   addCardCallBackFunc={addCard}
                 />
               </Dialog>
-              <CardList
-                deleteCard={deleteCard}
-                increaseLikes={increaseLikes}
-                cardsList={cardsList}
-              />
             </>
           )}
         </section>

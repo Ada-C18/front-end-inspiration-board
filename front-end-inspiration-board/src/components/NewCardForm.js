@@ -14,6 +14,7 @@ const NewCardForm = (props) => {
       const newFormData = {
         ...formData,
         [e.target.name]: e.target.value,
+        likes_count: 0,
       };
       setFormData(newFormData);
       setCharCount(e.target.value.length);

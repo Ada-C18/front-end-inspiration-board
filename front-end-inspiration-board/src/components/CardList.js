@@ -3,6 +3,7 @@ import Card from "./Card";
 
 function CardList(props) {
   const cardComponents = [];
+  console.log(props.cardsList);
 
   for (const card of props.cardsList) {
     cardComponents.push(
