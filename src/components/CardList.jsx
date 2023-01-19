@@ -23,7 +23,7 @@ const CardList = (props) => {
 
     const deleteCard = (card) => {
         axios
-        .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${props.card.id}`)
+        .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${props.card_id}`)
         .then((response) => {
             const newCardData = cardData.filter((currentCard) => {
             return currentCard.id !== card.id;
