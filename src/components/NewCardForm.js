@@ -31,10 +31,14 @@ const NewCardForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleNewCardSubmit}>
+    <nav>
+      <div>
+        <h2>Create A New Card:</h2>
+        <form onSubmit={handleNewCardSubmit}>
       <label htmlFor="message">Card Message</label>
       {/* htmlFor - for accessibility */}
       <input
+        className="create-card-input"
         type="text"
         // id="title"
         name="message"
@@ -52,6 +56,10 @@ const NewCardForm = (props) => {
       ></input>
       <input id="submit-btn" type="submit" value="Add Card" />
     </form>
+      </div>
+      
+    </nav>
+    
   );
 };
 
