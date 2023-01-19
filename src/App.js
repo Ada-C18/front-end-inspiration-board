@@ -8,11 +8,13 @@ import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import { isVisible } from "@testing-library/user-event/dist/utils";
 
+const url = "https://group-4-inspo-board.herokuapp.com"
+
 
 // helper function for boards API request
 const getAllBoardsApi = () => {
   return axios
-    .get("http://127.0.0.1:5000/board")
+    .get(`${url}/board`)
     .then((response) => {
       const newBoards = response.data.map((board) => {
         return {
@@ -32,7 +34,7 @@ const getAllBoardsApi = () => {
 // helper function for cards API request
 const getAllCardsApi = (id) => {
   return axios
-    .get(`http://127.0.0.1:5000/board/${id}/cards`)
+    .get(`${url}/board/${id}/cards`)
     .then((response) => {
       return response.data;
     })
@@ -43,7 +45,7 @@ const getAllCardsApi = (id) => {
 
 // helper function for delete card API request
 const deleteCardApi = (boardId, cardId) => {
-  return axios.delete(`http://127.0.0.1:5000/board/${boardId}/cards/${cardId}`)
+  return axios.delete(`${url}/board/${boardId}/cards/${cardId}`)
   .then(response => {
     console.log(response);
     console.log(`Card ${cardId} from Board ${boardId} deleted`);
@@ -111,7 +113,7 @@ function App() {
       setBoardFormMessage("Please enter a title or owner.");
     } else {
       axios
-      .post("http://127.0.0.1:5000/board", boardData)
+      .post(`${url}/board`, boardData)
       .then((response) => {
 
         const newBoards = [...boards];
@@ -135,7 +137,7 @@ function App() {
   // add new card callback for new card form
   const addCard = (cardData) => {
     axios
-      .post(`http://127.0.0.1:5000/board/${currentBoard.id}/cards`, cardData)
+      .post(`${url}/board/${currentBoard.id}/cards`, cardData)
       .then((response) => {
 
         const newCards = [...cards];
