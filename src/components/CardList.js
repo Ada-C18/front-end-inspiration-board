@@ -10,7 +10,7 @@ const CardList = (props) => {
     const [cardsData, setCardsData] = useState([]);
 
     useEffect (() => {
-        axios.get(`${url}/boards/${props.board.board_id}/cards`).then((response) => {
+        axios.get(`${url}/boards/${props.board.id}/cards`).then((response) => {
             setCardsData(response.data.cards);
         }).catch((error) => {
             console.log('Error: Couldn\'t get all cards', error)
@@ -19,9 +19,9 @@ const CardList = (props) => {
     }, [props.board]);
 
     const deleteCardItem = (card) => {
-        axios.delete(`${url}/cards/${card.card_id}`).then((response) => {
+        axios.delete(`${url}/cards/${card.id}`).then((response) => {
             const newCardsData = cardsData.filter((existingCard) => {
-                return existingCard.card_id !== card.card_id
+                return existingCard.id !== card.id
             })
             setCardsData(newCardsData)
         }).catch((error) => {
@@ -38,7 +38,7 @@ const CardList = (props) => {
     })
 
     const postNewCard = (message) => {
-        axios.post(`${url}/boards/${props.board.board_id}/cards`, {message}).then((response) => {
+        axios.post(`${url}/boards/${props.board.id}/cards`, {message}).then((response) => {
             const cards = [...cardsData];
             cards.push(response.data.card);
             setCardsData(cards)
@@ -56,7 +56,6 @@ const CardList = (props) => {
                     {cardElements}
                 </div>
             </section>
-            <NewCard postNewCard={postNewCard}></NewCard>
         </section>
         
     )

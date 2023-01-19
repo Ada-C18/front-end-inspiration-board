@@ -57,6 +57,8 @@ function App() {
     )
   });
 
+
+
   // createNewBoard
   const onBoardSubmit = (newBoard) => {
     console.log(newBoard)
@@ -70,10 +72,21 @@ function App() {
       alert('Couldn\'t create new board')
     })
   }
+  //when the page loads theres no currently selected board which is prompting an error so what we need then is guard clause so you dont retreieve the cards if there i sno slected boar!!
+  const onCardSubmit=(newCard)=>{
+    console.log(newCard)
+    axios.post(`${url}/boards/${selectedBoard.id}/cards`, newCard).then((response) => {
+      console.log('Response:', response.data);
+      const cards = [...cardsData];
+      cards.push(response.data);
+      setCardsData(cards);
+    }).catch((error) => {
+      console.log('Error: Couldn\'t create new card', error);
+      alert('Couldn\'t create new card')
+    })
+  }
+  
 
-// const selectOneBoard = (board) = {
-//   axios.get(`${url}/boards/<board_id>`)
-// }
 
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
 
@@ -123,7 +136,9 @@ function App() {
           <section>
             <h2> New Card</h2>
             <div className="new__card">
-            <NewCard onCardSubmit={handleCardSubmit}/>
+            <NewCard onCardSubmit={onCardSubmit}></NewCard>
+            {/* <NewCard onCardSubmit={handleCardSubmit}></NewCard> */}
+            
             </div>
           </section>
           <section>
