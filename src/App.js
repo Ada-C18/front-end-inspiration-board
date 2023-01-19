@@ -120,6 +120,17 @@ const deleteCardItem = (card) => {
         alert('Couldn\'t delete card')
     })
 }
+const plusOneCardItem=(card)=>{
+  axios.put(`${url}/cards/${card.id}`).then((response) => {
+    const newCardsData = cardsData.filter((existingCard) => {
+        return existingCard.id !== card.id
+    })
+    setCardsData(newCardsData)
+}).catch((error) => {
+    console.log('Error: Couldn\'t like card', error)
+    alert('Couldn\'t like card')
+})
+}
 
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
 
@@ -131,7 +142,7 @@ const deleteCardItem = (card) => {
     setIsCardFormVisible(!isCardFormVisible)
   }
 
-  const plusOneCard
+  
 
   return (
     <div className="App">
@@ -164,7 +175,7 @@ const deleteCardItem = (card) => {
             </ul>
           </section>
           <section>
-            <CardList board={selectedBoard} cardsData={cardsData}  deleteCardItem={deleteCardItem}></CardList>
+            <CardList board={selectedBoard} cardsData={cardsData} deleteCardItem={deleteCardItem} plusOneCardItem={plusOneCardItem}></CardList>
       
             <h2>Selected Board</h2> 
 
