@@ -46,6 +46,17 @@ function App() {
 
   useEffect(() => getBoardList, []);
 
+  const deleteBoard= (id) => {
+    axios.delete(`${BACKEND_URL}/boards/${id}`).then((response) => {
+   
+      getBoardList();
+      setCurrentBoard(null)
+   
+    }).catch((error) => {
+      console.log('Error:', error);
+      alert('Couldn\'t delete the board.');
+    });
+  };
   return (
     <main className="App">
       <Header
@@ -58,6 +69,7 @@ function App() {
         currentBoard={currentBoard}
         currentBoardName={getCurrentBoardName()}
       ></Board>
+      <button className="delete-board-button" onClick={() => deleteBoard(currentBoard)} >Delete Board 🗑️</button>
     </main>
   );
 }
