@@ -3,14 +3,49 @@
     padding: 1px; 
 }
 
-li {
+li  {
     background: white;
     color: black;
     font-style:normal;
-    margin: 0;
+    margin: 5px;
     list-style-position: inside;
-    list-style-type: square; 
+    list-style-type: none; 
     font-family: Verdana, sans-serif;
     font-size: medium;
-    /* margin: 5px */
+    outline: #9b45b2;
+    border-radius: 10px;
+    padding: 5px; 
+    width: 160px;
+    height: 30px;
+}
+
+.titles {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    background: white;
+    color: black;
+    font-style:normal;
+    margin: 5px;
+    list-style-position: inside;
+    list-style-type: none; 
+    font-family: Verdana, sans-serif;
+    font-size: medium;
+    outline: #9b45b2;
+    border-radius: 10px;
+}
+
+.deleteBoard {
+    background: white;
+    display: inline-block;
+    justify-content: right;
+    background: white;
+    color: black;
+    font-style:normal;
+    margin: 5px;
+    list-style-position: inside;
+    list-style-type: none; 
+    font-family: Verdana, sans-serif;
+    font-size: medium;
+    outline: #9b45b2;
+    border-radius: 10px;
 }
