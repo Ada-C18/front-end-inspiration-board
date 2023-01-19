@@ -1,10 +1,20 @@
 import "../styles/Board.css";
 import PropTypes from "prop-types";
 
-const Board = ({ id, title, owner, getOneBoard, getBoardName }) => {
+const Board = ({
+  id,
+  title,
+  owner,
+  getOneBoard,
+  getBoardName,
+  deleteBoard,
+}) => {
   return (
     <div className="titles">
-      <li onClick={() => getOneBoard(id)}> {title} </li>
+      <li onClick={() => getOneBoard(id)}>
+        {" "}
+        {title} <button onClick={() => deleteBoard(id)}>x</button>
+      </li>
     </div>
   );
 };
