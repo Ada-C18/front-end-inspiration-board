@@ -10,8 +10,8 @@ function BoardsList({ boardsList, updateSelectedBoard }) {
 	for (const board of boardsList) {
 		boardComponents.push(
 			<Board
-				key={board.boardId}
-				boardId={board.boardId}
+				key={board.board_id}
+				boardId={board.board_id}
 				title={board.title}
 				owner={board.owner}
 				updateSelectedBoard={updateSelectedBoard}

@@ -46,7 +46,7 @@ function App() {
 				console.log(`get response: ${response}`);
 				const boardsAPIResCopy = response.data.map((board) => {
 					return {
-						boardId: board.board_id, // or boardId
+						board_id: board.board_id, // or boardId
 						title: board.title,
 						owner: board.owner,
 					};
@@ -74,7 +74,7 @@ function App() {
 					...newBoard,
 					// check board id response var name
 					// Pending - generate new id num (backend?)
-					boardId: response.data.board_id, // hidden, implied primary key
+					board_id: response.data.board_id, // hidden, implied primary key
 				});
 
 				setBoardsData(updatedBoardsList);
@@ -97,7 +97,7 @@ function App() {
 		axios
 			.get(`${URL}/boards/${boardId}`)
 			.then((response) => {
-				console.log(`updateSelectedBoard response: ${response}`);
+				console.log(`updateSelectedBoard response: ${JSON.stringify(response)}`);
 				const boardAPIResCopy = response.data;
 				setSelected(boardAPIResCopy);
 			})
@@ -117,8 +117,8 @@ function App() {
 	const [selectedCards, setCardsList] = useState([]); // useState([]);
 
 	// TODO: ask Backend team about GET Cards route
-	console.log(`selectedBoard id: ${selectedBoard.boardId}`); // selectedBoardis a list
-	const fetchCardsURL = `${URL}/boards/${selectedBoard.boardId}/cards`; // "boardId"?
+	console.log(`selectedBoard id: ${selectedBoard.board_id}`); // selectedBoardis a list
+	const fetchCardsURL = `${URL}/boards/${selectedBoard.board_id}/cards`; // "boardId"?
 	// console.log(fetchCardsURL);
 
 	// Get all cards with board ID
@@ -150,7 +150,7 @@ function App() {
 		// console.log("Calling addCard");
 
 		axios
-			.post(`${URL}/boards/${selectedBoard.boardId}/cards`, newCard)
+			.post(`${URL}/boards/${selectedBoard.board_id}/cards`, newCard)
 			.then((response) => {
 				// console.log(`add card response: ${response}`);
 				const updatedCardsList = [...selectedCards];
