@@ -89,23 +89,25 @@ function App() {
   useEffect(fetchAllBoards, []);
 
   const fetchAllCards = () => {
-    axios
-      .get(`${boardURL}/${selectedBoard.id}/cards`)
-      .then((response) => {
-        console.log(response);
-        const cardAPIResCopy = response.data.map((card) => {
-          return {
-            id: card.card_id,
-            message: card.message,
-            likesCount: card.likes_count,
-            boardId: card.board_id,
-          };
+    if (selectedBoard.id) {
+      axios
+        .get(`${boardURL}/${selectedBoard.id}/cards`)
+        .then((response) => {
+          console.log(response);
+          const cardAPIResCopy = response.data.map((card) => {
+            return {
+              id: card.card_id,
+              message: card.message,
+              likesCount: card.likes_count,
+              boardId: card.board_id,
+            };
+          });
+          setCardList(cardAPIResCopy);
+        })
+        .catch((error) => {
+          console.log(error);
         });
-        setCardList(cardAPIResCopy);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    }
   };
   // const fetchAllCards = () => {}
   useEffect(fetchAllCards, [selectedBoard]);

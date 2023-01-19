@@ -10,11 +10,11 @@ function Card(props) {
   // return <div className="card">{message}</div>;
   return (
     <div className="card">
-      <div className = "cardContent">
-      <li >{message}</li>
-      <div className = "deleteBtn">
-      <button onClick={handleDelete}>Delete</button>
-      </div>
+      <div className="cardContent">
+        <li>{message}</li>
+        <div className="deleteBtn">
+          <button onClick={handleDelete}>Delete</button>
+        </div>
       </div>
     </div>
   );
@@ -22,5 +22,6 @@ function Card(props) {
 
 Card.propTypes = {
   message: PropTypes.string.isRequired,
+  deleteCard: PropTypes.func.isRequired,
 };
 export default Card;
