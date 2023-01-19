@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import "./CreateBoard.css";
 import homeIconWhite from "../home-icon-white.png";
@@ -9,7 +9,8 @@ const CreateBoard = () => {
     title: "",
     cardColor: "#C1D6D9",
   });
-  const [submitted, setSubmitted] = useState(false);
+
+  const navigate = useNavigate();
 
   const { onCreate: handleSubmit } = loaderData[0];
 
@@ -19,7 +20,6 @@ const CreateBoard = () => {
 
   const handleSelectChange = (event) => {
     setFormData({ ...formData, cardColor: event.target.value });
-    setSubmitted(false);
   };
 
   const submitNewBoard = (event) => {
@@ -29,7 +29,7 @@ const CreateBoard = () => {
       title: "",
       cardColor: "#C1D6D9",
     });
-    setSubmitted(true);
+    return navigate("/boards");
   };
 
   return (
@@ -54,9 +54,14 @@ const CreateBoard = () => {
             name="cardColor"
             onChange={handleSelectChange}
           >
-            <option value="#C1D6D9">Green</option>
-            <option value="#F29979">Coral</option>
+            <option value="#C1D6D9" class="green">
+              Green
+            </option>
+            <option value="#F29979" class="coral">
+              Coral
+            </option>
           </select>
+          <div id="swatch">sample</div>
         </div>
         <div>
           <input
@@ -66,7 +71,6 @@ const CreateBoard = () => {
           ></input>
         </div>
       </form>
-      <div>{submitted && <p>Board created!</p>}</div>
       <Link to={`/boards`}>
         <button id="home-button-white">
           <img src={homeIconWhite} alt="home button" id="button-img" />
