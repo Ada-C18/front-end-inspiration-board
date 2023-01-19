@@ -30,7 +30,7 @@ BoardList.propTypes = {
       cards: PropTypes.array,
     })
   ),
-  onSelectBoard: PropTypes.func.isRequired,
+  onSelectBoard: PropTypes.func,
 };
 
 export default BoardList;

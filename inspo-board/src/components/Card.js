@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import "./Card.css";
 
 const card = ({ cardId, message, deleteCard, likesCount, addLike }) => {
   const onDeleteClick = () => {
@@ -11,11 +12,15 @@ const card = ({ cardId, message, deleteCard, likesCount, addLike }) => {
   };
 
   return (
-    <div>
-      <h3>{message}</h3>
-      <p>{likesCount}</p>
-      <button onClick={onLikeClick}>Like</button>
-      <button onClick={onDeleteClick}>Delete Card</button>
+    <div className="card">
+      <h3 className="message">{message}</h3>
+      <p className="likes">{likesCount} ♥s</p>
+      <button className="card-button" onClick={onLikeClick}>
+        +♡
+      </button>
+      <button className="card-button" onClick={onDeleteClick}>
+        Delete
+      </button>
     </div>
   );
 };

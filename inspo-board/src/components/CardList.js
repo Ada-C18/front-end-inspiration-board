@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Card from "./Card";
+import "./Card.css";
 
 const CardList = ({ cards, deleteCard, addLike }) => {
   console.log(cards);
   return (
-    <div>
+    <div className="cards">
       {cards.map((card) => {
         return (
           <Card

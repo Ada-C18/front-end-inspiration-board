@@ -43,8 +43,12 @@
   box-sizing: border-box;
 }
 
+h2 {
+  text-decoration: underline;
+}
+
 .App-header {
-  background-color: #647864;
+  background-image: linear-gradient(to right, rgb(141, 174, 139) 0%, #208f3f 51%, #75c5e2 100%);
   min-height: 15vh;
   display: flex;
   flex-direction: column;
@@ -57,7 +61,8 @@
 
 .main-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
 }
 
 main {
@@ -65,14 +70,57 @@ main {
   flex-direction: column;
   flex-wrap: wrap;
   margin: 0 10%;
+  margin-top: 15px;
 }
 
 .board-section {
   display: inline-block;
-  width: 50%;
+  text-align: center;
+}
+
+#new-board {
+  margin: 3pt;
+  padding: 2pt;
+}
+
+#selected-board {
+  text-transform: uppercase;
+}
+
+#button {
+  background-color: #e9f5ec;
+  border: none;
+  height: 20pt;
+  padding: 2pt;
+  margin: 2pt;
+  border-radius: 5pt;
+  width: 105pt;
+}
+#button:hover {
+  color: rgb(108, 160, 108);
+
+}
+
+#body-form {
+  margin-top: 5pt;
+  background-color: #c8decd;
+  border-radius: 1rem;
+  padding: 5pt;
+  box-shadow: 3px 3px #75c5e2 
+}
+
+.input-label {
   padding: 5pt;
 }
 
+#cards-section {
+  text-align: center;
+}
+
+footer {
+  margin-top: 10pt;
+  text-align: center;
+}
 
 /* h1{
   transform: rotate(-5deg) skew(-10deg);

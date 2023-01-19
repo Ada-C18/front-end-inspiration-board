@@ -1,0 +1,38 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #c8decd;
+    padding: 5pt;
+    margin: 5pt;
+    width: 130pt;
+    text-align: center;
+    border-radius: 10pt;
+    box-shadow: 3px 3px #75c5e2;
+    margin-bottom: 5pt;
+}
+
+.card-button {
+    background-color: #e9f5ec;
+    border: none;
+    height: 20pt;
+    padding: 2pt;
+    margin: 2pt;
+    border-radius: 5pt;
+}
+
+.card-button:hover {
+    color: #647864;
+}
+
+.message {
+    padding: 7px;
+}
+
+.likes {
+    padding: 5px;
+}
+
+

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import React from "react";
 import PropTypes from "prop-types";
+import "../App.css";
 
 const NewBoardForm = (props) => {
   const [formData, setFormData] = useState({ title: "", owner: "" });
@@ -17,7 +18,9 @@ const NewBoardForm = (props) => {
 
   return (
     <form onSubmit={handleNewBoardSubmit}>
-      <label htmlFor="title">Title</label>
+      <label className="input-label" htmlFor="title">
+        Title
+      </label>
       <input
         type="text"
         id="title"
@@ -25,7 +28,9 @@ const NewBoardForm = (props) => {
         value={formData.title}
         onChange={handleChange}
       />
-      <label htmlFor="owner">Owner</label>
+      <label className="input-label" htmlFor="owner">
+        Owner
+      </label>
       <input
         type="text"
         id="owner"
@@ -36,7 +41,7 @@ const NewBoardForm = (props) => {
       <p>
         Preview: {formData.title} - {formData.owner}
       </p>
-      <input type="submit" value="Add board" />
+      <input id="button" type="submit" value="Add board" />
     </form>
   );
 };
