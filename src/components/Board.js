@@ -1,10 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
-import CardList from './CardList';
-import Dropdown from './Dropdown';
-import NewBoardForm from './NewBoardForm';
-import NewCardForm from './NewCardForm';
-import './Board.css';
+import CardList from './CardList'
+import Dropdown from './Dropdown'
+import NewBoardForm from './NewBoardForm'
+import NewCardForm from './NewCardForm'
+import './Board.css'
 
 
 const Board = () => {
@@ -56,25 +56,6 @@ const Board = () => {
         });
     };
 
-    const updateCard = (id) => {
-        setCardData(prevCards => {
-        const newCards = prevCards.map((card) => {
-            if (card.card_id === id) {
-                return {...card, likes_count: card.likes_count+1}
-            } else {
-                return card;
-            }
-        })
-        return newCards;
-        });
-        console.log(cardData);
-        for (let card of cardData) {
-            if (card.card_id === id) {
-                axios.put(`https://rykaliva.herokuapp.com/cards/${id}`, {likes_count: `${card.likes_count}`})
-            }
-        }
-    };
-
     return (
         <section className="board-container">
             <section className="input-section">
@@ -90,7 +71,7 @@ const Board = () => {
                     <h2>{selectedBoardTitle}</h2>
                 </div>
             </section>
-            <CardList cardData={cardData} updateCard={updateCard}></CardList>
+            <CardList cardData={cardData}></CardList>
         </section>
     );
 };

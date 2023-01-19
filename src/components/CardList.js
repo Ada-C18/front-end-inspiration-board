@@ -1,17 +1,14 @@
-import './CardList.css';
-import Card from './Card';
-import { useState } from 'react';
+import './CardList.css'
+import Card from './Card'
 
-const CardList = (props) => {
-
-    const cardComponents = props.cardData.map(card => {
+const CardList = ({cardData}) => {
+    console.log(cardData, "cardData")
+    const cardComponents = cardData.map(card => {
         return (
             <div key={card.card_id}>
-                <Card 
-                card_id={card.card_id}
+                <Card
                 message={card.message}
                 likes_count={card.likes_count}
-                updateCard={props.updateCard}
                 />
             </div>
         )

@@ -5,11 +5,6 @@ import axios from 'axios';
 
 const Card = (props) => {
 
-    // const [likesCount, setLikesCount] = useState(props.likes_count);
-    // const onLikeClick = () => {
-    //     axios.put(`https://rykaliva.herokuapp.com/cards/${cardState.card_id}/`, {likes_count: 1}).then(()=>{console.log(11);});
-    // };
-
     return (
         <div className=''>
             <p>{props.message}</p>
