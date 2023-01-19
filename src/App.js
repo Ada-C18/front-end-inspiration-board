@@ -143,7 +143,7 @@ function App() {
           />
         </div>
         <div className="gridcards-item ">
-          <h2>Cards</h2>
+          <h2>Cards:</h2>
           <CardList cardEntries={cardsList} deleteCard={deleteCard} />
         </div>
         
