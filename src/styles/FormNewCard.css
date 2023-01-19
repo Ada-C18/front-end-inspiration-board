@@ -1,0 +1,27 @@
+.cardError {
+    color: red;
+}
+
+
+label {
+    font-weight: bold;
+    text-align: justify;
+}
+
+
+
+.button {
+    position: relative;
+}
+
+input.invalid {
+    border: 2px solid red;
+}
+
+p {
+    font-style: normal;
+    font-weight: bold;
+}
+.message-preview {
+    font-style: italic;
+}

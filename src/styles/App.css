@@ -1,0 +1,78 @@
+
+body {
+  background-color: #E6CEFB;
+}
+
+.app-all {
+  display: grid;
+  grid-template-areas:
+      "header header"
+      "nav main"
+      "aside main";
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 10% 40% 20%;
+  grid-gap: 10px;
+  height:180vh;
+  width: 100vh;
+  margin: auto;
+
+}
+
+header {
+grid-area: header;
+text-align: center;
+font-size: 70px;
+color: lightgoldenrodyellow;
+font-weight: bold;
+background-color:#90819D;
+font-family: 'Playfair Display';
+font-weight: bold;
+text-shadow: 4px 5px 4px rgba(59, 50, 168, 100);
+}
+
+main {
+grid-area: main;
+background-image: url("../images/cork.jpeg");
+outline: 1px solid black;
+min-height: 620px;
+}
+
+.board {
+grid-area: nav;
+background-color: #E3FBCE;
+
+}
+
+aside {
+  grid-area: aside;
+  background-color: #E3FBCE;
+  }
+
+
+header, main, nav, aside{
+  padding: 10px; 
+}
+
+.boardListTitle {
+  font-family: Verdana, sans-serif;
+}
+
+.card-title {
+  font-family: Verdana, sans-serif;
+  color: white;
+  background-color: #3B32A8;
+  border-radius: 40px;
+  width: 400px;
+  box-shadow: -15px 7px 1px rgba(0, 0, 0, 0.5);
+  min-height: 40px;
+  padding: 1rem;
+  margin: auto;
+}
+.new-item {
+  font-family: Verdana, sans-serif;
+}
+
+
+h2 {
+  text-align: center;
+}

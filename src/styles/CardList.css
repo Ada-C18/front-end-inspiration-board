@@ -1,0 +1,17 @@
+.card-items__container {
+    grid-gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 1rem;
+}
+
+.card-item {
+    align-items: center;
+    background-color:  lightgoldenrodyellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100px;
+    padding: 1rem;
+    box-shadow: -15px 7px 1px rgba(0, 0, 0, 0.5);
+}

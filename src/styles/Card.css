@@ -1,0 +1,96 @@
+
+.card-item__message {
+    font-size: 1.4rem;
+    text-align: center;
+    word-break: break-word;
+
+}
+.likes_display {
+    font-size: 1rem;
+    text-align: center;
+    word-break: break-word;
+
+}
+.card-item__controls {
+    display: flex;
+    list-style-type: none;
+    padding: 1em;
+    width: 100%;
+}
+
+.like-button {
+    align-items: center;
+    box-sizing: border-box;
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    font-size: 18px;
+    height: 20px;
+    justify-content: center;
+    max-width: 100%;
+    padding: 1em;
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+}
+.like-button:hover {
+    align-items: center;
+    background-color: bisque ;
+    /* border: 2px solid #111; */
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    font-size: 18px;
+    height: 20px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 100%;
+   position: relative;
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+    padding: 1em;
+  }
+
+.delete {
+    align-items: center;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    font-size: 18px;
+    height: 20px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 100%;
+    padding: 1em;
+   position: relative;
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+    
+}
+
+.delete:hover {
+    align-items: center;
+    background-color: bisque ;
+    /* border: 2px solid #111; */
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    font-size: 18px;
+    height: 20px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 100%;
+    padding: 1em;
+   position: relative;
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+}
