@@ -27,10 +27,10 @@ const CardList = (props) => {
         .then((response) => {
             const newCardData = cardData.filter((currentCard) => {
             return currentCard.id !== card.id;
-            });
-            setCardData(newCardData);
-        })
-        .catch((error) => {
+        });
+        setCardData(newCardData);
+        window.location.reload();
+        }).catch((error) => {
             console.log("Error:", error);
             alert("Couldn't delete the card.");
         });
