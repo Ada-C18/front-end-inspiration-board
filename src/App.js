@@ -10,8 +10,8 @@ import NewBoardForm from "./components/NewBoardForm";
 import Title from "./components/Title";
 import VieworAddButtons from "./components/ViewOrAddButtons";
 
-const REACT_APP_BACKEND_URL =
-  "https://inspiration-board-db.herokuapp.com/boards";
+// const REACT_APP_BACKEND_URL =
+//   "https://inspiration-board-db.herokuapp.com/boards";
 
 function App() {
   const [boardList, setBoardList] = useState([]);
