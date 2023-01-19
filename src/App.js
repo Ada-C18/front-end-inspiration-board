@@ -4,10 +4,6 @@ import Board from './components/Board'
 
 function App() {
 
-  // axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards`, {
-
-
-
   return (
     <div className="App">
       <header className="App-header">

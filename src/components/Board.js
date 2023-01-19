@@ -1,11 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
-import CardList from './CardList'
-import Dropdown from './Dropdown'
-import NewBoardForm from './NewBoardForm'
-import NewCardForm from './NewCardForm'
-import './Board.css'
-// import Card from './Card'
+import CardList from './CardList';
+import Dropdown from './Dropdown';
+import NewBoardForm from './NewBoardForm';
+import NewCardForm from './NewCardForm';
+import './Board.css';
 
 
 const Board = () => {
@@ -52,23 +51,29 @@ const Board = () => {
             setCardData(response.data)
             });
         }) 
-        // .then((response) => {
-            // const newCards = [...cardData];
-            // newCards.push({
-            //     card_id: response.data.card_id,
-            //     message: response.data.message,
-            //     likes_count: response.data.likes_count,
-            //     ...cardData
-        // });
-        // setCardData(newCards);
-        // console.log(response.data)
-
-        // });
         .catch(error => {
             console.log(error)
         });
     };
 
+    const updateCard = (id) => {
+        setCardData(prevCards => {
+        const newCards = prevCards.map((card) => {
+            if (card.card_id === id) {
+                return {...card, likes_count: card.likes_count+1}
+            } else {
+                return card;
+            }
+        })
+        return newCards;
+        });
+        console.log(cardData);
+        for (let card of cardData) {
+            if (card.card_id === id) {
+                axios.put(`https://rykaliva.herokuapp.com/cards/${id}`, {likes_count: `${card.likes_count}`})
+            }
+        }
+    };
 
     return (
         <section className="board-container">
@@ -85,7 +90,7 @@ const Board = () => {
                     <h2>{selectedBoardTitle}</h2>
                 </div>
             </section>
-            <CardList cardData={cardData}></CardList>
+            <CardList cardData={cardData} updateCard={updateCard}></CardList>
         </section>
     );
 };

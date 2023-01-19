@@ -1,27 +1,21 @@
-// not necessary for now
+import './CardList.css';
+import Card from './Card';
+import { useState } from 'react';
 
-//   # get request for multiple cards
-//   # post request
-//   # send cards associated with the board
-//   # state of cards is the array
+const CardList = (props) => {
 
-import './CardList.css'
-import Card from './Card'
-// use effect that makes axios post, pass in board_id as prop, set prop inside dependency array 
-
-const CardList = ({cardData}) => {
-    console.log(cardData, "cardData")
-    const cardComponents = cardData.map(card => {
+    const cardComponents = props.cardData.map(card => {
         return (
             <div key={card.card_id}>
-                <Card
+                <Card 
+                card_id={card.card_id}
                 message={card.message}
                 likes_count={card.likes_count}
+                updateCard={props.updateCard}
                 />
             </div>
         )
     });
-
 
     return (
         <section className='card-wrap'>
