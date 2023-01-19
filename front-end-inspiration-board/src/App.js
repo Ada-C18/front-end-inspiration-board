@@ -155,18 +155,28 @@ function App() {
               <button id="createNewCard" onClick={handleClickToOpen}>
                 Create New Card
               </button>
+              <div id="cardListContainer">
+                <CardList
+                  deleteCard={deleteCard}
+                  increaseLikes={increaseLikes}
+                  cardsList={cardsList}
+                />
+              </div>
               <Dialog open={open} onClose={handleToClose}>
                 <NewCardForm
                   closeDialogCallBackFunc={handleToClose}
                   addCardCallBackFunc={addCard}
                 />
               </Dialog>
+<<<<<<< HEAD
               <CardList
                 id="CardList"
                 deleteCard={deleteCard}
                 increaseLikes={increaseLikes}
                 cardsList={cardsList}
               />
+=======
+>>>>>>> 69ea16a8f857bb4272b06e7e2579d99305b77123
             </>
           )}
         </section>
