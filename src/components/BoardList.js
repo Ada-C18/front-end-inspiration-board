@@ -2,7 +2,7 @@ import Board from "./Board";
 import "../styles/BoardList.css";
 import PropTypes from "prop-types";
 
-const BoardList = ({ boardList, getOneBoard, boardId }) => {
+const BoardList = ({ boardList, getOneBoard, boardId, deleteBoard }) => {
   const boardComponents = boardList.map((board) => {
     return (
       <div
@@ -14,6 +14,7 @@ const BoardList = ({ boardList, getOneBoard, boardId }) => {
           title={board.title}
           owner={board.owner}
           getOneBoard={getOneBoard}
+          deleteBoard={deleteBoard}
         />
       </div>
     );
