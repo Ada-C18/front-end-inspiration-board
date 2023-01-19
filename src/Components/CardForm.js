@@ -7,6 +7,12 @@ const CardForm = (props) => {
 
   const onMessageChange = (event) => {
     setMessage(event.target.value);
+
+    if (event.target.value.length === 0 || event.target.value.length > 40) {
+      document.querySelector("#err-msg").className = "invalid-input";
+    } else {
+      document.querySelector("#err-msg").className = "hide-err-msg";
+    }
   };
 
   const onCardSubmit = (event) => {
@@ -35,11 +41,9 @@ const CardForm = (props) => {
           onChange={onMessageChange}
           rows="3"
         ></textarea>
-        <p
-          id="err-msg"
-          className={validInput ? "hide-err-msg" : "invalid-input"}
-        >
-          Message must be less than 40 characters.
+        <p id="err-msg" className="hide-err-msg">
+          Invalid message. Message must be a minimum of one character and less
+          than 40 characters.
         </p>
         <input
           type="submit"

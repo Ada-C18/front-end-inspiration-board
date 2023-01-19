@@ -13,6 +13,10 @@
     inset 0 0 40px rgb(246, 238, 179);
 }
 
+html:not([data-scroll="0"]) #board-form {
+  background: rgba(255, 255, 255, 0.94);
+}
+
 h3 {
   font-family: "Roboto", sans-serif;
   font-weight: 100;
