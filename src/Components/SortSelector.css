@@ -11,12 +11,9 @@
 }
 
 #sort-selector {
-  /* font-family: "Readex Pro", sans-serif; */
-  /* text-align: right; */
   margin: 0.8rem 3rem;
   width: 40%;
   display: flex;
-  /* justify-content: space-between; */
 }
 
 #sort-text {
@@ -33,7 +30,6 @@
   background-color: transparent;
   border: none;
   margin: 0;
-  /* height: 20px; */
   width: 100%;
   font-family: inherit;
   font-size: inherit;
@@ -42,8 +38,6 @@
   outline: none;
   text-transform: uppercase;
   color: #999999;
-  /* color: #ffe8e8; */
-  /* text-align: center; */
   letter-spacing: 0.6px;
 }
 
@@ -69,20 +63,14 @@
   width: 9em;
   min-width: 15ch;
   max-width: 30ch;
-  /* border: 1px solid var(--select-border); */
   border-radius: 5px;
-  /* border: 1px solid #FFF; */
   padding: 0 0.5em;
   margin-right: 7px;
   font-size: 1.25rem;
   cursor: pointer;
   line-height: 1.1;
   background-color: #fff;
-  /* background-image: linear-gradient(to top, #92bdec, rgb(228, 243, 254) 40%); */
-  /* background-image: linear-gradient(to top, rgb(112, 145, 196, .8), rgb(228, 243, 254) 50%); */
   background-image: linear-gradient(to top, rgba(235, 140, 140, 50%), rgb(228, 243, 254) 60%);
-  /* background-image: linear-gradient(to top, #ef8e8e, rgb(228, 243, 254) 50%); */
-  /* background-color: rgba(235, 140, 140, 75%); */
   font-family: 'Roboto Condensed';
   font-size: 1rem;
   display: grid;
