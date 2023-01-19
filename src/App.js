@@ -10,6 +10,8 @@ import {
   convertFromApiCard,
   getAllBoardsApi,
   deleteCardApi,
+  sortCardsByAscApi,
+  sortCardsByLikesApi,
 } from "./HelperFunctions/ApiCalls.js";
 
 function App() {
@@ -136,41 +138,17 @@ function App() {
   // Sort pull down- Works with error
   const [sortType, setSortType] = useState("");
 
-  const handleChange = (e) => {
-    setSortType(e.target.value);
-  };
-
-  const sortCardsByAscApi = useCallback(async () => {
-    if (!selectedBoard) {
-      return [];
-    }
-    const response = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards?sort=asc`
-    );
-    return response.data.map(convertFromApiCard);
-  }, [selectedBoard]);
-
-  const sortCardsByLikesApi = useCallback(async () => {
-    if (!selectedBoard) {
-      return [];
-    }
-    const response = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards?sort=likes`
-    );
-    return response.data.map(convertFromApiCard);
-  }, [selectedBoard]);
-
   const getAllCardsByAsc = async () => {
-    const cards = await sortCardsByAscApi(selectedBoard.id);
+    const cards = await sortCardsByAscApi(selectedBoard);
     setCardsData(cards);
   };
 
   const getAllCardsByLikes = async () => {
-    const cards = await sortCardsByLikesApi(selectedBoard.id);
+    const cards = await sortCardsByLikesApi(selectedBoard);
     setCardsData(cards);
   };
 
-  const sortArray = () => {
+  const sortArray = (sortType) => {
     if (sortType === "id") {
       return getAllCards();
     }
@@ -182,9 +160,10 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    sortArray(sortType);
-  }, [sortType]);
+  const handleChange = (e) => {
+    setSortType(e.target.value);
+    sortArray(e.target.value)
+  };
 
 
   return (
