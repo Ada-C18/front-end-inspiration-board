@@ -23,7 +23,7 @@ const NewBoardForm = ({ createNewBoard }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="create_newboard">
       <div>
         <label> Board Title: </label>
         <input

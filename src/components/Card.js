@@ -1,11 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 const Card = (props) => {
   return (
     <div className="card-item">
       <p className="card-item__message">{props.card.message}</p>
-      <ul className="card-item__controls">
+      <section className="card-item__controls">
         <li>
           <p>{props.card.likes_count} 💕</p>
         </li>
@@ -20,7 +19,7 @@ const Card = (props) => {
             Delete
           </p>
         </li>
-      </ul>
+      </section>
     </div>
   );
 };

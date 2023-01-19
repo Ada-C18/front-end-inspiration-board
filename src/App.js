@@ -1,9 +1,7 @@
 import "./App.css";
-import Card from "./components/Board";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import NewBoardForm from "./components/NewBoardForm";
-import NewCardForm from "./components/NewCardForm";
 import CardsList from "./components/CardsList";
 import Board from "./components/Board";
 
@@ -29,7 +27,7 @@ function App() {
 
   const boardInformation = boardsData.map((board) => {
     return (
-      <li>
+      <li key={board.id}>
         <Board board={board} onBoardSelect={selectBoard}></Board>
       </li>
     );
@@ -50,9 +48,10 @@ function App() {
       });
   };
 
-const [hideBoardForm, sethideBoardForm] = useState(true)
-const hideBoardButton = () => {sethideBoardForm(!hideBoardForm)}
-
+  const [hideBoardForm, sethideBoardForm] = useState(true);
+  const hideBoardButton = () => {
+    sethideBoardForm(!hideBoardForm);
+  };
 
   return (
     <div className="App">
@@ -64,7 +63,7 @@ const hideBoardButton = () => {sethideBoardForm(!hideBoardForm)}
             <ol className="boards__list">{boardInformation}</ol>
           </section>
 
-          <section>
+          <section className="selected_board">
             <h2> Selected Board</h2>
             <p>
               {selectedBoard.id
@@ -75,15 +74,23 @@ const hideBoardButton = () => {sethideBoardForm(!hideBoardForm)}
 
           <section className="new-board-form__container">
             <h2>Create a New Board</h2>
-            {hideBoardForm ? <NewBoardForm createNewBoard={createNewBoard} /> : ''}
-            <span onClick={hideBoardButton}> {hideBoardForm ? 'Hide Board Form' : 'Show Board Form'}</span>
-            {/* <NewBoardForm createNewBoard={createNewBoard} /> */}
-            <span onClick={NewBoardForm}></span>
+            <section>
+              {hideBoardForm ? (
+                <NewBoardForm createNewBoard={createNewBoard} />
+              ) : (
+                ""
+              )}
+            </section>
+            <button onClick={hideBoardButton}>
+              {" "}
+              {hideBoardForm ? "Hide Board Form" : "Show Board Form"}
+            </button>
+            <section onClick={NewBoardForm}></section>
           </section>
         </section>
-        <div>
+        <section className="cards__sectioncontainer">
           {selectedBoard.id ? <CardsList board={selectedBoard} /> : " "}
-        </div>
+        </section>
       </div>
     </div>
   );

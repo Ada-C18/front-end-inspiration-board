@@ -98,6 +98,7 @@ const CardsList = (props) => {
   const cardElements = cardsData.map((card) => {
     return (
       <Card
+        key={card.id}
         card={card}
         plusOneCardItem={plusOneCardItem}
         deleteCardItem={deleteCardItem}
@@ -113,11 +114,12 @@ const CardsList = (props) => {
         <span onClick={NewCardForm}></span>
       </section>
       <h2>Cards for {props.board.title}</h2>
-      <button onClick={() => sortByLikes(cardsData)}>Sort by ❤️</button>
-      <button onClick={() => sortById(cardsData)}>Sort by ID</button>
-      <button onClick={() => sortAtoZ(cardsData)}>Sort by A-Z</button>
-
-      <div>{cardElements}</div>
+      <p>
+        <button onClick={() => sortByLikes(cardsData)}>Sort by ❤️</button>
+        <button onClick={() => sortById(cardsData)}>Sort by ID</button>
+        <button onClick={() => sortAtoZ(cardsData)}>Sort by A-Z</button>
+      </p>
+      <div className="card_elements">{cardElements}</div>
     </section>
   );
 };

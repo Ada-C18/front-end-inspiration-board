@@ -25,7 +25,7 @@ const NewCardForm = ({ createNewCard }) => {
   };
 
   return (
-    <form onSubmit={handleCSubmit}>
+    <form onSubmit={handleCSubmit} className="create_newcardform">
       <div>
         <label> Card message: </label>
         <input
