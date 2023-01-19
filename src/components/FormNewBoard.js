@@ -9,7 +9,8 @@ const INITIAL_FORM_DATA = {
 const NewBoardForm = (props) => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const [formErrors, setFormErrors] = useState({});
-  const [isValidInput, setIsValidInput] = useState(true);
+  const [isTitleValid, setIsTitleValid] = useState(true);
+  const [isOwnerValid, setIsOwnerValid] = useState(true);
 
   const handleChange = (e) => {
     const newFormData = {
@@ -27,15 +28,23 @@ const NewBoardForm = (props) => {
   const validateForm = (values) => {
     const errors = {};
 
-    if (formData.title.length === 0) {
+    if (formData.title.length === 0 && formData.owner.length === 0) {
       errors.title = "Board must have title";
-      setIsValidInput(false);
+      errors.owner = "Board must have owner";
+      setIsTitleValid(false);
+      setIsOwnerValid(false);
+    } else if (formData.title.length === 0) {
+      errors.title = "Board must have title";
+      setIsTitleValid(false);
+      setIsOwnerValid(true);
     } else if (formData.owner.length === 0) {
       errors.owner = "Board must have owner";
-      setIsValidInput(false);
+      setIsTitleValid(true);
+      setIsOwnerValid(false);
     } else {
       props.addBoardCallbackFunc(formData);
-      setIsValidInput(true);
+      setIsTitleValid(true);
+      setIsOwnerValid(true);
     }
     return errors;
   };
@@ -54,7 +63,7 @@ const NewBoardForm = (props) => {
             value={formData.title}
             placeholder="Title"
             onChange={handleChange}
-            className={isValidInput ? "valid" : "invalid"}
+            className={isTitleValid ? "valid" : "invalid"}
           />
           <label htmlFor="owner"></label>
           <input
@@ -64,7 +73,7 @@ const NewBoardForm = (props) => {
             value={formData.owner}
             placeholder="Name"
             onChange={handleChange}
-            className={isValidInput ? "valid" : "invalid"}
+            className={isOwnerValid ? "valid" : "invalid"}
           />
           <p className="formError">{formErrors.title}</p>
           <p className="formError">{formErrors.owner}</p>
