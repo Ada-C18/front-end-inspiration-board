@@ -35,8 +35,8 @@
 }
 .like-button:hover {
     align-items: center;
-    background-color: #397754 ;
-    border: 2px solid #111;
+    background-color: bisque ;
+    /* border: 2px solid #111; */
     border-radius: 8px;
     box-sizing: border-box;
     color: #111;
@@ -76,8 +76,8 @@
 
 .delete:hover {
     align-items: center;
-    background-color: #eb6b40;
-    border: 2px solid #111;
+    background-color: bisque ;
+    /* border: 2px solid #111; */
     border-radius: 8px;
     box-sizing: border-box;
     color: #111;
