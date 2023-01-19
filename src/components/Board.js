@@ -32,6 +32,10 @@ const Board = () => {
         setCardData(response.data)
     })
     }
+
+    const getBoardTitle = (title) => {
+        setSelectedBoardTitle(title);
+    }
     
     useEffect(() => {
         axios.get("https://rykaliva.herokuapp.com/boards").then((response) => {
@@ -39,9 +43,6 @@ const Board = () => {
         });
     }, []);
     
-    const getBoardTitle = (title) => {
-        setSelectedBoardTitle(title);
-    }
     
     const addCardCallback = (newCardData) => {
         let board_id = selectedBoard;
@@ -67,7 +68,6 @@ const Board = () => {
         })
         return newCards;
         });
-        // console.log(cardData);
         for (let card of cardData) {
             if (card.card_id === id) {
                 axios.put(`https://rykaliva.herokuapp.com/cards/${id}`, {likes_count: `${card.likes_count}`})

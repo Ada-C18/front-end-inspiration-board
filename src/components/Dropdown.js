@@ -3,10 +3,16 @@ const Dropdown = ({ boardData, getBoardId, getBoardTitle } ) => {
   // console.log(boardData, "boardData");
   const onChangeBoard = (event) => {
     const board_title = event.target.value
-    const board_id = event.target.selectedIndex
-    getBoardId(board_id);
     getBoardTitle(board_title);
+    for (let board of boardData) {
+      if (board.title === board_title) {
+      getBoardId(board.board_id)
+      }
+    }
   }
+
+
+
   return (
     <div>
       <select onChange={onChangeBoard}>
