@@ -1,14 +1,17 @@
-import './CardList.css'
-import Card from './Card'
+import './CardList.css';
+import Card from './Card';
 
-const CardList = ({cardData}) => {
-    console.log(cardData, "cardData")
-    const cardComponents = cardData.map(card => {
+const CardList = (props) => {
+
+    const cardComponents = props.cardData.map(card => {
         return (
             <div key={card.card_id}>
-                <Card
+                <Card 
+                card_id={card.card_id}
                 message={card.message}
                 likes_count={card.likes_count}
+                updateCard={props.updateCard}
+                deleteCard={props.deleteCard}
                 />
             </div>
         )
