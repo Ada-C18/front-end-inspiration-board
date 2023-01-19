@@ -126,21 +126,30 @@ function App() {
   };
 
   return (
-    <div>
-      <h2>Boards:</h2>
-      <BoardList
-        boardEntries={boardsList}
-        deleteBoard={deleteBoard}
-        fetchCards={fetchAllCards}
-      />
-      <h2>Add Board:</h2>
-      <NewBoardForm addBoardCallbackFunc={addBoard} />
-      <NewCardForm
-        addCardCallbackFunc={addCard}
-        selectedBoardId={selectedBoardId}
-      />
-      <CardList cardEntries={cardsList} deleteCard={deleteCard} />
-    </div>
+    <nav>
+      <div className="grid-container">
+        <div className="grid-item">
+          <h2>Boards:</h2>
+          <BoardList
+            boardEntries={boardsList}
+            deleteBoard={deleteBoard}
+            fetchCards={fetchAllCards}
+          />
+          <h2>Add Board:</h2>
+          <NewBoardForm addBoardCallbackFunc={addBoard} />
+          <NewCardForm
+            addCardCallbackFunc={addCard}
+            selectedBoardId={selectedBoardId}
+          />
+        </div>
+        <div className="gridcards-item ">
+          <h2>Cards</h2>
+          <CardList cardEntries={cardsList} deleteCard={deleteCard} />
+        </div>
+        
+      </div>
+      
+    </nav>
   );
 }
 
