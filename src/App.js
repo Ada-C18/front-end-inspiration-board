@@ -108,6 +108,23 @@ function App() {
       });
   };
 
+  const deleteCard = (cardId) => {
+    axios
+      .delete(`${URL}/cards/${cardId}`)
+      .then(() => {
+        const newCardList = [];
+        for (const card of cardsList) {
+          if (card.id !== cardId) {
+            newCardList.push(card);
+          }
+        }
+        setCardsList(newCardList);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <h1>Boards:</h1>
@@ -122,7 +139,7 @@ function App() {
         addCardCallbackFunc={addCard}
         selectedBoardId={selectedBoardId}
       />
-      <CardList cardEntries={cardsList} />
+      <CardList cardEntries={cardsList} deleteCard={deleteCard} />
     </div>
   );
 }

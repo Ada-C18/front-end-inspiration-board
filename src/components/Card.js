@@ -3,15 +3,19 @@ import "./Card.css";
 import PropTypes from "prop-types";
 
 const Card = (props) => {
-	const id = props.id;
+  const id = props.id;
   const message = props.message;
   const like_count = props.like_count;
+  const deleteCard = props.deleteCard;
 
   return (
     <div>
-      card id: {id}
-      message: {message}
-      like_count: {like_count}
+      <button onClick={() => deleteCard(id)}>x</button>
+      <div>
+        card id: {id}
+        message: {message}
+        like_count: {like_count}
+      </div>
     </div>
   );
 };
@@ -21,6 +25,7 @@ Card.propTypes = {
   id: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
   like_count: PropTypes.number.isRequired,
+  deleteCard: PropTypes.func.isRequired,
 };
 
 export default Card;
