@@ -66,7 +66,11 @@ function App() {
 
   // const passBoardPropsDummy = () => DUMMY_BOARD_DATA;
 
-  const passBoardProps = () => appData;
+  const passBoardProps = () => {
+    console.log("board props");
+    console.log(appData);
+    return appData;
+  };
 
   const passLogInProps = () => {
     return [{ loginState: loggedIn, onLogIn: handleLogIn }];

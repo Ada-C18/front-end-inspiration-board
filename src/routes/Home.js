@@ -3,8 +3,9 @@ import { useLoaderData, Link } from "react-router-dom";
 import "./Home.css";
 import BoardMenu from "../components/BoardMenu";
 
-const Home = (props) => {
-  const dummyData = useLoaderData();
+const Home = () => {
+  const boardArr = useLoaderData();
+  console.log(`boardArr is ${boardArr}`);
 
   return (
     <div id="home">
@@ -14,7 +15,7 @@ const Home = (props) => {
       </header>
 
       <div id="home-menu">
-        <BoardMenu data={dummyData} />
+        <BoardMenu data={boardArr} />
       </div>
 
       <nav id="home-nav">

@@ -6,17 +6,17 @@ const BoardMenu = (props) => {
   // return that as an unordered list without bullets
   // ** add a color prop for alternating colors on menu ?
 
-  // console.log(props);
+  console.log(props);
 
-  const getBoardMenuItemList = () => {
+  const getBoardMenuItemList = (props) => {
     return props.data.map((board, index) => {
       return (
         <BoardMenuItem
           key={board.id}
           id={board.id}
-          title={board.board_title}
-          owner={board.board_owner}
-          cards={board.card_id.length}
+          title={board.title}
+          owner={board.owner}
+          cards={board.num_cards}
           class={index % 2 === 1 ? "pink" : "white"}
         />
       );
