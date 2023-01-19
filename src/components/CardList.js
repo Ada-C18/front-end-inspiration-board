@@ -4,7 +4,7 @@
 import './CardList.css'
 
 const CardList = ({cardData}) => {
-    console.log(cardData)
+    console.log(cardData, "cardData")
     // use effect that makes axios post, pass in board_id as prop, set prop inside dependency array 
     return (
         <section className='card-wrap'>

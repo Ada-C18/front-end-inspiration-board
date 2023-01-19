@@ -1,12 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
-
 import CardList from './CardList'
 import Dropdown from './Dropdown'
 import NewBoardForm from './NewBoardForm'
 import NewCardForm from './NewCardForm'
 import './Board.css'
-import Card from './Card'
+// import Card from './Card'
 
 
 const Board = () => {
@@ -27,18 +26,16 @@ const Board = () => {
         console.log(error);
     });
 };
-        const getBoardId = (id) => {
-        setSelectedBoard(id);
-            // console.log(`board id ${id}`)
-        }
+    const getBoardId = (id) => {
+    setSelectedBoard(id);
+    axios.get(`https://rykaliva.herokuapp.com/boards/${id}/cards`).then((response) => {
+        setCardData(response.data)
+    })
+    }
     
     useEffect(() => {
         axios.get("https://rykaliva.herokuapp.com/boards").then((response) => {
             setBoardData(response.data);
-            axios.get(`https://rykaliva.herokuapp.com/boards/${selectedBoard}/cards`) 
-            .then((response) => {
-                setCardData(response.data)
-            });  
         });
     }, []);
     
@@ -51,8 +48,8 @@ const Board = () => {
         let board_id = selectedBoard;
         axios.post(`https://rykaliva.herokuapp.com/boards/${board_id}/cards`, newCardData)
         .then(() => {
-            axios.get (`https://rykaliva.herokuapp.com/boards/${board_id}/cards`) .then((response)=> {
-                setCardData(response.data)
+        axios.get (`https://rykaliva.herokuapp.com/boards/${board_id}/cards`).then((response)=> {
+            setCardData(response.data)
             });
         }) 
         // .then((response) => {
