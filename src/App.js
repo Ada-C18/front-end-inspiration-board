@@ -131,7 +131,7 @@ const deleteCardItem = (card) => {
     setIsCardFormVisible(!isCardFormVisible)
   }
 
-
+  const plusOneCard
 
   return (
     <div className="App">
