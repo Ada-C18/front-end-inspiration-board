@@ -49,21 +49,24 @@ const CardForm = (props) => {
       <h2>Add a Card</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label> Message </label>
-          <input
-            type="text"
-            id="message"
-            name="message"
-            value={cardState.message}
-            onChange={handleNewData}
-          />
-          <label class="button"> Submit </label>
-          <input
-            type="submit"
-            disabled={Boolean(errorState)}
-            value="Add New Card"
-          ></input>
-          <label class="button">Delete</label>
+          <div>
+            <label> Message </label>
+            <input
+              type="text"
+              id="message"
+              name="message"
+              value={cardState.message}
+              onChange={handleNewData}
+            />
+          </div>
+          <div>
+            <label> Submit </label>
+            <input
+              type="submit"
+              disabled={Boolean(errorState)}
+              value="Add New Card"
+            ></input>
+          </div>
         </div>
         <div className="error">{errorState}</div>
       </form>
