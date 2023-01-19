@@ -171,6 +171,7 @@ function App() {
           <FormNewCard addCardCallbackFunc={addCard} boardId={boardId} />
         </aside>
       </div>
+      <div>
       <main>
         <h2 className="card-title"> Cards for {board} </h2>
         <CardList
@@ -179,6 +180,7 @@ function App() {
           countLikesTotal={countLikesTotal}
         />
       </main>
+      </div>
     </div>
   );
 }
