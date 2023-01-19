@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import '../App.css';
 
+
 // Inside the get request, use the board_id to get
 // list of cards associated with board_id.
 // We are passing down CardList from App.js
@@ -55,6 +56,7 @@ function CardsList(props) {
     .then((response) => setCards(response.data))
     .catch((error) => {
       console.log(error);
+      alert("Failed getting cards for this board :(")
     });
 }
 
@@ -99,6 +101,7 @@ function CardsList(props) {
           console.log(error);
       });
   }
+  
 
 
 // "prevCards" is the previous state before the new update. It's the state that is passed as an argument to the callback function of setCards hook. setCards hook is a state hook that is used to update the state and it takes a callback function as an argument.

@@ -108,7 +108,9 @@ color: #72383D;
   flex-direction: column;
 }
 
-
+.submitButton{
+  ;
+}
 
 
 .deleteButton{
@@ -120,4 +122,27 @@ width: 80px;
 border: none;
 margin-bottom: 10px ;
   
+}
+
+.submitButton{
+  background-color: #72383D;
+  color: white;
+  font-family: Poppins;
+  font-size: 13px;
+  width: 150px;
+  height: 50px;
+  border: none;
+  margin-bottom: 10px ;
+  margin-top: 35px ;
+    
+  }
+
+.titleField, .ownerField {
+  font-size: 17px;
+  margin-right: 10px ;
+}
+
+.titleContainer{
+  margin-top: 30px;
+  margin-bottom: 30px;
 }

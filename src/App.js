@@ -3,6 +3,7 @@ import CardsList from "./components/CardsList";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import './App.css';
+import NewBoardForm from "./components/NewBoardForm";
 
 // helper function dedicated to only making API get request
 const getBoardListApi = () => {
@@ -52,6 +53,24 @@ function App() {
     );
   });
 
+  const createNewBoard = newBoard => {
+    axios
+    .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, newBoard)
+    .then((response) => {console.log("Response", response.data);
+    const boards = [...boardList];
+    boards.push(response.data);
+    setBoardList(boards);
+  })
+    .catch((error) => {
+      console.log('Error:', error);
+    });
+  }
+
+
+    // Create a toggle botton to show/hide board form
+  const [showForm, setShowForm] = useState(true);
+  const toggleNewBoardForm = () => {setShowForm(!showForm)}
+
   return (
     <div className="App">
       <header className="App-header">
@@ -66,9 +85,12 @@ function App() {
         </div>
         <div className = "createCard">
             <h2>Create Card</h2>
+      
         </div>
         <div className = "createBoard">
           <h2>Create Board</h2>
+          {showForm ? <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm> : ''}
+        <button onClick={toggleNewBoardForm} className='toggle-btn'>{showForm ? 'Hide New Board Form' : 'Show New Board Form'}</button>
         </div>
       </div>
         <CardsList board={selectedBoard}/>
