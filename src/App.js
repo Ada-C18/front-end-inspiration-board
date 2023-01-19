@@ -6,8 +6,11 @@ import NewBoardForm from "./Components/NewBoardForm";
 import CardList from "./Components/CardList";
 import NewCardForm from "./Components/NewCardForm";
 import RainbowText from "react-rainbow-text";
-import { convertFromApiCard, getAllBoardsApi, deleteCardApi } from "./HelperFunctions/ApiCalls.js";
-
+import {
+  convertFromApiCard,
+  getAllBoardsApi,
+  deleteCardApi,
+} from "./HelperFunctions/ApiCalls.js";
 
 function App() {
   const [allBoardData, setAllBoardData] = useState([]);
@@ -47,14 +50,15 @@ function App() {
     setAllBoardData(newBoards);
   };
 
-
-   // CARDS
+  // CARDS
   // Get all cards for selected board
   const getAllCardsApi = useCallback(async () => {
     if (!selectedBoard) {
-      return []
+      return [];
     }
-    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards`)
+    const response = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards`
+    );
     return response.data.map(convertFromApiCard);
   }, [selectedBoard]);
 
@@ -64,8 +68,7 @@ function App() {
       setCardsData(cards);
     };
     getAllCards();
-  }, [getAllCardsApi] );
-
+  }, [getAllCardsApi]);
 
   const getAllCards = async () => {
     const selectedBoardId = selectedBoard.id;
@@ -80,7 +83,7 @@ function App() {
       cardForm
     );
     const newCard = [...cardsData];
-    const convertedCard = convertFromApiCard(response.data.card)
+    const convertedCard = convertFromApiCard(response.data.card);
     newCard.push(convertedCard);
     setCardsData(newCard);
     return getAllCards();
@@ -95,26 +98,42 @@ function App() {
   // Like a card and Likes count
   const handleLikesApi = async (cardId, boardId, message, likesCount) => {
     const plusOneLike = { likes_count: likesCount + 1 };
-    await axios.put(
+    const response = await axios.put(
       `${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}/like`,
       plusOneLike
     );
-    const newCardsData = cardsData.map((card) => {
-      return card.cardId !== cardId
-        ? card
-        : {
-            cardId: cardId,
-            boardId: boardId,
-            message: message,
-            likesCount: likesCount,
-          };
-    });
-    setCardsData(newCardsData);
+    const cardResult = convertFromApiCard(response.data.card);
+
+    setCardsData((cardsData) =>
+      cardsData.map((card) => {
+        if (card.id === cardResult.id) {
+          return cardResult;
+        } else {
+          return card;
+        }
+      })
+    );
+
+    // const newCardsData = cardsData.map((card) => {
+    //   return card.cardId !== cardId
+    //     ? card
+    //     : {
+    //         cardId: cardId,
+    //         boardId: boardId,
+    //         message: message,
+    //         likesCount: likesCount,
+    //       };
+    // });
+    // setCardsData(newCardsData);
   };
 
   const handleLikes = async (cardId, boardId, message, likesCount) => {
     await handleLikesApi(cardId, boardId, message, likesCount);
-    return getAllCards();
+    // return getAllCards();
+    setSortType(sortType);
+    if (sortType === "likesCount") {
+      getAllCardsByLikes();
+    }
   };
 
   // Sort pull down- Works with error
@@ -127,17 +146,21 @@ function App() {
 
   const sortCardsByAscApi = useCallback(async () => {
     if (!selectedBoard) {
-      return []
+      return [];
     }
-    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards?sort=asc`)
+    const response = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards?sort=asc`
+    );
     return response.data.map(convertFromApiCard);
   }, [selectedBoard]);
 
   const sortCardsByLikesApi = useCallback(async () => {
     if (!selectedBoard) {
-      return []
+      return [];
     }
-    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards?sort=likes`)
+    const response = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards?sort=likes`
+    );
     return response.data.map(convertFromApiCard);
   }, [selectedBoard]);
 
@@ -166,6 +189,17 @@ function App() {
     sortArray(sortType);
   }, [sortType]);
 
+  // const sortArray = () => {
+  //   if (sortType === "id") {
+  //     return getAllCards();
+  //   }
+  //   if (sortType === "alphabetically") {
+  //     return getAllCardsByAsc();
+  //   }
+  //   if (sortType === "likesCount") {
+  //     return getAllCardsByLikes();
+  //   }
+  // };
 
   return (
     <div>
@@ -175,9 +209,7 @@ function App() {
           💫 No Thoughts Just Vibes Inspiration Board 💫
         </RainbowText>
       </h1>
-      <section
-        className="all__board__container"
-      >
+      <section className="all__board__container">
         <section className="board__container">
           <h2 className="board_header">
             🌟 Select a Board to see their inspirational messages 🌟
@@ -214,9 +246,7 @@ function App() {
       {/* CARDS */}
       <section>
         {showCardForm ? (
-          <div
-            className="all_card__container"
-          >
+          <div className="all_card__container">
             <section className="cards__container">
               <h4 className="cards__header">
                 🌟 {selectedBoard.title} Messages 🌟
@@ -230,7 +260,11 @@ function App() {
               </div>
               <section className="sort_by">
                 Sort messages
-                <select className="sort_by_pull_down" value={sortType} onChange={handleChange}>
+                <select
+                  className="sort_by_pull_down"
+                  value={sortType}
+                  onChange={handleChange}
+                >
                   <option value="id">by Newest to Oldest</option>
                   <option value="alphabetically">Alphabetically</option>
                   <option value="likesCount">by Most Likes</option>
