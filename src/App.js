@@ -9,7 +9,7 @@ function App() {
   // boardsList axios call
   const [boardsList, setBoardsList] = useState([]);
 
-  const URL = "https://inspirationboard.herokuapp.com";
+  const URL = "https://inspirationboard-api.herokuapp.com";
   const fetchAllBoards = () => {
     axios
       .get(`${URL}/boards`)
@@ -34,7 +34,7 @@ function App() {
   // cardsList axios call
   const [cardsList, setCardsList] = useState([]);
 
-  // const cardsURL = "https://inspirationboard.herokuapp.com/cards";
+  // const cardsURL = "https://inspirationboard-api.herokuapp.com/cards";
   const fetchAllCards = (boardId) => {
     console.log(`${boardId} fetchAllCards called`);
     axios
@@ -101,7 +101,6 @@ function App() {
       <NewBoardForm addBoardCallbackFunc={addBoard} />
       <h2>Cards:</h2>
       <CardList cardEntries={cardsList} />
-  
     </div>
   );
 }
