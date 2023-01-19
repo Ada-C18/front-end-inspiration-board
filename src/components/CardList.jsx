@@ -31,7 +31,8 @@ const CardList = (props) => {
     };
 
     const onLikeClick = (card) => {
-        axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/like`)
+        console.log("hi", card)
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/likes`, )
         .then((response) => {
             const newCardData = cardData.map((currentCard) => {
                 return currentCard.card_id !== card.card_id ? currentCard : {...card, likes_count: card.likes_count + 1}
@@ -59,6 +60,7 @@ const CardList = (props) => {
         const cards = [...cardData];
         cards.push(response.data.card);
         setCardData(cards);
+        window.location.reload();
         }).catch((error) => {
         console.log('Error:', error);
         alert('Couldn\'t create a new card.');

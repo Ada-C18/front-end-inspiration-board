@@ -43,6 +43,7 @@ const App = () => {
         const boards = [...boardData];
         boards.push(response.data.board);
         setBoardData(boards);
+        window.location.reload();
       })
       .catch((error) => {
         console.log("Error:", error);
