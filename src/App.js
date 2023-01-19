@@ -56,25 +56,25 @@ const App = () => {
     setBoardFormVisibility(!boardFormVisibility);
   };
 
-  const deleteAllData = () => {
-    if (window.confirm("Are you really sure you want to delete everything?")) {
-      axios
-        .delete(`${process.env.REACT_APP_BACKEND_URL}/destroy_all`)
-        .then((response) => {
-          console.log("response", response.data);
-          setBoardData([response.data.default_board]);
-          setSelectedBoard({
-            title: "",
-            owner: "",
-            board_id: null,
-          });
-        })
-        .catch((error) => {
-          console.log("Error:", error);
-          alert("Something went wrong! :(");
-        });
-    }
-  };
+  // const deleteAllData = () => {
+  //   if (window.confirm("Are you really sure you want to delete everything?")) {
+  //     axios
+  //       .delete(`${process.env.REACT_APP_BACKEND_URL}/destroy_all`)
+  //       .then((response) => {
+  //         console.log("response", response.data);
+  //         setBoardData([response.data.default_board]);
+  //         setSelectedBoard({
+  //           title: "",
+  //           owner: "",
+  //           board_id: null,
+  //         });
+  //       })
+  //       .catch((error) => {
+  //         console.log("Error:", error);
+  //         alert("Something went wrong! :(");
+  //       });
+  //   }
+  // };
 
   return (
     <div className="page__container">
