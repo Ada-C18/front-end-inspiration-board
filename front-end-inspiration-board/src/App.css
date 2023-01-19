@@ -86,11 +86,7 @@ h3 {
   margin-right: 35px;
 }
 
-<<<<<<< HEAD
-#CardList {
-=======
 #cardListContainer {
->>>>>>> 69ea16a8f857bb4272b06e7e2579d99305b77123
   grid-row: 4;
   grid-column: 1 / span 3;
   margin: 15px;
