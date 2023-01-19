@@ -15,9 +15,9 @@ const Board = () => {
 
     const onBoardSubmit = (newBoardData) => {
         axios
-        .post("https://rykaliva.herokuapp.com/boards", newBoardData)
+        .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, newBoardData)
         .then(() => {
-        axios.get("https://rykaliva.herokuapp.com/boards").then((response) => {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards`).then((response) => {
             setBoardData(response.data);
         }, []);
         })
@@ -28,7 +28,7 @@ const Board = () => {
 
     const getBoardId = (id) => {
     setSelectedBoard(id);
-    axios.get(`https://rykaliva.herokuapp.com/boards/${id}/cards`).then((response) => {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${id}/cards`).then((response) => {
         setCardData(response.data)
     })
 }
@@ -37,7 +37,7 @@ const Board = () => {
     }
 
     useEffect(() => {
-        axios.get("https://rykaliva.herokuapp.com/boards").then((response) => {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards`).then((response) => {
             setBoardData(response.data);
         });
     }, []);
@@ -45,9 +45,9 @@ const Board = () => {
     
     const addCardCallback = (newCardData) => {
         let board_id = selectedBoard;
-        axios.post(`https://rykaliva.herokuapp.com/boards/${board_id}/cards`, newCardData)
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/boards/${board_id}/cards`, newCardData)
         .then(() => {
-        axios.get(`https://rykaliva.herokuapp.com/boards/${board_id}/cards`).then((response)=> {
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${board_id}/cards`).then((response)=> {
             setCardData(response.data)
             });
         }) 
@@ -56,31 +56,27 @@ const Board = () => {
         });
     };
 
-
     const updateCard = (id) => {
-        setCardData(prevCards => {
-        const newCards = prevCards.map((card) => {
-            if (card.card_id === id) {
-                return {...card, likes_count: card.likes_count+1}
-            } else {
-                return card;
-            }
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/cards/${id}`)
+        .then(() => {
+            // console.log(response)
+            const newCards = cardData.map((card) => {
+                if (card.card_id === id) {
+                    return {...card, likes_count: card.likes_count+1}
+                } else {
+                    return card;
+                }
         })
-        return newCards;
+        setCardData(newCards)
         });
-        for (let card of cardData) {
-            if (card.card_id === id) {
-                axios.put(`https://rykaliva.herokuapp.com/cards/${id}`, {likes_count: `${card.likes_count}`})
-            }
-        }
     };
 
     const deleteCard = (id) => {
         for (let card of cardData) {
             if (card.card_id === id) {
-                axios.delete(`https://rykaliva.herokuapp.com/cards/${id}`)
+                axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${id}`)
                 .then(() => {
-                axios.get(`https://rykaliva.herokuapp.com/boards/${selectedBoard}/cards`).then((response) => {
+                axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard}/cards`).then((response) => {
                     setCardData(response.data)
                 });
                 })
