@@ -7,12 +7,12 @@
 
 .card-item {
     align-items: center;
-    background-color:  #f0a3bc;
+    background-color:  lightgoldenrodyellow;
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 100px;
     padding: 1rem;
-    outline: 1px solid black;
+    outline: 1px solid pink;
     box-shadow: -15px 7px 1px rgba(0, 0, 0, 0.5);
 }
