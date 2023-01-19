@@ -1,14 +1,17 @@
 import Board from "./components/Board";
-import CardsList from "./components/CardsList";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import CardsList from "./components/CardsList";
+import NewBoardForm from "./components/NewBoardForm";
 
-// helper function dedicated to only making API get request
+
+// helper function dedicated to only making API GET request for Boards
 const getBoardListApi = () => {
   return axios
-    .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
+    .get(`${process.env.REACT_APP_BACKEND_URL}/boards`, {})
+    
     .then((response) => {
-      return response.data;
+      return response.data; 
     })
     .catch((error) => {
       console.log(error);
@@ -24,12 +27,12 @@ function App() {
     id: null
   });
 
-  // this is our event handler function that will be sent 
-  // as a prop to Board component for when user clicks/selects 
-  // specific board name
-  const selectBoard = (board) => { setSelectedBoard(board) };
+  // Event handler function 
+  const selectBoard = (board) => { 
+    setSelectedBoard(board) 
+  };
 
-  // Create a fx that calls the getBoardListApi fx.
+  // Create a function that calls the getBoardListApi function
   // If that particular API call is successful, it will go ahead
   // and send the data and update/set it as our new state of boardList.
   const getBoardList = () => {
@@ -39,17 +42,34 @@ function App() {
   // useEffect is used to initially render data
   useEffect(() => {
     getBoardList(); // getBoardList just updates the state of boardList
-  }, []); // using empty dependency (this lets react know just run the page once on this initial render)
-  // If you don't have an empty dependency array, it will run over and over again.
+  }, []); // using empty dependency
 
   // mapping through each board in boardList
   const boardElements = boardList.map((board) => {
     return (
       <li>
-        <Board board={board} selectBoard={selectBoard} />
+        <Board board={board} selectBoard={selectBoard}/>
       </li>
     );
   });
+
+  // Lift up state
+  // Pass down event handlers from App to NewBoardForm
+  // Make API call to create new board
+  // clone boardList (piece of state) and add newly created board to update BoardList state
+  const createNewBoard = newBoard => {
+    axios
+    .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, newBoard)
+    .then((response) => {console.log("Response", response.data);
+    const boards = [...boardList];
+    boards.push(response.data);
+    setBoardList(boards);
+  })
+    .catch((error) => {
+      console.log('Error:', error);
+    });
+  }
+
 
   return (
     <div className="App">
@@ -65,6 +85,7 @@ function App() {
           </div>
         </div>
         <CardsList board={selectedBoard}/>
+        <NewBoardForm createNewBoard={createNewBoard} />
       </main>
     </div>
   );
