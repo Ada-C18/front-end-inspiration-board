@@ -69,7 +69,9 @@ function App() {
       console.log('Error:', error);
     });
   }
-
+  // Create a toggle botton to show/hide board form
+  const [showForm, setShowForm] = useState(true);
+  const toggleNewBoardForm = () => {setShowForm(!showForm)}
 
   return (
     <div className="App">
@@ -85,7 +87,9 @@ function App() {
           </div>
         </div>
         <CardsList board={selectedBoard}/>
-        <NewBoardForm createNewBoard={createNewBoard} />
+        <h2>Create New Board</h2>
+        {showForm ? <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm> : ''}
+        <span onClick={toggleNewBoardForm} className='toggle-btn'>{showForm ? 'Hide New Board Form' : 'Show New Board Form'}</span>
       </main>
     </div>
   );
