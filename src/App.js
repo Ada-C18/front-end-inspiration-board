@@ -7,7 +7,13 @@ import BoardList from "./components/BoardList";
 
 function App() {
   const [boardList, setBoardList] = useState([]);
+  const [selectedBoard, setSelectedBoard] = useState(null);
+  const [cardList, setCardList] = useState([]);
   const URL = "https://vtv-inspo.herokuapp.com/boards";
+  // function loadBoardOnClick(board) {
+
+  //   setSelectedBoard(board);
+  // }
 
   const fetchAllBoards = () => {
     axios
@@ -18,7 +24,7 @@ function App() {
             boardId: board.board_id,
             title: board.title,
             owner: board.owner,
-            cards: board.cards,
+            // cards: board.cards,
           };
         });
         setBoardList(boardsAPIResCopy);
@@ -49,6 +55,25 @@ function App() {
         console.log(error);
       });
   };
+  const loadBoardOnClick = (board) => {
+    axios
+      .get(`${URL}/${board.boardId}/cards`)
+      .then((res) => {
+        const cardsAPIResCopy = res.data.map((card) => {
+          return {
+            cardId: card.card_id,
+            message: card.message,
+            likesCount: card.likes_count,
+          };
+        });
+        setCardList(cardsAPIResCopy);
+        console.log(cardsAPIResCopy);
+        setSelectedBoard(board);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="main-page">
@@ -59,19 +84,26 @@ function App() {
         <div className="boards">
           <section className="board-list">
             <h2>Boards</h2>
-            <div>
-              <BoardList boards={boardList}></BoardList>
-            </div>
+            {/* <div> */}
+            <BoardList
+              boards={boardList}
+              loadBoardOnClick={loadBoardOnClick}
+            ></BoardList>
+            {/* </div> */}
           </section>
-          {/* <section className="selected-board"> */}
-          {/* <h2>Selected Board</h2> */}
-          {/* <div>Need to insert selected Board</div> */}
-          {/* </section> */}
+          <section className="selected-board">
+            <h2>Selected Board</h2>
+            {/* <div> */}
+            {selectedBoard
+              ? `${selectedBoard.title} - ${selectedBoard.owner}`
+              : "Select a Board from the Board List!"}
+            {/* </div> */}
+          </section>
           <section className="add-new-board">
             <h2>Create a New Board</h2>
-            <div>
-              <NewBoardForm addBoardCallbackFunc={addBoard}></NewBoardForm>
-            </div>
+            {/* <div> */}
+            <NewBoardForm addBoardCallbackFunc={addBoard}></NewBoardForm>
+            {/* </div> */}
           </section>
         </div>
         <div className="cards">

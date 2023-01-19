@@ -1,8 +1,7 @@
 import PropTypes from "prop-types";
-import React, { useState } from "react";
 import "./Board.css";
 
-const Board = (props) => {
+const Board = ({ id, title, owner }) => {
   // const id = props.id;
   // const title = props.title;
   // const [selectedBoard, setSelectedBoard] = useState(null);
@@ -16,18 +15,20 @@ const Board = (props) => {
   //   console.log(e);
   //   setSelectedBoard(newSelectedBoard);
   // };
-  //   return (
-  //     <li className="boards_items">
-  //       {/* {id}. {title} */}
-  //       {/* {id} */}
-  //     </li>
-  //   );
+  let i = 0;
+  return (
+    <li key={i + 1}>
+      {id}. {title}
+    </li>
+  );
 };
 
 Board.propTypes = {
-  //   id: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
+  key: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   //   owner: PropTypes.string.isRequired,
+  loadBoardOnClick: PropTypes.func.isRequired,
 };
 
 export default Board;
