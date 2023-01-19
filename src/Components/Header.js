@@ -10,7 +10,6 @@ const Header = (props) => {
     setBoardFormVisible(!boardFormVisible);
   };
 
-  // const boardFormButtonText = boardFormVisible ? "Hide form" : "Add new board";
   const boardFormButtonText = boardFormVisible ? "x" : "+";
   const boardFormElement = boardFormVisible ? (
     <BoardForm newBoard={props.newBoard}></BoardForm>

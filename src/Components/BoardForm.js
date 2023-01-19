@@ -28,7 +28,6 @@ const BoardForm = (props) => {
       <h3>create new board</h3>
       <hr></hr>
       <div>
-        {/* <label>Board Name: </label> */}
         <input
           type="text"
           placeholder="Board Name"
@@ -38,7 +37,6 @@ const BoardForm = (props) => {
         ></input>
       </div>
       <div>
-        {/* <label>Owner: </label> */}
         <input
           type="text"
           placeholder="Owner"
