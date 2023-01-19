@@ -101,7 +101,7 @@ function App() {
       .post(`${URL}/boards/${selectedBoardId}/cards`, newCardInfo)
       .then((response) => {
         // console.log(response);
-        fetchAllCards();
+        fetchAllCards(selectedBoardId);
       })
       .catch((err) => {
         console.log(err);
