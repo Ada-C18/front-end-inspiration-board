@@ -17,7 +17,7 @@ import Home from "./routes/Home";
 import CreateBoard from "./routes/CreateBoard";
 import SingleBoardView from "./routes/SingleBoardView";
 import ErrorPage from "./error-page";
-import DUMMY_BOARD_DATA from "./components/dummyData";
+// import DUMMY_BOARD_DATA from "./components/dummyData";
 
 // const genericDummyFunc = (arg1 = null) => {
 //   console.log("This is the dummy function");
@@ -28,6 +28,15 @@ import DUMMY_BOARD_DATA from "./components/dummyData";
 // const kBaseUrl = "http://localhost:5000";
 const kBaseUrl = "https://hackspo-be.herokuapp.com";
 
+const getAllBoardsAPI = async () => {
+  try {
+    const response = await axios.get(`${kBaseUrl}/boards`);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 function App() {
   let [loggedIn, setLoggedIn] = useState({
     userId: null,
@@ -35,6 +44,21 @@ function App() {
     repeatSignUp: false,
   });
   let [appData, setAppData] = useState([]); // do get call to set initial state
+
+  const getBoardArr = async () => {
+    const boardArr = await getAllBoardsAPI();
+    return setAppData(boardArr);
+  };
+
+  useEffect(() => {
+    console.log("useEffect");
+    if (loggedIn.userId) {
+      console.log(loggedIn.userId);
+      getBoardArr();
+    } else {
+      setAppData([]);
+    }
+  }, [loggedIn.userId]);
 
   const passCreateBoardProps = () => {
     return [{ onCreate: addBoard }];
@@ -54,7 +78,7 @@ function App() {
 
   const handleLogIn = async (formData) => {
     const username = formData.name.toLowerCase(); // avoids case-sensitivity problems; have to post to lowercase as well
-
+    console.log(appData);
     try {
       const response = await axios.get(`${kBaseUrl}/users/${username}`);
       return setLoggedIn({
@@ -92,8 +116,8 @@ function App() {
   };
 
   const addBoard = async (boardData) => {
-    console.log("In addBoard!");
-    console.log(boardData);
+    // console.log("In addBoard!");
+    // console.log(boardData);
 
     const requestBody = {
       title: boardData.title,
@@ -101,17 +125,17 @@ function App() {
       user_id: loggedIn.userId,
     };
 
-    console.log(requestBody);
+    // console.log(requestBody);
 
     try {
       const response = await axios.post(`${kBaseUrl}/boards`, requestBody);
-      console.log(response.data);
+      // console.log(response.data);
       setAppData(appData.push(response.data));
     } catch (err) {
       console.error(err);
     } finally {
-      console.log("in finally");
-      console.log(appData);
+      // console.log("in finally");
+      // console.log(appData);
     }
   };
 
