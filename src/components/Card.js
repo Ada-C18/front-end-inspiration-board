@@ -11,7 +11,7 @@ const Card = (props) => {
   return (
     <div>
       <button onClick={() => deleteCard(id)}>x</button>
-      <div>
+      <div className="card-box">
         message: {message}
         <br></br>
         like_count: {like_count}

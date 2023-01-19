@@ -35,32 +35,30 @@ const NewCardForm = (props) => {
       <div>
         <h2>Create A New Card:</h2>
         <form onSubmit={handleNewCardSubmit}>
-      <label htmlFor="message">Card Message</label>
-      {/* htmlFor - for accessibility */}
-      <input
-        className="create-card-input"
-        type="text"
-        // id="title"
-        name="message"
-        value={formData.message}
-        onChange={handleChange}
-      ></input>
+          <label htmlFor="message">Card Message</label>
+          {/* htmlFor - for accessibility */}
+          <input
+            className="create-card-input"
+            type="text"
+            // id="title"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+          ></input>
 
-      <label htmlFor="like_count">Like Count</label>
-      <input
-        className="create-card-input"
-        type="number"
-        // id="owner"
-        name="like_count"
-        value={formData.like_count}
-        onChange={handleChange}
-      ></input>
-      <input id="submit-btn" type="submit" value="Add Card" />
-    </form>
+          <label htmlFor="like_count">Like Count</label>
+          <input
+            className="create-card-input"
+            type="number"
+            // id="owner"
+            name="like_count"
+            value={formData.like_count}
+            onChange={handleChange}
+          ></input>
+          <input id="submit-btn" type="submit" value="Add Card" />
+        </form>
       </div>
-      
     </nav>
-    
   );
 };
 

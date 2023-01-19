@@ -59,6 +59,7 @@ const NewBoardForm = (props) => {
           value="Create Board"
         />
       </form>
+      <br></br>
     </section>
   );
 };
