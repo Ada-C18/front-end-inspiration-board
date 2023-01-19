@@ -1,0 +1,42 @@
+1) Should we pass down all the properties to board from boardlist if we only need title? - No
+
+2) Old Test Data:
+const EXAMPLE_CARD_1 = {
+  id: 1,
+  boardId: 1,
+  message: "test message 1",
+  likesCount: 0,
+};
+
+const EXAMPLE_CARD_2 = {
+  id: 2,
+  boardId: 1,
+  message: "test message 2",
+  likesCount: 0,
+};
+
+const EXAMPLE_BOARD_1 = {
+  id: 1,
+  title: "my first board",
+  owner: "jimbo",
+  cards: [EXAMPLE_CARD_1, EXAMPLE_CARD_2],
+};
+
+const EXAMPLE_BOARD_2 = {
+  id: 2,
+  title: "my second board",
+  owner: "jimbo",
+  cards: [],
+};
+
+const EXAMPLE_BOARD_LIST = [EXAMPLE_BOARD_1, EXAMPLE_BOARD_2];
+
+// const CARDS_ONLY = EXAMPLE_BOARD_1.cards;
+
+
+# TO WORK ON - how to keep the display of likes_count when we click away from it 
+
+## Fonts we're using:
+font-family: 'Baloo 2', cursive;
+font-family: 'Fira Code', monospace;
+font-family: 'Karla', sans-serif;

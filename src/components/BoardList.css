@@ -1,0 +1,15 @@
+.board-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-family: 'Karla', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.board-list-heading {
+    border-bottom: 1px solid #f5f5f5;
+    margin-bottom: -1px;
+}

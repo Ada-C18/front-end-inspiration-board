@@ -1,0 +1,23 @@
+.card-header {
+    grid-area: 1 / 3 / 2 / 8;
+}
+
+.card-header h2 {
+    font-size: 36px;
+}
+
+.sort-by-label {
+    display: inline;
+    padding-right: 10px;
+}
+
+.cards-display {
+    grid-area: 2 / 3 / 6 / 8;
+    display: grid;
+    max-width: 90%;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    grid-auto-rows: 200px;
+    grid-gap: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+}

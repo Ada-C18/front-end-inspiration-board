@@ -1,0 +1,26 @@
+.board-field {
+    width: 100%;
+    padding: 6px 6px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.board-button {
+    background: #bdb0ff;
+    border: 1px solid #5c48b1;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 2px 20px;
+    color: #340AFC;
+    font-family: 'Karla', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.board-button:hover {
+    background: #D2FC0A;
+    border: 1px solid #D2FC0A;
+    color: #340AFC;
+    cursor: pointer;
+}

@@ -1,0 +1,12 @@
+.unselected-board:hover {
+    background: #D2FC0A;
+    cursor: pointer;
+    color: #340AFC
+} 
+
+.selected-board {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #340AFC;
+    background: #D2FC0A;
+    font-style: italic;
+}
