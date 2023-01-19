@@ -49,13 +49,14 @@ const Board = (props) => {
           const compare = (a, b) => {
             switch (sortCardsBy.direction) {
               case "asc":
-                return a > b;
+                return a - b;
               case "desc":
-                return a < b;
+                return b - a;
               default:
                 throw "invalid sort direction";
             }
           };
+
           cards.sort((c1, c2) => {
             // Sort by specified property.
             switch (sortCardsBy.method) {
@@ -70,7 +71,7 @@ const Board = (props) => {
             }
           });
 
-          setCardList(result.data);
+          setCardList(cards);
         });
     else setCardList([]);
   };
