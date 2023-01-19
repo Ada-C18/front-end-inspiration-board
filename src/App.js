@@ -51,9 +51,7 @@ function App() {
   };
 
   useEffect(() => {
-    console.log("useEffect");
     if (loggedIn.userId) {
-      console.log(loggedIn.userId);
       getBoardArr();
     } else {
       setAppData([]);
@@ -67,8 +65,6 @@ function App() {
   // const passBoardPropsDummy = () => DUMMY_BOARD_DATA;
 
   const passBoardProps = () => {
-    console.log("board props");
-    console.log(appData);
     return appData;
   };
 
@@ -82,7 +78,6 @@ function App() {
 
   const handleLogIn = async (formData) => {
     const username = formData.name.toLowerCase(); // avoids case-sensitivity problems; have to post to lowercase as well
-    console.log(appData);
     try {
       const response = await axios.get(`${kBaseUrl}/users/${username}`);
       return setLoggedIn({

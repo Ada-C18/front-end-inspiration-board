@@ -6,8 +6,6 @@ const BoardMenu = (props) => {
   // return that as an unordered list without bullets
   // ** add a color prop for alternating colors on menu ?
 
-  console.log(props);
-
   const getBoardMenuItemList = (props) => {
     return props.data.map((board, index) => {
       return (

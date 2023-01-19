@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./BoardMenuItem.css";
 
 const BoardMenuItem = (props) => {
@@ -7,12 +8,14 @@ const BoardMenuItem = (props) => {
 
   return (
     <li>
-      <button className={`menu-item ${props.class}`}>
-        {props.title}&nbsp;
-        <span id="cardCount">
-          ({props.cards} {props.cards === 1 ? "card" : "cards"})
-        </span>
-      </button>
+      <Link to={`/boards/${props.id}`}>
+        <button className={`menu-item ${props.class}`}>
+          {props.title}&nbsp;
+          <span id="cardCount">
+            ({props.cards} {props.cards === 1 ? "card" : "cards"})
+          </span>
+        </button>
+      </Link>
     </li>
   );
 };

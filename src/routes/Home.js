@@ -5,7 +5,6 @@ import BoardMenu from "../components/BoardMenu";
 
 const Home = () => {
   const boardArr = useLoaderData();
-  console.log(`boardArr is ${boardArr}`);
 
   return (
     <div id="home">
