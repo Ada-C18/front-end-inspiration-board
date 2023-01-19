@@ -1,8 +1,8 @@
 input {
     display:block;
+    }
+
+.create-btn {
+    padding: 8px 24px;
 }
 
-.board-input-box {
-    border: 1px solid blue;
-    box-shadow: 0 0 7px blue;
-}
