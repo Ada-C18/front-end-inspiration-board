@@ -12,7 +12,7 @@ import {
   deleteCardApi,
   sortCardsByAscApi,
   sortCardsByLikesApi,
-} from "./HelperFunctions/ApiCalls.js";
+} from "./HelperFunctions/ApiFunctions.js";
 
 function App() {
   const [allBoardData, setAllBoardData] = useState([]);
@@ -20,6 +20,7 @@ function App() {
   const [showCardForm, setShowCardForm] = useState(false);
   const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
   const [cardsData, setCardsData] = useState([]);
+  const [sortType, setSortType] = useState("");
 
   // BOARDS
   // Select a board
@@ -136,8 +137,6 @@ function App() {
   };
 
   // Sort pull down- Works with error
-  const [sortType, setSortType] = useState("");
-
   const getAllCardsByAsc = async () => {
     const cards = await sortCardsByAscApi(selectedBoard);
     setCardsData(cards);
@@ -162,9 +161,8 @@ function App() {
 
   const handleChange = (e) => {
     setSortType(e.target.value);
-    sortArray(e.target.value)
+    sortArray(e.target.value);
   };
-
 
   return (
     <div>
