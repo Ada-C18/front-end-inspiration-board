@@ -40,6 +40,7 @@ function CardsList(props) {
       .catch((error) => {
         console.log(error);
       });
+      
   }, [props.board, cards, setCards]);
  // You can put this in the dependency to
   // let react know that it needs to rerender when there is
@@ -54,12 +55,28 @@ function CardsList(props) {
   // Next set the response.data as a state inside of Cardslist, take that state
   // and loop over it to get all the cards. This will render/display them. 
 
+  const handleDelete = (cardId) => {
+    axios
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`)
+      .then(() => {
+        // Remove the deleted card from the state
+        setCards((prevCards) => prevCards.filter((c) => c.id !== cardId));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+
+
 
   return (
     <div>
       {cards.length > 0 ? cards.map((card) => (
         <div key={card.id}>
           <p>Message: {card.message}</p>
+          <button onClick={() => handleDelete(card.id)}>Delete</button>
+          
         </div>
       )) : <p>No cards found for this board.</p>}
     </div>
