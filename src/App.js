@@ -97,9 +97,12 @@ function App() {
 		axios
 			.get(`${URL}/boards/${boardId}`)
 			.then((response) => {
-				console.log(`updateSelectedBoard response: ${JSON.stringify(response)}`);
+				console.log(
+					`updateSelectedBoard response: ${JSON.stringify(response)}`
+				);
 				const boardAPIResCopy = response.data;
 				setSelected(boardAPIResCopy);
+				fetchCards(boardId);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -118,11 +121,11 @@ function App() {
 
 	// TODO: ask Backend team about GET Cards route
 	console.log(`selectedBoard id: ${selectedBoard.board_id}`); // selectedBoardis a list
-	const fetchCardsURL = `${URL}/boards/${selectedBoard.board_id}/cards`; // "boardId"?
 	// console.log(fetchCardsURL);
 
 	// Get all cards with board ID
-	const fetchCards = () => {
+	const fetchCards = (board_id) => {
+		const fetchCardsURL = `${URL}/boards/${board_id}/cards`;
 		axios
 			.get(fetchCardsURL)
 			.then((response) => {
@@ -140,9 +143,6 @@ function App() {
 				console.log(error);
 			});
 	};
-
-	// initial get cards request
-	useEffect(fetchCards, []); // selectedCards
 
 	// Add Card Function
 	// Todo: add API post card code
@@ -163,14 +163,6 @@ function App() {
 			.catch((error) => {
 				console.log(error);
 			});
-
-		// const newCardsList = [...selectedCards];
-		// newCardsList.push({
-		// 	board_id: newCard.board_id, // hidden, implied primary key
-		// 	message: newCard.message,
-		// });
-
-		// setCardsList(newCardsList);
 	};
 
 	const deleteCard = (cardId) => {
