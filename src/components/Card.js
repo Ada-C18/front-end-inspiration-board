@@ -3,7 +3,7 @@ import { FaRegTrashAlt } from 'react-icons/fa';
 import { AiOutlineLike, AiFillLike } from 'react-icons/ai';
 
 const Card = ({ card, updateLikedCard, deleteCard }) => {
-  const likeOrNot = card.likes_count ? <AiFillLike /> : <AiOutlineLike />;
+  const likeOrNot = card.likes_count ? <AiFillLike className="like"/> : <AiOutlineLike className="like" />;
 
   return (
     // updated from ul to section

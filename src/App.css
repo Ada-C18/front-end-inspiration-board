@@ -127,3 +127,7 @@ main {
   display: flex;
   justify-content: space-evenly;
 }
+
+.like {
+  font-size: 1.5rem;
+}
