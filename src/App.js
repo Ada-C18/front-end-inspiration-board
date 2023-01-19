@@ -176,7 +176,7 @@ function App() {
           // getCards={addCard}
           onBoardSelect={onBoardSelect}
         />
-        <section>
+        <section className="selected-board">
           <h1>Selected Board: </h1>
           <h2>
             {selectedBoard.title} - Creator: {selectedBoard.owner}
