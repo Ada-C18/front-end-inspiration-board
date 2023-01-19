@@ -45,30 +45,21 @@ const Board = (props) => {
         .then((result) => {
           const cards = result.data;
 
-          // Set the comparison direction
-          const compare = (a, b) => {
-            switch (sortCardsBy.direction) {
-              case "asc":
-                return a - b;
-              case "desc":
-                return b - a;
-              default:
-                throw "invalid sort direction";
-            }
-          };
-
           cards.sort((c1, c2) => {
-            // Sort by specified property.
-            switch (sortCardsBy.method) {
-              case "message":
-                // Case insensitive sort.
-                return compare(
-                  c1.message.toLowerCase(),
-                  c2.message.toLowerCase()
-                );
-              default:
-                return compare(c1[sortCardsBy.method], c2[sortCardsBy.method]);
+            const [comp1, comp2] = [
+              c1[sortCardsBy.method],
+              c2[sortCardsBy.method],
+            ];
+
+            if (sortCardsBy.method === "message") {
+              return sortCardsBy.direction === "asc"
+                ? comp1.toLowerCase().localeCompare(comp2.toLowerCase())
+                : comp2.toLowerCase().localeCompare(comp1.toLowerCase());
             }
+
+            return sortCardsBy.direction === "asc"
+              ? comp1 - comp2
+              : comp2 - comp1;
           });
 
           setCardList(cards);
