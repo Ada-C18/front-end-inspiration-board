@@ -39,7 +39,6 @@ function App() {
 
   const URL = "http://127.0.0.1:5000";
 
-  // Get all cards with board ID
   const fetchAllBoards = () => {
     axios
       .get(`${URL}/boards`)
@@ -47,7 +46,7 @@ function App() {
         console.log(`get response: ${response}`);
         const boardsAPIResCopy = response.data.map((board) => {
           return {
-            boardId: board.board_id, // or boardId
+            board_id: board.board_id, // or boardId
             title: board.title,
             owner: board.owner,
           };
@@ -64,7 +63,7 @@ function App() {
   useEffect(fetchAllBoards, []);
 
   const addBoard = (newBoard) => {
-    console.log("Calling addBoard");
+    // console.log("Calling addBoard");
 
     axios
       .post(`${URL}/boards`, newBoard)
@@ -75,7 +74,7 @@ function App() {
           ...newBoard,
           // check board id response var name
           // Pending - generate new id num (backend?)
-          boardId: response.data.board_id, // hidden, implied primary key
+          board_id: response.data.board_id, // hidden, implied primary key
         });
 
         setBoardsData(updatedBoardsList);
@@ -84,21 +83,24 @@ function App() {
   };
 
   // Selected Board State
-  const [selectedBoard, setSelected] = useState({});
+  const [selectedBoard, setSelected] = useState([]); // {}
   // const [selectedBoard, setSelected] = useState({
   // 	boardId: 1,
   // 	title: "Do things!",
   // 	owner: "Milena",
   // });
 
+  console.log(`selectedBoard: ${selectedBoard}`); // selectedBoard is empty list => selectedBoard.boardId is undefined
+
   const updateSelectedBoard = (boardId) => {
     console.log("updateBoard called");
     axios
       .get(`${URL}/boards/${boardId}`)
       .then((response) => {
-        console.log(response.data);
+        console.log(response);
         const boardAPIResCopy = response.data;
         setSelected(boardAPIResCopy);
+        fetchCards(boardId);
       })
       .catch((error) => {
         console.log(error);
@@ -116,15 +118,16 @@ function App() {
   const [selectedCards, setCardsList] = useState([]); // useState([]);
 
   // TODO: ask Backend team about GET Cards route
-  const fetchCardsURL = `${URL}/${selectedBoard.boardId}/cards`; // "boardId"?
+  console.log(`selectedBoard id: ${selectedBoard.board_id}`); // selectedBoardis a list
   // console.log(fetchCardsURL);
 
   // Get all cards with board ID
-  const fetchCards = () => {
+  const fetchCards = (board_id) => {
+    const fetchCardsURL = `${URL}/boards/${board_id}/cards`;
     axios
       .get(fetchCardsURL)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         const cardsAPIResCopy = response.data.map((card) => {
           return {
             cardId: card.cardId,
@@ -139,25 +142,29 @@ function App() {
       });
   };
 
-  // initial get cards request
-  useEffect(fetchCards, []);
-
   // Add Card Function
   // Todo: add API post card code
   const addCard = (newCard) => {
-    console.log("Calling addCard");
+    // console.log("Calling addCard");
 
-    const newCardsList = [...selectedCards];
-    newCardsList.push({
-      board_id: newCard.board_id, // hidden, implied primary key
-      message: newCard.message,
-    });
-
-    setCardsList(newCardsList);
+    axios
+      .post(`${URL}/boards/${selectedBoard.board_id}/cards`, newCard)
+      .then((response) => {
+        // console.log(`add card response: ${response}`);
+        const updatedCardsList = [...selectedCards];
+        updatedCardsList.push({
+          ...newCard,
+          cardId: response.data.card_id,
+        });
+        setCardsList(updatedCardsList);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const deleteCard = (cardId) => {
-    console.log("deleteCard called");
+    // console.log("deleteCard called");
 
     axios
       .delete(`${URL}/${cardId}`)
@@ -178,26 +185,30 @@ function App() {
   return (
     <div className="App">
       {/* <Board /> */}
-      <BoardsList
-        boardsList={boardsList}
-        updateSelectedBoard={updateSelectedBoard}
+      <div>
+        <BoardsList
+          boardsList={boardsList}
+          updateSelectedBoard={updateSelectedBoard}
+        />
+
+        <h1>Selected Board</h1>
+        {/* TODO: Add logic show selectedBoard if selectedBoard is not empty */}
+        {/* <p>Select a Board from the Board List!</p> */}
+        <p>
+          {selectedBoard.title} - {selectedBoard.owner}
+        </p>
+
+        <NewBoardForm addBoard={addBoard} />
+      </div>
+      {/* Todo: display elements below after selecting Board */}
+      {/* <h2>Cards for {selectedBoard.title} Quotes</h2> */}
+      {/* <h2>Cards for "insert Board title here" Quotes</h2> */}
+      <CardsList
+        cardsList={selectedCards}
+        deleteCard={deleteCard}
+        boardTitle={selectedBoard.title}
       />
 
-      <h1>Selected Board</h1>
-      {/* TODO: Add logic show selectedBoard if selectedBoard is not empty */}
-      {/* <p>Select a Board from the Board List!</p> */}
-      <p>
-        {selectedBoard.title} - {selectedBoard.owner}
-      </p>
-
-      <NewBoardForm addBoard={addBoard} />
-
-      {/* Todo: display elements below after selecting Board */}
-      <h2>Cards for {selectedBoard.title} Quotes</h2>
-      {/* <h2>Cards for "insert Board title here" Quotes</h2> */}
-      <CardsList cardsList={selectedCards} deleteCard={deleteCard} />
-
-      <h2>Create New Card</h2>
       <NewCardForm addCardCallback={addCard} />
     </div>
   );
