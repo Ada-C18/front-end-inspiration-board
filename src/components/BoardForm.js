@@ -61,7 +61,7 @@ const NewBoardForm = ({ addBoardCallbackFunc }) => {
             onChange={handleChange}
           ></input>
           <p>
-            Preview: {formData.title} - {formData.owner}
+            Preview: {formData.title} {formData.title && '-'} {formData.owner}
           </p>
           <input
             type="submit"

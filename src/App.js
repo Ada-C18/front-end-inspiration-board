@@ -62,7 +62,7 @@ function App() {
   const [boardList, setBoardList] = useState([]);
   const [cardList, setCardList] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState({
-    board: "Please Select a Board!",
+    board: null,
     id: null,
   });
 
@@ -221,7 +221,7 @@ function App() {
       </div>
       <div className="selectBoard">
         <h2>Selected Board</h2>
-        <p>{selectedBoard.board}</p>
+        <p>{selectedBoard.board ? selectedBoard.board : "Please Select a Board!"}</p>
       </div>
       <div className="boardForm">
         <BoardForm addBoardCallbackFunc={addBoard}></BoardForm>
