@@ -1,0 +1,33 @@
+label {
+  display: block;
+  margin-left: 15px;
+  margin-top: 5px;
+  font-size: 14pt;
+  font-weight: bold;
+  width: 65px;
+  color: rgb(66, 96, 60);
+  background-color: rgb(240, 236, 226);
+}
+
+#showFormButton {
+  margin-left: 15px;
+  margin-top: 10px;
+  box-shadow: 1px 1px;
+}
+
+input {
+  display: block;
+  margin-left: 15px;
+  height: 20px;
+  width: 305px;
+}
+
+#submitButton {
+  margin-top: 10px;
+  height: 30px;
+  font-size: 14pt;
+  width: 125px;
+  text-align: center;
+  background-color: rgb(66, 96, 60);
+  color: rgb(240, 236, 226);
+}

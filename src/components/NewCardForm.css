@@ -1,0 +1,34 @@
+#close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+#dialogLabel {
+  width: auto;
+  margin-top: 10px;
+  background-color: white;
+}
+
+#message {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+#submitButton {
+  margin-bottom: 10px;
+}
+
+h4 {
+  margin-left: 15px;
+  margin-top: 5px;
+  font-size: 12pt;
+}
+
+.invalid {
+  color: red;
+}
+
+.valid {
+  color: rgb(66, 96, 60);
+}
