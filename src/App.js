@@ -4,11 +4,13 @@ import "./App.css";
 import BoardList from "./components/BoardList.js";
 import CardList from "./components/CardList.js";
 import NewBoardForm from "./components/NewBoardForm.js";
+import NewCardForm from "./components/NewCardForm.js";
 
 function App() {
   // boardsList axios call
   const [boardsList, setBoardsList] = useState([]);
-
+  const [selectedBoardId, setSelectedBoardId] = useState(null);
+  console.log(`selectedBoard: ${selectedBoardId}`);
   const URL = "https://inspirationboard.herokuapp.com";
   const fetchAllBoards = () => {
     axios
@@ -50,6 +52,7 @@ function App() {
           };
         });
         setCardsList(cardsAPIResCopy);
+        setSelectedBoardId(boardId);
       })
       .catch((error) => {
         console.log(error);
@@ -89,6 +92,39 @@ function App() {
       });
   };
 
+  const addCard = (newCardInfo) => {
+    //use axios.post request here
+    //handling .then to update frontend, update state variable with setBikesList()
+    console.log("newCardInfo!");
+    console.log(newCardInfo);
+    axios
+      .post(`${URL}/boards/${selectedBoardId}/cards`, newCardInfo)
+      .then((response) => {
+        // console.log(response);
+        fetchAllCards();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const deleteCard = (cardId) => {
+    axios
+      .delete(`${URL}/cards/${cardId}`)
+      .then(() => {
+        const newCardList = [];
+        for (const card of cardsList) {
+          if (card.id !== cardId) {
+            newCardList.push(card);
+          }
+        }
+        setCardsList(newCardList);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div>
       <h2>Boards:</h2>
@@ -99,9 +135,11 @@ function App() {
       />
       <h2>Add Board:</h2>
       <NewBoardForm addBoardCallbackFunc={addBoard} />
-      <h2>Cards:</h2>
-      <CardList cardEntries={cardsList} />
-  
+      <NewCardForm
+        addCardCallbackFunc={addCard}
+        selectedBoardId={selectedBoardId}
+      />
+      <CardList cardEntries={cardsList} deleteCard={deleteCard} />
     </div>
   );
 }
