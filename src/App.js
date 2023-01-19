@@ -1,22 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
   Navigate,
-} from "react-router-dom";
-import axios from "axios";
+  useLocation
+} from 'react-router-dom';
+import axios from 'axios';
 
-import "./App.css";
+import './App.css';
 
-import LogInView from "./routes/LogInView";
-import LogInForm from "./routes/LogInForm";
-import SignUpForm from "./routes/SignUpForm";
-import Home from "./routes/Home";
-import CreateBoard from "./routes/CreateBoard";
-import SingleBoardView from "./routes/SingleBoardView";
-import ErrorPage from "./error-page";
+import LogInView from './routes/LogInView';
+import LogInForm from './routes/LogInForm';
+import SignUpForm from './routes/SignUpForm';
+import Home from './routes/Home';
+import CreateBoard from './routes/CreateBoard';
+import SingleBoardView from './routes/SingleBoardView';
+import ErrorPage from './error-page';
 // import DUMMY_BOARD_DATA from "./components/dummyData";
 
 // const genericDummyFunc = (arg1 = null) => {
@@ -25,8 +26,8 @@ import ErrorPage from "./error-page";
 
 // const WAIT = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-// const kBaseUrl = "http://localhost:5000";
-const kBaseUrl = "https://hackspo-be.herokuapp.com";
+const kBaseUrl = 'http://localhost:5000';
+// const kBaseUrl = "https://hackspo-be.herokuapp.com";
 
 const getAllBoardsAPI = async () => {
   try {
@@ -44,10 +45,25 @@ function App() {
     repeatSignUp: false,
   });
   let [appData, setAppData] = useState([]); // do get call to set initial state
+  let [cardDataByBoard, setCardDataByBoard] = useState([]); // do get call to set initial state???
 
   const getBoardArr = async () => {
     const boardArr = await getAllBoardsAPI();
     return setAppData(boardArr);
+  };
+
+  const getCardsByBoard = async (boardId) => {
+    try {
+      const response = await axios.get(`${kBaseUrl}/cards/board/${boardId}`);
+      return response.data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getCardsArr = async (boardId) => {
+    const cardArr = await getCardsByBoard(boardId);
+    return setCardDataByBoard(cardArr);
   };
 
   useEffect(() => {
@@ -65,7 +81,7 @@ function App() {
   // const passBoardPropsDummy = () => DUMMY_BOARD_DATA;
 
   const passBoardProps = () => {
-    return appData;
+    return [{ boardArr: appData, getBoardCards: getCardsArr }];
   };
 
   const passLogInProps = () => {
@@ -74,6 +90,17 @@ function App() {
 
   const passSignUpProps = () => {
     return [{ loginState: loggedIn, onSignUp: handleSignUp }];
+  };
+
+  const passSingleBoardProps = () => {
+    return [
+      {
+        loginState: loggedIn,
+        onSubmitCard: handleSubmitCard,
+        cards: cardDataByBoard,
+        getCardsByBoard: getCardsByBoard
+      },
+    ];
   };
 
   const handleLogIn = async (formData) => {
@@ -138,22 +165,38 @@ function App() {
     }
   };
 
+  const handleSubmitCard = async (newCardMessage, boardId) => {
+    const requestBody = {
+      message: newCardMessage,
+      board_id: boardId,
+      user_id: loggedIn.userId,
+    };
+    console.log(requestBody);
+    try {
+      const response = await axios.post(`${kBaseUrl}/cards`, requestBody);
+      const cardData = getCardsByBoard(boardId);
+      setCardDataByBoard(cardData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
         <Route
-          path="/"
+          path='/'
           element={
-            loggedIn.userId ? <Navigate to="/boards" replace /> : <LogInView />
+            loggedIn.userId ? <Navigate to='/boards' replace /> : <LogInView />
           }
           loader={passLogInProps}
           errorElement={<ErrorPage />}
         >
           <Route
-            path="login"
+            path='login'
             element={
               loggedIn.userId ? (
-                <Navigate to="/boards" replace />
+                <Navigate to='/boards' replace />
               ) : (
                 <LogInForm />
               )
@@ -162,10 +205,10 @@ function App() {
             errorElement={<ErrorPage />}
           />
           <Route
-            path="signup"
+            path='signup'
             element={
               loggedIn.userId ? (
-                <Navigate to="/boards" replace />
+                <Navigate to='/boards' replace />
               ) : (
                 <SignUpForm />
               )
@@ -175,23 +218,24 @@ function App() {
           />
         </Route>
         <Route
-          path="/boards"
-          element={loggedIn.userId ? <Home /> : <Navigate to="/" replace />}
+          path='/boards'
+          element={loggedIn.userId ? <Home /> : <Navigate to='/' replace />}
           loader={passBoardProps}
           errorElement={<ErrorPage />}
         />
         <Route
-          path="/create-board"
+          path='/create-board'
           element={<CreateBoard />}
           loader={passCreateBoardProps}
           errorElement={<ErrorPage />}
         />
         <Route
-          path="/boards/:boardId"
+          path='/boards/:boardId'
           element={<SingleBoardView />}
+          loader={passSingleBoardProps}
           errorElement={<ErrorPage />}
         />
-        <Route path="*" element={<ErrorPage />} />
+        <Route path='*' element={<ErrorPage />} />
       </>
     )
   );

@@ -1,6 +1,6 @@
 #card-preview {
   display: flex;
-  width: 15vw;
+  max-width: 15vw;
   height: 15vw;
   background-color: #C1D6D9;
   align-items: center;
@@ -18,7 +18,7 @@
 }
 
 #new-card-text {
-  width: 20vw;
+  max-width: 20vw;
   height: 4vh;
   border-color: #014040;
   border-radius: 20px;
@@ -26,7 +26,7 @@
   margin-top: 3.5vh;
   text-align: center;
   font-family: 'Arial';
-  padding: 4vh 0;
+  padding: 4vh 1vw;
 }
 
 #new-card-submit {
