@@ -12,10 +12,7 @@ body {
   height: 100vh;
   display: grid;
   margin: 0 auto;
-  /* grid-template-columns: repeat(auto-fit, minmix(300px, 1fr)); */
   grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
-  /* grid-column-gap: 1%; */
-  /* grid-row-gap: 1rem; */
 }
 
 header {
@@ -34,9 +31,7 @@ header {
 }
 
 aside {
-  /* width: 5rem; */
   height: 100vh;
-  /* position: fixed; */
   background-color: #c5cae9;
   display: block;
   grid-column: 1 / 2;
@@ -98,7 +93,6 @@ main {
   grid-column: 2 / 4;
   grid-row: 2 / 4;
   background-color: rgb(245, 245, 245);
-  /* margin-left: 5rem; */
 }
 
 .cardList-container {
@@ -121,13 +115,19 @@ main {
   box-shadow: 5px 5px;
   border-radius: 6px;
   max-width: 370px;
+  /* height: 250px; */
+  position: relative;
 }
 
 .card-elements {
+  /* position: absolute; */
   display: flex;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
+  font-size: 1.5rem;
+  /* bottom: 10px; */
+  padding: 0 30px;
 }
 
-.like {
-  font-size: 1.5rem;
+.card-elements li:last-child {
+  margin-left: auto;
 }
