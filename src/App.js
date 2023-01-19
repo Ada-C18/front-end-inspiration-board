@@ -10,7 +10,8 @@ import NewBoardForm from "./components/NewBoardForm";
 import Title from "./components/Title";
 import VieworAddButtons from "./components/ViewOrAddButtons";
 
-// const REACT_APP_BACKEND_URL = "http://localhost:5000/cards";
+const REACT_APP_BACKEND_URL =
+  "https://inspiration-board-db.herokuapp.com/boards";
 
 function App() {
   const [boardList, setBoardList] = useState([]);
@@ -19,7 +20,7 @@ function App() {
 
   const loadBoardList = () => {
     axios
-      .get("http://localhost:5000/boards")
+      .get("https://inspiration-board-db.herokuapp.com/boards")
       .then((response) => {
         const updatedBoardList = response.data.map((board) => {
           return { id: board.id, title: board.title, owner: board.owner };
@@ -37,7 +38,7 @@ function App() {
     console.log("addBoard called");
     const newBoardList = [...boardList];
     axios
-      .post("http://localhost:5000/boards", newBoardInfo)
+      .post("https://inspiration-board-db.herokuapp.com/boards", newBoardInfo)
       .then((response) => {
         const newBoard = {
           ...newBoardInfo,
@@ -51,7 +52,7 @@ function App() {
 
   const loadCards = (boardId) => {
     axios
-      .get(`http://127.0.0.1:5000/boards/${boardId}/cards`)
+      .get(`https://inspiration-board-db.herokuapp.com/boards/${boardId}/cards`)
       .then((response) => {
         console.log(`${JSON.stringify(response)}`);
         const cards = response.data["chosen board cards"];
@@ -65,7 +66,7 @@ function App() {
   const loadBoard = (boardId) => {
     console.log("handle board click called");
     axios
-      .get(`http://127.0.0.1:5000/boards/${boardId}`)
+      .get(`https://inspiration-board-db.herokuapp.com/boards/${boardId}`)
       .then((response) => {
         setSelectedBoard(response.data);
         loadCards(boardId);
@@ -78,7 +79,10 @@ function App() {
   const addCard = (newCardInfo, boardId) => {
     console.log("addCard called");
     axios
-      .post(`http://127.0.0.1:5000/boards/${boardId}/cards`, newCardInfo)
+      .post(
+        `https://inspiration-board-db.herokuapp.com/boards/${boardId}/cards`,
+        newCardInfo
+      )
       .then((response) => {
         const newCards = [...cards];
         const newCardJSON = {
