@@ -32,6 +32,7 @@ BoardList.propTypes = {
     })
   ),
   getOneBoard: PropTypes.func.isRequired,
+  deleteBoard: PropTypes.func.isRequired,
 };
 
 export default BoardList;

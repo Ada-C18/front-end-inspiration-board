@@ -49,3 +49,44 @@ li  {
     outline: #9b45b2;
     border-radius: 10px;
 }
+
+.deletebutton {
+    align-items: center;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    font-size: 18px;
+    height: 20px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 100%;
+    padding: 1em;
+   position: relative;
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+    
+}
+
+.deletebutton:hover {
+    align-items: center;
+    background-color: bisque ;
+    /* border: 2px solid #111; */
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    font-size: 18px;
+    height: 20px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 100%;
+    padding: 1em;
+   position: relative;
+    text-align: center;
+    text-decoration: none;
+    touch-action: manipulation;
+}
