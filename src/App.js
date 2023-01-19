@@ -96,7 +96,7 @@ function App() {
     axios
       .get(`${URL}/boards/${boardId}`)
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
         const boardAPIResCopy = response.data;
         setSelected(boardAPIResCopy);
       })
@@ -127,7 +127,7 @@ function App() {
         console.log(response);
         const cardsAPIResCopy = response.data.map((card) => {
           return {
-            cardId: card.card_id,
+            cardId: card.cardId,
             message: card.message,
             // likesCount: card.likesCount,
           };
