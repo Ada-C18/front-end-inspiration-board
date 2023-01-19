@@ -91,7 +91,7 @@ function App() {
         <CardsList board={selectedBoard} />
         <h2>Create New Board</h2>
         {showForm ? (
-          <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm>
+          <NewBoardForm createNewBoard={createNewBoard}/>
         ) : (
           ""
         )}

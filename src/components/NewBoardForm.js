@@ -40,7 +40,6 @@ function NewBoardForm(props) {
   // Add an onChange attribute to render the event handlers
   return (
     <form onSubmit={onFormSubmit}>
-      <div>NewBoardForm</div>
         <div>
             <label htmlFor="title">Title:</label>
             <input

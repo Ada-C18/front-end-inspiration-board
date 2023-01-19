@@ -147,6 +147,7 @@ function CardsList(props) {
           <p>No cards found for this board.</p>
         )}
         <section>
+          <h2>Create New Card</h2>
           <NewCardForm postNewCard={postNewCard} />
         </section>
       </div>
