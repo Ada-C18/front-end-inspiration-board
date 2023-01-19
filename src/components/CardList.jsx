@@ -38,7 +38,7 @@ const CardList = (props) => {
 
   const onLikeClick = (card) => {
     axios
-      .put(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/like`)
+      .put(`${process.env.REACT_APP_BACKEND_URL}/cards/${card.card_id}/likes`)
       .then((response) => {
         const newCardData = cardData.map((currentCard) => {
           return currentCard.card_id !== card.card_id
