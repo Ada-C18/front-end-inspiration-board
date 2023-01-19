@@ -3,12 +3,10 @@
 }
 
 .board-name {
-  font-family: 'Bebas Neue', cursive;
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
   font-size: 2.5rem;
   margin-bottom: 0rem;
-  color: rgb(222, 222, 222);
-  color: #FFF;
+  color: #fff;
   letter-spacing: 2px;
   text-transform: uppercase;
 }

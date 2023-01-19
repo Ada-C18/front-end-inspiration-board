@@ -3,12 +3,11 @@
   justify-content: space-around;
   align-items: center;
   margin-bottom: 2.5rem;
-  border-bottom: 1.7px solid #FFF;
+  border-bottom: 1.7px solid #fff;
   width: 100%;
   position: fixed;
   top: 0;
-  /* background-color: rgb(112, 145, 196, .8); */
-  background-color: rgba(235, 140, 140, .85);
+  background-color: rgba(235, 140, 140, 0.85);
   z-index: 1;
 }
 
@@ -20,19 +19,17 @@
   height: 4rem;
   width: 4rem;
   font-size: 2.5rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
   background: none;
-  border: 3px solid #FFF;
-  color: #FFF;
+  border: 3px solid #fff;
+  color: #fff;
   margin-left: 8rem;
 }
 
 h1 {
-  /* font-family: 'Zen Kurenaido', sans-serif; */
-  font-family: 'Readex Pro', sans-serif;
-  /* font-family: 'Cantarell', sans-serif; */
+  font-family: "Readex Pro", sans-serif;
   font-weight: 100;
   font-size: 3.3rem;
-  color: #FFF;
+  color: #fff;
 }
