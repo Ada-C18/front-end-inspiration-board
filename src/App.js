@@ -6,13 +6,12 @@ import NewBoardForm from "./components/NewBoardForm.js";
 import BoardList from "./components/BoardList";
 import CardList from "./components/CardList";
 
-
-
 function App() {
   const [boardList, setBoardList] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [cardList, setCardList] = useState([]);
   const URL = "https://vtv-inspo.herokuapp.com/boards";
+  const URL2 = "https://vtv-inspo.herokuapp.com/cards";
   // function loadBoardOnClick(board) {
 
   //   setSelectedBoard(board);
@@ -67,6 +66,7 @@ function App() {
             id: card.card_id,
             message: card.message,
             likesCount: card.likes_count,
+            // selectedBoardId: board.boardId,
           };
         });
         setCardList(cardsAPIResCopy);
@@ -77,6 +77,26 @@ function App() {
         console.log(err);
       });
   };
+
+  const deleteCard = (id) => {
+    axios
+      .delete(`${URL2}/${id}`)
+      .then(() => {
+        const newCardList = [];
+        for (const card of cardList) {
+          if (card.card_id !== id) {
+            newCardList.push(card);
+          }
+        }
+        console.log("delete func called");
+        setCardList(newCardList);
+        loadBoardOnClick(selectedBoard);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  // useEffect(loadBoardOnClick, [cardList]);
 
   return (
     <div className="main-page">
@@ -112,8 +132,7 @@ function App() {
         <div className="cards">
           <section className="cards-for-board">
             <h2>Cards for Selected Board 🗒 </h2>
-            <CardList cards={cardList}/>
-      
+            <CardList cards={cardList} deleteCard={deleteCard} />
           </section>
           <section className="add-new-card">
             <h2>Create a New Card</h2>
