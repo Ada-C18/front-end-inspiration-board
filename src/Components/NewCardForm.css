@@ -4,9 +4,10 @@
 }
 
 .card__submit__button {
-    background-color:yellow;
-    font-size: x-small;
+    background-color:rgb(87, 163, 234);
+    font-size: small;
     font-weight: bold;
+    color: white;
 }
 
 .new-card__field {

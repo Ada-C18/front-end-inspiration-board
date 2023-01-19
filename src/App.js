@@ -86,7 +86,6 @@ function App() {
     const convertedCard = convertFromApiCard(response.data.card);
     newCard.push(convertedCard);
     setCardsData(newCard);
-    // return getAllCards();
     if (sortType === "likesCount") {
       return getAllCardsByLikes();
     } else if (sortType === "alphabetically") {
@@ -99,18 +98,23 @@ function App() {
   // Delete a card
   const handleDeleteCard = async (cardId) => {
     await deleteCardApi(cardId);
-    return getAllCards();
+    if (sortType === "likesCount") {
+      return getAllCardsByLikes();
+    } else if (sortType === "alphabetically") {
+      return getAllCardsByAsc();
+    } else {
+      return getAllCards();
+    }
   };
 
   // Like a card and Likes count
-  const handleLikesApi = async (cardId, boardId, message, likesCount) => {
+  const handleLikesApi = async (cardId, likesCount) => {
     const plusOneLike = { likes_count: likesCount + 1 };
     const response = await axios.put(
       `${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}/like`,
       plusOneLike
     );
     const cardResult = convertFromApiCard(response.data.card);
-
     setCardsData((cardsData) =>
       cardsData.map((card) => {
         if (card.id === cardResult.id) {
@@ -120,24 +124,10 @@ function App() {
         }
       })
     );
-
-    // const newCardsData = cardsData.map((card) => {
-    //   return card.cardId !== cardId
-    //     ? card
-    //     : {
-    //         cardId: cardId,
-    //         boardId: boardId,
-    //         message: message,
-    //         likesCount: likesCount,
-    //       };
-    // });
-    // setCardsData(newCardsData);
   };
 
-  const handleLikes = async (cardId, boardId, message, likesCount) => {
-    await handleLikesApi(cardId, boardId, message, likesCount);
-    // return getAllCards();
-    // setSortType(sortType);
+  const handleLikes = async (cardId, likesCount) => {
+    await handleLikesApi(cardId, likesCount);
     if (sortType === "likesCount") {
       getAllCardsByLikes();
     }
@@ -147,8 +137,7 @@ function App() {
   const [sortType, setSortType] = useState("");
 
   const handleChange = (e) => {
-    const selectedSort = e.target.value;
-    setSortType(selectedSort);
+    setSortType(e.target.value);
   };
 
   const sortCardsByAscApi = useCallback(async () => {
@@ -181,32 +170,22 @@ function App() {
     setCardsData(cards);
   };
 
+  const sortArray = () => {
+    if (sortType === "id") {
+      return getAllCards();
+    }
+    if (sortType === "alphabetically") {
+      return getAllCardsByAsc();
+    }
+    if (sortType === "likesCount") {
+      return getAllCardsByLikes();
+    }
+  };
+
   useEffect(() => {
-    const sortArray = () => {
-      if (sortType === "id") {
-        return getAllCards();
-      }
-      if (sortType === "alphabetically") {
-        return getAllCardsByAsc();
-      }
-      if (sortType === "likesCount") {
-        return getAllCardsByLikes();
-      }
-    };
     sortArray(sortType);
   }, [sortType]);
 
-  // const sortArray = () => {
-  //   if (sortType === "id") {
-  //     return getAllCards();
-  //   }
-  //   if (sortType === "alphabetically") {
-  //     return getAllCardsByAsc();
-  //   }
-  //   if (sortType === "likesCount") {
-  //     return getAllCardsByLikes();
-  //   }
-  // };
 
   return (
     <div>

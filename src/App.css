@@ -66,7 +66,7 @@ padding-right: 25pt;
 }
 
 .hide__button {
-  background-color:lightsalmon;
+  background-color:rgb(93, 223, 93);
   font-weight: bold;
 }
 
@@ -113,6 +113,7 @@ padding-right: 25pt;
 
 .sort_by_pull_down {
   font-size: medium;
+  background-color: rgb(244, 244, 148);
 }
 
 body {

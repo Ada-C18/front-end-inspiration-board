@@ -21,16 +21,4 @@ export const deleteCardApi = async (cardId) => {
   return convertFromApiCard(response.data);
 };
 
-// export const sortCardsByLikesApi = async (selectedBoardId) => {
-//   const response = await axios.get(
-//     `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoardId}/cards?sort=likes`
-//   );
-//   return response.data.map(convertFromApiCard);
-// };
 
-// export const sortCardsByAscApi = async (selectedBoardId) => {
-//   const response = await axios.get(
-//     `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoardId}/cards?sort=asc`
-//   );
-//   return response.data.map(convertFromApiCard);
-// };
