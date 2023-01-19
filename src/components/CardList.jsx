@@ -73,7 +73,7 @@ const CardList = (props) => {
             const cards = [...cardData];
             cards.push(response.data.card);
             setCardData(cards);
-            // window.location.reload();
+            window.location.reload();
         }).catch((error) => {
             console.log('Error:', error);
             alert('Couldn\'t create a new card.');
