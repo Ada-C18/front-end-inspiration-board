@@ -56,7 +56,7 @@ const App = () => {
     setBoardFormVisibility(!boardFormVisibility);
   };
 
-  console.log('Deployment')
+  // console.log('Deployment')
   // const deleteAllData = () => {
   //   if (window.confirm("Are you really sure you want to delete everything?")) {
   //     axios
