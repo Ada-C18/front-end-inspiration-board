@@ -15,35 +15,44 @@ import PropTypes from 'prop-types';
 // axios.post('https://rykaliva.herokuapp.com/boards{card_id}/')
 
 const Card = (props) => {
-    const onLikeButtonClick = () => {
-        const updatedCard = {
-            card_id: props.card_id,
-            message: props.message,
-            likes_count: props.likes_count
-        };
-        props.onUpdate(updatedCard)
-    };
 
-    const likesCount = 0
+    return (
+        <div className=''>
+            <p>{props.message}</p>
+            <button>{props.likes_count} 💕</button>
+            <button>delete</button>
 
-    return(
-        <div className='card'>
-            {/* <p>
-            <button
-            className="like"
-            onClick={onLikeButtonClick}
-            >{likeColor}</button>
-            </p> */}
         </div>
-        )
+    )
 }
 
 Card.propTypes = {
-        card_id: PropTypes.number,
-        message: PropTypes.string,
-        likes_count: PropTypes.number,
-        onUpdate: PropTypes.func
+    card_id: PropTypes.number,
+    message: PropTypes.string,
+    likes_count: PropTypes.number,
+    onUpdate: PropTypes.func
 };
 
 export default Card 
 
+// const onLikeButtonClick = () => {
+//     const updatedCard = {
+//         card_id: props.card_id,
+//         message: props.message,
+//         likes_count: props.likes_count
+//     };
+//     props.onUpdate(updatedCard)
+// };
+
+// const likesCount = 0
+
+// return(
+//     <div className='card'>
+//         {/* <p>
+//         <button
+//         className="like"
+//         onClick={onLikeButtonClick}
+//         >{likeColor}</button>
+//         </p> */}
+//     </div>
+//     )

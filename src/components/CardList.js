@@ -6,20 +6,26 @@
 //   # state of cards is the array
 
 import './CardList.css'
+import Card from './Card'
+// use effect that makes axios post, pass in board_id as prop, set prop inside dependency array 
 
 const CardList = ({cardData}) => {
-    console.log(cardData)
-    // use effect that makes axios post, pass in board_id as prop, set prop inside dependency array 
+    console.log(cardData, "cardData")
+    const cardComponents = cardData.map(card => {
+        return (
+            <div key={card.card_id}>
+                <Card
+                message={card.message}
+                likes_count={card.likes_count}
+                />
+            </div>
+        )
+    });
+
+
     return (
         <section className='card-wrap'>
-            <div className='card1'></div>
-            <div className='card2'></div>
-            <div className='card3'></div>
-            <div className='card4'></div>
-            <div className='card5'></div>
-            <div className='card6'></div>
-            <div className='card7'></div>
-            <div className='card8'></div>
+            {cardComponents}
         </section>
     )
 }
