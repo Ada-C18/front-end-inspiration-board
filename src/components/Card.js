@@ -10,14 +10,16 @@ const Card = ({ card, updateLikedCard, deleteCard }) => {
     <section className="card">
       <h1>{card.message}</h1>
       <ul className="card-elements">
-        <li
-          onClick={() => {
-            updateLikedCard(card.id, card.likes_count + 1);
-          }}
-        >
-          {likeOrNot}   
+        <li className="like">
+          <li
+            onClick={() => {
+              updateLikedCard(card.id, card.likes_count + 1);
+            }}
+          >
+            {likeOrNot}   
+          </li>
+          <li>{card.likes_count} </li>
         </li>
-        <li>{card.likes_count} </li>
         <li className="trash"
           onClick={() => {
             deleteCard(card.id);

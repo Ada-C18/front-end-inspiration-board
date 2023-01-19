@@ -115,19 +115,29 @@ main {
   box-shadow: 5px 5px;
   border-radius: 6px;
   max-width: 370px;
+  display: flex;
+  flex-direction: column;
   /* height: 250px; */
-  position: relative;
+  /* position: relative; */
 }
 
 .card-elements {
   /* position: absolute; */
   display: flex;
-  /* justify-content: space-evenly; */
+  /* align-self: flex-end; */
+  margin-bottom: auto;
+  flex-direction: row;
+  justify-content: space-between;
   font-size: 1.5rem;
   /* bottom: 10px; */
   padding: 0 30px;
 }
 
-.card-elements li:last-child {
-  margin-left: auto;
+.like {
+  display: flex;
 }
+
+
+/* .card-elements li:last-child {
+  margin-left: auto;
+} */
