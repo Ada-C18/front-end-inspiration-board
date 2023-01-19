@@ -3,6 +3,8 @@ import BoardList from "./components/BoardList";
 import CardList from "./components/CardList";
 import NewBoardForm from "./components/NewBoardForm";
 import "./Fonts/GlossySheenRegular-L35oy.ttf";
+import "./Fonts/AlloyInk-nRLyO.ttf";
+import "./Fonts/BalonkuRegular-la1w.otf";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -125,17 +127,35 @@ function App() {
           selectedBoardId={selectedBoard.id}
           onDeleteBoard={deleteOneBoard}
         />
-        <button
-          onClick={() => {
-            if (window.confirm("Are you sure you wish to delete this item?")) {
-              deleteAllBoards();
-            }
-          }}
-          className="Delete-Button"
-        >
-          Click Here to delete ALL Boards and Cards Data
-        </button>
-        <div></div>
+        <section className="Footer">
+          <button
+            onClick={() => {
+              if (
+                window.confirm("Are you sure you wish to delete this item?")
+              ) {
+                deleteAllBoards();
+              }
+            }}
+            className="Delete-Button"
+          >
+            Click Here to delete ALL Boards and Cards Data
+          </button>
+          <p className="credits">
+            {" "}
+            Created by{" "}
+            <a href="https://www.linkedin.com/in/misha-craddock/">
+              Misha
+            </a>, <a href="https://www.linkedin.com/in/pavani-rannulu/">Pavi</a>{" "}
+            & <a href="https://www.linkedin.com/in/soleilherring/"> Soleil </a>
+            <br />
+            <br />
+            of{" "}
+            <a href="https://adadevelopersacademy.org/">
+              Ada Developers Academy
+            </a>{" "}
+            Cohort 18
+          </p>
+        </section>
       </main>
     </div>
   );
