@@ -17,4 +17,10 @@ label {
     text-align:center; 
 }
 
+input.invalid {
+    border: 2px solid red;
+}
 
+.formError {
+    color: red;
+}

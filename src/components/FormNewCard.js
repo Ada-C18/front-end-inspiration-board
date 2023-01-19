@@ -1,4 +1,3 @@
-// import "../styles/FormNewCard.css";
 import "../styles/FormNewCard.css";
 import { useState } from "react";
 
@@ -57,8 +56,11 @@ const FormNewCard = (props) => {
         className={isValidInput ? "valid" : "invalid"}
       />
       <p className="cardError">{formErrors.message}</p>
-      <p> Preview Card Message: 
-        <p className="message-preview">{message} </p></p>
+      <p>
+        {" "}
+        Preview Card Message:
+        <p className="message-preview">{message} </p>
+      </p>
       <input type="submit" value="Add Card" />
     </form>
   );

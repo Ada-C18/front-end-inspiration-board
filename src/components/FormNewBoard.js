@@ -8,6 +8,8 @@ const INITIAL_FORM_DATA = {
 
 const NewBoardForm = (props) => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
+  const [formErrors, setFormErrors] = useState({});
+  const [isValidInput, setIsValidInput] = useState(true);
 
   const handleChange = (e) => {
     const newFormData = {
@@ -19,14 +21,23 @@ const NewBoardForm = (props) => {
 
   const handleNewBoardSubmit = (e) => {
     e.preventDefault();
+    setFormErrors(validateForm(formData));
+  };
+
+  const validateForm = (values) => {
+    const errors = {};
 
     if (formData.title.length === 0) {
-      alert("Board must have title");
+      errors.title = "Board must have title";
+      setIsValidInput(false);
     } else if (formData.owner.length === 0) {
-      alert("Board must have owner");
+      errors.owner = "Board must have owner";
+      setIsValidInput(false);
     } else {
       props.addBoardCallbackFunc(formData);
+      setIsValidInput(true);
     }
+    return errors;
   };
 
   const [show, setShow] = useState(false);
@@ -43,6 +54,7 @@ const NewBoardForm = (props) => {
             value={formData.title}
             placeholder="Title"
             onChange={handleChange}
+            className={isValidInput ? "valid" : "invalid"}
           />
           <label htmlFor="owner"></label>
           <input
@@ -52,22 +64,31 @@ const NewBoardForm = (props) => {
             value={formData.owner}
             placeholder="Name"
             onChange={handleChange}
+            className={isValidInput ? "valid" : "invalid"}
           />
-          <br />
+          <p className="formError">{formErrors.title}</p>
+          <p className="formError">{formErrors.owner}</p>
+
           <br />
           <input className="button" type="submit" value="Add Board" />
-          
+
           <p>
             {" "}
             <label>Preview Board:</label>
-            <br/>
+            <br />
             {formData.title} - {formData.owner}{" "}
           </p>
 
-          <button className="button"  onClick={() => setShow(false)}> Hide New Board Form </button>
+          <button className="button" onClick={() => setShow(false)}>
+            {" "}
+            Hide New Board Form{" "}
+          </button>
         </form>
       ) : (
-        <button className="button" onClick={() => setShow(true)}> Create New Board </button>
+        <button className="button" onClick={() => setShow(true)}>
+          {" "}
+          Create New Board{" "}
+        </button>
       )}
 
       <br />
