@@ -25,8 +25,8 @@ const NewCardForm = (props) => {
     e.preventDefault();
     props.addCardCallbackFunc(formData);
     setFormData({
-      title: "",
-      owner: "",
+      message: "",
+      like_count: "",
     });
   };
 

@@ -98,7 +98,7 @@ function App() {
     console.log("newCardInfo!");
     console.log(newCardInfo);
     axios
-      .post(`${URL}/boards/28/cards`, newCardInfo)
+      .post(`${URL}/boards/${selectedBoardId}/cards`, newCardInfo)
       .then((response) => {
         // console.log(response);
         fetchAllCards();
