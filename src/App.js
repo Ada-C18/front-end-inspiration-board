@@ -152,6 +152,9 @@ function App() {
     }
   };
 
+  // add function to delete card and pass into Card
+  // make delete API request in another function called outside of App
+
   return (
     <div className="App">
       <Header />
