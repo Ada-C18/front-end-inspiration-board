@@ -35,7 +35,7 @@ import axios from "axios";
 // ];
 
 function App() {
-  const URL = "https://inspirationboard-lavender.herokuapp.com/boards";
+  const URL = "https://inspirationboard-lavender.herokuapp.com";
   const [boardsList, setBoardsList] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
   const [open, setOpen] = useState(false);
@@ -43,9 +43,8 @@ function App() {
 
   const fetchAllBoards = () => {
     axios
-      .get(URL)
+      .get(`${URL}/boards`)
       .then((res) => {
-        // console.log(res);
         const BoardsAPIResCopy = res.data.map((board) => {
           return {
             id: board.id,
@@ -65,7 +64,7 @@ function App() {
 
   const addBoard = (newBoardInfo) => {
     axios
-      .post(URL, newBoardInfo)
+      .post(`${URL}/boards`, newBoardInfo)
       .then((response) => {
         const newBoards = [...boardsList];
         const newBoardJSON = {
@@ -104,7 +103,7 @@ function App() {
 
   const addCard = (cardData) => {
     axios
-      .post(URL + "/" + selectedBoard.id + "/cards", cardData)
+      .post(URL + "/boards/" + selectedBoard.id + "/cards", cardData)
       .then((response) => {
         const newCards = [...cardsList];
         const newCardJSON = {
@@ -113,35 +112,48 @@ function App() {
         };
         newCards.push(newCardJSON);
         setCardsList(newCards);
-        console.log(newCards);
         selectedBoard.cards = newCards;
       });
   };
 
   const increaseLikes = (cardId, NewLikesCount) => {
-    const newCardList = [];
-    for (const card of cardsList) {
-      if (card.id !== cardId) {
-        newCardList.push(card);
-      } else {
-        const updatedCard = {
-          ...card,
-          likes_count: NewLikesCount,
-        };
-        newCardList.push(updatedCard);
-      }
-    }
-    setCardsList(newCardList);
+    axios
+      .put(`${URL}/cards/${cardId}/like`)
+      .then(() => {
+        const newCardList = [];
+        for (const card of cardsList) {
+          if (card.id !== cardId) {
+            newCardList.push(card);
+          } else {
+            const newCard = {
+              ...card,
+              likes_count: NewLikesCount,
+            };
+            newCardList.push(newCard);
+          }
+        }
+        setCardsList(newCardList);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const deleteCard = (cardId) => {
-    const newCardList = [];
-    for (const card of cardsList) {
-      if (card.id !== cardId) {
-        newCardList.push(card);
-      }
-      setCardsList(newCardList);
-    }
+    axios
+      .delete(`${URL}/cards/${cardId}`)
+      .then(() => {
+        const newCardList = [];
+        for (const card of cardsList) {
+          if (card.id !== cardId) {
+            newCardList.push(card);
+          }
+          setCardsList(newCardList);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
