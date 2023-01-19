@@ -12,8 +12,6 @@ const BoardForm = (props) => {
   };
 
   const onSubmitBoard = (event) => {
-    console.log("event submitted");
-    console.log(event);
     event.preventDefault();
     props.newBoard({
       name,
