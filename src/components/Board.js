@@ -47,7 +47,7 @@ const Board = () => {
         let board_id = selectedBoard;
         axios.post(`https://rykaliva.herokuapp.com/boards/${board_id}/cards`, newCardData)
         .then(() => {
-        axios.get (`https://rykaliva.herokuapp.com/boards/${board_id}/cards`).then((response)=> {
+        axios.get(`https://rykaliva.herokuapp.com/boards/${board_id}/cards`).then((response)=> {
             setCardData(response.data)
             });
         }) 
@@ -67,12 +67,25 @@ const Board = () => {
         })
         return newCards;
         });
-        console.log(cardData);
+        // console.log(cardData);
         for (let card of cardData) {
             if (card.card_id === id) {
                 axios.put(`https://rykaliva.herokuapp.com/cards/${id}`, {likes_count: `${card.likes_count}`})
             }
         }
+    };
+
+    const deleteCard = (id) => {
+        for (let card of cardData) {
+            if (card.card_id === id) {
+                axios.delete(`https://rykaliva.herokuapp.com/cards/${id}`)
+                .then(() => {
+                axios.get(`https://rykaliva.herokuapp.com/boards/${selectedBoard}/cards`).then((response) => {
+                    setCardData(response.data)
+                });
+                })
+            }
+        };
     };
 
     return (
@@ -90,7 +103,11 @@ const Board = () => {
                     <h2>{selectedBoardTitle}</h2>
                 </div>
             </section>
-            <CardList cardData={cardData} updateCard={updateCard}></CardList>
+            <CardList 
+            cardData={cardData} 
+            updateCard={updateCard}
+            deleteCard={deleteCard}
+            ></CardList>
         </section>
     );
 };
