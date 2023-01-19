@@ -96,8 +96,12 @@ textarea::placeholder {
   color: #c0c0c0;
 }
 
-p {
-  display: none;
+#err-msg {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.6rem;
+  color: rgb(147, 15, 15);
+  margin: 0 auto;
+  width: 85%;
 }
 
 p.hide-err-msg {
@@ -105,9 +109,7 @@ p.hide-err-msg {
 }
 
 p.invalid-input {
-  font-size: 0.6rem;
-  color: red;
-  font-family: 'Roboto', sans-serif;
+  display: block;
 }
 
 .card-submit-btn {
