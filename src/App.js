@@ -103,34 +103,35 @@ function App() {
   return (
     <div className="App">
       <header className="inspiration_style">
-        <h1 className="inspiration_background"> Inspiration Board </h1>
+        <h1 className="inspiration_background">Inspiration Board</h1>
       </header>
       <main>
-        <div className="wrapper">
-          <div className="one">
+        <section>
+          <div className="boards">
             <CreateBoardForm createBoard={createBoard}></CreateBoardForm>
             <BoardList
               boards={boardList || []}
               selectBoard={selectBoard}
+              activeBoard={selectedBoard && selectedBoard.board_id}
             ></BoardList>
           </div>
-          <div className="two">
-            {selectedBoard && (
-              <section>
-                <h2>
-                  Cards on {selectedBoard.title} for {selectedBoard.owner}
-                </h2>
-                <CreateCardForm createCard={createCard}></CreateCardForm>
-                <CardList
-                  title={selectedBoard.title}
-                  owner={selectedBoard.owner}
-                  cards={cardList || []}
-                  likeCard={likeCard}
-                ></CardList>
-              </section>
-            )}
-          </div>
-        </div>
+        </section>
+        {selectedBoard && (
+          <section>
+            <div className="boardHeader">
+              {selectedBoard.title} for {selectedBoard.owner}
+            </div>
+            <div className="cards">
+              <CardList
+                title={selectedBoard.title}
+                owner={selectedBoard.owner}
+                cards={cardList || []}
+                likeCard={likeCard}
+              ></CardList>
+              <CreateCardForm createCard={createCard}></CreateCardForm>
+            </div>
+          </section>
+        )}
       </main>
     </div>
   );

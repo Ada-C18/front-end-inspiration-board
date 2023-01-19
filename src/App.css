@@ -1,42 +1,3 @@
-/*.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #fbf7f7;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}*/
-
 .inspiration_style {
   display: grid;
   grid-template-columns: auto;
@@ -59,6 +20,12 @@
   transform: matrix3d(20);
 }
 
+.boardHeader {
+  text-align: center;
+  font-family: "Permanent Marker", cursive;
+  font-size: 40px;
+}
+
 a,
 a:hover,
 a:focus,
@@ -66,24 +33,23 @@ a:active {
   text-decoration: none;
   color: white;
 }
-.wrapper {
+
+main {
   display: grid;
   width: 95%;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-auto-columns: 1fr;
-  grid-auto-flow: column;
+  display: flex;
+  flex-direction: row;
   gap: 10px;
   padding: 30px;
 }
 
-.one {
-  grid-row: 1;
+.boards {
+  display: flex;
+  flex-direction: column;
 }
 
-.two {
-  grid-row: 1;
-}
-
-.three {
-  grid-row: 1;
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

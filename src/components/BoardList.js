@@ -2,26 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./BoardList.css";
 
-const BoardList = ({ boards, selectBoard }) => {
+const BoardList = ({ boards, selectBoard, activeBoard }) => {
   const clickBoard = (event) => selectBoard(parseInt(event.currentTarget.id));
-  return (
-    <section className="boardList">
-      <div className="stylingboard">
-        <h2>Boards</h2>
+  return [...boards].map((board) => (
+    <div
+      className={`board ${board.board_id === activeBoard && "activeBoard"}`}
+      key={board.board_id}
+      id={board.board_id}
+      onClick={clickBoard}
+    >
+      <div className="boardTitle">{board.title}</div>
+      <div>
+        for <span className="boardOwner">{board.owner}</span>
       </div>
-      {[...boards].map((board) => (
-        <div
-          className="boardListItem"
-          key={board.board_id}
-          id={board.board_id}
-          onClick={clickBoard}
-        >
-          <h3 className="boardTitle">{board.title}</h3> by
-          <span className="boardOwner">{board.owner}</span>
-        </div>
-      ))}
-    </section>
-  );
+    </div>
+  ));
 };
 
 BoardList.propTypes = {
@@ -32,6 +27,7 @@ BoardList.propTypes = {
     })
   ).isRequired,
   selectBoard: PropTypes.func,
+  activeBoard: PropTypes.number,
 };
 
 export default BoardList;

@@ -19,18 +19,15 @@ const CreateCardForm = ({ createCard }) => {
   };
 
   return (
-    <form onSubmit={submitCreateCardForm}>
-      <div className="stylingboard">
-        <h2>New Card</h2>
-      </div>
-      <label htmlFor="newCardMessage">New Card Message:</label>
-      <input
+    <form className="card" onSubmit={submitCreateCardForm}>
+      <textarea
+        className="cardMessage"
         name="newCardMessage"
         value={newCard.message}
-        type="text"
+        placeholder="New Message"
         onChange={onCardMessageChange}
       />
-      <input type="submit" value="Create Card" />
+      <input type="submit" value="Write Card ✍️" />
     </form>
   );
 };

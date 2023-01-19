@@ -1,4 +1,4 @@
-.stylingboard {
+.board {
   border-style: dotted;
   width: 200px;
   text-align: center;
@@ -7,6 +7,26 @@
   margin: 30px;
 }
 
-.jump {
-  white-space: pre;
+.board input {
+  font-family: "Permanent Marker", cursive;
+  text-align: center;
+  background: none;
+  border: none;
+}
+
+.board input.boardTitle {
+  font-size: 24px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.board input.boardOwner {
+  font-size: 16px;
+  width: min-content;
+}
+
+.board input[type="submit"] {
+  background: none;
+  box-sizing: border-box;
+  float: right;
 }

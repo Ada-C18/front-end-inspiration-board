@@ -1,8 +1,24 @@
-.stylingboard {
-  border-style: dotted;
+.card textarea.cardMessage {
+  font: 20pt "Permanent Marker", cursive;
+  background: none;
+  border: none;
+  box-sizing: border-box;
   width: 200px;
-  text-align: center;
-  font-family: "Permanent Marker", cursive;
-  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
-  margin: 30px;
+  height: 200px;
+  resize: none;
+  word-break: break-word;
+}
+
+.card input[type="submit"] {
+  background: none;
+  box-sizing: border-box;
+  float: right;
+}
+
+form.card {
+  opacity: 60%;
+}
+
+form.card:focus-within {
+  opacity: 100%;
 }

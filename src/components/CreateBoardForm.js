@@ -11,8 +11,10 @@ const CreateBoardForm = ({ createBoard }) => {
   const onBoardTitleChange = (event) =>
     setNewBoard({ ...newBoard, title: event.target.value });
 
-  const onBoardOwnerChange = (event) =>
+  const onBoardOwnerChange = (event) => {
+    event.target.size = event.target.value.length;
     setNewBoard({ ...newBoard, owner: event.target.value });
+  };
 
   const submitCreateBoardForm = (event) => {
     event.preventDefault();
@@ -24,27 +26,30 @@ const CreateBoardForm = ({ createBoard }) => {
   };
 
   return (
-    <form onSubmit={submitCreateBoardForm}>
-      <div className="stylingboard">
-        <h2>New Board</h2>
+    <form className="board" onSubmit={submitCreateBoardForm}>
+      <div>
+        <input
+          className="boardTitle"
+          type="text"
+          name="newBoardTitle"
+          value={newBoard.title}
+          placeholder="New Board"
+          onChange={onBoardTitleChange}
+        />
       </div>
-      <label htmlFor="newBoardTitle">New Board Title:</label>
-      <input
-        className="jump"
-        name="newBoardTitle"
-        value={newBoard.title}
-        type="text"
-        onChange={onBoardTitleChange}
-      />
-      <label htmlFor="newBoardOwner"> New Board Owner:</label>
-      <input
-        className="jump"
-        name="newBoardOwner"
-        value={newBoard.owner}
-        type="text"
-        onChange={onBoardOwnerChange}
-      />
-      <input type="submit" value="Create Board" />
+      <div>
+        <label htmlFor="newBoardOwner">for</label>
+        <input
+          className="boardOwner"
+          size="4"
+          type="text"
+          name="newBoardOwner"
+          value={newBoard.owner}
+          placeholder="what"
+          onChange={onBoardOwnerChange}
+        />
+      </div>
+      <input type="submit" value="Create Board ✍️" />
     </form>
   );
 };

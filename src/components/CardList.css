@@ -1,14 +1,25 @@
 .card {
   background-color: rgb(215, 164, 240);
   box-shadow: 10px 10px 8px rgb(204, 186, 186);
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  height: 200px;
+  width: 200px;
+  max-height: 200px;
+  max-width: 200px;
   padding: 2rem;
   margin: 2rem;
-  width: 200px;
+  flex: 200px;
 }
-.button-container {
-  align-self: flex-end;
+div.cardMessage {
+  width: 200px;
+  height: 200px;
+  font: 20pt "Permanent Marker", cursive;
+}
+
+.cardLikes {
+  float: right;
+}
+
+.cardLikes button {
+  border: none;
+  background: none;
 }
