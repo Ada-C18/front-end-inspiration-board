@@ -135,7 +135,8 @@ function App() {
             deleteBoard={deleteBoard}
             fetchCards={fetchAllCards}
           />
-          <h2>Add Board:</h2>
+          <br></br>
+          <h2>Create Board:</h2>
           <NewBoardForm addBoardCallbackFunc={addBoard} />
           <NewCardForm
             addCardCallbackFunc={addCard}
@@ -146,9 +147,7 @@ function App() {
           <h2>Cards</h2>
           <CardList cardEntries={cardsList} deleteCard={deleteCard} />
         </div>
-        
       </div>
-      
     </nav>
   );
 }

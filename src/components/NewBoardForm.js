@@ -31,27 +31,35 @@ const NewBoardForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleNewBoardSubmit}>
-      <label htmlFor="title">Board Title</label>
-      {/* htmlFor - for accessibility */}
-      <input
-        type="text"
-        // id="title"
-        name="title"
-        value={formData.title}
-        onChange={handleChange}
-      ></input>
+    <section className="board-form">
+      <form onSubmit={handleNewBoardSubmit}>
+        <label htmlFor="title">Board Title</label>
+        {/* htmlFor - for accessibility */}
+        <input
+          type="text"
+          // id="title"
+          name="title"
+          value={formData.title}
+          onChange={handleChange}
+        ></input>
 
-      <label htmlFor="owner">Board Owner</label>
-      <input
-        type="text"
-        // id="owner"
-        name="owner"
-        value={formData.owner}
-        onChange={handleChange}
-      ></input>
-      <input id="submit-btn" type="submit" value="Add Board" />
-    </form>
+        <label htmlFor="owner">Board Owner</label>
+        <input
+          type="text"
+          // id="owner"
+          name="owner"
+          value={formData.owner}
+          onChange={handleChange}
+        ></input>
+        <br></br>
+        <input
+          id="submit-btn"
+          className="create-btn"
+          type="submit"
+          value="Create Board"
+        />
+      </form>
+    </section>
   );
 };
 

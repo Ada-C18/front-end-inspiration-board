@@ -16,7 +16,7 @@ const Board = (props) => {
         x
       </button>
       <div className="board-name-text" onClick={() => fetchCards(id)}>
-        title: {title}
+        {title}
       </div>
       {/* <li>owner: {owner}</li> */}
     </div>
