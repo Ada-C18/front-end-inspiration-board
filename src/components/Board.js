@@ -3,11 +3,20 @@ import "./Board.css";
 import Card from "./Card";
 import NewCardForm from "./NewCardForm";
 
-const Board = ({ selectedBoard, cards, addCard }) => {
+const Board = ({ selectedBoard, cards, addCard, deleteCard }) => {
+  console.log(`👁️${JSON.stringify(selectedBoard)}`);
   const cardComponents = [];
   if (cards) {
     for (const card of cards) {
-      cardComponents.push(<Card key={card.id} message={card.message}></Card>);
+      cardComponents.push(
+        <Card
+          key={card.id}
+          id={card.id}
+          selectedBoard={selectedBoard.id}
+          message={card.message}
+          deleteCard={deleteCard}
+        ></Card>
+      );
     }
   }
 

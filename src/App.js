@@ -23,7 +23,12 @@ function App() {
       .get("https://inspiration-board-db.herokuapp.com/boards")
       .then((response) => {
         const updatedBoardList = response.data.map((board) => {
-          return { id: board.id, title: board.title, owner: board.owner };
+          return {
+            id: board.id,
+            title: board.title,
+            owner: board.owner,
+            chosen_board_cards: ["chosen board cards"],
+          };
         });
         setBoardList(updatedBoardList);
       })
@@ -54,7 +59,7 @@ function App() {
     axios
       .get(`https://inspiration-board-db.herokuapp.com/boards/${boardId}/cards`)
       .then((response) => {
-        console.log(`${JSON.stringify(response)}`);
+        // console.log(`💩${JSON.stringify(response)}`);
         const cards = response.data["chosen board cards"];
         setCards(cards);
       })
@@ -69,6 +74,7 @@ function App() {
       .get(`https://inspiration-board-db.herokuapp.com/boards/${boardId}`)
       .then((response) => {
         setSelectedBoard(response.data);
+        console.log(`🤡${JSON.stringify(response.data)}`);
         loadCards(boardId);
       })
       .catch((error) => {
@@ -96,6 +102,26 @@ function App() {
       });
   };
 
+  const deleteCard = (cardId) => {
+    console.log("delete card called");
+    axios
+      .delete(
+        `https://inspiration-board-db.herokuapp.com/boards/${selectedBoard.id}/cards/${cardId}`
+      )
+      .then(() => {
+        const newCardData = [];
+        for (const card of cards) {
+          if (card.id !== cardId) {
+            newCardData.push(card);
+          }
+        }
+        setCards(newCardData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <Header></Header>
@@ -103,7 +129,12 @@ function App() {
       <VieworAddButtons></VieworAddButtons>
       <NewBoardForm addBoardCallbackFunc={addBoard} />
       <BoardList boardList={boardList} loadBoard={loadBoard} />
-      <Board cards={cards} selectedBoard={selectedBoard} addCard={addCard} />
+      <Board
+        cards={cards}
+        selectedBoard={selectedBoard}
+        addCard={addCard}
+        deleteCard={deleteCard}
+      />
     </div>
   );
 }
