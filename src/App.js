@@ -128,13 +128,13 @@ const App = () => {
           ""
         )}
       </div>
-      <footer>
+      {/* <footer>
         Click{" "}
         <span onClick={deleteAllData} className="footer__delete-btn">
           here
         </span>{" "}
         to delete all boards and cards!
-      </footer>
+      </footer> */}
     </div>
   );
 };
