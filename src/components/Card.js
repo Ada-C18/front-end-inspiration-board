@@ -3,11 +3,10 @@ import "./Card.css";
 
 const Card = ({ id, message, likesCount }) => {
   return (
-    <div>
+    <div className="card">
       <p>{message}</p>
-      <p>{likesCount}</p>
-      <p>💕</p>
-      <button>Delete Card</button>
+      <p>{likesCount} 💕</p>
+      <button className="button-card">Delete Card</button>
     </div>
   );
 };

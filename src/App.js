@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import NewBoardForm from "./components/NewBoardForm.js";
 import BoardList from "./components/BoardList";
+import CardList from "./components/CardList";
+
+
 
 function App() {
   const [boardList, setBoardList] = useState([]);
@@ -61,7 +64,7 @@ function App() {
       .then((res) => {
         const cardsAPIResCopy = res.data.map((card) => {
           return {
-            cardId: card.card_id,
+            id: card.card_id,
             message: card.message,
             likesCount: card.likes_count,
           };
@@ -108,8 +111,9 @@ function App() {
         </div>
         <div className="cards">
           <section className="cards-for-board">
-            <h2>Cards for Pick-me-up Quotes</h2>
-            <div>CardList component (Work in Progres)</div>
+            <h2>Cards for Selected Board 🗒 </h2>
+            <CardList cards={cardList}/>
+      
           </section>
           <section className="add-new-card">
             <h2>Create a New Card</h2>

@@ -1,0 +1,30 @@
+.card {
+    width: 75%;
+    height: 40%;
+    border-radius: 50px;
+    background-color: beige;
+    text-align: center;
+    font-size: 1rem;
+    align-content: space-around;
+}
+
+p {
+    margin: 3%;
+    padding-top: 10%
+}
+
+.button-card {
+    display: inline-block;
+    padding: 5px 5px;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #0f1010;
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgb(176, 173, 173) 100%);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 3px #999;
+}

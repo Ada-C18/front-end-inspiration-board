@@ -52,3 +52,9 @@ footer {
   color: #636161;;
 }
 
+.cards-for-board {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  
+}
