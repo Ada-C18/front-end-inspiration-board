@@ -20,12 +20,12 @@ const CardList = (props) => {
     );
   });
 
-  return (
-    <section>
-      <ul>{cardComponents}</ul>
-    </section>
-  );
-};
+	return (
+		<section className="cards_container">
+		<ul>{cardComponents}</ul>
+		</section>
+	);
+	};
 
 CardList.propTypes = {
   //Fill with correct proptypes
