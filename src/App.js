@@ -11,7 +11,7 @@ function App() {
   const [boardsList, setBoardsList] = useState([]);
   const [selectedBoardId, setSelectedBoardId] = useState(null);
   console.log(`selectedBoard: ${selectedBoardId}`);
-  const URL = "https://inspirationboard.herokuapp.com";
+  const URL = "https://inspirationboard-api.herokuapp.com";
   const fetchAllBoards = () => {
     axios
       .get(`${URL}/boards`)
@@ -36,7 +36,7 @@ function App() {
   // cardsList axios call
   const [cardsList, setCardsList] = useState([]);
 
-  // const cardsURL = "https://inspirationboard.herokuapp.com/cards";
+  // const cardsURL = "https://inspirationboard-api.herokuapp.com/cards";
   const fetchAllCards = (boardId) => {
     console.log(`${boardId} fetchAllCards called`);
     axios

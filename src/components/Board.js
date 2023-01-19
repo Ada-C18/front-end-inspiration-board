@@ -12,7 +12,9 @@ const Board = (props) => {
   return (
     <div className="board-item">
       {/* <li>board id: {id}</li> */}
-      <button className="button_click" onClick={() => deleteBoard(id)}>x</button>
+      <button className="button_click" onClick={() => deleteBoard(id)}>
+        x
+      </button>
       <div className="board-name-text" onClick={() => fetchCards(id)}>
         title: {title}
       </div>
