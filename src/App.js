@@ -42,6 +42,25 @@ function App() {
     }
   };
 
+  // delete board
+  const deleteBoard = (boardId) => {
+    console.log("deleteBoard Called");
+    axios
+      .delete(`${URL}/boards/${boardId}`)
+      .then(() => {
+        const newBoardList = [];
+        for (const board of boardList) {
+          if (board.id !== boardId) {
+            newBoardList.push(board);
+          }
+        }
+        setBoardList(newBoardList);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   //forms -> add one board:
   const addBoard = (newBoardInfo) => {
     axios
@@ -142,6 +161,7 @@ function App() {
           boardList={boardList}
           getOneBoard={getOneBoard}
           boardId={boardId}
+          deleteBoard={deleteBoard}
         />
         <h2 className="new-item"> Create a New Board</h2>
         <FormNewBoard addBoardCallbackFunc={addBoard} />
