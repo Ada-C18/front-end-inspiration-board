@@ -6,24 +6,24 @@ import PropTypes from "prop-types";
 const CardList = (props) => {
 	console.log(props);
 
-  const cardComponents = props.cardEntries.map((cardEntry) => {
-	return (
-	  <li key={cardEntry.id}>
-		<Card
-		  id={cardEntry.id}
-		  message={cardEntry.message}
-		  like_count={cardEntry.like_count}
-		/>
-	  </li>
-	);
-  });
+	const cardComponents = props.cardEntries.map((cardEntry) => {
+		return (
+		<li key={cardEntry.id}>
+			<Card
+			id={cardEntry.id}
+			message={cardEntry.message}
+			like_count={cardEntry.like_count}
+			/>
+		</li>
+		);
+	});
 
-  return (
-	<section className="cards_container">
-	  <ul>{cardComponents}</ul>
-	</section>
-  );
-};
+	return (
+		<section className="cards_container">
+		<ul>{cardComponents}</ul>
+		</section>
+	);
+	};
 
 CardList.propTypes = {
 	//Fill with correct proptypes
