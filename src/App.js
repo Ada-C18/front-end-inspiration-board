@@ -153,25 +153,25 @@ function App() {
   return (
     <div className="app-all">
       <header> Inspiration Board </header>
+      <div>
+        <nav className="board">
+          <h2 className="boardListTitle"> Board List</h2>
 
-      <nav className="board">
-        <h2 className="boardListTitle"> Board List</h2>
+          <BoardList
+            boardList={boardList}
+            getOneBoard={getOneBoard}
+            boardId={boardId}
+            deleteBoard={deleteBoard}
+          />
+          <h2 className="new-item"> Create a New Board</h2>
+          <FormNewBoard addBoardCallbackFunc={addBoard} />
+        </nav>
 
-        <BoardList
-          boardList={boardList}
-          getOneBoard={getOneBoard}
-          boardId={boardId}
-          deleteBoard={deleteBoard}
-        />
-        <h2 className="new-item"> Create a New Board</h2>
-        <FormNewBoard addBoardCallbackFunc={addBoard} />
-      </nav>
-
-      <aside className="cards">
-        <h2 className="new-item"> Create a New Card </h2>
-        <FormNewCard addCardCallbackFunc={addCard} boardId={boardId} />
-      </aside>
-
+        <aside className="cards">
+          <h2 className="new-item"> Create a New Card </h2>
+          <FormNewCard addCardCallbackFunc={addCard} boardId={boardId} />
+        </aside>
+      </div>
       <main>
         <h2 className="card-title"> Cards for {board} </h2>
         <CardList
