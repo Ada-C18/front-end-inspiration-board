@@ -1,10 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData, useLocation } from "react-router-dom";
 import "./SingleBoardView.css";
 import AddCard from "../components/AddCard";
 import SelectedBoard from "../components/SelectedBoard";
 import homeIcon from '../home-icon-dark.png';
 
 const SingleBoardView = () => {
+
+  const loaderData = useLoaderData();
+  const {loginState, onSubmitCard, cards, getCardsByBoard} = loaderData[0];
+
+  // console.log(cards)
+
   return (
     <div id="single-board-view">
       <header id='single-board-view-header'>
@@ -13,12 +19,12 @@ const SingleBoardView = () => {
       </header>
 
       <div id='board-display'>
-        <SelectedBoard></SelectedBoard>
+        <SelectedBoard cards={cards}></SelectedBoard>
       </div>
 
       <div id='add-card-and-home'>
         <div id='add-card'>
-          <AddCard></AddCard>
+          <AddCard onSubmitCard={onSubmitCard} loginState={loginState}></AddCard>
         </div>
 
         <Link to={`/boards`}>
