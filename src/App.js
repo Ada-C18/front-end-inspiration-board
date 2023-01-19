@@ -182,12 +182,6 @@ const App = () => {
     );
   };
 
-  // const updateCardData = () => {
-  //   setCardData([...cardData])
-  // }
-  //update card data
-  // take in new card data and set card data to update the cards
-
   return (
     <section>
       <header className="header">INSPIRATION BOARD</header>
