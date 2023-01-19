@@ -4,14 +4,13 @@ import axios from "axios";
 import CardsList from "./components/CardsList";
 import NewBoardForm from "./components/NewBoardForm";
 
-
 // helper function dedicated to only making API GET request for Boards
 const getBoardListApi = () => {
   return axios
     .get(`${process.env.REACT_APP_BACKEND_URL}/boards`, {})
-    
+
     .then((response) => {
-      return response.data; 
+      return response.data;
     })
     .catch((error) => {
       console.log(error);
@@ -22,14 +21,14 @@ function App() {
   // state variable and function for updating state of boardList
   const [boardList, setBoardList] = useState([]); // initial value for boardList is an empty list
   const [selectedBoard, setSelectedBoard] = useState({
-    title: '',
-    owner: '',
-    id: null
+    title: "",
+    owner: "",
+    id: null,
   });
 
-  // Event handler function 
-  const selectBoard = (board) => { 
-    setSelectedBoard(board) 
+  // Event handler function
+  const selectBoard = (board) => {
+    setSelectedBoard(board);
   };
 
   // Create a function that calls the getBoardListApi function
@@ -48,7 +47,7 @@ function App() {
   const boardElements = boardList.map((board) => {
     return (
       <li>
-        <Board board={board} selectBoard={selectBoard}/>
+        <Board board={board} selectBoard={selectBoard} />
       </li>
     );
   });
@@ -57,21 +56,24 @@ function App() {
   // Pass down event handlers from App to NewBoardForm
   // Make API call to create new board
   // clone boardList (piece of state) and add newly created board to update BoardList state
-  const createNewBoard = newBoard => {
+  const createNewBoard = (newBoard) => {
     axios
-    .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, newBoard)
-    .then((response) => {console.log("Response", response.data);
-    const boards = [...boardList];
-    boards.push(response.data);
-    setBoardList(boards);
-  })
-    .catch((error) => {
-      console.log('Error:', error);
-    });
-  }
+      .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, newBoard)
+      .then((response) => {
+        console.log("Response", response.data);
+        const boards = [...boardList];
+        boards.push(response.data);
+        setBoardList(boards);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
+  };
   // Create a toggle botton to show/hide board form
   const [showForm, setShowForm] = useState(true);
-  const toggleNewBoardForm = () => {setShowForm(!showForm)}
+  const toggleNewBoardForm = () => {
+    setShowForm(!showForm);
+  };
 
   return (
     <div className="App">
@@ -86,10 +88,16 @@ function App() {
             <h2>{selectedBoard.title}</h2>
           </div>
         </div>
-        <CardsList board={selectedBoard}/>
+        <CardsList board={selectedBoard} />
         <h2>Create New Board</h2>
-        {showForm ? <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm> : ''}
-        <span onClick={toggleNewBoardForm} className='toggle-btn'>{showForm ? 'Hide New Board Form' : 'Show New Board Form'}</span>
+        {showForm ? (
+          <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm>
+        ) : (
+          ""
+        )}
+        <button onClick={toggleNewBoardForm} className="toggle-btn">
+          {showForm ? "Hide New Board Form" : "Show New Board Form"}
+        </button>
       </main>
     </div>
   );
