@@ -1,0 +1,65 @@
+.App {
+  text-align: center;
+  color: #282c34;
+  background-color: aliceblue;
+  min-height: 100vh;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  
+}
+
+/* layout help */
+/* section div {
+  border: 1px;
+  border-style: solid;
+  border-color: red;
+  padding: 1em;
+
+} */
+
+section#board-section {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+}
+
+#board-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 60%;
+
+}
+
+#board-form-container {
+  width: 40%;
+}
+
+section#card-section {
+  margin-top: 3ex;
+  padding-top: 3ex;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-top: 3px;
+  border-top-style: solid;
+  border-top-color: violet;
+
+
+}
+
+#card-list {
+  width: 60%;
+}
+
+#card-form-container {
+  width: 40%;
+}

@@ -1,0 +1,63 @@
+div#CardForm {
+  text-align: left;
+}
+
+div.error {
+  font-size: 130%;
+  color: red;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
+
+body {
+    margin: 20px auto;
+    font-family: 'Lato';
+    background:#666;
+    color:#fff;
+  }
+  *{
+    margin:0;
+    padding:0;
+  }
+  h2 {
+    font-weight: bold;
+    font-size: 2rem;
+  }
+  p {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+  ul,li{
+    list-style:none;
+  }
+  ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  ul li a{
+    text-decoration:none;
+    color:#000;
+    background:#ffc;
+    display:block;
+    height:10em;
+    width:10em;
+    padding:1em;
+  }
+  ul li{
+    margin:1em;
+  }
+
+/* #MESSAGE */
+.borderexample {
+ border-width:3px;
+ border-style:solid;
+ border-color:#0e0f10;
+}
+
+
+/* /* #MESSAGE  */
+.borderexample {
+ border-width:4px;
+ border-style:solid;
+ border-color:#1f2121;
+}
+
