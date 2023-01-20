@@ -10,8 +10,9 @@ const CardList = (props) => {
 
     const cardElements = props.cardsData.map((card) => {
         return (<Card card={card}
-            // plusOneCardItem={plusOneCardItem}
+            plusOneCardItem={props.plusOneCardItem}
             deleteCardItem={props.deleteCardItem}
+            likes={card.likes}
             //passing it as a prop to card
         ></Card>)
     })

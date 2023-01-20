@@ -110,6 +110,7 @@ function App() {
 }, [selectedBoard]);
 
 const deleteCardItem = (card) => {
+  console.log("in delete")
     axios.delete(`${url}/cards/${card.id}`).then((response) => {
         const newCardsData = cardsData.filter((existingCard) => {
             return existingCard.id !== card.id
@@ -121,9 +122,18 @@ const deleteCardItem = (card) => {
     })
 }
 const plusOneCardItem=(card)=>{
-  axios.put(`${url}/cards/${card.id}`).then((response) => {
-    const newCardsData = cardsData.filter((existingCard) => {
-        return existingCard.id !== card.id
+  console.log("in plus one")
+  const request_body = {"likes": card.likes+1}
+  axios.put(`${url}/cards/${card.id}`, request_body).then((response) => {
+    const newCardsData = cardsData.map((existingCard) => {
+        if (existingCard.id === card.id) {
+            let updatedCard = {...card};
+            updatedCard.likes += 1;
+            return updatedCard;
+        }
+        else {
+          return existingCard;
+        }
     })
     setCardsData(newCardsData)
 }).catch((error) => {
