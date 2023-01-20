@@ -1,8 +1,12 @@
 .App {
   text-align: center;
   color: black;
+  
 }
-
+html{
+  background: rgb(255,255,255);
+  background: radial-gradient(circle, rgba(255,255,255,1) 90%, rgba(192,8,226,1) 100%);
+}
 .App-header {
   /* background-color: #282c34; */
   /* min-height: 100vh; */
