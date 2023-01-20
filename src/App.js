@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
   Navigate,
-} from 'react-router-dom';
-import axios from 'axios';
+} from "react-router-dom";
+import axios from "axios";
 
-import './App.css';
+import "./App.css";
 
-import LogInView from './routes/LogInView';
-import LogInForm from './routes/LogInForm';
-import SignUpForm from './routes/SignUpForm';
-import Home from './routes/Home';
-import CreateBoard from './routes/CreateBoard';
-import SingleBoardView from './routes/SingleBoardView';
-import ErrorPage from './error-page';
+import LogInView from "./routes/LogInView";
+import LogInForm from "./routes/LogInForm";
+import SignUpForm from "./routes/SignUpForm";
+import Home from "./routes/Home";
+import CreateBoard from "./routes/CreateBoard";
+import SingleBoardView from "./routes/SingleBoardView";
+import ErrorPage from "./error-page";
 
 const kBaseUrl = process.env.REACT_APP_BE_URL;
 
@@ -47,8 +47,8 @@ function App() {
 
   let [appData, setAppData] = useState([]);
   let [cardDataByBoard, setCardDataByBoard] = useState([]);
-  let [selectValue, setSelectValue] = useState('1');
-  let [selectCardValue, setSelectCardValue] = useState('likes')
+  let [selectValue, setSelectValue] = useState("1");
+  let [selectCardValue, setSelectCardValue] = useState("likes");
 
   const logUserOut = () => {
     setLoggedIn({
@@ -95,22 +95,22 @@ function App() {
 
   const sortBoardArr = (value) => {
     switch (value) {
-      case '1':
+      case "1":
         getBoardArr();
         break;
-      case '2':
+      case "2":
         sortBoardsByMostRecent();
         break;
-      case '3':
+      case "3":
         sortBoardsByMostCards();
         break;
-      case '4':
+      case "4":
         sortBoardsByLeastCards();
         break;
-      case '5':
+      case "5":
         sortbyOwnerNameAZ();
         break;
-      case '6':
+      case "6":
         sortbyOwnerNameZA();
         break;
       default:
@@ -139,13 +139,13 @@ function App() {
 
   const sortCardArr = (value, boardId) => {
     switch (value) {
-      case 'likes':
+      case "likes":
         sortCardsByLikes(boardId);
         break;
-      case 'alpha':
+      case "alpha":
         sortCardsAlpha(boardId);
         break;
-      case 'id':
+      case "id":
         sortCardsById(boardId);
         break;
       default:
@@ -165,6 +165,7 @@ function App() {
 
   const getCardsArr = async (boardId, selectCardValue) => {
     const cardArr = await getCardsByBoard(boardId);
+    cardArr.sort((a, b) => a.id - b.id);
     return setCardDataByBoard(cardArr);
   };
 
@@ -219,7 +220,7 @@ function App() {
         allBoardsData: appData,
         onLikeCard: likeCard,
         onSort: sortCardArr,
-        selectState: selectCardValue
+        selectState: selectCardValue,
       },
     ];
   };
@@ -301,18 +302,18 @@ function App() {
     createRoutesFromElements(
       <>
         <Route
-          path='/'
+          path="/"
           element={
-            loggedIn.userId ? <Navigate to='/boards' replace /> : <LogInView />
+            loggedIn.userId ? <Navigate to="/boards" replace /> : <LogInView />
           }
           loader={passLogInProps}
           errorElement={<ErrorPage />}
         >
           <Route
-            path='login'
+            path="login"
             element={
               loggedIn.userId ? (
-                <Navigate to='/boards' replace />
+                <Navigate to="/boards" replace />
               ) : (
                 <LogInForm />
               )
@@ -321,10 +322,10 @@ function App() {
             errorElement={<ErrorPage />}
           />
           <Route
-            path='signup'
+            path="signup"
             element={
               loggedIn.userId ? (
-                <Navigate to='/boards' replace />
+                <Navigate to="/boards" replace />
               ) : (
                 <SignUpForm />
               )
@@ -334,24 +335,24 @@ function App() {
           />
         </Route>
         <Route
-          path='/boards'
-          element={loggedIn.userId ? <Home /> : <Navigate to='/' replace />}
+          path="/boards"
+          element={loggedIn.userId ? <Home /> : <Navigate to="/" replace />}
           loader={passBoardProps}
           errorElement={<ErrorPage />}
         />
         <Route
-          path='/create-board'
+          path="/create-board"
           element={<CreateBoard />}
           loader={passCreateBoardProps}
           errorElement={<ErrorPage />}
         />
         <Route
-          path='/boards/:boardId'
+          path="/boards/:boardId"
           element={<SingleBoardView />}
           loader={passSingleBoardProps}
           errorElement={<ErrorPage />}
         />
-        <Route path='*' element={<ErrorPage />} />
+        <Route path="*" element={<ErrorPage />} />
       </>
     )
   );
