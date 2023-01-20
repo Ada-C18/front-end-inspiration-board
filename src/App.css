@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Marcellus&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins&family=Raleway:wght@500&display=swap');
 
 .App {
   text-align: center;
@@ -19,10 +18,62 @@
   color: white;
 }
 
-h2{
-  font-family: Marmelad;
+
+
+.boardContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Raleway";
+  background: #EFE9E1;
+  width: 221px;
+  height: 285px;
+  padding: 2rem;
+  flex-direction: column;
+}
+
+.topComponents{
+  display: flex;
+  align-items:center;
+  justify-content: space-around;
+  margin-bottom: 100px;
 
 }
+
+.boardElements{
+  list-style: none;
+  font-family: Raleway ; 
+  font-size: 16px;
+}
+
+
+
+
+
+ol {
+  display: block;
+  list-style-type: decimal;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
+}
+
+
+
+.boardHeader{
+font-family: Poppins;
+color: #72383D;
+  
+}
+
+.boardFooter{
+  font-family: Poppins;
+  color: #b18589;
+  font-size: 20px;
+    
+  }
 
 .cardsContainer {
   display: flex;
@@ -30,25 +81,33 @@ h2{
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap; 
+  border-width: 10px;
 }
 
-.cardMessage {
-  font-family: "Raleway";
+.cardMessageContainer {
   background: #AC9C8D;
-  width: 100px;
-  height: 148px;
+  width: 150px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
   flex-direction: column;
+  margin-bottom: 100px;
 }
 
-.createBoard, .newCardBoard {
+.cardMessage{
   font-family: "Raleway";
+  color: white;
+  font-size: 15px;
+}
+
+.createBoard, .createCard {
+  font-family: "Raleway";
+  color: #72383D;
   background: #EFE9E1;
-  width: 201px;
-  height: 265px;
+  width: 221px;
+  height: 285px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,22 +115,108 @@ h2{
   flex-direction: column;
 }
 
-.boardContainer, .newCardContainer {
+.submitButton{
+  ;
+}
+
+
+.deleteButton{
+background-color: #72383D;
+color: white;
+font-family: Poppins;
+font-size: 15px;
+width: 60px;
+height: 30px;
+border: none;
+margin-right: 10px;
+  
+}
+
+.deleteButton:hover, .submitButton:hover{
+  background-color: #b06b71;
+}
+
+.submitButton{
+  background-color: #72383D;
+  color: white;
+  font-family: Poppins;
+  font-size: 13px;
+  width: 150px;
+  height: 50px;
+  border: none;
+  margin-bottom: 10px ;
+  margin-top: 35px ;
+  }
+
+.titleField, .ownerField {
+  font-size: 17px;
+  margin-right: 10px ;
+}
+
+.titleContainer{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+
+.likeButton{
+  max-width: 65px;
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+}
+
+
+
+.cardMessageContainer {
   display: flex;
-  align-items: center;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center; /* this centers the items vertically within the container */
+  justify-content: center;
+  margin: 0px 0px 10px;
+  padding: 10px;
+  position: relative
+  
+  /* this centers the items horizontally within the container */
+}
+
+.cardButtonsContainer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  display: flex;
   justify-content: space-evenly;
-  flex-wrap: wrap; 
+  align-items: center; 
 }
 
-.createNew{
-  display: flex;
-  justify-content: space-around;
+.likeCount{
+  color: white;
+  font-family: Poppins;
+  font-size: 13px;
+  margin-right: 10px;
+  margin-left: -10 px;
+  position: absolute;
+  top: 3px;
+  left: 39px;
 }
 
-.cardItemControls{
-list-style: none ;
-display: flex;
-align-items: center;
-justify-content: space-evenly;
-flex-direction: row;}
+.likeCount:hover{
+  color: #cbc7c7;
+}
+
+
+.hideButton{
+  background-color: #989898;
+color: rgb(255, 255, 255);
+font-family: Poppins;
+font-size: 13px;
+width: 200px;
+height: 30px;
+border: none;
+margin-right: 10px;
+}
+
+.hideButton:hover{
+  background-color: #cbc7c7;
+
+}
