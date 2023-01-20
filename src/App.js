@@ -18,8 +18,7 @@ import CreateBoard from "./routes/CreateBoard";
 import SingleBoardView from "./routes/SingleBoardView";
 import ErrorPage from "./error-page";
 
-// const kBaseUrl = 'http://localhost:5000';
-const kBaseUrl = "https://hackspo-be.herokuapp.com";
+const kBaseUrl = process.env.BE_URL;
 
 const getAllBoardsAPI = async () => {
   try {
@@ -49,8 +48,6 @@ function App() {
   let [appData, setAppData] = useState([]);
   let [cardDataByBoard, setCardDataByBoard] = useState([]);
   let [selectValue, setSelectValue] = useState("1");
-  // I literally could not figure out a way to keep this in Home and have the state persist between renders
-  // Maybe useCallback or bind could have worked but we're out of time
 
   const logUserOut = () => {
     setLoggedIn({

@@ -23,10 +23,6 @@ const LogInForm = (props = null) => {
   const loginState = loaderData ? loaderData[0].loginState : props.loginState;
   const handleLogIn = loaderData ? loaderData[0].onLogIn : props.onLogIn;
 
-  // console.log(loaderData);
-  // console.log(loginState);
-  // console.log(typeof handleLogIn);
-
   const handleChange = (event) => {
     const fieldValue = event.target.value;
     const fieldName = event.target.name;
