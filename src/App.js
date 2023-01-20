@@ -55,6 +55,17 @@ const deleteCardApi = (boardId, cardId) => {
   })
 };
 
+// helper function for patch API request
+const patchCardApi = (boardId, cardId) => {
+  return axios.patch(`${url}/board/${boardId}/cards/${cardId}`)
+  .then((response) => {
+    console.log(`Card ${cardId} from Board ${boardId} patched`)
+    return response.data;
+  })
+  .catch(error => {
+    console.log(error);
+  })};
+
 function App() {
   // state
   const[isBoardFormVisible,setIsBoardFormVisible] = useState(true);
@@ -177,6 +188,37 @@ function App() {
     })
   };
 
+  const incrementLikeCount = (id) => {
+    patchCardApi(currentBoard.id, id)
+    .then(newLikeCount =>{
+      setCards(cards => cards.map(card => {
+        if (card.id === id) {
+          return {
+              id: id,
+              message: card.message, 
+              likeCount: card.likeCount + 1,
+              ...cards};
+        } else {
+          return card;
+        }
+      }));
+      });
+    }
+
+
+    //   cards.map((card) => {
+    //     return card.id === id ? card : {
+    //       message:card.message, 
+    //       likeCount: card.likeCount += 1,
+    //       ...cards};
+    //     });
+    //     setCards(newCardsData);
+    // })
+      
+    
+    // };
+  
+
   
 
   return (
@@ -190,9 +232,9 @@ function App() {
         onDisplayCurrentBoard={displayCurrentBoard}
       />
       <NewCardForm addCardCallback={addCard} afterSubmitMessage={cardFormMessage} boardSelected={boardSelected}/>
-      <CardContainer currentBoard={currentBoard} cards={cards} onDeleteCard={deleteCard}/>
+      <CardContainer currentBoard={currentBoard} cards={cards} onDeleteCard={deleteCard} incrementLikeCount={incrementLikeCount}/>
     </div>
   );
-}
+  };
 
 export default App;
