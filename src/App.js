@@ -187,7 +187,7 @@ const plusOneCardItem=(card)=>{
           <section>
             <CardList board={selectedBoard} cardsData={cardsData} deleteCardItem={deleteCardItem} plusOneCardItem={plusOneCardItem}></CardList>
       
-            <h2>Selected Board</h2> 
+          
 
             
 
