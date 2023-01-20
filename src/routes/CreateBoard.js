@@ -6,6 +6,7 @@ import homeIconWhite from "../home-icon-white.png";
 const kColorTable = {
   "#C1D6D9": "green",
   "#F29979": "coral",
+  hacker: "hacker",
 };
 
 const CreateBoard = () => {
@@ -59,8 +60,9 @@ const CreateBoard = () => {
             name="cardColor"
             onChange={handleSelectChange}
           >
-            <option value="#C1D6D9">Green</option>
+            <option value="#C1D6D9">Light Teal</option>
             <option value="#F29979">Coral</option>
+            <option value="hacker">Out of the Shadows</option>
           </select>
           <div id="swatch" className={`${sampleColor}`}>
             <p>sample</p>

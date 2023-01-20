@@ -7,13 +7,15 @@ const CardView = (props) => {
     props.onDeleteCard(props.id, props.boardId);
   };
 
+  const hackerTheme = props.cardColor === "hacker" ? "hacker-like-delete" : "";
+
   return (
     <div className={`single-card ${props.shadowClass} ${props.cardColor}`}>
       <p id="card-message"> {props.message} </p>
       <div>
-        <Likes />
+        <Likes color={hackerTheme} />
         <button
-          className="like-and-delete-buttons"
+          className={`like-and-delete-buttons ${hackerTheme}`}
           onClick={() => deleteCard()}
         >
           Delete

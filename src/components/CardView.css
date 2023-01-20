@@ -4,20 +4,31 @@
   flex-wrap: wrap;
   width: 15vw;
   height: 15vw;
-  /* background-color: #C1D6D9; */
   align-items: center;
   text-align: center;
-  color: #014040;
   margin: auto;
   justify-content: space-evenly;
 }
 
 .green {
   background-color: #C1D6D9;
+  color: #014040;
 }
 
 .coral {
   background-color: #F29979;
+  color: #014040;
+}
+
+.hacker {
+  background-color: #000000;
+  background-image: linear-gradient(130deg, #000000 0%, #014040 25%, #000000 50%, #014040 75%, #000000 100%); 
+  color: #C1D6D9;
+  text-shadow: 1px 1px 1px white;
+}
+
+.hacker-like-delete {
+  color: white !important;
 }
 
 .pink-shadow {

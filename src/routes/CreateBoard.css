@@ -114,15 +114,23 @@
   text-align: center;
   font-size: clamp(1vmin, calc(10px+1vmin), 3vmin);
   font-weight: bold;
-  color: #014040;
   width: 7vw;
   overflow:hidden;
 }
 
 .green {
   background-color: #C1D6D9;
+  color: #014040;
 }
 
 .coral {
   background-color: #F29979;
+  color: #014040;
+}
+
+.hacker {
+  background-color: #000000;
+  background-image: linear-gradient(130deg, #000000 0%, #014040 25%, #000000 50%, #014040 75%, #000000 100%); 
+  color: #C1D6D9;
+  text-shadow: 1px 1px 1px white;
 }

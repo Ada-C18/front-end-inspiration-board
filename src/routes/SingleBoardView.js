@@ -7,6 +7,7 @@ import homeIcon from "../home-icon-dark.png";
 const kColorClasses = {
   "#C1D6D9": "green",
   "#F29979": "coral",
+  hacker: "hacker",
 };
 
 const SingleBoardView = () => {
