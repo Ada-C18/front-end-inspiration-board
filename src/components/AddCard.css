@@ -1,6 +1,7 @@
 #card-preview {
   display: flex;
-  max-width: 15vw;
+  flex-direction: row;
+  width: 15vw;
   height: 15vw;
   background-color: #C1D6D9;
   align-items: center;
@@ -9,6 +10,9 @@
   color: #014040;
   box-shadow:  3px 3px 5px #014040;
   margin: auto;
+  padding: 1vh 1vw;
+  font-size: 1.3rem;
+  overflow: auto;
 }
 
 #new-card-form {
@@ -36,6 +40,7 @@
   border: solid 1.5px #014040;
   border-radius: 5px;
   font-size: 1rem;
+  background-color: rgb(225, 225, 225)
 }
 
 
