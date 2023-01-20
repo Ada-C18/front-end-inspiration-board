@@ -4,7 +4,7 @@ div#card-list-component {
   width: 100%;
   justify-content: space-evenly;
   flex-wrap: wrap;
-}
+} 
 
 div.card {
   background:#ffc;
@@ -14,8 +14,11 @@ div.card {
 
 }
 
-/* #TODO */
-.button{
+/* .card {
+  position: relative;
+} */
+
+/* .button{
   position: relative;
   display: block;
   width: 200px;
@@ -27,14 +30,12 @@ div.card {
   font-size: 12px;
   font-weight: 300;
   cursor: pointer;
-  transition: all .1s ease-in-out;
-
-} &:hover {
-    background-color: transparent;
-    border-color: #fff;
-    transition: all .1s ease-in-out;
-  }
-
+  transition: all .1s ease-in-out; */
+/* } */
+/* 
+.button{
+    display: inline-block;
+  } */
 
 body {
   margin: 20px auto;
@@ -46,15 +47,24 @@ body {
 .card-main {
   height: 80%;
 }
-
+/* 
 .bottom {
   /* position: absolute; */
   /* bottom: 0;
   left: 0; */
-  text-align: center;
+  /* text-align: center;
   vertical-align: middle; 
-}
+/* } */ 
 
+
+/* .bottom {
+  text-align: center;
+  vertical-align: middle;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
 
 *{
   margin:0;
@@ -88,3 +98,33 @@ ul li a{
 ul li{
   margin:1em;
 }
+
+
+.button {
+  margin: 5px;
+} 
+
+/* .div#card-list-component{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.div.card {
+  background-color: burlywood;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+
+.bottom {
+  width: 100%;
+  background-color: coral;
+  justify-content: center;
+  height: 100%;
+  align-items: flex-end;
+  display: flex;
+  padding-bottom: 15px;
+} */
