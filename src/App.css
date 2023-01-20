@@ -67,3 +67,9 @@ font-weight: bold;
 display:flex;
 flex-direction: column;
 }
+
+.card-items__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 2rem;
+}
