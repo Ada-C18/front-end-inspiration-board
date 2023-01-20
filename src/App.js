@@ -1,5 +1,4 @@
 import './App.css';
-// import axios from 'axios';
 import Board from './components/Board';
 import Card from './components/Card';
 import CardList from './components/CardList';
@@ -7,6 +6,7 @@ import NewCard from './components/NewCard';
 import NewBoard from './components/NewBoard';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import './CardList.css';
 
 const url = 'http://127.0.0.1:5000'
 
@@ -166,16 +166,13 @@ const plusOneCardItem=(card)=>{
             {isBoardFormVisible ? <NewBoard onBoardSubmit={onBoardSubmit}></NewBoard> : ""}
             <div onClick={toggleNewBoardForm} className="board__toggle">{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</div>
             </div>
+    
           </section>
           <section>
             <h2> New Card</h2>
-      
             <div className="new__card">
               {isCardFormVisible ? <NewCard onCardSubmit={onCardSubmit}></NewCard>: ""}
               <div onClick={toggleMessageForm} className="card__toggle">{isCardFormVisible ? " ": " "}  </div>
-            
-            {/* <NewCard onCardSubmit={handleCardSubmit}></NewCard> */}
-            
             </div>
           </section>
           <section>
@@ -184,20 +181,16 @@ const plusOneCardItem=(card)=>{
             {boardsElements}
             </ul>
           </section>
+          </div>
           <section>
-            <CardList board={selectedBoard} cardsData={cardsData} deleteCardItem={deleteCardItem} plusOneCardItem={plusOneCardItem}></CardList>
-      
-          
-
-            
-
-            {/* <Board> {selectedBoard.board_id} ? `${selectedBoard.title} - ${selectedBoard.author}` </Board> */}
-            {/* <p>{selectBoard.board_id ? `${selectBoard.title} - ${selectBoard.author}` : 'Select a Board from the Board List!'}</p> */}
-    
+            <div className="one__card">
+              <CardList board={selectedBoard} cardsData={cardsData} deleteCardItem={deleteCardItem} plusOneCardItem={plusOneCardItem}></CardList>
+            </div>
           </section>
-          {/* <Board board={onBoardSelect}></Board> */}
-        </div>
-        
+          {/* <footer>
+            
+          </footer> */}
+        {/* </div> */}
     </div>
   );
 
