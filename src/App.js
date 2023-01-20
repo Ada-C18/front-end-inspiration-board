@@ -5,7 +5,6 @@ import {
   Route,
   RouterProvider,
   Navigate,
-  useLocation,
 } from "react-router-dom";
 import axios from "axios";
 
@@ -48,9 +47,72 @@ function App() {
   let [appData, setAppData] = useState([]);
   let [cardDataByBoard, setCardDataByBoard] = useState([]);
 
+  const logUserOut = () => {
+    setLoggedIn({
+      userId: null,
+      repeatLogin: false,
+      repeatSignUp: false,
+    });
+  };
+
   const getBoardArr = async () => {
     const boardArr = await getAllBoardsAPI();
     return setAppData(boardArr);
+  };
+
+  const sortBoardsByMostRecent = async (appData) => {
+    const boardArr = await getAllBoardsAPI();
+    boardArr.reverse();
+    return setAppData(boardArr);
+  };
+
+  const sortBoardsByMostCards = async (appData) => {
+    const boardArr = await getAllBoardsAPI();
+    boardArr.sort((a, b) => b.num_cards - a.num_cards);
+    return setAppData(boardArr);
+  };
+
+  const sortBoardsByLeastCards = async (appData) => {
+    const boardArr = await getAllBoardsAPI();
+    boardArr.sort((a, b) => a.num_cards - b.num_cards);
+    return setAppData(boardArr);
+  };
+
+  const sortbyOwnerNameAZ = async (appData) => {
+    const boardArr = await getAllBoardsAPI();
+    boardArr.sort((a, b) => a.owner.localeCompare(b.owner));
+    return setAppData(boardArr);
+  };
+
+  const sortbyOwnerNameZA = async (appData) => {
+    const boardArr = await getAllBoardsAPI();
+    boardArr.sort((a, b) => b.owner.localeCompare(a.owner));
+    return setAppData(boardArr);
+  };
+
+  const sortBoardArr = (value) => {
+    switch (value) {
+      case "1":
+        getBoardArr();
+        break;
+      case "2":
+        sortBoardsByMostRecent();
+        break;
+      case "3":
+        sortBoardsByMostCards();
+        break;
+      case "4":
+        sortBoardsByLeastCards();
+        break;
+      case "5":
+        sortbyOwnerNameAZ();
+        break;
+      case "6":
+        sortbyOwnerNameZA();
+        break;
+      default:
+        getBoardArr();
+    }
   };
 
   const getCardsByBoard = async (boardId) => {
@@ -73,7 +135,7 @@ function App() {
     } else {
       setAppData([]);
     }
-  }, [loggedIn.userId]);
+  }, [loggedIn.userId, cardDataByBoard]);
 
   const passCreateBoardProps = () => {
     return [{ onCreate: addBoard }];
@@ -81,8 +143,15 @@ function App() {
 
   // const passBoardPropsDummy = () => DUMMY_BOARD_DATA;
 
-  const passBoardProps = () => {
-    return [{ boardArr: appData, getBoardCards: getCardsArr }];
+  const passBoardProps = (boardProps) => {
+    return [
+      {
+        boardArr: appData,
+        getBoardCards: getCardsArr,
+        sortBoardMenu: sortBoardArr,
+        handleLogOut: logUserOut,
+      },
+    ];
   };
 
   const passLogInProps = () => {
@@ -166,12 +235,11 @@ function App() {
     };
     console.log(requestBody);
     try {
-      const response = await axios.post(`${kBaseUrl}/cards`, requestBody);
-      const cardData = getCardsByBoard(boardId);
-      setCardDataByBoard(cardData);
+      await axios.post(`${kBaseUrl}/cards`, requestBody);
     } catch (err) {
       console.log(err);
     }
+    getCardsArr();
   };
 
   const router = createBrowserRouter(

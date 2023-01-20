@@ -47,7 +47,7 @@
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 33vw;
   max-width: 33vw;
   height: 70vh;
@@ -62,4 +62,9 @@
 
 #home-nav button {
   margin: 5vh;
+}
+
+#log-out {
+  position:absolute;
+  bottom: 20vh;
 }
