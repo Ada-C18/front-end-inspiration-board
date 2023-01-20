@@ -165,7 +165,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Team Squirrel</h1>
+      <h1>Team Squirrel Inspiration Board 🐿 </h1>
+      <div className="boards-container">
+      <section>
       <h2>Boards</h2>
       <div id="boards">
         {boardData.map((board) => (
@@ -178,12 +180,20 @@ function App() {
           />
         ))}
       </div>
+      </section>
+      <section>
       <h2>Selected Board</h2>
       <div>
         {selectedBoard ? `${selectedBoard.title} - ${selectedBoard.owner}` : ""}
       </div>
+      </section>
+      <section>
       <h2>Create a New Board</h2>
       <NewBoardForm handleBoardSubmit={handleBoardSubmit} />
+      </section>
+      </div>
+      <div className="cards-container">
+      <section>
       <h2>Cards {selectedBoard ? `for ${selectedBoard.title}` : ""}</h2>
       <div id="cards">
         <CardList
@@ -192,7 +202,11 @@ function App() {
           handleDeleteCard={handleDeleteCard}
         />
       </div>
+      </section>
+      <section>
       {newCardForm}
+      </section>
+      </div>
     </div>
   );
 }

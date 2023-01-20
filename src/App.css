@@ -22,12 +22,32 @@ h2 {
 
 #boards {
   height:120px;
-  width:120px;
+  width:200px;
   border:1px solid #ccc;
   font:16px/26px Georgia, Garamond, Serif;
   overflow:auto;
+}
+
+#cards {
+  background:#ffc;
+  display:block;
+  height:auto;
+  width:10em;
+  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+  /* padding:1em; */
 
 }
+
+.boards-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cards-container{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
 
 /* .App-logo {
   height: 40vmin;
