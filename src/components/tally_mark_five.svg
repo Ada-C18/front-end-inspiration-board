@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.0//EN' 'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg fill-opacity="1" xmlns:xlink="http://www.w3.org/1999/xlink" color-rendering="auto" color-interpolation="auto" text-rendering="auto" stroke="black" stroke-linecap="square" stroke-miterlimit="10" shape-rendering="auto" stroke-opacity="1" fill="black" stroke-dasharray="none" font-weight="normal" stroke-width="1" xmlns="http://www.w3.org/2000/svg" font-family="&apos;Dialog&apos;" font-style="normal" stroke-linejoin="miter" font-size="12" stroke-dashoffset="0" image-rendering="auto">
+  <!--Unicode Character 'TALLY MARK FIVE' (U+1D378)-->
+  <defs id="genericDefs" />
+  <g>
+    <g>
+      <path d="M44.4375 379.6875 L44.4375 316.6875 L23.0625 325.125 L14.625 308.25 L44.4375 296.4375 L44.4375 170.4375 Q44.4375 164.25 49.2188 159.4688 Q54 154.6875 63 154.6875 L71.4375 154.6875 L71.4375 285.75 L101.8125 273.7969 L101.8125 170.4375 Q101.8125 164.25 106.5938 159.4688 Q111.375 154.6875 120.375 154.6875 L128.8125 154.6875 L128.8125 263.1094 L159.1875 251.0156 L159.1875 170.4375 Q159.1875 164.25 163.9688 159.4688 Q168.75 154.6875 177.75 154.6875 L186.1875 154.6875 L186.1875 240.4688 L216.5625 228.375 L216.5625 170.4375 Q216.5625 164.25 221.3438 159.4688 Q226.125 154.6875 235.125 154.6875 L243.5625 154.6875 L243.5625 217.6875 L264.9375 209.25 L273.375 226.125 L243.5625 237.9375 L243.5625 379.6875 L216.5625 379.6875 L216.5625 248.625 L186.1875 260.5781 L186.1875 379.6875 L159.1875 379.6875 L159.1875 271.2656 L128.8125 283.3594 L128.8125 379.6875 L101.8125 379.6875 L101.8125 293.9062 L71.4375 306 L71.4375 379.6875 L44.4375 379.6875 Z" stroke="none" />
+    </g>
+  </g>
+</svg>

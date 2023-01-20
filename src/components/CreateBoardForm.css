@@ -1,32 +1,37 @@
-.board {
-  border-style: dotted;
-  width: 200px;
-  text-align: center;
-  font-family: "Permanent Marker", cursive;
-  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
-  margin: 30px;
-}
-
-.board input {
+form.board input {
   font-family: "Permanent Marker", cursive;
   text-align: center;
   background: none;
   border: none;
+  outline: none;
 }
 
-.board input.boardTitle {
+form.board input.boardTitle {
   font-size: 24px;
   box-sizing: border-box;
   width: 100%;
 }
 
-.board input.boardOwner {
+form.board input.boardOwner {
   font-size: 16px;
   width: min-content;
 }
 
-.board input[type="submit"] {
+form.board {
+  position: relative;
+}
+
+form.board input[type="submit"] {
+  font-size: 16pt;
+  display: none;
+}
+form.board:focus-within input[type="submit"] {
+  display: block;
+}
+
+form.board input[type="submit"] {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
   background: none;
-  box-sizing: border-box;
-  float: right;
 }

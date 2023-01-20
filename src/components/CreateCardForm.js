@@ -2,9 +2,15 @@ import { useState } from "react";
 //import PropTypes from "prop-types";
 import "./CreateCardForm.css";
 
-const CreateCardForm = ({ createCard }) => {
+// TODO: focus form if any part of parent div is clicked
+
+const CreateCardForm = ({ createCard, autoFocus }) => {
   const emptyCard = {
     message: "",
+  };
+
+  const focusRef = (input) => {
+    if (input && autoFocus) input.focus();
   };
 
   const [newCard, setNewCard] = useState(emptyCard);
@@ -21,13 +27,14 @@ const CreateCardForm = ({ createCard }) => {
   return (
     <form className="card" onSubmit={submitCreateCardForm}>
       <textarea
+        ref={focusRef}
         className="cardMessage"
         name="newCardMessage"
         value={newCard.message}
         placeholder="New Message"
         onChange={onCardMessageChange}
       />
-      <input type="submit" value="Write Card ✍️" />
+      <input type="submit" value="✍️" />
     </form>
   );
 };

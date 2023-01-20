@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import BoardList from "./components/BoardList.js";
 import CardList from "./components/CardList.js";
 import CreateBoardForm from "./components/CreateBoardForm.js";
-import CreateCardForm from "./components/CreateCardForm.js";
 import axios from "axios";
 
 const api = {
@@ -49,6 +48,18 @@ const api = {
       .patch(`${api.baseUrl}/cards/${cardId}`)
       .then((response) => response.data)
       .catch(api.logErr),
+
+  deleteCard: (cardId) =>
+    axios
+      .delete(`${api.baseUrl}/cards/${cardId}`)
+      .then((response) => response.data)
+      .catch(api.logErr),
+
+  deleteBoard: (boardId) =>
+    axios
+      .delete(`${api.baseUrl}/boards/${boardId}`)
+      .then((response) => response.data)
+      .catch(api.logErr),
 };
 
 function App() {
@@ -66,8 +77,10 @@ function App() {
   const refreshCardList = () => {
     if (selectedBoard !== undefined) {
       api.getCards(selectedBoard.board_id).then((cardData) => {
-        setCardList(cardData);
+        setCardList(cardData.cards);
       });
+    } else {
+      setCardList(undefined);
     }
   };
   useEffect(refreshCardList, [selectedBoard]);
@@ -82,6 +95,22 @@ function App() {
       let newCardList = [...cardList].map((card) =>
         card.card_id === likedCard.card_id ? likedCard : card
       );
+      setCardList(newCardList);
+    });
+  };
+
+  const deleteBoard = (id) => {
+    api.deleteBoard(id).then((response) => {
+      let newBoardList = [...boardList].filter(
+        (board) => board.board_id !== id
+      );
+      setBoardList(newBoardList);
+      selectBoard(undefined);
+    });
+  };
+  const deleteCard = (id) => {
+    api.deleteCard(id).then((response) => {
+      let newCardList = [...cardList].filter((card) => card.card_id !== id);
       setCardList(newCardList);
     });
   };
@@ -106,31 +135,26 @@ function App() {
         <h1 className="inspiration_background">Inspiration Board</h1>
       </header>
       <main>
-        <section>
-          <div className="boards">
-            <CreateBoardForm createBoard={createBoard}></CreateBoardForm>
-            <BoardList
-              boards={boardList || []}
-              selectBoard={selectBoard}
-              activeBoard={selectedBoard && selectedBoard.board_id}
-            ></BoardList>
-          </div>
+        <section className="boards">
+          <CreateBoardForm createBoard={createBoard}></CreateBoardForm>
+          <BoardList
+            boards={boardList || []}
+            selectBoard={selectBoard}
+            activeBoard={selectedBoard && selectedBoard.board_id}
+            deleteBoard={deleteBoard}
+          ></BoardList>
         </section>
-        {selectedBoard && (
-          <section>
-            <div className="boardHeader">
-              {selectedBoard.title} for {selectedBoard.owner}
-            </div>
-            <div className="cards">
-              <CardList
-                title={selectedBoard.title}
-                owner={selectedBoard.owner}
-                cards={cardList || []}
-                likeCard={likeCard}
-              ></CardList>
-              <CreateCardForm createCard={createCard}></CreateCardForm>
-            </div>
-          </section>
+        {selectedBoard !== undefined ? (
+          <CardList
+            title={selectedBoard.title}
+            owner={selectedBoard.owner}
+            cards={cardList || []}
+            likeCard={likeCard}
+            deleteCard={deleteCard}
+            createCard={createCard}
+          ></CardList>
+        ) : (
+          <h2>Select a board to the left</h2>
         )}
       </main>
     </div>

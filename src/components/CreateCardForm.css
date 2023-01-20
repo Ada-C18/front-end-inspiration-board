@@ -1,4 +1,4 @@
-.card textarea.cardMessage {
+form.card textarea.cardMessage {
   font: 20pt "Permanent Marker", cursive;
   background: none;
   border: none;
@@ -9,10 +9,25 @@
   word-break: break-word;
 }
 
-.card input[type="submit"] {
+form.card textarea.cardMessage:focus-visible {
+  border: none;
+  outline: none;
+}
+
+form.card input[type="submit"] {
+  display: none;
+  font-size: 16pt;
+  border: none;
+  padding: 0.5em;
+  position: absolute;
+  top: 0px;
+  right: 0px;
   background: none;
-  box-sizing: border-box;
-  float: right;
+  opacity: 40%;
+}
+
+form.card input[type="submit"]:hover {
+  opacity: 100%;
 }
 
 form.card {
@@ -21,4 +36,8 @@ form.card {
 
 form.card:focus-within {
   opacity: 100%;
+}
+
+form.card:focus-within input[type="submit"] {
+  display: block;
 }

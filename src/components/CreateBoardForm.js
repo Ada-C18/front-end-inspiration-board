@@ -49,7 +49,7 @@ const CreateBoardForm = ({ createBoard }) => {
           onChange={onBoardOwnerChange}
         />
       </div>
-      <input type="submit" value="Create Board ✍️" />
+      <input type="submit" value="🔨" />
     </form>
   );
 };

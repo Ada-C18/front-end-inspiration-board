@@ -1,14 +1,15 @@
 .board {
+  overflow-wrap: break-word;
   border-style: dotted;
   width: 200px;
   text-align: center;
   font-family: "Permanent Marker", cursive;
-  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
   margin: 30px;
+  position: relative;
 }
 
 .activeBoard {
-  color: magenta;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
 }
 
 .board .boardTitle {
@@ -17,4 +18,24 @@
 
 .board .boardOwner {
   font-size: 16px;
+}
+
+.board button {
+  opacity: 40%;
+  font-size: 16pt;
+  display: none;
+  border: none;
+  background: none;
+}
+
+.board button:hover {
+  opacity: 100%;
+}
+.activeBoard button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -25pt;
+  margin: auto 0;
+  display: block;
 }
