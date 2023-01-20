@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import '../App.css';
+import NewCardForm from "./NewCardForm";
 
 
 // Inside the get request, use the board_id to get
@@ -56,7 +57,6 @@ function CardsList(props) {
     .then((response) => setCards(response.data))
     .catch((error) => {
       console.log(error);
-      alert("Failed getting cards for this board :(")
     });
 }
 
@@ -102,13 +102,32 @@ function CardsList(props) {
       });
   }
   
+  const postNewCard = (message) => {
+    axios
+      .post(
+        `${process.env.REACT_APP_BACKEND_URL}/boards/${props.board.id}/cards`,
+        {
+          message: message,
+          likes_count: 0,
+          board_id: props.board.id,
+        }
+      )
+      .then((response) => {
+        const cardsData = [...cards];
+        cardsData.push(response.data);
+        setCards(cardsData);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
+  };
 
 
 // "prevCards" is the previous state before the new update. It's the state that is passed as an argument to the callback function of setCards hook. setCards hook is a state hook that is used to update the state and it takes a callback function as an argument.
 //This callback function takes the previous state as an argument and returns the updated state.
 //It's used by the component that calls this handleDelete function. It's not defined within this function, it is a state variable that is passed to the function as an argument, most likely when the component that calls this function is defined.
 
-  
+if (props.board.id !== null) {
   return (
     <div className = "cardsContainer">
       {cards.length > 0 ? cards.map((card) => (
@@ -117,16 +136,26 @@ function CardsList(props) {
           <div>
             <div className = "cardMessageContainer">
               <p className = "cardMessage"> {card.message}</p>
-              <button  className = "deleteButton" onClick={() => handleDelete(card.id)}>Delete</button>
-              <button onClick= {() => increaseLikes(card.id)}>Like</button>
-                <p>Likes: {card.likes_count}</p>
-              </div>
+              <div className = "cardButtonsContainer">
+                
+                <img className = "likeButton" src={'/assets/heart.png'} onClick={() => increaseLikes(card.id)} alt="Like button" />
+                  <div class="likeCount"><p>{card.likes_count}</p></div>
+                <button  className = "deleteButton" onClick={() => handleDelete(card.id)}>Delete</button>
+                </div>
+
+            </div>
+ 
           </div>
         </div>
       )) : <p>No cards found for this board.</p>}
+      <div>
+
+        <NewCardForm postNewCard={postNewCard} />
+        
+      </div>
     </div>
   );
-}
+}}
 
 // this code is rendering the card data if there are any cards, or a message if there are no cards. It is also using the map 
 //function to loop over the cards array and render each card's title and description in a separate div element, with the card's id as the key for each div.

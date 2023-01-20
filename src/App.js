@@ -1,9 +1,11 @@
 import Board from "./components/Board";
-import CardsList from "./components/CardsList";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import './App.css';
 import NewBoardForm from "./components/NewBoardForm";
+import NewCardForm from "./components/NewCardForm";
+import postNewCard from "./components/CardsList";
+import CardsList from "./components/CardsList";
 
 // helper function dedicated to only making API get request
 const getBoardListApi = () => {
@@ -16,6 +18,7 @@ const getBoardListApi = () => {
       console.log(error);
     });
 };
+
 
 function App() {
   // state variable and function for updating state of boardList
@@ -67,6 +70,12 @@ function App() {
   }
 
 
+  
+
+  
+
+
+
     // Create a toggle botton to show/hide board form
   const [showForm, setShowForm] = useState(true);
   const toggleNewBoardForm = () => {setShowForm(!showForm)}
@@ -81,16 +90,17 @@ function App() {
         <div className="boardContainer">
           <h2 className="boardHeader">Boards</h2>
           <ol className="boardElements">{boardElements}</ol>
-          <h2 className="boardFooter">{selectedBoard.title}</h2>
         </div>
         <div className = "createCard">
-            <h2>Create Card</h2>
-      
+          <h2 className="boardFooter"> This is {selectedBoard.owner}'s <br></br>
+          {selectedBoard.title}</h2>
+
+    
         </div>
         <div className = "createBoard">
           <h2>Create Board</h2>
           {showForm ? <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm> : ''}
-        <button onClick={toggleNewBoardForm} className='toggle-btn'>{showForm ? 'Hide New Board Form' : 'Show New Board Form'}</button>
+        <button onClick={toggleNewBoardForm} className='hideButton'>{showForm ? 'Hide New Board Form' : 'Show New Board Form'}</button>
         </div>
       </div>
         <CardsList board={selectedBoard}/>
