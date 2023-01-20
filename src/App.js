@@ -48,6 +48,7 @@ function App() {
   let [appData, setAppData] = useState([]);
   let [cardDataByBoard, setCardDataByBoard] = useState([]);
   let [selectValue, setSelectValue] = useState('1');
+  let [selectCardValue, setSelectCardValue] = useState('likes')
 
   const logUserOut = () => {
     setLoggedIn({
@@ -150,7 +151,7 @@ function App() {
       default:
         getCardsArr(boardId);
     }
-    // setSelectValue(value);
+    setSelectCardValue(value);
   };
 
   const getCardsByBoard = async (boardId) => {
@@ -162,7 +163,7 @@ function App() {
     }
   };
 
-  const getCardsArr = async (boardId) => {
+  const getCardsArr = async (boardId, selectCardValue) => {
     const cardArr = await getCardsByBoard(boardId);
     return setCardDataByBoard(cardArr);
   };
@@ -218,6 +219,7 @@ function App() {
         allBoardsData: appData,
         onLikeCard: likeCard,
         onSort: sortCardArr,
+        selectState: selectCardValue
       },
     ];
   };

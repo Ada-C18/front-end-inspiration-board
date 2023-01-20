@@ -5,8 +5,6 @@ const SelectedBoard = (props) => {
   const cards = props.cards;
 
   const boardId = cards[0].board_id;
-  console.log(boardId)
-  console.log(cards)
 
   const handleSortCards = (event) => {
     event.preventDefault();
@@ -35,7 +33,11 @@ const SelectedBoard = (props) => {
   return (
     <div>
       <div id='sort-div'>
-        <select id='sort-dropdown' onChange={handleSortCards}>
+        <select
+          id='sort-dropdown'
+          onChange={handleSortCards}
+          defaultValue={props.selectState}
+        >
           <option value='likes'>Sort by: Number of likes</option>
           <option value='alpha'>Sort: Alphabetically</option>
           <option value='id'>Sort by: ID</option>
