@@ -8,14 +8,7 @@ const cardObj = {
   message: '',
 };
 const CardForm = (props) => {
-
   const [formData, setFormData] = useState(cardObj);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    props.handleCardSubmit(formData,props.boardId);
-    setFormData(cardObj);
-  };
 
   const handleChange = (event) => {
     const fieldValue = event.target.value;
@@ -24,22 +17,34 @@ const CardForm = (props) => {
     setFormData(newFormData);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.handleCardSubmit(formData, props.boardId);
+    setFormData(cardObj);
+  };
+
   return (
     <section className='board-card-container'>
       <h2 className='board-card-container'>Card Form</h2>
       <form className='board-card-container' onSubmit={handleSubmit}>
         <label htmlFor='message'></label>
-        <input className='board-card-container'
+        <input
+          className='board-card-container'
           type='text'
           placeholder='Write here, write now'
           id='message'
           name='message'
-          value={formData.name}
+          value={formData.message}
           onChange={handleChange}
         />
-        <input type='submit' className='board-card-container'
-        disabled={formData.message.length === 0 || formData.message.length > 40} 
-        value='Submit Card' />
+        <input
+          type='submit'
+          className='board-card-container'
+          disabled={
+            formData.message.length === 0 || formData.message.length > 40
+          }
+          value='Submit Card'
+        />
       </form>
     </section>
   );
@@ -47,7 +52,7 @@ const CardForm = (props) => {
 
 CardForm.propTypes = {
   handleCardSubmit: PropTypes.func.isRequired,
-  boardId: PropTypes.number.isRequired
+  boardId: PropTypes.number.isRequired,
 };
 
 export default CardForm;
