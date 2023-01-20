@@ -1,29 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
-  Navigate
-} from 'react-router-dom';
-import axios from 'axios';
+  Navigate,
+} from "react-router-dom";
+import axios from "axios";
 
-import './App.css';
+import "./App.css";
 
-import LogInView from './routes/LogInView';
-import LogInForm from './routes/LogInForm';
-import SignUpForm from './routes/SignUpForm';
-import Home from './routes/Home';
-import CreateBoard from './routes/CreateBoard';
-import SingleBoardView from './routes/SingleBoardView';
-import ErrorPage from './error-page';
-// import DUMMY_BOARD_DATA from "./components/dummyData";
-
-// const genericDummyFunc = (arg1 = null) => {
-//   console.log("This is the dummy function");
-// };
-
-// const WAIT = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+import LogInView from "./routes/LogInView";
+import LogInForm from "./routes/LogInForm";
+import SignUpForm from "./routes/SignUpForm";
+import Home from "./routes/Home";
+import CreateBoard from "./routes/CreateBoard";
+import SingleBoardView from "./routes/SingleBoardView";
+import ErrorPage from "./error-page";
 
 // const kBaseUrl = 'http://localhost:5000';
 const kBaseUrl = "https://hackspo-be.herokuapp.com";
@@ -46,10 +39,78 @@ function App() {
 
   let [appData, setAppData] = useState([]);
   let [cardDataByBoard, setCardDataByBoard] = useState([]);
+  let [selectValue, setSelectValue] = useState("1");
+  // I literally could not figure out a way to keep this in Home and have the state persist between renders
+  // Maybe useCallback or bind could have worked but we're out of time
+
+  const logUserOut = () => {
+    setLoggedIn({
+      userId: null,
+      repeatLogin: false,
+      repeatSignUp: false,
+    });
+  };
 
   const getBoardArr = async () => {
     const boardArr = await getAllBoardsAPI();
     return setAppData(boardArr);
+  };
+
+  const sortBoardsByMostRecent = async (appData) => {
+    const boardArr = await getAllBoardsAPI();
+    boardArr.reverse();
+    return setAppData(boardArr);
+  };
+
+  const sortBoardsByMostCards = async (appData) => {
+    const boardArr = await getAllBoardsAPI();
+    boardArr.sort((a, b) => b.num_cards - a.num_cards);
+    return setAppData(boardArr);
+  };
+
+  const sortBoardsByLeastCards = async (appData) => {
+    const boardArr = await getAllBoardsAPI();
+    boardArr.sort((a, b) => a.num_cards - b.num_cards);
+    return setAppData(boardArr);
+  };
+
+  const sortbyOwnerNameAZ = async (appData) => {
+    const boardArr = await getAllBoardsAPI();
+    boardArr.sort((a, b) => a.owner.localeCompare(b.owner));
+    return setAppData(boardArr);
+  };
+
+  const sortbyOwnerNameZA = async (appData) => {
+    const boardArr = await getAllBoardsAPI();
+    boardArr.sort((a, b) => b.owner.localeCompare(a.owner));
+    return setAppData(boardArr);
+  };
+
+  const sortBoardArr = (value) => {
+    console.log("in sort board arr");
+    switch (value) {
+      case "1":
+        getBoardArr();
+        break;
+      case "2":
+        sortBoardsByMostRecent();
+        break;
+      case "3":
+        sortBoardsByMostCards();
+        break;
+      case "4":
+        sortBoardsByLeastCards();
+        break;
+      case "5":
+        sortbyOwnerNameAZ();
+        break;
+      case "6":
+        sortbyOwnerNameZA();
+        break;
+      default:
+        getBoardArr();
+    }
+    setSelectValue(value);
   };
 
   const getCardsByBoard = async (boardId) => {
@@ -72,7 +133,7 @@ function App() {
     } else {
       setAppData([]);
     }
-  }, [loggedIn.userId]);
+  }, [loggedIn.userId, cardDataByBoard]);
 
   const deleteCardAPI = async (cardId, boardId) => {
     try {
@@ -87,10 +148,16 @@ function App() {
     return [{ onCreate: addBoard }];
   };
 
-  // const passBoardPropsDummy = () => DUMMY_BOARD_DATA;
-
   const passBoardProps = () => {
-    return [{ boardArr: appData, getBoardCards: getCardsArr }];
+    return [
+      {
+        boardArr: appData,
+        getBoardCards: getCardsArr,
+        sortBoardMenu: sortBoardArr,
+        handleLogOut: logUserOut,
+        selectState: selectValue,
+      },
+    ];
   };
 
   const passLogInProps = () => {
@@ -114,7 +181,7 @@ function App() {
   };
 
   const handleLogIn = async (formData) => {
-    const username = formData.name.toLowerCase(); // avoids case-sensitivity problems; have to post to lowercase as well
+    const username = formData.name.toLowerCase();
     try {
       const response = await axios.get(`${kBaseUrl}/users/${username}`);
       return setLoggedIn({
@@ -132,7 +199,7 @@ function App() {
   };
 
   const handleSignUp = async (formData) => {
-    const username = formData.name.toLowerCase(); // avoids case-sensitivity problems; have to post to lowercase as well
+    const username = formData.name.toLowerCase();
     const requestBody = { name: username };
 
     try {
@@ -174,7 +241,7 @@ function App() {
       user_id: loggedIn.userId,
     };
     try {
-      const response = await axios.post(`${kBaseUrl}/cards`, requestBody);
+      await axios.post(`${kBaseUrl}/cards`, requestBody);
     } catch (err) {
       console.log(err);
     }
@@ -185,18 +252,18 @@ function App() {
     createRoutesFromElements(
       <>
         <Route
-          path='/'
+          path="/"
           element={
-            loggedIn.userId ? <Navigate to='/boards' replace /> : <LogInView />
+            loggedIn.userId ? <Navigate to="/boards" replace /> : <LogInView />
           }
           loader={passLogInProps}
           errorElement={<ErrorPage />}
         >
           <Route
-            path='login'
+            path="login"
             element={
               loggedIn.userId ? (
-                <Navigate to='/boards' replace />
+                <Navigate to="/boards" replace />
               ) : (
                 <LogInForm />
               )
@@ -205,10 +272,10 @@ function App() {
             errorElement={<ErrorPage />}
           />
           <Route
-            path='signup'
+            path="signup"
             element={
               loggedIn.userId ? (
-                <Navigate to='/boards' replace />
+                <Navigate to="/boards" replace />
               ) : (
                 <SignUpForm />
               )
@@ -218,24 +285,24 @@ function App() {
           />
         </Route>
         <Route
-          path='/boards'
-          element={loggedIn.userId ? <Home /> : <Navigate to='/' replace />}
+          path="/boards"
+          element={loggedIn.userId ? <Home /> : <Navigate to="/" replace />}
           loader={passBoardProps}
           errorElement={<ErrorPage />}
         />
         <Route
-          path='/create-board'
+          path="/create-board"
           element={<CreateBoard />}
           loader={passCreateBoardProps}
           errorElement={<ErrorPage />}
         />
         <Route
-          path='/boards/:boardId'
+          path="/boards/:boardId"
           element={<SingleBoardView />}
           loader={passSingleBoardProps}
           errorElement={<ErrorPage />}
         />
-        <Route path='*' element={<ErrorPage />} />
+        <Route path="*" element={<ErrorPage />} />
       </>
     )
   );
