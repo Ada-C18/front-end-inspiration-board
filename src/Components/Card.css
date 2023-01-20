@@ -1,0 +1,33 @@
+.each__card {
+    background-color: #EA33AE;
+    font-size: medium;
+    text-align: center;
+    color: white;
+    padding: 2pt;
+    margin: 10pt;
+    height: 200pt;
+    width: 200pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.card__info {
+    list-style-type: none;
+    padding-right: 25pt;
+    font-size: small;
+}
+
+.message {
+    font-family:fantasy;
+    font-size: 26px;
+    font-weight: bolder;
+}
+
+.like {
+    font-size: large
+}
+
+.like:hover, .delete:hover {
+    color: blue;
+}

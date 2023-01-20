@@ -1,0 +1,129 @@
+.App__header {
+  font-family:monospace;
+  min-height: 10vh;
+  font-size:3rem;
+  text-align: center;
+  -webkit-text-stroke: 1px black;
+}
+
+.all__board__container {
+background-image: url("/src/images/489bf56a918d9ea4a331964a533cebb7.jpg");
+border-style: solid;
+border-radius: 20pt ;
+display: flex;
+justify-content: space-evenly;
+padding: 20pt;
+}
+
+.board__container {
+  background-color:cyan;
+  border-style: solid;
+  border-radius: 5pt ;
+  padding: 20pt;
+  opacity: 0.9;
+  height: 300px;
+  overflow: scroll;
+}
+
+.board__header {
+  background-color:darkviolet;
+  color: white;
+  text-align: center;
+}
+
+.boards {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin: 2rem;
+padding-right: 25pt;
+}
+
+.select__board {
+  font-size: large;
+  font-weight: bold;
+  text-align: center;
+}
+
+.create__board__form {
+  background-color:cyan;
+  border-style: solid;
+  border-radius: 5pt ;
+  text-align: center;
+  opacity: 0.9;
+  padding: 20pt;
+  height: 300px;
+}
+
+.create__board__header {
+  background-color:darkviolet;
+  color: white;
+}
+
+.hide__button {
+  background-color:rgb(93, 223, 93);
+  font-weight: bold;
+}
+
+.all__card__container {
+  background-image: url("/src/images/489bf56a918d9ea4a331964a533cebb7.jpg");
+  border-style: solid;
+  border-radius: 20pt ;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20pt;
+  padding: 20pt;
+}
+
+.cards__container {
+  background-color: rgba(160, 252, 214, 0.9);
+  border-style: solid;
+  border-radius: 5pt ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5pt;
+}
+
+.cards__header {
+  background-color: orange;
+  font-size: 2rem;
+  color: white;
+  opacity: 1.0;
+}
+
+.cards {
+  padding-right: 25pt;
+}
+
+.sort__by {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.sort__by__pull_down {
+  font-size: medium;
+  background-color: rgb(244, 244, 148);
+}
+
+body {
+  background-color: beige;
+}
+
+.card__form {
+  background-color: rgba(160, 252, 214, 0.9);
+  border-style: solid;
+  width: 300px;
+  row-gap: 2px;
+  border-radius: 5pt ;
+  text-align: center;
+  padding: 20pt;
+}
+
+.card__form__header {
+  background-color: orange;
+  color: white;
+  text-align: center;
+}

@@ -1,0 +1,31 @@
+
+
+.new__board__fields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    row-gap: 2px;
+}
+
+.new__board__fields__label {
+    font-size: medium;
+}
+
+
+.invalid__form__input {
+    background-color:pink;
+}
+
+.submit__button {
+    background-color:rgb(87, 163, 234);
+    font-size: small;
+    font-weight: bold;
+    color: white;
+}
+
+.required {
+    font-size: small;
+    color: red;
+}

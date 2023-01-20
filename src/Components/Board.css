@@ -1,0 +1,9 @@
+.each__board {
+    font-weight: bolder;
+    font-size: xx-large;
+    list-style-type: '🌟';
+}
+
+.each__board:hover {
+    color: orangered;
+}
