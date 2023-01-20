@@ -21,7 +21,7 @@ const CardList = (props) => {
     return (
         <section className='cards__container'>
             <section>
-                <h2>Cards for {props.board.title}</h2>
+                <h2>Cards for : {props.board.title} </h2>
                 <div className='card-items__container'>
                     {cardElements}
                 </div>
