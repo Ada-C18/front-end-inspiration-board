@@ -135,6 +135,15 @@ function App() {
     }
   }, [loggedIn.userId, cardDataByBoard]);
 
+  const deleteCardAPI = async (cardId, boardId) => {
+    try {
+    const response = await axios.delete(`${kBaseUrl}/cards/${cardId}`);
+    } catch (err) {
+      console.log(err)
+    }
+    getCardsArr(boardId);
+  };
+
   const passCreateBoardProps = () => {
     return [{ onCreate: addBoard }];
   };
@@ -165,7 +174,8 @@ function App() {
         loginState: loggedIn,
         onSubmitCard: handleSubmitCard,
         cards: cardDataByBoard,
-        getCardsByBoard: getCardsByBoard,
+        onDeleteCard: deleteCardAPI,
+        allBoardsData: appData
       },
     ];
   };
@@ -230,13 +240,12 @@ function App() {
       board_id: boardId,
       user_id: loggedIn.userId,
     };
-    console.log(requestBody);
     try {
       await axios.post(`${kBaseUrl}/cards`, requestBody);
     } catch (err) {
       console.log(err);
     }
-    getCardsArr();
+    getCardsArr(boardId);
   };
 
   const router = createBrowserRouter(

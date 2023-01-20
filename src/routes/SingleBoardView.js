@@ -7,19 +7,27 @@ import homeIcon from '../home-icon-dark.png';
 const SingleBoardView = () => {
 
   const loaderData = useLoaderData();
-  const {loginState, onSubmitCard, cards, getCardsByBoard} = loaderData[0];
+  const {loginState, onSubmitCard, cards, onDeleteCard, allBoardsData} = loaderData[0];
 
-  // console.log(cards)
+  const boardId = useLocation().pathname.split("/").pop();
+
+  const singleBoardArr = allBoardsData.filter( board =>  {
+    return board.id === Number(boardId);
+  });
+  const singleBoardObject = singleBoardArr[0]
+  const boardTitle = singleBoardObject.title
+  const boardOwner = singleBoardObject.owner
+  const boardOwnerFormatted = boardOwner.charAt(0).toUpperCase() + boardOwner.slice(1)
 
   return (
     <div id="single-board-view">
       <header id='single-board-view-header'>
-        <h1> Board Name </h1>
-        <h2> Board Owner's Name</h2>
+        <h1> {boardTitle} </h1>
+        <h2> {boardOwnerFormatted}</h2>
       </header>
 
       <div id='board-display'>
-        <SelectedBoard cards={cards}></SelectedBoard>
+        <SelectedBoard cards={cards} onDeleteCard={onDeleteCard}></SelectedBoard>
       </div>
 
       <div id='add-card-and-home'>
