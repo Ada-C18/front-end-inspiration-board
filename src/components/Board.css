@@ -1,0 +1,31 @@
+.board-container {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    padding: 15px;
+    margin: 5px 0;
+    list-style: none;
+    background-color: #c8decd;
+    border-radius: 10pt;
+    box-shadow: 3px 3px #75c5e2;
+}
+
+.board-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-title {
+    font-size: medium;
+    font-weight: 700;
+}
+
+.board-owner {
+    font-size: small;
+    font-style: italic;
+}
+
+
+

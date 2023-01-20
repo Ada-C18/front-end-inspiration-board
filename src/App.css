@@ -1,0 +1,127 @@
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h2 {
+  text-decoration: underline;
+}
+
+.App-header {
+  background-image: linear-gradient(to right, rgb(141, 174, 139) 0%, #208f3f 51%, #75c5e2 100%);
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 0.6em 1em;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0 10%;
+  margin-top: 15px;
+}
+
+.board-section {
+  display: inline-block;
+  text-align: center;
+}
+
+#new-board {
+  margin: 3pt;
+  padding: 2pt;
+}
+
+#selected-board {
+  text-transform: uppercase;
+}
+
+#button {
+  background-color: #e9f5ec;
+  border: none;
+  height: 20pt;
+  padding: 2pt;
+  margin: 2pt;
+  border-radius: 5pt;
+  width: 105pt;
+}
+#button:hover {
+  color: rgb(108, 160, 108);
+
+}
+
+#body-form {
+  margin-top: 5pt;
+  background-color: #c8decd;
+  border-radius: 1rem;
+  padding: 5pt;
+  box-shadow: 3px 3px #75c5e2 
+}
+
+.input-label {
+  padding: 5pt;
+}
+
+#cards-section {
+  text-align: center;
+}
+
+footer {
+  margin-top: 10pt;
+  text-align: center;
+}
+
+/* h1{
+  transform: rotate(-5deg) skew(-10deg);
+} */

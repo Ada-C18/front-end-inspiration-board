@@ -1,0 +1,35 @@
+.card-forms{
+    display: flex;  
+    flex-direction: row;
+    align-content: stretch;
+    margin: 5px 0;
+    top:2em;
+    right: 2%;
+    flex-wrap: wrap;
+    background-color: #c8decd;
+    border-radius: 1rem;
+    padding: 5pt;
+    box-shadow: 3px 3px #75c5e2;
+    justify-content: center;
+} 
+.card-forms input{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 3px;
+    width:200px;
+    height: 2em;
+}
+
+.card-button {
+    background-color: #e9f5ec;
+    border: none;
+    height: 20pt;
+    padding: 2pt;
+    margin: 2pt;
+    border-radius: 5pt;
+}
+
+.card-button:hover {
+    color: #647864;
+}
+
