@@ -3,12 +3,12 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400);
 
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-  color: #aca49c;
+  color: #c1748c;
   font-size: 0.875em;
 }
 
 input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder {
-  color: #bbb5af;
+  color: #c1748c;
 }
 
 input::-moz-placeholder, textarea::-moz-placeholder {
@@ -50,7 +50,7 @@ input:hover:focus::-webkit-input-placeholder, textarea:hover:focus::-webkit-inpu
 }
 
 input:hover::-moz-placeholder, textarea:hover::-moz-placeholder {
-  color: #e2dedb;
+  color: #c1748c;
   font-size: 0.875em;
 }
 
@@ -68,19 +68,19 @@ input:hover:focus::placeholder, textarea:hover:focus::placeholder {
 }
 
 input:hover::placeholder, textarea:hover::placeholder {
-  color: #e2dedb;
+  color: #c1748c;
   font-size: 0.875em;
 }
 
 input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
-  color: #cbc6c1;
+  color: #c1748c;
 }
 
 body {
   font-family: 'Lato', sans-serif;
   background: #e3b8e2;
   background:url(../src/pexels-eberhard-grossgasteiger-2088205.jpg ) no-repeat center center fixed; ;
-  color: #b3aca7;
+  color: #ca7a80;
   
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -111,9 +111,9 @@ input {
   
   background: transparent;
   outline: none;
-  color: #726659;
+  color: #ca7a80;
   
-  border: solid 1px #b3aca7;
+  border: solid 1px #ca7a80;
   border-bottom: none;
   
   transition: all 0.3s ease-in-out;
@@ -123,8 +123,8 @@ input {
 }
 
 input:hover {
-  background: #b3aca7;
-  color: #e2dedb;
+  background: #ca7a80;
+  color: #f1ebef;
 }
 
 textarea {
@@ -137,11 +137,11 @@ textarea {
   background: transparent;
   outline: none;
   
-  color: #726659;
+  color: #df1c40;
   font-family: 'Lato', sans-serif;
   font-size: 0.875em;
   
-  border: solid 1px #b3aca7;
+  border: solid 1px #520b28;
   
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -150,8 +150,8 @@ textarea {
 }
 
 textarea:hover {
-  background: #b3aca7;
-  color: #e2dedb;
+  background: #291b12;
+  color: #120964;
 }
 
 #submit {
@@ -162,17 +162,17 @@ textarea:hover {
   
   font-family: 'Lato', sans-serif;
   font-size: 0.875em;
-  color: #b3aca7;
+  color: #724379;
   
   outline:none;
   cursor: pointer;
   
-  border: solid 1px #b3aca7;
+  border: solid 1px #4f0f21;
   border-top: none;
 }
 
 #submit:hover {
-  color: #e2dedb;
+  color: #c1748c;
 }
 
 

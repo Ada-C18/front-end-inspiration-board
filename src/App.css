@@ -35,7 +35,7 @@ h1{
 .boards__container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
- 
+ margin-bottom: 20px;
 }
 
 .boards__list {
@@ -109,8 +109,7 @@ h1{
 }
 
 .card-item__controls {
-  font-family: "Open Sans", sans-serif;
-  list-style-type: none;
+  
   display: flex;
   padding: 0;
   width: 100%;
@@ -119,7 +118,7 @@ h1{
 
 .card-item__message {
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   word-break: break-word;
 }
 
@@ -130,7 +129,7 @@ h1{
 :root{
   --background-dark: #2d3548;
   --text-light: rgba(255,255,255,0.6);
-  --text-lighter: rgba(255,255,255,0.9);
+  --text-lighter: rgba(192, 161, 161, 0.9);
   --spacing-s: 8px;
   --spacing-m: 16px;
   --spacing-l: 24px;
@@ -143,17 +142,19 @@ h1{
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 h2 {
+  text-align: center;
   font-size: 30px;
   font-weight: 100;
   font-family: 'Roboto', sans-serif;
-  color: #b393d3;
+  color: #962d53;
+  /* color: hsl(276, 33%, 33%); */
   text-transform: uppercase;
-  text-shadow: 1px 1px 0px #957dad,
-               1px 2px 0px #957dad,
-               1px 3px 0px #957dad,
-               1px 4px 0px #957dad,
-               1px 5px 0px #957dad,
-               1px 6px 0px #957dad,
+  text-shadow: 1px 1px 0px #c1748c,
+               1px 2px 0px #c1748c,
+               1px 3px 0px #c1748c,
+               1px 4px 0px #c1748c,
+               1px 5px 0px #c1748c,
+               1px 6px 0px #c1748c,
                1px 10px 5px rgba(16, 16, 16, 0.5),
                1px 15px 10px rgba(16, 16, 16, 0.4),
                1px 20px 30px rgba(16, 16, 16, 0.3),
@@ -189,7 +190,7 @@ h1 {
 }
 
 
- @import url("https://fonts.googleapis.com/css?family=Raleway:400");
+@import url("https://fonts.googleapis.com/css?family=Raleway:400");
 
 * {
 	box-sizing: border-box;
@@ -303,7 +304,7 @@ h1 {
   color: #ab5c76;
   list-style: none;
   margin: 4px 0;
-  border-left: 2px solid #f50057;
+  border-left: 2px solid #962d53;
   transition: 0.5s;
   cursor: pointer;
 }
@@ -326,7 +327,7 @@ h1 {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #f50057;
+  background: hsl(339, 59%, 71%);
   transform: scaleX(0);
   transform-origin: left;
   transition: 0.5s;
@@ -353,6 +354,8 @@ h1 {
   position: relative;
   padding: 25px 30px;
   color: var(--primary-color);
+  width: 200px;
+  height: 250px;
 }
 
 .container::after{
@@ -372,8 +375,22 @@ h1 {
   position: relative;
   z-index: 1;
   transition: all .3s ease-in;
+height: 100%;
+  display: flex;
+  flex-direction: column;
+ 
+  /* flex-direction: column; */
+  
 }
-
+ .counter{
+  display: flex;
+  flex-direction: column;
+  line-height: 50px;
+  height: 50px;
+ text-align: right;
+  width: 250px;
+  margin-left: 0px;
+ }
 .container:hover::after{
   clip-path: circle(100%);
 }
@@ -386,6 +403,7 @@ h1 {
 
 .text-effect{
     color: #b64ca6;
+   
     font-family: 'Sacramento', cursive;
     font-size: 50px;
     font-weight: 600;
@@ -431,7 +449,7 @@ h1 {
 
 
 .btn-one {
-  color: #FFF;
+  color: rgb(39, 130, 148);
   transition: all 0.3s;
   position: relative;
 }
@@ -482,34 +500,125 @@ h1 {
 
 
 /* like button */
+/* "https://community.algolia.com/places/images/svg/icon-heart-dark-66670e8e.svg" */
 
-/* .like__btn {
-  border: none;
-  background-color: #e74c3c;
-  color: white;
-  cursor: pointer;
-  padding: 0.8rem;
-  border-radius: 0.4rem;
-  max-width: 200px;
-  transition: all ease 0.3s;
-  display: flex;
-  align-items: center;
+.ac-footer .ac-icon{position:absolute;left:0;right:0;width:25px;height:35px;margin:auto}
+.ac-footer .ac-icon-love-dark{background:url("https://community.algolia.com/places/images/svg/icon-heart-light-fc92b1e0.svg") no-repeat center center/contain}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(207, 98, 129, 0.4)}70%{box-shadow:0 0 0 30px rgba(232, 74, 119, 0)}100%{box-shadow:0 0 0 0 rgba(196, 76, 110, 0)}}
+@keyframes pulseHeart{0%{transform:scale(1.3)}70%{transform:scale(1.15)}100%{transform:scale(1)}}.ac-icon-love-dark{display:block;position:relative}.ac-icon-love-dark:before{content:'';display:block;width:8px;height:8px;position:absolute;top:45%;bottom:0;left:50%;transform:translate(-50%, -50%);right:0;z-index:-1;border-radius:100%}.ac-footer-container:hover .ac-icon-love-dark{animation:pulseHeart 1s ease infinite}.ac-footer-container:hover .ac-icon-love-dark:before{animation:pulse 1s ease infinite !important}.ac-icon-triangle{width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:5px solid #788795;position:relative;display:inline-block;margin-left:8px}
 
-  &:hover {
-      background-color: rgba(#e74c3c, 0.8);
-  }
+.ac-footer .ac-footer-brand:hover .ac-icon-love-dark{background:url("https://community.algolia.com/places/images/svg/icon-heart-light-fc92b1e0.svg") n-repeat center center/contain}
 
-  &:disabled {
-      background-color: #d4cfcf;
-      cursor: pointer;
-  }
+
+
+
+.trash {
+	background:#ff6873;
+	width: 18px;
+	height: 22px;
+	display: flex;
+  align-self: flex-end;
+ 
+	margin:0 auto;
+ 
+	
+	position: relative;
+	-webkit-border-bottom-right-radius: 2px;
+	-webkit-border-bottom-left-radius: 2px;
+	-moz-border-radius-bottomright: 2px;
+	-moz-border-radius-bottomleft: 2px;
+	border-bottom-right-radius: 2px;
+	border-bottom-left-radius: 2px;
+}
+.trash:after {
+
+	position: absolute;
+	left: -33px;
+	right: 0;
+	bottom: -18px;
+	width: 100px;
+}
+.trash span {
+	position: absolute;
+	height: 4px;
+	background: #ff6873;
+	top: -6px;
+	left: -3px;
+	right: -3px;
+	
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	transform: rotate(0deg);
+	transition: transform 250ms;
+	transform-origin: 19% 100%;
+}
+.trash span:after {
+	content: '';
+	position: absolute;
+	width: 9px;
+	height: 2px;
+	background: #ff6873;
+	top: -3px;
+	
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	transform: rotate(0deg);
+	transition: transform 250ms;
+	transform-origin: 19% 100%;
+	left: 9px;
 }
 
-.like__icon {
-  font-size: 1.2rem;
-  margin-right: 0.3rem;
-}
 
-.like__number {
-  font-size: 0.8rem;
+/* .trash i {
+	position:relative;
+	width: 2px;
+	height:16px;
+	background:#fff;
+	display:block;
+	margin:14px auto;
+	border-radius: 2px;
 } */
+/* .trash i:after {
+	content: '';
+	width: 2px;
+	height: 16px;
+	background: #fff;
+	position: absolute;
+	left: -6px;
+	border-radius: 2px;
+} */
+/* .trash i:before {
+	content: '';
+	width: 2px;
+	height: 16px;
+	background: #fff;
+	position: absolute;
+	right: -16px;
+	border-radius: 2px;
+} */
+
+.trash:hover span {
+	transform: rotate(-45deg);
+	transition: transform 250ms;
+}
+
+.card-btn{
+  display: flex;
+align-self: flex-end  ;}
+  
+.second {
+	margin-top: 85px; 
+
+  
+ }
+#number{
+  margin-left: 30px;
+ /* margin-top: -60px; */
+ 
+}
+/* set aut margin for last element */
+.last {
+	margin-top: -17px;
+  align-self: flex-end;
+ 
+}
