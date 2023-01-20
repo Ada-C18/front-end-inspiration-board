@@ -13,7 +13,13 @@ const CardView = (props) => {
     <div className={`single-card ${props.shadowClass} ${props.cardColor}`}>
       <p id="card-message"> {props.message} </p>
       <div>
-        <Likes color={hackerTheme} />
+        <Likes
+          color={hackerTheme}
+          handlePlusOne={props.onLikeCard}
+          likes={props.likes}
+          cardId={props.id}
+          boardId={props.boardId}
+        />
         <button
           className={`like-and-delete-buttons ${hackerTheme}`}
           onClick={() => deleteCard()}

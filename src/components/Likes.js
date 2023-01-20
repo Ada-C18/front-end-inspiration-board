@@ -4,7 +4,13 @@ const Likes = (props) => {
   return (
     <>
       <span id="num-likes"> {props.likes} ♥️ </span>
-      <button className={`like-and-delete-buttons ${props.color}`}> +1 </button>
+      <button
+        id="plusOne"
+        className={`like-and-delete-buttons ${props.color}`}
+        onClick={() => props.handlePlusOne(props.cardId, props.boardId)}
+      >
+        +1
+      </button>
     </>
   );
 };

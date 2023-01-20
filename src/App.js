@@ -30,6 +30,15 @@ const getAllBoardsAPI = async () => {
   }
 };
 
+const plusOneApi = async (id) => {
+  try {
+    const response = await axios.patch(`${kBaseUrl}/cards/${id}/like`);
+    return response;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 function App() {
   let [loggedIn, setLoggedIn] = useState({
     userId: null,
@@ -176,6 +185,7 @@ function App() {
         cards: cardDataByBoard,
         onDeleteCard: deleteCardAPI,
         allBoardsData: appData,
+        onLikeCard: likeCard,
       },
     ];
   };
@@ -245,6 +255,11 @@ function App() {
     } catch (err) {
       console.log(err);
     }
+    getCardsArr(boardId);
+  };
+
+  const likeCard = async (cardId, boardId) => {
+    await plusOneApi(cardId);
     getCardsArr(boardId);
   };
 

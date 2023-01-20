@@ -15,6 +15,7 @@ const SelectedBoard = (props) => {
             cardColor={props.cardColor}
             shadowClass={card.id % 2 === 1 ? "pink-shadow" : "teal-shadow"}
             onDeleteCard={props.onDeleteCard}
+            onLikeCard={props.onLikeCard}
             boardId={card.board_id}
           />
         </li>
