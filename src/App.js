@@ -107,7 +107,8 @@ function App() {
         loginState: loggedIn,
         onSubmitCard: handleSubmitCard,
         cards: cardDataByBoard,
-        onDeleteCard: deleteCardAPI
+        onDeleteCard: deleteCardAPI,
+        allBoardsData: appData
       },
     ];
   };
