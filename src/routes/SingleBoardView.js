@@ -12,8 +12,14 @@ const kColorClasses = {
 
 const SingleBoardView = () => {
   const loaderData = useLoaderData();
-  const { loginState, onSubmitCard, cards, onDeleteCard, allBoardsData } =
-    loaderData[0];
+  const {
+    loginState,
+    onSubmitCard,
+    cards,
+    onDeleteCard,
+    onLikeCard,
+    allBoardsData,
+  } = loaderData[0];
 
   const boardId = useLocation().pathname.split("/").pop();
 
@@ -40,6 +46,7 @@ const SingleBoardView = () => {
           cards={cards}
           cardColor={cardColor}
           onDeleteCard={onDeleteCard}
+          onLikeCard={onLikeCard}
         ></SelectedBoard>
       </div>
 
