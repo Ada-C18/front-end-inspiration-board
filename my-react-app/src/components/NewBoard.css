@@ -1,0 +1,4 @@
+.empty {
+    /* border: 1px solid {{adjust_opacity("[bg_color_1]", 0.1)}}; */
+    border-color: red;
+}

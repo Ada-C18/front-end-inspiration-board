@@ -1,0 +1,165 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #d57549;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
+  color: white;
+
+  text-decoration: unset;
+  text-align: center;
+  color: rgb(242, 239, 245);
+  font-family: fantasy;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+body {
+  background-color: #d887c3;
+}
+
+.Boards {
+  border-radius: 37px;
+  background: #ffffff;
+  margin: auto;
+  height: 20vh;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 150px;
+  padding-bottom: 100px;
+  overflow-y: scroll;
+}
+
+.Selected-Boards {
+  border-radius: 37px;
+  background: #ffffff;
+  margin: auto;
+  height: 20vh;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 150px;
+  padding-bottom: 100px;
+}
+
+.New-Boards {
+  border-radius: 37px;
+  background: #ffffff;
+  margin: auto;
+  height: 20vh;
+  text-align: center;
+  padding-left: 0px;
+  padding-right: 10px;
+  padding-top: 150px;
+  padding-bottom: 100px;
+}
+
+.Cards-For {
+  border-radius: 37px;
+  background: #ffffff;
+  margin: auto;
+  height: 20vh;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 150px;
+  padding-bottom: 100px;
+}
+
+.Create-New-Card {
+  border-radius: 37px;
+  background: #ffffff;
+  margin: auto;
+  height: 20vh;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 150px;
+  padding-bottom: 100px;
+}
+
+.container {
+  display: grid;
+  grid-row: auto auto;
+  grid-template-columns: 400px 400px;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  justify-content: space-evenly;
+}
+
+#Board-Title {
+  /* background: #ffffff; */
+  text-decoration: unset;
+  text-align: center;
+  /* color: rgb(242, 239, 245); */
+  font-size: x-large;
+  font-family: fantasy;
+  ;
+}
+
+#Selected-Board-Title {
+  text-decoration: unset;
+  text-align: center;
+  /* color: rgb(242, 239, 245); */
+  font-size: x-large;
+  font-family: fantasy;
+  ;
+}
+
+#Create-New-Board-Title {
+  text-decoration: unset;
+  text-align: center;
+  /* color: rgb(242, 239, 245); */
+  font-size: x-large;
+  font-family: fantasy;
+  ;
+}
+
+#Cards-For-Title {
+  text-decoration: unset;
+  text-align: center;
+  /* color: rgb(242, 239, 245); */
+  font-size: x-large;
+  font-family: fantasy;
+  ;
+}
+
+#Create-New-Card-Title {
+  text-decoration: unset;
+  text-align: center;
+  /* color: rgb(242, 239, 245); */
+  font-size: x-large;
+  font-family: fantasy;
+  ;
+}
