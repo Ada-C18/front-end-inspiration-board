@@ -22,7 +22,7 @@ const api = {
 
   getBoard: (board_id) =>
     axios
-      .get(`${api.baseUrl}/boards/${board_id}`)
+      .get(`${api.baseUrl}/boards/${board_id}/color`) // just get color normally lol
       .then((response) => response.data)
       .catch(api.logErr),
 
@@ -91,7 +91,7 @@ function App() {
     if (selectedBoard !== undefined) {
       if (selectedBoard.color === undefined) {
         api.getColor(selectedBoard.board_id).then((color) => {
-          selectedBoard.color = color || "#d7a4f0";
+          selectedBoard.color = color;
         });
       }
       api.getCards(selectedBoard.board_id).then((cardData) => {
@@ -179,22 +179,9 @@ function App() {
                 <input
                   name="noteColor"
                   type="color"
-                  list="pastels"
                   value={selectedBoard.color}
                   onChange={changeBoardColor}
                 ></input>
-                <datalist id="pastels">
-                  <option value="#fbf8cc"></option>
-                  <option value="#fde4cf"></option>
-                  <option value="#ffcfd2"></option>
-                  <option value="#f1c0e8"></option>
-                  <option value="#cfbaf0"></option>
-                  <option value="#a3c4f3"></option>
-                  <option value="#90dbf4"></option>
-                  <option value="#8eecf5"></option>
-                  <option value="#98f5e1"></option>
-                  <option value="#b9fbc0"></option>
-                </datalist>
               </div>
             </div>
             <CardList
@@ -203,12 +190,12 @@ function App() {
               cards={cardList || []}
               likeCard={likeCard}
               deleteCard={deleteCard}
-              color={selectedBoard.color || "#d7a4f0"}
+              color={selectedBoard.color}
             ></CardList>
             <CreateCardForm
               createCard={createCard}
               autoFocus={!(cardList || []).length} // TODO: this doesn't work? render seems to bounce
-              color={selectedBoard.color || "#d7a4f0"}
+              color={selectedBoard.color}
             ></CreateCardForm>
           </section>
         ) : (
