@@ -4,8 +4,7 @@ import {
   createRoutesFromElements,
   Route,
   RouterProvider,
-  Navigate,
-  useLocation
+  Navigate
 } from 'react-router-dom';
 import axios from 'axios';
 
@@ -26,8 +25,8 @@ import ErrorPage from './error-page';
 
 // const WAIT = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const kBaseUrl = 'http://localhost:5000';
-// const kBaseUrl = "https://hackspo-be.herokuapp.com";
+// const kBaseUrl = 'http://localhost:5000';
+const kBaseUrl = "https://hackspo-be.herokuapp.com";
 
 const getAllBoardsAPI = async () => {
   try {
@@ -75,6 +74,15 @@ function App() {
     }
   }, [loggedIn.userId]);
 
+  const deleteCardAPI = async (cardId, boardId) => {
+    try {
+    const response = await axios.delete(`${kBaseUrl}/cards/${cardId}`);
+    } catch (err) {
+      console.log(err)
+    }
+    getCardsArr(boardId);
+  };
+
   const passCreateBoardProps = () => {
     return [{ onCreate: addBoard }];
   };
@@ -99,7 +107,7 @@ function App() {
         loginState: loggedIn,
         onSubmitCard: handleSubmitCard,
         cards: cardDataByBoard,
-        getCardsByBoard: getCardsByBoard
+        onDeleteCard: deleteCardAPI
       },
     ];
   };
@@ -164,14 +172,12 @@ function App() {
       board_id: boardId,
       user_id: loggedIn.userId,
     };
-    console.log(requestBody);
     try {
       const response = await axios.post(`${kBaseUrl}/cards`, requestBody);
-      const cardData = getCardsByBoard(boardId);
-      setCardDataByBoard(cardData);
     } catch (err) {
       console.log(err);
     }
+    getCardsArr(boardId);
   };
 
   const router = createBrowserRouter(

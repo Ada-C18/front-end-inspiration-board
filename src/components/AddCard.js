@@ -7,10 +7,9 @@ const AddCard = () => {
 
   const boardId = useLocation().pathname.split("/").pop();
 
-  const { loginState, getCards, onSubmitCard } = loaderData[0];
+  const { onSubmitCard } = loaderData[0];
 
   const [cardInputValue, setCardInputValue] = useState("");
-  //inputBool tracks whether or not anything has been typed in the new card form, used in line 18 to determine what text to display
   const [inputBool, setInputBool] = useState(false);
 
   const handleInputChange = (event) => {
