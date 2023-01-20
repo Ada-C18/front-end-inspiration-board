@@ -130,6 +130,12 @@ function App() {
     });
   };
 
+  const changeBoardColor = (event) => {
+    let newColor = event.target.value;
+    // axios request
+    // update react state
+  };
+
   return (
     <div className="App">
       <header className="inspiration_style">
@@ -149,6 +155,26 @@ function App() {
           <section className="cards">
             <div className="boardHeader">
               {selectedBoard.title} for {selectedBoard.owner}
+              <div className="themeControl">
+                <input
+                  name="noteColor"
+                  type="color"
+                  list="pastels"
+                  onChange={changeBoardColor}
+                ></input>
+                <datalist id="pastels">
+                  <option value="#fbf8cc"></option>
+                  <option value="#fde4cf"></option>
+                  <option value="#ffcfd2"></option>
+                  <option value="#f1c0e8"></option>
+                  <option value="#cfbaf0"></option>
+                  <option value="#a3c4f3"></option>
+                  <option value="#90dbf4"></option>
+                  <option value="#8eecf5"></option>
+                  <option value="#98f5e1"></option>
+                  <option value="#b9fbc0"></option>
+                </datalist>
+              </div>
             </div>
             <CardList
               title={selectedBoard.title}
