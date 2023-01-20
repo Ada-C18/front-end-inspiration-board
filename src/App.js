@@ -81,6 +81,7 @@ function App() {
 
   // get all cards using API helper
   const getAllCards = (id) => {
+    console.log(`currentBoard.id: ${currentBoard.id}`)
     getAllCardsApi(id).then((cards) => {
       const allCards = [];
       for (let card of cards) {
@@ -136,6 +137,7 @@ function App() {
 
   // add new card callback for new card form
   const addCard = (cardData) => {
+    console.log(`currentBoard.id: ${currentBoard.id}`)
     axios
       .post(`${url}/board/${currentBoard.id}/cards`, cardData)
       .then((response) => {
@@ -144,6 +146,7 @@ function App() {
 
         newCards.push({
           message: response.data.message,
+          likeCount: response.data.likes_count,
           ...cardData,
         });
 
@@ -165,19 +168,15 @@ function App() {
     }
   };
 
-  // add function to delete card and pass into Card
+  // delete card from board
   const deleteCard = (cardId) => {
     deleteCardApi(currentBoard.id, cardId)
     .then(response => {
-
       setCards(cards => cards.filter(card => {
         return card.id !== cardId;
-
       }))
     })
   };
-
-  
 
   return (
     <div className="App">
