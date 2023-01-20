@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './CardList.css';
 
-const url = 'http://127.0.0.1:5000'
+const url = 'https://ccc-inspoboard.herokuapp.com'
 
 function App() {
 
