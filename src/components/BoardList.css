@@ -1,0 +1,9 @@
+.boards-list-no-bullet {
+    list-style-type: none;
+}
+/* .board-list {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+
+} */

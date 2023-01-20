@@ -1,0 +1,56 @@
+.main-page {
+  margin: 5%;
+  font-size: 1.2rem;
+  font-family: 'Merriweather', serif;
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+.project-title {
+  color: #636161;
+  opacity: 0.8;
+  text-shadow: 2px 2px 2px #f3f7f7;
+  text-align: center;  
+}
+
+h1 {
+  font-family: 'Sacramento', cursive;
+  font-weight: bold;
+  font-size: 3rem;
+  
+}
+
+h2 {
+  color: #079a9a;
+  font-family: 'Montserrat', cursive;
+  font-size: 2.3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.boards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.cards {
+  margin-top: 4%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+}
+
+footer {
+  text-align: center;
+  padding-top: 10%;
+  font-size: 1.1rem;
+  font-weight:900;
+  color: #636161;;
+}
+
+.cards-for-board {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+}
