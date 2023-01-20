@@ -1,0 +1,8 @@
+/* IDs */
+#submit-btn {
+    padding-top: 10px;
+}
+.create-card-input {
+    border: 1px solid blue;
+    box-shadow: 0 0 7px blue;
+}
