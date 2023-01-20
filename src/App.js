@@ -35,8 +35,8 @@ const api = {
   postBoard: (boardData) =>
     axios
       .post(`${api.baseUrl}/boards`, boardData)
-      .then((response) => response.data)
-      .catch(api.logErr),
+      .then((response) => response.data),
+  //.catch(api.logErr),
 
   postCard: (cardData) =>
     axios
@@ -61,6 +61,18 @@ const api = {
       .delete(`${api.baseUrl}/boards/${boardId}`)
       .then((response) => response.data)
       .catch(api.logErr),
+
+  getColor: (boardId) =>
+    axios
+      .get(`${api.baseUrl}/boards/${boardId}/color`)
+      .then((response) => response.data.board.color)
+      .catch(api.logErr),
+
+  postColor: (boardId, colorData) =>
+    axios
+      .post(`${api.baseUrl}/boards/${boardId}/color`, colorData)
+      .then((response) => response.data)
+      .catch(api.logErr),
 };
 
 function App() {
@@ -77,8 +89,13 @@ function App() {
 
   const refreshCardList = () => {
     if (selectedBoard !== undefined) {
+      if (selectedBoard.color === undefined) {
+        api.getColor(selectedBoard.board_id).then((color) => {
+          selectedBoard.color = color || "#d7a4f0";
+        });
+      }
       api.getCards(selectedBoard.board_id).then((cardData) => {
-        setCardList(cardData.cards);
+        setCardList(cardData);
       });
     } else {
       setCardList(undefined);
@@ -132,8 +149,11 @@ function App() {
 
   const changeBoardColor = (event) => {
     let newColor = event.target.value;
-    // axios request
-    // update react state
+    api
+      .postColor(selectedBoard.board_id, { color: newColor })
+      .then((updatedBoard) => {
+        setSelectedBoard(updatedBoard.board);
+      });
   };
 
   return (
@@ -160,6 +180,7 @@ function App() {
                   name="noteColor"
                   type="color"
                   list="pastels"
+                  value={selectedBoard.color}
                   onChange={changeBoardColor}
                 ></input>
                 <datalist id="pastels">
@@ -182,11 +203,12 @@ function App() {
               cards={cardList || []}
               likeCard={likeCard}
               deleteCard={deleteCard}
-              createCard={createCard}
+              color={selectedBoard.color || "#d7a4f0"}
             ></CardList>
             <CreateCardForm
               createCard={createCard}
               autoFocus={!(cardList || []).length} // TODO: this doesn't work? render seems to bounce
+              color={selectedBoard.color || "#d7a4f0"}
             ></CreateCardForm>
           </section>
         ) : (

@@ -21,7 +21,7 @@ const BoardList = ({ boards, selectBoard, activeBoard, deleteBoard }) => {
         className="boardDeleteIcon"
         onClick={() => clickDelete(board.board_id)}
       >
-        🗑
+        🗑️
       </button>
     </div>
   ));

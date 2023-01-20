@@ -10,14 +10,7 @@ import "./CardList.css";
 import { ReactComponent as TallyOneSvg } from "./tally_mark_one.svg";
 import { ReactComponent as TallyFiveSvg } from "./tally_mark_five.svg";
 
-const CardList = ({
-  title,
-  owner,
-  cards,
-  likeCard,
-  deleteCard,
-  createCard,
-}) => {
+const CardList = ({ title, owner, cards, likeCard, deleteCard, color }) => {
   const clickLike = (id) => likeCard(parseInt(id));
   const clickDelete = (id) => deleteCard(parseInt(id));
   const tallyLikes = (likes) => {
@@ -52,12 +45,13 @@ const CardList = ({
       id={card.card_id}
       // TODO: find something that doesn't jump every change
       //style={{ rotate: `${(Math.random() - 0.5) * 10}deg` }}
+      style={{ background: color }}
     >
       <button
         className="cardDeleteIcon"
         onClick={() => clickDelete(card.card_id)}
       >
-        🗑
+        🗑️
       </button>
       <div className="cardMessage">{card.message}</div>
       <div className="cardLikes">

@@ -8,6 +8,8 @@ const CreateBoardForm = ({ createBoard }) => {
     owner: "",
   });
 
+  const [errorState, setErrorState] = useState(false);
+
   const onBoardTitleChange = (event) =>
     setNewBoard({ ...newBoard, title: event.target.value });
 
@@ -18,15 +20,22 @@ const CreateBoardForm = ({ createBoard }) => {
 
   const submitCreateBoardForm = (event) => {
     event.preventDefault();
-    createBoard(newBoard);
-    setNewBoard({
-      title: "",
-      owner: "",
-    });
+    createBoard(newBoard)
+      .then((response) => {
+        setNewBoard({
+          title: "",
+          owner: "",
+        });
+        setErrorState(false);
+      })
+      .catch((err) => setErrorState(true));
   };
 
   return (
-    <form className="board" onSubmit={submitCreateBoardForm}>
+    <form
+      className={`board ${errorState ? "boardError" : ""}`}
+      onSubmit={submitCreateBoardForm}
+    >
       <div className="placeholder">+</div>
       <div>
         <input

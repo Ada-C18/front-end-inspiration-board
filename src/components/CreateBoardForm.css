@@ -33,6 +33,10 @@ form.board input.boardOwner {
   width: min-content;
 }
 
+form.boardError input::placeholder {
+  color: red;
+}
+
 form.board {
   position: relative;
   opacity: 50%;

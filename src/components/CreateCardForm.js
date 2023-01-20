@@ -4,7 +4,7 @@ import "./CreateCardForm.css";
 
 // TODO: focus form if any part of parent div is clicked
 
-const CreateCardForm = ({ createCard, autoFocus }) => {
+const CreateCardForm = ({ createCard, autoFocus, color }) => {
   const emptyCard = {
     message: "",
   };
@@ -25,8 +25,13 @@ const CreateCardForm = ({ createCard, autoFocus }) => {
   };
 
   return (
-    <form className="card" onSubmit={submitCreateCardForm}>
+    <form
+      className="card"
+      style={{ background: color }}
+      onSubmit={submitCreateCardForm}
+    >
       <textarea
+        maxLength={40}
         ref={focusRef}
         className="cardMessage"
         name="newCardMessage"

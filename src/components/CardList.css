@@ -1,7 +1,6 @@
 .card {
   overflow-wrap: break-word;
   font-family: "Permanent Marker", cursive;
-  background-color: rgb(215, 164, 240);
   box-shadow: 10px 10px 8px rgb(204, 186, 186);
   height: 200px;
   width: 200px;
