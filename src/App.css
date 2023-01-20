@@ -1,0 +1,65 @@
+.inspiration_style {
+  display: grid;
+  grid-template-columns: auto;
+  text-decoration: none;
+  grid: gap 15px;
+  padding-left: 275px;
+  padding-right: 275px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.inspiration_style > .inspiration_background {
+  padding: 20px;
+  border-width: 10px;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-family: "Permanent Marker", cursive;
+  font-size: 50px;
+  background-color: rgba(0, 0, 255, 0.2);
+  transform: matrix3d(20);
+}
+
+.boardHeader {
+  text-align: center;
+  font-family: "Permanent Marker", cursive;
+  font-size: 40px;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: white;
+}
+
+main {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 30px;
+}
+
+.boards {
+  display: flex;
+  flex-direction: column;
+}
+
+main section:last-of-type {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 3;
+  align-content: flex-start;
+}
+
+.boardHeader {
+  flex-basis: 100%;
+}

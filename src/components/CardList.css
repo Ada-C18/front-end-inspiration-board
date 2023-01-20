@@ -1,0 +1,63 @@
+.card {
+  overflow-wrap: break-word;
+  font-family: "Permanent Marker", cursive;
+  box-shadow: 10px 10px 8px rgb(204, 186, 186);
+  height: 200px;
+  width: 200px;
+  max-height: 200px;
+  max-width: 200px;
+  padding: 2rem;
+  margin: 2rem;
+  flex: 200px;
+  position: relative;
+}
+
+.tallyOne,
+.tallyFive {
+  box-sizing: content-box;
+  height: 1.25em;
+}
+div.cardMessage {
+  font-size: 24pt;
+  width: 200px;
+  height: 200px;
+}
+
+.cardLikes {
+  font-size: 16pt;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding: 0.5em;
+  vertical-align: text-bottom;
+}
+
+button.cardDeleteIcon {
+  position: absolute;
+  margin: 0em;
+  top: 0;
+  right: 0;
+  padding: 0.5em;
+}
+
+.card button {
+  display: none;
+  border: none;
+  background: none;
+  margin: -0.5em 0;
+  font-size: 18pt;
+  font-family: "Permanent Marker", cursive;
+  opacity: 40%;
+}
+
+.cardLikes:hover button.cardLikeIcon {
+  display: inline;
+}
+
+.card button:hover {
+  opacity: 100%;
+}
+
+.card:focus-within button {
+  display: inline;
+}

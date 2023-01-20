@@ -1,0 +1,73 @@
+form.board input {
+  font-family: "Permanent Marker", cursive;
+  text-align: center;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+form.board div {
+  opacity: 0%;
+}
+
+form.board div.placeholder {
+  opacity: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: block;
+  font-size: 32pt;
+}
+
+form.board input.boardTitle {
+  font-size: 24px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+form.board input.boardOwner {
+  font-size: 16px;
+  width: min-content;
+}
+
+form.boardError input::placeholder {
+  color: red;
+}
+
+form.board {
+  position: relative;
+  opacity: 50%;
+}
+
+form.board:hover,
+form.board:focus-within {
+  opacity: 100%;
+}
+
+form.board input[type="submit"] {
+  font-size: 16pt;
+  display: none;
+}
+form.board:focus-within input[type="submit"] {
+  display: block;
+}
+
+form.board:focus-within div,
+form.board:hover div {
+  opacity: 100%;
+}
+
+form.board:focus-within div.placeholder,
+form.board:hover div.placeholder {
+  display: none;
+}
+
+form.board input[type="submit"] {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  background: none;
+}
