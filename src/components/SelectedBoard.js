@@ -1,10 +1,10 @@
-import './SelectedBoard.css';
-import CardView from './CardView.js';
+import "./SelectedBoard.css";
+import CardView from "./CardView.js";
 
 const SelectedBoard = (props) => {
   const cards = props.cards;
 
-  const boardId = cards[0].board_id;
+  const boardId = props.boardId;
 
   const handleSortCards = (event) => {
     event.preventDefault();
@@ -20,7 +20,7 @@ const SelectedBoard = (props) => {
             message={card.message}
             likes={card.likes}
             cardColor={props.cardColor}
-            shadowClass={card.id % 2 === 1 ? 'pink-shadow' : 'teal-shadow'}
+            shadowClass={card.id % 2 === 1 ? "pink-shadow" : "teal-shadow"}
             onDeleteCard={props.onDeleteCard}
             onLikeCard={props.onLikeCard}
             boardId={card.board_id}
@@ -44,7 +44,7 @@ const SelectedBoard = (props) => {
         </select>
         <p></p>
       </div>
-      <ul id='board-flex-container'> {getCardViewComponentList(cards)} </ul>
+      <ul id="board-flex-container"> {getCardViewComponentList(cards)} </ul>
     </div>
   );
 };
