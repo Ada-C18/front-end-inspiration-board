@@ -1,0 +1,21 @@
+#board {
+  margin-top: 14rem;
+}
+
+.board-name {
+  font-family: "Anton", sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 0rem;
+  color: #fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.card-list {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 4rem;
+}

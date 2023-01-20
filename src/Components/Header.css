@@ -1,0 +1,43 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  border-bottom: 1.7px solid #fff;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: rgba(235, 140, 140, 0.65);
+  z-index: 1;
+}
+
+html:not([data-scroll="0"]) .header {
+  position: fixed;
+  top: 0;
+  background-color: rgba(235, 140, 140, 0.7);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.header > select {
+  width: 6rem;
+}
+
+.header > button {
+  height: 4rem;
+  width: 4rem;
+  font-size: 2.5rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  background: none;
+  border: 3px solid #fff;
+  color: #fff;
+  margin-left: 8rem;
+}
+
+h1 {
+  font-family: "Readex Pro", sans-serif;
+  font-weight: 100;
+  font-size: 3.3rem;
+  color: #fff;
+}

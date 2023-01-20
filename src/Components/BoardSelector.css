@@ -1,0 +1,49 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+#board-select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    outline: none;
+    text-transform: uppercase;
+    color: #999999;
+    text-align: center;
+    letter-spacing: 0.6px;
+}
+
+#board-select:focus {
+    outline: none;
+}
+
+#board-select:hover {
+    box-shadow: 0px 20px 60px rgb(238, 234, 234);
+}
+
+.select {
+    width: 11em;
+    min-width: 15ch;
+    max-width: 30ch;
+    border-radius: 5px;
+    padding: 0.5em 0.5em;
+    font-size: 1.25rem;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: #fff;
+    background-image: linear-gradient(
+    to top,
+    rgba(235, 140, 140, 50%),
+    rgb(228, 243, 254) 60%
+    );
+    font-family: "Roboto Condensed";
+    font-size: 1rem;
+}
