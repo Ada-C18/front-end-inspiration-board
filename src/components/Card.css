@@ -1,6 +1,15 @@
 .card {
 border: 2px solid black;
-height: 90%;
-width: 90%;
+margin-top: 25px;
+align-self: center;
+height: 80%;
+width: 80%;
 margin: 1rem auto;
+}
+
+button {
+  background: none;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
 }

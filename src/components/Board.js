@@ -85,19 +85,21 @@ const Board = () => {
     };
 
     return (
-        <section className="board-container">
-            <section className="input-section">
-                <div className='user-choice'>
-                    <label>Choose Board to Display</label>
-                    <Dropdown boardData={boardData} getBoardId={getBoardId} getBoardTitle={getBoardTitle}></Dropdown>
-                    <label>Create a Board</label>
-                    <NewBoardForm onBoardSubmit={onBoardSubmit}></NewBoardForm>
-                    <label>Create a Card</label>
-                    <NewCardForm addCardCallback={addCardCallback}></NewCardForm>
-                </div>
-                <div className='board-title'>
-                    <h2>{selectedBoardTitle}</h2>
-                </div>
+        <section className='app'>
+            <section className="board-container">
+                <section className="input-section">
+                    <div className='user-choice'>
+                        <label>Choose Board to Display</label>
+                        <Dropdown boardData={boardData} getBoardId={getBoardId} getBoardTitle={getBoardTitle}></Dropdown>
+                        <label>Create a Board</label>
+                        <NewBoardForm onBoardSubmit={onBoardSubmit}></NewBoardForm>
+                        <label>Create a Card</label>
+                        <NewCardForm addCardCallback={addCardCallback}></NewCardForm>
+                    </div>
+                    <div className='board-title'>
+                        <h2>{selectedBoardTitle}</h2>
+                    </div>
+                </section>
             </section>
             <CardList 
             cardData={cardData} 

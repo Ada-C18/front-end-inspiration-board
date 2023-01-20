@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Card = (props) => {
 
     return (
-        <div className=''>
+        <div className='card'>
             <p>{props.message}</p>
             <button onClick={() => props.updateCard(props.card_id)}>{props.likes_count} 💕</button>
             <button onClick={() => props.deleteCard(props.card_id)}>delete</button>
