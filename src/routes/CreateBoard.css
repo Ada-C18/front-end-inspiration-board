@@ -4,35 +4,43 @@
   align-items: center;
   background-color: #e0eaec;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 #create-board-heading {
-  font-family: 'Caveat';
+  font-family: 'Caveat', cursive;
   color: #F26E50;
-  font-size: 3.5rem;
+  font-size: clamp(1.5rem, 5vmax, 3.5rem);
 }
 
 #new-board-form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background-color: white;
   border: dashed black;
   border-radius: 45px;
   width: 55vw;
-  height: 30vh;
+  min-height: 30vh;
+  height: fit-content;
+  max-height: 60vh;
+  font-family: 'Open Sans', sans-serif;
+  overflow:auto;
 }
 
 #submit-button {
-  background-color: #F29979;
+  background-color: #F26E50;
   border: solid black 1px;
   border-radius: 8px;
-  width: 17vw;
-  height: 5vh;
-  margin-top: 4vh;
+  min-width: fit-content;
+  width: 12vw;
+  max-width: 12vmax;
+  height: clamp(fit-content, 5vh, 5vh);
+  margin: 3vmin 0;
   color: #014040;
+  font-weight: bolder;
+  padding: 10px;
 }
 
 #board-title-field {
@@ -42,17 +50,39 @@
   border: solid black 1px;
   padding-left: 10px;
   padding-right: 10px;
-  font-style: italic;
-  
+  margin-top: 3vmin;
+}
+
+#selectDiv label {
+  display:block;
+  text-align:left;
+  width:35vw;
+  }
+
+#colorSelect {
+  width: 35vw;
+  height: 5vh;
+  padding: 0 10px;
+  border: solid black 1px;
+  border-radius: 5px;
+}
+
+#colorSelect option {
+  background-color: white;
+  border: solid black 1px;
 }
 
 #home-button-white {
   border: none;
   background: none;
   margin-top: 7vh;
+  height: fit-content;
+  width:fit-content;
 }
 
 #button-img {
+  max-height: 8vh;
+  max-width: 8vh;
   width: 3rem;
   background-color: #518888;
   border-radius: 10px;
@@ -60,17 +90,33 @@
   box-shadow:  3px 3px 5px #014040;
 }
 
-#swatch {
-  display: inline-block;
-  width: 5vw;
-  height: 5vw;
-  box-shadow:  3px 3px 5px #014040;
-  margin: auto;
-  font-size: clamp(2vw, calc(10px+2vh), 3vw);
+#selectDiv {
+  margin: 5vmin 0;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+#swatch {
+  display: flex;
+  width: 8vmax;
+  height: 8vmax;
+  box-shadow:  3px 3px 5px #014040;
+  margin: 3vmin;
+  align-items: center;
+  justify-content: center;
+  overflow:hidden;
+}
+
+#swatch p {
   text-align: center;
+  font-size: clamp(1vmin, calc(10px+1vmin), 3vmin);
   font-weight: bold;
   color: #014040;
+  width: 7vw;
+  overflow:hidden;
 }
 
 .green {
