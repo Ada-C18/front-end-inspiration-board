@@ -1,7 +1,7 @@
 .App__header {
   font-family:monospace;
   min-height: 10vh;
-  font-size:35pt;
+  font-size:3rem;
   text-align: center;
   -webkit-text-stroke: 1px black;
 }
@@ -109,7 +109,7 @@ padding-right: 25pt;
 }
 
 body {
-  background-color: beige
+  background-color: beige;
 }
 
 .card__form {

@@ -22,9 +22,6 @@ export const deleteCardApi = async (cardId) => {
 };
 
 export const sortCardsByAscApi = async (selectedBoard) => {
-  if (!selectedBoard) {
-    return [];
-  }
   const response = await axios.get(
     `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards?sort=asc`
   );
@@ -32,9 +29,6 @@ export const sortCardsByAscApi = async (selectedBoard) => {
 };
 
 export const sortCardsByLikesApi = async (selectedBoard) => {
-  if (!selectedBoard) {
-    return [];
-  }
   const response = await axios.get(
     `${process.env.REACT_APP_BACKEND_URL}/boards/${selectedBoard.id}/cards?sort=likes`
   );
