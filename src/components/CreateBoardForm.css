@@ -6,6 +6,22 @@ form.board input {
   outline: none;
 }
 
+form.board div {
+  opacity: 0%;
+}
+
+form.board div.placeholder {
+  opacity: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: block;
+  font-size: 32pt;
+}
+
 form.board input.boardTitle {
   font-size: 24px;
   box-sizing: border-box;
@@ -19,6 +35,12 @@ form.board input.boardOwner {
 
 form.board {
   position: relative;
+  opacity: 50%;
+}
+
+form.board:hover,
+form.board:focus-within {
+  opacity: 100%;
 }
 
 form.board input[type="submit"] {
@@ -27,6 +49,16 @@ form.board input[type="submit"] {
 }
 form.board:focus-within input[type="submit"] {
   display: block;
+}
+
+form.board:focus-within div,
+form.board:hover div {
+  opacity: 100%;
+}
+
+form.board:focus-within div.placeholder,
+form.board:hover div.placeholder {
+  display: none;
 }
 
 form.board input[type="submit"] {

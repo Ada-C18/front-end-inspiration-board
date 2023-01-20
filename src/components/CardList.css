@@ -30,10 +30,12 @@ div.cardMessage {
   bottom: 0px;
   left: 0px;
   padding: 0.5em;
+  vertical-align: text-bottom;
 }
 
-.cardDeleteIcon {
+button.cardDeleteIcon {
   position: absolute;
+  margin: 0em;
   top: 0;
   right: 0;
   padding: 0.5em;
@@ -43,9 +45,14 @@ div.cardMessage {
   display: none;
   border: none;
   background: none;
-  font-size: 16pt;
+  margin: -0.5em 0;
+  font-size: 18pt;
   font-family: "Permanent Marker", cursive;
   opacity: 40%;
+}
+
+.cardLikes:hover button.cardLikeIcon {
+  display: inline;
 }
 
 .card button:hover {

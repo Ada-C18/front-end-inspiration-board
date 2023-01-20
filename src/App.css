@@ -47,11 +47,15 @@ main {
   flex-direction: column;
 }
 
+main section:last-of-type {
+  flex-direction: row;
+}
+
 .cards {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  flex-grow: 1;
+  flex-grow: 3;
   align-content: flex-start;
 }
 

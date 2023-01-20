@@ -16,7 +16,7 @@ form.card textarea.cardMessage:focus-visible {
 
 form.card input[type="submit"] {
   display: none;
-  font-size: 16pt;
+  font-size: 18pt;
   border: none;
   padding: 0.5em;
   position: absolute;

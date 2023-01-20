@@ -27,6 +27,7 @@ const CreateBoardForm = ({ createBoard }) => {
 
   return (
     <form className="board" onSubmit={submitCreateBoardForm}>
+      <div className="placeholder">+</div>
       <div>
         <input
           className="boardTitle"

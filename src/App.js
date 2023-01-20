@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import BoardList from "./components/BoardList.js";
 import CardList from "./components/CardList.js";
 import CreateBoardForm from "./components/CreateBoardForm.js";
+import CreateCardForm from "./components/CreateCardForm.js";
 import axios from "axios";
 
 const api = {
@@ -145,16 +146,25 @@ function App() {
           ></BoardList>
         </section>
         {selectedBoard !== undefined ? (
-          <CardList
-            title={selectedBoard.title}
-            owner={selectedBoard.owner}
-            cards={cardList || []}
-            likeCard={likeCard}
-            deleteCard={deleteCard}
-            createCard={createCard}
-          ></CardList>
+          <section className="cards">
+            <div className="boardHeader">
+              {selectedBoard.title} for {selectedBoard.owner}
+            </div>
+            <CardList
+              title={selectedBoard.title}
+              owner={selectedBoard.owner}
+              cards={cardList || []}
+              likeCard={likeCard}
+              deleteCard={deleteCard}
+              createCard={createCard}
+            ></CardList>
+            <CreateCardForm
+              createCard={createCard}
+              autoFocus={!(cardList || []).length} // TODO: this doesn't work? render seems to bounce
+            ></CreateCardForm>
+          </section>
         ) : (
-          <h2>Select a board to the left</h2>
+          ""
         )}
       </main>
     </div>

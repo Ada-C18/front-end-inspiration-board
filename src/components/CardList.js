@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./CardList.css";
-import CreateCardForm from "./CreateCardForm.js";
 
 /*
   svg used to replace missing unicode glyphs
@@ -45,45 +44,34 @@ const CardList = ({
       </span>
     );
   };
-  return (
-    <section className="cards">
-      <div className="boardHeader">
-        {title} for {owner}
-      </div>
-      {[...cards].map((card) => (
-        <div
-          className="card"
-          tabIndex="-1"
-          key={card.card_id}
-          id={card.card_id}
+  return [...cards].map((card) => (
+    <div
+      className="card"
+      tabIndex="-1"
+      key={card.card_id}
+      id={card.card_id}
+      // TODO: find something that doesn't jump every change
+      //style={{ rotate: `${(Math.random() - 0.5) * 10}deg` }}
+    >
+      <button
+        className="cardDeleteIcon"
+        onClick={() => clickDelete(card.card_id)}
+      >
+        🗑
+      </button>
+      <div className="cardMessage">{card.message}</div>
+      <div className="cardLikes">
+        likes:{" "}
+        <span className="cardLikesCount">{tallyLikes(card.likes_count)}</span>
+        <button
+          className="cardLikeIcon"
+          onClick={() => clickLike(card.card_id)}
         >
-          <button
-            className="cardDeleteIcon"
-            onClick={() => clickDelete(card.card_id)}
-          >
-            🗑
-          </button>
-          <div className="cardMessage">{card.message}</div>
-          <div className="cardLikes">
-            likes:{" "}
-            <span className="cardLikesCount">
-              {tallyLikes(card.likes_count)}
-            </span>
-            <button
-              className="cardLikeIcon"
-              onClick={() => clickLike(card.card_id)}
-            >
-              ✍️
-            </button>
-          </div>
-        </div>
-      ))}
-      <CreateCardForm
-        createCard={createCard}
-        autoFocus={!cards.length} // TODO: this doesn't work? render seems to bounce
-      ></CreateCardForm>
-    </section>
-  );
+          ✍️
+        </button>
+      </div>
+    </div>
+  ));
 };
 
 CardList.propTypes = {
