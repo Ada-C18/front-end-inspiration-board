@@ -4,12 +4,20 @@
   flex-wrap: wrap;
   width: 15vw;
   height: 15vw;
-  background-color: #C1D6D9;
+  /* background-color: #C1D6D9; */
   align-items: center;
   text-align: center;
   color: #014040;
   margin: auto;
   justify-content: space-evenly;
+}
+
+.green {
+  background-color: #C1D6D9;
+}
+
+.coral {
+  background-color: #F29979;
 }
 
 .pink-shadow {

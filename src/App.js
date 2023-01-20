@@ -137,9 +137,9 @@ function App() {
 
   const deleteCardAPI = async (cardId, boardId) => {
     try {
-    const response = await axios.delete(`${kBaseUrl}/cards/${cardId}`);
+      await axios.delete(`${kBaseUrl}/cards/${cardId}`);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
     getCardsArr(boardId);
   };
@@ -175,7 +175,7 @@ function App() {
         onSubmitCard: handleSubmitCard,
         cards: cardDataByBoard,
         onDeleteCard: deleteCardAPI,
-        allBoardsData: appData
+        allBoardsData: appData,
       },
     ];
   };

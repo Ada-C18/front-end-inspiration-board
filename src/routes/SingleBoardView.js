@@ -2,41 +2,59 @@ import { Link, useLoaderData, useLocation } from "react-router-dom";
 import "./SingleBoardView.css";
 import AddCard from "../components/AddCard";
 import SelectedBoard from "../components/SelectedBoard";
-import homeIcon from '../home-icon-dark.png';
+import homeIcon from "../home-icon-dark.png";
+
+const kColorClasses = {
+  "#C1D6D9": "green",
+  "#F29979": "coral",
+};
 
 const SingleBoardView = () => {
-
   const loaderData = useLoaderData();
-  const {loginState, onSubmitCard, cards, onDeleteCard, allBoardsData} = loaderData[0];
+  const { loginState, onSubmitCard, cards, onDeleteCard, allBoardsData } =
+    loaderData[0];
 
   const boardId = useLocation().pathname.split("/").pop();
 
-  const singleBoardArr = allBoardsData.filter( board =>  {
+  const singleBoardArr = allBoardsData.filter((board) => {
     return board.id === Number(boardId);
   });
-  const singleBoardObject = singleBoardArr[0]
-  const boardTitle = singleBoardObject.title
-  const boardOwner = singleBoardObject.owner
-  const boardOwnerFormatted = boardOwner.charAt(0).toUpperCase() + boardOwner.slice(1)
+  const singleBoardObject = singleBoardArr[0];
+  const boardTitle = singleBoardObject.title;
+  const boardOwner = singleBoardObject.owner;
+  const boardOwnerFormatted =
+    boardOwner.charAt(0).toUpperCase() + boardOwner.slice(1);
+
+  const cardColor = kColorClasses[singleBoardObject.card_color];
 
   return (
     <div id="single-board-view">
-      <header id='single-board-view-header'>
+      <header id="single-board-view-header">
         <h1> {boardTitle} </h1>
         <h2> {boardOwnerFormatted}</h2>
       </header>
 
-      <div id='board-display'>
-        <SelectedBoard cards={cards} onDeleteCard={onDeleteCard}></SelectedBoard>
+      <div id="board-display">
+        <SelectedBoard
+          cards={cards}
+          cardColor={cardColor}
+          onDeleteCard={onDeleteCard}
+        ></SelectedBoard>
       </div>
 
-      <div id='add-card-and-home'>
-        <div id='add-card'>
-          <AddCard onSubmitCard={onSubmitCard} loginState={loginState}></AddCard>
+      <div id="add-card-and-home">
+        <div id="add-card">
+          <AddCard
+            onSubmitCard={onSubmitCard}
+            loginState={loginState}
+          ></AddCard>
         </div>
 
         <Link to={`/boards`}>
-            <button id='home-button'> <img src={homeIcon} alt='home button'></img></button>
+          <button id="home-button">
+            {" "}
+            <img src={homeIcon} alt="home button"></img>
+          </button>
         </Link>
       </div>
     </div>
@@ -44,5 +62,3 @@ const SingleBoardView = () => {
 };
 
 export default SingleBoardView;
-
-
