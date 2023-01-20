@@ -1,16 +1,18 @@
 import Board from "./components/Board";
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 import './App.css';
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 import postNewCard from "./components/CardsList";
 import CardsList from "./components/CardsList";
 
-// helper function dedicated to only making API get request
+// helper function dedicated to only making API GET request for Boards
 const getBoardListApi = () => {
   return axios
-    .get(`${process.env.REACT_APP_BACKEND_URL}/boards`)
+    .get(`${process.env.REACT_APP_BACKEND_URL}/boards`, {})
+
     .then((response) => {
       return response.data;
     })
@@ -24,17 +26,17 @@ function App() {
   // state variable and function for updating state of boardList
   const [boardList, setBoardList] = useState([]); // initial value for boardList is an empty list
   const [selectedBoard, setSelectedBoard] = useState({
-    title: '',
-    owner: '',
-    id: null
+    title: "",
+    owner: "",
+    id: null,
   });
 
-  // this is our event handler function that will be sent 
-  // as a prop to Board component for when user clicks/selects 
-  // specific board name
-  const selectBoard = (board) => { setSelectedBoard(board) };
+  // Event handler function
+  const selectBoard = (board) => {
+    setSelectedBoard(board);
+  };
 
-  // Create a fx that calls the getBoardListApi fx.
+  // Create a function that calls the getBoardListApi function
   // If that particular API call is successful, it will go ahead
   // and send the data and update/set it as our new state of boardList.
   const getBoardList = () => {
@@ -44,8 +46,7 @@ function App() {
   // useEffect is used to initially render data
   useEffect(() => {
     getBoardList(); // getBoardList just updates the state of boardList
-  }, []); // using empty dependency (this lets react know just run the page once on this initial render)
-  // If you don't have an empty dependency array, it will run over and over again.
+  }, []); // using empty dependency
 
   // mapping through each board in boardList
   const boardElements = boardList.map((board) => {
@@ -69,16 +70,10 @@ function App() {
     });
   }
 
-
-  
-
-  
-
-
-
     // Create a toggle botton to show/hide board form
   const [showForm, setShowForm] = useState(true);
   const toggleNewBoardForm = () => {setShowForm(!showForm)}
+
 
   return (
     <div className="App">
@@ -102,8 +97,10 @@ function App() {
           {showForm ? <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm> : ''}
         <button onClick={toggleNewBoardForm} className='hideButton'>{showForm ? 'Hide New Board Form' : 'Show New Board Form'}</button>
         </div>
+
       </div>
         <CardsList board={selectedBoard}/>
+
       </main>
     </div>
   );
