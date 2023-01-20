@@ -32,11 +32,15 @@ const SelectedBoard = (props) => {
 
   return (
     <div>
-      <div id="sort-div">
-        <select id="sort-dropdown" onChange={handleSortCards}>
-          <option value="likes">Sort by: Number of likes</option>
-          <option value="alpha">Sort: Alphabetically</option>
-          <option value="id">Sort by: ID</option>
+      <div id='sort-div'>
+        <select
+          id='sort-dropdown'
+          onChange={handleSortCards}
+          defaultValue={props.selectState}
+        >
+          <option value='likes'>Sort by: Number of likes</option>
+          <option value='alpha'>Sort: Alphabetically</option>
+          <option value='id'>Sort by: ID</option>
         </select>
         <p></p>
       </div>

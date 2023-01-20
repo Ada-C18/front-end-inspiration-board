@@ -19,7 +19,8 @@ const SingleBoardView = () => {
     onDeleteCard,
     onLikeCard,
     allBoardsData,
-    onSort,
+    onSort, 
+    selectState
   } = loaderData[0];
 
   const boardId = useLocation().pathname.split("/").pop();
@@ -53,6 +54,7 @@ const SingleBoardView = () => {
           onLikeCard={onLikeCard}
           onSort={onSort}
           boardId={boardId}
+          selectState={selectState}
         ></SelectedBoard>
       </div>
 
