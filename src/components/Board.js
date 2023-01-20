@@ -89,15 +89,15 @@ const Board = () => {
             <section className="board-container">
                 <section className="input-section">
                     <div className='user-choice'>
-                        <label>Choose Board to Display</label>
+                        <label className='label-name'>Choose Board to Display</label>
                         <Dropdown boardData={boardData} getBoardId={getBoardId} getBoardTitle={getBoardTitle}></Dropdown>
-                        <label>Create a Board</label>
+                        <label className='label-name'>Create a Board</label>
                         <NewBoardForm onBoardSubmit={onBoardSubmit}></NewBoardForm>
-                        <label>Create a Card</label>
+                        <label className='label-name'>Create a Card</label>
                         <NewCardForm addCardCallback={addCardCallback}></NewCardForm>
                     </div>
                     <div className='board-title'>
-                        <h2>{selectedBoardTitle}</h2>
+                        <h2 className='board-title'>"{selectedBoardTitle}"</h2>
                     </div>
                 </section>
             </section>

@@ -20,24 +20,48 @@
 .C0 {
   grid-area: C0;
 }
+.C0 .card {
+  background-color: #f7b36b;
+}
 .C1 {
   grid-area: C1;
+}
+.C1 .card {
+  background-color: #73b0cb;
 }
 .C2 {
   grid-area: C2;
 }
+.C2 .card {
+  background-color: #f7b36b;
+}
 .C3 {
   grid-area: C3;
+}
+.C3 .card {
+  background-color: #73b0cb;
 }
 .C4 {
   grid-area: C4;
 }
+.C4 .card {
+  background-color: #f7b36b;
+}
 .C5 {
   grid-area: C5;
+}
+.C5 .card {
+  background-color: #73b0cb;
 }
 .C6 {
   grid-area: C6;
 }
+.C6 .card {
+  background-color: #f7b36b;
+}
 .C7 {
   grid-area: C7;
+}
+.C7 .card {
+  background-color: #73b0cb;
 }

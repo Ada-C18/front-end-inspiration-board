@@ -29,7 +29,7 @@ const NewCardForm = ({addCardCallback}) => {
 
   return(
     <form onSubmit={submitCardData}>
-      <label>Message:</label>
+      <label>Message: </label>
       <input
       type="text"
       onChange={handleChange}

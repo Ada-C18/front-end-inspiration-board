@@ -32,14 +32,14 @@ const NewBoardForm = ( {onBoardSubmit}) => {
   return (
     <form onSubmit={submitBoardData}>
       <div>
-        <label htmlFor="title">Title:</label>
+        <label htmlFor="title">Title: </label>
         <input 
           name="title"
           value={formFields.title}
           onChange={onTitleChange} />
       </div>
       <div>
-        <label htmlFor="owner">Owner:</label>
+        <label htmlFor="owner">Owner: </label>
         <input 
           name="owner"
           value={formFields.owner}
