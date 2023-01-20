@@ -109,6 +109,20 @@ const Board = (props) => {
       });
   };
 
+  const deleteBoardButton = props.currentBoard ? (
+    <div id="del-board">
+      <button
+        className="del-board-btn"
+        onClick={() => props.deleteBoard(props.currentBoard)}
+      >
+        <hr id="del-btn-rmv"></hr>
+      </button>
+      <p id="del-board-text">REMOVE BOARD</p>
+    </div>
+  ) : (
+    ""
+  );
+
   const cardsData = cardList.map((card) => {
     return (
       <Card
@@ -130,6 +144,7 @@ const Board = (props) => {
         {cardsData}
         {cardForm}
       </div>
+    {deleteBoardButton}
     </section>
   );
 };
