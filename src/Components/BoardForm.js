@@ -19,6 +19,7 @@ const BoardForm = (props) => {
     });
     setName("");
     setOwner("");
+    props.toggleForm();
   };
 
   return (

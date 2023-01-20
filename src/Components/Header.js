@@ -12,7 +12,10 @@ const Header = (props) => {
 
   const boardFormButtonText = boardFormVisible ? "x" : "+";
   const boardFormElement = boardFormVisible ? (
-    <BoardForm newBoard={props.newBoard}></BoardForm>
+    <BoardForm
+      newBoard={props.newBoard}
+      toggleForm={toggleBoardFormVisible}
+    ></BoardForm>
   ) : (
     ""
   );
