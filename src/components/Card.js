@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import "./Card.css";
 
-
-
 function Card(props) {
   const id = props.id;
   const message = props.message;
@@ -11,13 +9,12 @@ function Card(props) {
   const handleDelete = () => deleteCard(id);
   // return <div className="card">{message}</div>;
   return (
-    
     <div className="card">
-      <div className = "cardContent">
-      <li >{message}</li>
-      <div className = "deleteBtn">
-      <button className = "button" onClick={handleDelete}>Delete</button>
-      </div>
+      <div className="cardContent">
+        <li>{message}</li>
+        <div className="deleteBtn">
+          <button onClick={handleDelete}>Delete</button>
+        </div>
       </div>
     </div>
   );
@@ -25,5 +22,6 @@ function Card(props) {
 
 Card.propTypes = {
   message: PropTypes.string.isRequired,
+  deleteCard: PropTypes.func.isRequired,
 };
 export default Card;

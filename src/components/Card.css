@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Reenie+Beanie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Permanent+Marker&family=Reenie+Beanie&display=swap');
 
 
 .card {
@@ -34,6 +34,7 @@
 
 .cardContent {
     position: relative;
+    
     font-family: 'Reenie Beanie', cursive;
     font-weight: lighter;
     /* justify-content: space-between; */

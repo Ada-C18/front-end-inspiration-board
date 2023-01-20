@@ -28,10 +28,11 @@ function CardList(props) {
       </div>
     );
   }
+  return null;
 }
 
 CardList.propTypes = {
-  selectedBoardId: PropTypes.number.isRequired,
+  selectedBoardId: PropTypes.number,
   deleteCard: PropTypes.func.isRequired,
   cardList: PropTypes.arrayOf(
     PropTypes.shape({

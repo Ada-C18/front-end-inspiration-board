@@ -62,8 +62,8 @@ function App() {
   const [boardList, setBoardList] = useState([]);
   const [cardList, setCardList] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState({
-    board: "Please Select a Board!",
-    id: false,
+    board: null,
+    id: null,
   });
 
   const fetchAllBoards = () => {
@@ -89,23 +89,25 @@ function App() {
   useEffect(fetchAllBoards, []);
 
   const fetchAllCards = () => {
-    axios
-      .get(`${boardURL}/${selectedBoard.id}/cards`)
-      .then((response) => {
-        console.log(response);
-        const cardAPIResCopy = response.data.map((card) => {
-          return {
-            id: card.card_id,
-            message: card.message,
-            likesCount: card.likes_count,
-            boardId: card.board_id,
-          };
+    if (selectedBoard.id) {
+      axios
+        .get(`${boardURL}/${selectedBoard.id}/cards`)
+        .then((response) => {
+          console.log(response);
+          const cardAPIResCopy = response.data.map((card) => {
+            return {
+              id: card.card_id,
+              message: card.message,
+              likesCount: card.likes_count,
+              boardId: card.board_id,
+            };
+          });
+          setCardList(cardAPIResCopy);
+        })
+        .catch((error) => {
+          console.log(error);
         });
-        setCardList(cardAPIResCopy);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    }
   };
   // const fetchAllCards = () => {}
   useEffect(fetchAllCards, [selectedBoard]);
@@ -219,7 +221,7 @@ function App() {
       </div>
       <div className="selectBoard">
         <h2>Selected Board</h2>
-        <p>{selectedBoard.board}</p>
+        <p>{selectedBoard.board ? selectedBoard.board : "Please Select a Board!"}</p>
       </div>
       <div className="boardForm">
         <BoardForm addBoardCallbackFunc={addBoard}></BoardForm>
