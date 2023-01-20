@@ -1,0 +1,87 @@
+ul {
+    padding: 0;
+    text-align: center;
+}
+
+.boardlist-container {
+    display: flex;
+    flex-direction: column;
+
+    padding-left: 10rem;
+    padding-right: 10rem;
+    padding-bottom: 1rem
+}
+
+.board-list-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+h2, h3 {
+    background-color: white;
+    text-align: center;
+}
+
+#selected-board {
+    text-align: center;
+}
+
+.hide-button {
+    align-items: center;
+    background-color: #fee6e3;
+    border: 1px solid #111;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    font-family: Inter,sans-serif;
+    font-size: 14px;
+    height: 48px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 100%;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.hide-button:after {
+    background-color: #111;
+    border-radius: 8px;
+    content: "";
+    display: block;
+    height: 48px;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    top: -2px;
+    transform: translate(8px, 8px);
+    transition: transform .2s ease-out;
+    z-index: -1;
+}
+
+.hide-button:hover:after {
+    transform: translate(0, 2);
+}
+
+.hide-button:active {
+    background-color: #ffdeda;
+    outline: 1;
+}
+
+.hide-button:hover {
+    outline: 0;
+    background-color: #f8d5d1;
+}
+
+@media (min-width: 768px) {
+.hide-button {
+    padding: 0 40px;
+}
+}

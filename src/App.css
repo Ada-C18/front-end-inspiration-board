@@ -1,0 +1,103 @@
+body {
+  margin: 3rem;
+  font-family: 'Poppins', sans-serif;
+  background-color: #FEEAEA;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  color: black;
+  align-self: center;
+  font-weight: bold;
+  font-size: 4em;
+}
+
+#header-text {
+  padding: 10px;
+  background: white;
+  text-shadow: 2px 0px 2px #CCCCCC, 1px 1px 2px #EEEEEE, 3px 1px 2px #CCCCCC, 2px 2px 2px #EEEEEE, 4px 2px 2px #CCCCCC, 3px 3px 2px #EEEEEE, 5px 3px 2px #CCCCCC, 4px 4px 2px #EEEEEE, 6px 4px 2px #CCCCCC, 5px 5px 2px #EEEEEE, 6px 5px 2px #CCCCCC, 6px 6px 2px #EEEEEE, 8px 6px 2px #CCCCCC;
+  color: #444444;
+  background: white;
+}
+
+.main_container {
+  flex: 0 1 auto;
+}
+
+.board_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.card_container {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* .hide-form-button {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 1px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter,sans-serif;
+  font-size: 14px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.hide-form-button:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.hide-form-button:hover:after {
+  transform: translate(0, 2);
+}
+
+.hide-form-button:active {
+  background-color: #ffdeda;
+  outline: 1;
+}
+
+.hide-form-button:hover {
+  outline: 0;
+  background-color: #f8d5d1;
+}
+
+@media (min-width: 768px) {
+.hide-form-button {
+  padding: 0 40px;
+}
+} */

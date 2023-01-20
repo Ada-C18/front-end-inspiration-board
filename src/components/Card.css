@@ -1,0 +1,26 @@
+.card-container {
+    padding: 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 150px;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    box-shadow: -10px 7px 7px #d3d3d3;
+    background-color: rgb(241,183,185, 0.4)
+}
+
+.card-message {
+    font-style: italic;
+    font-size: 1.25rem;
+}
+
+.delete:hover, .arrow {
+    font-weight: bold;
+    cursor: pointer; 
+    font-size: 1rem;
+}
+
+.delete {
+    font-size: 0.75rem;
+}
