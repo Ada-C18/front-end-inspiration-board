@@ -19,7 +19,7 @@ const SingleBoardView = () => {
     onDeleteCard,
     onLikeCard,
     allBoardsData,
-    onSort
+    onSort,
   } = loaderData[0];
 
   const boardId = useLocation().pathname.split("/").pop();
@@ -34,10 +34,13 @@ const SingleBoardView = () => {
     boardOwner.charAt(0).toUpperCase() + boardOwner.slice(1);
 
   const cardColor = kColorClasses[singleBoardObject.card_color];
+  const backgroundColor = cardColor === "hacker" ? "hackerbg" : "regularbg";
+  const headerTextColor =
+    cardColor === "hacker" ? "hackerheader" : "regularheader";
 
   return (
-    <div id="single-board-view">
-      <header id="single-board-view-header">
+    <div id="single-board-view" className={`${backgroundColor}`}>
+      <header id="single-board-view-header" className={`${headerTextColor}`}>
         <h1> {boardTitle} </h1>
         <h2> {boardOwnerFormatted}</h2>
       </header>
@@ -49,6 +52,7 @@ const SingleBoardView = () => {
           onDeleteCard={onDeleteCard}
           onLikeCard={onLikeCard}
           onSort={onSort}
+          boardId={boardId}
         ></SelectedBoard>
       </div>
 
