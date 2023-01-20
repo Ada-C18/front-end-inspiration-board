@@ -13,6 +13,7 @@ const CardList = (props) => {
     return props.cards.map((card) => {
       return (
         <Card
+        className='board-card-container'
           key={card.cardId}
           cardId={card.cardId}
           boardId={card.boardId}
@@ -26,7 +27,7 @@ const CardList = (props) => {
   };
   return (
     <div>
-      <h2>Card List</h2>
+      <h2 className='board-card-container'>Card List</h2>
       <label>Sort by:</label>
       <select value={props.sortCards} onChange={(e) => props.onSortedCards(e.target.value)}>
         <option value='likes'>Likes</option>

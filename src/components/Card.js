@@ -4,7 +4,7 @@ import './Card.css';
 
 const Card = (props) => {
   return (
-    <div>
+    <div className='board-card'>
     
       <p>{props.message}</p>
       <button

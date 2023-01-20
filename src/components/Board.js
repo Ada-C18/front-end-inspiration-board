@@ -4,7 +4,7 @@ import './Board.css';
 
 const Board = (props) => {
   return (
-    <div onClick={() => props.onSelectBoard(props.boardId)}>
+    <div className='board-card board-card-container ' onClick={() => props.onSelectBoard(props.boardId)}>
       <p>{props.title} by {props.owner}</p>
       <button onClick={() => props.onDeleteBoard(props.boardId)}>Remove Board</button>
     </div>

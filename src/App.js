@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+
 // import axios from 'axios';
 import {
   REACT_APP_BACKEND_URL,
@@ -156,14 +157,14 @@ const App = () => {
   };
 
   return (
-    <div className='App'>
-      <header>
-        <h2>Inspiration Board</h2>
+    <div>
+      <header className='board-card-container'>
+        <h1>Inspiration Board</h1>
       </header>
       <main>
         <div>
           <button onClick={handleHideForm}>Hide Form</button>
-          {showForm && <BoardForm handleBoardSubmit={handleBoardSubmit} />}
+          {showForm && <BoardForm className='new-board-form__container new-card-form__container' handleBoardSubmit={handleBoardSubmit} />}
         </div>
         <BoardList
           className='board_list'
@@ -179,7 +180,15 @@ const App = () => {
         </p>
         {selectedBoard && (
           <>
+           {
+              <CardForm
+              className='board-card-container new-board-form__toggle-btn'
+                boardId={selectedBoard.boardId}
+                handleCardSubmit={handleCardSubmit}
+              />
+            }
             <CardList
+            className='board-card-container'
               cards={cards}
               boardId={selectedBoard.boardId}
               onLikesCount={handleLikesCount}
@@ -187,12 +196,7 @@ const App = () => {
               sortCards={sortCards}
               onSortedCards={handleSortedCards}
             />
-            {
-              <CardForm
-                boardId={selectedBoard.boardId}
-                handleCardSubmit={handleCardSubmit}
-              />
-            }
+           
           </>
         )}
       </main>

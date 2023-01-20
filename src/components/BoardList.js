@@ -6,6 +6,7 @@ import './BoardList.css';
 const BoardList = (props) => {
   return props.boards.map((board) => (
     <Board
+      className='boards__list board-card-container '
       key={board.boardId}
       boardId={board.boardId}
       title={board.title}

@@ -23,11 +23,12 @@ const BoardForm = (props) => {
     setFormData(boardObj);
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h2>Board Form</h2>
+    <div className='board-card-container '>
+        <h2 className='board-card-container '>Board Form</h2>
+      <form className='board-card-container ' onSubmit={handleSubmit}>
+      
         <div>
-          <label htmlFor='title'>Title: </label>
+          <label className='board-card-container '  htmlFor='title'>Title: </label>
           <input
             type='text'
             id='title'
@@ -39,7 +40,7 @@ const BoardForm = (props) => {
         </div>
         <div>
           <label htmlFor='owner'>Owner: </label>
-          <input
+          <input 
             type='text'
             id='owner'
             name='owner'
@@ -49,7 +50,7 @@ const BoardForm = (props) => {
           ></input>
         </div>
         <div>
-          <input type='submit' 
+          <input className='board-card-container ' type='submit' 
           disabled={((formData.title.length === 0) || (formData.owner.length === 0) || (formData.title.length > 40) || (formData.owner.length > 40))}
           value='Submit'></input>
         </div>

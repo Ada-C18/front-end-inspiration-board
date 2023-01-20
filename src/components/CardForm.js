@@ -25,11 +25,11 @@ const CardForm = (props) => {
   };
 
   return (
-    <section>
-      <h2>Card Form</h2>
-      <form onSubmit={handleSubmit}>
+    <section className='board-card-container'>
+      <h2 className='board-card-container'>Card Form</h2>
+      <form className='board-card-container' onSubmit={handleSubmit}>
         <label htmlFor='message'></label>
-        <input
+        <input className='board-card-container'
           type='text'
           placeholder='Write here, write now'
           id='message'
@@ -37,7 +37,7 @@ const CardForm = (props) => {
           value={formData.name}
           onChange={handleChange}
         />
-        <input type='submit' 
+        <input type='submit' className='board-card-container'
         disabled={formData.message.length === 0 || formData.message.length > 40} 
         value='Submit Card' />
       </form>
