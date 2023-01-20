@@ -18,9 +18,7 @@ const NewCardForm = ({addCardCallback}) => {
     
   const submitCardData = e => {
     e.preventDefault();
-
-    addCardCallback(cardMessage)
-
+    addCardCallback(cardMessage);
     setCardMessage({
       message: '',
       likes_count: 0
@@ -34,6 +32,7 @@ const NewCardForm = ({addCardCallback}) => {
       type="text"
       onChange={handleChange}
       placeholder='Message'
+      value={cardMessage.message}
       // value={cardMessage.message}
       // removing the value element allows for message to show up but still doesnt print out the whole message in console
       />
