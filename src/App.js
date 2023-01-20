@@ -161,8 +161,9 @@ const plusOneCardItem=(card)=>{
       </header>
         <div className="board__container">
           <section>
+    
             <h2> New Board</h2>
-            <div className="new__board">
+            <div className="new__board section ">
             {isBoardFormVisible ? <NewBoard onBoardSubmit={onBoardSubmit}></NewBoard> : ""}
             <div onClick={toggleNewBoardForm} className="board__toggle">{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</div>
             </div>
@@ -170,14 +171,14 @@ const plusOneCardItem=(card)=>{
           </section>
           <section>
             <h2> New Card</h2>
-            <div className="new__card">
+            <div className="new__card section ">
               {isCardFormVisible ? <NewCard onCardSubmit={onCardSubmit}></NewCard>: ""}
               <div onClick={toggleMessageForm} className="card__toggle">{isCardFormVisible ? " ": " "}  </div>
             </div>
           </section>
           <section>
             <h2>Boards</h2>
-            <ul className="boards__list">
+            <ul className="boards__list section">
             {boardsElements}
             </ul>
           </section>

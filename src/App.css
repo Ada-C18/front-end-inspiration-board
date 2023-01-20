@@ -18,6 +18,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 2rem;
+  font-family: 'Courier New',monospace;
+  font-weight: bold;
+  text-shadow: 2px 2px #cac3c3;
 
   
   /* grid-template-rows:  */
@@ -70,17 +73,26 @@ flex-direction: column;
 
 .boards__list {
   overflow: scroll;
-  max-height: 8rem;
-  min-height: 8rem;
-  border: 1px solid black;
-  margin: 4rem;
+  display:flex;
+  flex-direction: column;
+  max-height: 10rem;
+  min-width: 12rem;
+  border: 1px solid black; 
+  margin: .5rem;
+  font-style: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
 }
 
 .card__item {
-  border: 1px solid green;
+  border: 1px solid rgb(149, 36, 164);
+  box-shadow: -8px 4px 1px black;
   margin: 1rem;
   column-gap: 2rem;
-  background-color: pink;
-
+  background-color: rgb(240, 125, 240);
+  font-size: large;
+  font-weight: 50;
+  font-family: 'Chalkduster', fantasy;
+  text-shadow: .5px .5px #2e2e2e;
 }
+
+
