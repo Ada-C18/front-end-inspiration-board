@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
   Navigate,
-} from "react-router-dom";
-import axios from "axios";
+} from 'react-router-dom';
+import axios from 'axios';
 
-import "./App.css";
+import './App.css';
 
-import LogInView from "./routes/LogInView";
-import LogInForm from "./routes/LogInForm";
-import SignUpForm from "./routes/SignUpForm";
-import Home from "./routes/Home";
-import CreateBoard from "./routes/CreateBoard";
-import SingleBoardView from "./routes/SingleBoardView";
-import ErrorPage from "./error-page";
+import LogInView from './routes/LogInView';
+import LogInForm from './routes/LogInForm';
+import SignUpForm from './routes/SignUpForm';
+import Home from './routes/Home';
+import CreateBoard from './routes/CreateBoard';
+import SingleBoardView from './routes/SingleBoardView';
+import ErrorPage from './error-page';
 
 const kBaseUrl = process.env.REACT_APP_BE_URL;
 
@@ -47,7 +47,7 @@ function App() {
 
   let [appData, setAppData] = useState([]);
   let [cardDataByBoard, setCardDataByBoard] = useState([]);
-  let [selectValue, setSelectValue] = useState("1");
+  let [selectValue, setSelectValue] = useState('1');
 
   const logUserOut = () => {
     setLoggedIn({
@@ -62,61 +62,95 @@ function App() {
     return setAppData(boardArr);
   };
 
-  const sortBoardsByMostRecent = async (appData) => {
+  const sortBoardsByMostRecent = async () => {
     const boardArr = await getAllBoardsAPI();
     boardArr.reverse();
     return setAppData(boardArr);
   };
 
-  const sortBoardsByMostCards = async (appData) => {
+  const sortBoardsByMostCards = async () => {
     const boardArr = await getAllBoardsAPI();
     boardArr.sort((a, b) => b.num_cards - a.num_cards);
     return setAppData(boardArr);
   };
 
-  const sortBoardsByLeastCards = async (appData) => {
+  const sortBoardsByLeastCards = async () => {
     const boardArr = await getAllBoardsAPI();
     boardArr.sort((a, b) => a.num_cards - b.num_cards);
     return setAppData(boardArr);
   };
 
-  const sortbyOwnerNameAZ = async (appData) => {
+  const sortbyOwnerNameAZ = async () => {
     const boardArr = await getAllBoardsAPI();
     boardArr.sort((a, b) => a.owner.localeCompare(b.owner));
     return setAppData(boardArr);
   };
 
-  const sortbyOwnerNameZA = async (appData) => {
+  const sortbyOwnerNameZA = async () => {
     const boardArr = await getAllBoardsAPI();
     boardArr.sort((a, b) => b.owner.localeCompare(a.owner));
     return setAppData(boardArr);
   };
 
   const sortBoardArr = (value) => {
-    console.log("in sort board arr");
     switch (value) {
-      case "1":
+      case '1':
         getBoardArr();
         break;
-      case "2":
+      case '2':
         sortBoardsByMostRecent();
         break;
-      case "3":
+      case '3':
         sortBoardsByMostCards();
         break;
-      case "4":
+      case '4':
         sortBoardsByLeastCards();
         break;
-      case "5":
+      case '5':
         sortbyOwnerNameAZ();
         break;
-      case "6":
+      case '6':
         sortbyOwnerNameZA();
         break;
       default:
         getBoardArr();
     }
     setSelectValue(value);
+  };
+
+  const sortCardsByLikes = async (boardId) => {
+    const cardArr = await getCardsByBoard(boardId);
+    cardArr.sort((a, b) => b.likes - a.likes);
+    return setCardDataByBoard(cardArr);
+  };
+
+  const sortCardsAlpha = async (boardId) => {
+    const cardArr = await getCardsByBoard(boardId);
+    cardArr.sort((a, b) => a.message.localeCompare(b.message));
+    return setCardDataByBoard(cardArr);
+  };
+
+  const sortCardsById = async (boardId) => {
+    const cardArr = await getCardsByBoard(boardId);
+    cardArr.sort((a, b) => a.id - b.id);
+    return setCardDataByBoard(cardArr);
+  };
+
+  const sortCardArr = (value, boardId) => {
+    switch (value) {
+      case 'likes':
+        sortCardsByLikes(boardId);
+        break;
+      case 'alpha':
+        sortCardsAlpha(boardId);
+        break;
+      case 'id':
+        sortCardsById(boardId);
+        break;
+      default:
+        getCardsArr(boardId);
+    }
+    // setSelectValue(value);
   };
 
   const getCardsByBoard = async (boardId) => {
@@ -183,6 +217,7 @@ function App() {
         onDeleteCard: deleteCardAPI,
         allBoardsData: appData,
         onLikeCard: likeCard,
+        onSort: sortCardArr,
       },
     ];
   };
@@ -264,18 +299,18 @@ function App() {
     createRoutesFromElements(
       <>
         <Route
-          path="/"
+          path='/'
           element={
-            loggedIn.userId ? <Navigate to="/boards" replace /> : <LogInView />
+            loggedIn.userId ? <Navigate to='/boards' replace /> : <LogInView />
           }
           loader={passLogInProps}
           errorElement={<ErrorPage />}
         >
           <Route
-            path="login"
+            path='login'
             element={
               loggedIn.userId ? (
-                <Navigate to="/boards" replace />
+                <Navigate to='/boards' replace />
               ) : (
                 <LogInForm />
               )
@@ -284,10 +319,10 @@ function App() {
             errorElement={<ErrorPage />}
           />
           <Route
-            path="signup"
+            path='signup'
             element={
               loggedIn.userId ? (
-                <Navigate to="/boards" replace />
+                <Navigate to='/boards' replace />
               ) : (
                 <SignUpForm />
               )
@@ -297,24 +332,24 @@ function App() {
           />
         </Route>
         <Route
-          path="/boards"
-          element={loggedIn.userId ? <Home /> : <Navigate to="/" replace />}
+          path='/boards'
+          element={loggedIn.userId ? <Home /> : <Navigate to='/' replace />}
           loader={passBoardProps}
           errorElement={<ErrorPage />}
         />
         <Route
-          path="/create-board"
+          path='/create-board'
           element={<CreateBoard />}
           loader={passCreateBoardProps}
           errorElement={<ErrorPage />}
         />
         <Route
-          path="/boards/:boardId"
+          path='/boards/:boardId'
           element={<SingleBoardView />}
           loader={passSingleBoardProps}
           errorElement={<ErrorPage />}
         />
-        <Route path="*" element={<ErrorPage />} />
+        <Route path='*' element={<ErrorPage />} />
       </>
     )
   );

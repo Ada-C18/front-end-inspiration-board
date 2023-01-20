@@ -10,7 +10,6 @@ const Home = () => {
     loaderData[0];
 
   const handleSort = (event) => {
-    console.log("in handle sort");
     event.preventDefault();
     sortBoardMenu(event.target.value);
   };
