@@ -1,0 +1,27 @@
+.board-form {
+  font-size: 1.2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-style: double;
+  border-width: 0.5em;
+  border-color: #cca8e9;
+  padding: 1em;
+  border-radius: 10px;
+  background-color: #c3bef0;
+}
+
+.button {
+  margin-top: 2em;
+  border-radius: 1em;
+  font-size: 1em;
+  font-family: "Montserrat", sans-serif;
+}
+
+.board-text {
+  background-color: #c3bef0;
+}
+
+input {
+  height: 2em;
+}

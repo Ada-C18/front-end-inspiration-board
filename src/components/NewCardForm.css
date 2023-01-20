@@ -1,0 +1,18 @@
+.form-style {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+}
+
+.form-style-header {
+  font-size: 1.5rem;
+}
+
+.addcard-button {
+  border-radius: 1em;
+  font-size: 1em;
+  font-family: "Montserrat", sans-serif;
+  padding-right: 2em;
+  padding-left: 2em;
+  display: flex;
+  text-align: center;
+}

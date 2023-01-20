@@ -1,0 +1,47 @@
+.whole-area {
+  display: flex; /* or inline-flex */
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 2rem;
+  padding: 1rem;
+  font-size: 1rem;
+  border-color: #cca8e9;
+  border-width: 1rem;
+  border-style: dashed;
+  border-radius: 10px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #c3bef0;
+  margin: 2rem;
+  padding: 1rem;
+  border-radius: 2rem;
+}
+
+.NewBoardForm {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.Delete-Board-Button {
+  border-radius: 10px;
+  font-size: calc(2px + 1.5vmin);
+  color: #2f82fe;
+  background-color: #c3bef0;
+  text-align: center;
+  padding: 1rem;
+  margin: 2rem;
+  font-style: italic;
+  font-family: "Montserrat", sans-serif;
+}
+
+.Cards-And-Button {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}

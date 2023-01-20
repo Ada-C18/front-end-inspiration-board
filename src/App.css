@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Gaegu&family=Montserrat&display=swap");
+
+@font-face {
+  font-family: "GlossySheenRegular";
+  src: local("GlossySheenRegular"),
+    url("./Fonts/GlossySheenRegular-L35oy.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "AlloyInk";
+  src: local("AlloyInk"), url("./Fonts/AlloyInk-nRLyO.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Balonku";
+  src: local("Balonku"),
+    url("./Fonts/BalonkuRegular-la1w.otf") format("opentype");
+  font-weight: normal;
+}
+
+* {
+  background-color: rgb(159, 227, 238);
+  /*background-color: #cadefc;*/
+}
+
+#App-header {
+  font-size: calc(10px + 4vmin);
+  color: rgb(144, 92, 159);
+  text-shadow: 4px 4px 4px white;
+  text-align: center;
+  font-family: "GlossySheenRegular";
+  /*font-family: "Balonku"; */
+  letter-spacing: 0.2rem;
+}
+
+.Boards-Area {
+  display: flex; /* or inline-flex */
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 2rem;
+  padding: 1rem;
+  font-size: 1rem;
+  border-color: #cca8e9;
+  border-width: 1rem;
+  border-style: dashed;
+  border-radius: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.BoardTitles {
+  color: rgb(144, 92, 159);
+  font-size: 1.5rem;
+  padding: 0.2em;
+  font-family: "Montserrat", sans-serif;
+}
+
+.BoardTitles:hover {
+  color: #cca8e9;
+}
+
+.SelectedBoard {
+  font-size: calc(20px + 3vmin);
+  color: rgb(144, 92, 159);
+  text-shadow: 1px 1px 2px white;
+  text-align: center;
+  padding: 2rem;
+  font-weight: bold;
+  font-family: "Balonku";
+  /*font-family: "GlossySheenRegular"; */
+  letter-spacing: 0.2rem;
+}
+
+.Delete-Button {
+  border-radius: 10px;
+  font-size: calc(2.5px + 1.5vmin);
+  align-items: center;
+  align-self: center;
+  color: #2f82fe;
+  background-color: #c3bef0;
+  text-align: center;
+  padding: 1rem;
+  margin: 2rem;
+  font-style: italic;
+  font-family: "Montserrat", sans-serif;
+}
+
+.Footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 2rem;
+}
+
+.credits {
+  font-family: "Montserrat", sans-serif;
+  color: rgb(136, 74, 172);
+}
+
+a {
+  box-shadow: inset 0 0 0 0 #54b3d6;
+  color: rgb(136, 74, 172);
+  margin: 0 -0.25rem;
+  padding: 0 0.25rem;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+a:hover {
+  box-shadow: inset 250px 0 0 0 #bc92ce;
+  color: white;
+  font-style: italic;
+}
