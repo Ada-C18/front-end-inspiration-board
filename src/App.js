@@ -19,7 +19,6 @@ import SingleBoardView from "./routes/SingleBoardView";
 import ErrorPage from "./error-page";
 
 const kBaseUrl = process.env.REACT_APP_BE_URL;
-console.log(kBaseUrl);
 
 const getAllBoardsAPI = async () => {
   try {
