@@ -1,4 +1,3 @@
-import { useState, useCallback, useEffect } from "react";
 import { useLoaderData, Link } from "react-router-dom";
 
 import "./Home.css";
@@ -6,23 +5,15 @@ import BoardMenu from "../components/BoardMenu";
 
 const Home = () => {
   const loaderData = useLoaderData();
-  const [selectValue, setSelectValue] = useState("loaderData[0].defaultValue");
 
-  const { boardArr, getBoardCards, sortBoardMenu, handleLogOut } =
+  const { boardArr, getBoardCards, sortBoardMenu, handleLogOut, selectState } =
     loaderData[0];
 
   const handleSort = (event) => {
+    console.log("in handle sort");
     event.preventDefault();
     sortBoardMenu(event.target.value);
-    return setSelectValue(event.target.value);
   };
-
-  // const setSelectDefault = useCallback((defaultValue) => defaultValue, []);
-
-  // useEffect(() => {
-  //   const updatedDefault = setSelectDefault();
-
-  // });
 
   const logOut = () => handleLogOut();
 
@@ -42,10 +33,8 @@ const Home = () => {
           <button>Create new board</button>
         </Link>
 
-        <select onChange={handleSort} defaultValue={selectValue}>
-          <option value="1" selected>
-            Sort list by: Date created (oldest first)
-          </option>
+        <select onChange={handleSort} defaultValue={selectState}>
+          <option value="1">Sort list by: Date created (oldest first)</option>
           <option value="2">
             Sort list by: Date created (most recent first)
           </option>

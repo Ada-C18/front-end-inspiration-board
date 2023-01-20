@@ -17,13 +17,6 @@ import Home from "./routes/Home";
 import CreateBoard from "./routes/CreateBoard";
 import SingleBoardView from "./routes/SingleBoardView";
 import ErrorPage from "./error-page";
-// import DUMMY_BOARD_DATA from "./components/dummyData";
-
-// const genericDummyFunc = (arg1 = null) => {
-//   console.log("This is the dummy function");
-// };
-
-// const WAIT = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // const kBaseUrl = 'http://localhost:5000';
 const kBaseUrl = "https://hackspo-be.herokuapp.com";
@@ -46,6 +39,9 @@ function App() {
 
   let [appData, setAppData] = useState([]);
   let [cardDataByBoard, setCardDataByBoard] = useState([]);
+  let [selectValue, setSelectValue] = useState("1");
+  // I literally could not figure out a way to keep this in Home and have the state persist between renders
+  // Maybe useCallback or bind could have worked but we're out of time
 
   const logUserOut = () => {
     setLoggedIn({
@@ -91,6 +87,7 @@ function App() {
   };
 
   const sortBoardArr = (value) => {
+    console.log("in sort board arr");
     switch (value) {
       case "1":
         getBoardArr();
@@ -113,6 +110,7 @@ function App() {
       default:
         getBoardArr();
     }
+    setSelectValue(value);
   };
 
   const getCardsByBoard = async (boardId) => {
@@ -141,15 +139,14 @@ function App() {
     return [{ onCreate: addBoard }];
   };
 
-  // const passBoardPropsDummy = () => DUMMY_BOARD_DATA;
-
-  const passBoardProps = (boardProps) => {
+  const passBoardProps = () => {
     return [
       {
         boardArr: appData,
         getBoardCards: getCardsArr,
         sortBoardMenu: sortBoardArr,
         handleLogOut: logUserOut,
+        selectState: selectValue,
       },
     ];
   };
@@ -174,7 +171,7 @@ function App() {
   };
 
   const handleLogIn = async (formData) => {
-    const username = formData.name.toLowerCase(); // avoids case-sensitivity problems; have to post to lowercase as well
+    const username = formData.name.toLowerCase();
     try {
       const response = await axios.get(`${kBaseUrl}/users/${username}`);
       return setLoggedIn({
@@ -192,7 +189,7 @@ function App() {
   };
 
   const handleSignUp = async (formData) => {
-    const username = formData.name.toLowerCase(); // avoids case-sensitivity problems; have to post to lowercase as well
+    const username = formData.name.toLowerCase();
     const requestBody = { name: username };
 
     try {
