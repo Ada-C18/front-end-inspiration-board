@@ -1,3 +1,5 @@
+import Likes from "./Likes";
+
 import "./CardView.css";
 
 const CardView = (props) => {
@@ -8,11 +10,15 @@ const CardView = (props) => {
   return (
     <div className={`single-card ${props.shadowClass} ${props.cardColor}`}>
       <p id="card-message"> {props.message} </p>
-      <span id="num-likes"> {props.likes} ♥️ </span>
-      <button className="like-and-delete-buttons"> +1 </button>
-      <button className="like-and-delete-buttons" onClick={() => deleteCard()}>
-        Delete
-      </button>
+      <div>
+        <Likes />
+        <button
+          className="like-and-delete-buttons"
+          onClick={() => deleteCard()}
+        >
+          Delete
+        </button>
+      </div>
     </div>
   );
 };
