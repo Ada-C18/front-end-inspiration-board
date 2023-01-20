@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import "./Card.css";
 
+
+
 function Card(props) {
   const id = props.id;
   const message = props.message;
@@ -9,11 +11,12 @@ function Card(props) {
   const handleDelete = () => deleteCard(id);
   // return <div className="card">{message}</div>;
   return (
+    
     <div className="card">
       <div className = "cardContent">
       <li >{message}</li>
       <div className = "deleteBtn">
-      <button onClick={handleDelete}>Delete</button>
+      <button className = "button" onClick={handleDelete}>Delete</button>
       </div>
       </div>
     </div>

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Reenie+Beanie&display=swap');
+
+
 .card {
     /* display: flex;
     flex-wrap: wrap;
@@ -14,23 +17,10 @@
     padding:1em;
     box-shadow: 5px 5px 7px rgba(33,33,33,.7);
     margin:1em;
+    font-family: 'Reenie Beanie', cursive;
+    font-weight: lighter;
   }
-/* 
-.card li:nth-child(even) {
-    transform:rotate(4deg);
-    position:relative;
-    top:5px;
-  }
-  li:nth-child(3n) {
-    transform:rotate(-3deg);
-    position:relative;
-    top:-5px;
-  }
-  li:nth-child(5n) {
-    transform:rotate(5deg);
-    position:relative;
-    top:-10px;
-  } */
+
 
 
 /* .card > li {
@@ -44,6 +34,8 @@
 
 .cardContent {
     position: relative;
+    font-family: 'Reenie Beanie', cursive;
+    font-weight: lighter;
     /* justify-content: space-between; */
     /* flex-direction: column;
     display: flex; */
@@ -52,6 +44,7 @@
 .cardContent li {
     font-family: 'Permanent Marker', cursive;
     overflow-wrap: break-word;
+    font-weight:300;
 }
 
 .cardContent .deleteBtn {
