@@ -5,7 +5,7 @@ import './App.css';
 
 // import axios from 'axios';
 import {
-  REACT_APP_BACKEND_URL,
+  URL,
   boardApiToJson,
   addBoardAPI,
   addCardAPI,
@@ -48,7 +48,7 @@ const App = () => {
   const onSelectBoard = async (boardId) => {
     try {
       const response = await axios.get(
-        `${REACT_APP_BACKEND_URL}/boards/${boardId}`
+        `${URL}/boards/${boardId}`
       );
       setSelectedBoard(boardApiToJson(response.data));
       const cards = await getCardsAPI(boardId);

@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-export const REACT_APP_BACKEND_URL =
-  'https://inspo-board-winging-it.herokuapp.com/';
-
+export const URL=process.env.REACT_APP_BACKEND_URL
 // Destructure and convert python naming convention to JSON.
 export const boardApiToJson = (board) => {
   const { board_id: boardId, title, owner } = board;
@@ -24,7 +22,7 @@ export const cardApiToJson = (card) => {
 export const addBoardAPI = (board) => {
   return (
     axios
-      .post(`${REACT_APP_BACKEND_URL}/boards`, board)
+      .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, board)
       .then((response) => boardApiToJson(response.data.board))
       //need show the user a greyed out submit button
       .catch((err) => console.log(err))
@@ -34,7 +32,7 @@ export const addBoardAPI = (board) => {
 // Post Card Obj {"message":""}
 export const addCardAPI = (card, boardId) => {
   return axios
-    .post(`${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, card)
+    .post(`${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}/cards`, card)
     .then((response) => {
       console.log(response.data.cards);
       return response.data.cards.map((card) => {
@@ -61,7 +59,7 @@ export const addCardAPI = (card, boardId) => {
 // Get ALL Boards, the promise returned is the servers response of the data, [ Board1, Board2, Board3 ]
 export const getBoardsAPI = async () => {
   try {
-    const response = await axios.get(`${REACT_APP_BACKEND_URL}/boards`);
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards`);
     return response.data.map(boardApiToJson);
   } catch (err) {
     console.log(err);
@@ -73,7 +71,7 @@ export const getBoardsAPI = async () => {
 export const getCardsAPI = async (boardId) => {
   try {
     const response = await axios.get(
-      `${REACT_APP_BACKEND_URL}/boards/${boardId}/cards`
+      `${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}/cards`
     );
     return response.data.map(cardApiToJson);
   } catch (err) {
@@ -85,7 +83,7 @@ export const getCardsAPI = async (boardId) => {
 // Delete a Board from the API, this goes into the onClick that deletes the board
 export const deleteBoardAPI = async (boardId) => {
   try {
-    await axios.delete(`${REACT_APP_BACKEND_URL}/boards/${boardId}`);
+    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/boards/${boardId}`);
   } catch (error) {
     console.log(error);
     throw new Error(`Could not delete your ${boardId}.`);
@@ -95,7 +93,7 @@ export const deleteBoardAPI = async (boardId) => {
 export const likeCardAPI = async (cardId) => {
   try {
     const response = await axios.patch(
-      `${REACT_APP_BACKEND_URL}/cards/${cardId}`
+      `${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`
     );
     return cardApiToJson(response.data);
   } catch (error) {
@@ -106,7 +104,7 @@ export const likeCardAPI = async (cardId) => {
 
 export const deleteCardAPI = async (cardId) => {
   try {
-    await axios.delete(`${REACT_APP_BACKEND_URL}/cards/${cardId}`);
+    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cards/${cardId}`);
   } catch (error) {
     console.log(error);
     throw new Error(`Could not delete card ${cardId}.`);
