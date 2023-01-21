@@ -58,6 +58,7 @@ export const addCardAPI = (card, boardId) => {
 
 // Get ALL Boards, the promise returned is the servers response of the data, [ Board1, Board2, Board3 ]
 export const getBoardsAPI = async () => {
+  console.log(process.env.REACT_APP_BACKEND_URL)
   try {
     const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/boards`);
     return response.data.map(boardApiToJson);
