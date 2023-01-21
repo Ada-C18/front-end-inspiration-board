@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# Front-End Inspiration Board
+## Overview
+Part of a full-stack project involving four team members. Completed in 8 days (including planning time) over three weeks.<br /><br />
+**Front-end owners:** [@kalawac](https://github.com/kalawac/), [@annalord](https://github.com/annalord/)<br />
+**Back-end owners:** [@emilyiscoding](https://github.com/EmilyIsCoding/), [@bukunmig](https://github.com/BukunmiG/)<br />
+### Related Links
+- [Deployed project](http://hackspoboard.herokuapp.com/)
+- [Back-end repo](https://github.com/EmilyIsCoding/back-end-inspiration-board/)<br />
+- [Ada C-18 repo with general full-stack project overview and requirements](https://github.com/Ada-C18/full-stack-inspiration-board)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Basic Full-Stack Project Requirements
+### Goal
+Create a digital inspiration board
 
-## Available Scripts
+### Features
 
-In the project directory, you can run:
+### UX Summary: Feature Requirements
+Users should be able to create one or more boards.<br />
+<br />
+Once a board is created, users should able to select a single board. Users should be able to create new cards for the selected board. When a user selects a board, they should be able to see all the cards associated with that board.<br />
+<br />
+Users should be able to "+1" the cards that they agree with and see the total number of "+1"s on a single card.
 
-### `yarn start`
+### UX Summary: Our Additional Features
+#### Login and Sign Up
+- Users should be able to sign up for site access with a username
+- Users should be able to log in with a username that is not case-sensitive
+- Usernames should be unique to a single user
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### Boards
+- Users should be able to sort the board list by most recent, popularity (number of cards) and board owner
+- Users can choose a card color when creating a board; cards on that board should populate in the selected color theme
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Detailed Feature Requirements (from [Ada-C18/full-stack-inspiration-board](https://github.com/Ada-C18/full-stack-inspiration-board/blob/main/project-requirements.md))
 
-### `yarn test`
+Teams may:
+- Interpret the features however you'd like<br />
+- Style the web app however you'd like, as long as it's usable<br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Create & Read Boards
 
-### `yarn build`
+As a user, I want to be able to...
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##### Create
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Create a new board, by filling out a form. The form includes "title" and "owner" name of the board.
+- See an error message if I try to make a new board with an empty/blank/invalid/missing "title" or "owner" input.
+- All error messages can look like a new section on the screen, a red outline around the input field, and/or disabling the input, as long as it's visible
+- Hide the "New Board" form, so I don't have to see the "New Board" form all the time when I'm looking at cards.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+##### Read
 
-### `yarn eject`
+- View a list of all boards.
+- Select a board.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Create, Read, and Delete Cards
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+As a user, I want to be able to...
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+##### Create
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Create a new card for the selected board, by filling out a form and filling out a "message."
+- See an error message if I try to make the card's "message" more than 40 characters.
+- All error messages can look like a new section on the screen, a red outline around the input field, and/or disabling the input, as long as it's visible
+- See an error message if I try to make a new card with an empty/blank/invalid/missing "message."
 
-## Learn More
+##### Read
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- View a list of cards that belong to the selected board.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##### Delete
 
-### Code Splitting
+- Delete an existing card.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### +1 Feature
 
-### Analyzing the Bundle Size
+As a user, I want to be able to...
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Press a "+1" icon on a single card, to indicate that I agree with it.
+- See the number of "+1"s on a single card. Every card starts with zero "+1"s.
 
-### Making a Progressive Web App
+### Additional Features
+**Instructions from Ada:** Each team should implement one additional feature from each layer.<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+All suggested additional features are listed below.<br />
+The features we have implemented in this project are indicated by "=>".
 
-### Advanced Configuration
+#### Front-end Feature Options
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- => Use React Router
+- => Allow the user to select how to sort the cards between these options:
+  - Sort by ID
+  - Sort alphabetically
+  - Sort by number of "+1"s
 
-### Deployment
+#### Back-end Feature Options
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- => Write tests for the CRUD operations around the Board model
+- Every time a new card is made, it sends a message to the team's public Slack channel
