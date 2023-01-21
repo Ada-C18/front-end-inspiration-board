@@ -44,6 +44,8 @@ const App = () => {
   //   owner: '',
   //   boardId: null,
   // } USE THIS IF I WANT AN ACTUAL OBJECT TO LOAD, NULL TO MAKE MY RENDER LOGIC WORK.
+
+  //ON SELECT BOARD HERE!!!!!!!!
   const [selectedBoard, setSelectedBoard] = useState(null);
   const onSelectBoard = async (boardId) => {
     try {
