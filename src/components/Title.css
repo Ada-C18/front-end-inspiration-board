@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiko&family=Kanit:wght@100&family=Petrona&display=swap');
+
+h1 {
+    font-family: Kanit, sans-serif;
+    font-size: 60px;
+    text-align: center;
+    background-color: #fce5a5;
+    margin: 0px;
+    padding: 40px;
+    color: #484d4a;
+    letter-spacing: 2px;
+}

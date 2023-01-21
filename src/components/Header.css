@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiko&family=Kanit:wght@100&family=Petrona&display=swap');
+
+p {
+    background-color: #9b9966;
+    text-align: center;
+    padding: 20px;
+    margin: 0px;
+    font-family: 'Petrona', sans-serif;
+    font-size: 20px;
+    letter-spacing: 10px;
+    color: #fce5a5;
+}
