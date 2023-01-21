@@ -85,29 +85,58 @@ const Board = () => {
     };
 
     return (
-        <section className='app'>
-            <section className="board-container">
-                <section className="input-section">
-                    <div className='user-choice'>
-                        <label className='label-name'>Choose Board to Display</label>
-                        <Dropdown boardData={boardData} getBoardId={getBoardId} getBoardTitle={getBoardTitle}></Dropdown>
-                        <label className='label-name'>Create a Board</label>
-                        <NewBoardForm onBoardSubmit={onBoardSubmit}></NewBoardForm>
-                        <label className='label-name'>Create a Card</label>
-                        <NewCardForm addCardCallback={addCardCallback}></NewCardForm>
-                    </div>
-                    <div className='board-title'>
-                        <h2 className='board-title'>"{selectedBoardTitle}"</h2>
-                    </div>
-                </section>
+    <section className='app'>
+        <section className="board-container">
+            <section className="input-section">
+                <div className='user-choice'>
+                    <label className='label-name'>Choose Board to Display</label>
+                    <Dropdown boardData={boardData} getBoardId={getBoardId} getBoardTitle={getBoardTitle}></Dropdown>
+                    <label className='label-name'>Create a Board</label>
+                    <NewBoardForm onBoardSubmit={onBoardSubmit}></NewBoardForm>
+                    <label className='label-name'>Create a Card</label>
+                    <NewCardForm addCardCallback={addCardCallback}></NewCardForm>
+                </div>
+                <div className='board-title'>
+                    <h2 className='board-title'>"{selectedBoardTitle}"</h2>
+                </div>
             </section>
-            <CardList 
-            cardData={cardData} 
-            updateCard={updateCard}
-            deleteCard={deleteCard}
-            ></CardList>
         </section>
-    );
+        <CardList 
+        cardData={cardData} 
+        updateCard={updateCard}
+        deleteCard={deleteCard}
+        ></CardList>
+    </section>
+);
 };
 
 export default Board;
+
+
+
+
+// WORKING RETURN PRE-EDITS
+// return (
+//     <section className='app'>
+//         <section className="board-container">
+//             <section className="input-section">
+//                 <div className='user-choice'>
+//                     <label className='label-name'>Choose Board to Display</label>
+//                     <Dropdown boardData={boardData} getBoardId={getBoardId} getBoardTitle={getBoardTitle}></Dropdown>
+//                     <label className='label-name'>Create a Board</label>
+//                     <NewBoardForm onBoardSubmit={onBoardSubmit}></NewBoardForm>
+//                     <label className='label-name'>Create a Card</label>
+//                     <NewCardForm addCardCallback={addCardCallback}></NewCardForm>
+//                 </div>
+//                 <div className='board-title'>
+//                     <h2 className='board-title'>"{selectedBoardTitle}"</h2>
+//                 </div>
+//             </section>
+//         </section>
+//         <CardList 
+//         cardData={cardData} 
+//         updateCard={updateCard}
+//         deleteCard={deleteCard}
+//         ></CardList>
+//     </section>
+// );

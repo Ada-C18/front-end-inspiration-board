@@ -1,7 +1,69 @@
 /* works but can't access delete button when z-index is commented in*/
 
+/* .card-wrap { */
+  /* toggle 'z-index to access 'delete'/'like' buttons or 'user-input' sections */
+  /* z-index: -1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  position: absolute;
+  top: 10%;
+  bottom: 5%;
+  left: 5%;
+  right: 5%; */
+  /* grid-template-areas:
+    "C0 EM EM C7"
+    "C1 EM EM C6"
+    "C2 C3 C4 C5";
+} */
 .card-wrap {
-  /* toggle 'z-index to access 'delete' or 'user-input sections */
+  display: contents;
+}
+
+.C0 {
+  /* grid-area: C0; */
+}
+.C1 {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+/* .C2 {
+  grid-area: C2;
+}
+.C3 {
+  grid-area: C3;
+}
+.C4 {
+  grid-area: C4;
+}
+.C5 {
+  grid-area: C5;
+}
+.C6 {
+  grid-area: C6;
+}
+.C7 {
+  grid-area: C7;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* PRE-EDITS */
+/* .card-wrap {
+  toggle 'z-index to access 'delete'/'like' buttons or 'user-input' sections
   z-index: -1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -20,48 +82,24 @@
 .C0 {
   grid-area: C0;
 }
-.C0 .card {
-  background-color: #f7b36b;
-}
 .C1 {
   grid-area: C1;
-}
-.C1 .card {
-  background-color: #73b0cb;
 }
 .C2 {
   grid-area: C2;
 }
-.C2 .card {
-  background-color: #f7b36b;
-}
 .C3 {
   grid-area: C3;
-}
-.C3 .card {
-  background-color: #73b0cb;
 }
 .C4 {
   grid-area: C4;
 }
-.C4 .card {
-  background-color: #f7b36b;
-}
 .C5 {
   grid-area: C5;
-}
-.C5 .card {
-  background-color: #73b0cb;
 }
 .C6 {
   grid-area: C6;
 }
-.C6 .card {
-  background-color: #f7b36b;
-}
 .C7 {
   grid-area: C7;
-}
-.C7 .card {
-  background-color: #73b0cb;
-}
+} */
