@@ -1,14 +1,10 @@
 import Board from "./components/Board";
 import { useState, useEffect } from "react";
+import "./App.css";
+import NewBoardForm from "./components/NewBoardForm";
+import CardsList from "./components/CardsList";
 import axios from "axios";
 
-import './App.css';
-import NewBoardForm from "./components/NewBoardForm";
-import NewCardForm from "./components/NewCardForm";
-import postNewCard from "./components/CardsList";
-import CardsList from "./components/CardsList";
-
-// helper function dedicated to only making API GET request for Boards
 const getBoardListApi = () => {
   return axios
     .get(`${process.env.REACT_APP_BACKEND_URL}/boards`, {})
@@ -21,34 +17,26 @@ const getBoardListApi = () => {
     });
 };
 
-
 function App() {
-  // state variable and function for updating state of boardList
-  const [boardList, setBoardList] = useState([]); // initial value for boardList is an empty list
+  const [boardList, setBoardList] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState({
     title: "",
     owner: "",
     id: null,
   });
 
-  // Event handler function
   const selectBoard = (board) => {
     setSelectedBoard(board);
   };
 
-  // Create a function that calls the getBoardListApi function
-  // If that particular API call is successful, it will go ahead
-  // and send the data and update/set it as our new state of boardList.
   const getBoardList = () => {
     return getBoardListApi().then((boards) => setBoardList(boards));
   };
 
-  // useEffect is used to initially render data
   useEffect(() => {
-    getBoardList(); // getBoardList just updates the state of boardList
-  }, []); // using empty dependency
+    getBoardList();
+  }, []);
 
-  // mapping through each board in boardList
   const boardElements = boardList.map((board) => {
     return (
       <li>
@@ -57,23 +45,24 @@ function App() {
     );
   });
 
-  const createNewBoard = newBoard => {
+  const createNewBoard = (newBoard) => {
     axios
-    .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, newBoard)
-    .then((response) => {console.log("Response", response.data);
-    const boards = [...boardList];
-    boards.push(response.data);
-    setBoardList(boards);
-  })
-    .catch((error) => {
-      console.log('Error:', error);
-    });
-  }
+      .post(`${process.env.REACT_APP_BACKEND_URL}/boards`, newBoard)
+      .then((response) => {
+        console.log("Response", response.data);
+        const boards = [...boardList];
+        boards.push(response.data);
+        setBoardList(boards);
+      })
+      .catch((error) => {
+        console.log("Error:", error);
+      });
+  };
 
-    // Create a toggle botton to show/hide board form
   const [showForm, setShowForm] = useState(true);
-  const toggleNewBoardForm = () => {setShowForm(!showForm)}
-
+  const toggleNewBoardForm = () => {
+    setShowForm(!showForm);
+  };
 
   return (
     <div className="App">
@@ -81,26 +70,31 @@ function App() {
         <h1>INSPIRATION BOARD</h1>
       </header>
       <main>
-      <div className="topComponents">
-        <div className="boardContainer">
-          <h2 className="boardHeader">Boards</h2>
-          <ol className="boardElements">{boardElements}</ol>
+        <div className="topComponents">
+          <div className="boardContainer">
+            <h2 className="boardHeader">Boards</h2>
+            <ol className="boardElements">{boardElements}</ol>
+          </div>
+          <div className="createCard">
+            <h2 className="boardFooter">
+              {" "}
+              This is {selectedBoard.owner}'s <br></br>
+              {selectedBoard.title}
+            </h2>
+          </div>
+          <div className="createBoard">
+            <h2>Create Board</h2>
+            {showForm ? (
+              <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm>
+            ) : (
+              ""
+            )}
+            <button onClick={toggleNewBoardForm} className="hideButton">
+              {showForm ? "Hide New Board Form" : "Show New Board Form"}
+            </button>
+          </div>
         </div>
-        <div className = "createCard">
-          <h2 className="boardFooter"> This is {selectedBoard.owner}'s <br></br>
-          {selectedBoard.title}</h2>
-
-    
-        </div>
-        <div className = "createBoard">
-          <h2>Create Board</h2>
-          {showForm ? <NewBoardForm createNewBoard={createNewBoard}></NewBoardForm> : ''}
-        <button onClick={toggleNewBoardForm} className='hideButton'>{showForm ? 'Hide New Board Form' : 'Show New Board Form'}</button>
-        </div>
-
-      </div>
-        <CardsList board={selectedBoard}/>
-
+        <CardsList board={selectedBoard} />
       </main>
     </div>
   );
