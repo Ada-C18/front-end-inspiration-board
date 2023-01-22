@@ -79,7 +79,7 @@ As a user, I want to be able to...
 - Press a "+1" icon on a single card, to indicate that I agree with it.
 - See the number of "+1"s on a single card. Every card starts with zero "+1"s.
 
-### Additional Features
+### Additional Features (from [Ada-C18/full-stack-inspiration-board](https://github.com/Ada-C18/full-stack-inspiration-board/blob/main/project-requirements.md))
 **Instructions from Ada:** Each team should implement one additional feature from each layer.<br />
 
 All suggested additional features are listed below.<br />
