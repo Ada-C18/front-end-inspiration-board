@@ -7,7 +7,8 @@ import Header from "./components/Header";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
 
-const url = "https://group-4-inspo-board.herokuapp.com"
+// const url = "https://group-4-inspo-board.herokuapp.com"
+const url = "http://localhost:5000"
 
 
 // helper function for boards API request
@@ -57,8 +58,9 @@ const deleteCardApi = (boardId, cardId) => {
 // helper function for patch API request
 const patchCardApi = (boardId, cardId) => {
   return axios.patch(`${url}/board/${boardId}/cards/${cardId}`)
-  .then((response) => {
-    console.log(`Card ${cardId} from Board ${boardId} patched`)
+  .then(response => {
+    console.log(response)
+    console.log(`Card ${cardId} from Board ${boardId} patched`);
     return response.data;
   })
   .catch(error => {
@@ -77,7 +79,6 @@ function App() {
 
   // toggle button
   const toggleNewBoardForm = () =>{setIsBoardFormVisible(!isBoardFormVisible)}
-  
  
   // get all boards using API helper
   const getAllBoards = () => {
@@ -106,6 +107,7 @@ function App() {
     }
   // get all cards using API helper
   const getAllCards = (id) => {
+    console.log(`currentBoard.id: ${currentBoard.id}`)
     getAllCardsApi(id).then((cards) => {
       const allCards = [];
       for (let card of cards) {
@@ -162,6 +164,7 @@ function App() {
 
   // add new card callback for new card form
   const addCard = (cardData) => {
+    console.log(`currentBoard.id: ${currentBoard.id}`)
     axios
       .post(`${url}/board/${currentBoard.id}/cards`, cardData)
       .then((response) => {
@@ -170,6 +173,7 @@ function App() {
 
         newCards.push({
           message: response.data.message,
+          likeCount: response.data.likes_count,
           ...cardData,
         });
 
@@ -183,18 +187,17 @@ function App() {
       });
   };
 
-
-  // add function to delete card and pass into Card
+  // delete card from board
   const deleteCard = (cardId) => {
     deleteCardApi(currentBoard.id, cardId)
     .then(response => {
-
       setCards(cards => cards.filter(card => {
         return card.id !== cardId;
-
       }))
     })
   };
+
+  // increase like count for card
   // add function to increase likes on card
   const incrementLikeCount = (id) => {
     patchCardApi(currentBoard.id, id)
@@ -204,7 +207,7 @@ function App() {
           return {
               id: id,
               message: card.message, 
-              likeCount: card.likeCount + 1,
+              likeCount: newLikeCount,
               ...cards};
         } else {
           return card;
@@ -213,15 +216,12 @@ function App() {
       });
     }
 
-
-  
-
   return (
     <div className="App">
       <Header />
       {isBoardFormVisible ? <NewBoardForm addBoardCallback={addBoard} afterSubmitMessage={boardFormMessage}></NewBoardForm>: ''}
-      <span onClick={toggleNewBoardForm} className='new-board-form__toggle-btn'>{isBoardFormVisible ? (<button>Hide New Board Form</button>) : (<button>Show New Board Form</button>) }</span>
-    
+      <span onClick={toggleNewBoardForm} className='new-board-form__toggle-btn'>{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</span>
+      {/* <NewBoardForm addBoardCallback={addBoard} afterSubmitMessage={boardFormMessage} toggleHide={toggleHide} isVisible={isVisible}/> */}
       <BoardContainer
         boards={boards}
         onDisplayCurrentBoard={displayCurrentBoard}
