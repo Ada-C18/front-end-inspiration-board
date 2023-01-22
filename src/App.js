@@ -6,7 +6,6 @@ import CardContainer from "./components/CardContainer";
 import Header from "./components/Header";
 import NewBoardForm from "./components/NewBoardForm";
 import NewCardForm from "./components/NewCardForm";
-import { isVisible } from "@testing-library/user-event/dist/utils";
 
 const url = "https://group-4-inspo-board.herokuapp.com"
 
@@ -88,8 +87,23 @@ function App() {
   // get all boards when App renders
   useEffect(() => {
     getAllBoards();
-  }, []);
+  }, [currentBoard]);
 
+  //Delete board 
+  const deleteBoard =()=>{
+
+        try {
+            const res = axios.delete(`${url}/board/${currentBoard.id}`)
+            console.log(res,"got the data back from api ")
+            setCurrentBoard({title: "No board selected",})
+            
+            
+        } catch (error) {
+            console.log(error)
+        }
+       
+
+    }
   // get all cards using API helper
   const getAllCards = (id) => {
     getAllCardsApi(id).then((cards) => {
@@ -109,6 +123,7 @@ function App() {
   const displayCurrentBoard = (id) => {
     for (let board of boards) {
       if (id === board.id) {
+        console.log(board,"display current board")
         setCurrentBoard(board);
         getAllCards(id);
         setBoardSelected(true);
@@ -168,13 +183,6 @@ function App() {
       });
   };
 
-  const toggleHide = (className, isVisible) => {
-    if (isVisible){
-      className = "new-board__form visible"
-    }else{
-      className = "new-board__form collapse"
-    }
-  };
 
   // add function to delete card and pass into Card
   const deleteCard = (cardId) => {
@@ -187,7 +195,7 @@ function App() {
       }))
     })
   };
-
+  // add function to increase likes on card
   const incrementLikeCount = (id) => {
     patchCardApi(currentBoard.id, id)
     .then(newLikeCount =>{
@@ -206,33 +214,20 @@ function App() {
     }
 
 
-    //   cards.map((card) => {
-    //     return card.id === id ? card : {
-    //       message:card.message, 
-    //       likeCount: card.likeCount += 1,
-    //       ...cards};
-    //     });
-    //     setCards(newCardsData);
-    // })
-      
-    
-    // };
-  
-
   
 
   return (
     <div className="App">
       <Header />
       {isBoardFormVisible ? <NewBoardForm addBoardCallback={addBoard} afterSubmitMessage={boardFormMessage}></NewBoardForm>: ''}
-      <span onClick={toggleNewBoardForm} className='new-board-form__toggle-btn'>{isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}</span>
-      {/* <NewBoardForm addBoardCallback={addBoard} afterSubmitMessage={boardFormMessage} toggleHide={toggleHide} isVisible={isVisible}/> */}
+      <span onClick={toggleNewBoardForm} className='new-board-form__toggle-btn'>{isBoardFormVisible ? (<button>Hide New Board Form</button>) : (<button>Show New Board Form</button>) }</span>
+    
       <BoardContainer
         boards={boards}
         onDisplayCurrentBoard={displayCurrentBoard}
       />
       <NewCardForm addCardCallback={addCard} afterSubmitMessage={cardFormMessage} boardSelected={boardSelected}/>
-      <CardContainer currentBoard={currentBoard} cards={cards} onDeleteCard={deleteCard} incrementLikeCount={incrementLikeCount}/>
+      <CardContainer deleteBoard={deleteBoard} currentBoard={currentBoard} cards={cards} onDeleteCard={deleteCard} incrementLikeCount={incrementLikeCount}/>
     </div>
   );
   };

@@ -1,7 +1,6 @@
 import React from "react";
 import "./Card.css";
 
-// import PropTypes from 'prop-types';
 
 const Card = ({ id, message, likeCount, onDeleteCard, incrementLikeCount }) => {
 
@@ -19,8 +18,5 @@ const Card = ({ id, message, likeCount, onDeleteCard, incrementLikeCount }) => {
     );
     };
 
-// Card.propTypes = {
-//     message: PropTypes.string.isRequired,
-// };
 
 export default Card;

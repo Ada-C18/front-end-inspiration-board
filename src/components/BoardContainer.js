@@ -31,12 +31,4 @@ const BoardContainer = ({ boards, onDisplayCurrentBoard}) => {
 };
 
 
-// BoardContainer.propTypes = {
-//     boards: PropTypes.arrayOf(PropTypes.shape({
-//         id: PropTypes.number.isRequired,
-//         title: PropTypes.string.isRequired,
-//         owner: PropTypes.string.isRequired,
-//     })) 
-// };
-
 export default BoardContainer;

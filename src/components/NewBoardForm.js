@@ -24,10 +24,6 @@ const NewBoardForm = ({ addBoardCallback , afterSubmitMessage, toggleHide }) => 
   let className = "new-board__form";
   let isVisible= true;
 
-  const handleClick = () => {
-    isVisible=!isVisible
-    toggleHide(className, isVisible)
-  }
   
   return (
     <section className="new-board__section">
