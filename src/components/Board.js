@@ -97,7 +97,7 @@ const Board = () => {
                     <NewCardForm addCardCallback={addCardCallback}></NewCardForm>
                 </div>
                 <div className='board-title'>
-                    <h2 className='board-title'>"{selectedBoardTitle}"</h2>
+                    <h2 className='board-title'>{selectedBoardTitle}</h2>
                 </div>
             </section>
         </section>

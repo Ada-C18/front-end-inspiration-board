@@ -1,0 +1,7 @@
+select {
+  background-color: #303030;
+  color: #fff;
+}
+select:hover {
+  background: rgba(34, 34, 34, 0.904);
+}

@@ -30,24 +30,29 @@ const NewBoardForm = ( {onBoardSubmit}) => {
   }
 
   return (
-    <form onSubmit={submitBoardData}>
-      <div>
-        <label htmlFor="title">Title: </label>
+    <form onSubmit={submitBoardData} className='board-form'>
+      <div className="title-input" id="half">
+        <label htmlFor="title" className="item">Title: </label>
         <input 
+          placeholder="Title"
           name="title"
+          className="item"
           value={formFields.title}
           onChange={onTitleChange} />
       </div>
-      <div>
-        <label htmlFor="owner">Owner: </label>
+      <div className="owner-input" id="half">
+        <label htmlFor="owner" className="item">Owner: </label>
         <input 
+          placeholder="Owner"
           name="owner"
+          className="item"
           value={formFields.owner}
           onChange={onOwnerChange} />
       </div>
-        <input 
-          type="submit" 
-          value="Add Board" />
+      <input 
+        className="submit-button"
+        type="submit" 
+        value="Add Board" />
     </form>
   );
 };

@@ -6,8 +6,10 @@ const Card = (props) => {
     return (
         <div className='card'>
             <p>{props.message}</p>
-            <button onClick={() => props.updateCard(props.card_id)}>{props.likes_count} 💕</button>
-            <button onClick={() => props.deleteCard(props.card_id)}>delete</button>
+            <div className='card-buttons'>
+                <button onClick={() => props.updateCard(props.card_id)}>{props.likes_count} 💕</button>
+                <button onClick={() => props.deleteCard(props.card_id)}>delete</button>
+            </div>
         </div>
     )
 }

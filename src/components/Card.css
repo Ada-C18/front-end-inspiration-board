@@ -1,13 +1,18 @@
 .card {
-  display: flexbox;
-  border: 2px solid rgb(0, 0, 0);
+  color: #fff;
+  border: 2px solid #fff;
   border-radius: 5px;
   height: 80%;
   width: 80%;
   margin: 1rem auto auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 button {
+  color: #fff;
+  font-size: 1rem;
   background: none;
   padding: 10px;
   cursor: pointer;

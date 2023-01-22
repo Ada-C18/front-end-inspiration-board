@@ -1,3 +1,4 @@
+import './Dropdown.css'
 
 const Dropdown = ({ boardData, getBoardId, getBoardTitle } ) => {
   // console.log(boardData, "boardData");
