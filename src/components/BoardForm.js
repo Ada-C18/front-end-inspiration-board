@@ -71,7 +71,7 @@ const NewBoardForm = ({ addBoardCallbackFunc }) => {
           />
         </form>
       )}
-      <button onClick={handleClick}>
+      <button className="hideBoard" onClick={handleClick}>
         {formDisplay ? "Hide New Board Form" : "Show New Board Form"}
       </button>
     </div>

@@ -5,3 +5,7 @@ label {
 input {
   width: 80%;
 }
+
+.hideBoard{
+  display: block;
+}
