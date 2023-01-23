@@ -1,0 +1,7 @@
+.cardView {
+  border: 1px solid black ;
+  overflow:scroll;
+  width: 400px;
+  height: 250px;
+  justify-content: left;
+}

@@ -1,0 +1,126 @@
+body {
+    /* background: linear-gradient(to right, rgb(5, 84, 181), rgb(20, 171, 230,.8), rgb(1, 237, 119, .6)); */
+    /* font: italic 1.2em "Fira Sans"; */
+    /* background-image: url(../images/coral\ ecosystems\ reeffish.jpg); */
+    /* background-image: url(../images/Document.jpeg); */
+    background-image: url(../images/coral-reef-3.jpeg);
+    background-repeat: no-repeat ;
+    background-size: cover;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.app-header {
+    font-size: 80px;
+    color: white;
+    text-align: center;
+    font-style: italic;
+    
+}
+
+section {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    background: rgb(243, 140, 140, .5);
+    font-size: 30px; 
+    text-align: center;
+    vertical-align: center;
+    padding: 1em;
+    margin: 3%;
+    color: rgb(255, 255, 255);
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.board-list-display::-webkit-scrollbar {
+    display: none;
+}
+
+.board-list-display {
+    box-shadow: inset 0 0 030px rgba(255, 255, 255, 0.784);
+    border: 1px solid rgb(255, 255, 255, 0.2) ;
+    border-radius: 50%;
+    min-height: 250px;
+    max-height: 250px;
+    min-width: 250px;
+    max-width: 250px;
+    padding: 3rem;
+    margin: auto;
+    background-color: rgba(154, 252, 241, 0.3);
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    overflow:scroll;
+    height: 200px;
+}
+
+button {
+        display: inline-block;
+        appearance: none;
+        background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        box-shadow: 0 2px 25px rgba(241, 99, 33, 0.616);
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 1px;
+}
+
+.App-container {
+    display: flex;
+    flex: 0 0 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 15px;
+    background-color: rgba(255, 255, 255, 0.558);
+}
+
+.boards-container {
+        align-items: center;
+        width: 33%;
+        margin-bottom: 2%;
+        justify-content: center;
+}
+
+.selected-board-display {
+    align-items: center;
+    width: 33%;
+    margin-bottom: 2%;
+}
+
+.new-board-form {
+    align-items: center;
+    width: 33%;
+    margin-bottom: 2%;
+}
+
+.create-new-card-display {
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2%;
+    margin-top: 1em;
+}
+
+.cards-container {
+    margin-bottom: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    /* grid-template-rows: min-content;
+    column-span: all; */
+    /* margin: 4%; */
+    padding: 5px;
+    justify-content: space-evenly;
+
+}
+
+#current-board-name {
+    font-size: x-large;
+};
