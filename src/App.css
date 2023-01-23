@@ -1,0 +1,26 @@
+.App {
+    background-image: url(./images/inspo.jpg);
+    background-repeat: repeat-cover;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+/* .App-header div {
+    display: flex;
+    flex-direction: row;
+} */
+
+div .form {
+    padding-top: 10px;
+    padding: 10px;
+    max-width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+BoardsList {
+    max-width: 300px;
+}

@@ -1,0 +1,44 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: aliceblue;
+    border-style: double;
+    border-color: black;
+    height: 150px;
+    width:150px;
+}
+
+.delete-button{
+    position: absolute;
+    width: 18px;
+    right: 650px;
+    color: grey;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.card-text{
+    display: flex;
+    align-self: center;
+    padding-top:45px;
+}
+
+.likes-count {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: medium;
+}
+
+.like-button {
+    display: flex;
+    align-items: flex-end;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
