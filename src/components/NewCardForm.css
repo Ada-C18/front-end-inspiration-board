@@ -1,0 +1,32 @@
+input[type=submit] {
+    appearance: button;
+    background-color: #FA8BFF;
+    background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 90%);
+    border: 1px solid #000;
+    border-radius: 4px;
+    box-shadow: #fff 4px 4px 0 0,#000 4px 4px 0 1px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    font-weight: 900;
+    line-height: 0px;
+    margin: 0 0px 0px 0;
+    overflow: visible;
+    padding: 12px 40px;
+    text-align: center;
+    text-transform: none;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+    input[type=submit] {
+        padding: 15px 10px;
+    }
+}

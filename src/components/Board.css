@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&display=swap');
+
+.board-text-display {
+    grid-area: 4/3/4/5;
+    align-self: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    overflow: scroll;
+}
