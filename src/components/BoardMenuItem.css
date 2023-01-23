@@ -1,0 +1,36 @@
+.menu-item {
+  width: 67vw;
+  padding: none;
+  margin: 0px;
+  align-self:stretch;
+  clear: left;
+  min-height: 7vh;
+  color: #014040;
+  border: none;
+  text-align: center;
+  display: block;
+  /* text-decoration: underline; */
+}
+
+.menu-item:hover {
+  font-weight: bolder;
+  border: 1.5px dashed #026464;
+}
+
+.pink {
+  background-color: #f8b0a0;
+}
+
+.white {
+  background-color: whitesmoke;
+}
+
+#cardCount {
+  font-size: smaller;
+  font-style: italic;
+}
+
+#owner {
+  font-size: small;
+  font-style: italic;
+}

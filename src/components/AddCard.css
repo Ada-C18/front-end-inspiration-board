@@ -1,0 +1,44 @@
+#card-preview {
+  display: flex;
+  flex-direction: row;
+  width: 15vw;
+  height: 15vw;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+  box-shadow:  3px 3px 5px #014040;
+  margin: auto;
+  padding: 1vh 1vw;
+  font-size: 1.3rem;
+  overflow: auto;
+}
+
+#new-card-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#new-card-text {
+  max-width: 20vw;
+  height: 4vh;
+  border-color: #014040;
+  border-radius: 20px;
+  color: #014040;
+  margin-top: 3.5vh;
+  text-align: center;
+  font-family: 'Arial';
+  padding: 4vh 1vw;
+}
+
+#new-card-submit {
+  color: #014040;
+  width: 6vw;
+  margin-top: 2vh;
+  border: solid 1.5px #014040;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: rgb(225, 225, 225)
+}
+
+

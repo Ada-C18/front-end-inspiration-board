@@ -1,0 +1,98 @@
+h1 {
+  font-size: 3.5rem;
+}
+
+#single-board-view {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.regularbg {
+  background-color:  #fbccc0;
+}
+
+.hackerbg {
+  background-color: #000000;
+  background-image: linear-gradient(180deg, #000000 0%, #014040 25%, #000000 50%, #014040 75%, #000000 100%);
+}
+
+#single-board-view-header {
+  top: 0px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-width: 100vw;
+  height: 20vh;
+  font-family: 'Caveat';
+  padding-bottom: 2vh;
+}
+
+.regularheader {
+  color: #014040;
+}
+
+.hackerheader {
+  color: white;
+}
+
+#board-display {
+  width: 70vw;
+  min-height: 75vh;
+  background-color: whitesmoke;
+  border-radius: 50px;
+  border: black dashed;
+  margin: 2vh;
+}
+
+#add-card-and-home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#add-card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 25vw;
+  height: 60vh;
+  background-color: whitesmoke;
+  border-radius: 50px;
+  border: black dashed;
+  position: sticky;
+  margin-top: 2vh;
+}
+
+#home-button {
+  border: none;
+  background: none;
+  margin-top: 2vh;
+}
+
+img {
+  width: 5rem;
+  background-color: #6AA6A6;
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow:  3px 3px 5px #014040;
+}
+
+.green {
+  background-color: #C1D6D9;
+  color: #014040;
+}
+
+.coral {
+  background-color: #F29979;
+  color: #014040;
+}
+
+.hacker {
+  background-color: #000000;
+  background-image: linear-gradient(130deg, #000000 0%, #014040 25%, #000000 50%, #014040 75%, #000000 100%); 
+  color: #C1D6D9;
+  text-shadow: 1px 1px 1px white;
+}

@@ -1,0 +1,10 @@
+ul {
+  width: 67vw;
+  min-width: 67vw;
+  min-height: 60vh;
+  list-style-type: none;
+  padding:0px;
+  margin:0px;
+  align-self:stretch;
+  align-items: stretch;
+}

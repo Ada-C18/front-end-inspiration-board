@@ -1,0 +1,70 @@
+#home {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items:flex-start;
+  justify-content: center;
+}
+
+#home-header {
+  position: sticky;
+  top: 0px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-width: 100vw;
+  height: 30vh;
+  background-color:  #6AA6A6;
+  overflow:hidden;
+  font-family: 'Caveat';
+  color: #014040;
+}
+
+#home-header h1 {
+  position: relative;
+}
+
+#home-header h2 {
+  display: block;
+}
+
+#home-menu {
+  width: 67vw;
+  max-width: 67vw;
+  min-height: 70vh;
+  background-color: #9fc6c6;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding:none;
+  margin:none;
+  overflow:scroll;
+  overscroll-behavior: none;
+}
+
+#home-nav {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  width: 33vw;
+  max-width: 33vw;
+  height: 70vh;
+  min-height: 70vh;
+  position: sticky;
+  right: 0;
+  top: 30vh;
+  background-color: #C1D6D9;
+  overflow: scroll;
+  overscroll-behavior-y: none;
+}
+
+#home-nav button {
+  margin: 5vh;
+}
+
+#log-out {
+  position:absolute;
+  bottom: 20vh;
+}

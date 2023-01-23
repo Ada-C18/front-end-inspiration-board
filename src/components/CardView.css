@@ -1,0 +1,74 @@
+.single-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 15vw;
+  height: 15vw;
+  align-items: center;
+  text-align: center;
+  margin: 1vh 1vw;
+  justify-content: space-evenly;
+  padding: 1vh 1vw;
+  overflow: auto;
+}
+
+/* .green {
+  background-color: #C1D6D9;
+  color: #014040;
+}
+
+.coral {
+  background-color: #F29979;
+  color: #014040;
+}
+
+.hacker {
+  background-color: #000000;
+  background-image: linear-gradient(130deg, #000000 0%, #014040 25%, #000000 50%, #014040 75%, #000000 100%); 
+  color: #C1D6D9;
+  text-shadow: 1px 1px 1px white;
+} */
+
+/* .hacker-like-delete {
+  color: white !important;
+} */
+
+.pink-shadow {
+  box-shadow:  3px 3px 5px #f8b0a0;
+}
+
+.teal-shadow {
+  box-shadow:  3px 3px 5px #014040;
+}
+
+#card-message {
+  width: 15vw;
+  min-height: 15vh;
+  font-weight: bold;
+  font-size: 1.3rem;;
+}
+
+#num-likes {
+  font-family: 'Caveat';
+  font-size: 1.1rem;
+}
+
+.like-and-delete-buttons {
+  font-family: 'Caveat';
+  font-size: 1.1rem;
+  background-color: transparent;
+  border: none;
+  color: #014040
+
+}
+
+.like-and-delete-buttons:hover {
+  text-decoration: underline;
+}
+
+#plusOne {
+  padding: 2px;
+}
+
+
+

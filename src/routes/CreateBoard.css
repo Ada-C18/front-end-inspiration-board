@@ -1,0 +1,140 @@
+#new-board-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e0eaec;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+#create-board-heading {
+  font-family: 'Caveat', cursive;
+  color: #F26E50;
+  font-size: clamp(1.5rem, 5vmax, 3.5rem);
+}
+
+#new-board-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  border: dashed black;
+  border-radius: 45px;
+  width: 55vw;
+  min-height: 30vh;
+  height: fit-content;
+  max-height: 60vh;
+  font-family: 'Open Sans', sans-serif;
+  overflow:auto;
+}
+
+#submit-button {
+  background-color: #F26E50;
+  border: solid black 1px;
+  border-radius: 8px;
+  min-width: fit-content;
+  width: 12vw;
+  max-width: 12vmax;
+  height: clamp(fit-content, 5vh, 5vh);
+  margin: 3vmin 0;
+  color: #014040;
+  font-weight: bolder;
+  padding: 10px;
+}
+
+#board-title-field {
+  width: 35vw;
+  height: 5vh;
+  border-radius: 5px;
+  border: solid black 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 3vmin;
+}
+
+#selectDiv label {
+  display:block;
+  text-align:left;
+  width:35vw;
+  }
+
+#colorSelect {
+  width: 35vw;
+  height: 5vh;
+  padding: 0 10px;
+  border: solid black 1px;
+  border-radius: 5px;
+}
+
+#colorSelect option {
+  background-color: white;
+  border: solid black 1px;
+}
+
+#home-button-white {
+  border: none;
+  background: none;
+  margin-top: 7vh;
+  height: fit-content;
+  width:fit-content;
+}
+
+#button-img {
+  max-height: 8vh;
+  max-width: 8vh;
+  width: 3rem;
+  background-color: #518888;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow:  3px 3px 5px #014040;
+}
+
+#selectDiv {
+  margin: 5vmin 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+#swatch {
+  display: flex;
+  width: 8vmax;
+  height: 8vmax;
+  box-shadow:  3px 3px 5px #014040;
+  margin: 3vmin;
+  align-items: center;
+  justify-content: center;
+  overflow:hidden;
+}
+
+#swatch p {
+  text-align: center;
+  font-size: clamp(1vmin, calc(10px+1vmin), 3vmin);
+  font-weight: bold;
+  width: 7vw;
+  overflow:hidden;
+}
+
+.green {
+  background-color: #C1D6D9;
+  color: #014040;
+}
+
+.coral {
+  background-color: #F29979;
+  color: #014040;
+}
+
+.hacker {
+  background-color: #000000;
+  background-image: linear-gradient(130deg, #000000 0%, #014040 25%, #000000 50%, #014040 75%, #000000 100%); 
+  color: #C1D6D9;
+  text-shadow: 1px 1px 1px white;
+}
+
+.hacker-like-delete {
+  color: white !important;
+}
