@@ -1,0 +1,76 @@
+
+.app {
+    background-color: #1c1b1b;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+    "C0 EM EM C7"
+    "C1 EM EM C6"
+    "C2 C3 C4 C5";
+    align-items: stretch;
+}
+
+.board-container {
+    grid-area: EM;
+}
+
+/* USER-INPUT SECTION */
+.input-section {
+    border: 2px solid #fff;
+    border-radius: 8px;
+    color: #fff;
+    background-color: #1c1b1b;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.user-choice {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    
+}
+
+.user-choice label {
+    margin-top: 15px;
+}
+
+.user-choice form label {
+    display: block;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.label-name {
+    font-size: 1.25rem;
+}
+
+.board-title {
+    font-size: 1.5em;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+
+/* USER INPUT SECT BUTTONS AND DROPDOWN */
+form [type="submit"] {
+    cursor: pointer;
+    color: #fff;
+    border-radius: 4px;
+    background: #303030;
+    margin-top: 5px;
+}
+input {
+    color: #fff;
+    background-color: #303030;
+    outline: 0;
+}
+input:hover {
+    background: rgba(34, 34, 34, 0.904);
+}
+input:focus {
+    background: rgba(34, 34, 34, 0.904);
+}
