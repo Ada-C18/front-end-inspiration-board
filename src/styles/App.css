@@ -1,0 +1,97 @@
+.mainContainer {
+    min-height: calc(100vh - 176px);
+}
+
+h1 {
+    font-family: "Splash";
+    font-size: 6rem;
+    text-align: center;
+    padding-top: 100px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.noBottomMargin {
+    margin-bottom: 0px;
+}
+
+h3 {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.upperGrid {
+    display: grid;
+    grid-template: 3fr 1fr / 1fr 1fr 1fr;
+    margin-left: 20px;
+    margin-right: 20px;
+    max-height: 300px;
+    column-gap: 75px;
+    padding: 30px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+.listOfBoards {
+    border: 2px solid #000;
+    max-height: 10rem;
+    min-height: 10rem;
+    overflow: scroll;
+}
+
+.listOfBoards li:hover {
+    background-color: #ffc39d;
+}
+
+.deleteBoards {
+    text-align: center;
+    font-size: small;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.deleteBoards:hover {
+    text-decoration: underline;
+    font-weight: 900;
+    color: #fd8226;
+}
+
+.selectedBoard {
+    text-align: center;
+    font-size: 2rem;
+    padding: 50px 0;
+}
+
+input[type=text] {
+    width: 100%;
+}
+
+.toggleNewBoardForm:hover {
+    color: #fe9e44;
+    text-decoration: underline;
+}
+
+.buttonGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 15px;
+}
+
+.button {
+    height: 30px;
+}
+
+footer {
+    position: relative;
+    left:0;
+    bottom:0;
+}

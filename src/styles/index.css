@@ -1,0 +1,12 @@
+* {
+    color: black;
+}
+
+.indexBody {
+    background-image: url(/src/assets/background.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+    font-family: "Work Sans";
+    background-color: #fff4e6;
+}

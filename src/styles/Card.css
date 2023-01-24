@@ -1,0 +1,28 @@
+.cardFlex {
+    border: 1px solid #f35635;
+    border-radius: 25px;
+    max-width: 200px;
+    height: 250px;
+    flex-wrap: wrap;
+    background-color: #fde8d2;
+    box-shadow: -10px 7px 7px #ffc39d;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    /* position: relative; */
+}
+
+.tinyFlexWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.message {
+    text-align: center;
+    padding-top: 50px;
+}
+
+button {
+    height: 30px;
+}

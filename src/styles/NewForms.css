@@ -1,0 +1,18 @@
+.newCard {
+    padding-left: 50px;
+}
+
+.error {
+    border: 1px solid #40b2a5;
+    box-shadow: 0 0 7px #40b2a5;
+}
+
+.buttonGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 15px;
+}
+
+.button {
+    height: 30px;
+}

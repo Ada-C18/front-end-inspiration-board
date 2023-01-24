@@ -1,0 +1,19 @@
+.lowerGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 50px;
+}
+
+.cardsListHeader {
+    text-align: left;
+}
+
+@media screen and (min-width: 992px) {
+    .cardsListInnerGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 200px);
+        grid-gap: 2rem;
+    }
+}

@@ -1,0 +1,9 @@
+
+{
+    "short_name": "HAAM Inspo Board",
+    "name": "Inspiration Board 2023",
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+}
