@@ -1,0 +1,9 @@
+input{
+    border-radius: 2em;
+  }
+
+  .board-card {
+    margin: 10px;
+    text-align: center;
+}
+
