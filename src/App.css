@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+
+body {
+  color: #454545;
+  margin: 1rem;
+  background-color: rgb(233, 230, 225);
+  font-family: 'Nunito', sans-serif;
+}
+
+.page__container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content__container {
+  flex: 1 0 auto;
+}
+
+.App-header {
+  display: flex;
+}
+
+h1, h2 {
+  display: inline-block;
+  align-items: center;
+  font-family: 'Roboto';
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+h1:hover, h2:hover {
+  color: #00aa95;
+  transition: 0.3s all ease-in-out;
+}
+
+#hide-btn, .like_button, .delete_button {
+  background-color: #fff;
+  padding: .5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+#hide-btn {
+  border: 2px solid #000;
+}
+
+.boards__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+footer {
+  text-align: center;
+}
+
+.new-board-form__container, .new-card-form__container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-board-form__form, .new-card-form__form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+  width: 100%;
+}
+
+input {
+  box-sizing: initial;
+  border: 0;
+  border-radius: 5px;
+}
+
+select, input {
+  padding: .4em;
+}
+
+select {
+  width: 25%;
+}
+
+.new-board-form__submit, .new-card-form__submit {
+  background-color: #fff;
+  border: 2px solid #000;
+  padding: .5em;
+  margin-top: 1em;
+}
+
+button:hover, li:hover, #hide-btn:hover {
+  cursor: pointer;
+  background-color: lightgrey;
+  transition: 0.3s all ease-in-out;
+  color: #555;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.1) 0 7px 13px -3px;
+  transform: translateY(-2px);
+}
+
+button:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+label {
+  padding-top: 1em;
+  padding-bottom: .5em;
+}

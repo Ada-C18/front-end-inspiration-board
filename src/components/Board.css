@@ -1,0 +1,10 @@
+.cards__container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.new-card-form__container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+}
