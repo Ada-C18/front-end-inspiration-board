@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Permanent+Marker&family=Reenie+Beanie&display=swap');
+
+
+.card {
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: center; */
+    list-style:none;
+    text-decoration:none;
+    color:#000;
+    background:#ffc;
+    display:block;
+    min-height:10em;
+    max-height:10em;
+    min-width:10em;
+    max-width: 10em;
+    padding:1em;
+    box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    margin:1em;
+    font-family: 'Reenie Beanie', cursive;
+    font-weight: lighter;
+  }
+
+
+
+/* .card > li {
+    text-align: center;
+} */
+/*button {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+} */
+
+.cardContent {
+    position: relative;
+    
+    font-family: 'Reenie Beanie', cursive;
+    font-weight: lighter;
+    /* justify-content: space-between; */
+    /* flex-direction: column;
+    display: flex; */
+}
+
+.cardContent li {
+    font-family: 'Permanent Marker', cursive;
+    overflow-wrap: break-word;
+    font-weight:300;
+}
+
+.cardContent .deleteBtn {
+    position: absolute;
+    top: 9em;
+    /* right: 10px; */
+    left: 3em;
+    /* justify-content: flex-end;
+    display: flex; */
+    
+}
+

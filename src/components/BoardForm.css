@@ -1,0 +1,11 @@
+label {
+  display: block;
+}
+
+input {
+  width: 80%;
+}
+
+.hideBoard{
+  display: block;
+}
