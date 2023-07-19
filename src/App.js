@@ -1,4 +1,4 @@
-import Header from './components/Header';
+// import Header from './components/Header';
 import BoardList from './components/BoardList';
 import CardList from './components/CardList';
 import { useEffect, useState } from 'react';
@@ -8,6 +8,24 @@ function App() {
   const baseURLBoards = 'http://127.0.0.1:5000/boards'
   const [boardData, setBoardData] = useState([]);
   const [cardData, setCardData] = useState([]);
+
+  useEffect(() => {
+    axios
+    .get(baseURLBoards)
+    .then((res) => {
+      console.log(res.data)
+      setBoardData(res.data)
+    })
+    .catch((err) => console.log(err))
+  }, []);
+
+  const onBoardSelect = (id) => {
+    return axios
+      .get(`${baseURLBoards}/${id}/cards`)
+      .then((res) => setCardData(res.data.cards))
+      .catch((err) => console.log(err))
+  };
+
   const incrementCounter = (id) => {
     setCardData((prev) => {
       return prev.map((entry) => {
@@ -29,7 +47,7 @@ function App() {
 
   return (
     <main>
-      <BoardList boardData={boardData} />
+      <BoardList boardData={boardData} onBoardSelect={onBoardSelect} />
       <CardList cardData={cardData} incrementCounter={incrementCounter} deleteCard={deleteCard}/>
     </main>
   )

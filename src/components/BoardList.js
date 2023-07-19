@@ -9,7 +9,7 @@ const BoardList = (props) => {
       <div className='board_container'>
         <ol>
           {props.boardData.map((board) => (
-            <li>{board.title}</li>
+            <li onClick={(e) => props.onBoardSelect(board.id)}>{board.title}</li>
           ))}
         </ol>
       </div>

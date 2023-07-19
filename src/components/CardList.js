@@ -3,7 +3,7 @@ import Card from './Card';
 
 const CardList = (props) => {
 
-    const CardLists = props.entries.map((post) => {
+    const CardLists = props.cardData.map((post) => {
         return (
             <Card
             card_id={post.card_id}
