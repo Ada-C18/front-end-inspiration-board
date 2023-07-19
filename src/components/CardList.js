@@ -10,7 +10,7 @@ const CardList = (props) => {
             key={post.id}
             message={post.message}
             likes_count={post.likes_count}
-            tempStateHandlingFunction={props.tempStateHandlingFunction}
+            incrementCounter={props.incrementCounter}
             />
         );
     });

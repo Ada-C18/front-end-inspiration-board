@@ -6,19 +6,18 @@ import PropTypes from 'prop-types';
 const Card = (props) => {
 
     const handleClick = () => {
-        props.tempStateHandlingFunction(props.id);
+        props.incrementCounter(props.id);
     };
 
-    const SomeConditionalClass = props.sender === 'Estragon' ? 'chat-entry remote' : 'chat-entry local';
+    //const SomeConditionalClass = props.sender === 'Estragon' ? 'chat-entry remote' : 'chat-entry local';
 
     return (
-        <div className={SomeConditionalClass}>
-        <h2 className="entry-name">{props.sender}</h2>
-        <section className="entry-bubble">
-            <p>{props.body}</p>
-            <button className='like' onClick={handleClick}>
-            {props.liked ? '❤️' : '🤍'}
-            </button>
+        //<div className={SomeConditionalClass}>
+        <div className="post-it">
+        <h2 className="card-message">{props.message}</h2>
+        <section>
+            <p>{props.likes_count} 💕</p>
+            <button onClick={handleClick}>+1</button>
         </section>
         </div>
     );

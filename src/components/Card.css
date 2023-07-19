@@ -1,0 +1,11 @@
+.post-it {
+    border: rgb(211, 220, 35) solid 1px;
+    background: rgb(211, 220, 35) solid 1px;
+    height: 200px;
+    width: 400px;
+    margin-left: 50px;
+}
+
+.card-message {
+    font-family: 'Courier New', Courier, monospace
+}
