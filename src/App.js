@@ -1,5 +1,6 @@
 import Header from './components/Header';
 import BoardList from './components/BoardList';
+import CardList from './components/CardList';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -23,7 +24,8 @@ function App() {
   };
   return (
     <main>
-      <BoardList boardData={boardData} cardData={cardData} incrementCounter={incrementCounter} />
+      <BoardList boardData={boardData} />
+      <CardList cardData={cardData} incrementCounter={incrementCounter} />
     </main>
   )
 };
