@@ -9,10 +9,7 @@ const Card = (props) => {
         props.incrementCounter(props.id);
     };
 
-    //const SomeConditionalClass = props.sender === 'Estragon' ? 'chat-entry remote' : 'chat-entry local';
-
     return (
-        //<div className={SomeConditionalClass}>
         <div className="post-it">
         <h2 className="card-message">{props.message}</h2>
         <section>
