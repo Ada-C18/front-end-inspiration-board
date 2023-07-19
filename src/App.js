@@ -22,10 +22,15 @@ function App() {
       });
     });
   };
+
+  const deleteCard = (id) => {
+    setCardData((prev) => prev.filter((entry) => entry.id !== id));
+  };
+
   return (
     <main>
       <BoardList boardData={boardData} />
-      <CardList cardData={cardData} incrementCounter={incrementCounter} />
+      <CardList cardData={cardData} incrementCounter={incrementCounter} deleteCard={deleteCard}/>
     </main>
   )
 };

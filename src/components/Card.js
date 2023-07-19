@@ -9,12 +9,17 @@ const Card = (props) => {
         props.incrementCounter(props.id);
     };
 
+    const handleDelete = () => {
+        props.deleteCard(props.id);
+    };
+
     return (
         <div className="post-it">
         <h2 className="card-message">{props.message}</h2>
         <section>
             <p>{props.likes_count} 💕</p>
             <button onClick={handleClick}>+1</button>
+            <button onClick={handleDelete}>Delete</button>
         </section>
         </div>
     );

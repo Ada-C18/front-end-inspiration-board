@@ -11,6 +11,7 @@ const CardList = (props) => {
             message={post.message}
             likes_count={post.likes_count}
             incrementCounter={props.incrementCounter}
+            deleteCard={props.deleteCard}
             />
         );
     });
