@@ -30,7 +30,7 @@ const NewBoardForm = (props) => {
             {isBoardFormVisible && (
                 <form onSubmit={handleSubmitBoard}>
                     <label>
-                        Title
+                    ✨Title✨
                         <input className='title-input-box'
                         type="text"
                         name="title"
@@ -40,7 +40,7 @@ const NewBoardForm = (props) => {
                     </label>
                     <p></p>
                     <label>
-                        Owner
+                    ✨Owner✨
                         <input className='owner-input-box'
                         type="text"
                         name="owner"
