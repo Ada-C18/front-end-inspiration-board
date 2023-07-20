@@ -26,7 +26,7 @@ const Card = (props) => {
 };
 
 Card.propTypes = {
-    card_id: PropTypes.number.isRequired,
+    card_id: PropTypes.number,
     message: PropTypes.string.isRequired,
     likes_count: PropTypes.number.isRequired,
 };

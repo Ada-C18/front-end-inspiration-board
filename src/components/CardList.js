@@ -4,6 +4,9 @@ import Card from './Card';
 const CardList = (props) => {
 
     const CardLists = props.cardData.map((post) => {
+      if (!props.cardData || props.cardData.length === 0) {
+        return <p>No cards found.</p>;
+      }
         return (
             <Card
             card_id={post.card_id}
@@ -16,7 +19,7 @@ const CardList = (props) => {
         );
     });
     
-    return <div className='Cards_container'>{CardLists} </div>;
+    return <div className='Cards_container'>{CardLists} </div>; 
 };
 
 export default CardList;
