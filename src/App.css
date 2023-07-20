@@ -1,5 +1,15 @@
 h1 {
+  color: white;
   text-align: center;
+  background-color: teal;
+  transform: rotate(-5deg) skew(-10deg);
+  box-sizing: content-box;
+  display: inline-block;
+  float: none;
+  line-height: normal;
+  position: static;
+  z-index: auto;
+  padding: .6em 1em;
 }
 
 .boards {

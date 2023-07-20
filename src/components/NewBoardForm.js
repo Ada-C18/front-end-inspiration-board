@@ -30,8 +30,8 @@ const NewBoardForm = (props) => {
             {isBoardFormVisible && (
                 <form onSubmit={handleSubmit}>
                     <label>
-                        Title:
-                        <input
+                        Title
+                        <input className='title-input-box'
                         type="text"
                         name="title"
                         value={title}
@@ -40,8 +40,8 @@ const NewBoardForm = (props) => {
                     </label>
                     <p></p>
                     <label>
-                        Owner:
-                        <input
+                        Owner
+                        <input className='owner-input-box'
                         type="text"
                         name="owner"
                         value={owner}
@@ -49,15 +49,15 @@ const NewBoardForm = (props) => {
                         />
                     </label>
                     <p></p>
-                    <h2>Preview</h2>
+                    <p>Preview</p>
                     <p>Title: {title}</p>
                     <p>Owner: {owner}</p>
-                    <button onClick={handleSubmit}>Submit</button>
+                    <button className='submit-button' onClick={handleSubmit}>Submit</button>
                 </form>
             )}
             <p></p>
-            <button onClick={isBoardFormVisible ? hideForm : showForm}>
-                {isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'} Form
+            <button className='hide-button' onClick={isBoardFormVisible ? hideForm : showForm}>
+                {isBoardFormVisible ? 'Hide New Board Form' : 'Show New Board Form'}
             </button>
 
         </div>
