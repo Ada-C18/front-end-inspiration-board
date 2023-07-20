@@ -9,10 +9,3 @@ h2 {
     height: 40px;
     text-align: center;
 }
-
-.board_container {
-    border: black solid 1px;
-    height: 200px;
-    width: 400px;
-    margin-left: 50px;
-}

@@ -6,13 +6,13 @@ const SelectedBoard = ({selectedBoard}) => {
     return (
         <div className='selected-board'>
             <h2>Selected Board</h2>
-            <div className='board_container'>
+            {/* <div className='board_container'> */}
                 {selectedBoard ? (
                     <h3>{selectedBoard.title}</h3>
                 ) : (
                     <p>No board selected</p>
                 )}
-            </div>
+            {/* </div> */}
         </div>
     );
 };
