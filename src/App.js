@@ -12,7 +12,7 @@ function App() {
   const [boardData, setBoardData] = useState([]);
   const kBaseURLCards = 'http://127.0.0.1:5000/cards'
   const [cardData, setCardData] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState('');
+  const [selectedBoard, setSelectedBoard] = useState({});
 
   useEffect(() => {
     axios
@@ -102,8 +102,7 @@ function App() {
           deleteCard={deleteCard} 
           onSortSelection={onSortSelection}
         />
-        {cardData.length !== 0 ? <NewCardForm handleSubmit={handleSubmit} />
-        : null}
+        {Object.keys(selectedBoard).length > 0 && <NewCardForm handleSubmit={handleSubmit} />}
       </div>
     </main>
   )

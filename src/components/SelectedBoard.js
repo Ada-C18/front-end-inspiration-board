@@ -9,7 +9,7 @@ const SelectedBoard = (props) => {
                 {props.selectedBoard === '' ? (
                     <p>No board selected</p>
                 ) : (
-                    <p>{props.selectedBoard}</p>
+                    <p>{props.selectedBoard.title}</p>
                 )}
         </div>
     );
