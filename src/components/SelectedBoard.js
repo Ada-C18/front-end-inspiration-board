@@ -6,7 +6,7 @@ const SelectedBoard = (props) => {
     return (
         <div className='selected-board'>
             <h2 className='selected_header'>Selected Board</h2>
-                {props.selectedBoard === '' ? (
+                {Object.keys(props.selectedBoard).length === 0 ? (
                     <p>No board selected</p>
                 ) : (
                     <p>{props.selectedBoard.title}</p>

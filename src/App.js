@@ -118,8 +118,7 @@ function App() {
           deleteCard={deleteCard} 
           onSortSelection={onSortSelection}
         />
-        {cardData.length !== 0 ? <NewCardForm handleSubmit={handleSubmit} />
-        : null}
+        {selectedBoard === {} ? null : <NewCardForm handleSubmit={handleSubmit} />}
       </div>
     </main>
   )
