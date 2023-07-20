@@ -2,7 +2,6 @@ import React from 'react';
 import './Card.css';
 import PropTypes from 'prop-types';
 
-
 const Card = (props) => {
 
     const handleClick = () => {
@@ -17,9 +16,9 @@ const Card = (props) => {
         <div className="post-it">
         <h2 className="card-message">{props.message}</h2>
         <section>
-            <p>{props.likes_count} 💕</p>
-            <button onClick={handleClick}>+1</button>
-            <button onClick={handleDelete}>Delete</button>
+            <p className='likes-count'>{props.likes_count} 💕</p>
+            <button className='like-button' onClick={handleClick}>+1</button>
+            <button className='delete-button' onClick={handleDelete}>Delete</button>
         </section>
         </div>
     );

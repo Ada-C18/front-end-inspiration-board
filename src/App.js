@@ -16,7 +16,17 @@ function App() {
   const [cardData, setCardData] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState({});
 
+  const fetchBoards = () => {
+    axios
+    .get(baseURLBoards)
+    .then((res) => {
+      setBoardData(res.data)
+    })
+    .catch((err) => console.log(err))
+  };
+
   useEffect(() => {
+    fetchBoards();
     axios
     .get(baseURLBoards)
     .then((res) => {
@@ -53,6 +63,7 @@ function App() {
       setBoardData((prevBoardData) => 
         [...prevBoardData, newBoard])
       console.log(response);
+      fetchBoards();
     })
     .catch((error) => {
       console.error(error);
