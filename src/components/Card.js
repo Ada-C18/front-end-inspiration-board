@@ -16,9 +16,15 @@ const Card = (props) => {
         <div className="post-it">
         <h2 className="card-message">{props.message}</h2>
         <section>
-            <p className='likes-count'>{props.likes_count} 💕</p>
-            <button className='like-button' onClick={handleClick}>+1</button>
+          <div className='buttons_container'>
+            <div className='likes_container'>
+              <p className='likes-count'>{props.likes_count} 💕</p>
+              <button className='like-button' onClick={handleClick}>+1</button>
+            </div>
+              {/* <p className='likes-count'>{props.likes_count} 💕</p>
+              <button className='like-button' onClick={handleClick}>+1</button> */}
             <button className='delete-button' onClick={handleDelete}>Delete</button>
+          </div>
         </section>
         </div>
     );
