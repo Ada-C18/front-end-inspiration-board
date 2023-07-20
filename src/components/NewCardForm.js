@@ -34,7 +34,7 @@ const NewCardForm = ({ handleSubmit }) => {
                 value={formData.message}
                 onChange={handleChange}
             />
-            <p className='preview'>✨Preview✨ {formData.message} </p>
+            <p className='preview'>Preview: {formData.message} </p>
             <input className='newcard-button' type="submit" value="Add new card" />
             
         </form>
