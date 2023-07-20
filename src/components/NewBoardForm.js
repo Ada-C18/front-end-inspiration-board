@@ -6,7 +6,7 @@ const NewBoardForm = (props) => {
     const [owner, setOwner] = useState("");
     const [isBoardFormVisible, setIsBoardFormVisible] = useState(true);
 
-    const handleSubmit = (event) => {
+    const handleSubmitBoard = (event) => {
         event.preventDefault();
         props.onSubmit({
             title: title,
@@ -28,7 +28,7 @@ const NewBoardForm = (props) => {
         <div>
             <h2 className='newboard_title'>Create a New Board</h2>
             {isBoardFormVisible && (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmitBoard}>
                     <label>
                         Title:
                         <input
@@ -52,7 +52,7 @@ const NewBoardForm = (props) => {
                     <h2>Preview</h2>
                     <p>Title: {title}</p>
                     <p>Owner: {owner}</p>
-                    <button onClick={handleSubmit}>Submit</button>
+                    <button onClick={handleSubmitBoard}>Submit Board</button>
                 </form>
             )}
             <p></p>
