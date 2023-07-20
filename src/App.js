@@ -118,7 +118,7 @@ function App() {
           deleteCard={deleteCard} 
           onSortSelection={onSortSelection}
         />
-        {selectedBoard === {} ? null : <NewCardForm handleSubmit={handleSubmit} />}
+        {Object.keys(selectedBoard).length > 0 && <NewCardForm handleSubmit={handleSubmit} />}
       </div>
     </main>
   )
