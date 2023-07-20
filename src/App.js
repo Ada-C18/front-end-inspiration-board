@@ -4,6 +4,7 @@ import NewCardForm from './components/NewCardForm';
 import SelectedBoard from './components/SelectedBoard';
 import NewBoardForm from './components/NewBoardForm'
 import { useEffect, useState } from 'react';
+import Foot from './components/Foot';
 import axios from 'axios';
 import './App.css';
 
@@ -103,6 +104,8 @@ function App() {
     setCardData((prev) => prev.filter((entry) => entry.id !== id));
   };
 
+  
+
   return (
     <main className='app_container'>
       <h1>✨ I N S P I R A T I O N&nbsp;&nbsp;B O A R D ✨</h1>
@@ -120,6 +123,7 @@ function App() {
         />
         {Object.keys(selectedBoard).length > 0 && <NewCardForm handleSubmit={handleSubmit} />}
       </div>
+      <Foot />
     </main>
   )
 };
