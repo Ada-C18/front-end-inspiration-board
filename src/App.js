@@ -13,6 +13,7 @@ function App() {
   const [boardData, setBoardData] = useState([]);
   const kBaseURLCards = 'http://127.0.0.1:5000/cards'
   const [cardData, setCardData] = useState([]);
+  const [selectedBoard, setSelectedBoard] = useState('');
 
   useEffect(() => {
     axios
@@ -66,7 +67,8 @@ function App() {
     return axios
       .get(`${baseURLBoards}/${id}/cards`)
       .then((res) => {
-        setCardData(res.data.cards)})
+        setCardData(res.data.cards)
+        setSelectedBoard(res.data.title)})
       .catch((err) => console.log(err))
   };
 
@@ -94,7 +96,7 @@ function App() {
       <h1>✨ I N S P I R A T I O N&nbsp;&nbsp;B O A R D ✨</h1>
       <div className='boards'>
         <BoardList boardData={boardData} onBoardSelect={onBoardSelect} />
-        <SelectedBoard />
+        <SelectedBoard selectedBoard={selectedBoard}/>
         <NewBoardForm submitForm={submitForm} />
       </div>
       <div className='cards'>
