@@ -2,6 +2,8 @@ import BoardList from './components/BoardList';
 import CardList from './components/CardList';
 import NewCardForm from './components/NewCardForm';
 import SelectedBoard from './components/SelectedBoard';
+// import NewBoardForm from './components/NewBoardForm';
+import NewBoardForm from './components/NewBoardForm'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
@@ -74,6 +76,19 @@ function App() {
     setCardData((prev) => prev.filter((entry) => entry.id !== id));
   };
 
+  const submitForm = (title, owner) => {
+    axios.post('http://127.0.0.1:5000/boards', {
+      title: title,
+      owner: owner
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  };
+
   return (
     <main>
       <h1>✨ I N S P I R A T I O N ✨</h1>
@@ -88,7 +103,9 @@ function App() {
           deleteCard={deleteCard} 
           onSortSelection={onSortSelection}
         />
+        <NewBoardForm submitForm={submitForm} />
         <NewCardForm handleSubmit={handleSubmit} />
+
       </div>
     </main>
   )
