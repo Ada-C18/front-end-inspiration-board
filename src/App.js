@@ -17,6 +17,7 @@ function App() {
   const [selectedBoard, setSelectedBoard] = useState({});
 
   useEffect(() => {
+    fetchBoards();
     axios
     .get(baseURLBoards)
     .then((res) => {
@@ -49,10 +50,20 @@ function App() {
     .catch((err) => console.log(err));
   };
 
+  const fetchBoards = () => {
+    axios
+    .get(baseURLBoards)
+    .then((res) => {
+      setBoardData(res.data)
+    })
+    .catch((err) => console.log(err))
+  };
+
   const submitForm = (newBoard) => {
     axios.post('http://127.0.0.1:5000/boards', newBoard)
     .then((response) => {
       console.log(response);
+      fetchBoards();
     })
     .catch((error) => {
       console.error(error);
