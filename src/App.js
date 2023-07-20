@@ -1,6 +1,7 @@
 import BoardList from './components/BoardList';
 import CardList from './components/CardList';
 import NewCardForm from './components/NewCardForm';
+import SelectedBoard from './components/SelectedBoard';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
@@ -76,7 +77,10 @@ function App() {
   return (
     <main>
       <h1>✨ I N S P I R A T I O N ✨</h1>
-      <BoardList boardData={boardData} onBoardSelect={onBoardSelect} />
+      <div className='boards'>
+        <BoardList boardData={boardData} onBoardSelect={onBoardSelect} />
+        <SelectedBoard />
+      </div>
       <div className='cards'>
         <CardList 
           cardData={cardData} 

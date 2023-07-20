@@ -2,6 +2,12 @@ h1 {
   text-align: center;
 }
 
+.boards {
+  display: flex;
+  justify-content: space-between;
+  margin: 32px;
+}
+
 .cards {
   display: flex;
   justify-content: space-between;
