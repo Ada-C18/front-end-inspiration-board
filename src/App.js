@@ -97,23 +97,41 @@ function App() {
   };
 
   const incrementCounter = (id) => {
-    setCardData((prev) => {
-      return prev.map((entry) => {
-        if (id === entry.id) {
-          return {
-            ...entry,
-            likes_count: entry.likes_count + 1,
-          };
-        } else {
-          return entry;
-        }
+    axios.patch(`${kBaseURLCards}/${id}`)
+      .then((res) => {
+        setCardData((prev) => {
+          return prev.map((entry) => {
+            if (id === entry.id) {
+              return {
+                ...entry,
+                likes_count: entry.likes_count + 1,
+              };
+            } else {
+              return entry;
+            }
+          });
+        });
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error('Error updating like count in card:', err);
       });
-    });
   };
 
-  const deleteCard = (id) => {
-    setCardData((prev) => prev.filter((entry) => entry.id !== id));
+  //const deleteCard = (id) => {
+   // setCardData((prev) => prev.filter((entry) => entry.id !== id));
     // add axios call to delete one card
+  //};
+
+  const deleteCard = (id) => {
+    axios.delete(`${kBaseURLCards}/${id}`)
+      .then((res) => {
+        setCardData((prev) => prev.filter((entry) => entry.id !== id));
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error('Error deleting card:', err);
+      });
   };
 
   const deleteAll = () => {
