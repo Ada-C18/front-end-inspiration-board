@@ -90,11 +90,12 @@ function App() {
   };
 
   return (
-    <main>
-      <h1>✨ I N S P I R A T I O N ✨</h1>
+    <main className='app_container'>
+      <h1>✨ I N S P I R A T I O N&nbsp;&nbsp;B O A R D ✨</h1>
       <div className='boards'>
         <BoardList boardData={boardData} onBoardSelect={onBoardSelect} />
         <SelectedBoard />
+        <NewBoardForm submitForm={submitForm} />
       </div>
       <div className='cards'>
         <CardList 
@@ -103,8 +104,8 @@ function App() {
           deleteCard={deleteCard} 
           onSortSelection={onSortSelection}
         />
-        <NewBoardForm submitForm={submitForm} />
-        <NewCardForm handleSubmit={handleSubmit} />
+        {cardData.length !== 0 ? <NewCardForm handleSubmit={handleSubmit} />
+        : null}
       </div>
     </main>
   )

@@ -24,9 +24,9 @@ const CardList = (props) => {
           <div className='sort_options'>
             <select value="" onChange={props.onSortSelection}>
               <option value="">Sort by:</option>
-              <option value="id">id</option>
-              <option value="likes">likes</option>
-              <option value="alphabetically">alphabetically</option>
+              <option value="id">ID</option>
+              <option value="likes">Likes</option>
+              <option value="alphabetically">Alphabetical (A to Z)</option>
           </select>
           </div> 
         </div>
