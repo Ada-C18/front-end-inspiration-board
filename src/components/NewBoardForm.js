@@ -8,7 +8,7 @@ const NewBoardForm = (props) => {
 
     const handleSubmitBoard = (event) => {
         event.preventDefault();
-        props.onSubmit({
+        props.submitForm({
             title: title,
             owner: owner,
         });
