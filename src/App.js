@@ -33,8 +33,6 @@ function App() {
       linkCardToBoard(res.data.id)
     })
     .catch((err) => console.log(err));
-
-
   };
 
   const linkCardToBoard = (data) => {
@@ -52,6 +50,8 @@ function App() {
   const submitForm = (newBoard) => {
     axios.post('http://127.0.0.1:5000/boards', newBoard)
     .then((response) => {
+      setBoardData((prevBoardData) => 
+        [...prevBoardData, newBoard])
       console.log(response);
     })
     .catch((error) => {
@@ -102,6 +102,7 @@ function App() {
 
   const deleteCard = (id) => {
     setCardData((prev) => prev.filter((entry) => entry.id !== id));
+    // add axios call to delete one card
   };
 
   const deleteAll = () => {
