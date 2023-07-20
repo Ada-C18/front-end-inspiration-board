@@ -25,7 +25,7 @@ const NewBoardForm = (props) => {
     };
 
     return (
-        <div>
+        <div className='newboard_container'>
             <h2 className='newboard_title'>Create a New Board</h2>
             {isBoardFormVisible && (
                 <form onSubmit={handleSubmit}>
