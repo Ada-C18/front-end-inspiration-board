@@ -9,10 +9,11 @@ import './App.css';
 
 function App() {
   const baseURLBoards = 'http://127.0.0.1:5000/boards'
-  const [boardData, setBoardData] = useState([]);
   const kBaseURLCards = 'http://127.0.0.1:5000/cards'
+
+  const [boardData, setBoardData] = useState([]);
   const [cardData, setCardData] = useState([]);
-  const [selectedBoard, setSelectedBoard] = useState('');
+  const [selectedBoard, setSelectedBoard] = useState({});
 
   useEffect(() => {
     axios
@@ -25,11 +26,26 @@ function App() {
 
   const handleSubmit = (data) => {
     axios
-      .post(kBaseURLCards, data)
-      .then((res) => {
-        setCardData(res.data)
-      })
-      .catch((err) => console.log(err));
+    .post(kBaseURLCards, data)
+    .then((res) => {
+      console.log(res.data);
+      linkCardToBoard(res.data.id)
+    })
+    .catch((err) => console.log(err));
+
+
+  };
+
+  const linkCardToBoard = (data) => {
+    const newCardId = {id: data}
+
+    axios
+    .post(`${baseURLBoards}/${selectedBoard.id}/cards`, newCardId)
+    .then((res) => {
+      console.log(res.data);
+      onBoardSelect(selectedBoard.id);
+    })
+    .catch((err) => console.log(err));
   };
 
   const submitForm = (newBoard) => {
@@ -64,7 +80,7 @@ function App() {
       .get(`${baseURLBoards}/${id}/cards`)
       .then((res) => {
         setCardData(res.data.cards)
-        setSelectedBoard(res.data.title)})
+        setSelectedBoard(res.data)})
       .catch((err) => console.log(err))
   };
 
