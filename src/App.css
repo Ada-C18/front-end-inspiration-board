@@ -27,3 +27,7 @@ h1 {
 .app_container {
   font-family: Pangolin;
 }
+
+.app-footer {
+  text-align: center;
+}
