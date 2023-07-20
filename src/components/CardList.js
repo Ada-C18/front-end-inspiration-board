@@ -9,7 +9,7 @@ const CardList = (props) => {
       }
         return (
             <Card
-            card_id={post.card_id}
+            id={post.id}
             key={post.id}
             message={post.message}
             likes_count={post.likes_count}

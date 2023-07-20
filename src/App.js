@@ -1,12 +1,14 @@
-// import Header from './components/Header';
 import BoardList from './components/BoardList';
 import CardList from './components/CardList';
+import NewCardForm from './components/NewCardForm';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import './App.css';
 
 function App() {
   const baseURLBoards = 'http://127.0.0.1:5000/boards'
   const [boardData, setBoardData] = useState([]);
+  const kBaseURLCards = 'http://127.0.0.1:5000/cards'
   const [cardData, setCardData] = useState([]);
 
   useEffect(() => {
@@ -17,6 +19,15 @@ function App() {
     })
     .catch((err) => console.log(err))
   }, []);
+
+  const handleSubmit = (data) => {
+    axios
+      .post(kBaseURLCards, data)
+      .then((res) => {
+        setCardData(res.data)
+      })
+      .catch((err) => console.log(err));
+  };
 
   const onSortSelection = (event) => {
     console.log('Selected Sorting Option:', event.target.value);
@@ -65,6 +76,7 @@ function App() {
 
   return (
     <main>
+      <h1>✨ I N S P I R A T I O N ✨</h1>
       <BoardList boardData={boardData} onBoardSelect={onBoardSelect} />
       <div>
         <select value="" onChange={onSortSelection}>
@@ -74,11 +86,8 @@ function App() {
           <option value="alphabetically">alphabetically</option>
         </select>
       </div>
-      <CardList 
-      cardData={cardData} 
-      incrementCounter={incrementCounter} 
-      deleteCard={deleteCard} 
-      onSortSelection={onSortSelection}/>
+      <CardList cardData={cardData} incrementCounter={incrementCounter} deleteCard={deleteCard}/>
+      <NewCardForm handleSubmit={handleSubmit} />
     </main>
   )
 };
