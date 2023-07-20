@@ -32,11 +32,8 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const submitForm = (title, owner) => {
-    axios.post('http://127.0.0.1:5000/boards', {
-      title: title,
-      owner: owner
-    })
+  const submitForm = (newBoard) => {
+    axios.post('http://127.0.0.1:5000/boards', newBoard)
     .then((response) => {
       console.log(response);
     })
