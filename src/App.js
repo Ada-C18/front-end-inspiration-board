@@ -9,7 +9,7 @@ import axios from 'axios';
 import './App.css';
 
 function App() {
-  const baseURLBoards = 'http://127.0.0.1:5000/boards'
+  const kBaseURLBoards = 'http://127.0.0.1:5000/boards'
   const kBaseURLCards = 'http://127.0.0.1:5000/cards'
 
   const [boardData, setBoardData] = useState([]);
@@ -18,7 +18,7 @@ function App() {
 
   const fetchBoards = () => {
     axios
-    .get(baseURLBoards)
+    .get(kBaseURLBoards)
     .then((res) => {
       setBoardData(res.data)
     })
@@ -27,12 +27,6 @@ function App() {
 
   useEffect(() => {
     fetchBoards();
-    axios
-    .get(baseURLBoards)
-    .then((res) => {
-      setBoardData(res.data)
-    })
-    .catch((err) => console.log(err))
   }, []);
 
   const handleSubmit = (data) => {
@@ -49,7 +43,7 @@ function App() {
     const newCardId = {id: data}
 
     axios
-    .post(`${baseURLBoards}/${selectedBoard.id}/cards`, newCardId)
+    .post(`${kBaseURLBoards}/${selectedBoard.id}/cards`, newCardId)
     .then((res) => {
       console.log(res.data);
       onBoardSelect(selectedBoard.id);
@@ -89,7 +83,7 @@ function App() {
 
   const onBoardSelect = (id) => {
     return axios
-      .get(`${baseURLBoards}/${id}/cards`)
+      .get(`${kBaseURLBoards}/${id}/cards`)
       .then((res) => {
         setCardData(res.data.cards)
         setSelectedBoard(res.data)})
@@ -148,6 +142,7 @@ function App() {
           incrementCounter={incrementCounter} 
           deleteCard={deleteCard} 
           onSortSelection={onSortSelection}
+          selectedBoard={selectedBoard}
         />
         {Object.keys(selectedBoard).length > 0 && <NewCardForm handleSubmit={handleSubmit} />}
       </div>

@@ -8,14 +8,26 @@
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 } */
+
+.likes_container {
+  display: flex;
+}
+
+.buttons_container {
+  display: flex;
+  font-size: 16px;
+}
+
 .like-button {
     background: none;
     border: none;
+    font-size: 16px;
 }
 
 .delete-button {
     background: none;
     border: none;
+    font-size: 16px;
 }
 
 .card-message {

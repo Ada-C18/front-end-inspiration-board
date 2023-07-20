@@ -20,13 +20,13 @@ const CardList = (props) => {
     <section>
       {props.cardData.length !== 0 ? (
         <div>
-          <h2 className='cards_header'>Cards</h2>
+          <h2 className='cards_header'>Cards for {props.selectedBoard.title}</h2>
           <div className='sort_options'>
-            <select value="" onChange={props.onSortSelection}>
-              <option value="">Sort by:</option>
-              <option value="id">ID</option>
-              <option value="likes">Likes</option>
-              <option value="alphabetically">Alphabetical (A to Z)</option>
+            <select value='' onChange={props.onSortSelection}>
+              <option value=''>Sort by:</option>
+              <option value='id'>ID</option>
+              <option value='likes'>Likes</option>
+              <option value='alphabetically'>Alphabetical (A to Z)</option>
           </select>
           </div> 
         </div>
