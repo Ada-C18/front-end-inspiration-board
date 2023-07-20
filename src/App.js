@@ -31,6 +31,19 @@ function App() {
       .catch((err) => console.log(err));
   };
 
+  const submitForm = (title, owner) => {
+    axios.post('http://127.0.0.1:5000/boards', {
+      title: title,
+      owner: owner
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  };
+
   const onSortSelection = (event) => {
     const sortOption = event.target.value;
     const cards = [...cardData]
@@ -73,19 +86,6 @@ function App() {
 
   const deleteCard = (id) => {
     setCardData((prev) => prev.filter((entry) => entry.id !== id));
-  };
-
-  const submitForm = (title, owner) => {
-    axios.post('http://127.0.0.1:5000/boards', {
-      title: title,
-      owner: owner
-    })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
   };
 
   return (
