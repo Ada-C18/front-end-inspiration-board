@@ -30,15 +30,14 @@ function App() {
   };
 
   const onSortSelection = (event) => {
-    console.log('Selected Sorting Option:', event.target.value);
     const sortOption = event.target.value;
-    const cards = cardData.slice()
+    const cards = [...cardData]
     setCardData(sortCards(cards, sortOption));
   };
 
   const sortCards = (cards, sortOption) => {
     if (sortOption === 'likes') {
-      cards.sort((a, b) => a.likes_count - b.likes_count);
+      cards.sort((a, b) => b.likes_count - a.likes_count);
     } else if (sortOption === 'alphabetically') {
       cards.sort((a, b) => a.message.localeCompare(b.message));
     } else if (sortOption === 'id') {
@@ -78,16 +77,15 @@ function App() {
     <main>
       <h1>✨ I N S P I R A T I O N ✨</h1>
       <BoardList boardData={boardData} onBoardSelect={onBoardSelect} />
-      <div>
-        <select value="" onChange={onSortSelection}>
-          <option value="">Sort by:</option>
-          <option value="id">id</option>
-          <option value="likes">likes</option>
-          <option value="alphabetically">alphabetically</option>
-        </select>
+      <div className='cards'>
+        <CardList 
+          cardData={cardData} 
+          incrementCounter={incrementCounter} 
+          deleteCard={deleteCard} 
+          onSortSelection={onSortSelection}
+        />
+        <NewCardForm handleSubmit={handleSubmit} />
       </div>
-      <CardList cardData={cardData} incrementCounter={incrementCounter} deleteCard={deleteCard}/>
-      <NewCardForm handleSubmit={handleSubmit} />
     </main>
   )
 };

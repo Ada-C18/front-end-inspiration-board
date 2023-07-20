@@ -23,7 +23,7 @@ const NewCardForm = ({ handleSubmit }) => {
     };
 
     return (
-    <section>
+    <section className='card-form-container'>
         <h2 className='card_title'>Create a New Card</h2>
         <form onSubmit={handleFormSubmit}>
             <label className='message' htmlFor="message">✨Message✨ </label>

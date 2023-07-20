@@ -1,0 +1,22 @@
+.cards_container {
+  display: flex;
+  gap: 20px;
+}
+
+.cards_header {
+  text-align: left;
+  margin-top: 0px;
+  margin-left: 20px;
+  border: 2px solid #000;
+  box-shadow: -15px 7px 1px teal;
+  padding: 0.8em 1em;
+  font-size: 24px;
+  font-weight: bold;
+  width: 100px;
+  height: 40px;
+}
+
+.sort_options {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}

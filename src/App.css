@@ -1,3 +1,11 @@
 h1 {
   text-align: center;
 }
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  margin: 32px;
+}
+
+
