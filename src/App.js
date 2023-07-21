@@ -133,6 +133,7 @@ function App() {
     .delete('http://127.0.0.1:5000/boards')
     .then((res) => {
       setBoardData([]);
+      setSelectedBoard({});
       console.log(res);
     })
     .catch((err) => console.log(err));
