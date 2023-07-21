@@ -1,0 +1,38 @@
+h1 {
+  color: white;
+  text-align: center;
+  background-color: teal;
+  transform: rotate(-8deg) skew(-10deg);
+  box-sizing: content-box;
+  display: inline-block;
+  float: none;
+  line-height: normal;
+  position: static;
+  z-index: auto;
+  padding: .6em 1em;
+}
+
+h1:hover {
+  color: gold;
+}
+
+.boards {
+  display: flex;
+  justify-content: space-between;
+  margin: 32px;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  margin: 32px;
+}
+
+.app_container {
+  font-family: Pangolin;
+}
+
+.app-footer {
+  text-align: center;
+}
+
