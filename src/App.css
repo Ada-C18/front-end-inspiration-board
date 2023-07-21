@@ -2,7 +2,7 @@ h1 {
   color: white;
   text-align: center;
   background-color: teal;
-  transform: rotate(-5deg) skew(-10deg);
+  transform: rotate(-8deg) skew(-10deg);
   box-sizing: content-box;
   display: inline-block;
   float: none;
@@ -10,6 +10,10 @@ h1 {
   position: static;
   z-index: auto;
   padding: .6em 1em;
+}
+
+h1:hover {
+  color: gold;
 }
 
 .boards {
@@ -31,3 +35,4 @@ h1 {
 .app-footer {
   text-align: center;
 }
+

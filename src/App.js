@@ -133,6 +133,7 @@ function App() {
     })
     .catch((err) => console.log(err));
   };
+  
   const deleteAllCards = () => {
     axios
     .delete('http://127.0.0.1:5000/cards')

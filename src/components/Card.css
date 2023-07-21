@@ -1,14 +1,3 @@
-/* .post-it {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    padding: 20px;
-    background-color: #FFFFCC;
-    border: 1px solid #FFCC00;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-} */
-
 .likes_container {
   display: flex;
 }
