@@ -4,7 +4,6 @@ import NewCardForm from './components/NewCardForm';
 import SelectedBoard from './components/SelectedBoard';
 import NewBoardForm from './components/NewBoardForm'
 import { useEffect, useState } from 'react';
-// import Foot from './components/Foot';
 import axios from 'axios';
 import './App.css';
 
@@ -112,11 +111,6 @@ function App() {
       });
   };
 
-  //const deleteCard = (id) => {
-   // setCardData((prev) => prev.filter((entry) => entry.id !== id));
-    // add axios call to delete one card
-  //};
-
   const deleteCard = (id) => {
     axios.delete(`${kBaseURLCards}/${id}`)
       .then((res) => {
@@ -128,16 +122,18 @@ function App() {
       });
   };
 
-  const deleteAll = () => {
+  const deleteAllBoards = () => {
     axios
     .delete('http://127.0.0.1:5000/boards')
     .then((res) => {
       setBoardData([]);
       setSelectedBoard({});
+      deleteAllCards();
       console.log(res);
     })
     .catch((err) => console.log(err));
-
+  };
+  const deleteAllCards = () => {
     axios
     .delete('http://127.0.0.1:5000/cards')
     .then((res) => {
@@ -166,9 +162,8 @@ function App() {
         {Object.keys(selectedBoard).length > 0 && <NewCardForm handleSubmit={handleSubmit} />}
       </div>
       <footer className='app-footer'>
-        <p>This is a demo! Please be gentle! Click <a href="#" onClick={deleteAll}>here</a> to delete all boards and cards.</p>
+        <p>This is a demo! Please be gentle! Click <a href="#" onClick={deleteAllBoards}>here</a> to delete all boards and cards.</p>
       </footer>
-      {/* <Foot onDelete={deleteAll}/> */}
     </main>
   )
 };
