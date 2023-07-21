@@ -21,8 +21,6 @@ const Card = (props) => {
               <p className='likes-count'>{props.likes_count} 💕</p>
               <button className='like-button' onClick={handleClick}>+1</button>
             </div>
-              {/* <p className='likes-count'>{props.likes_count} 💕</p>
-              <button className='like-button' onClick={handleClick}>+1</button> */}
             <button className='delete-button' onClick={handleDelete}>Delete</button>
           </div>
         </section>
@@ -34,6 +32,8 @@ Card.propTypes = {
     card_id: PropTypes.number,
     message: PropTypes.string.isRequired,
     likes_count: PropTypes.number.isRequired,
+    incrementCounter: PropTypes.func.isRequired,
+    deleteCard: PropTypes.func.isRequired
 };
 
 export default Card;

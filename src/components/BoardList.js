@@ -17,4 +17,15 @@ const BoardList = (props) => {
   );
 };
 
+BoardList.propTypes = {
+  boardData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      owner: PropTypes.string,
+    })
+  ).isRequired,
+  onBoardSelect: PropTypes.func.isRequired
+};
+
 export default BoardList;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import './NewBoardForm.css'
+import './NewBoardForm.css';
+import PropTypes from 'prop-types';
 
 const NewBoardForm = (props) => {
     const [title, setTitle] = useState("");
@@ -62,6 +63,10 @@ const NewBoardForm = (props) => {
 
         </div>
     );
+};
+
+NewBoardForm.propTypes = {
+  submitForm: PropTypes.func.isRequired
 };
 
 export default NewBoardForm;

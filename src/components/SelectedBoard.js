@@ -16,7 +16,7 @@ const SelectedBoard = (props) => {
 };
 
 SelectedBoard.propTypes = {
-    selectedBoard: PropTypes.object,
+    selectedBoard: PropTypes.object.isRequired
 };
 
 export default SelectedBoard;

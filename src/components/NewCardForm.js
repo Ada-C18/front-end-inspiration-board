@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './NewCardForm.css';
+import PropTypes from 'prop-types';
 
 const kInitialFormData = {
     message: '',
@@ -41,4 +42,9 @@ const NewCardForm = ({ handleSubmit }) => {
     </section>
     );
 };
+
+NewCardForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired
+};
+
 export default NewCardForm;
