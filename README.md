@@ -2,10 +2,14 @@
 Full stack Inspiration Board. a user can select a single board. When a user selects a board, they can see all the cards associated with that board.
 # Feature
 • A user can create one or more boards.
+
 • A user can select a single board. When a user selects a board, they can see all the cards associated with that board.
+
 • Cards can be sorted by number of likes, id, and alphabetically
+
 • Boards can be deleted
-• Create board form and be hidden
+
+• Create the board form can be hidden
 
 ![image](https://github.com/Farrah-Unger/front-end-inspiration-board/assets/111025202/70839201-01a5-4281-a43a-6fa647a49119)
 
