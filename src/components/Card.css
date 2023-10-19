@@ -1,0 +1,52 @@
+.card__div {
+    width: 30%;
+    height: 40%;
+    background-color: rgb(249,247,241, .3);
+    border: 2px solid rgb(249,247,241, .1);
+    white-space:nowrap;
+    border-radius: .4rem;
+    margin: .5rem;
+    box-shadow: 10px 10px 10px rgb(145, 152, 229, .3);
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+
+}
+.card-message {
+    text-align: center;
+    margin: 1rem;
+    font-size: 1rem;
+    font-weight: 100;
+    grid-column: 1 / span 3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.card-like-count {
+    text-align: center;
+    font-weight: 100;
+    font-size: 1rem;
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+    background-color: rgb(249,247,241, .3);
+    border: 2px solid rgb(249,247,241, .1);
+    box-shadow: 5px 0px 5px rgb(145, 152, 229, .3);
+    border-radius: .4rem;
+    width: fit-content;
+    margin: 1.5rem;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.delete-card__button {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    background-color: rgb(249,247,241, .3);
+    border: 2px solid rgb(249,247,241, .1);
+    box-shadow: 5px 0px 5px rgb(145, 152, 229, .3);
+    margin: 1.5rem;
+    font-size: .7rem;
+    border-radius: .4rem;
+    cursor: pointer;
+}

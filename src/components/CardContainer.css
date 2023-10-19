@@ -1,0 +1,41 @@
+.all-cards__section {
+    /* border: 2px black solid; */
+    width: 70vw;
+    height: 80vh;
+    grid-row-start: 2;
+    grid-row-end: 5;
+    grid-column: 2 / 3;
+    margin: auto;
+    margin-right: 0;
+    padding-right: 1.5rem;
+    padding-bottom: .5rem;
+}
+
+#current-board-name {
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin: 0;
+}
+
+#card-container-line {
+    width: 20rem;
+    height: 0;
+    border: 1px solid black;
+    display: inline-block;
+    margin-top: .1rem;
+    margin-bottom: .4rem;
+}
+
+.all-cards__container {
+    width: 70vw;
+    height: 75vh;
+    overflow: auto;
+    background-color: rgb(249,247,241, .3);
+    border-radius: .4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    border: 2px solid rgb(249,247,241, .1);
+    box-shadow: 5px 5px 5px rgb(145, 152, 229, .3);
+}

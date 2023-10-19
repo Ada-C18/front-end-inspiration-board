@@ -1,0 +1,58 @@
+.new-card__section {
+    grid-row: 4 / 5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 1.5rem;
+    font-size: 1rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    
+}
+
+.hidden {
+    visibility: collapse;
+}
+
+.visible {
+    visibility: visible;
+}
+
+#add-card {
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin: 0;
+}
+
+#line {
+    width: 20rem;
+    height: 0;
+    border: 1px solid black;
+    margin-top: .1rem;
+    margin-bottom: .5rem;
+    display:inline-block;
+}
+
+.new-card__fields {
+    width: 20rem;
+    background-color: rgb(249,247,241, .3);
+    border-radius: .4rem;
+    padding: .25rem;
+    border: 2px solid rgb(249,247,241, .1);
+    box-shadow: 5px 5px 5px rgb(145, 152, 229, .3);
+}
+
+input {
+    display: block;
+}
+
+label, input {
+    line-height: 1rem;
+}
+
+.new-card__button {
+    margin-top: .45rem;
+    cursor: pointer;
+}

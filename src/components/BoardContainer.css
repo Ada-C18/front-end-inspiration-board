@@ -1,0 +1,43 @@
+.all-boards__section {
+    grid-row: 2 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 1.5rem;
+    font-size: 1rem;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#all-boards__title {
+    font-size: 1.5rem;
+    font-weight: 100;
+    margin: 0;
+}
+
+#line {
+    width: 20rem;
+    height: 0;
+    border: 1px solid black;
+    margin-top: .1rem;
+    margin-bottom: .5rem;
+    display:inline-block;
+}
+
+.all-boards__container {
+    width: 20rem;
+    height: 6rem;
+    overflow: auto;
+    background-color: rgb(249,247,241, .3);
+    border-radius: .4rem;
+    padding: .25rem;
+    border: 2px solid rgb(249,247,241, .1);
+    box-shadow: 5px 5px 5px rgb(145, 152, 229, .3);
+}
+
+.all-board__list {
+    list-style: none;
+    padding-left: 0;
+}
