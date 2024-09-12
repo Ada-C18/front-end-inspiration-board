@@ -1,0 +1,143 @@
+/* * {
+  border: red solid 1px;
+} */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.container {
+  height: 100vh;
+  display: grid;
+  margin: 0 auto;
+  grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+}
+
+header {
+  background-color: #283593;
+  color: #FFF;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
+  /* margin-left: 1rem; */
+}
+
+#inspo-title {
+  font-size: 3vw;
+}
+
+aside {
+  height: 100vh;
+  background-color: #c5cae9;
+  display: block;
+  grid-column: 1 / 2;
+  grid-row: 1 / 4;
+  padding: 5% 5%;
+}
+
+.newBoard {
+  background-color: rgb(245, 245, 245);
+  padding: 3% 5%;
+}
+
+.board {
+  background-color: #9e9e9e;
+  color: #FAFAFA;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+.board:hover {
+  background-color: #757575;
+  transition: background-color 0.5s ease;
+}
+
+.board-trash:hover {
+  color: red;
+}
+
+.board-toggle {
+  font-size: 2rem;
+}
+
+.boards {
+  background-color: rgb(245, 245, 245);
+  padding: 3% 5%;
+  margin: 3% 0 0 0;
+}
+
+.submit {
+  background-color: #FFF;
+  border-radius: 15px;
+  border: 1px solid #757575;
+  padding: 5px;
+}
+
+.submit:hover {
+  background-color: #c5cae9;
+  transition: background-color 0.5s ease;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+main {
+  grid-column: 2 / 4;
+  grid-row: 2 / 4;
+  background-color: rgb(245, 245, 245);
+}
+
+.cardList-container {
+  margin: 1rem;
+}
+
+.cardListInner {
+  max-width: 1200px;
+  margin: 0 auto; /* This left-right auto will center things automatically*/
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* This makes it responsive! */
+  grid-column-gap: 45px;
+  grid-row-gap: 45px;
+}
+
+.card {
+  background-color: #c5cae9;
+  color: #283593;
+  padding: 1rem;
+  box-shadow: 5px 5px;
+  border-radius: 6px;
+  max-width: 370px;
+  display: flex;
+  flex-direction: column;
+  /* height: 250px; */
+  /* position: relative; */
+}
+
+.card-elements {
+  /* position: absolute; */
+  display: flex;
+  /* align-self: flex-end; */
+  margin-bottom: auto;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  /* bottom: 10px; */
+  padding: 0 30px;
+}
+
+.like {
+  display: flex;
+}
+
+
+/* .card-elements li:last-child {
+  margin-left: auto;
+} */
